@@ -24,7 +24,7 @@ if ($action === 'setup_2fa') {
     $username = $stmt->fetchColumn();
 
     $secret = TOTP::generateSecret();
-    $url = TOTP::getProvisioningUri($username, $secret, 'CyberTracker');
+    $url = TOTP::getProvisioningUri($username, $secret, 'CyberTasker');
 
     echo json_encode(['secret' => $secret, 'qr_url' => $url]);
 }

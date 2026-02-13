@@ -88,7 +88,7 @@ class TOTP
     /**
      * Generate otpauth URL for QR Code
      */
-    public static function getProvisioningUri($username, $secret, $issuer = 'CyberTracker')
+    public static function getProvisioningUri($username, $secret, $issuer = 'CyberTasker')
     {
         return 'otpauth://totp/' . urlencode($issuer) . ':' . urlencode($username) .
             '?secret=' . $secret . '&issuer=' . urlencode($issuer);
