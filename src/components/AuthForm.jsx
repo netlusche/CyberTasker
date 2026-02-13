@@ -129,7 +129,7 @@ const AuthForm = ({ onLogin }) => {
                             <>
                                 <input
                                     type="text"
-                                    placeholder="CODENAME / COM-LINK"
+                                    placeholder={!isLogin ? "CODENAME (USERNAME)" : "CODENAME / COM-LINK"}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     className="input-cyber text-center tracking-widest"

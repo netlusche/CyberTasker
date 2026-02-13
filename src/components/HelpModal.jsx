@@ -43,6 +43,8 @@ const HelpModal = ({ onClose }) => {
                         <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// DIRECTIVE EXECUTION [Task Management]</h3>
                         <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
                             <li><strong>INITIALIZE:</strong> Input directive parameters and assign PRIORITY.</li>
+                            <li><strong>EDIT:</strong> Click task title to rename. efficient workflow.</li>
+                            <li><strong>MODIFY:</strong> Click <span className="text-cyber-neonCyan">CATEGORY</span> or <span className="text-white">PRIORITY</span> badges to cycle through options.</li>
                             <li><strong>EXECUTE:</strong> Mark directives as <strong>DONE</strong>. System provides <span className="text-cyber-neonPink">NEON FEEDBACK</span> upon completion.</li>
                             <li><strong>XP GAIN:</strong> Experience points awarded based on task value.</li>
                         </ul>

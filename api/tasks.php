@@ -112,6 +112,21 @@ switch ($method) {
             $fields[] = 'title = ?';
             $params[] = $data['title'];
         }
+        if (isset($data['category'])) {
+            $fields[] = 'category = ?';
+            $params[] = $data['category'];
+        }
+        if (isset($data['priority'])) {
+            $priority = (int)$data['priority'];
+            $fields[] = 'priority = ?';
+            $params[] = $priority;
+
+            // Recalculate points based on new priority
+            // Logic: 1(High)=20, 2(Med)=15, 3(Low)=10
+            $pointsValue = 10 + (3 - $priority) * 5;
+            $fields[] = 'points_value = ?';
+            $params[] = $pointsValue;
+        }
 
         if (empty($fields)) {
             echo json_encode(['message' => 'No changes']);

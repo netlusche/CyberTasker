@@ -140,6 +140,15 @@ elseif ($action === 'register') {
 
         $pdo->exec("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES ($userId, 0, 1, '[]')");
 
+        // [New] Insert Onboarding Tasks
+        $tasksSql = "INSERT INTO tasks (user_id, title, category, priority, points_value) VALUES 
+            (?, 'Debug Neural Link Interface', 'Work', 2, 15),
+            (?, 'Hack Coffee Machine Subnet', 'Work', 2, 15),
+            (?, 'Feed the Techno-Cat', 'Private', 3, 10),
+            (?, 'Install Sleep.exe Patch', 'Health', 1, 20)";
+        $stmtTasks = $pdo->prepare($tasksSql);
+        $stmtTasks->execute([$userId, $userId, $userId, $userId]);
+
         // Send Verification Email
         require_once 'mail_helper.php';
         $verifyLink = "https://deppenmeier.net/tasks/verify.html?token=" . $verificationToken;

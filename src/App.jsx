@@ -127,6 +127,27 @@ function App() {
     }
   };
 
+  const handleUpdateTask = async (task, updates) => {
+    try {
+      // Allow legacy call with just string title or new object
+      const body = typeof updates === 'string'
+        ? { id: task.id, title: updates }
+        : { id: task.id, ...updates };
+
+      const res = await fetch('api/tasks.php', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (res.ok) {
+        await fetchTasks(pagination.currentPage);
+      }
+    } catch (err) {
+      console.error("Error updating task", err);
+    }
+  };
+
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this directive?')) return;
     try {
@@ -207,6 +228,7 @@ function App() {
                       key={task.id}
                       task={task}
                       onToggleStatus={handleToggleStatus}
+                      onUpdateTask={handleUpdateTask}
                       onDelete={handleDelete}
                     />
                   ))}
