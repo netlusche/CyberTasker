@@ -98,10 +98,10 @@ try {
     $stmt->execute([$adminUsername]);
     if (!$stmt->fetch()) {
         $adminPassword = password_hash('password', PASSWORD_DEFAULT);
-        $pdo->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, 'admin')")->execute([$adminUsername, $adminPassword]);
+        $pdo->prepare("INSERT INTO users (username, password, role, is_verified) VALUES (?, ?, 'admin', 1)")->execute([$adminUsername, $adminPassword]);
         $adminId = $pdo->lastInsertId();
         $pdo->exec("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES ($adminId, 0, 1, '[]')");
-        echo "Default Admin user 'admin' created.<br>";
+        echo "Default Admin user 'admin' created and verified.<br>";
     }
 
     echo "Installation/Update Complete!";

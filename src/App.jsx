@@ -5,14 +5,19 @@ import LevelBar from './components/LevelBar';
 import AuthForm from './components/AuthForm';
 import ProfileModal from './components/ProfileModal';
 import AdminPanel from './components/AdminPanel';
+import HelpModal from './components/HelpModal';
+import { triggerNeonConfetti } from './utils/confetti';
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1, totalTasks: 0 }); // [NEW]
+  const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1, totalTasks: 0 });
   const [user, setUser] = useState(null); // Auth State
   const [loading, setLoading] = useState(true);
   const [showProfile, setShowProfile] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
+
+  // ... (existing useEffect and fetch functions) ...
 
   // Check login status on load
   useEffect(() => {
@@ -82,6 +87,7 @@ function App() {
     setTasks([]);
     setShowProfile(false);
     setShowAdmin(false);
+    setShowHelp(false);
   };
 
   const handleAddTask = async (newTask) => {
@@ -112,6 +118,7 @@ function App() {
         await fetchTasks(pagination.currentPage); // Stay on current page
         // If completing, refresh user stats to check for level up
         if (newStatus === 1) {
+          triggerNeonConfetti();
           await fetchUserStats();
         }
       }
@@ -154,6 +161,9 @@ function App() {
           </div>
           {user && (
             <div className="flex gap-2">
+              <button onClick={() => setShowHelp(true)} className="text-xs border border-gray-600 text-gray-400 hover:bg-gray-800 hover:text-white px-2 py-1 rounded transition-colors mr-2">
+                SYSTEM HELP
+              </button>
               {user.role === 'admin' && (
                 <button onClick={() => setShowAdmin(true)} className="text-xs border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black px-2 py-1 rounded transition-colors font-bold">
                   ADMIN PANEL
@@ -257,6 +267,10 @@ function App() {
 
       {showAdmin && user?.role === 'admin' && (
         <AdminPanel onClose={() => setShowAdmin(false)} />
+      )}
+
+      {showHelp && (
+        <HelpModal onClose={() => setShowHelp(false)} />
       )}
     </div>
   );

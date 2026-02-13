@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { triggerNeonConfetti } from '../utils/confetti';
+import HelpModal from './HelpModal';
 
 const AuthForm = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
+    const [showHelp, setShowHelp] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -51,6 +54,7 @@ const AuthForm = ({ onLogin }) => {
                     setRequires2FA(true);
                     setError('');
                 } else {
+                    triggerNeonConfetti();
                     onLogin(data.user);
                 }
             } else {
@@ -89,6 +93,7 @@ const AuthForm = ({ onLogin }) => {
             const data = await res.json();
 
             if (res.ok) {
+                triggerNeonConfetti();
                 onLogin(data.user);
             } else {
                 setError('Invalid 2FA Code');
@@ -99,6 +104,7 @@ const AuthForm = ({ onLogin }) => {
     return (
         <div className="flex flex-col items-center justify-center min-h-[50vh]">
             <div className="card-cyber w-full max-w-md p-8 border-cyber-neonPink shadow-[0_0_20px_rgba(255,0,255,0.2)]">
+                {/* ... (existing form content) ... */}
                 <h2 className="text-2xl font-bold text-center mb-6 text-cyber-neonCyan tracking-widest uppercase">
                     {requires2FA ? 'SECURITY CHECK' : (isForgot ? 'RECOVER ENTRY' : (isLogin ? 'Netrunner Login' : 'New Identity'))}
                 </h2>
@@ -123,7 +129,7 @@ const AuthForm = ({ onLogin }) => {
                             <>
                                 <input
                                     type="text"
-                                    placeholder="CODENAME"
+                                    placeholder="CODENAME / COM-LINK"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     className="input-cyber text-center tracking-widest"
@@ -202,7 +208,18 @@ const AuthForm = ({ onLogin }) => {
                         </button>
                     </div>
                 )}
+
+                <div className="mt-4 pt-4 border-t border-gray-800 text-center">
+                    <button
+                        onClick={() => setShowHelp(true)}
+                        className="text-xs text-cyber-neonCyan hover:text-white transition-colors tracking-widest"
+                    >
+                        [ SYSTEM HELP ]
+                    </button>
+                </div>
             </div>
+
+            {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
         </div>
     );
 };
