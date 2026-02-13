@@ -10,7 +10,11 @@
     *   **Two-Factor Authentication (2FA)**: Google Authenticator compatible (TOTP). Toggleable on/off by users.
     *   **Secure Auth**: Bcrypt password hashing, session-based authentication.
     *   **RBAC**: Admin and User roles. Admins can manage all users and data.
-*   **Task Management**: Create, categorize, prioritize, and complete directives.
+*   **Task Management**:
+    *   **Create**: Initialize directive parameters and assign PRIORITY.
+    *   **Edit**: Inline editing of task titles.
+    *   **Cycle**: Click Category/Priority badges to cycle through options (High/Med/Low).
+    *   **Onboarding**: New operatives receive 4 starter directives automatically.
 *   **Pagination**: Efficient handling of large task lists.
 *   **Admin Panel**: User management, system metrics, and safety controls.
 
@@ -37,27 +41,19 @@
 
 This project is **deployment-path agnostic**. It works seamlessly in:
 *   **Root Directory**: `yourdomain.com/`
-*   **Any Subdirectory**: `yourdomain.com/app/`, `yourdomain.com/tasks/`, `yourdomain.com/secret-mission/` etc.
+*   **Any Subdirectory**: `yourdomain.com/app/`, `yourdomain.com/tasks/`, etc.
 
-#### 1. Build the Frontend
-Run the build command locally to generate the production files:
+#### 1. Build the Project
+Run the build command locally. This compiles the frontend AND copies the API folder:
 ```bash
-npm run build
+npm run build && cp -r api dist/
 ```
-This creates a `dist` folder containing the compiled frontend and all necessary assets.
+*(Note: Seeing `cp -r api dist/` ensures the backend logic is included in the deployment package)*
 
-#### 2. Prepare Files
-Ensure your `dist` folder contains:
-*   `assets/` (Compiled JS/CSS)
-*   `api/` (Copy the `api` folder from root into `dist/`)
-*   `index.html`
-*   `.htaccess` (Copy from root into `dist/` - handles routing)
-*   `vite.svg`
-
-#### 3. Upload
+#### 2. Upload
 Upload the **contents** of the `dist` folder to your server directory (e.g., `/public_html/tasks`).
 
-#### 4. Configure Database
+#### 3. Configure Database
 Edit `api/config.php` on the server:
 ```php
 define('DB_HOST', 'rdbms.strato.de'); // Or your specific host
