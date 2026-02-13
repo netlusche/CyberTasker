@@ -23,10 +23,18 @@ try {
         if ($check->rowCount() == 0) {
             $pdo->exec("ALTER TABLE users ADD COLUMN role VARCHAR(20) DEFAULT 'user'");
             echo "Column 'role' added to users.<br>";
+        }
+    }
+    catch (Exception $e) { /* Ignore */
+    }
 
-            // Make the first user an admin automatically if they exist
-            $pdo->exec("UPDATE users SET role = 'admin' ORDER BY id ASC LIMIT 1");
-            echo "First user promoted to Admin.<br>";
+    // Check for 'two_factor_enabled' column
+    try {
+        $check = $pdo->query("SHOW COLUMNS FROM users LIKE 'two_factor_enabled'");
+        if ($check->rowCount() == 0) {
+            $pdo->exec("ALTER TABLE users ADD COLUMN two_factor_enabled BOOLEAN DEFAULT 0");
+            $pdo->exec("ALTER TABLE users ADD COLUMN two_factor_secret VARCHAR(32) NULL");
+            echo "Columns 'two_factor_enabled' and 'two_factor_secret' added to users.<br>";
         }
     }
     catch (Exception $e) { /* Ignore */
@@ -67,6 +75,18 @@ try {
     )";
     $pdo->exec($sqlUser);
     echo "Table 'user_stats' created (or already exists).<br>";
+
+    // --- DEFAULT ADMIN USER ---
+    $adminUsername = 'admin';
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+    $stmt->execute([$adminUsername]);
+    if (!$stmt->fetch()) {
+        $adminPassword = password_hash('password', PASSWORD_DEFAULT);
+        $pdo->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, 'admin')")->execute([$adminUsername, $adminPassword]);
+        $adminId = $pdo->lastInsertId();
+        $pdo->exec("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES ($adminId, 0, 1, '[]')");
+        echo "Default Admin user 'admin' created.<br>";
+    }
 
     echo "Installation/Update Complete!";
 
