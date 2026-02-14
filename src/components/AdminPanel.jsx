@@ -50,7 +50,9 @@ const PromptModal = ({ message, onConfirm, onCancel }) => {
 const AdminPanel = ({ onClose }) => {
     const [users, setUsers] = useState([]);
     const [pagination, setPagination] = useState({ totalUsers: 0, totalPages: 1, currentPage: 1 });
-    const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'ASC' }); // [NEW] Sorting State
+    const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'ASC' });
+    const [searchQuery, setSearchQuery] = useState(''); // [NEW] Search State
+    const [debouncedSearch, setDebouncedSearch] = useState(''); // [NEW] Debounced Search State
     const [settings, setSettings] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -64,6 +66,16 @@ const AdminPanel = ({ onClose }) => {
         fetchUsers();
         fetchSettings();
     }, []);
+
+    // Debounce Search Logic
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedSearch(searchQuery);
+            fetchUsers(1, sortConfig.key, sortConfig.direction, searchQuery);
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
 
     const fetchSettings = async () => {
         try {
@@ -91,9 +103,9 @@ const AdminPanel = ({ onClose }) => {
         } catch (err) { setError('Connection Error'); }
     };
 
-    const fetchUsers = async (page = 1, sortKey = sortConfig.key, sortDir = sortConfig.direction) => {
+    const fetchUsers = async (page = 1, sortKey = sortConfig.key, sortDir = sortConfig.direction, search = debouncedSearch) => {
         try {
-            const res = await fetch(`api/admin.php?action=list&page=${page}&sort=${sortKey}&dir=${sortDir}`);
+            const res = await fetch(`api/admin.php?action=list&page=${page}&sort=${sortKey}&dir=${sortDir}&search=${encodeURIComponent(search)}`);
             if (res.ok) {
                 const data = await res.json();
                 setUsers(data.users);
@@ -118,7 +130,7 @@ const AdminPanel = ({ onClose }) => {
             direction = 'DESC';
         }
         setSortConfig({ key, direction });
-        fetchUsers(pagination.currentPage, key, direction); // Fetch with new sort
+        fetchUsers(pagination.currentPage, key, direction, debouncedSearch); // Fetch with new sort
     };
 
     const SortIcon = ({ columnKey }) => {
@@ -251,6 +263,18 @@ const AdminPanel = ({ onClose }) => {
                         ADMINISTRATION CONSOLE
                     </h2>
                     <button onClick={onClose} className="text-yellow-500 hover:text-white text-xl">✖</button>
+                </div>
+
+                {/* Search Input */}
+                <div className="flex justify-end mb-4 relative">
+                    <input
+                        type="text"
+                        placeholder="SEARCH RECRUITS..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="bg-black/50 border border-yellow-900/50 text-yellow-400 px-3 py-1 pr-8 text-sm focus:outline-none focus:border-yellow-500 w-64 rounded-sm tracking-widest placeholder-yellow-900"
+                    />
+                    <span className="absolute right-2 top-1 text-yellow-700 pointer-events-none">🔍</span>
                 </div>
 
                 {error && <div className="bg-red-900/20 text-red-500 p-2 border border-red-900 mb-4">⚠ {error}</div>}

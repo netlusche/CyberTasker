@@ -1,18 +1,18 @@
-# CyberTasker v1.1.0 - Release Notes
+# CyberTasker v1.2.0 - Release Notes
 
-## 🛡 Security: Strict Password Policy
-- **Admin Control**: New "Strict Password Policy" toggle in the Admin Console.
-- **Enforcement**: When enabled, passwords must be at least 12 characters and include uppercase, numbers, and special symbols.
-- **Cross-Form Validation**: Policy is enforced during registration, password resets, and profile updates.
+## 🕵️‍♂️ Admin Panel 2.0
+- **Advanced Search**: Real-time, filtering-as-you-type search for users by Codename.
+- **Dynamic Sorting**: Sort users by ID, Codename, Status, or History. Admins always stay at the top.
+- **Smart Pagination**: Navigation controls (First, Prev, Next, Last) handle large user bases efficiently.
+- **User History**: New "History" column tracks the `last_login` timestamp for every operative.
 
-## 👁 UI/UX: Password Visibility
-- **Eye Toggles**: Added visibility toggles (eye icons) to all password fields across the application for improved accessibility.
-- **Responsive Fixes**: Adjusted the "New Directive" form for better layout on small mobile screens.
+## ⚙️ Backend Enhancements
+- **Enhanced Seeding**: Improved database seeding scripts for robust test data generation across MySQL and SQLite.
+- **Security**: Hardened "Admin Priority" logic ensures administrators are never buried in pagination results.
 
-## ⚙️ Backend & Database
-- **Universal DB Support**: Added native support for **MySQL, MariaDB, and SQLite**. Configuration is easily managed via `api/config.php`.
-- **Auto-Migration**: `api/install.php` now automatically migrates existing databases (regardless of type) to include the `system_settings` table.
-- **Improved Settings Engine**: Refactored the settings API to prevent caching issues and ensure toggle state consistency.
+## 🐛 Bug Fixes
+- Fixed consistent sorting order across different database types.
+- Corrected pagination limit/offset calculations.
 
 ---
 *For update instructions, see [UPDATE_INSTRUCTIONS.md](./UPDATE_INSTRUCTIONS.md).*

@@ -49,8 +49,20 @@ if ($method === 'GET') {
         if ($sortDir !== 'ASC' && $sortDir !== 'DESC')
             $sortDir = 'ASC';
 
-        // Count total users
-        $totalStmt = $pdo->query("SELECT COUNT(*) FROM users");
+        // Search Parameter
+        $search = $_GET['search'] ?? '';
+        $searchQuery = '';
+        $params = [];
+
+        if (!empty($search)) {
+            $searchQuery = "WHERE username LIKE :search";
+            $params[':search'] = "%$search%";
+        }
+
+        // Count total users (with search)
+        $countSql = "SELECT COUNT(*) FROM users $searchQuery";
+        $totalStmt = $pdo->prepare($countSql);
+        $totalStmt->execute($params);
         $totalUsers = (int)$totalStmt->fetchColumn();
         $totalPages = (int)ceil($totalUsers / $limit);
 
@@ -58,10 +70,14 @@ if ($method === 'GET') {
         // Note: We prioritize admins (role='admin' -> 0)
         $sql = "SELECT id, username, role, is_verified, created_at, last_login 
                 FROM users 
+                $searchQuery
                 ORDER BY (CASE WHEN role = 'admin' THEN 0 ELSE 1 END), $sortBy $sortDir 
                 LIMIT :limit OFFSET :offset";
 
         $stmt = $pdo->prepare($sql);
+        foreach ($params as $key => $val) {
+            $stmt->bindValue($key, $val);
+        }
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();

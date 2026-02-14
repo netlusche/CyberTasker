@@ -26,16 +26,17 @@
 
 ---
 
-## 🆕 New in Version 1.1.0
+## 🆕 New in Version 1.2.0
 
-### Strict Password Policy
-*   **Admin Control**: Admins can now toggle a strict password policy on/off.
-*   **Rules**: Min 12 chars, 1 Uppercase, 1 Number, 1 Special Char.
-*   **Enforcement**: Applied to new registrations and password changes.
+### 🕵️‍♂️ Admin Panel 2.0
+*   **Search & Filter**: Instantly find any operative by codename with real-time filtering.
+*   **Dynamic Sorting**: Sort tables by **ID, Codename, Verification Status, or Last Login**.
+*   **Pagination**: Smoothly navigate through large user databases.
+*   **Activity Logs**: Track exactly when users last accessed the system.
 
-### UI Enhancements
-*   **Password Visibility**: "Eye" icon added to all password fields (Login, Register, Profile).
-*   **Settings Persistence**: Improved reliability of Admin Panel settings.
+### 🛡 Core Improvements
+*   **Admin Priority**: Administrators are pinned to the top of lists for immediate access.
+*   **Universal Seeding**: Robust tools to generate test data for both SQL and SQLite environments.
 
 ---
 
