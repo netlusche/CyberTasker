@@ -185,7 +185,7 @@ function App() {
           </div>
           {user && (
             <div className="flex flex-wrap gap-2 justify-center">
-              <button onClick={() => setShowHelp(true)} className="text-xs border border-gray-600 text-gray-400 hover:bg-gray-800 hover:text-white px-3 py-2 md:px-2 md:py-1 rounded transition-colors">
+              <button onClick={() => setShowHelp(true)} className="text-xs border border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 md:px-2 md:py-1 rounded transition-colors">
                 SYSTEM HELP
               </button>
               {user.role === 'admin' && (

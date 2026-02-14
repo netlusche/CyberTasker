@@ -215,14 +215,14 @@ const AuthForm = ({ onLogin }) => {
                         {!isForgot && isLogin && (
                             <button
                                 onClick={() => setIsForgot(true)}
-                                className="text-xs text-gray-400 hover:text-cyber-neonPink underline decoration-dotted underline-offset-4"
+                                className="text-sm text-gray-300 hover:text-cyber-neonPink underline decoration-dotted underline-offset-4"
                             >
                                 FORGOT ACCESS KEY?
                             </button>
                         )}
                         <button
                             onClick={() => { setIsLogin(!isLogin); setIsForgot(false); setError(''); }}
-                            className="text-xs text-gray-400 hover:text-cyber-neonGreen underline decoration-dotted underline-offset-4"
+                            className="text-sm text-gray-300 hover:text-cyber-neonGreen underline decoration-dotted underline-offset-4"
                         >
                             {isForgot ? 'REMEMBERED? // RETURN TO LOGIN' : (isLogin ? 'NO IDENTITY? // CREATE NEW' : 'HAS IDENTITY? // LOGIN')}
                         </button>
