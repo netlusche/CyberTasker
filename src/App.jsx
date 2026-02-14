@@ -111,6 +111,12 @@ function App() {
   const handleToggleStatus = async (task) => {
     try {
       const newStatus = task.status == 1 ? 0 : 1;
+
+      // Optimistic Update for UI responsiveness
+      setTasks(prev => prev.map(t =>
+        t.id === task.id ? { ...t, status: newStatus } : t
+      ));
+
       const res = await fetch('api/tasks.php', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -118,15 +124,23 @@ function App() {
       });
 
       if (res.ok) {
-        await fetchTasks(pagination.currentPage); // Stay on current page
+        // Delayed fetch to allow animation before sorting kicks in
+        setTimeout(() => {
+          fetchTasks(pagination.currentPage);
+        }, 2000);
+
         // If completing, refresh user stats to check for level up
         if (newStatus === 1) {
           triggerNeonConfetti();
           await fetchUserStats();
         }
+      } else {
+        // Revert on failure
+        fetchTasks(pagination.currentPage);
       }
     } catch (err) {
       console.error("Error updating task", err);
+      fetchTasks(pagination.currentPage); // Revert
     }
   };
 

@@ -7,6 +7,7 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger }) => {
     const [priority, setPriority] = useState('2');
     const [dueDate, setDueDate] = useState('');
     const [categories, setCategories] = useState([]);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         fetchCategories();
@@ -42,7 +43,11 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!title.trim()) return;
+
+        if (!title.trim()) {
+            setError('DIRECTIVE DESCRIPTION REQUIRED');
+            return;
+        }
 
         // Fallback if category is empty
         let selectedCategory = category;
@@ -61,19 +66,30 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger }) => {
         });
         setTitle('');
         setDueDate(''); // Reset due date
+        setError('');
     };
 
     return (
-        <form onSubmit={handleSubmit} className="card-cyber mb-8">
+        <form onSubmit={handleSubmit} className="card-cyber mb-8 relative">
             <h3 className="text-cyber-neonCyan font-bold mb-4 uppercase tracking-wider">New Directive</h3>
+
+            {error && (
+                <div className="absolute top-2 right-4 text-xs font-bold text-cyber-neonPink animate-pulse bg-black px-2 border border-cyber-neonPink shadow-[0_0_10px_#ff00ff]">
+                    ⚠ {error}
+                </div>
+            )}
+
             <div className="flex flex-col gap-4">
                 <div>
                     <input
                         type="text"
                         value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(e) => {
+                            setTitle(e.target.value);
+                            if (error) setError('');
+                        }}
                         placeholder="Enter task description..."
-                        className="input-cyber w-full"
+                        className={`input-cyber w-full ${error ? 'border-cyber-neonPink shadow-[0_0_10px_#ff00ff]' : ''}`}
                         maxLength={60}
                     />
                 </div>

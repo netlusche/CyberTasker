@@ -113,9 +113,13 @@ const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete }) => {
                     )}
 
                     {task.due_date && (
-                        <div className="flex items-center gap-2 mb-2 text-xs font-mono text-gray-400">
+                        <div className="flex items-center gap-2 mb-2 font-mono text-base">
                             <span className="text-cyber-neonPink">🕒</span>
-                            <span className={new Date(task.due_date) < new Date() && task.status != 1 ? "text-red-500 font-bold" : ""}>
+                            <span className={
+                                new Date(task.due_date) < new Date() && task.status != 1
+                                    ? "text-red-500 font-bold"
+                                    : "text-gray-300"
+                            }>
                                 {new Date(task.due_date).toLocaleDateString()}
                             </span>
                         </div>

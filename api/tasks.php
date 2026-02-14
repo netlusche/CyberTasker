@@ -28,11 +28,16 @@ switch ($method) {
         $totalParam = $stmt->fetch()['total'];
 
         // Get Paginated Data
-        // Sorting: 1. Due Date (ASC), 2. Priority (ASC - High to Low), 3. Created At (DESC - Newest)
+        // Sorting: 
+        // 1. Status (Active=0 first, Done=1 last)
+        // 2. Active: Due Date (ASC - Imminent first), Priority (ASC - High to Low), Created (DESC)
+        // 3. Done: Due Date (DESC - Newest first), Priority (ASC), Created (DESC)
         $sql = "SELECT * FROM tasks WHERE user_id = ? 
                 ORDER BY 
-                CASE WHEN due_date IS NOT NULL THEN 0 ELSE 1 END ASC,
-                due_date ASC,
+                status ASC,
+                CASE WHEN status = 0 AND due_date IS NOT NULL THEN 0 ELSE 1 END ASC,
+                CASE WHEN status = 0 THEN due_date END ASC,
+                CASE WHEN status = 1 THEN due_date END DESC,
                 priority ASC,
                 created_at DESC
                 LIMIT ? OFFSET ?";
