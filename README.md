@@ -26,6 +26,19 @@
 
 ---
 
+## 🆕 New in Version 1.1.0
+
+### Strict Password Policy
+*   **Admin Control**: Admins can now toggle a strict password policy on/off.
+*   **Rules**: Min 12 chars, 1 Uppercase, 1 Number, 1 Special Char.
+*   **Enforcement**: Applied to new registrations and password changes.
+
+### UI Enhancements
+*   **Password Visibility**: "Eye" icon added to all password fields (Login, Register, Profile).
+*   **Settings Persistence**: Improved reliability of Admin Panel settings.
+
+---
+
 ## 📦 Installation & Deployment
 
 ### Local Development
