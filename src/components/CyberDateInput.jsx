@@ -143,7 +143,7 @@ const CyberDateInput = ({ value, onChange, placeholder = "Select Date" }) => {
 
             {/* Calendar Overlay */}
             {isOpen && (
-                <div className="absolute top-full mt-2 right-0 z-50 w-64 bg-black border border-cyber-neonCyan shadow-[0_0_20px_rgba(0,255,255,0.3)] p-2 animate-in fade-in zoom-in-95 duration-150">
+                <div className="absolute top-full mt-2 right-0 z-[100] w-64 bg-black border border-cyber-neonCyan shadow-[0_0_20px_rgba(0,255,255,0.3)] p-2 animate-in fade-in zoom-in-95 duration-150">
                     {/* Header */}
                     <div className="flex justify-between items-center mb-2 pb-2 border-b border-gray-800">
                         <button onClick={handlePrevMonth} className="text-cyber-neonCyan hover:text-white px-2">&lt;</button>
