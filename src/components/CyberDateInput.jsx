@@ -68,8 +68,6 @@ const CyberDateInput = ({ value, onChange, placeholder = "Select Date" }) => {
         const year = viewDate.getFullYear();
         const month = viewDate.getMonth(); // 0-indexed
 
-        // ... (rest of handleDateClick)
-
         // Note: Month in Date constructor is 0-indexed, but for ISO string we need 1-indexed
         const selectedDate = new Date(year, month, day, 12, 0, 0); // Noon to avoid timezone edge cases on pure dates
 

@@ -1,17 +1,17 @@
 import React from 'react';
 
-const LevelBar = ({ level, currentXP, totalXPForLevel }) => {
+const LevelBar = ({ level, currentXP, totalXPForLevel, isLevelUp }) => {
     // Simple calculation: progress = (currentXP % 100) assuming fixed 100XP per level or passed totalXP
     // For this simplified version: let's assume levels are every 100 XP.
     const progress = (currentXP % 100);
 
     return (
-        <div className="w-full mb-6 p-4 rounded-lg bg-cyber-dark border border-cyber-neonPink shadow-[0_0_15px_rgba(255,0,255,0.3)]">
+        <div className={`w-full mb-6 p-4 rounded-lg bg-cyber-dark border transition-all duration-500 ${isLevelUp ? 'border-cyber-neonPink shadow-[0_0_30px_#ff00ff] scale-105' : 'border-cyber-neonPink shadow-[0_0_15px_rgba(255,0,255,0.3)]'}`}>
             <div className="flex justify-between items-end mb-2">
                 <div>
                     <span className="text-xs text-gray-400 uppercase tracking-widest">Operator Level</span>
-                    <div className="text-3xl font-bold text-white font-mono leading-none">
-                        LVL {level}
+                    <div className="text-3xl font-bold text-white font-mono leading-none animate-pulse">
+                        {isLevelUp ? 'LEVEL UP!' : `LVL ${level}`}
                     </div>
                 </div>
                 <div className="text-right">

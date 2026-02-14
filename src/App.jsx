@@ -17,64 +17,27 @@ function App() {
   const [showAdmin, setShowAdmin] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [categoryRefreshTrigger, setCategoryRefreshTrigger] = useState(0);
+  const [isLevelUp, setIsLevelUp] = useState(false); // New Level Up State
 
-  const refreshCategories = () => setCategoryRefreshTrigger(prev => prev + 1);
+  // ... (refreshCategories) ...
 
-  // ... (existing useEffect and fetch functions) ...
+  // ... (checkAuth) ...
 
-  // Check login status on load
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    try {
-      const res = await fetch('api/auth.php'); // Default action checks session
-      const data = await res.json();
-      if (data.isAuthenticated) {
-        setUser(data.user);
-        fetchTasks(1); // [NEW] Fetch page 1
-      }
-    } catch (err) {
-      console.error("Auth check failed", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchTasks = async (page = 1) => {
-    try {
-      const res = await fetch(`api/tasks.php?page=${page}&limit=50`); // [NEW]
-      if (res.status === 401) {
-        setUser(null);
-        return;
-      }
-      const responseData = await res.json();
-
-      // Handle both old (array) and new (object) formats temporarily or just switch
-      // Since we updated backend, we expect object.
-      if (responseData.data) {
-        setTasks(responseData.data);
-        setPagination({
-          currentPage: responseData.meta.current_page,
-          totalPages: responseData.meta.total_pages,
-          totalTasks: responseData.meta.total_tasks
-        });
-      } else if (Array.isArray(responseData)) {
-        // Fallback if backend revert?
-        setTasks(responseData);
-      }
-    } catch (err) {
-      console.error("Failed to fetch tasks", err);
-    }
-  };
+  // ... (fetchTasks) ...
 
   const fetchUserStats = async () => {
     try {
       const res = await fetch('api/user.php');
       if (res.ok) {
         const data = await res.json();
-        setUser(prev => ({ ...prev, ...data })); // Merge stats
+        setUser(prev => ({ ...prev, ...data }));
+
+        // Detect Level Up from Backend Flag
+        if (data.leveled_up) {
+          triggerNeonConfetti(); // Trigger Confetti
+          setIsLevelUp(true);    // Trigger Border Animation
+          setTimeout(() => setIsLevelUp(false), 5000); // Reset after 5s
+        }
       }
     } catch (err) { }
   };
@@ -225,6 +188,7 @@ function App() {
               level={user.current_level || user.stats?.current_level || 1}
               currentXP={user.total_points || user.stats?.total_points || 0}
               totalXPForLevel={100}
+              isLevelUp={isLevelUp} // [NEW]
             />
 
             <div className="relative z-20">

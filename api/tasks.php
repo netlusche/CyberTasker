@@ -109,6 +109,13 @@ switch ($method) {
             $params[] = $data['status'];
 
             if ($data['status'] == 1) {
+                // Ensure stats exist (Self-healing)
+                $checkStats = $pdo->prepare("SELECT id FROM user_stats WHERE id = ?");
+                $checkStats->execute([$userId]);
+                if (!$checkStats->fetch()) {
+                    $pdo->prepare("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES (?, 0, 1, '[]')")->execute([$userId]);
+                }
+
                 $stmt = $pdo->prepare("SELECT points_value FROM tasks WHERE id = ?");
                 $stmt->execute([$id]);
                 $task = $stmt->fetch();
