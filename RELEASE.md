@@ -1,3 +1,19 @@
+# CyberTasker v1.3.0 - Release Notes
+
+## 📂 Category Customization
+- **Personalized Protocols**: Operatives can now add, rename, and delete custom categories via their Profile.
+- **Default Priorities**: Tag any category as "DEFAULT" to have it automatically selected and prioritized in the "New Directive" terminal.
+- **Initial Load-out**: Every new operative starts with a standardized set of 5 protocols: *Private*, *Work*, *Finance*, *Health*, and *Hobby*.
+- **Direct Selection**: "Private" is the initial default for all new accounts.
+- **Real-time Sync**: Changes to categories reflect instantly across the dashboard without system reloads.
+
+## ✨ UI Polish & Visibility
+- **Contrast Improvements**: Lightened the "SYSTEM HELP" and authentication links for better visibility in dark environments.
+- **Handy Badges**: Added visible "DEFAULT" indicators in the Profile category list.
+- **Handbook Update**: The Operative Handbook now contains a new section on Category Protocols.
+
+---
+
 # CyberTasker v1.2.1 - Release Notes
 
 ## 🕵️‍♂️ Admin Panel Fixes
