@@ -112,6 +112,9 @@ elseif ($action === 'verify_2fa') {
         $_SESSION['user_id'] = $userId;
         unset($_SESSION['partial_id']);
 
+        // Record Last Login
+        $pdo->prepare("UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?")->execute([$userId]);
+
         // Fetch user data for response
         $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
         $stmt->execute([$userId]);
@@ -309,6 +312,9 @@ elseif ($action === 'login') {
 
         // Standard Login
         $_SESSION['user_id'] = $user['id'];
+
+        // Record Last Login
+        $pdo->prepare("UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?")->execute([$user['id']]);
 
         $stmtStats = $pdo->prepare("SELECT * FROM user_stats WHERE id = ?");
         $stmtStats->execute([$user['id']]);

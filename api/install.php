@@ -79,7 +79,8 @@ try {
         'is_verified' => "BOOLEAN DEFAULT 1",
         'verification_token' => "VARCHAR(64) DEFAULT NULL",
         'reset_token' => "VARCHAR(64) DEFAULT NULL",
-        'reset_expires' => "DATETIME DEFAULT NULL"
+        'reset_expires' => "DATETIME DEFAULT NULL",
+        'last_login' => "TIMESTAMP NULL DEFAULT NULL"
     ];
 
     foreach ($newColumns as $col => $def) {

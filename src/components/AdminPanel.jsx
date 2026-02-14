@@ -49,6 +49,7 @@ const PromptModal = ({ message, onConfirm, onCancel }) => {
 
 const AdminPanel = ({ onClose }) => {
     const [users, setUsers] = useState([]);
+    const [pagination, setPagination] = useState({ totalUsers: 0, totalPages: 1, currentPage: 1 });
     const [settings, setSettings] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -89,11 +90,17 @@ const AdminPanel = ({ onClose }) => {
         } catch (err) { setError('Connection Error'); }
     };
 
-    const fetchUsers = async () => {
+    const fetchUsers = async (page = 1) => {
         try {
-            const res = await fetch('api/admin.php?action=list');
+            const res = await fetch(`api/admin.php?action=list&page=${page}`);
             if (res.ok) {
-                setUsers(await res.json());
+                const data = await res.json();
+                setUsers(data.users);
+                setPagination({
+                    totalUsers: data.totalUsers,
+                    totalPages: data.totalPages,
+                    currentPage: data.currentPage
+                });
             } else {
                 setError('Unauthorized Access');
             }
@@ -136,7 +143,7 @@ const AdminPanel = ({ onClose }) => {
 
             if (res.ok) {
                 setMessage(`Role updated for ${user.username}`);
-                fetchUsers();
+                fetchUsers(pagination.currentPage);
             } else {
                 setError(data.error || 'Failed to update role');
             }
@@ -160,7 +167,7 @@ const AdminPanel = ({ onClose }) => {
             const data = await res.json();
             if (res.ok) {
                 setMessage(`User ${username} terminated.`);
-                fetchUsers();
+                fetchUsers(pagination.currentPage);
             } else {
                 setError(data.error || 'Failed to delete user');
             }
@@ -176,7 +183,7 @@ const AdminPanel = ({ onClose }) => {
             });
             const data = await res.json();
             if (res.ok) {
-                fetchUsers(); // Refresh list to show new status
+                fetchUsers(pagination.currentPage); // Refresh list to show new status
             } else {
                 setError(data.error || 'Failed to toggle verification');
             }
@@ -242,7 +249,7 @@ const AdminPanel = ({ onClose }) => {
                                 <th className="p-2">CODENAME</th>
                                 <th className="p-2">ROLE</th>
                                 <th className="p-2 text-center">VERIFIED</th>
-                                <th className="p-2">CREATED</th>
+                                <th className="p-2">HISTORY</th>
                                 <th className="p-2 text-right">ACTIONS</th>
                             </tr>
                         </thead>
@@ -265,7 +272,12 @@ const AdminPanel = ({ onClose }) => {
                                             {u.is_verified == 1 ? '✓ VERIFIED' : '✖ UNVERIFIED'}
                                         </button>
                                     </td>
-                                    <td className="p-2 text-xs text-gray-500">{u.created_at}</td>
+                                    <td className="p-2">
+                                        <div className="text-[10px] text-gray-500 uppercase tracking-tighter">Joined</div>
+                                        <div className="text-xs text-gray-400">{u.created_at}</div>
+                                        <div className="mt-1 text-[10px] text-gray-500 uppercase tracking-tighter border-t border-gray-800 pt-1">Last Login</div>
+                                        <div className="text-xs text-cyan-500">{u.last_login || 'NEVER'}</div>
+                                    </td>
                                     <td className="p-2 text-right space-x-2">
                                         <button
                                             onClick={() => handleToggleRoleClick(u)}
@@ -290,6 +302,32 @@ const AdminPanel = ({ onClose }) => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+
+                {/* Pagination Controls */}
+                <div className="flex items-center justify-between border-t border-yellow-900/30 pt-4 mb-4 text-xs font-mono">
+                    <div className="text-gray-500">
+                        TOTAL RECRUITS: <span className="text-yellow-500">{pagination.totalUsers}</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <button
+                            disabled={pagination.currentPage <= 1}
+                            onClick={() => fetchUsers(pagination.currentPage - 1)}
+                            className="px-2 py-1 border border-yellow-900/50 text-yellow-700 hover:bg-yellow-900/20 disabled:opacity-30 disabled:hover:bg-transparent"
+                        >
+                            &lt; PREV
+                        </button>
+                        <span className="text-yellow-600">
+                            EXTRACT {pagination.currentPage} / {pagination.totalPages}
+                        </span>
+                        <button
+                            disabled={pagination.currentPage >= pagination.totalPages}
+                            onClick={() => fetchUsers(pagination.currentPage + 1)}
+                            className="px-2 py-1 border border-yellow-900/50 text-yellow-700 hover:bg-yellow-900/20 disabled:opacity-30 disabled:hover:bg-transparent"
+                        >
+                            NEXT &gt;
+                        </button>
+                    </div>
                 </div>
 
                 {/* System Policies Section */}

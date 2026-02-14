@@ -33,10 +33,30 @@ $action = $_GET['action'] ?? 'list';
 
 if ($method === 'GET') {
     if ($action === 'list') {
-        // List all users
-        $stmt = $pdo->query("SELECT id, username, role, is_verified, created_at FROM users ORDER BY id ASC");
-        $users = $stmt->fetchAll();
-        echo json_encode($users);
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        if ($page < 1)
+            $page = 1;
+        $limit = 10;
+        $offset = ($page - 1) * $limit;
+
+        // Count total users
+        $totalStmt = $pdo->query("SELECT COUNT(*) FROM users");
+        $totalUsers = (int)$totalStmt->fetchColumn();
+        $totalPages = (int)ceil($totalUsers / $limit);
+
+        // Fetch users
+        $stmt = $pdo->prepare("SELECT id, username, role, is_verified, created_at, last_login FROM users ORDER BY id ASC LIMIT :limit OFFSET :offset");
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode([
+            'users' => $users,
+            'totalUsers' => $totalUsers,
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ]);
     }
     elseif ($action === 'get_settings') {
         try {
