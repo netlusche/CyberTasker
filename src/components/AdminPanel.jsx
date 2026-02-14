@@ -21,18 +21,31 @@ const ConfirmModal = ({ message, onConfirm, onCancel }) => (
 
 const PromptModal = ({ message, onConfirm, onCancel }) => {
     const [value, setValue] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[150]">
             <div className="bg-gray-900 border border-cyber-neonCyan p-6 max-w-sm w-full shadow-[0_0_20px_rgba(0,255,255,0.5)]">
                 <h3 className="text-cyber-neonCyan font-bold text-xl mb-4">INPUT REQUIRED</h3>
                 <p className="text-gray-300 mb-2 font-mono">{message}</p>
-                <input
-                    type="password" // Assuming password mostly, otherwise make prop
-                    autoFocus
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                    className="w-full bg-black/50 border border-gray-600 text-white p-2 mb-6 focus:border-cyber-neonCyan outline-none font-mono"
-                />
+
+                <div className="relative mb-6">
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        autoFocus
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                        className="w-full bg-black/50 border border-gray-600 text-white p-2 pr-10 focus:border-cyber-neonCyan outline-none font-mono"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-2 top-2 text-gray-400 hover:text-cyber-neonCyan"
+                    >
+                        {showPassword ? "👁‍🗨" : "👁"}
+                    </button>
+                </div>
+
                 <div className="flex justify-end gap-2">
                     <button onClick={onCancel} className="px-4 py-2 border border-gray-600 text-gray-400 hover:bg-white/10">
                         CANCEL
