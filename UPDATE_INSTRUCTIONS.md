@@ -22,6 +22,10 @@ These instructions guide you through updating your existing CyberTasker server i
 3.  **Toggle 2FA** and ensure the button state updates immediately.
 4.  **Confirm 2FA Disabling** and verify the new **Neon Pink "SECURITY ALERT"** themed modal.
 5.  **Verify Cyber-Triage Sorting**: Ensure Overdue directives are pinned to the top (SIGNAL LEAK), followed by those due today (HEAT SPIKE).
+6.  **Test Calendar Stability**: Open the calendar on a directive at the bottom of the grid and verify it flips upwards (`top-full`) to prevent clipping.
+7.  **Test Deletion Protocol**: Verify that deleting a directive triggers the neon-blue `CyberConfirm` overlay without triggering a second browser-native dialog.
+8.  **Automated Briefing**: If performing a *clean* install, verify the `admin` user receives the automated security directives.
+5.  **Verify Cyber-Triage Sorting**: Ensure Overdue directives are pinned to the top (SIGNAL LEAK), followed by those due today (HEAT SPIKE).
 6.  **Test Calendar Stability**: Open the calendar on a directive at the bottom of the grid and verify it flips upwards (`bottom-full`) to prevent clipping.
 7.  **Test Deletion Protocol**: Verify that deleting a directive triggers the neon-blue `CyberConfirm` overlay without triggering a second browser-native dialog.
 
