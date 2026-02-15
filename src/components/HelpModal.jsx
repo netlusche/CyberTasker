@@ -91,7 +91,7 @@ const HelpModal = ({ onClose }) => {
                         <h3 className="text-cyber-neonPink font-bold text-lg mb-2">// DANGER ZONE PROTOCOLS</h3>
                         <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
                             <li><span className="text-cyber-neonPink">⚠ IDENTITY TERMINATION:</span> Confirming account deletion triggers the **TERMINAL SECURITY ALERT**. This action is irreversible.</li>
-                            <li><strong>ESCAPE PROTOCOL:</strong> Use the neon-pink <span className="text-cyber-neonPink">[X]</span> in any terminal to immediately abort current operations.</li>
+                            <li><strong>ESCAPE PROTOCOL:</strong> Use <span className="text-cyber-neonCyan italic">ABORT</span> to immediately rescue yourself from final termination.</li>
                         </ul>
                     </section>
                 </div>
