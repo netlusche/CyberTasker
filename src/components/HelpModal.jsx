@@ -52,7 +52,7 @@ const HelpModal = ({ onClose }) => {
                     </section>
 
                     <section>
-                        <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// SORT ORDER PROTOKOLL [Task Management]</h3>
+                        <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// SORT ORDER PROTOCOL [Task Management]</h3>
                         <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
                             <li><strong>NEURAL STATUS:</strong> Active directives are always pinned to the top of the data stream.</li>
                             <li><strong>PRIORITY OVERRIDE:</strong> Grid sorts by <span className="text-white">HIGH</span> &gt; <span className="text-gray-300">MED</span> &gt; <span className="text-gray-500">LOW</span> level.</li>
