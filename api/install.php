@@ -62,10 +62,21 @@ try {
 
     // --- USERS TABLE ---
     $autoIncrement = ($dbType === 'sqlite') ? 'INTEGER PRIMARY KEY AUTOINCREMENT' : 'INT AUTO_INCREMENT PRIMARY KEY';
+
+    // Improved schema for clean install
     $sqlUsers = "CREATE TABLE IF NOT EXISTS users (
         id $autoIncrement,
         username VARCHAR(50) NOT NULL UNIQUE,
         password VARCHAR(255) NOT NULL,
+        role VARCHAR(20) DEFAULT 'user',
+        two_factor_enabled BOOLEAN DEFAULT 0,
+        two_factor_secret VARCHAR(32) NULL,
+        email VARCHAR(255) UNIQUE DEFAULT NULL,
+        is_verified BOOLEAN DEFAULT 1,
+        verification_token VARCHAR(64) DEFAULT NULL,
+        reset_token VARCHAR(64) DEFAULT NULL,
+        reset_expires DATETIME DEFAULT NULL,
+        last_login TIMESTAMP NULL DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
     $pdo->exec($sqlUsers);
