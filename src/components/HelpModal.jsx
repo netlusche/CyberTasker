@@ -54,9 +54,9 @@ const HelpModal = ({ onClose }) => {
                     <section>
                         <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// SORT ORDER PROTOCOL [Task Management]</h3>
                         <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
-                            <li><strong>NEURAL STATUS:</strong> Active directives are always pinned to the top of the data stream.</li>
-                            <li><strong>PRIORITY OVERRIDE:</strong> Grid sorts by <span className="text-white">HIGH</span> &gt; <span className="text-gray-300">MED</span> &gt; <span className="text-gray-500">LOW</span> level.</li>
-                            <li><strong>CHRONO-SYNC LOGIC:</strong> For active directives, <span className="text-cyber-neonPurple">Imminent Deadlines</span> are prioritized (ASC).</li>
+                            <li><strong>SIGNAL LEAK (Overdue):</strong> Critical priority. Any directive past its deadline is pinned to the top of the data stream.</li>
+                            <li><strong>HEAT SPIKE (Due Today):</strong> Immediate priority. Directives fated for today follow the Signal Leaks.</li>
+                            <li><strong>STRATEGIC (Priority):</strong> Remaining active directives are sorted by base <span className="text-white">HIGH</span> &gt; <span className="text-gray-300">MED</span> &gt; <span className="text-gray-500">LOW</span> level.</li>
                             <li><strong>ARCHIVE SORT:</strong> Completed directives are sorted by the latest completion timestamp (DESC).</li>
                         </ul>
                     </section>
