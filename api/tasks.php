@@ -63,10 +63,10 @@ switch ($method) {
         $sql = "SELECT * FROM tasks WHERE $whereSql 
                 ORDER BY 
                 status ASC,
+                priority ASC,
                 CASE WHEN status = 0 AND due_date IS NOT NULL THEN 0 ELSE 1 END ASC,
                 CASE WHEN status = 0 THEN due_date END ASC,
                 CASE WHEN status = 1 THEN due_date END DESC,
-                priority ASC,
                 created_at DESC
                 LIMIT ? OFFSET ?";
 

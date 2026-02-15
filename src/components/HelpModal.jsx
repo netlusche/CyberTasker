@@ -60,6 +60,24 @@ const HelpModal = ({ onClose }) => {
                     </section>
 
                     <section>
+                        <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// NEURAL SEARCH & FILTER [Data Retrieval]</h3>
+                        <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                            <li><strong>QUERY:</strong> Input keywords into the neural search bar to instantly isolate directives.</li>
+                            <li><strong>VECTORS:</strong> Filter grid by <span className="text-white">PRIORITY</span>, <span className="text-cyber-neonCyan">CATEGORY</span>, or <span className="text-cyber-neonPink">OVERDUE</span> status.</li>
+                            <li><strong>SYSTEM RESET:</strong> Execute <span className="text-cyber-neonCyan">RESET</span> to clear active filters and restore full data stream.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// CHRONO-SYNC [Scheduling]</h3>
+                        <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                            <li><strong>DEADLINES:</strong> Assign execution dates via the <span className="text-cyber-neonPurple">CYBER CALENDAR</span> overlay.</li>
+                            <li><strong>TIME JUMPS:</strong> Use year navigation controls for long-range planning.</li>
+                            <li><strong>PRIORITY ALGORITHM:</strong> Directives are auto-sorted: <span className="text-white">Imminent</span> &gt; <span className="text-gray-400">Future</span>.</li>
+                        </ul>
+                    </section>
+
+                    <section>
                         <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// PROGRESSION MATRIX [Gamification]</h3>
                         <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
                             <li>Accumulate XP to increase your <strong>OPERATOR LEVEL</strong>.</li>
