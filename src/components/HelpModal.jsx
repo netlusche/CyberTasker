@@ -23,6 +23,15 @@ const HelpModal = ({ onClose }) => {
 
                 <div className="space-y-6 font-mono text-sm">
                     <section>
+                        <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// NEURAL PROGRESSION [XP & Ranks]</h3>
+                        <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                            <li><strong>XP HARVESTING:</strong> Successful directive execution injects raw Experience Data into your neural core. Higher complexity yields greater rewards.</li>
+                            <li><strong>OPERATIVE RANKING:</strong> Accumulate data packets to advance your <strong>OPERATOR LEVEL</strong>. Tracking bar visualizes your sync status with the next rank.</li>
+                            <li><strong>RANK CELEBRATION:</strong> Leveling up triggers a system-wide high-spectrum neon feedback loop and atmospheric celebration.</li>
+                        </ul>
+                    </section>
+
+                    <section>
                         <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// SYSTEM ACCESS [Auth Protocol]</h3>
                         <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
                             <li><strong>INITIATE NEW IDENTITY:</strong> Execute <span className="text-white">NEW IDENTITY</span> to register. Input <strong>CODENAME</strong> (username), <strong>COM-LINK</strong> (email), and <strong>ACCESS KEY</strong> (password). <span className="text-yellow-500">⚠ Verification required via email.</span></li>
@@ -88,14 +97,6 @@ const HelpModal = ({ onClose }) => {
                         </ul>
                     </section>
 
-                    <section>
-                        <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// PROGRESSION MATRIX [Gamification]</h3>
-                        <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
-                            <li>Accumulate XP to increase your <strong>OPERATOR LEVEL</strong>.</li>
-                            <li>Tracking bar visualizes progress to the next rank.</li>
-                            <li><span className="text-cyber-neonCyan">LEVEL UP:</span> System celebrates rank advancement with full-spectrum neon feedback.</li>
-                        </ul>
-                    </section>
 
                     <section className="border-t border-cyber-gray pt-4 mt-8">
                         <h3 className="text-cyber-neonPink font-bold text-lg mb-2">// DANGER ZONE PROTOCOLS</h3>
