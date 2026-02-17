@@ -1,13 +1,26 @@
 <?php
 // install.php
-// Universal Installer for both MySQL/MariaDB and SQLite
+// Universal Installer for both MySQL/MariaDB and SQLite with Diagnostics
+
+// Enable error reporting explicitly for installer troubleshooting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once 'db.php';
 
 // Detect DB Type from config or default to mysql
 $dbType = defined('DB_TYPE') ? DB_TYPE : 'mysql';
 
-echo "Installing CyberTasker Database ($dbType)...<br>\n";
+echo "<h3>CyberTasker Installer Diagnostic Mode</h3>\n";
+echo "PHP Version: " . phpversion() . "<br>\n";
+echo "PDO Drivers: " . implode(', ', PDO::getAvailableDrivers()) . "<br>\n";
 
+echo "<h4>Checking config constants...</h4>\n";
+echo "DB_TYPE: " . (defined('DB_TYPE') ? DB_TYPE : "NOT DEFINED (defaulting to mysql)") . "<br>\n";
+echo "DB_HOST: " . (defined('DB_HOST') ? DB_HOST : "NOT DEFINED") . "<br>\n";
+echo "DB_NAME: " . (defined('DB_NAME') ? DB_NAME : "NOT DEFINED") . "<br>\n";
+echo "DB_USER: " . (defined('DB_USER') ? substr(DB_USER, 0, 1) . "****" : "NOT DEFINED") . "<br>\n";
 
 /**
  * Check if a table exists
@@ -58,7 +71,17 @@ function columnExists($pdo, $table, $column)
 }
 
 try {
+    echo "<h4>Attempting database connection...</h4>\n";
     $pdo = getDBConnection();
+    echo "Database connection successful.<br>\n";
+    
+    if ($dbType === 'sqlite') {
+        echo "SQLite DB File: " . DB_NAME . "<br>\n";
+        echo "Writable: " . (is_writable(DB_NAME) ? 'YES' : 'NO') . "<br>\n";
+    } else {
+        echo "MySQL Host: " . DB_HOST . "<br>\n";
+        echo "MySQL DB Name: " . DB_NAME . "<br>\n";
+    }
 
     // --- USERS TABLE ---
     $autoIncrement = ($dbType === 'sqlite') ? 'INTEGER PRIMARY KEY AUTOINCREMENT' : 'INT AUTO_INCREMENT PRIMARY KEY';
@@ -221,16 +244,26 @@ try {
         echo "Default setting 'strict_password_policy' initialized to '0'.<br>\n";
     }
 
+    echo "<h4>Installation/Update Final Verification:</h4>";
+    $tables = ['users', 'tasks', 'user_categories', 'user_stats', 'system_settings'];
+    foreach ($tables as $t) {
+        $count = $pdo->query("SELECT COUNT(*) FROM $t")->fetchColumn();
+        echo "Table '$t' row count: <b>$count</b><br>\n";
+    }
+
     echo "Installation/Update Complete!";
 
 }
 catch (PDOException $e) {
-    // Show error but hide credentials if possible
-    echo "Error: " . $e->getMessage();
+    echo "<h4>CRITICAL ERROR:</h4>";
+    echo "Error: " . $e->getMessage() . "<br>\n";
+    echo "SQL State: " . $e->getCode() . "<br>\n";
     exit(1);
 }
-?> // Show error but hide credentials if possible
-echo "Error: " . $e->getMessage();
-exit(1);
+catch (Throwable $t) {
+    echo "<h4>GENERAL ERROR:</h4>";
+    echo "Error: " . $t->getMessage() . "<br>\n";
+    echo "File: " . $t->getFile() . " on line " . $t->getLine() . "<br>\n";
+    exit(1);
 }
 ?>

@@ -6,20 +6,18 @@
 if (file_exists(__DIR__ . '/config.local.php')) {
     require_once __DIR__ . '/config.local.php';
 }
-else {
-    // DEFAULT / PRODUCTION TEMPLATE
-    // Update these values or create a config.local.php
-    if (!defined('DB_TYPE'))
-        define('DB_TYPE', 'mysql'); // 'mysql' (default) or 'sqlite'
-    if (!defined('DB_HOST'))
-        define('DB_HOST', 'localhost');
-    if (!defined('DB_NAME'))
-        define('DB_NAME', 'cybertracker');
-    if (!defined('DB_USER'))
-        define('DB_USER', 'Your_DB_Username');
-    if (!defined('DB_PASS'))
-        define('DB_PASS', 'Your_DB_Password');
-}
+
+// Database configuration defaults (used if not defined in config.local.php)
+if (!defined('DB_TYPE'))
+    define('DB_TYPE', 'mysql'); // 'mysql' (default) or 'sqlite'
+if (!defined('DB_HOST'))
+    define('DB_HOST', 'localhost');
+if (!defined('DB_NAME'))
+    define('DB_NAME', 'cybertracker');
+if (!defined('DB_USER'))
+    define('DB_USER', 'Your_DB_Username');
+if (!defined('DB_PASS'))
+    define('DB_PASS', 'Your_DB_Password');
 
 // Global Configuration
 if (!defined('FRONTEND_URL')) {

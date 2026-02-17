@@ -1,6 +1,8 @@
 <?php
 // auth.php
 header("Content-Type: application/json");
+require_once 'db.php';
+require_once 'TOTP.php';
 require_once 'mail_helper.php';
 session_start();
 
@@ -450,7 +452,6 @@ elseif ($action === 'update_email') {
         $update = $pdo->prepare("UPDATE users SET email = ?, is_verified = 0, verification_token = ? WHERE id = ?");
         $update->execute([$newEmail, $token, $userId]);
 
-        require_once 'mail_helper.php';
         $verifyLink = FRONTEND_URL . "/verify.html?token=" . $token;
         $subject = "CyberTasker Email Update Verification";
         $body = "Operative,<br><br>Your communication channel is being re-routed to: $newEmail.<br>Confirm this frequency change:<br><a href='$verifyLink'>$verifyLink</a><br><br>Access is restricted until confirmed.";
@@ -517,7 +518,6 @@ elseif ($action === 'login') {
                 $_SESSION['email_2fa_time'] = time();
                 $_SESSION['email_2fa_user_id'] = $user['id'];
 
-                require_once 'mail_helper.php';
                 $subject = "CYBER_TASKER // EMERGENCY OVERRIDE CODE";
                 $body = "Operative " . $user['username'] . ",<br><br>A restricted access signal is required for neural link establishment.<br>Use this code to verify your identity:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #00ffff;'>" . $code . "</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes.";
                 sendMail($user['email'], $subject, $body);
@@ -642,7 +642,6 @@ elseif ($action === 'request_password_reset') {
         $update = $pdo->prepare("UPDATE users SET reset_token = ?, reset_expires = DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE id = ?");
         $update->execute([$token, $user['id']]);
 
-        require_once 'mail_helper.php';
         $resetLink = FRONTEND_URL . "/reset-password.html?token=" . $token;
         $subject = "CyberTasker Password Reset";
         $body = "Operative " . $user['username'] . ",<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='$resetLink'>$resetLink</a><br><br>This link self-destructs in 60 minutes.";
@@ -715,5 +714,5 @@ else {
             exit;
         }
     }
-    echo json_encode(['isAuthenticated' => false]);
 }
+?>
