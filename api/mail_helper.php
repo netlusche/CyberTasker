@@ -6,10 +6,16 @@ function sendMail($to, $subject, $body)
     if (!$to)
         return false;
 
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    // Remove port if present
+    $host = explode(':', $host)[0];
+    $fromEmail = "no-reply@" . $host;
+
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: CyberTasker <no-reply@" . ($_SERVER['HTTP_HOST'] ?? 'localhost') . ">" . "\r\n";
-    $headers .= "Reply-To: no-reply@" . ($_SERVER['HTTP_HOST'] ?? 'localhost') . "\r\n";
+    $headers .= "From: CyberTasker <$fromEmail>" . "\r\n";
+    $headers .= "Reply-To: $fromEmail" . "\r\n";
+    $headers .= "Return-Path: $fromEmail" . "\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
     // Wrap body in a simple HTML template

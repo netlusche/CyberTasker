@@ -138,6 +138,7 @@ elseif ($action === 'enable_email_2fa') {
     $code = $data['code'] ?? '';
     $sessCode = $_SESSION['email_2fa_code'] ?? '';
     $sessTime = $_SESSION['email_2fa_time'] ?? 0;
+    $sessUserId = $_SESSION['email_2fa_user_id'] ?? 0;
 
     if (!$sessCode || (time() - $sessTime > 600)) {
         http_response_code(400);
