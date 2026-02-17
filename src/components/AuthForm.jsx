@@ -111,7 +111,6 @@ const AuthForm = ({ onLogin }) => {
                 triggerNeonConfetti();
                 onLogin(data.user);
             } else {
-                const data = await res.json();
                 setError(data.error || 'Invalid or expired access code.');
             }
         } catch (err) { setError('Validation Error. Neural link unstable.'); }

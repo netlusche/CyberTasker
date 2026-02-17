@@ -68,22 +68,28 @@ elseif ($action === 'enable_2fa') {
     $secret = $data['secret'] ?? '';
     $code = $data['code'] ?? '';
 
-    if (TOTP::verifyCode($secret, $code)) {
-        // Generate backup codes
-        $backupCodes = TOTP::generateBackupCodes();
-        $hashedBackupCodes = array_map(function ($c) {
-            return password_hash($c, PASSWORD_DEFAULT);
-        }, $backupCodes);
-        $backupCodesJson = json_encode($hashedBackupCodes);
+    try {
+        if (TOTP::verifyCode($secret, $code)) {
+            // Generate backup codes
+            $backupCodes = TOTP::generateBackupCodes();
+            $hashedBackupCodes = array_map(function ($c) {
+                return password_hash($c, PASSWORD_DEFAULT);
+            }, $backupCodes);
+            $backupCodesJson = json_encode($hashedBackupCodes);
 
-        $stmt = $pdo->prepare("UPDATE users SET two_factor_secret = ?, two_factor_enabled = 1, two_factor_method = 'totp', two_factor_backup_codes = ? WHERE id = ?");
-        $stmt->execute([$secret, $backupCodesJson, $_SESSION['user_id']]);
+            $stmt = $pdo->prepare("UPDATE users SET two_factor_secret = ?, two_factor_enabled = 1, two_factor_method = 'totp', two_factor_backup_codes = ? WHERE id = ?");
+            $stmt->execute([$secret, $backupCodesJson, $_SESSION['user_id']]);
 
-        echo json_encode(['success' => true, 'message' => '2FA Enabled', 'backup_codes' => $backupCodes]);
+            echo json_encode(['success' => true, 'message' => '2FA Enabled', 'backup_codes' => $backupCodes]);
+        }
+        else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid Code']);
+        }
     }
-    else {
-        http_response_code(400);
-        echo json_encode(['error' => 'Invalid Code']);
+    catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Critical update failure: ' . $e->getMessage()]);
     }
 }
 
@@ -139,22 +145,36 @@ elseif ($action === 'enable_email_2fa') {
     }
 
     if ($code === $sessCode) {
-        unset($_SESSION['email_2fa_code']);
-        unset($_SESSION['email_2fa_time']);
+        try {
+            // The condition here is more comprehensive, checking session code, user ID, and time
+            if ($sessCode && $sessCode === $code && $sessUserId == $_SESSION['user_id'] && (time() - $sessTime <= 600)) {
+                unset($_SESSION['email_2fa_code']);
+                unset($_SESSION['email_2fa_time']);
+                unset($_SESSION['email_2fa_user_id']); // Unset the user ID as well
 
-        // Generate backup codes
-        $backupCodes = TOTP::generateBackupCodes();
-        $hashedBackupCodes = array_map(function ($c) {
-            return password_hash($c, PASSWORD_DEFAULT);
-        }, $backupCodes);
-        $backupCodesJson = json_encode($hashedBackupCodes);
+                // Generate backup codes
+                $backupCodes = TOTP::generateBackupCodes();
+                $hashedBackupCodes = array_map(function ($c) {
+                    return strtoupper(password_hash($c, PASSWORD_DEFAULT));
+                }, $backupCodes);
+                $backupCodesJson = json_encode($hashedBackupCodes);
 
-        $stmt = $pdo->prepare("UPDATE users SET two_factor_enabled = 1, two_factor_method = 'email', two_factor_secret = NULL, two_factor_backup_codes = ? WHERE id = ?");
-        $stmt->execute([$backupCodesJson, $_SESSION['user_id']]);
+                $stmt = $pdo->prepare("UPDATE users SET two_factor_enabled = 1, two_factor_method = 'email', two_factor_secret = NULL, two_factor_backup_codes = ? WHERE id = ?");
+                $stmt->execute([$backupCodesJson, $_SESSION['user_id']]);
 
-        echo json_encode(['success' => true, 'message' => 'Email 2FA Activated', 'backup_codes' => $backupCodes]);
+                echo json_encode(['success' => true, 'message' => 'Email 2FA Activated', 'backup_codes' => $backupCodes]);
+            }
+            else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid signal code. Verification failed.']);
+            }
+        }
+        catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Security protocol failure: ' . $e->getMessage()]);
+        }
     }
-    else {
+    else { // This 'else' block belongs to the outer 'if ($code === $sessCode)'
         http_response_code(400);
         echo json_encode(['error' => 'Invalid signal code. Verification failed.']);
     }
@@ -368,6 +388,7 @@ elseif ($action === 'register') {
 
         echo json_encode(['success' => true, 'message' => 'User registered. Please check email to verify.']);
     }
+
     catch (PDOException $e) {
         http_response_code(409);
         echo json_encode(['error' => 'Username or Email already exists']);

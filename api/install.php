@@ -87,6 +87,8 @@ try {
         'role' => "VARCHAR(20) DEFAULT 'user'",
         'two_factor_enabled' => "BOOLEAN DEFAULT 0",
         'two_factor_secret' => "VARCHAR(32) NULL",
+        'two_factor_method' => "VARCHAR(20) DEFAULT 'totp'",
+        'two_factor_backup_codes' => "TEXT NULL",
         'email' => "VARCHAR(255) UNIQUE DEFAULT NULL",
         'is_verified' => "BOOLEAN DEFAULT 1",
         'verification_token' => "VARCHAR(64) DEFAULT NULL",
@@ -158,6 +160,11 @@ try {
     $pdo->exec($sqlUserStats);
     echo "Table 'user_stats' check/create complete.<br>\n";
 
+    if (!columnExists($pdo, 'user_stats', 'badges_json')) {
+        $pdo->exec("ALTER TABLE user_stats ADD COLUMN badges_json $jsonType");
+        echo "Column 'badges_json' added to user_stats.<br>\n";
+    }
+
     // --- DEFAULT ADMIN USER ---
     $adminUsername = 'admin';
     $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
@@ -221,5 +228,9 @@ catch (PDOException $e) {
     // Show error but hide credentials if possible
     echo "Error: " . $e->getMessage();
     exit(1);
+}
+?> // Show error but hide credentials if possible
+echo "Error: " . $e->getMessage();
+exit(1);
 }
 ?>
