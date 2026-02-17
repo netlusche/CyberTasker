@@ -18,7 +18,7 @@ const HelpModal = ({ onClose }) => {
                 </button>
 
                 <h2 className="text-2xl font-bold mb-6 text-cyber-neonCyan border-b border-cyber-gray pb-2 uppercase tracking-widest">
-                    CYBER_TASKER OPERATIVE HANDBOOK [VER. 1.4]
+                    CYBER_TASKER OPERATIVE HANDBOOK [VER. 1.5]
                 </h2>
 
                 <div className="space-y-6 font-mono text-sm">
@@ -94,6 +94,14 @@ const HelpModal = ({ onClose }) => {
                             <li><strong>DEADLINES:</strong> Assign execution dates via the <span className="text-cyber-neonPurple">CYBER CALENDAR</span> overlay.</li>
                             <li><strong>TIME JUMPS:</strong> Use year navigation controls for long-range planning.</li>
                             <li><strong>INTERACTIVE SYNC:</strong> Modify dates directly on active cards via <span className="text-white">CYBER CONFIRM</span> protocols.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 className="text-cyber-neonGreen font-bold text-lg mb-2">// SYSTEM RESILIENCY [Stability]</h3>
+                        <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                            <li><strong>ROBUST CONFIG:</strong> The system now utilizes a resilient configuration fallback logic. If `config.local.php` is incomplete, the core grid provides missing parameters (like `DB_HOST`) automatically.</li>
+                            <li><strong>DIAGNOSTIC INSTALLER:</strong> The `install.php` utility now features high-immersion diagnostics, tracking neural link stability and database row counts for immediate verification.</li>
                         </ul>
                     </section>
 

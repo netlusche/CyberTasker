@@ -11,13 +11,15 @@ These instructions guide you through updating your existing CyberTasker server i
 1.  Upload the contents of the `dist` folder to your server.
 2.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
 
-## 3. Database Update
+## 3. Database Update & Diagnostics
 
-This version ensures the `user_categories` table is correctly initialized for deletion protocols.
+This version ensures the `user_categories` table is correctly initialized for deletion protocols and introduces enhanced diagnostics.
 
 1.  Navigate to your installer URL: `https://yourdomain.com/tasks/api/install.php`
-2.  The script will ensure all schema evolutions (including `user_categories`) are applied.
-3.  **Security Note**: Delete `api/install.php` after verification.
+2.  The script will automatically execute a **Diagnostic Scan** (PHP version, drivers, config check).
+3.  It will then ensure all schema evolutions are applied.
+4.  **Verification**: Scroll to the bottom to see the "Final Verification" row counts for all system tables.
+5.  **Security Note**: Delete `api/install.php` after verification.
 
 ## 4. Verify Update
 

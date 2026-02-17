@@ -4,9 +4,11 @@
 
 This update introduces "residue-free" user deletion, enhanced 2FA deactivation logic, and significant readability optimizations for the Administration Console.
 
-## 🛡 Deep Purge Protocols
+## 🛡 Deep Purge Protocols & Stability
 - **Exhaustive User Deletion**: Both administrative and self-led account terminations now explicitly clear all tasks, user-specific categories, and 2FA artifacts.
 - **2FA Residual Protection**: Improved the "Disable 2FA" action to ensure all four 2FA-related columns (enabled, secret, method, backup_codes) are fully reset to NULL/0.
+- **Resilient Configuration**: Implemented a fallback mechanism in `api/config.php` to ensure critical database parameters are defined even if a local override file is missing values.
+- **Diagnostic Installer**: Re-engineered `api/install.php` with verbose diagnostic output, providing immediate visibility into connection states and data persistence metrics.
 
 ## 🕵️‍♂️ Administration Console Optimization
 - **High-Contrast Readability**: Re-tuned secondary data (IDs, History labels, Metrics) from low-visibility grays to higher-contrast tones (`gray-300/400`).

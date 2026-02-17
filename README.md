@@ -30,11 +30,11 @@
 ---
 ---
 
-## 🆕 New in Version 1.5.0 (Residue-Free Security & UI Optimization)
-
-### 🛡 Deep Purge Protocols
+### 🛡 Deep Purge Protocols & Stability
 *   **Exhaustive User Deletion**: Account termination (both Admin-led and Self-led) now performs a "residue-free" purge, explicitly clearing all tasks, user-specific categories, and 2FA artifacts.
 *   **2FA Cleanup**: Confirmed that deactivation logic (and deletion) fully terminates all TOTP secrets and Email-2FA artifacts.
+*   **Resilient Configuration**: Refactored `api/config.php` to utilize robust fallback logic. Required database constants (like `DB_HOST`) now default to safe values even if `config.local.php` is incomplete.
+*   **Diagnostic Installer**: The `api/install.php` utility now includes high-immersion diagnostics, tracking neural link stability, PHP environment details, and real-time database row counts for post-installation verification.
 
 ### 🕵️‍♂️ Administration Console Optimization
 *   **High-Contrast Scan-ability**: Re-tuned secondary information (IDs, History, Metrics) from dull grays to high-contrast colors (`gray-300/400`).
