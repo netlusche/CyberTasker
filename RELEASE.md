@@ -1,3 +1,22 @@
+# CyberTasker v1.8.0 - Uplink Stability & Validation Polish
+
+**Release Date:** 2026-02-18
+
+This major stability update focuses on core database transitions, streamlined recovery flows, and significant UX polish for the validation system.
+
+## 🛡 Core Stability & Database Agnosticism
+- **Universal SQL Protocol**: Re-engineered the session and user management logic to handle date calculations via PHP (`date()`, `strtotime()`) instead of database-specific SQL functions (`DATE_ADD`). This ensures seamless operation across **SQLite, MySQL, and MariaDB** installations.
+- **Enhanced Recovery flow**: Refactored the password reset handshake to be more proactive. Successfully acknowledging the "Transmission Sent" alert now redirects the operative directly to the Login Terminal, removing redundant manual steps.
+- **Secure Enumeration Protection**: Updated recovery success messaging to follow "If this email exists..." patterns (Option B), preventing unauthorized scanning of operative databases.
+
+## ✨ Validation UX & Alert Standardization
+- **Global Tooltip Wipe**: Implemented a "Clear-on-Focus" strategy. Clicking or tabbing into any input field now instantly clears all active validation tooltips across the form, providing a cleaner workspace for corrections.
+- **Unified Alert System**: Migrated the remaining registration and recovery feedback prompts to the `CyberAlert` system, ensuring all high-priority comms utilize the immersion-themed overlay.
+- **Multilingual Neural Link**: CyberTasker has officially gone global. Version 1.8.0 introduces full localization support for **DE, EN, NL, ES, FR, and IT**. 
+- **Dynamic Language Selection**: Replaces legacy static text with a centralized `i18n` protocol and a sleek, cyberpunk selector overlay.
+
+---
+
 # CyberTasker v1.5.1 - Patch: SQLite Default & Stability
 
 **Release Date:** 2026-02-17

@@ -3,8 +3,8 @@
 // Database configuration
 
 // Check for local configuration override (for development)
-if (file_exists(__DIR__ . '/config.local.php')) {
-    require_once __DIR__ . '/config.local.php';
+if (file_exists('config.local.php')) {
+    require_once 'config.local.php';
 }
 
 // Database configuration defaults (used if not defined in config.local.php)
