@@ -39,9 +39,23 @@ const LanguageSwitcher = () => {
     useEffect(() => {
         if (isOpen && containerRef.current) {
             const rect = containerRef.current.getBoundingClientRect();
+            const overlayWidth = 128; // w-32 is 8rem = 128px
+            const padding = 16;
+
+            // Try to align to the right of the trigger by default
+            let left = rect.right + window.scrollX - overlayWidth;
+
+            // Ensure it doesn't go off the left edge
+            left = Math.max(padding, left);
+
+            // Ensure it doesn't go off the right edge (important for mobile/small screens)
+            if (left + overlayWidth > window.innerWidth - padding) {
+                left = window.innerWidth - overlayWidth - padding;
+            }
+
             setCoords({
                 top: rect.bottom + window.scrollY + 8,
-                left: rect.right + window.scrollX - 120 // Align to roughly right of trigger
+                left: left
             });
         }
     }, [isOpen]);
