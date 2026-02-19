@@ -126,6 +126,42 @@ This plan outlines the end-to-end testing strategy for CyberTasker v1.8.0. The g
     2. Verify all buttons, placeholders, and alerts update.
 - **Validation**: `i18next` correctly loads all namespaces.
 
+---
+
+## 📁 test-suite-06: Protocol & Category Management
+
+### TS-06.1: Neural Protocol Initialization (Add Category)
+- **Scenario**: Create a new custom category.
+- **Steps**:
+    1. Open Profile Modal.
+    2. Enter "NEW_LOG" in the protocol input.
+    3. Click "ADD".
+- **Validation**: "NEW_LOG" appears in the list; available in `TaskForm` dropdown.
+
+### TS-06.2: Rename Protocol
+- **Scenario**: Update an existing category name.
+- **Steps**:
+    1. Click "Edit" (pencil icon) next to a category.
+    2. Change name to "ALPHA_LOG".
+    3. Confirm.
+- **Validation**: Name is updated in the list and in the database.
+
+### TS-06.3: Neural Defaulting (Set Default)
+- **Scenario**: Set a custom category as the system default.
+- **Steps**:
+    1. Click "Star" icon next to a custom category.
+    2. Observe "DEFAULT" pulse badge.
+- **Validation**: New tasks automatically select this category by default.
+
+### TS-06.4: Protocol Purge (Delete)
+- **Scenario**: Remove a category.
+- **Steps**:
+    1. Click "Trash" icon.
+    2. Confirm in `CyberConfirm` modal.
+- **Validation**: Category is removed; tasks previously using it fallback to default or remain unaffected (depending on backend logic).
+
+---
+
 ## 📊 Structured Test Reporting
 
 For every execution run, a detailed `test_report.md` will be generated with the following structure:
@@ -146,3 +182,4 @@ To run this plan, I will:
 1. Use the `browser_subagent` for UI interactions.
 2. Use `run_command` with `curl` or `php` scripts for backend state checks.
 3. Use `grep` on `api/mail.log` to handle non-sent email verification.
+4. **Bug Reporting Policy**: If a bug is discovered during execution, **do not attempt to fix it immediately**. Instead, document the failure in the `test_report.md`, complete the remaining tests, and list all identified fixes in the final report summary. I will then ask the user for permission to execute the fixes.
