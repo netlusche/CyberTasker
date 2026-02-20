@@ -1,11 +1,7 @@
 <?php
 // api/csrf.php
 if (session_status() === PHP_SESSION_NONE) {
-    $sessionPath = __DIR__ . "/sessions";
-    if (!is_dir($sessionPath)) {
-        mkdir($sessionPath, 0755, true);
-    }
-    session_save_path($sessionPath);
+    // Relying on standard OS/PHP temp directory for sessions for maximum shared host compatibility
     session_start();
 }
 
