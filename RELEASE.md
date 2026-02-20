@@ -1,6 +1,18 @@
-# CyberTasker v2.0.0 - The Architecture Update
+# CyberTasker v2.0.1 - Deployment Hotfix
 
-**Release Date:** 2026-02-20
+**Release Date:** 2026-02-21
+
+A critical patch release addressing deployment blockers on strict shared hosting environments (MySQL 500 crashes, session folder creation, and strict CORS rules).
+
+## 🩹 Hotfixes
+*   **Database Compatibility:** Replaced SQLite-specific `datetime()` functions with cross-platform PHP `date()` processing to prevent fatal errors when connecting to MySQL/MariaDB backends causing login failures.
+*   **Whitespace Resistance:** Integrated complete output buffering (`ob_start` / `ob_clean`) at the API entry point to automatically strip fatal trailing whitespace from improperly saved developer configuration files (`config.local.php`), preventing "Headers already sent" crashes.
+*   **Session Stability:** Stripped custom session path routing to ensure maximum compatibility with host-provided tmp folders.
+*   **Strict CORS Enforcement:** Corrected the `FRONTEND_URL` parsing to strictly extract only the Schema, Host, and Port, stripping any invalid subdirectory paths (`/tasks`) which caused strict browsers (Chrome/Firefox/Safari) to drop the `Access-Control-Allow-Origin` preflight entirely.
+
+---
+
+# CyberTasker v2.0.0 - The Architecture Update
 
 This landmark release transforms CyberTasker from a collection of monolithic scripts into a modern, robust, and testable application. Featuring a complete backend refactor, expanded visual themes, and a precision E2E automation suite.
 
