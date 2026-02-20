@@ -1,7 +1,7 @@
 <?php
 // admin.php
 require_once 'db.php';
-session_start();
+session_save_path(__DIR__ . "/sessions"); session_start();
 header("Content-Type: application/json");
 header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");

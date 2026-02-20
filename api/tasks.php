@@ -1,7 +1,7 @@
 <?php
 // tasks.php
 require_once 'db.php';
-session_start();
+session_save_path(__DIR__ . "/sessions"); session_start();
 
 header("Content-Type: application/json");
 

@@ -1,6 +1,21 @@
-# CyberTasker v1.9.0 - Visual Paradigm Shift
+# CyberTasker v1.9.1 - Robust Theme Engine
 
-**Release Date:** 2026-02-19
+**Release Date:** 2026-02-20
+
+This update hardens the Multi-Theme Architecture introduced in v1.9.0, ensuring absolute CSS isolation and enforcing authentic LCARS geometry across all system components.
+
+## 🎨 Semantic Theming & Geometry
+- **Zero-Bleed Architecture**: Re-engineered the CSS backend to utilize strict, locally-scoped semantic variables (`--theme-primary` instead of `cyber-neonCyan`). This completely eliminates "theme bleeding" where components incorrectly inherited global styles while inside a specific theme preview.
+- **LCARS Geometric Enforcement**: Applied rigorous shape-control to the LCARS theme. All action buttons are now perfectly oval (pill-shaped), and all modal containers feature deeply rounded corners (`1.5rem` radius) to match authentic Starfleet topology.
+- **Aesthetic Finetuning**: Corrected tactical confetti sequences to match the active theme's palette, optimized the visual contrast of Admin "Promote" buttons, and explicitly colored critical LCARS interactables with tactical `#ffaa00`.
+
+## ⚙️ Layout & Polish
+- **Frame Stabilization**: Fixed a critical `border-box` layout drift in the Profile Modal caused by scrollbar overlapping. The frame now correctly contains the custom LCARS scrolling module.
+- **Unified Action Nodes**: The `[X]` close buttons across all modals (Help, Admin, Profile) have been strictly unified, rendering as bold, filled orange tabs specifically within the LCARS environment.
+
+---
+
+# CyberTasker v1.9.0 - Visual Paradigm Shift
 
 This major update introduces the first phase of the Multi-Theme Visual Architecture, featuring the LCARS-inspired interface alongside the classic Cyberpunk neon look.
 

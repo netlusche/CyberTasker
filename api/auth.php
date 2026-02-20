@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 require_once 'db.php';
 require_once 'TOTP.php';
 require_once 'mail_helper.php';
-session_start();
+session_save_path(__DIR__ . "/sessions"); session_start();
 
 $pdo = getDBConnection();
 $data = json_decode(file_get_contents("php://input"), true);

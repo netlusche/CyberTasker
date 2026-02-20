@@ -29,6 +29,14 @@
 
 ---
 ---
+---
+
+## 🆕 New in Version 1.9.1 (Robust Theme Engine)
+
+### 🎨 Semantic Theming & Geometry
+*   **Zero-Bleed Architecture**: Re-engineered the CSS backend to utilize strict, locally-scoped semantic variables (`--theme-primary`). This completely eliminates "theme bleeding" (e.g., cyan buttons showing up in the LCARS theme).
+*   **LCARS Geometric Enforcement**: Applied rigorous shape-control to the LCARS theme. All action buttons are now perfectly oval (pill-shaped), and all modal containers feature deeply rounded corners (1.5rem radius) to match authentic Starfleet topology.
+*   **Aesthetic Finetuning**: Corrected tactical confetti sequences to match the active theme's palette, optimized the visual contrast of Admin "Promote" buttons, and explicitly colored critical LCARS interactables with tactical `#ffaa00`.
 
 ## 🆕 New in Version 1.9.0 (Visual Paradigm Shift)
 

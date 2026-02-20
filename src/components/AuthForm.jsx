@@ -229,7 +229,7 @@ const AuthForm = ({ onLogin }) => {
     return (
         <div className="flex flex-col items-center justify-center min-h-[50vh]">
             <div className="card-cyber w-full max-w-md p-8 relative overflow-hidden">
-                <h2 className="text-2xl font-bold text-center mb-6 text-cyber-neonCyan tracking-widest uppercase">
+                <h2 className="text-2xl font-bold text-center mb-6 text-cyber-primary tracking-widest uppercase">
                     {requires2FA ? t('auth.security_check') : (isForgot ? t('auth.recover_entry') : (isLogin ? t('auth.title') : t('auth.new_identity')))}
                 </h2>
 
@@ -244,7 +244,7 @@ const AuthForm = ({ onLogin }) => {
                                     onChange={(e) => handleInputChange('username', e.target.value, setUsername)}
                                     onFocus={(e) => { e.target.select(); clearValidation(); }}
                                     onInvalid={(e) => handleInvalid(e, 'username')}
-                                    className={`input-cyber text-center tracking-widest w-full input-normal-case ${validationErrors.username ? 'border-cyber-neonPink' : ''}`}
+                                    className={`input-cyber text-center tracking-widest w-full input-normal-case ${validationErrors.username ? 'border-cyber-secondary' : ''}`}
                                     required={!isForgot}
                                     autoFocus
                                 />
@@ -264,7 +264,7 @@ const AuthForm = ({ onLogin }) => {
                                         onChange={(e) => handleInputChange('email', e.target.value, setEmail)}
                                         onFocus={(e) => { e.target.select(); clearValidation(); }}
                                         onInvalid={(e) => handleInvalid(e, 'email')}
-                                        className={`input-cyber text-center tracking-widest w-full input-normal-case ${validationErrors.email ? 'border-cyber-neonPink' : ''}`}
+                                        className={`input-cyber text-center tracking-widest w-full input-normal-case ${validationErrors.email ? 'border-cyber-secondary' : ''}`}
                                         required
                                     />
                                     {validationErrors.email && (
@@ -282,7 +282,7 @@ const AuthForm = ({ onLogin }) => {
                                     onChange={(e) => handleInputChange('password', e.target.value, setPassword)}
                                     onFocus={(e) => { e.target.select(); clearValidation(); }}
                                     onInvalid={(e) => handleInvalid(e, 'password')}
-                                    className={`input-cyber text-center tracking-widest w-full pr-10 input-normal-case ${validationErrors.password ? 'border-cyber-neonPink' : ''}`}
+                                    className={`input-cyber text-center tracking-widest w-full pr-10 input-normal-case ${validationErrors.password ? 'border-cyber-secondary' : ''}`}
                                     required={!isForgot}
                                 />
                                 {validationErrors.password && (
@@ -293,7 +293,7 @@ const AuthForm = ({ onLogin }) => {
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-neonCyan hover:text-white transition-colors p-1"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-primary hover:text-white transition-colors p-1"
                                     tabIndex="-1"
                                 >
                                     {showPassword ? (
@@ -320,7 +320,7 @@ const AuthForm = ({ onLogin }) => {
                                 onChange={(e) => handleInputChange('email', e.target.value, setEmail)}
                                 onFocus={(e) => { e.target.select(); clearValidation(); }}
                                 onInvalid={(e) => handleInvalid(e, 'email')}
-                                className={`input-cyber text-center tracking-widest w-full input-normal-case ${validationErrors.email ? 'border-cyber-neonPink shadow-[0_0_10px_rgba(255,0,255,0.3)]' : ''}`}
+                                className={`input-cyber text-center tracking-widest w-full input-normal-case ${validationErrors.email ? 'border-cyber-secondary shadow-cyber-secondary' : ''}`}
                                 required
                                 autoFocus
                             />
@@ -347,7 +347,7 @@ const AuthForm = ({ onLogin }) => {
                                     onChange={(e) => handleInputChange('twoFaCode', e.target.value, setTwoFaCode)}
                                     onFocus={(e) => { e.target.select(); clearValidation(); }}
                                     onInvalid={(e) => handleInvalid(e, 'twoFaCode')}
-                                    className={`input-cyber text-center tracking-[0.3em] text-xl font-bold text-cyber-neonGreen w-full ${validationErrors.twoFaCode ? 'border-cyber-neonPink shadow-[0_0_10px_rgba(255,0,255,0.3)]' : ''}`}
+                                    className={`input-cyber text-center tracking-[0.3em] text-xl font-bold text-cyber-success w-full ${validationErrors.twoFaCode ? 'border-cyber-secondary shadow-cyber-secondary' : ''}`}
                                     maxLength={16}
                                     required
                                     autoFocus
@@ -363,7 +363,7 @@ const AuthForm = ({ onLogin }) => {
                                     type="button"
                                     onClick={handleResendEmail2FA}
                                     disabled={loading}
-                                    className={`text-[10px] text-cyber-neonCyan hover:underline block mx-auto uppercase animate-pulse ${loading ? 'opacity-50 cursor-wait' : ''}`}
+                                    className={`text-[10px] text-cyber-primary hover:underline block mx-auto uppercase animate-pulse ${loading ? 'opacity-50 cursor-wait' : ''}`}
                                 >
                                     {loading ? t('auth.status.resyncing') : t('auth.status.resync_uplink')}
                                 </button>
@@ -374,7 +374,8 @@ const AuthForm = ({ onLogin }) => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`btn-cyber btn-neon-pink btn-auth-submit mt-4 ${loading ? 'opacity-70 cursor-wait' : ''}`}
+                        className={`btn-cyber btn-cyber-primary mt-4 ${loading ? 'opacity-70 cursor-wait' : ''}`}
+                        style={theme === 'lcars' ? { backgroundColor: '#ffaa00', borderColor: '#ffaa00' } : {}}
                     >
                         {loading ? t('auth.working') : (requires2FA ? t('auth.verify_identity') : (isForgot ? t('auth.send_reset') : (isLogin ? t('auth.jack_in') : t('auth.establish_link'))))}
                     </button>
@@ -385,14 +386,14 @@ const AuthForm = ({ onLogin }) => {
                         {!isForgot && isLogin && (
                             <button
                                 onClick={() => setIsForgot(true)}
-                                className="text-sm text-gray-300 hover:text-cyber-neonPink underline decoration-dotted underline-offset-4"
+                                className="text-sm text-gray-300 hover:text-cyber-secondary underline decoration-dotted underline-offset-4"
                             >
                                 {t('auth.forgot_key')}
                             </button>
                         )}
                         <button
                             onClick={() => { setIsLogin(!isLogin); setIsForgot(false); setError(''); setValidationErrors({}); }}
-                            className="text-sm text-gray-300 hover:text-cyber-neonGreen underline decoration-dotted underline-offset-4"
+                            className="text-sm text-gray-300 hover:text-cyber-success underline decoration-dotted underline-offset-4"
                         >
                             {isForgot ? t('auth.remembered') : (isLogin ? t('auth.no_identity') : t('auth.has_identity'))}
                         </button>
@@ -402,7 +403,7 @@ const AuthForm = ({ onLogin }) => {
                 <div className="mt-4 pt-4 border-t border-gray-800 text-center">
                     <button
                         onClick={() => setShowHelp(true)}
-                        className="text-xs text-cyber-neonCyan hover:text-white transition-colors tracking-widest"
+                        className="text-xs text-cyber-primary hover:text-white transition-colors tracking-widest"
                     >
                         {t('header.system_help')}
                     </button>

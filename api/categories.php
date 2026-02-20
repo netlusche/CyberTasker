@@ -2,7 +2,7 @@
 require_once 'db.php';
 
 // 1. Authenticate
-session_start();
+session_save_path(__DIR__ . "/sessions"); session_start();
 header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
