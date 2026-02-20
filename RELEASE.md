@@ -1,3 +1,15 @@
+# CyberTasker v1.9.3 - Security Hardening (Phase 3)
+
+**Release Date:** 2026-02-20
+
+This update finalizes the OWASP Top 10 security hardening roadmap by introducing robust anti-brute-force measures and cryptographic integrity checks for external dependencies.
+
+## 🚫 Anti-Brute-Force & Integrity Protocols
+- **Database-Backed Rate Limiting**: The authorization grid (`api/auth.php`) now actively tracks and evaluates login and 2FA verification attempts. If a terminal exceeds 5 failed attempts within a 15-minute window, it is locked out (`HTTP 429 Too Many Requests`), neutralizing automated brute-force and dictionary attacks. The registration endpoint is also strictly throttled.
+- **Subresource Integrity (SRI)**: Mathematical SHA-384 cryptographic hashes have been injected into `index.html` for all external CDN dependencies (e.g., `qrcode.min.js`). The browser will now physically refuse to execute the neural scripts if the Content Delivery Network is ever compromised.
+
+---
+
 # CyberTasker v1.9.2 - Security Hardening (Phase 1 & 2)
 
 **Release Date:** 2026-02-20

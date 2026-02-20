@@ -222,6 +222,17 @@ try {
         echo "Column 'badges_json' added to user_stats.<br>\n";
     }
 
+    // --- AUTH LOGS TABLE (Rate Limiting) ---
+    $sqlAuthLogs = "CREATE TABLE IF NOT EXISTS auth_logs (
+        id $autoIncrement,
+        ip_address VARCHAR(45) NOT NULL,
+        endpoint VARCHAR(50) NOT NULL,
+        success BOOLEAN NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+    $pdo->exec($sqlAuthLogs);
+    echo "Table 'auth_logs' check/create complete.<br>\n";
+
     // --- DEFAULT ADMIN USER ---
     $adminUsername = 'admin';
     $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
