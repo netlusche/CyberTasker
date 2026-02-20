@@ -29,7 +29,12 @@ if (!defined('FRONTEND_URL')) {
 }
 
 // CORS Configuration - Restrict to Frontend Domain
-header("Access-Control-Allow-Origin: " . FRONTEND_URL);
+$parsedUrl = parse_url(FRONTEND_URL);
+$allowedOrigin = ($parsedUrl['scheme'] ?? 'http') . '://' . ($parsedUrl['host'] ?? 'localhost');
+if (isset($parsedUrl['port'])) {
+    $allowedOrigin .= ':' . $parsedUrl['port'];
+}
+header("Access-Control-Allow-Origin: " . $allowedOrigin);
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, X-CSRF-Token");
