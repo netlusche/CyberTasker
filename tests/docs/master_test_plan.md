@@ -26,6 +26,14 @@ This plan outlines the end-to-end testing strategy for CyberTasker v2.0.0. The g
 - **Scenario**: Monitor `PHPSESSID` before and after successful login.
 - **Validation**: Session ID is regenerated to prevent session fixation attacks.
 
+### TS-01.6: Email Transmission Verification [NEW]
+- **Scenario**: Register an account, update email, and request Email 2FA.
+- **Validation**: SMTP/Mail relay successfully dispatches the payload, and tokens contained are valid and time-restricted.
+
+### TS-01.7: Real-world 2FA Validation [NEW]
+- **Scenario**: Setup TOTP using a standard authenticator seed, and setup Email 2FA receiving a real code.
+- **Validation**: The system accurately validates authentic 6-digit codes and rejects invalid/expired ones.
+
 ---
 
 ## 📋 test-suite-02: Directive Management (CRUD)
@@ -38,17 +46,21 @@ This plan outlines the end-to-end testing strategy for CyberTasker v2.0.0. The g
 - **Scenario**: Verify that "Overdue" tasks always appear at the top of the stream.
 - **Validation**: Sorting logic respects the Triage Protocol (Status > Urgency > Priority).
 
+### TS-02.3: Stream Pagination [NEW]
+- **Scenario**: Populate the operative's timeline with 50+ directives.
+- **Validation**: The stream is paginated, fetching records in tactical chunks without compromising UI responsiveness.
+
 ---
 
 ## 🎨 test-suite-03: Visual Architecture & Multi-Theming
 
 ### TS-03.1: Theme Switching & Isolation
-- **Scenario**: Switch between "Cyberpunk" and "LCARS" in the profile.
-- **Validation**: CSS variables and fonts (Antonio vs Courier) update immediately.
+- **Scenario**: Switch between "Cyberpunk", "LCARS", "Matrix", and "Weyland-Yutani" in the profile.
+- **Validation**: CSS variables and fonts update immediately (e.g., Antonio vs Courier vs VT323 vs Share Tech Mono). Contrast ratios remain compliant across all themes.
 
 ### TS-03.2: Theme Persistence
-- **Scenario**: Set theme, logout, and verify login screen aesthetics.
-- **Validation**: Theme choice persists across sessions and is applied before login.
+- **Scenario**: Set theme (e.g., "Matrix"), logout, and verify login screen aesthetics.
+- **Validation**: Theme choice persists across sessions and is applied securely by pulling from the database API upon page load.
 
 ---
 
@@ -57,6 +69,10 @@ This plan outlines the end-to-end testing strategy for CyberTasker v2.0.0. The g
 ### TS-04.1: Neural Override (Admin Controls)
 - **Scenario**: Admin resets a user's password or disables 2FA.
 - **Validation**: Changes are applied instantly; user can recover access.
+
+### TS-04.2: Roster Pagination [NEW]
+- **Scenario**: Retrieve the `admin/users` grid populated with 100+ operatives.
+- **Validation**: The grid accurately displays page controls, total records, and navigates seamlessly using the DataGrid component without freezing the dashboard.
 
 ---
 
@@ -79,3 +95,13 @@ This plan outlines the end-to-end testing strategy for CyberTasker v2.0.0. The g
 ## 📊 Structured Test Reporting
 
 Every execution run generates a `test_report.md` tracking pass/fail rates, backend logs, and browser recordings as proof of work.
+
+---
+
+## 🏗 Test Data Preparation [NEW]
+
+To execute the automated suites above effectively, the following isolated test data will be seeded programmatically via a standalone script (`tests/seed_test_data.php`):
+- **User Personas**: Generate 1 Admin (`Admin_Alpha`), 5 Operatives with active 2FA (`Op_Beta`), and 100 baseline users for Admin pagination testing.
+- **Directive Matrix**: Populate `Op_Beta` with 55 directives to trigger and test frontend pagination components.
+- **Mail Capture Strategy**: Configure a mock SMTP endpoint (e.g., MailHog) or logging service to reliably capture and verify outbound token transmissions instantly.
+- **Authenticator Seeds**: Pre-define valid TOTP secrets to programmatically assert validation code limits without manual authenticator input.
