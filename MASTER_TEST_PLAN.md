@@ -168,6 +168,29 @@ The suite has been hardened against "flakiness" using the following patterns:
 
 ---
 
+## 📁 test-suite-07: Deep Directives (Operative Dossier)
+
+### TS-07.1: Rich-Text Markdown Parsing [AUTOMATED] (07-deep-directives.spec.js)
+- **Scenario**: Open an active directive and inject protocol description using Markdown (Headers, Bold, Lists).
+- **Validation**: The parser securely renders HTML tags without XSS vulnerabilities, applying the active theme's typography rules.
+
+### TS-07.2: Secure Up-Links [AUTOMATED] (07-deep-directives.spec.js)
+- **Scenario**: Embed external HTTPS URLs into the protocol description.
+- **Validation**: URLs are parsed into clickable anchor tags with `target="_blank"` protecting the operational sandbox.
+
+### TS-07.3: Encrypted Asset Uploads [MANUAL]
+- **Scenario**: Drag-and-drop or select image/document files to attach them to a specific directive.
+- **Validation**:
+  - Files are processed securely via Multer/PHP backend as `multipart/form-data`.
+  - Filenames are sanitized and hashed.
+  - The UI accurately renders previews for images and generic icons for documents.
+
+### TS-07.4: Asset Purging [MANUAL]
+- **Scenario**: Delete an attached file from a directive via the frontend interface.
+- **Validation**: The file is completely wiped from the local `uploads/` volume and the JSON array in the database is synchronized.
+
+---
+
 ## 📊 Structured Test Reporting
 
 Every execution run generates a `test_report.md` tracking pass/fail rates, backend logs, and browser recordings as proof of work.

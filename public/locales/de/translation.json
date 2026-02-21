@@ -190,9 +190,10 @@
         "add": "HINZUFÜGEN",
         "priority": "PRIORITÄT",
         "category": "KATEGORIE",
-        "due_date": "FÄLLIGKEIT",
-        "no_date": "KEIN DATUM",
+        "due_date": "TERMIN",
+        "no_date": "KEIN TERMIN",
         "status": "STATUS",
+        "details": "DETAILS",
         "page": "SEITE",
         "cycle_category": "Klicken zum Ändern der Kategorie",
         "edit_directive": "Klicken zum Bearbeiten",
@@ -207,7 +208,17 @@
         "all_priorities": "ALLE PRIORITÄTEN",
         "all_categories": "ALLE KATEGORIEN",
         "overdue_only": "Überfällige",
-        "default_suffix": "(Voreingestellt)"
+        "default_suffix": "(Voreingestellt)",
+        "dossier": {
+            "title": "DIREKTIVEN-DOSSIER",
+            "description": "PROTOKOLL-BESCHREIBUNG",
+            "attachments": "ANGEHÄNGTE UPLINKS",
+            "add_link": "LINK HINZUFÜGEN",
+            "edit_mode": "EDITIER-MODUS",
+            "read_mode": "LESE-MODUS",
+            "save_success": "DOSSIER AKTUALISIERT",
+            "save_error": "UPLINK FEHLGESCHLAGEN"
+        }
     },
     "help": {
         "title": "CYBER_TASKER OPERATIVE HANDBUCH",
@@ -250,6 +261,15 @@
                 "item4_text": "Klicke auf KATEGORIE- oder PRIORITÄTS-Badges für die Themen-Auswahl.",
                 "item5_label": "AUSFÜHREN",
                 "item5_text": "Markiere Direktiven als ERLEDIGT. Das System liefert NEON-FEEDBACK nach Abschluss."
+            },
+            "deep_directives": {
+                "title": "// DEEP DIRECTIVES [Dossier & Intel]",
+                "item1_label": "PROTOKOLLBESCHREIBUNG",
+                "item1_text": "Greife auf das OPERATIV-DOSSIER zu, indem du eine aktive Direktive anklickst. Kodiere Rich-Text Intel mit dem Markdown-Protokoll für maximale Missionsklarheit.",
+                "item2_label": "UP-LINKS",
+                "item2_text": "Stelle über URL-Anhänge sichere neurale Verbindungen zu externen Daten-Grids her. Auf HTTPS-Tunneling achten.",
+                "item3_label": "DATEIANHÄNGE",
+                "item3_text": "Lade kritische Missionsassets direkt in den verschlüsselten Tresor für lokale und sichere Speicherung hoch."
             },
             "sort_order": {
                 "title": "// SORTIERUNGS-PROTOKOLL [Aufgabenverwaltung]",
@@ -312,7 +332,20 @@
                 "item2_label": "PERSISTENTER SYNC",
                 "item2_text": "Deine visuelle Präferenz wird für deine neurale ID über alle Sitzungen hinweg fixiert, bis ein manueller Override initiiert wird.",
                 "item3_label": "ZUKÜNFTIGE ERWEITERUNGEN",
-                "item3_text": "Das Grid ist für Expansion architekuriert. Neue visuelle Module werden in den Theme-Selector integriert, sobald sie für den operativen Einsatz zertifiziert sind."
+                "item3_text": "Das Grid ist für Expansion architekuriert. Neue visuelle Module werden in den Theme-Selector integriert, sobald sie für den operativen Einsatz zertifiziert sind.",
+                "themes_title": "// VERFÜGBARE VISUELLE MODULE",
+                "theme_cyberpunk": "CYBERPUNK — Das Standard-Neuronalgrid. Neon-Cyan blutet durch die Dunkelheit. Deine Standard-Operativen-Schnittstelle. Scharf bleiben, verdrahtet bleiben.",
+                "theme_lcars": "LCARS — Bibliothekscomputer-Zugriffs- und Abrufsystem. Das Beste der Sternenflotte. Abgerundete Terminals, Bernstein und Gold. Der Weltraum ist die finale Direktive.",
+                "theme_matrix": "MATRIX — Der Code-Regen lügt nie. Grüne Phosphorsignale pulsieren durch korrumpierte Stille. Du siehst es doch, oder?",
+                "theme_weyland": "WEYLAND-YUTANI — Corporeales Bernstein brennt kalt. Amber-CRT-Terminals, verschlüsselt von einem Konzern, der Götter baute und sie Produkte nannte.",
+                "theme_robco": "PIP-BOY — RobCo Industries Unified OS. Phosphor-grünes Terminal. Vorkriegs-zertifiziert. Das Ödland läuft auf dieser Firmware.",
+                "theme_grid": "THE GRID — Trons digitale Grenzzone. Neon-blaue Lichtfahrzeuge rasen über ein unendliches Gitter. Flynn hat etwas gebaut, das nie für Menschen gedacht war.",
+                "theme_section9": "GHOST — Sektion 9 Freigabe. Ein Geist ohne Hülle. Teal-Holografiken flackern über eine minimalistische dunkle Ebene. Kusanagi würde es billigen.",
+                "theme_outrun": "OUTRUN — 1984. Heiße Magenta-Sonnen versinken hinter dem Synthwave-Horizont. Fahr schnell, das Neon schläft nicht. Retrowave stirbt nie.",
+                "theme_steampunk": "STEAMPUNK — Viktorianisches Eisen und poliertes Messing. Zahnräder klicken im Nebel. Ein Reich angetrieben von Dampf und Geheimnissen. Deine Direktiven, per Rohrpost zugestellt.",
+                "theme_force": "FORCE — Eine weit, weit entfernte Galaxis. Rebellen-Orange leuchtet gegen ein Sternenfeld. Die helle Seite des Grids. Möge die Direktive mit dir sein.",
+                "theme_arrakis": "ARRAKIS — Wüstenmacht und Gewürz. Bernsteinfarbene Sonnen sinken über einer unberechenbaren Landschaft. Das Grid fließt mit dem Spice. Angst ist der Killer des Verstands.",
+                "theme_renaissance": "RENAISSANCE — Die Ära des Cyber-Goldes. Goldene Hexagone pulsieren in einem Meer aus absolutem Schwarz. Eine Welt voller Augmentierungen und Konzerngötter. Die Menschheit ist gespalten."
             },
             "danger_zone": {
                 "title": "// GEFAHRENZONE-PROTOKOLLE",
@@ -382,5 +415,8 @@
         "disable_2fa_confirm": "2FA FÜR {{username}} DEAKTIVIEREN? Dies entfernt sekundäre Sicherheitsprotokolle.",
         "2fa_disabled_msg": "2FA für {{username}} deaktiviert.",
         "disable_2fa_failed": "2FA konnte nicht deaktiviert werden"
+    },
+    "calendar": {
+        "clear_date": "DATUM ZURÜCKSETZEN"
     }
 }

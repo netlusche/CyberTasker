@@ -77,14 +77,62 @@ function App() {
       <div className="fixed inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] cyber-grid"></div>
 
       <div className="max-w-3xl mx-auto relative z-10">
-        <header className="mb-8 flex flex-col lg:flex-row justify-between items-start gap-4 border-b border-cyber-gray pb-4">
+        <header className="mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4">
           <div className="w-full lg:w-auto">
             <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
               <a href="./" className="flex items-center gap-3 hover:opacity-80 transition-opacity no-underline text-inherit">
                 <img src={logo} alt="Logo" className="h-8 w-8 md:h-10 md:w-10 drop-shadow-[0_0_8px_var(--theme-primary)]" />
-                <span className={theme === 'lcars' ? "text-cyber-primary font-['Antonio',_sans-serif] font-normal tracking-[0.1em] drop-shadow-none" : "bg-clip-text text-transparent bg-gradient-to-r from-cyber-primary to-cyber-secondary drop-shadow-[0_0_5px_var(--theme-primary)]"}>
-                  {t('header.title')}<span className="text-white">{t('header.subtitle')}</span>
-                </span>
+                {/* Theme-specific logo styling */}
+                {theme === 'lcars' && (
+                  <span className="text-cyber-primary font-['Antonio',_sans-serif] font-normal tracking-[0.1em] drop-shadow-none">
+                    {t('header.title')}<span className="text-white">{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'robco' && (
+                  <span className="font-mono tracking-[0.15em] text-green-400" style={{ textShadow: '0 0 8px #1aff1a, 0 0 16px rgba(26,255,26,0.4)' }}>
+                    {t('header.title')}<span className="text-green-600">{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'grid' && (
+                  <span className="font-sans font-bold tracking-[0.12em]" style={{ background: 'linear-gradient(90deg, #6fc3df, #00e5ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 0 6px rgba(111,195,223,0.7))' }}>
+                    {t('header.title')}<span style={{ WebkitTextFillColor: 'rgba(111,195,223,0.5)' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'section9' && (
+                  <span className="font-sans font-bold tracking-[0.08em]" style={{ color: '#34e2e2', textShadow: '0 0 8px #34e2e2, 3px 0 10px rgba(255,0,255,0.35), -3px 0 10px rgba(0,255,255,0.35)' }}>
+                    {t('header.title')}<span style={{ color: '#eeeeec', textShadow: 'none' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'outrun' && (
+                  <span className="font-sans font-black italic tracking-[0.1em]" style={{ background: 'linear-gradient(90deg, #ff00ff 0%, #ff6600 50%, #00ffff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 0 8px rgba(255,0,255,0.6))' }}>
+                    {t('header.title')}<span style={{ background: 'linear-gradient(90deg, #ff6600, #00ffff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'steampunk' && (
+                  <span style={{ fontFamily: "'IM Fell English', 'Cinzel', Georgia, serif", color: '#c8882a', textShadow: '0 0 10px rgba(200,136,42,0.5), 1px 1px 0px #3d2010', letterSpacing: '0.08em' }}>
+                    {t('header.title')}<span style={{ color: '#d4af37' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'force' && (
+                  <span style={{ fontFamily: "'Rajdhani', sans-serif", color: '#cc4422', textShadow: '0 0 8px rgba(204,68,34,0.6), 2px 0 10px rgba(52,226,226,0.3)', letterSpacing: '0.15em', fontWeight: 'bold' }}>
+                    {t('header.title')}<span style={{ color: '#34e2e2' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'arrakis' && (
+                  <span style={{ fontFamily: "'Cinzel', serif", color: '#d97706', textShadow: '0 0 15px rgba(217,119,6,0.5), 0 0 30px rgba(217,119,6,0.2)', letterSpacing: '0.12em', fontWeight: 'bold' }}>
+                    {t('header.title')}<span style={{ color: '#fbbf24' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {theme === 'renaissance' && (
+                  <span style={{ fontFamily: "'Michroma', sans-serif", color: '#ffb000', textShadow: '2px 2px 0px #1a1a1a, 0 0 10px rgba(255,176,0,0.4)', letterSpacing: '0.1em', fontSize: '0.9em' }}>
+                    {t('header.title')}<span style={{ color: '#d4af37' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {!['lcars', 'robco', 'grid', 'section9', 'outrun', 'steampunk', 'force', 'arrakis', 'renaissance'].includes(theme) && (
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyber-primary to-cyber-secondary drop-shadow-[0_0_5px_var(--theme-primary)]">
+                    {t('header.title')}<span className="text-white">{t('header.subtitle')}</span>
+                  </span>
+                )}
               </a>
             </h1>
             <div className="text-[10px] md:text-xs text-gray-300 font-bold tracking-widest mt-1 opacity-80 uppercase">
@@ -93,7 +141,7 @@ function App() {
             </div>
           </div>
 
-          <div className={`flex w-full lg:w-auto justify-start lg:justify-end ${theme === 'lcars' ? 'flex-col items-end gap-1' : 'flex-wrap lg:flex-nowrap items-center gap-2'}`}>
+          <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 justify-start lg:justify-end ${theme === 'lcars' ? 'flex-col items-start lg:items-end gap-1' : 'flex-wrap items-center gap-2'}`}>
             {theme !== 'lcars' && <LanguageSwitcher />}
 
             {user && (
@@ -219,7 +267,7 @@ function App() {
           onLogout={handleFullLogout}
           onUserUpdate={() => {
             fetchTasks(pagination.currentPage);
-            checkAuth();
+            checkAuth(true);
           }}
           onCategoryUpdate={refreshCategories}
         />

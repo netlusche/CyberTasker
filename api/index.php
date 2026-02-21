@@ -48,6 +48,7 @@ $router->post('auth/resend_email_2fa', [AuthController::class , 'resendEmail2fa'
 // --- Task Routes ---
 $router->get('tasks', [TaskController::class , 'index']);
 $router->post('tasks', [TaskController::class , 'store']);
+$router->post('tasks/upload', [TaskController::class , 'uploadFiles']);
 $router->put('tasks', [TaskController::class , 'update']);
 $router->delete('tasks', [TaskController::class , 'destroy']);
 

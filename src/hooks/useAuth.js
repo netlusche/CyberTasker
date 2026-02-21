@@ -9,9 +9,9 @@ export function useAuth() {
     const [isLevelUp, setIsLevelUp] = useState(false);
     const { theme, setThemeState } = useTheme();
 
-    const checkAuth = useCallback(async () => {
+    const checkAuth = useCallback(async (silent = false) => {
         try {
-            setLoading(true);
+            if (!silent) setLoading(true);
             const res = await apiFetch('api/index.php?route=auth');
             const data = await res.json();
             if (data.isAuthenticated) {
@@ -26,7 +26,7 @@ export function useAuth() {
         } catch (err) {
             console.error("Auth check failed", err);
         } finally {
-            setLoading(false);
+            if (!silent) setLoading(false);
         }
     }, [setThemeState]);
 

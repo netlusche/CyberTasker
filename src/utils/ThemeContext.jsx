@@ -9,10 +9,16 @@ export const ThemeProvider = ({ children, initialTheme = 'cyberpunk' }) => {
         return localStorage.getItem('cybertasker_theme') || initialTheme;
     });
 
-    // Apply theme class to document body
+    // Apply theme class to document body and HTML root (for rem scaling)
     useEffect(() => {
+        // Update body (legacy support)
         document.body.className = document.body.className.replace(/\btheme-\S+/g, '');
         document.body.classList.add(`theme-${theme}`);
+
+        // Update HTML root (for proportional rem typography scaling)
+        document.documentElement.className = document.documentElement.className.replace(/\btheme-\S+/g, '');
+        document.documentElement.classList.add(`theme-${theme}`);
+
         localStorage.setItem('cybertasker_theme', theme);
     }, [theme]);
 

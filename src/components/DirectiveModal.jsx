@@ -1,0 +1,251 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useTheme } from '../utils/ThemeContext';
+import { apiFetch } from '../utils/api';
+
+const DirectiveModal = ({ task, onClose, onUpdate }) => {
+    const { t } = useTranslation();
+    const { theme } = useTheme();
+    const fileInputRef = useRef(null);
+    const [editingField, setEditingField] = useState(null);
+    const [description, setDescription] = useState(task.description || '');
+    const [attachments, setAttachments] = useState([]);
+    const [tempLinks, setTempLinks] = useState([]);
+    const [files, setFiles] = useState([]);
+    const [isSaving, setIsSaving] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
+
+    useEffect(() => {
+        try {
+            const parsedLinks = task.attachments ? JSON.parse(task.attachments) : [];
+            const links = Array.isArray(parsedLinks) ? parsedLinks : [];
+            setAttachments(links);
+            setTempLinks(JSON.parse(JSON.stringify(links)));
+
+            const parsedFiles = task.files ? JSON.parse(task.files) : [];
+            setFiles(Array.isArray(parsedFiles) ? parsedFiles : []);
+        } catch (e) {
+            setAttachments([]);
+            setTempLinks([]);
+            setFiles([]);
+        }
+    }, [task.attachments, task.files]);
+
+    const handleSave = async (updatedDesc = description, updatedLinks = tempLinks, updatedFiles = files) => {
+        setIsSaving(true);
+        const success = await onUpdate(task, {
+            description: updatedDesc,
+            attachments: JSON.stringify(updatedLinks),
+            files: JSON.stringify(updatedFiles)
+        });
+        setIsSaving(false);
+        if (success) {
+            setEditingField(null);
+        }
+    };
+
+    const handleBlur = (e, field) => {
+        if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) {
+            return;
+        }
+        if (editingField === field) {
+            handleSave();
+        }
+    };
+
+    const addLink = () => {
+        const newLinks = [...tempLinks, { label: '', url: '' }];
+        setTempLinks(newLinks);
+        setEditingField(`link-${newLinks.length - 1}`);
+    };
+
+    const updateLink = (index, field, value) => {
+        const newLinks = [...tempLinks];
+        newLinks[index][field] = value;
+        setTempLinks(newLinks);
+    };
+
+    const removeLink = (index) => {
+        const newLinks = tempLinks.filter((_, i) => i !== index);
+        setTempLinks(newLinks);
+        handleSave(description, newLinks, files);
+    };
+
+    const handleFileClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleFileChange = async (e) => {
+        const selectedFiles = Array.from(e.target.files);
+        if (selectedFiles.length === 0) return;
+
+        setIsUploading(true);
+        const formData = new FormData();
+        selectedFiles.forEach(file => formData.append('files[]', file));
+
+        try {
+            const response = await apiFetch('api/index.php?route=tasks/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+
+            if (result.status === 'success') {
+                const newFiles = [...files, ...result.files];
+                setFiles(newFiles);
+                await handleSave(description, tempLinks, newFiles);
+            } else {
+                alert(result.message || "Upload failed");
+            }
+        } catch (error) {
+            console.error("Upload error:", error);
+            alert("Connection error during upload");
+        } finally {
+            setIsUploading(false);
+            if (fileInputRef.current) fileInputRef.current.value = '';
+        }
+    };
+
+    const removeFile = (index) => {
+        const newFiles = files.filter((_, i) => i !== index);
+        setFiles(newFiles);
+        handleSave(description, tempLinks, newFiles);
+    };
+
+    const renderMarkdown = (text) => {
+        if (!text) return null;
+        let html = text
+            .replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m])
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-cyber-primary underline">$1</a>')
+            .replace(/\n/g, '<br />');
+        return <div className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />;
+    };
+
+    const getFileIcon = (type) => {
+        if (type.includes('image')) return '🖼️';
+        if (type.includes('pdf')) return '📕';
+        return '📄';
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-[200] backdrop-blur-sm" onClick={() => handleSave()}>
+            <div className="card-cyber text-white max-w-3xl w-full max-h-[90vh] flex flex-col p-1 overflow-hidden border-cyber-primary shadow-cyber-primary relative animate-in fade-in zoom-in duration-300" onClick={(e) => e.stopPropagation()}>
+
+                <button onClick={onClose} className={`absolute font-bold text-xl transition-colors z-50 ${theme === 'lcars' ? 'top-0 right-0 bg-[#ffaa00] text-black px-3 py-1 rounded-tr-[1.5rem] hover:brightness-110' : `top-1 ${(theme === 'matrix' || theme === 'weyland' || theme === 'cyberpunk') ? 'right-6' : 'right-1'} text-cyber-secondary hover:text-white`}`}>
+                    [X]
+                </button>
+
+                <div className="overflow-y-auto custom-scrollbar flex-1 relative p-6 pr-8">
+                    <div className="flex justify-between items-center mb-6 border-b border-cyber-gray pb-2">
+                        <h2 className="text-2xl font-bold text-cyber-primary uppercase tracking-widest truncate max-w-[90%]">
+                            {t('tasks.dossier.title')}: {task.title}
+                        </h2>
+                    </div>
+
+                    <div className="space-y-8">
+                        {/* Description */}
+                        <section>
+                            <h3 className="text-cyber-success font-bold text-lg mb-3 uppercase tracking-wider flex items-center gap-2">
+                                <span className="text-xl">📄</span> {t('tasks.dossier.description')}
+                            </h3>
+                            {editingField === 'description' ? (
+                                <div className="relative group">
+                                    <textarea autoFocus className="w-full h-64 bg-black/40 border border-cyber-primary p-4 text-gray-200 font-mono resize-none focus:outline-none transition-colors custom-scrollbar" value={description} onChange={(e) => setDescription(e.target.value)} onBlur={(e) => handleBlur(e, 'description')} placeholder="Enter description..." />
+                                    <div className="absolute bottom-4 right-4 flex gap-2">
+                                        <button onClick={(e) => { e.stopPropagation(); setDescription(task.description || ''); setEditingField(null); }} className="bg-red-900/80 text-white p-2 rounded hover:bg-red-700 transition-all border border-red-500 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                                        </button>
+                                        <button onClick={(e) => { e.stopPropagation(); handleSave(); }} className="bg-cyber-success text-black p-2 rounded hover:brightness-110 transition-all shadow-[0_0_10px_rgba(0,255,0,0.5)]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="bg-black/20 border border-cyber-gray/30 p-4 rounded min-h-[100px] font-mono text-sm leading-relaxed text-gray-300 cursor-pointer hover:border-cyber-primary/50 transition-colors group relative" onClick={() => setEditingField('description')}>
+                                    {description ? renderMarkdown(description) : <span className="opacity-40 italic">No description provided.</span>}
+                                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-cyber-primary text-[10px] font-bold">[ EDIT ]</div>
+                                </div>
+                            )}
+                        </section>
+
+                        {/* Web Uplinks */}
+                        <section>
+                            <h3 className="text-cyber-success font-bold text-lg mb-3 uppercase tracking-wider flex items-center gap-2">
+                                <span className="text-xl">🔗</span> {t('tasks.dossier.attachments')}
+                            </h3>
+                            <div className="space-y-3">
+                                {tempLinks.map((link, idx) => (
+                                    <div key={idx} className="flex gap-2 items-center">
+                                        {editingField === `link-${idx}` ? (
+                                            <div className="flex gap-2 w-full bg-black/40 border border-cyber-primary p-2 group relative" onBlur={(e) => handleBlur(e, `link-${idx}`)} tabIndex="-1">
+                                                <input autoFocus type="text" placeholder="Label" value={link.label} onChange={(e) => updateLink(idx, 'label', e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSave()} className="bg-transparent border-b border-cyber-gray p-2 text-xs flex-1 focus:border-cyber-primary outline-none text-white" />
+                                                <input type="text" placeholder="URL" value={link.url} onChange={(e) => updateLink(idx, 'url', e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSave()} className="bg-transparent border-b border-cyber-gray p-2 text-xs flex-[2] focus:border-cyber-primary outline-none text-white" />
+                                                <div className="flex gap-2 pl-2 border-l border-cyber-gray">
+                                                    <button onClick={(e) => { e.stopPropagation(); const orig = task.attachments ? JSON.parse(task.attachments) : []; setTempLinks(orig); setEditingField(null); }} className="text-red-500 hover:text-white px-1 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg></button>
+                                                    <button onClick={(e) => { e.stopPropagation(); handleSave(); }} className="text-cyber-success hover:scale-110 transition-transform"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></button>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="w-full flex gap-2 group">
+                                                <div className="bg-black/30 border border-cyber-primary/30 p-3 rounded flex-1 flex justify-between items-center hover:bg-cyber-primary/50 transition-all border-l-4 border-l-cyber-primary cursor-pointer overflow-hidden" onClick={() => setEditingField(`link-${idx}`)}>
+                                                    <div className="flex flex-col truncate">
+                                                        <span className="font-bold text-cyber-primary text-sm uppercase truncate">{link.label || 'LINK ' + (idx + 1)}</span>
+                                                        <span className="text-[10px] opacity-40 font-mono truncate">{link.url || 'No URL'}</span>
+                                                    </div>
+                                                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="ml-4 p-2 bg-cyber-primary/10 rounded hover:bg-cyber-primary hover:text-black transition-colors" onClick={(e) => e.stopPropagation()}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" /></svg></a>
+                                                </div>
+                                                <button onClick={(e) => { e.stopPropagation(); removeLink(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg></button>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                                <button onClick={(e) => { e.stopPropagation(); addLink(); }} className="w-full border border-dashed border-cyber-secondary p-2 text-xs text-cyber-secondary hover:bg-cyber-secondary/10 transition-all uppercase">+ ADD UPLINK</button>
+                            </div>
+                        </section>
+
+                        {/* File Repository */}
+                        <section>
+                            <h3 className="text-cyber-success font-bold text-lg mb-3 uppercase tracking-wider flex items-center gap-2">
+                                <span className="text-xl">🗄️</span> FILES
+                            </h3>
+                            <div className="space-y-3">
+                                {files.map((file, idx) => (
+                                    <div key={idx} className="flex gap-2 items-center group">
+                                        <div className="bg-black/30 border border-cyber-secondary/30 p-3 rounded flex-1 flex justify-between items-center hover:bg-cyber-secondary/20 transition-all border-l-4 border-l-cyber-secondary overflow-hidden">
+                                            <div className="flex items-center gap-3 truncate">
+                                                <span className="text-xl">{getFileIcon(file.type)}</span>
+                                                <div className="flex flex-col truncate">
+                                                    <span className="font-bold text-cyber-secondary text-sm uppercase truncate">{file.name}</span>
+                                                    <span className="text-[10px] opacity-40 font-mono">{(file.size / 1024).toFixed(1)} KB | {file.uploaded_at}</span>
+                                                </div>
+                                            </div>
+                                            <a href={file.path} target="_blank" rel="noopener noreferrer" className="ml-4 p-2 bg-cyber-secondary/10 rounded hover:bg-cyber-secondary hover:text-black transition-colors" onClick={(e) => e.stopPropagation()}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M7.5 11.75 12 16.25l4.5-4.5M12 3v13.25" /></svg>
+                                            </a>
+                                        </div>
+                                        <button onClick={(e) => { e.stopPropagation(); removeFile(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg></button>
+                                    </div>
+                                ))}
+
+                                <input type="file" ref={fileInputRef} className="hidden" multiple onChange={handleFileChange} accept=".png,.jpg,.jpeg,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp" />
+                                <button onClick={(e) => { e.stopPropagation(); handleFileClick(); }} disabled={isUploading} className={`w-full border border-dashed border-cyber-secondary p-2 text-xs text-cyber-secondary hover:bg-cyber-secondary/10 transition-all uppercase ${isUploading ? 'opacity-50 animate-pulse' : ''}`}>
+                                    {isUploading ? '[ UPLOADING EVIDENCE... ]' : '+ ATTACH FILE'}
+                                </button>
+                            </div>
+                        </section>
+                    </div>
+
+                    {isSaving && (
+                        <div className="absolute bottom-4 left-4 text-[10px] font-mono text-cyber-primary animate-pulse">
+                            [ UPDATING PERSISTENT STORAGE... ]
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default DirectiveModal;

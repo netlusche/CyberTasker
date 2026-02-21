@@ -1,3 +1,21 @@
+# CyberTasker v2.1.0 - Deep Directives & Global Localization
+
+**Release Date:** 2026-02-22
+
+This major update introduces the `Deep Directives` protocol, allowing operatives to attach rich-text intelligence and physical assets to their tasks. Furthermore, the localization engine has been expanded beyond the React boundary to natively support the static HTML verification pages.
+
+## 📝 Deep Directives
+*   **Markdown Protocols**: Write extended mission intel with rich-text formatting directly inside directive modals using the integrated Markdown engine.
+*   **External Up-Links**: The system now parses and securely embeds external HTTPS links (`target="_blank"`) into protocol descriptions to maintain a secure sandbox.
+*   **Encrypted Asset Vault**: Upload mission-critical file attachments (images, documents) directly to the server (`uploads/` volume), linked exclusively to individual directives.
+*   **Asset Purging**: Directly manage and delete attached files from the frontend UI to maintain a lean encrypted payload.
+
+## 🌍 Static Localization Engine
+*   **Vanilla JS i18n Hydration**: The static authentication pages (`verify.html`, `reset-password.html`) now hydrate to the user's preferred language natively without booting the full React bundle, preserving microsecond load times.
+*   **Calendar Keys**: Injected the custom `calendar.clear_date` translation keys into all six European language payloads to ensure the CyberCalendar is 100% localized.
+
+---
+
 # CyberTasker v2.0.4 - Account Verification Hotfix
 
 **Release Date:** 2026-02-21

@@ -77,7 +77,19 @@
         },
         "placeholders": {
             "recovery_email": "COM-LINK (EMAIL) VOOR HERSTEL",
-            "access_code": "TOEGANGSCODE"
+            "access_code": "TOEGANGSCODE",
+            "new_pwd": "NIEUW PWD"
+        },
+        "static": {
+            "verification_title": "IDENTITEITSVERIFICATIE",
+            "establishing_uplink": "VEILIGE UPLINK TOT STAND BRENGEN...",
+            "missing_verification_token": "FOUT: VERIFICATIETOKEN ONTBREEKT.",
+            "proceed_to_login": "DOORGAAN NAAR LOGIN",
+            "verification_failed": "VERIFICATIE MISLUKT",
+            "connection_failed": "SYSTEEMFOUT: VERBINDING MISLUKT.",
+            "reset_title": "TOEGANGSSLEUTEL RESETTEN",
+            "override": "OVERSCHRIJVEN",
+            "missing_reset_token": "FOUT: RESETTOKEN ONTBREEKT."
         },
         "status": {
             "resyncing": "[ SYNCEN... ]",
@@ -192,6 +204,7 @@
         "due_date": "DEADLINE",
         "no_date": "GEEN DATUM",
         "status": "STATUS",
+        "details": "DETAILS",
         "page": "PAGINA",
         "cycle_category": "Klik om categorie te wisselen",
         "edit_directive": "Klik om te bewerken",
@@ -206,7 +219,17 @@
         "all_priorities": "ALLE PRIORITEITEN",
         "all_categories": "ALLE CATEGORIEËN",
         "overdue_only": "Te laat",
-        "default_suffix": "(Standaard)"
+        "default_suffix": "(Standaard)",
+        "dossier": {
+            "title": "RICHTLIJNEN DOSSIER",
+            "description": "PROTOCOL BESCHRIJVING",
+            "attachments": "BIJGEVOEGDE UPLINKS",
+            "add_link": "LINK TOEVOEGEN",
+            "edit_mode": "BEWERKINGSMODUS",
+            "read_mode": "LEESMODUS",
+            "save_success": "DOSSIER BIJGEWERKT",
+            "save_error": "UPLINK MISLUKT"
+        }
     },
     "help": {
         "title": "CYBER_TASKER OPERATIVE HANDBOEK",
@@ -249,6 +272,15 @@
                 "item4_text": "Klik op CATEGORIE of PRIORITEIT badges voor thematische selectie.",
                 "item5_label": "UITVOEREN",
                 "item5_text": "Markeer directieven als GEREED. Systeem levert NEON FEEDBACK bij voltooiing."
+            },
+            "deep_directives": {
+                "title": "// DIEPE DIRECTIEVEN [Dossier & Intel]",
+                "item1_label": "PROTOCOL BESCHRIJVING",
+                "item1_text": "Krijg toegang tot het OPERATIVE DOSSIER door op een actieve directieve te klikken. Codeer rich-text informatie met het Markdown-protocol om missieduidelijkheid te behouden.",
+                "item2_label": "UP-LINKS",
+                "item2_text": "Zet veilige neurale verbindingen op met externe datagrids via URL-bijlagen. Zorg voor juiste HTTPS-tunneling.",
+                "item3_label": "BESTANDSBIJLAGEN",
+                "item3_text": "Upload kritieke missiemiddelen direct naar de versleutelde kluis voor lokale beveiligde opslag."
             },
             "sort_order": {
                 "title": "// SORTEER PROTOCOL [Taakbeheer]",
@@ -311,7 +343,20 @@
                 "item2_label": "PERSISTENTE SYNC",
                 "item2_text": "Je visuele voorkeur wordt voor je neurale ID vastgezet voor alle sessies totdat een handmatige override wordt gestart.",
                 "item3_label": "TOEKOMSTIGE UITBREIDINGEN",
-                "item3_text": "Het grid is ontworpen voor uitbreiding. Nieuwe visuele modules worden toegevoegd aan de theme selector zodra ze zijn gecertificeerd voor operationeel gebruik."
+                "item3_text": "Het grid is ontworpen voor uitbreiding. Nieuwe visuele modules worden toegevoegd aan de theme selector zodra ze zijn gecertificeerd voor operationeel gebruik.",
+                "themes_title": "// BESCHIKBARE VISUELE MODULES",
+                "theme_cyberpunk": "CYBERPUNK — Het standaard neurale grid. Neon-cyaan bloedt door het donker. Je standaard operatieve interface. Blijf scherp, blijf verbonden.",
+                "theme_lcars": "LCARS — Bibliotheekcomputer Toegang/Ophaalsysteem. Het beste van Sterrenvloot. Afgeronde terminals, amber en goud. De ruimte is de uiteindelijke directief.",
+                "theme_matrix": "MATRIX — De coderegen liegt nooit. Groene fosfor-signalen pulseren door corrupte stilte. Je ziet het toch, nietwaar?",
+                "theme_weyland": "WEYLAND-YUTANI — Corporate amber brandt koud. Amber CRT-terminals, versleuteld door een corporatie die goden bouwde en ze producten noemde.",
+                "theme_robco": "PIP-BOY — RobCo Industries unified OS. Fosfor-groen terminal. Pre-oorlogs gecertificeerd. De woestenij draait op deze firmware.",
+                "theme_grid": "THE GRID — Trons digitale grens. Neon-blauwe lichtkringen razen over een oneindig rooster. Flynn bouwde iets dat nooit bedoeld was voor mensen.",
+                "theme_section9": "GHOST — Sectie 9 toestemming. Een geest zonder schaal. Teal hologrammen flikkeren over een minimalistisch donker vlak. Kusanagi zou het goedkeuren.",
+                "theme_outrun": "OUTRUN — 1984. Hete magenta zonnen zinken onder de synthwave horizon. Rijd snel, het neon slaapt niet. Retrowave sterft nooit.",
+                "theme_steampunk": "STEAMPUNK — Victoriaans ijzer en gepolijst messing. Tandwielen klikken in de mist. Een rijk aangedreven door stoom en geheimen. Een rijk aangedreven door stoom en geheimen. Je directieven, bezorgd per buizenpost.",
+                "theme_force": "FORCE — Een sterrenstelsel heel, heel ver weg. Rebel oranje gloeit tegen een sterrenveld. De lichte kant van het grid. Moge de richtlijn met je zijn.",
+                "theme_arrakis": "ARRAKIS — Woestijnkracht en specerij. Amberkleurige zonnen zakken weg boven een verschuivend landschap. Het grid stroomt met de specerij. Angst is de moordenaar van de geest.",
+                "theme_renaissance": "RENAISSANCE — Het cyber-gouden tijdperk. Amberkleurige zeshoeken pulseren in een zee van absoluut zwart. Een wereld van augmentaties und bedrijfsgoden. De mensheid verdeeld."
             },
             "danger_zone": {
                 "title": "// DANGER ZONE PROTOCOLLEN",
@@ -381,5 +426,8 @@
         "disable_2fa_confirm": "2FA UITSCHAKELEN VOOR {{username}}? Dit verwijdert secundaire verificatie-protocollen.",
         "2fa_disabled_msg": "2FA Uitgeschakeld voor {{username}}.",
         "disable_2fa_failed": "Uitschakelen 2FA mislukt"
+    },
+    "calendar": {
+        "clear_date": "DATUM WISSEN"
     }
 }

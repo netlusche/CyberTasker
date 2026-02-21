@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Share+Tech+Mono&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Orbitron:wght@400;700&family=Inter:wght@400;700&family=Cinzel:wght@400;700&family=IM+Fell+English&family=Rajdhani:wght@400;700&family=Michroma&family=VT323&family=Share+Tech+Mono&family=Outfit:wght@400;700&family=Righteous&display=swap');
 
 :root {
   /* Default Cyberpunk variables */
@@ -89,6 +89,24 @@
   --shadow-primary: 0 0 8px rgba(0, 255, 65, 0.6);
   --shadow-secondary: 0 0 8px rgba(0, 143, 17, 0.6);
   --shadow-accent: none;
+}
+
+/* Digital Rain Background for Matrix */
+.theme-matrix .cyber-grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ctext x='10' y='20' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.95'%3Eｱ%3C/text%3E%3Ctext x='10' y='40' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.8'%3Eｶ%3C/text%3E%3Ctext x='10' y='60' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.6'%3Eｻ%3C/text%3E%3Ctext x='10' y='80' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.4'%3Eﾀ%3C/text%3E%3Ctext x='50' y='30' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.9'%3Eﾅ%3C/text%3E%3Ctext x='50' y='50' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.7'%3Eﾊ%3C/text%3E%3Ctext x='50' y='70' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.5'%3Eﾏ%3C/text%3E%3Ctext x='100' y='10' fill='%2300ff41' font-family='monospace' font-size='14' opacity='1.0'%3Eﾔ%3C/text%3E%3Ctext x='100' y='30' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.85'%3Eﾗ%3C/text%3E%3Ctext x='100' y='50' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.7'%3Eﾜ%3C/text%3E%3Ctext x='150' y='40' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.9'%3E1%3C/text%3E%3Ctext x='150' y='60' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.8'%3E0%3C/text%3E%3Ctext x='200' y='25' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.85'%3EX%3C/text%3E%3Ctext x='250' y='45' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.75'%3EZ%3C/text%3E%3Ctext x='300' y='15' fill='%2300ff41' font-family='monospace' font-size='14' opacity='0.9'%3E@%3C/text%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  animation: matrix-rain 20s linear infinite;
+  opacity: 0.35;
+}
+
+@keyframes matrix-rain {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 0 300px;
+  }
 }
 
 .theme-weyland {
@@ -221,6 +239,33 @@
   font-family: 'Antonio', sans-serif !important;
 }
 
+/* =========================================
+   ROOT TYPOGRAPHY SCALING (Proportional rem)
+   ========================================= */
+html {
+  transition: font-size 0.3s ease;
+}
+
+/* VT323 is very narrow, scale UI up */
+html.theme-matrix,
+html.theme-robco {
+  font-size: 112.5%;
+  /* 18px base */
+}
+
+/* Serif headers can look bulky, scale down slightly */
+html.theme-arrakis {
+  font-size: 95%;
+  /* 15px base */
+}
+
+/* Michroma is extremely wide, scale UI down and tighten tracking */
+html.theme-renaissance {
+  font-size: 85%;
+  /* 13.6px base */
+}
+
+
 .theme-cyberpunk,
 .theme-cyberpunk * {
   font-family: 'Courier New', Courier, monospace !important;
@@ -236,11 +281,48 @@
   font-family: 'Share Tech Mono', monospace !important;
 }
 
+.theme-force,
+.theme-force * {
+  font-family: 'Rajdhani', sans-serif !important;
+}
+
+.theme-arrakis,
+.theme-arrakis * {
+  font-family: 'Cinzel', serif !important;
+}
+
+.theme-renaissance,
+.theme-renaissance * {
+  font-family: 'Michroma', sans-serif !important;
+  letter-spacing: -0.03em !important;
+}
+
+.theme-robco,
+.theme-robco * {
+  font-family: 'VT323', monospace !important;
+}
+
+.theme-grid,
+.theme-grid * {
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+.theme-outrun,
+.theme-outrun * {
+  font-family: 'Righteous', sans-serif !important;
+}
+
+.theme-section9,
+.theme-section9 * {
+  font-family: 'Outfit', sans-serif !important;
+}
+
 body,
 .theme-cyberpunk,
 .theme-lcars,
 .theme-matrix,
-.theme-weyland {
+.theme-weyland,
+.theme-steampunk {
   /* These variables re-evaluate the static Tailwind @theme colors cleanly inside the body scope */
   --color-cyber-primary: var(--theme-primary);
   --color-cyber-secondary: var(--theme-secondary);
@@ -458,7 +540,6 @@ body.theme-robco {
   --cyber-warning: #ffff00;
   --cyber-accent: #00ff00;
   --cyber-text: #1aff1a;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 body.theme-robco .card-cyber {
@@ -492,7 +573,6 @@ body.theme-grid {
   --cyber-warning: #ffcc00;
   --cyber-accent: #00ffff;
   --cyber-text: #6fc3df;
-  font-family: 'Inter', sans-serif;
 }
 
 body.theme-grid .card-cyber {
@@ -512,7 +592,6 @@ body.theme-section9 {
   --cyber-warning: #f57900;
   --cyber-accent: #888a85;
   --cyber-text: #eeeeec;
-  font-family: 'Outfit', sans-serif;
 }
 
 body.theme-section9 .card-cyber {
@@ -531,11 +610,520 @@ body.theme-outrun {
   --cyber-warning: #ffff66;
   --cyber-accent: #f0f;
   --cyber-text: #fff;
-  font-family: 'Inter', sans-serif;
 }
 
 body.theme-outrun .card-cyber {
   background: rgba(45, 0, 89, 0.8);
   border: 2px solid;
   border-image: linear-gradient(to right, #ff00ff, #00ffff) 1;
+}
+
+/* ============================================================
+   STEAMPUNK THEME — Victorian Industrial Brass & Mahogany
+   ============================================================ */
+
+/* Variables */
+body.theme-steampunk {
+  --theme-bg: #1a0f08;
+  --theme-surface: #261508;
+  --theme-border: #6b4226;
+  --theme-primary: #c8882a;
+  /* Burnished Brass */
+  --theme-secondary: #8b4513;
+  /* Rich Copper / SaddleBrown */
+  --theme-success: #7fba5c;
+  /* Verdigris Green */
+  --theme-accent: #d4af37;
+  /* Gold */
+  --theme-danger: #b22222;
+  /* Firebrick */
+  --theme-warning: #e09c25;
+  /* Amber */
+  --theme-info: #a0522d;
+  /* Sienna */
+  --theme-card: rgba(32, 18, 6, 0.88);
+  --theme-text: #e8d5a3;
+  /* Aged parchment */
+  --theme-text-muted: #9e7d57;
+  --theme-font: 'IM Fell English', 'Cinzel', Georgia, serif;
+  --theme-radius: 0.25rem;
+
+  /* Brass/copper glow shadows */
+  --shadow-primary: 0 0 8px rgba(200, 136, 42, 0.6), 0 0 18px rgba(200, 136, 42, 0.3);
+  --shadow-secondary: 0 0 8px rgba(139, 69, 19, 0.6);
+  --shadow-accent: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 22px rgba(212, 175, 55, 0.2);
+  --shadow-danger: 0 0 8px rgba(178, 34, 34, 0.6);
+
+  /* Color aliases for Tailwind @theme */
+  --color-cyber-primary: var(--theme-primary);
+  --color-cyber-secondary: var(--theme-secondary);
+  --color-cyber-success: var(--theme-success);
+  --color-cyber-accent: var(--theme-accent);
+  --color-cyber-danger: var(--theme-danger);
+  --color-cyber-warning: var(--theme-warning);
+  --color-cyber-info: var(--theme-info);
+  --color-cyber-card: var(--theme-card);
+  --cyber-bg: var(--theme-bg);
+  --cyber-surface: var(--theme-surface);
+  --cyber-border: var(--theme-border);
+
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  font-family: var(--theme-font);
+}
+
+/* ==========================================================================
+   FORCE THEME (Star Wars)
+   ========================================================================== */
+body.theme-force {
+  --theme-bg: #05070a;
+  --theme-surface: #0f1218;
+  --theme-border: #2a2e35;
+  --theme-primary: #cc4422;
+  /* Rebel Orange */
+  --theme-secondary: #34e2e2;
+  /* Hologram Cyan */
+  --theme-success: #4caf50;
+  --theme-accent: #cc4422;
+  --theme-card: rgba(15, 18, 24, 0.9);
+  --theme-font: 'Rajdhani', sans-serif;
+  --theme-radius: 0.25rem;
+
+  --color-cyber-primary: var(--theme-primary);
+  --color-cyber-secondary: var(--theme-secondary);
+  --color-cyber-success: var(--theme-success);
+  --color-cyber-accent: var(--theme-accent);
+  --color-cyber-danger: #ff4444;
+  --color-cyber-warning: #ffaa00;
+  --color-cyber-info: var(--theme-secondary);
+  --color-cyber-card: var(--theme-card);
+  --cyber-bg: var(--theme-bg);
+  --cyber-surface: var(--theme-surface);
+  --cyber-border: var(--theme-border);
+
+  background-color: var(--theme-bg);
+  color: #e2e8f0;
+  font-family: var(--theme-font);
+}
+
+/* Base card refinements */
+body.theme-force .card-cyber {
+  background: rgba(15, 18, 24, 0.95);
+  border: 1px solid rgba(52, 226, 226, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 10px rgba(204, 68, 34, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Split "Saber" border fringe */
+body.theme-force .card-cyber::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #cc4422, #34e2e2);
+  opacity: 0.6;
+}
+
+/* Button Refinements — The "Saber" Glow */
+body.theme-force .btn-cyber-primary {
+  background: #cc4422 !important;
+  color: #fff !important;
+  border: 1px solid #ff6633 !important;
+  box-shadow: 0 0 15px rgba(204, 68, 34, 0.5), inset 0 0 8px rgba(255, 255, 255, 0.2) !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+body.theme-force .btn-cyber-primary:hover {
+  box-shadow: 0 0 25px rgba(204, 68, 34, 0.8), inset 0 0 12px rgba(255, 255, 255, 0.4) !important;
+  transform: scale(1.03);
+}
+
+body.theme-force .btn-cyber-secondary {
+  background: transparent !important;
+  color: #34e2e2 !important;
+  border: 1px solid #34e2e2 !important;
+  box-shadow: 0 0 10px rgba(52, 226, 226, 0.3) !important;
+}
+
+/* Alert Overlays — Holographic Scanlines */
+.theme-force .modal-overlay-cyber {
+  background: rgba(5, 7, 10, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.theme-force .modal-overlay-cyber::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(52, 226, 226, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body.theme-force .cyber-grid {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 80px 120px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 150px 190px, #eee, rgba(0, 0, 0, 0));
+  background-size: 200px 200px;
+  animation: starfield 120s linear infinite;
+  opacity: 0.25;
+}
+
+@keyframes starfield {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -200px -200px;
+  }
+}
+
+/* ==========================================================================
+   ARRAKIS THEME (Dune)
+   ========================================================================== */
+body.theme-arrakis {
+  --theme-bg: #1c1917;
+  --theme-surface: #2e1001;
+  /* Deep Spice */
+  --theme-border: #78350f;
+  --theme-primary: #d97706;
+  /* Spice Orange */
+  --theme-secondary: #f59e0b;
+  --theme-success: #84cc16;
+  --theme-accent: #fbbf24;
+  --theme-card: rgba(46, 16, 1, 0.85);
+  --theme-font: 'Cinzel', serif;
+  --theme-radius: 0px;
+
+  --color-cyber-primary: var(--theme-primary);
+  --color-cyber-secondary: var(--theme-secondary);
+  --color-cyber-success: var(--theme-success);
+  --color-cyber-accent: var(--theme-accent);
+  --color-cyber-danger: #991b1b;
+  --color-cyber-warning: #d97706;
+  --color-cyber-info: #78350f;
+  --color-cyber-card: var(--theme-card);
+  --cyber-bg: var(--theme-bg);
+  --cyber-surface: var(--theme-surface);
+  --cyber-border: var(--theme-border);
+
+  background-color: var(--theme-bg);
+  color: #fef3c7;
+  font-family: var(--theme-font);
+}
+
+/* Card Refinements — Heat Shimmer Walls */
+body.theme-arrakis .card-cyber {
+  background: rgba(46, 16, 1, 0.9);
+  border: 1px solid #78350f;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(217, 119, 6, 0.1);
+  position: relative;
+}
+
+body.theme-arrakis .card-cyber::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, transparent, rgba(217, 119, 6, 0.2), transparent);
+  background-size: 200% 200%;
+  animation: spice-shimmer 8s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes spice-shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
+/* Button Refinements — Spice Radiance */
+body.theme-arrakis .btn-cyber-primary {
+  background: #d97706 !important;
+  color: #000 !important;
+  border: 1px solid #fbbf24 !important;
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2) !important;
+  font-weight: 900 !important;
+}
+
+body.theme-arrakis .btn-cyber-primary:hover {
+  background: #fbbf24 !important;
+  box-shadow: 0 0 35px rgba(217, 119, 6, 0.7) !important;
+}
+
+/* Modal Overlay — Dusty Desert Air */
+.theme-arrakis .modal-overlay-cyber {
+  background: rgba(28, 25, 23, 0.9);
+}
+
+.theme-arrakis .modal-overlay-cyber::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+body.theme-arrakis .cyber-grid {
+  background: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.1) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23f)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 200px 200px;
+  animation: heat-shimmer 15s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes heat-shimmer {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.02);
+  }
+}
+
+/* ==========================================================================
+   RENAISSANCE THEME (Deus Ex)
+   ========================================================================== */
+body.theme-renaissance {
+  --theme-bg: #000000;
+  --theme-surface: #0a0a0a;
+  --theme-border: #221a05;
+  --theme-primary: #ffb000;
+  /* Amber Gold */
+  --theme-secondary: #d4af37;
+  --theme-success: #ffd700;
+  --theme-accent: #ffb000;
+  --theme-card: rgba(10, 10, 10, 0.95);
+  --theme-font: 'Michroma', sans-serif;
+  --theme-radius: 0.5rem;
+
+  --color-cyber-primary: var(--theme-primary);
+  --color-cyber-secondary: var(--theme-secondary);
+  --color-cyber-success: var(--theme-success);
+  --color-cyber-accent: var(--theme-accent);
+  --color-cyber-danger: #f43f5e;
+  --color-cyber-warning: #fbbf24;
+  --color-cyber-info: #3b82f6;
+  --color-cyber-card: var(--theme-card);
+  --cyber-bg: var(--theme-bg);
+  --cyber-surface: var(--theme-surface);
+  --cyber-border: var(--theme-border);
+
+  background-color: var(--theme-bg);
+  color: #ffffff;
+  font-family: var(--theme-font);
+}
+
+/* Card Refinements — Geometric Gold Edge */
+body.theme-renaissance .card-cyber {
+  background: rgba(10, 10, 10, 0.98);
+  border: 1px solid #221a05;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(255, 176, 0, 0.02);
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+
+body.theme-renaissance .card-cyber:hover {
+  border-color: #ffb000;
+}
+
+/* 45-degree highlight corners */
+body.theme-renaissance .card-cyber::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(225deg, #ffb000 0%, transparent 40%);
+  opacity: 0.3;
+}
+
+/* Button Refinements — Augmented Gold */
+body.theme-renaissance .btn-cyber-primary {
+  background: #ffb000 !important;
+  color: #000 !important;
+  border: none !important;
+  box-shadow: 2px 2px 0px #d4af37, 0 0 15px rgba(255, 176, 0, 0.4) !important;
+  clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+}
+
+body.theme-renaissance .btn-cyber-primary:hover {
+  box-shadow: 4px 4px 0px #d4af37, 0 0 25px rgba(255, 176, 0, 0.6) !important;
+  transform: translate(-1px, -1px);
+}
+
+/* Modal Overlay — Hex Pulse Sea */
+.theme-renaissance .modal-overlay-cyber {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+.theme-renaissance .modal-overlay-cyber::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='35' viewBox='0 0 40 35' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17.5L10 0h20l10 17.5L30 35H10L0 17.5z' fill='none' stroke='%23ffb000' stroke-opacity='0.08' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 80px 70px;
+  animation: bg-pulse-gold 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+body.theme-renaissance .cyber-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='35' viewBox='0 0 40 35' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17.5L10 0h20l10 17.5L30 35H10L0 17.5z' fill='none' stroke='%23ffb000' stroke-opacity='0.15' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 35px;
+  animation: bg-pulse-gold 6s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+@keyframes bg-pulse-gold {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+
+/* Global font override */
+.theme-steampunk,
+.theme-steampunk * {
+  font-family: 'IM Fell English', 'Cinzel', Georgia, serif !important;
+}
+
+/* Atmospheric vignette + aged paper grain overlay */
+.theme-steampunk::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse at center, transparent 40%, rgba(10, 4, 0, 0.55) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Cards — riveted brass panel look */
+body.theme-steampunk .card-cyber {
+  background: linear-gradient(135deg, #261508 0%, #1a0f08 100%);
+  border: 1px solid #6b4226;
+  box-shadow:
+    0 0 0 1px #3d2010,
+    inset 0 0 20px rgba(200, 136, 42, 0.06),
+    0 4px 20px rgba(0, 0, 0, 0.7);
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+/* Rivets in card corners */
+body.theme-steampunk .card-cyber::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle 3px at 8px 8px, #c8882a 100%, transparent 100%),
+    radial-gradient(circle 3px at calc(100% - 8px) 8px, #c8882a 100%, transparent 100%),
+    radial-gradient(circle 3px at 8px calc(100% - 8px), #c8882a 100%, transparent 100%),
+    radial-gradient(circle 3px at calc(100% - 8px) calc(100% - 8px), #c8882a 100%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Buttons — forged brass */
+body.theme-steampunk .btn-cyber-primary {
+  background: linear-gradient(135deg, #c8882a 0%, #9a631c 100%) !important;
+  color: #1a0f08 !important;
+  border: 1px solid #d4af37 !important;
+  box-shadow: 0 0 8px rgba(200, 136, 42, 0.4), inset 0 1px 0 rgba(255, 220, 100, 0.2) !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  font-weight: bold !important;
+  letter-spacing: 0.1em !important;
+  transition: all 0.2s ease !important;
+}
+
+body.theme-steampunk .btn-cyber-primary:hover {
+  background: linear-gradient(135deg, #d4a040 0%, #b07825 100%) !important;
+  box-shadow: 0 0 14px rgba(200, 136, 42, 0.7), inset 0 1px 0 rgba(255, 220, 100, 0.3) !important;
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+body.theme-steampunk .btn-cyber-secondary {
+  background: linear-gradient(135deg, #8b4513 0%, #6b3310 100%) !important;
+  color: #e8d5a3 !important;
+  border: 1px solid #c8882a !important;
+  box-shadow: 0 0 6px rgba(139, 69, 19, 0.4) !important;
+}
+
+/* Inputs — dark iron with brass border */
+body.theme-steampunk .input-cyber {
+  background: #130c04 !important;
+  border: 1px solid #6b4226 !important;
+  color: #e8d5a3 !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.theme-steampunk .input-cyber:focus {
+  border-color: #c8882a !important;
+  box-shadow: 0 0 10px rgba(200, 136, 42, 0.4), inset 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Scrollbar — rusty iron track, brass thumb */
+.theme-steampunk .custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-steampunk .custom-scrollbar::-webkit-scrollbar-track {
+  background: #130c04;
+  border-left: 1px solid #3d2010;
+}
+
+.theme-steampunk .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c8882a 0%, #8b5a20 100%);
+  border-radius: 2px;
+  border: 1px solid #d4af37;
+  box-shadow: 0 0 4px rgba(200, 136, 42, 0.5);
+}
+
+.theme-steampunk .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d4af37 0%, #c8882a 100%);
+}
+
+/* Hide cyber grid — replace with subtle rivet grid feel */
+.theme-steampunk .cyber-grid {
+  background-image:
+    linear-gradient(rgba(107, 66, 38, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 66, 38, 0.08) 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
+}
+
+/* Priority badges — use warm metal hues */
+.theme-steampunk .priority-select-border {
+  border-color: #c8882a !important;
 }

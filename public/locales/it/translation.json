@@ -77,7 +77,19 @@
         },
         "placeholders": {
             "recovery_email": "COM-LINK (EMAIL) PER RECUPERO",
-            "access_code": "CODICE DI ACCESSO"
+            "access_code": "CODICE DI ACCESSO",
+            "new_pwd": "NUOVA PWD"
+        },
+        "static": {
+            "verification_title": "VERIFICA IDENTITÀ",
+            "establishing_uplink": "STABILIMENTO UPLINK SICURO...",
+            "missing_verification_token": "ERRORE: TOKEN DI VERIFICA MANCANTE.",
+            "proceed_to_login": "PROCEDI AL LOGIN",
+            "verification_failed": "VERIFICA FALLITA",
+            "connection_failed": "ERRORE DI SISTEMA: CONNESSIONE FALLITA.",
+            "reset_title": "REIMPOSTA CHIAVE DI ACCESSO",
+            "override": "SOVRASCRIVI",
+            "missing_reset_token": "ERRORE: TOKEN DI REIMPOSTAZIONE MANCANTE."
         },
         "status": {
             "resyncing": "[ SINCRONIZZAZIONE... ]",
@@ -192,6 +204,7 @@
         "due_date": "SCADENZA",
         "no_date": "SENZA DATA",
         "status": "STATO",
+        "details": "DETTAGLI",
         "page": "PAGINA",
         "cycle_category": "Click per cambiare categoria",
         "edit_directive": "Click per modificare",
@@ -206,7 +219,17 @@
         "all_priorities": "TUTTE LE PRIORITÀ",
         "all_categories": "TUTTE LE CATEGORIE",
         "overdue_only": "In ritardo",
-        "default_suffix": "(Default)"
+        "default_suffix": "(Default)",
+        "dossier": {
+            "title": "DOSSIER DIRETTIVE",
+            "description": "DESCRIZIONE PROTOCOLLO",
+            "attachments": "UPLINK ALLEGATI",
+            "add_link": "AGGIUNGI COLLEGAMENTO",
+            "edit_mode": "MODALITÀ EDITING",
+            "read_mode": "MODALITÀ LETTURA",
+            "save_success": "DOSSIER AGGIORNATO",
+            "save_error": "UPLINK FALLITO"
+        }
     },
     "help": {
         "title": "CYBER_TASKER MANUALE OPERATIVO",
@@ -249,6 +272,15 @@
                 "item4_text": "Click sui badge CATEGORIA o PRIORITÀ per la selezione tematica.",
                 "item5_label": "ESEGUI",
                 "item5_text": "Segna le direttive come FATTO. Il sistema fornisce FEEDBACK NEON al completamento."
+            },
+            "deep_directives": {
+                "title": "// DIRETTIVE PROFONDE [Dossier e Intel]",
+                "item1_label": "DESCRIZIONE DEL PROTOCOLLO",
+                "item1_text": "Accedi al DOSSIER OPERATIVO cliccando su qualsiasi direttiva attiva. Codifica informazioni in rich-text utilizzando il protocollo Markdown per mantenere la chiarezza della missione.",
+                "item2_label": "UP-LINKS",
+                "item2_text": "Stabilisci connessioni neurali sicure a griglie di dati esterne tramite allegati URL. Assicurati il corretto tunneling HTTPS.",
+                "item3_label": "ALLEGATI FILE",
+                "item3_text": "Carica asset critici della missione direttamente nel caveau crittografato per un'archiviazione locale sicura."
             },
             "sort_order": {
                 "title": "// PROTOCOLLO DI ORDINE [Gestione]",
@@ -311,7 +343,20 @@
                 "item2_label": "SYNC PERSISTENTE",
                 "item2_text": "La tua preferenza visuale è bloccata sul tuo ID neurale per tutte le sessioni fino a quando non viene avviato un override manuale.",
                 "item3_label": "ESTENSIONI FUTURE",
-                "item3_text": "La rete è architettata per l'espansione. Nuovi moduli visuali saranno distribuiti nel selettore di temi man mano che saranno certificati per l'uso operativo."
+                "item3_text": "La rete è architettata per l'espansione. Nuovi moduli visuali saranno distribuiti nel selettore di temi man mano che saranno certificati per l'uso operativo.",
+                "themes_title": "// MODULI VISIVI DISPONIBILI",
+                "theme_cyberpunk": "CYBERPUNK — La griglia neurale predefinita. Il ciano al neon trasuda nel buio. La tua interfaccia operativa standard. Resta affilato, resta connesso.",
+                "theme_lcars": "LCARS — Sistema di accesso e recupero della biblioteca informatica. Il meglio della Flotta Stellare. Terminali arrotondati, ambra e oro. Lo spazio è la direttiva finale.",
+                "theme_matrix": "MATRIX — La pioggia di codice non mente mai. I segnali al fosforo verde pulsano attraverso il silenzio corrotto. Lo vedi, vero?",
+                "theme_weyland": "WEYLAND-YUTANI — L'ambra aziendale brucia fredda. Terminali CRT ambrati, crittografati da una corporazione che costruì dei e li chiamò prodotti.",
+                "theme_robco": "PIP-BOY — OS unificato di RobCo Industries. Terminale al fosforo verde. Certificato pre-guerra. Le terre desolate girano su questo firmware.",
+                "theme_grid": "THE GRID — La frontiera digitale di Tron. Cicli di luce blu al neon attraversano un reticolo infinito. Flynn ha costruito qualcosa che non era mai stato pensato per gli umani.",
+                "theme_section9": "GHOST — Autorizzazione Sezione 9. Un fantasma senza guscio. Olografici verde acqua tremolano su un piano scuro minimalista. Kusanagi approverebbe.",
+                "theme_outrun": "OUTRUN — 1984. Soli magenta intensi tramontano sotto l'orizzonte synthwave. Guida veloce, il neon non dorme mai. La Retrowave non muore mai.",
+                "theme_steampunk": "STEAMPUNK — Ferro vittoriano e ottone lucido. Gli ingranaggi scattano nella nebbia. Un impero alimentato dal vapore e dai segreti. Le tue direttive, consegnate tramite tubo pneumatico.",
+                "theme_force": "FORCE — Una galassia lontana lontana. L'arancione ribelle brilla contro un campo di stelle. Il lato chiaro della rete. Che la direttiva sia con te.",
+                "theme_arrakis": "ARRAKIS — Potere del deserto e spezia. Soli d'ambra tramontano su un paesaggio mutevole. La rete scorre con la spezia. La paura è l'assassina della mente.",
+                "theme_renaissance": "RENAISSANCE — L'era del cyber-oro. Esagoni d'ambra pulsano in un mare di nero assoluto. Un mondo di potenziamenti e dei corporativi. L'umanità divisa."
             },
             "danger_zone": {
                 "title": "// PROTOCOLLI ZONA DI PERICOLO",
@@ -381,5 +426,8 @@
         "disable_2fa_confirm": "DISATTIVARE 2FA PER {{username}}? Rimuove i protocolli di verifica secondaria.",
         "2fa_disabled_msg": "2FA Disattivato per {{username}}.",
         "disable_2fa_failed": "Disattivazione 2FA fallita"
+    },
+    "calendar": {
+        "clear_date": "CANCELLA DATA"
     }
 }

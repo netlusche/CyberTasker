@@ -1,3 +1,30 @@
+# CyberTasker Server Update Instructions (v2.0.4 → v2.1.0)
+
+These instructions guide you through the update to **v2.1.0** (Deep Directives).
+
+## 1. Backup (MANDATORY)
+- **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory to prevent data loss.
+
+## 2. Deploy Files
+1.  Upload the contents of the `dist` folder to your server.
+2.  Ensure that the server automatically applies `0777` or appropriate write-permissions to the newly created `uploads/` folder so the backend can accept `multipart/form-data` uploads.
+3.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
+
+## 3. Database Update
+This update introduces a new `files` schema vector (JSON Array) to the `tasks` table.
+1.  Navigate to your installer URL: `https://yourdomain.com/tasks/api/install.php`
+2.  The script will automatically detect the missing `files` column and append it to your active SQLite or MySQL database.
+3.  **Verification**: Ensure the "Database Schema Updated: files column added" message appears.
+4.  **Security Note**: Delete `api/install.php` after verification.
+
+## 4. Verify Update
+1.  **Deep Directives Check**: Create a new task and click on it. You should see the new Markdown description area and the File Upload dropzone.
+2.  **External Link Test**: Paste a URL like `https://example.com` into the description and verify it becomes clickable.
+3.  **File Upload Test**: Successfully upload any test `.jpg` or `.png` to the directive and delete it again.
+4.  **Static Localization**: Open `verify.html` directly in the browser after changing your language in the app to verify it reflects the native localized texts.
+
+---
+
 # CyberTasker Server Update Instructions (v1.9.4 → v2.0.0)
 
 These instructions guide you through the major migration to **v2.0.0**.

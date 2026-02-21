@@ -18,15 +18,24 @@ $taskRepo = new TaskRepository($pdo);
 echo "Starting Seed Process for CyberTasker Test Suites...\n";
 echo "====================================================\n\n";
 
-// Helper: Clear old test data
-echo "Cleaning up prior test artifacts...\n";
-$stmt = $pdo->query("SELECT id FROM users WHERE username LIKE 'Admin_Alpha%' OR username LIKE 'Op_Beta%' OR username LIKE 'Test_User_%'");
-$usersToDelete = $stmt->fetchAll(PDO::FETCH_COLUMN);
+// Helper: Clear ALL data for a deterministic baseline
+echo "Performing hard reset of test environment...\n";
+$pdo->exec("DELETE FROM tasks");
+$pdo->exec("DELETE FROM user_categories");
+$pdo->exec("DELETE FROM user_stats");
+$pdo->exec("DELETE FROM auth_logs");
+$pdo->exec("DELETE FROM users");
 
-foreach ($usersToDelete as $uId) {
-    $userRepo->deleteAccount($uId);
+// For SQLite, reset auto-increment counters to ensure ID-based tests are stable
+if ($pdo->getAttribute(PDO::ATTR_DRIVER_NAME) === 'sqlite') {
+    try {
+        $pdo->exec("DELETE FROM sqlite_sequence WHERE name IN ('users', 'tasks', 'user_categories', 'user_stats', 'auth_logs')");
+    }
+    catch (Exception $e) {
+    // Table might not exist yet if fresh, ignore
+    }
 }
-echo "Purged " . count($usersToDelete) . " existing test users.\n\n";
+echo "Full database purge complete.\n\n";
 
 // 1. Create Admin_Alpha
 echo "1. Generating Admin_Alpha...\n";

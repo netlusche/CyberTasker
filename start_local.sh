@@ -5,7 +5,7 @@ lsof -ti:5174 | xargs kill -9 2>/dev/null
 pkill -f "php -S localhost:8000"
 
 echo "Starting PHP Server on port 8000..."
-php -S 127.0.0.1:8000 router.php > php_server.log 2>&1 &
+php -d post_max_size=64M -d upload_max_filesize=64M -S 127.0.0.1:8000 router.php > php_server.log 2>&1 &
 PHP_PID=$!
 sleep 2
 

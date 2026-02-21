@@ -1,0 +1,233 @@
+[2026-02-21 22:07:50] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CYBER_TASKER // IDENTITY VERIFICATION'
+[2026-02-21 22:10:28] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CyberTasker Password Reset'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CyberTasker Password Reset</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #00ffff; text-decoration: none; }
+            a:hover { text-decoration: underline; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='http://localhost:5174/reset-password.html?token=855c65052740c9e75b275f97fe18b52fcd94478d9a523a82b4045130a80be488'>http://localhost:5174/reset-password.html?token=855c65052740c9e75b275f97fe18b52fcd94478d9a523a82b4045130a80be488</a><br><br>This link self-destructs in 60 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+
+[2026-02-21 22:12:38] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CyberTasker Password Reset'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CyberTasker Password Reset</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #00ffff; text-decoration: none; }
+            a:hover { text-decoration: underline; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='http://localhost:5174/reset-password.html?token=97876daa70f40ab543ec594d8690aa7d19550ea6567ff112ef68c0e03d15dba4'>http://localhost:5174/reset-password.html?token=97876daa70f40ab543ec594d8690aa7d19550ea6567ff112ef68c0e03d15dba4</a><br><br>This link self-destructs in 60 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+
+[2026-02-21 22:24:01] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CyberTasker Password Reset'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CyberTasker Password Reset</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #3b82f6; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; color: #60a5fa; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='http://localhost:5174/reset-password.html?token=b4e49a3457a89eb47f4fc1e541ea4b9c87b181013a31b2068742ca8b9421ef4e'>http://localhost:5174/reset-password.html?token=b4e49a3457a89eb47f4fc1e541ea4b9c87b181013a31b2068742ca8b9421ef4e</a><br><br>This link self-destructs in 60 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+
+[2026-02-21 22:38:24] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CyberTasker Password Reset'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CyberTasker Password Reset</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #3b82f6; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; color: #60a5fa; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='http://localhost:5174/reset-password.html?token=076e659fc5998f8b6ab6623ed353626926d104fc3ed946105680927aa7b9cd10'>http://localhost:5174/reset-password.html?token=076e659fc5998f8b6ab6623ed353626926d104fc3ed946105680927aa7b9cd10</a><br><br>This link self-destructs in 60 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+
+[2026-02-21 22:40:08] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CyberTasker Password Reset'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CyberTasker Password Reset</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #3b82f6; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; color: #60a5fa; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='http://localhost:5174/reset-password.html?token=2d02bfffe398f747c4cedfa192a7110f3d72c104507f4ad03ba3a8dcc9225c62'>http://localhost:5174/reset-password.html?token=2d02bfffe398f747c4cedfa192a7110f3d72c104507f4ad03ba3a8dcc9225c62</a><br><br>This link self-destructs in 60 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+
+[2026-02-21 22:54:47] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CYBER_TASKER // EMERGENCY OVERRIDE CODE'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CYBER_TASKER // EMERGENCY OVERRIDE CODE</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #3b82f6; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; color: #60a5fa; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #00ffff;'>263989</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+
+[2026-02-21 22:56:01] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CYBER_TASKER // EMERGENCY OVERRIDE CODE'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CYBER_TASKER // EMERGENCY OVERRIDE CODE</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #3b82f6; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; color: #60a5fa; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #00ffff;'>314308</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+
+[2026-02-21 22:56:57] MAIL_HELPER: Successfully sent email to test2@user.de with subject 'CYBER_TASKER // EMERGENCY OVERRIDE CODE'
+--- EMAIL BODY ---
+
+    <html>
+    <head>
+        <title>CYBER_TASKER // EMERGENCY OVERRIDE CODE</title>
+        <style>
+            body { font-family: 'Courier New', monospace; background-color: #0d0d0d; color: #00ff9d; padding: 20px; }
+            .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
+            h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
+            .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
+            a { color: #3b82f6; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; color: #60a5fa; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <p>Operative testuser2,<br><br>A restricted access signal is required for neural link establishment.<br>Use this code to verify your identity:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #00ffff;'>736197</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes.</p>
+            <div class='footer'>
+                SECURE CHANNEL ESTABLISHED.<br>
+                ORIGIN: CYBER_TASKER_CORE
+            </div>
+        </div>
+    </body>
+    </html>
+    
+------------------
+

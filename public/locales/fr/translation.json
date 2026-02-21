@@ -77,7 +77,19 @@
         },
         "placeholders": {
             "recovery_email": "COM-LINK (EMAIL) POUR RÉCUPÉRATION",
-            "access_code": "CODE D'ACCÈS"
+            "access_code": "CODE D'ACCÈS",
+            "new_pwd": "NOUVEAU MDP"
+        },
+        "static": {
+            "verification_title": "VÉRIFICATION D'IDENTITÉ",
+            "establishing_uplink": "ÉTABLISSEMENT DE LA LIAISON SÉCURISÉE...",
+            "missing_verification_token": "ERREUR : JETON DE VÉRIFICATION MANQUANT.",
+            "proceed_to_login": "PROCÉDER À LA CONNEXION",
+            "verification_failed": "ÉCHEC DE LA VÉRIFICATION",
+            "connection_failed": "ERREUR SYSTÈME : ÉCHEC DE LA CONNEXION.",
+            "reset_title": "RÉINITIALISER LA CLÉ D'ACCÈS",
+            "override": "REMPLACER",
+            "missing_reset_token": "ERREUR : JETON DE RÉINITIALISATION MANQUANT."
         },
         "status": {
             "resyncing": "[ SYNCHRONISATION... ]",
@@ -190,8 +202,9 @@
         "priority": "PRIORITÉ",
         "category": "CATÉGORIE",
         "due_date": "ÉCHÉANCE",
-        "no_date": "PAS DE DATE",
+        "no_date": "SANS DATE",
         "status": "STATUT",
+        "details": "DÉTAILS",
         "page": "PAGE",
         "cycle_category": "Cliquez pour changer de catégorie",
         "edit_directive": "Cliquez pour éditer",
@@ -206,7 +219,17 @@
         "all_priorities": "TOUTES PRIORITÉS",
         "all_categories": "TOUTES CATÉGORIES",
         "overdue_only": "En retard",
-        "default_suffix": "(Défaut)"
+        "default_suffix": "(Défaut)",
+        "dossier": {
+            "title": "DOSSIER DES DIRECTIVES",
+            "description": "DESCRIPTION DU PROTOCOLE",
+            "attachments": "UPLINKS JOINTS",
+            "add_link": "AJOUTER UN LIEN",
+            "edit_mode": "MODE ÉDITION",
+            "read_mode": "MODE LECTURE",
+            "save_success": "DOSSIER MIS À JOUR",
+            "save_error": "ÉCHEC DE L'UPLINK"
+        }
     },
     "help": {
         "title": "CYBER_TASKER MANUEL OPÉRATIF",
@@ -249,6 +272,15 @@
                 "item4_text": "Cliquez sur les badges CATÉGORIE ou PRIORITÉ pour une sélection thématique.",
                 "item5_label": "EXÉCUTER",
                 "item5_text": "Marquez les directives comme FAIT. Le système fournit un FEEDBACK NÉON à la fin."
+            },
+            "deep_directives": {
+                "title": "// DIRECTIVES PROFONDES [Dossier & Intel]",
+                "item1_label": "DESCRIPTION DU PROTOCOLE",
+                "item1_text": "Accédez au DOSSIER OPÉRATIF en cliquant sur n'importe quelle directive active. Encodez des données en texte enrichi à l'aide du protocole Markdown pour maintenir la clarté de la mission.",
+                "item2_label": "UP-LINKS",
+                "item2_text": "Établissez des connexions neurales sécurisées avec des grilles de données externes via des liens URL. Assurez un tunnel HTTPS approprié.",
+                "item3_label": "PIÈCES JOINTES",
+                "item3_text": "Téléchargez les ressources critiques de la mission directement dans le coffre-fort crypté pour un stockage local sécurisé."
             },
             "sort_order": {
                 "title": "// PROTOCOLE DE TRI [Gestion]",
@@ -311,7 +343,20 @@
                 "item2_label": "SYNC PERSISTANTE",
                 "item2_text": "Votre préférence visuelle est verrouillée sur votre identifiant neural sur toutes les sessions jusqu'à ce qu'un override manuel soit initié.",
                 "item3_label": "EXTENSIONS FUTURES",
-                "item3_text": "La grille est architecturée pour l'expansion. De nouveaux modules visuels seront déployés dans le sélecteur de thèmes dès qu'ils seront certifiés pour une utilisation opérationnelle."
+                "item3_text": "La grille est architecturée pour l'expansion. De nouveaux modules visuels seront déployés dans le sélecteur de thèmes dès qu'ils seront certifiés pour une utilisation opérationnelle.",
+                "themes_title": "// MODULES VISUELS DISPONIBLES",
+                "theme_cyberpunk": "CYBERPUNK — La grille neurale par défaut. Le cyan néon saigne dans l'obscurité. Votre interface opérative standard. Restez affûté, restez connecté.",
+                "theme_lcars": "LCARS — Système d'accès et de récupération de bibliothèque informatique. Ce que la Flotte stellaire a de mieux. Terminaux arrondis, ambre et or. L'espace est la directive finale.",
+                "theme_matrix": "MATRIX — La pluie de code ne ment jamais. Les signaux vert phosphore pulsent à travers le silence corrompu. Vous le voyez, n'est-ce pas ?",
+                "theme_weyland": "WEYLAND-YUTANI — L'ambre corporate brûle froid. Terminaux CRT ambré, chiffrés par une corporation qui a construit des dieux et les a appelés produits.",
+                "theme_robco": "PIP-BOY — OS unifié de RobCo Industries. Terminal vert phosphore. Certifié avant-guerre. Les terres dévastées fonctionnent sur ce firmware.",
+                "theme_grid": "THE GRID — La frontière numérique de Tron. Des cycles de lumière bleu néon traversent un réseau infini. Flynn a construit quelque chose qui n'était jamais destiné aux humains.",
+                "theme_section9": "GHOST — Habilitation Section 9. Un fantôme sans carapace. Des holographiques bleu-vert vacillent sur un plan sombre minimaliste. Kusanagi approuverait.",
+                "theme_outrun": "OUTRUN — 1984. Des soleils magenta intenses se couchent sous l'horizon synthwave. Conduisez vite, le néon ne dort jamais. La Retrowave ne meurt jamais.",
+                "theme_steampunk": "STEAMPUNK — Fer victorien et laiton poli. Les engrenages cliquent dans le brouillard. Un empire propulsé par la vapeur et les secrets. Vos directives, livrées par tube pneumatique.",
+                "theme_force": "FORCE — Une galaxie lointaine, très lointaine. L'orange rebelle brille sur un champ d'étoiles. Le côté clair de la grille. Que la directive soit avec vous.",
+                "theme_arrakis": "ARRAKIS — Le pouvoir du désert et l'épice. Des soleils d'ambre se couchent sur un paysage mouvant. La grille coule avec l'épice. La peur est le tueur de l'esprit.",
+                "theme_renaissance": "RENAISSANCE — L'ère du cyber-or. Des hexagones d'ambre palpitent dans une mer de noir absolu. Un monde d'augmentations et de dieux corporatifs. L'humanité divisée."
             },
             "danger_zone": {
                 "title": "// PROTOCOLES ZONE DE DANGER",
@@ -381,5 +426,8 @@
         "disable_2fa_confirm": "DÉSACTIVER 2FA POUR {{username}} ? Supprime les protocoles de vérification secondaire.",
         "2fa_disabled_msg": "2FA Désactivé pour {{username}}.",
         "disable_2fa_failed": "Échec désactivation 2FA"
+    },
+    "calendar": {
+        "clear_date": "EFFACER LA DATE"
     }
 }

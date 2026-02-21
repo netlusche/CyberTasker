@@ -66,6 +66,15 @@ const HelpModal = ({ onClose }) => {
                         </section>
 
                         <section>
+                            <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.deep_directives.title')}</h3>
+                            <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                                <li><strong>{t('help.sections.deep_directives.item1_label')}:</strong> {t('help.sections.deep_directives.item1_text')}</li>
+                                <li><strong>{t('help.sections.deep_directives.item2_label')}:</strong> {t('help.sections.deep_directives.item2_text')}</li>
+                                <li><strong>{t('help.sections.deep_directives.item3_label')}:</strong> {t('help.sections.deep_directives.item3_text')}</li>
+                            </ul>
+                        </section>
+
+                        <section>
                             <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.sort_order.title')}</h3>
                             <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
                                 <li><strong>{t('help.sections.sort_order.item1_label')}:</strong> {t('help.sections.sort_order.item1_text')}</li>
@@ -126,6 +135,36 @@ const HelpModal = ({ onClose }) => {
                                 <li><strong>{t('help.sections.visual_interface.item2_label')}:</strong> {t('help.sections.visual_interface.item2_text')}</li>
                                 <li><strong>{t('help.sections.visual_interface.item3_label')}:</strong> {t('help.sections.visual_interface.item3_text')}</li>
                             </ul>
+                            <div className="mt-4 w-5/6 mx-auto">
+                                <p className="text-cyber-primary font-bold text-sm tracking-widest mb-2">{t('help.sections.visual_interface.themes_title')}</p>
+                                <ul className="space-y-1.5 text-xs">
+                                    {[
+                                        { key: 'cyberpunk', color: '#00ffff' },
+                                        { key: 'lcars', color: '#ffcc33' },
+                                        { key: 'matrix', color: '#00ff41' },
+                                        { key: 'weyland', color: '#ffb000' },
+                                        { key: 'robco', color: '#1aff1a' },
+                                        { key: 'grid', color: '#6fc3df' },
+                                        { key: 'section9', color: '#34e2e2' },
+                                        { key: 'outrun', color: '#ff00ff' },
+                                        { key: 'steampunk', color: '#c8882a' },
+                                        { key: 'force', color: '#cc4422' },
+                                        { key: 'arrakis', color: '#d97706' },
+                                        { key: 'renaissance', color: '#ffb000' },
+                                    ].map(({ key, color }) => {
+                                        const full = t(`help.sections.visual_interface.theme_${key}`, '');
+                                        const dashIdx = full.indexOf(' — ');
+                                        const label = dashIdx >= 0 ? full.slice(0, dashIdx) : full;
+                                        const desc = dashIdx >= 0 ? full.slice(dashIdx + 3) : '';
+                                        return (
+                                            <li key={key} className="flex gap-2">
+                                                <span className="font-bold shrink-0" style={{ color }}>{label}</span>
+                                                {desc && <span className="text-gray-400">{desc}</span>}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
                         </section>
 
 

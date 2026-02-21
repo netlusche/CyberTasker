@@ -2,6 +2,18 @@
 
 **CyberTasker** is a gamified, cyberpunk-themed task management application built with **React (Vite)** and **PHP**. It supports **MySQL, MariaDB, and SQLite**, featuring a robust role-based access control (RBAC) system, gamification mechanics (XP, Levels, Badges), and secure Two-Factor Authentication (2FA).
 
+## 📁 New in Version 2.1.0 (Deep Directives & Global Localization)
+
+### 📝 Deep Directives
+*   **Markdown Protocols**: Write extended mission intel with rich-text formatting directly inside directive modals using the integrated Markdown engine.
+*   **External Up-Links**: The system now parses and securely embeds external HTTPS links (`target="_blank"`) into protocol descriptions to maintain a secure sandbox.
+*   **Encrypted Asset Vault**: Upload mission-critical file attachments (images, documents) directly to the server, linked exclusively to individual directives.
+
+### 🌍 Static Localization Engine
+*   **Vanilla JS i18n Hydration**: The static authentication pages (`verify.html`, `reset-password.html`) now hydrate to the user's preferred language natively without booting the full React bundle, preserving microsecond load times.
+
+---
+
 ## 🛡️ New in Version 2.0.4 (Account Verification Hotfix)
 
 ### 🏗️ Modernized Backend

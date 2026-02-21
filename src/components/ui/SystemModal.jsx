@@ -9,7 +9,8 @@ const SystemModal = ({
     maxWidth = 'max-w-md',
     hideCloseBtn = false,
     className = '',
-    closeBtnClassName = ''
+    closeBtnClassName = '',
+    allowScroll = true
 }) => {
     if (!isOpen) return null;
 
@@ -42,7 +43,7 @@ const SystemModal = ({
                 </div>
 
                 {/* Body */}
-                <div className="overflow-y-auto custom-scrollbar flex-1 relative pr-2">
+                <div className={`${allowScroll ? 'overflow-y-auto custom-scrollbar' : 'overflow-hidden'} flex-1 relative pr-2`}>
                     {children}
                 </div>
 

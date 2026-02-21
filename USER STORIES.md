@@ -52,3 +52,9 @@ This document provides a categorized overview of the user stories implemented in
 *   **Theme-Specific Typography**: As an operative, I want the system to utilize theme-authentic fonts (like Antonio for LCARS) to enhance immersion and readability.
 *   **Harmonized Color Palettes**: As an operative, I want every system element (buttons, borders, icons) to automatically adapt to the active theme's color scheme for a unified UX.
 *   **Adaptive Layouts**: As an operative, I want the system layout to optimize itself for the active theme (e.g., repositioning header modules in LCARS) to ensure a clean, non-overlapping interface.
+
+## 📁 8. Deep Directives (Operative Dossier)
+*   **Rich-Text Intel (Markdown)**: As an operative, I want to write extended protocol descriptions using Markdown so I can structure my mission notes with headers, lists, and formatting.
+*   **External Up-Links**: As an operative, I want the system to automatically convert URLs in my descriptions into clickable, secure, themed external links to quickly access reference grids.
+*   **Mission Assets (File Uploads)**: As an operative, I want to securely attach critical files (images, documents) directly to my directives via drag-and-drop or file selection so all relevant data is localized.
+*   **Asset Management**: As an operative, I want to easily delete attached files from a directive when they are no longer needed or erroneous, ensuring a clean data vault.

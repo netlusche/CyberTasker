@@ -14,6 +14,7 @@ const CyberConfirm = ({ message, onConfirm, onCancel, variant = 'primary', title
             title={displayTitle}
             variant={variant}
             hideCloseBtn={true}
+            allowScroll={false}
             className="animate-pulse-slow"
         >
             <div className="flex flex-col items-center text-center space-y-6 mt-4">
