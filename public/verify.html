@@ -94,7 +94,7 @@
             card.classList.add('error');
             content.innerHTML = "<p>ERROR: MISSING VERIFICATION TOKEN.</p>";
         } else {
-            fetch('api/auth.php?action=verify_email', {
+            fetch('api/index.php?route=auth/verify_email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ token: token })
