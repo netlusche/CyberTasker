@@ -41,7 +41,53 @@ echo "Full database purge complete.\n\n";
 echo "1. Generating Admin_Alpha...\n";
 $adminId = $userRepo->create('Admin_Alpha', 'admin_alpha@cybertasker.local', password_hash('Pass_Admin_123!!', PASSWORD_DEFAULT), bin2hex(random_bytes(32)));
 $pdo->prepare("UPDATE users SET role = 'admin', is_verified = 1 WHERE id = ?")->execute([$adminId]);
-echo "   [V] Admin_Alpha created (ID: $adminId)\n\n";
+echo "   [V] Admin_Alpha created (ID: $adminId)\n";
+
+// 1.1 Inject Security Directives and Admin PDF for Admin_Alpha
+$manualSource = __DIR__ . '/../manuals/CyberTasker_Admin_Guide.pdf';
+$uploadDir = __DIR__ . '/../api/uploads/';
+$pdfAttachment = null;
+
+if (file_exists($manualSource)) {
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+    $uniqueName = uniqid('task_file_', true) . '.pdf';
+    $destination = $uploadDir . $uniqueName;
+
+    if (copy($manualSource, $destination)) {
+        $pdfAttachment = json_encode([[
+                "name" => "CyberTasker_Admin_Guide.pdf",
+                "path" => "api/uploads/" . $uniqueName,
+                "size" => filesize($destination),
+                "type" => "application/pdf",
+                "uploaded_at" => date('Y-m-d H:i:s')
+            ]]);
+    }
+}
+
+$directives = [
+    ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Security', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
+    ['PURGE INSTALLER CORE: Terminate \'install.php\' from the server grid immediately.', 'Security', 1, 10, 'Leaving the installation script active on a production grid allows unauthorized entities to re-initialize the database, potentially exposing or destroying all operational data. Delete the file immediately.'],
+    ['ACTIVATE NEURAL ENCRYPTION: Navigate to Admin Console and toggle \'STRICT_PASSWORD_POLICY\' to Level 1.', 'Security', 1, 10, 'Activating the strict password policy ensures all new operatives utilize cryptographic-grade access keys, preventing brute-force neural intrusions. Go to the Admin Panel and enforce this setting.'],
+    ['SCRUB RESIDUAL TRACES: Remove \'install_test_user.php\' and other leftover test nodes.', 'Security', 2, 5, 'Clean up any leftover testing scripts that were used to validate the system deployment. These unmonitored endpoints are prime vectors for exploitation.'],
+    ['CALIBRATE NEURAL LINK: Perform a System Reset to optimize your ocular data stream.', 'System', 3, 5, 'The initial boot sequence may leave fragmented data packets in your visual buffer. A quick system refresh will align your UI components correctly and ensure everything is loaded cleanly into RAM.'],
+    ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'System', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
+];
+
+$stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, files, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+$first = true;
+foreach ($directives as $d) {
+    $files = null;
+    if ($first && $pdfAttachment) {
+        $files = $pdfAttachment;
+        $first = false;
+    }
+    // attachments argument corresponds to the 6th mapped param, which is `files` in db for file uploads
+    $stmtTask->execute([$adminId, $d[0], $d[1], $d[2], $d[3], $files, $d[4]]);
+}
+echo "   [V] Initial Admin security directives deployed.\n\n";
 
 // 2. Create Op_Beta (With TOTP 2FA)
 echo "2. Generating Op_Beta (2FA active)...\n";
