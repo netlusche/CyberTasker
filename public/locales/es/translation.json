@@ -86,7 +86,17 @@
     },
     "profile": {
         "title": "PERFIL DEL OPERATIVO",
-        "visual_interface": "INTERFAZ VISUAL",
+        "theme_selection": "Selección de Tema",
+        "themes": {
+            "cyberpunk": "Cyberpunk",
+            "lcars": "LCARS (Star Trek)",
+            "matrix": "Matrix",
+            "weyland": "Wey-Yu (Alien)",
+            "robco": "RobCo Terminal (Fallout)",
+            "grid": "The Grid (Tron)",
+            "section9": "Section 9 (GitS)",
+            "outrun": "Outrun 1984"
+        },
         "language": "IDIOMA",
         "messages": {
             "cypher_updated": "Cypher actualizado con éxito.",
