@@ -58,3 +58,10 @@ This document provides a categorized overview of the user stories implemented in
 *   **External Up-Links**: As an operative, I want the system to automatically convert URLs in my descriptions into clickable, secure, themed external links to quickly access reference grids.
 *   **Mission Assets (File Uploads)**: As an operative, I want to securely attach critical files (images, documents) directly to my directives via drag-and-drop or file selection so all relevant data is localized.
 *   **Asset Management**: As an operative, I want to easily delete attached files from a directive when they are no longer needed or erroneous, ensuring a clean data vault.
+
+## 🚀 9. Installation & Deployment (System Admin)
+*   **Zero-Config Initialization**: As a system administrator, I want to deploy the application simply by uploading it and running an installer script, without needing to manually create database tables.
+*   **Agnostic Hosting**: As a system administrator, I want the application to work out-of-the-box on strict shared hosting environments (e.g., STRATO Hosting Plus), regardless of whether it's deployed in the root domain, a subdomain, or a subdirectory.
+*   **Cross-Database Feature Parity**: As a system administrator, I want to ensure advanced features (like Deep Directive JSON attachments) are 100% compatible across SQLite, MySQL, and MariaDB, ensuring I am never locked into a specific database engine.
+*   **Self-Locking Installer**: As a system administrator, I want the installer script to automatically lock itself once an admin account is created, preventing unauthorized resets.
+*   **Platform Diagnostics**: As a system administrator, I want the installer to provide immediate feedback on server compatibility (PHP version, SQLite/MySQL drivers, file write permissions).

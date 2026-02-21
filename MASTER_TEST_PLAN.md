@@ -166,6 +166,18 @@ The suite has been hardened against "flakiness" using the following patterns:
 - **Scenario**: Run `install.php` and verify diagnostic output.
 - **Validation**: Checks for PHP version, PDO drivers, and database writeability (特に macOS `tmp` redirection).
 
+### TS-06.4: Cross-Database Compatibility [MANUAL]
+- **Scenario**: Configure the backend to sequentially run on SQLite, MariaDB, and MySQL. Initialize Deep Directives with JSON file attachments on each.
+- **Validation**:
+  - The `attachments` and `description` fields reliably parse and store data on all engines.
+  - No database-specific syntax errors occur during connection, pagination, or insertion.
+
+### TS-06.5: Subdomain & Shared Hosting Routing [MANUAL]
+- **Scenario**: Deploy the production build to a strict shared hosting environment (e.g., STRATO Hosting Plus) within both a Subdomain and a Subdirectory.
+- **Validation**:
+  - The `FRONTEND_URL` securely maps CORS headers without path distortion.
+  - HTTPS proxy headers are correctly decoded to permit 2FA and registration secure cookies.
+
 ---
 
 ## 📁 test-suite-07: Deep Directives (Operative Dossier)
