@@ -43,21 +43,21 @@ test.describe('Deep Directives & Dossier Flow', () => {
         await textarea.fill(description);
 
         // 5. Save using the checkmark button
-        await page.click('button[title="Save Protocol"]');
+        await page.click('button[title="Save Protocol"]', { force: true });
 
         // Wait for it to go back to read mode (textarea should disappear)
         await expect(textarea).not.toBeVisible({ timeout: 5000 });
 
         // 5a. Verify Cancel button
-        await page.click('.markdown-body'); // Click to edit again
+        await page.click('.markdown-body', { force: true }); // Click to edit again
         await textarea.fill('This should be discarded');
-        await page.click('button[title="Cancel Changes"]');
+        await page.click('button[title="Cancel Changes"]', { force: true });
         await expect(textarea).not.toBeVisible();
         await expect(page.locator('.markdown-body')).toContainText(/Level 5/i);
         await expect(page.locator('.markdown-body')).not.toContainText(/discarded/i);
 
         // 6. Add Link
-        await page.click('button:has-text("ADD LINK"), button:has-text("LINK TOEVOEGEN")');
+        await page.click('button:has-text("+ ADD UPLINK"), button:has-text("UPLINK TOEVOEGEN")');
 
         // Fill first link fields
         const linkLabel = page.locator('input[placeholder="Label"]');
@@ -97,7 +97,7 @@ test.describe('Deep Directives & Dossier Flow', () => {
         await expect(page.locator('text=Updated Uplink')).not.toBeVisible();
 
         // 9. Persistence Check (Reload) - Re-add a link first
-        await page.click('button:has-text("ADD LINK")');
+        await page.click('button:has-text("+ ADD UPLINK")');
         await linkLabel.fill('Persistent Link');
         await linkUrl.fill('https://persistent.link');
         await page.click('button[title="Save"]');

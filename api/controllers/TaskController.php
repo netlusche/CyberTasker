@@ -112,6 +112,14 @@ class TaskController extends Controller
             $fields[] = 'due_date = ?';
             $params[] = !empty($data['due_date']) ? $data['due_date'] : null;
         }
+        if (array_key_exists('description', $data)) {
+            $fields[] = 'description = ?';
+            $params[] = !empty($data['description']) ? $data['description'] : null;
+        }
+        if (array_key_exists('attachments', $data)) {
+            $fields[] = 'attachments = ?';
+            $params[] = !empty($data['attachments']) ? $data['attachments'] : null;
+        }
         if (isset($data['files'])) {
             $fields[] = 'files = ?';
             $params[] = $data['files'];
