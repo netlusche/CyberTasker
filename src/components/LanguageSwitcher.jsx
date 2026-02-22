@@ -40,6 +40,8 @@ const LanguageSwitcher = () => {
         { code: 'pt', label: 'PT', fullName: 'Português' },
         { code: 'el', label: 'EL', fullName: 'Ελληνικά' },
         { code: 'ru', label: 'RU', fullName: 'Русский' },
+        { code: 'uk', label: 'UK', fullName: 'Українська' },
+        { code: 'he', label: 'HE', fullName: 'עברית' },
         { code: 'zh', label: 'ZH', fullName: '中文' },
         { code: 'tlh', label: 'TLH', fullName: 'tlhIngan Hol' }
     ];
