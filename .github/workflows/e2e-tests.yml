@@ -1,0 +1,108 @@
+name: "Cross-Database E2E Pipeline"
+
+on:
+  push:
+    branches: [ "development", "major_*" ]
+  pull_request:
+    branches: [ "main", "development" ]
+  workflow_dispatch:
+
+jobs:
+  test-sqlite:
+    name: "Playwright E2E: SQLite"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: sqlite3, pdo_sqlite, gd
+
+      - name: Install JS Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Setup SQLite Configuration
+        run: |
+          echo "<?php" > api/config.local.php
+          echo "define('DB_TYPE', 'sqlite');" >> api/config.local.php
+          echo "define('DB_NAME', __DIR__ . '/cybertracker_ci.db');" >> api/config.local.php
+          echo "define('FRONTEND_URL', 'http://localhost:5174');" >> api/config.local.php
+
+      - name: Initialize Database Schema
+        run: php -r "require 'api/install.php';"
+
+      - name: Seed Test Personas and Directives
+        run: php tests/seed_test_data.php
+
+      - name: Run Playwright Tests
+        run: npx playwright test
+
+  test-mariadb:
+    name: "Playwright E2E: MariaDB"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: rootpw
+          MARIADB_DATABASE: cybertasker_ci
+        ports:
+          - 3306:3306
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql, mysqli, gd
+
+      - name: Install JS Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Setup MariaDB Configuration
+        run: |
+          echo "<?php" > api/config.local.php
+          echo "define('DB_TYPE', 'mysql');" >> api/config.local.php
+          echo "define('DB_HOST', '127.0.0.1');" >> api/config.local.php
+          echo "define('DB_USER', 'root');" >> api/config.local.php
+          echo "define('DB_PASS', 'rootpw');" >> api/config.local.php
+          echo "define('DB_NAME', 'cybertasker_ci');" >> api/config.local.php
+          echo "define('FRONTEND_URL', 'http://localhost:5174');" >> api/config.local.php
+
+      - name: Initialize Database Schema
+        run: php -r "require 'api/install.php';"
+
+      - name: Seed Test Personas and Directives
+        run: php tests/seed_test_data.php
+
+      - name: Run Playwright Tests
+        run: npx playwright test
