@@ -6,13 +6,20 @@ export const triggerNeonConfetti = (theme = 'cyberpunk') => {
         origin: { y: 0.7 },
     };
 
-    const colors = theme === 'lcars'
-        ? ['#33cc99', '#ffcc33', '#dd4444', '#ff7700']
-        : theme === 'matrix'
-            ? ['#00ff41', '#008f11', '#003b00', '#ffffff']
-            : theme === 'weyland'
-                ? ['#ffb000', '#cc8400', '#885500', '#ffcc00']
-                : ['#00ffff', '#ff00ff', '#39ff14'];
+    const colorMap = {
+        'lcars': ['#33cc99', '#ffcc33', '#dd4444', '#ff7700'],
+        'matrix': ['#00ff41', '#008f11', '#003b00', '#ffffff'],
+        'weyland': ['#ffb000', '#cc8400', '#885500', '#ffcc00'],
+        'robco': ['#14ff00', '#009900', '#33ff33', '#003b00'],
+        'grid': ['#00f3ff', '#0077ff', '#ffffff', '#00ffff'],
+        'section9': ['#ff3300', '#cc0000', '#ff9900', '#ffffff'],
+        'outrun': ['#ff00ff', '#00ffff', '#ffb800', '#ff00aa'],
+        'steampunk': ['#d4af37', '#b87333', '#8b4513', '#ffd700'],
+        'force': ['#00bfff', '#ff3333', '#33ff33', '#ffffff'],
+        'arrakis': ['#ff9933', '#cc6600', '#ffd700', '#8b4513']
+    };
+
+    const colors = colorMap[theme] || ['#00ffff', '#ff00ff', '#39ff14'];
 
     function fire(particleRatio, opts) {
         confetti({
