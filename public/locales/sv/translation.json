@@ -132,13 +132,13 @@
             "fragment_copied": "FRAGMENT KOPIERAD",
             "fail_add_cat": "Det gick inte att lägga till kategori",
             "fail_rename_cat": "Det gick inte att byta namn på kategori",
-            "fail_delete_cat": "Failed to delete category (Default one cannot be deleted if only one remains)",
+            "fail_delete_cat": "Det gick inte att ta bort kategori (standard en kan inte tas bort om bara en finns kvar)",
             "fail_set_default": "Det gick inte att ange standardkategori"
         },
         "alerts": {
             "security_alert": "SÄKERHETSVARNING",
             "termination_confirm": "VARNING: UPPSÄGNING AV TERMINALKONTO UPPTÄCKTS. ALL DATA KOMMER ATT TORSA FRÅN RÄTTET. FORTSÄTTA?",
-            "disable_2fa_confirm": "TERMINATING 2FA WILL REDUCE YOUR DEFENSIVE ENCRYPTION. FORTSÄTTA?",
+            "disable_2fa_confirm": "ATT AVSLUTA 2FA MINSKAR DIN DEFENSIVA KRYPTERING. FORTSÄTTA?",
             "identity_shift": "IDENTITETSFREKVENSSKYFT UPPTÄCKT. OMDRIFTNING KRÄVER ÅTERAUTENTIERING. JACK IN?",
             "category_purge": "KATEGORI RENGÖRING",
             "category_purge_confirm": "KATEGORI RENING Ogiltigförklarar ALLA associerade DIREKTIVVEKTORER. FORTSÄTTA MED RADERING?",
@@ -184,7 +184,7 @@
         "cypher": {
             "update_title": "UPPDATERA CYPHER",
             "current_placeholder": "Aktuellt lösenord",
-            "new_placeholder": "New Password",
+            "new_placeholder": "Nytt lösenord",
             "execute": "UTFÖR UPPDATERING"
         },
         "danger": {
@@ -200,18 +200,18 @@
         "new_directive": "NYTT DIREKTIV",
         "placeholder": "Ange direktiv...",
         "add": "LÄGG TILL",
-        "priority": "PRIORITY",
+        "priority": "PRIORITET",
         "category": "KATEGORI",
         "due_date": "FÖRSLUTSDATUM",
-        "no_date": "NO DATE",
+        "no_date": "INGET DATUM",
         "status": "STATUS",
         "details": "DETALJER",
         "page": "SIDAN",
-        "cycle_category": "Click to cycle category",
+        "cycle_category": "Klicka för att växla kategori",
         "edit_directive": "Klicka för att redigera",
-        "change_date": "Click to change date",
+        "change_date": "Klicka för att ändra datum",
         "mark_done": "Markera som KLAR",
-        "mark_todo": "Mark as TODO",
+        "mark_todo": "Markera som ATT GÖRA",
         "delete_task": "Ta bort uppgift",
         "priority_confirm": "PRIORITERAD OMJUSTERING KOMMER ATT ÄNDRA DINA DIREKTIV OPERATIONELLA SEKVENS. BEKRÄFTA?",
         "date_confirm": "KRONO-SYNC RE-ALIGNMENT KOMMER ATT ÄNDRA DINA DIREKTIV OPERATIONELLA SEKVENS. BEKRÄFTA?",
@@ -357,11 +357,12 @@
                 "theme_steampunk": "STEAMPUNK — viktorianskt järn och polerad mässing. Kugghjul klickar i dimman. Ett imperium som drivs av ånga och hemligheter. Dina direktiv, levererade med pneumatiskt rör.",
                 "theme_force": "FORCE — En galax långt, långt borta. Rebellorange lyser mot ett sjöfält. Den ljusa sidan av rutnätet. Må direktivet vara med dig.",
                 "theme_arrakis": "ARRAKIS — Ökenkraft och krydda. Bärnstenssolar sjunker över ett skiftande landskap. Gallret flyter med kryddan. Rädsla är sinnesdödaren.",
-                "theme_renaissance": "RENAISSANCE — Cyber-guld-eran. Bärnstenshexagoner pulserar i ett hav av absolut svart. En värld av augmentations och företagsgudar. Mänskligheten splittrades."
+                "theme_renaissance": "RENAISSANCE — Cyber-guld-eran. Bärnstenshexagoner pulserar i ett hav av absolut svart. En värld av augmentations och företagsgudar. Mänskligheten splittrades.",
+                "theme_klingon": "QO'NOS (KLINGON) — Blodrött och kallt stål. Knivskarpa brutalistiska kanter. Idag är en bra dag att koda. Qapla'!"
             },
             "danger_zone": {
                 "title": "// FARZONSPROTOKOLL",
-                "item1_warn": "⚠ UPPSÄGNING AV IDENTITET:",
+                "item1_warn": "⚠ IDENTITETSAVSLUTNING:",
                 "item1_text": "Bekräftelse av borttagning av konto utlöser **TERMINAL SECURITY ALERT**. Denna åtgärd är oåterkallelig.",
                 "item2_label": "ESCAPE PROTOKOLL",
                 "item2_text": "Använd AVBRYT för att omedelbart rädda dig själv från slutgiltig uppsägning."

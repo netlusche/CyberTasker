@@ -156,7 +156,8 @@
 /* Background effects for Klingon Theme */
 html.theme-klingon {
   background-image: repeating-linear-gradient(45deg, #0a0101 25%, transparent 25%, transparent 75%, #0a0101 75%, #0a0101), repeating-linear-gradient(45deg, #0a0101 25%, #050000 25%, #050000 75%, #0a0101 75%, #0a0101) !important;
-  background-position: 0 0, 15px 15px !important;
+  background-position: 0 0, 15px 15px;
+  /* Removed !important to allow animations */
   background-size: 30px 30px !important;
   background-attachment: fixed !important;
 }
@@ -1172,7 +1173,12 @@ body.theme-steampunk .input-cyber:focus {
 
 /* 1. Cyberpunk - Scrolling Tech Grid */
 .theme-cyberpunk .cyber-grid {
-  animation: bg-pan-diagonal 30s linear infinite;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: bg-pan-diagonal 20s linear infinite;
+  opacity: 0.3 !important;
 }
 
 @keyframes bg-pan-diagonal {
@@ -1181,7 +1187,7 @@ body.theme-steampunk .input-cyber:focus {
   }
 
   100% {
-    background-position: 48px 48px;
+    background-position: 30px 30px;
   }
 }
 
@@ -1194,7 +1200,7 @@ body.theme-steampunk .input-cyber:focus {
   background-size: 150px 10px;
   background-repeat: repeat-x;
   background-position: 0 20%, 50px 80%;
-  opacity: 0.15;
+  opacity: 0.4 !important;
   animation: lcars-telemetry 20s linear infinite;
 }
 
@@ -1210,9 +1216,10 @@ body.theme-steampunk .input-cyber:focus {
 
 /* 4. Weyland - CRT Scanline Roll */
 .theme-weyland .cyber-grid {
-  background: linear-gradient(to bottom, transparent 50%, rgba(255, 176, 0, 0.05) 50%, rgba(255, 176, 0, 0.08) 100%);
+  background-image: linear-gradient(to bottom, transparent 50%, rgba(255, 176, 0, 0.15) 50%, rgba(255, 176, 0, 0.25) 100%);
   background-size: 100% 8px;
   animation: crt-roll 10s linear infinite;
+  opacity: 0.5 !important;
 }
 
 @keyframes crt-roll {
@@ -1227,29 +1234,34 @@ body.theme-steampunk .input-cyber:focus {
 
 /* 5. RobCo - Scan Sweep */
 .theme-robco .cyber-grid {
-  background: linear-gradient(to bottom, rgba(26, 255, 26, 0) 0%, rgba(26, 255, 26, 0.15) 50%, rgba(26, 255, 26, 0) 100%);
-  background-size: 100% 200px;
-  background-repeat: no-repeat;
-  animation: robco-scan 6s linear infinite;
+  background-image:
+    linear-gradient(to bottom, rgba(26, 255, 26, 0) 0%, rgba(26, 255, 26, 0.3) 50%, rgba(26, 255, 26, 0) 100%),
+    linear-gradient(to right, rgba(26, 255, 26, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 255, 26, 0.05) 1px, transparent 1px);
+  background-size: 100% 200px, 30px 30px, 30px 30px;
+  background-repeat: no-repeat, repeat, repeat;
+  animation: robco-scan 4s linear infinite;
+  opacity: 0.6 !important;
 }
 
 @keyframes robco-scan {
   0% {
-    background-position: 0 -200px;
+    background-position: 0 -200px, 0 0, 0 0;
   }
 
   100% {
-    background-position: 0 120vh;
+    background-position: 0 120vh, 0 0, 0 0;
   }
 }
 
 /* 6. The Grid - Scrolling Horizontal Lines */
 .theme-grid .cyber-grid {
   background-image:
-    linear-gradient(to bottom, rgba(111, 195, 223, 0.1) 1px, transparent 1px),
-    linear-gradient(to right, rgba(111, 195, 223, 0.05) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(111, 195, 223, 0.3) 2px, transparent 2px),
+    linear-gradient(to right, rgba(111, 195, 223, 0.1) 1px, transparent 1px);
   background-size: 100% 40px, 40px 100%;
   animation: grid-forward 3s linear infinite;
+  opacity: 0.5 !important;
 }
 
 @keyframes grid-forward {
@@ -1265,10 +1277,11 @@ body.theme-steampunk .input-cyber:focus {
 /* 7. Section 9 - Floating Data / Ghost */
 .theme-section9 .cyber-grid {
   background-image:
-    radial-gradient(circle at 2px 2px, rgba(52, 226, 226, 0.3) 1px, transparent 1px),
-    radial-gradient(circle at 10px 10px, rgba(252, 233, 79, 0.1) 1px, transparent 1px);
+    radial-gradient(circle at 2px 2px, rgba(52, 226, 226, 0.6) 2px, transparent 2px),
+    radial-gradient(circle at 10px 10px, rgba(252, 233, 79, 0.3) 2px, transparent 2px);
   background-size: 60px 60px, 80px 80px;
-  animation: ghost-float 15s ease-in-out infinite alternate;
+  animation: ghost-float 10s ease-in-out infinite alternate;
+  opacity: 0.5 !important;
 }
 
 @keyframes ghost-float {
@@ -1288,10 +1301,11 @@ body.theme-steampunk .input-cyber:focus {
 /* 8. Outrun - Synthwave Grid Scrolling */
 .theme-outrun .cyber-grid {
   background-image:
-    linear-gradient(to bottom, rgba(255, 0, 255, 0.3) 2px, transparent 2px),
-    linear-gradient(to right, rgba(0, 255, 255, 0.1) 2px, transparent 2px);
-  background-size: 100% 80px, 60px 100%;
+    linear-gradient(to bottom, rgba(255, 0, 255, 0.5) 2px, transparent 2px),
+    linear-gradient(to right, rgba(0, 255, 255, 0.2) 2px, transparent 2px);
+  background-size: 100% 60px, 60px 100%;
   animation: outrun-drive 2s linear infinite;
+  opacity: 0.4 !important;
 }
 
 @keyframes outrun-drive {
@@ -1300,20 +1314,20 @@ body.theme-steampunk .input-cyber:focus {
   }
 
   100% {
-    background-position: 0 80px, 0 0;
+    background-position: 0 60px, 0 0;
   }
 }
 
 /* 9. Steampunk - Drifting Fog */
 .theme-steampunk .cyber-grid {
   background-image:
-    radial-gradient(ellipse at center, rgba(200, 136, 42, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse at center, rgba(139, 69, 19, 0.05) 0%, transparent 60%),
-    linear-gradient(rgba(107, 66, 38, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(107, 66, 38, 0.08) 1px, transparent 1px) !important;
+    radial-gradient(ellipse at center, rgba(200, 136, 42, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at center, rgba(139, 69, 19, 0.15) 0%, transparent 60%),
+    linear-gradient(rgba(107, 66, 38, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 66, 38, 0.2) 1px, transparent 1px) !important;
   background-size: 400px 400px, 300px 300px, 48px 48px, 48px 48px !important;
   animation: steam-drift 40s linear infinite;
-  opacity: 0.6;
+  opacity: 0.8 !important;
 }
 
 @keyframes steam-drift {

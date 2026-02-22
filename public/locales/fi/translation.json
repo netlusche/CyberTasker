@@ -357,10 +357,11 @@
                 "theme_steampunk": "STEAMPUNK – viktoriaaninen rauta ja kiillotettu messinki. Vaihteet napsahtavat sumussa. Imperiumi, joka saa voimansa höyrystä ja salaisuuksista. Ohjeesi, toimitetaan pneumaattisella putkella.",
                 "theme_force": "VOIMA - Galaksi kaukana, kaukana. Kapinaoranssi hehkuu tähtikenttää vasten. Verkon kevyt puoli. Olkoon ohje kanssasi.",
                 "theme_arrakis": "ARRAKIS - Aavikon voima ja mauste. Meripihkanväriset auringot vajoavat muuttuvan maiseman yli. Ristiä virtaa mausteen mukana. Pelko on mielen tappaja.",
-                "theme_renaissance": "RENAISSANCE – kyberkulta-aika. Meripihkanväriset kuusikulmiot sykkivät täydellisen mustan meressä. Lisäysten ja yritysjumalien maailma. Ihmiskunta jakautunut."
+                "theme_renaissance": "RENAISSANCE – kyberkulta-aika. Meripihkanväriset kuusikulmiot sykkivät täydellisen mustan meressä. Lisäysten ja yritysjumalien maailma. Ihmiskunta jakautunut.",
+                "theme_klingon": "QO'NOS (KLINGON) – Verenpunainen ja kylmä teräs. Partaterävät brutalistiset reunat. Tänään on hyvä päivä koodata. Qapla'!"
             },
             "danger_zone": {
-                "title": "// VAARAVYÖHYKKEEN PÖYTÄKIRJAT",
+                "title": "// VAARAVYÖHYKSEN PROTOKOLLIT",
                 "item1_warn": "⚠ IDENTITEETIN PÄÄTTYMINEN:",
                 "item1_text": "Tilin poistamisen vahvistaminen laukaisee **TERMINAL SECURITY ALERT** -ilmoituksen. Tämä toimenpide on peruuttamaton.",
                 "item2_label": "PAKOPROTOKOLLA",

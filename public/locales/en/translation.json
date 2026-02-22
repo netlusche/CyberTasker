@@ -357,7 +357,8 @@
                 "theme_steampunk": "STEAMPUNK — Victorian iron and burnished brass. Gears click in the fog. An empire powered by steam and secrets. Your directives, delivered by pneumatic tube.",
                 "theme_force": "FORCE — A galaxy far, far away. Rebel orange glows against a starfield. The light side of the grid. May the directive be with you.",
                 "theme_arrakis": "ARRAKIS — Desert power and spice. Amber suns sink over a shifting landscape. The grid flows with the spice. Fear is the mind-killer.",
-                "theme_renaissance": "RENAISSANCE — The cyber-gold era. Amber hexagons pulse in a sea of absolute black. A world of augmentations and corporate gods. Mankind divided."
+                "theme_renaissance": "RENAISSANCE — The cyber-gold era. Amber hexagons pulse in a sea of absolute black. A world of augmentations and corporate gods. Mankind divided.",
+                "theme_klingon": "QO'NOS (KLINGON) — Blood red and cold steel. Razor-sharp brutalist edges. Today is a good day to code. Qapla'!"
             },
             "danger_zone": {
                 "title": "// DANGER ZONE PROTOCOLS",

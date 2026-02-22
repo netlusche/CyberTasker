@@ -357,10 +357,11 @@
                 "theme_steampunk": "STEAMPUNK – Ferro vitoriano e latão polido. As engrenagens clicam no nevoeiro. Um império movido a vapor e segredos. Suas diretrizes, entregues por tubo pneumático.",
                 "theme_force": "FORÇA – Uma galáxia muito, muito distante. A laranja rebelde brilha contra um campo estelar. O lado claro da grade. Que a diretriz esteja com você.",
                 "theme_arrakis": "ARRAKIS – Poder e especiarias do deserto. Sóis âmbar afundam sobre uma paisagem em constante mudança. A grade flui com o tempero. O medo é o assassino da mente.",
-                "theme_renaissance": "RENASCIMENTO — A era do ouro cibernético. Hexágonos âmbar pulsam em um mar de preto absoluto. Um mundo de aumentos e deuses corporativos. A humanidade dividida."
+                "theme_renaissance": "RENASCIMENTO — A era do ouro cibernético. Hexágonos âmbar pulsam em um mar de preto absoluto. Um mundo de aumentos e deuses corporativos. A humanidade dividida.",
+                "theme_klingon": "QO'NOS (KLINGON) — Vermelho sangue e aço frio. Bordas brutalistas nítidas. Hoje é um bom dia para codificar. Qapla'!"
             },
             "danger_zone": {
-                "title": "// PROTOCOLOS DE ZONAS DE PERIGO",
+                "title": "// PROTOCOLOS DE ZONA DE PERIGO",
                 "item1_warn": "⚠ RESCISÃO DE IDENTIDADE:",
                 "item1_text": "A confirmação da exclusão da conta aciona o **ALERTA DE SEGURANÇA TERMINAL**. Esta ação é irreversível.",
                 "item2_label": "PROTOCOLO DE ESCAPE",
