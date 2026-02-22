@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Orbitron:wght@400;700&family=Inter:wght@400;700&family=Cinzel:wght@400;700&family=IM+Fell+English&family=Rajdhani:wght@400;700&family=Michroma&family=VT323&family=Share+Tech+Mono&family=Outfit:wght@400;700&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Orbitron:wght@400;700&family=Inter:wght@400;700&family=Cinzel:wght@400;700&family=IM+Fell+English&family=Rajdhani:wght@400;700&family=Michroma&family=VT323&family=Share+Tech+Mono&family=Outfit:wght@400;700&family=Righteous&family=Black+Ops+One&family=Wallpoet&display=swap');
 
 :root {
   /* Default Cyberpunk variables */
@@ -129,6 +129,43 @@
   --shadow-primary: 0 0 5px rgba(255, 176, 0, 0.4);
   --shadow-secondary: 0 0 5px rgba(204, 132, 0, 0.4);
   --shadow-accent: none;
+}
+
+.theme-klingon {
+  /* Qo'noS Empire Theme */
+  --theme-bg: #0a0000;
+  --theme-surface: #140000;
+  --theme-border: #4a0000;
+  --theme-primary: #ff0000;
+  --theme-secondary: #cc0000;
+  --theme-success: #ff0000;
+  --theme-accent: #a0a0b0;
+  --theme-danger: #ffaa00;
+  --theme-warning: #ff5500;
+  --theme-info: #a0a0b0;
+  --theme-card: rgba(20, 0, 0, 0.85);
+  --theme-text: #e0e0e0;
+  --theme-font: 'Wallpoet', sans-serif;
+  --theme-radius: 0rem;
+
+  --shadow-primary: 0 0 10px rgba(255, 0, 0, 0.6), inset 0 0 5px rgba(255, 0, 0, 0.2);
+  --shadow-secondary: 0 0 8px rgba(204, 0, 0, 0.5);
+  --shadow-accent: 0 0 8px rgba(160, 160, 176, 0.4);
+}
+
+/* Background effects for Klingon Theme */
+html.theme-klingon {
+  background-image: repeating-linear-gradient(45deg, #0a0101 25%, transparent 25%, transparent 75%, #0a0101 75%, #0a0101), repeating-linear-gradient(45deg, #0a0101 25%, #050000 25%, #050000 75%, #0a0101 75%, #0a0101) !important;
+  background-position: 0 0, 15px 15px !important;
+  background-size: 30px 30px !important;
+  background-attachment: fixed !important;
+}
+
+.theme-klingon .bg-cyber-surface,
+.theme-klingon .bg-cyber-card {
+  background-image: linear-gradient(135deg, rgba(20, 0, 0, 0.9) 0%, rgba(10, 0, 0, 0.95) 100%);
+  border-top: 2px solid #ff0000;
+  border-bottom: 2px solid #550000;
 }
 
 
@@ -322,7 +359,8 @@ body,
 .theme-lcars,
 .theme-matrix,
 .theme-weyland,
-.theme-steampunk {
+.theme-steampunk,
+.theme-klingon {
   /* These variables re-evaluate the static Tailwind @theme colors cleanly inside the body scope */
   --color-cyber-primary: var(--theme-primary);
   --color-cyber-secondary: var(--theme-secondary);

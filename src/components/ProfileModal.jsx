@@ -1120,6 +1120,30 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         </div>
                                     )}
                                 </button>
+
+                                {/* Klingon Empire Theme (Qo'noS) */}
+                                <button
+                                    data-testid="theme-switch-klingon"
+                                    onClick={() => setTheme('klingon')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'klingon' ? 'scale-[1.02] border-2 border-[#ff0000] shadow-[0_0_15px_rgba(255,0,0,0.6)]' : 'border-[#4a0000] bg-[#140000] hover:border-[#ff0000]/60 scale-100'}`}
+                                >
+                                    {/* Aggressive bg stripes */}
+                                    <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ff0000 0px, #ff0000 2px, transparent 2px, transparent 8px)' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center">
+                                            <div className="absolute w-full h-full border-t-2 border-b-2 border-[#ff0000] rounded-full transform rotate-45 shadow-[0_0_5px_#ff0000]"></div>
+                                            <div className="absolute w-2 h-full bg-[#ff0000] transform skew-x-12 shadow-[0_0_5px_#ff0000]"></div>
+                                        </div>
+                                        <span className={`text-[10px] font-bold tracking-[0.2em] mt-2 uppercase ${theme === 'klingon' ? 'text-[#ff0000]' : 'text-[#880000]'}`} style={{ fontFamily: "'Wallpoet', sans-serif" }}>
+                                            QO'NOS
+                                        </span>
+                                    </div>
+                                    {theme === 'klingon' && (
+                                        <div className="absolute top-0 right-0 bg-[#ff0000] text-black font-bold text-[7px] px-1.5 py-0.5" style={{ fontFamily: "'Wallpoet', sans-serif" }}>
+                                            BAT'LETH ON
+                                        </div>
+                                    )}
+                                </button>
                             </div>
                         </div>
 

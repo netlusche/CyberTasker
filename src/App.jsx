@@ -128,7 +128,12 @@ function App() {
                     {t('header.title')}<span style={{ color: '#d4af37' }}>{t('header.subtitle')}</span>
                   </span>
                 )}
-                {!['lcars', 'robco', 'grid', 'section9', 'outrun', 'steampunk', 'force', 'arrakis', 'renaissance'].includes(theme) && (
+                {theme === 'klingon' && (
+                  <span style={{ fontFamily: "'Wallpoet', cursive", color: '#ff0000', filter: 'drop-shadow(0 0 5px rgba(255,0,0,0.8))', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                    {t('header.title')}<span style={{ color: '#a0a0b0', textShadow: '2px 2px 0px #4a0000' }}>{t('header.subtitle')}</span>
+                  </span>
+                )}
+                {!['lcars', 'robco', 'grid', 'section9', 'outrun', 'steampunk', 'force', 'arrakis', 'renaissance', 'klingon'].includes(theme) && (
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyber-primary to-cyber-secondary drop-shadow-[0_0_5px_var(--theme-primary)]">
                     {t('header.title')}<span className="text-white">{t('header.subtitle')}</span>
                   </span>

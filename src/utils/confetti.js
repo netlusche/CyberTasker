@@ -16,7 +16,8 @@ export const triggerNeonConfetti = (theme = 'cyberpunk') => {
         'outrun': ['#ff00ff', '#00ffff', '#ffb800', '#ff00aa'],
         'steampunk': ['#d4af37', '#b87333', '#8b4513', '#ffd700'],
         'force': ['#00bfff', '#ff3333', '#33ff33', '#ffffff'],
-        'arrakis': ['#ff9933', '#cc6600', '#ffd700', '#8b4513']
+        'arrakis': ['#ff9933', '#cc6600', '#ffd700', '#8b4513'],
+        'klingon': ['#ff0000', '#990000', '#c0c0c0', '#ffffff']
     };
 
     const colors = colorMap[theme] || ['#00ffff', '#ff00ff', '#39ff14'];
