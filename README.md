@@ -250,6 +250,11 @@ npm run build && cp -r api dist/
 #### 2. Upload
 Upload the **contents** of the `dist` folder to your server directory (e.g., `/public_html/tasks`).
 
+> [!CAUTION]
+> **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply select all visible files in the `dist/api` folder and drag them to your FTP client, the `.htaccess` files **will be left behind**. 
+> Without these files, your `cybertracker.db` SQLite database and all uploaded files are **PUBLICLY DOWNLOADABLE**! 
+> Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
+
 #### 3. Configure Database
 Edit `api/config.php` on the server to match your database environment.
 

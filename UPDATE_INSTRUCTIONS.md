@@ -7,6 +7,9 @@ These instructions guide you through the update to **v2.1.0** (Deep Directives).
 
 ## 2. Deploy Files
 1.  Upload the contents of the `dist` folder to your server.
+    > [!CAUTION]
+    > **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply drag the visible files to your FTP client, the `.htaccess` files **will be left behind**, exposing your database and uploads to the public web! 
+    > Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
 2.  Ensure that the server automatically applies `0777` or appropriate write-permissions to the newly created `uploads/` folder so the backend can accept `multipart/form-data` uploads.
 3.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
 

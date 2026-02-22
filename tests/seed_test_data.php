@@ -61,7 +61,7 @@ if (file_exists($manualSource)) {
     if (copy($manualSource, $destination)) {
         $pdfAttachment = json_encode([[
                 "name" => "CyberTasker_Admin_Guide.pdf",
-                "path" => "api/uploads/" . $uniqueName,
+                "path" => "api/index.php?route=tasks/download&file=" . $uniqueName,
                 "size" => filesize($destination),
                 "type" => "application/pdf",
                 "uploaded_at" => date('Y-m-d H:i:s')

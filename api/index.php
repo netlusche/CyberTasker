@@ -10,6 +10,19 @@ require_once __DIR__ . '/csrf.php';
 
 header("Content-Type: application/json");
 
+// --- CRITICAL SECURITY GUARD: ENFORCE .htaccess FILES ---
+// Many users (especially on macOS) accidentally omit hidden .htaccess files when uploading via FTP.
+// This leaves the SQLite database and all uploaded files completely exposed to the public internet.
+// The API will violently refuse to boot unless these files are present on the server.
+if (!file_exists(__DIR__ . '/.htaccess') || (is_dir(__DIR__ . '/uploads') && !file_exists(__DIR__ . '/uploads/.htaccess'))) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'CRITICAL SECURITY FAILURE: Missing .htaccess files.',
+        'details' => 'The system detected that critical security files (.htaccess) are missing from the /api or /api/uploads directory. If you uploaded these files from a Mac, the macOS Finder hides files starting with a dot by default, meaning you likely left them behind. Press Cmd+Shift+Dot in your Finder to reveal hidden files, and upload the .htaccess files immediately. The API is locked down to prevent database exposure.'
+    ]);
+    exit();
+}
+
 // Require core
 require_once __DIR__ . '/Router.php';
 require_once __DIR__ . '/controllers/Controller.php';
@@ -91,4 +104,5 @@ if (!in_array($route, $csrfExemptRoutes)) {
     verify_csrf_token();
 }
 
+$router->dispatch($method, $route);
 $router->dispatch($method, $route);

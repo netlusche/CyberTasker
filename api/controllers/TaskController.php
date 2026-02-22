@@ -147,6 +147,36 @@ class TaskController extends Controller
         $this->jsonResponse(['message' => 'Task deleted']);
     }
 
+    public function downloadFile()
+    {
+        $this->requireAuth();
+
+        $filename = $_GET['file'] ?? null;
+        if (!$filename) {
+            $this->errorResponse('Filename missing', 400);
+        }
+
+        // Sanitize to prevent path traversal
+        $filename = basename($filename);
+        $filepath = __DIR__ . '/../uploads/' . $filename;
+
+        if (!file_exists($filepath)) {
+            $this->errorResponse('File not found', 404);
+        }
+
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime_type = finfo_file($finfo, $filepath);
+        finfo_close($finfo);
+
+        header('Content-Type: ' . $mime_type);
+        header('Content-Length: ' . filesize($filepath));
+        header('Cache-Control: private, max-age=86400');
+        // 'inline' means the browser will try to display it (PDF/images), rather than forced 'attachment'
+        header('Content-Disposition: inline; filename="' . $filename . '"');
+        readfile($filepath);
+        exit();
+    }
+
     public function uploadFiles()
     {
         $this->requireAuth();
@@ -176,7 +206,7 @@ class TaskController extends Controller
                 if (move_uploaded_file($tmpName, $destination)) {
                     $uploadedFiles[] = [
                         "name" => $name,
-                        "path" => "api/uploads/" . $uniqueName,
+                        "path" => "api/index.php?route=tasks/download&file=" . $uniqueName,
                         "size" => $_FILES['files']['size'][$key],
                         "type" => $_FILES['files']['type'][$key],
                         "uploaded_at" => date('Y-m-d H:i:s')

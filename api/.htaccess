@@ -1,0 +1,3 @@
+<FilesMatch "(\.db|\.sqlite|\.sqlite-journal|\.log|\.ini)$">
+    Require all denied
+</FilesMatch>
