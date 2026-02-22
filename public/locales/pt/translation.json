@@ -358,10 +358,13 @@
                 "theme_force": "FORÇA – Uma galáxia muito, muito distante. A laranja rebelde brilha contra um campo estelar. O lado claro da grade. Que a diretriz esteja com você.",
                 "theme_arrakis": "ARRAKIS – Poder e especiarias do deserto. Sóis âmbar afundam sobre uma paisagem em constante mudança. A grade flui com o tempero. O medo é o assassino da mente.",
                 "theme_renaissance": "RENASCIMENTO — A era do ouro cibernético. Hexágonos âmbar pulsam em um mar de preto absoluto. Um mundo de aumentos e deuses corporativos. A humanidade dividida.",
-                "theme_klingon": "QO'NOS (KLINGON) — Vermelho sangue e aço frio. Bordas brutalistas nítidas. Hoje é um bom dia para codificar. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Vermelho sangue e aço frio. Bordas brutalistas nítidas. Hoje é um bom dia para codificar. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Gelo e Fogo. Aço azul frio e detalhes em vermelho sangue valiriano. O inverno está chegando. O Norte lembra.",
+                "theme_marvel": "COMIC (MARVEL) — Heroicos pontos de ação vermelhos e ousados. Prisioneiro de guerra! Uau! Uma homenagem à era de ouro dos quadrinhos. Excelsior!",
+                "theme_dc": "GOTHAM (DC) – Noite mais escura, azul mais profundo e um raio de luz amarela cortando a chuva. A justiça nunca dorme."
             },
             "danger_zone": {
-                "title": "// PROTOCOLOS DE ZONA DE PERIGO",
+                "title": "// PROTOCOLOS DE ZONAS DE PERIGO",
                 "item1_warn": "⚠ RESCISÃO DE IDENTIDADE:",
                 "item1_text": "A confirmação da exclusão da conta aciona o **ALERTA DE SEGURANÇA TERMINAL**. Esta ação é irreversível.",
                 "item2_label": "PROTOCOLO DE ESCAPE",

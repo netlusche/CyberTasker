@@ -358,7 +358,10 @@
                 "theme_force": "FORCE – Eine weit, weit entfernte Galaxie. Rebellenorange leuchtet vor einem Sternenfeld. Die helle Seite des Gitters. Möge die Richtlinie mit Ihnen sein.",
                 "theme_arrakis": "ARRAKIS – Wüstenkraft und Würze. Bernsteinfarbene Sonnen versinken über einer sich verändernden Landschaft. Das Gitter fließt mit dem Gewürz. Angst ist der Geisteskiller.",
                 "theme_renaissance": "RENAISSANCE – Die Cyber-Gold-Ära. Bernsteinfarbene Sechsecke pulsieren in einem Meer aus absolutem Schwarz. Eine Welt voller Erweiterungen und Unternehmensgötter. Die Menschheit ist gespalten.",
-                "theme_klingon": "QO'NOS (KLINGONISCH) – Blutrot und kalter Stahl. Rasiermesserscharfe brutalistische Kanten. Heute ist ein guter Tag zum Codieren. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGONISCH) – Blutrot und kalter Stahl. Rasiermesserscharfe brutalistische Kanten. Heute ist ein guter Tag zum Codieren. Qapla'!",
+                "theme_got": "WESTEROS (GOT) – Eis und Feuer. Kaltblauer Stahl und valyrische blutrote Akzente. Der Winter kommt. Der Norden erinnert sich.",
+                "theme_marvel": "COMIC (MARVEL) – Heroische rote und auffällige Action-Punkte. Puh! Wham! Eine Hommage an das goldene Zeitalter der Comics. Holzwolle!",
+                "theme_dc": "GOTHAM (DC) – Dunkelste Nacht, tiefstes Blau und ein gelber Lichtstreifen, der durch den Regen schneidet. Gerechtigkeit schläft nie."
             },
             "danger_zone": {
                 "title": "// GEFAHRENZONENPROTOKOLLE",

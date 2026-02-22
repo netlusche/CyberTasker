@@ -358,7 +358,10 @@
                 "theme_force": "FORCE — En galax långt, långt borta. Rebellorange lyser mot ett sjöfält. Den ljusa sidan av rutnätet. Må direktivet vara med dig.",
                 "theme_arrakis": "ARRAKIS — Ökenkraft och krydda. Bärnstenssolar sjunker över ett skiftande landskap. Gallret flyter med kryddan. Rädsla är sinnesdödaren.",
                 "theme_renaissance": "RENAISSANCE — Cyber-guld-eran. Bärnstenshexagoner pulserar i ett hav av absolut svart. En värld av augmentations och företagsgudar. Mänskligheten splittrades.",
-                "theme_klingon": "QO'NOS (KLINGON) — Blodrött och kallt stål. Knivskarpa brutalistiska kanter. Idag är en bra dag att koda. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Blodrött och kallt stål. Knivskarpa brutalistiska kanter. Idag är en bra dag att koda. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ice and Fire. Kallblått stål och valyriska blodröda accenter. Vintern kommer. Norden minns.",
+                "theme_marvel": "COMIC (MARVEL) — Heroiska röda och djärva actionprickar. Pow! pang! En hyllning till serietidningarnas guldålder. Träull!",
+                "theme_dc": "GOTHAM (DC) — Mörkaste natten, djupast blå och en slinga av gult ljus som skär genom regnet. Rättvisan sover aldrig."
             },
             "danger_zone": {
                 "title": "// FARZONSPROTOKOLL",

@@ -358,10 +358,13 @@
                 "theme_force": "FORCE — En galakse langt, langt unna. Rebelloransje lyser mot et sjøstjernefelt. Den lyse siden av rutenettet. Måtte direktivet være med deg.",
                 "theme_arrakis": "ARRAKIS — Ørkenkraft og krydder. Gule soler synker over et skiftende landskap. Gitteret flyter med krydderet. Frykt er tankedreperen.",
                 "theme_renaissance": "RENESSANSE — Cyber-gull-æraen. Ravsekskanter pulserer i et hav av absolutt svart. En verden av forstørrelser og bedriftsguder. Menneskeheten delte seg.",
-                "theme_klingon": "QO'NOS (KLINGON) — Blodrødt og kaldt stål. Sylskarpe brutalistiske kanter. I dag er en god dag å kode. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Blodrødt og kaldt stål. Sylskarpe brutalistiske kanter. I dag er en god dag å kode. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ice and Fire. Kaldt blått stål og valyriske blodrøde aksenter. Vinteren kommer. Norden husker.",
+                "theme_marvel": "KOMISK (MARVEL) – Heroiske røde og dristige actionprikker. Pow! Wham! En hyllest til tegneserienes gullalder. Excelsior!",
+                "theme_dc": "GOTHAM (DC) — Mørkeste natt, dypeste blå og et snev av gult lys som skjærer gjennom regnet. Rettferdighet sover aldri."
             },
             "danger_zone": {
-                "title": "// FARESONE-PROTOKOLLER",
+                "title": "// FARESONE PROTOKOLLER",
                 "item1_warn": "⚠ IDENTITETSAVSLUTNING:",
                 "item1_text": "Bekreftelse av sletting av konto utløser **TERMINAL SECURITY ALERT**. Denne handlingen er irreversibel.",
                 "item2_label": "ESCAPE PROTOCOL",

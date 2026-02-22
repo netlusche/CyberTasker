@@ -358,7 +358,10 @@
                 "theme_force": "FORZA — Una galassia lontana, lontana. L'arancione ribelle brilla contro un campo stellare. Il lato chiaro della griglia. Che la direttiva sia con voi.",
                 "theme_arrakis": "ARRAKIS — Potenza e spezie del deserto. I soli ambrati tramontano su un paesaggio mutevole. La griglia scorre con le spezie. La paura è l’assassino della mente.",
                 "theme_renaissance": "RINASCIMENTO — L’era del cyber-oro. Esagoni d'ambra pulsano in un mare di nero assoluto. Un mondo di potenziamenti e divinità aziendali. L'umanità divisa.",
-                "theme_klingon": "QO'NOS (KLINGON) — Rosso sangue e freddo acciaio. Bordi brutalisti taglienti come rasoi. Oggi è un buon giorno per programmare. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Rosso sangue e freddo acciaio. Bordi brutalisti taglienti come rasoi. Oggi è un buon giorno per programmare. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ghiaccio e fuoco. Acciaio blu freddo e accenti rosso sangue di Valyria. L'inverno sta arrivando. Il Nord ricorda.",
+                "theme_marvel": "FUMETTO (MARVEL) — Punti rossi eroici e azioni audaci. Pow! Wham! Un omaggio all'epoca d'oro dei fumetti. Eccellente!",
+                "theme_dc": "GOTHAM (DC) — Notte più buia, blu più profondo e un frammento di luce gialla che taglia la pioggia. La giustizia non dorme mai."
             },
             "danger_zone": {
                 "title": "// PROTOCOLLI ZONE PERICOLOSE",

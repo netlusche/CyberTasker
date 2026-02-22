@@ -358,10 +358,13 @@
                 "theme_force": "ERŐ – Egy galaxis messzi-messzi. Rebel narancs világít egy csillagmező ellen. A rács világos oldala. Az irányelv legyen veled.",
                 "theme_arrakis": "ARRAKIS – Sivatagi erő és fűszer. A borostyánsárga napok lesüllyednek egy változó táj felett. A rács folyik a fűszerrel. A félelem az elmegyilkos.",
                 "theme_renaissance": "RENESZÁNSZ – A kiber-arany korszak. Borostyán hatszögek lüktetnek az abszolút fekete tengerben. A bővítések és a vállalati istenek világa. Az emberiség megosztott.",
-                "theme_klingon": "QO'NOS (KLINGON) – Vérvörös és hideg acél. Borotvaéles brutalista élek. Ma jó nap a kódolásra. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) – Vérvörös és hideg acél. Borotvaéles brutalista élek. Ma jó nap a kódolásra. Qapla'!",
+                "theme_got": "WESTEROS (GOT) – Jég és tűz. Hidegkék acél és valyriai vérvörös akcentusok. Jön a tél. Észak emlékszik.",
+                "theme_marvel": "COMIC (MARVEL) – Heroikus piros és merész akciópontok. Hadifogoly! Wham! Tisztelgés a képregények aranykora előtt. Excelsior!",
+                "theme_dc": "GOTHAM (DC) – A legsötétebb éjszaka, a legmélyebb kékség, és egy szál sárga fény átszeli az esőt. Az igazságosság soha nem alszik."
             },
             "danger_zone": {
-                "title": "// VESZÉLYZÓNA PROTOKOLLOK",
+                "title": "// VESZÉLYZÓNA JEGYZŐKÖNYVEK",
                 "item1_warn": "⚠ A személyazonosság megszűnése:",
                 "item1_text": "A fiók törlésének megerősítése a **TERMINÁLIS BIZTONSÁGI FIGYELMEZTETÉS** üzenetet váltja ki. Ez a művelet visszafordíthatatlan.",
                 "item2_label": "SZAKULÁSI JEGYZŐKÖNYV",
@@ -427,7 +430,7 @@
         "password_reset_msg": "Jelszó visszaállítása a következőhöz: {{username}}.",
         "disable_2fa_confirm": "LETILTÁSA A 2FA-t {{felhasználónév}} számára? Ez eltávolítja a másodlagos ellenőrző protokollokat.",
         "2fa_disabled_msg": "2FA letiltva a(z) {{username}} számára.",
-        "disable_2fa_failed": "A 2FA letiltása nem sikerült"
+        "disable_2fa_failed": "Nem sikerült letiltani a 2FA"
     },
     "calendar": {
         "clear_date": "DÁTUM TÖRLÉSE"

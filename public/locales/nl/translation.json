@@ -358,7 +358,10 @@
                 "theme_force": "FORCE — Een sterrenstelsel ver, ver weg. Rebellenoranje gloeit tegen een sterrenveld. De lichte kant van het raster. Moge de richtlijn bij u zijn.",
                 "theme_arrakis": "ARRAKIS – Woestijnkracht en specerijen. Amberkleurige zonnen zinken over een veranderend landschap. Het rooster vloeit mee met het kruid. Angst is de geestdoder.",
                 "theme_renaissance": "RENAISSANCE — Het cybergoudtijdperk. Amberkleurige zeshoeken pulseren in een zee van absoluut zwart. Een wereld van augmentaties en bedrijfsgoden. De mensheid is verdeeld.",
-                "theme_klingon": "QO'NOS (KLINGON) — Bloedrood en koud staal. Vlijmscherpe brutalistische randen. Vandaag is een goede dag om te coderen. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Bloedrood en koud staal. Vlijmscherpe brutalistische randen. Vandaag is een goede dag om te coderen. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — IJs en vuur. Koud blauw staal en Valyrian bloedrode accenten. De winter komt eraan. Het Noorden herinnert zich.",
+                "theme_marvel": "COMIC (MARVEL) — Heroïsche rode en opvallende actiepunten. Pow! Wham! Een eerbetoon aan de gouden eeuw van stripboeken. Excelsior!",
+                "theme_dc": "GOTHAM (DC) — Donkerste nacht, diepste blauw en een streepje geel licht dat door de regen snijdt. Justitie slaapt nooit."
             },
             "danger_zone": {
                 "title": "// GEVAARZONEPROTOCOLLEN",
@@ -427,9 +430,9 @@
         "password_reset_msg": "Wachtwoord opnieuw instellen voor {{gebruikersnaam}}.",
         "disable_2fa_confirm": "2FA UITSCHAKELEN VOOR {{username}}? Hierdoor worden secundaire verificatieprotocollen verwijderd.",
         "2fa_disabled_msg": "2FA uitgeschakeld voor {{username}}.",
-        "disable_2fa_failed": "Kan 2FA niet uitschakelen"
+        "disable_2fa_failed": "Kan 2FA"
     },
     "calendar": {
-        "clear_date": "DUIDELIJKE DATUM"
+        "clear_date": "niet uitschakelen DUIDELIJKE DATUM"
     }
 }

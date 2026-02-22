@@ -14,6 +14,7 @@
 
 ### 🎨 Aesthetic Refinements
 *   **Klingon Theme Integration**: Introduced the brutalist, blood-red **QO'NOS (Klingon)** theme featuring grinding steel CSS background animations and aggressive typography.
+*   **Pop Culture Themes**: Three new highly stylized visual matrices deployed: **Westeros** (Game of Thrones), **Comic** (Marvel), and **Gotham** (DC), complete with tailored fonts, conditional borders, and unique ambient animations.
 *   **Ambient Animations**: Injected dynamic CSS background behaviors across the existing visual roster (Cyberpunk, LCARS, Matrix, Weyland, RobCo, Grid, Section 9, Outrun, Steampunk) with precision opacity and velocity controls.
 *   **Universal Scrollbars**: Fully styled custom scrollbars deployed across all operational visual themes for maximum immersion.
 

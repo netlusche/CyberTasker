@@ -25,6 +25,7 @@ This update introduces a new `files` schema vector (JSON Array) to the `tasks` t
 2.  **External Link Test**: Paste a URL like `https://example.com` into the description and verify it becomes clickable.
 3.  **File Upload Test**: Successfully upload any test `.jpg` or `.png` to the directive and delete it again.
 4.  **Static Localization**: Open `verify.html` directly in the browser after changing your language in the app to verify it reflects the native localized texts.
+5.  **Pop Culture Themes**: Switch to the new Marvel, DC, or Game of Thrones themes and verify that the priority selection borders exactly match your task cards.
 
 ---
 

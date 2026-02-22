@@ -151,7 +151,10 @@ const HelpModal = ({ onClose }) => {
                                         { key: 'force', color: '#cc4422' },
                                         { key: 'arrakis', color: '#d97706' },
                                         { key: 'renaissance', color: '#ffb000' },
-                                        { key: 'klingon', color: '#ff0000' }
+                                        { key: 'klingon', color: '#ff0000' },
+                                        { key: 'got', color: '#8cb8cc' },
+                                        { key: 'marvel', color: '#e62429' },
+                                        { key: 'dc', color: '#005ce6' }
                                     ].map(({ key, color }) => {
                                         const full = t(`help.sections.visual_interface.theme_${key}`, '');
                                         const match = full.match(/(\s*—\s*|\s*-\s*|\s*–\s*|:\s*|——)/);

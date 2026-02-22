@@ -358,7 +358,10 @@
                 "theme_force": "SIŁA — odległa galaktyka. Rebeliancka pomarańcza świeci na tle pola gwiazd. Jasna strona siatki. Niech dyrektywa będzie z wami.",
                 "theme_arrakis": "ARRAKIS — pustynna moc i przyprawa. Bursztynowe słońca chowają się nad zmiennym krajobrazem. Siatka płynie z przyprawą. Strach jest zabójcą umysłu.",
                 "theme_renaissance": "RENESANS — era cyberzłota. Bursztynowe sześciokąty pulsują w morzu absolutnej czerni. Świat ulepszeń i korporacyjnych bogów. Ludzkość podzielona.",
-                "theme_klingon": "QO'NOS (KLINGON) — Krwawa czerwień i zimna stal. Ostre jak brzytwa, brutalistyczne krawędzie. Dziś jest dobry dzień na kodowanie. Kapla!"
+                "theme_klingon": "QO'NOS (KLINGON) — Krwawa czerwień i zimna stal. Ostre jak brzytwa, brutalistyczne krawędzie. Dziś jest dobry dzień na kodowanie. Kapla!",
+                "theme_got": "WESTEROS (GOT) — Lód i Ogień. Zimnoniebieska stal i valyriańskie akcenty krwistoczerwone. Nadchodzi zima. Północ pamięta.",
+                "theme_marvel": "KOMIKS (MARVEL) — Bohaterskie czerwone i odważne kropki akcji. Pff! Bum! Hołd dla złotej ery komiksów. Wełna drzewna!",
+                "theme_dc": "GOTHAM (DC) — Najciemniejsza noc, najgłębszy błękit i smuga żółtego światła przecinająca deszcz. Sprawiedliwość nigdy nie śpi."
             },
             "danger_zone": {
                 "title": "// PROTOKOŁY STREF NIEBEZPIECZEŃSTWA",
@@ -397,7 +400,7 @@
         "col_history": "HISTORIA",
         "col_actions": "DZIAŁANIA",
         "verified": "WERYFIKOWANE",
-        "unverified": "NIESPRAWDZONY",
+        "unverified": "NIEZWERYFIKOWANE",
         "never": "NIGDY",
         "joined_label": "JO",
         "login_label": "LG",

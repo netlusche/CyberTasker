@@ -358,7 +358,10 @@
                 "theme_force": "FORCE — En galakse langt, langt væk. Rebel orange lyser mod et søstjernefelt. Den lette side af gitteret. Må direktivet være med dig.",
                 "theme_arrakis": "ARRAKIS — Ørkenkraft og krydderi. Rav sole synker over et skiftende landskab. Gitteret flyder med krydderiet. Frygt er åndsdræberen.",
                 "theme_renaissance": "RENAISSANCE — Cyber-guld-æraen. Ravsekskanter pulserer i et hav af absolut sort. En verden af ​​augmentations og corporate guder. Menneskeheden delte sig.",
-                "theme_klingon": "QO'NOS (KLINGON) — Blodrødt og koldt stål. Knivskarpe brutalistiske kanter. I dag er en god dag at kode. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Blodrødt og koldt stål. Knivskarpe brutalistiske kanter. I dag er en god dag at kode. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ice and Fire. Koldblåt stål og valyriske blodrøde accenter. Vinteren kommer. Norden husker.",
+                "theme_marvel": "COMIC (MARVEL) — Heroiske røde og dristige actionprikker. Pow! Puha! En hyldest til tegneseriernes guldalder. Excelsior!",
+                "theme_dc": "GOTHAM (DC) — Mørkeste nat, dybeste blå og en flig gult lys, der skærer gennem regnen. Retfærdigheden sover aldrig."
             },
             "danger_zone": {
                 "title": "// FAREZONE PROTOKOLLER",

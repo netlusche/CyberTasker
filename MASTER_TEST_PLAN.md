@@ -108,7 +108,7 @@ The suite has been hardened against "flakiness" using the following patterns:
 ## 🎨 test-suite-03: Visual Architecture & Multi-Theming
 
 ### TS-03.1: Theme Switching & Isolation
-- **Scenario**: Switch between "Cyberpunk", "LCARS", "Matrix", "Weyland-Yutani", and "Klingon" in the profile.
+- **Scenario**: Switch between "Cyberpunk", "LCARS", "Matrix", "Weyland-Yutani", "Klingon", "Westeros", "Comic", and "Gotham" in the profile.
 - **Validation**: CSS variables and fonts update immediately (e.g., Wallpoet vs Antonio vs Courier). Contrast ratios remain compliant across all themes.
 
 ### TS-03.2: Theme Persistence [AUTOMATED] (03-theme-persistence.spec.js)
@@ -118,6 +118,10 @@ The suite has been hardened against "flakiness" using the following patterns:
 ### TS-03.3: Linguistic Uplink (Language Switching) [AUTOMATED] (06-extended-features.spec.js)
 - **Scenario**: Switch between DE, EN, NL, ES, FR, IT using the LanguageSwitcher.
 - **Validation**: All UI strings, help manuals, and alerts update instantly to the target language without page reload.
+
+### TS-03.4: Localization Completeness Check [AUTOMATED]
+- **Scenario**: Run `npm run check-translations` from the command line.
+- **Validation**: The internal python script parses `AuthController.php` to extract all allowed visual themes, asserting that each possesses a corresponding `theme_<id>` string in the English source. It then recursively traverses the English `translation.json` source-of-truth, ensuring every single key exists across all 18 other locale configurations. If any keys or theme descriptions are missing, the script halts with a precise index of missing identifiers.
 
 ---
 

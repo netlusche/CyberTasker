@@ -153,6 +153,85 @@
   --shadow-accent: 0 0 8px rgba(160, 160, 176, 0.4);
 }
 
+.theme-got {
+  /* Game of Thrones Theme */
+  --theme-bg: #090e17;
+  --theme-surface: #111a24;
+  --theme-border: #1f3041;
+  --theme-primary: #8cb8cc;
+  --theme-secondary: #5a7b8c;
+  --theme-success: #8cb8cc;
+  --theme-accent: #c0392b;
+  --theme-danger: #e74c3c;
+  --theme-warning: #f39c12;
+  --theme-info: #3498db;
+  --theme-card: rgba(17, 26, 36, 0.85);
+  --theme-text: #e0e6ed;
+  --theme-font: 'Cinzel Decorative', serif;
+  --theme-radius: 0.25rem;
+  --shadow-primary: 0 0 10px rgba(140, 184, 204, 0.4);
+  --shadow-secondary: 0 0 5px rgba(90, 123, 140, 0.3);
+  --shadow-accent: 0 0 10px rgba(192, 57, 43, 0.6);
+}
+
+.theme-marvel {
+  /* Marvel Theme */
+  --theme-bg: #111111;
+  --theme-surface: #1a1a1a;
+  --theme-border: #e62429;
+  --theme-primary: #e62429;
+  --theme-secondary: #f0e442;
+  --theme-success: #28a745;
+  --theme-accent: #005ce6;
+  --theme-danger: #cc0000;
+  --theme-warning: #f0e442;
+  --theme-info: #005ce6;
+  --theme-card: rgba(26, 26, 26, 0.9);
+  --theme-text: #ffffff;
+  --theme-font: 'Bangers', cursive;
+  --theme-radius: 0;
+  --shadow-primary: 4px 4px 0px rgba(230, 36, 41, 1);
+  --shadow-secondary: 4px 4px 0px rgba(240, 228, 66, 1);
+  --shadow-accent: 4px 4px 0px rgba(0, 92, 230, 1);
+}
+
+.theme-marvel .marvel-select-prio-1 {
+  border: 2px solid var(--theme-danger) !important;
+  border-radius: 0;
+}
+
+.theme-marvel .marvel-select-prio-2 {
+  border: 2px solid var(--theme-warning) !important;
+  border-radius: 0;
+}
+
+.theme-marvel .marvel-select-prio-3 {
+  border: 2px solid var(--theme-success) !important;
+  border-radius: 0;
+}
+
+
+.theme-dc {
+  /* DC Dark Theme */
+  --theme-bg: #04040a;
+  --theme-surface: #0a0a14;
+  --theme-border: #1a1a33;
+  --theme-primary: #005ce6;
+  --theme-secondary: #33334d;
+  --theme-success: #00b33c;
+  --theme-accent: #ffcc00;
+  --theme-danger: #cc0000;
+  --theme-warning: #ffcc00;
+  --theme-info: #005ce6;
+  --theme-card: rgba(10, 10, 20, 0.85);
+  --theme-text: #d9d9e6;
+  --theme-font: 'Anton', sans-serif;
+  --theme-radius: 0.125rem;
+  --shadow-primary: 0 0 15px rgba(0, 92, 230, 0.6);
+  --shadow-secondary: 0 0 5px rgba(51, 51, 77, 0.4);
+  --shadow-accent: 0 0 10px rgba(255, 204, 0, 0.6);
+}
+
 /* Background effects for Klingon Theme */
 .theme-klingon .cyber-grid {
   background-image: repeating-linear-gradient(45deg, #0a0101 25%, transparent 25%, transparent 75%, #0a0101 75%, #0a0101), repeating-linear-gradient(45deg, #0a0101 25%, #050000 25%, #050000 75%, #0a0101 75%, #0a0101);
@@ -1357,6 +1436,62 @@ body.theme-steampunk .input-cyber:focus {
   }
 }
 
+/* 14. Game of Thrones - Falling Snow */
+.theme-got .cyber-grid {
+  background-image: radial-gradient(circle at center, #8cb8cc 2px, transparent 2px), radial-gradient(circle at center, #ffffff 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px;
+  background-position: 0 0, 25px 25px;
+  animation: got-snow 20s linear infinite;
+  opacity: 0.2 !important;
+}
+
+@keyframes got-snow {
+  0% {
+    background-position: 0 0, 25px 25px;
+  }
+
+  100% {
+    background-position: 50px 50px, 105px 105px;
+  }
+}
+
+/* 15. Marvel - Halftone Action */
+.theme-marvel .cyber-grid {
+  background-image: radial-gradient(#e62429 20%, transparent 20%), radial-gradient(#e62429 20%, transparent 20%);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  opacity: 0.1 !important;
+  animation: marvel-slide 15s linear infinite;
+}
+
+@keyframes marvel-slide {
+  from {
+    background-position: 0 0, 10px 10px;
+  }
+
+  to {
+    background-position: -100px -100px, -90px -90px;
+  }
+}
+
+/* 16. DC - Gotham Rain */
+.theme-dc .cyber-grid {
+  background-image: linear-gradient(180deg, transparent 50%, rgba(200, 220, 255, 0.1) 80%, rgba(200, 220, 255, 0.3) 100%);
+  background-size: 8px 100px;
+  animation: dc-rain 2s linear infinite;
+  opacity: 0.5 !important;
+}
+
+@keyframes dc-rain {
+  0% {
+    background-position: 0 -100px;
+  }
+
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
 /* ==========================================================================
    CUSTOM THEMED SCROLLBARS
    ========================================================================== */
@@ -1514,4 +1649,63 @@ body.theme-steampunk .input-cyber:focus {
 
 .theme-klingon .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #cc0000;
+}
+
+.theme-got .custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-got .custom-scrollbar::-webkit-scrollbar-track {
+  background: #090e17;
+  border-left: 1px solid #1f3041;
+}
+
+.theme-got .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #5a7b8c;
+  border-radius: 4px;
+}
+
+.theme-got .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #8cb8cc;
+}
+
+.theme-marvel .custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.theme-marvel .custom-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-left: 2px solid #e62429;
+}
+
+.theme-marvel .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #f0e442;
+  border-radius: 0;
+  border: 2px solid #e62429;
+}
+
+.theme-marvel .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #e62429;
+  border: 2px solid #f0e442;
+}
+
+.theme-dc .custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-dc .custom-scrollbar::-webkit-scrollbar-track {
+  background: #04040a;
+  border-left: 1px solid #1a1a33;
+}
+
+.theme-dc .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #005ce6;
+  border-radius: 2px;
+}
+
+.theme-dc .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0073e6;
 }

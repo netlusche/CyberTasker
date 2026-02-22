@@ -52,6 +52,7 @@ This document provides a categorized overview of the user stories implemented in
 *   **Theme-Specific Typography**: As an operative, I want the system to utilize theme-authentic fonts (like Antonio for LCARS) to enhance immersion and readability.
 *   **Harmonized Color Palettes**: As an operative, I want every system element (buttons, borders, icons) to automatically adapt to the active theme's color scheme for a unified UX.
 *   **Adaptive Layouts**: As an operative, I want the system layout to optimize itself for the active theme (e.g., repositioning header modules in LCARS) to ensure a clean, non-overlapping interface.
+*   **Pop Culture Synapse**: As an operative, I want to access non-standard, highly stylized pop culture visual templates (Westeros, Comic, Gotham) to reflect my current operational mood.
 
 ## 📁 8. Deep Directives (Operative Dossier)
 *   **Rich-Text Intel (Markdown)**: As an operative, I want to write extended protocol descriptions using Markdown so I can structure my mission notes with headers, lists, and formatting.

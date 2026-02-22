@@ -8,7 +8,8 @@
     "build": "vite build && cp -r api dist/ && cp .htaccess dist/ 2>/dev/null || true",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check-translations": "python3 scripts/check_translations.py"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",

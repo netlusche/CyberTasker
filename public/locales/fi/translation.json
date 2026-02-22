@@ -358,10 +358,13 @@
                 "theme_force": "VOIMA - Galaksi kaukana, kaukana. Kapinaoranssi hehkuu tähtikenttää vasten. Verkon kevyt puoli. Olkoon ohje kanssasi.",
                 "theme_arrakis": "ARRAKIS - Aavikon voima ja mauste. Meripihkanväriset auringot vajoavat muuttuvan maiseman yli. Ristiä virtaa mausteen mukana. Pelko on mielen tappaja.",
                 "theme_renaissance": "RENAISSANCE – kyberkulta-aika. Meripihkanväriset kuusikulmiot sykkivät täydellisen mustan meressä. Lisäysten ja yritysjumalien maailma. Ihmiskunta jakautunut.",
-                "theme_klingon": "QO'NOS (KLINGON) – Verenpunainen ja kylmä teräs. Partaterävät brutalistiset reunat. Tänään on hyvä päivä koodata. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) – Verenpunainen ja kylmä teräs. Partaterävät brutalistiset reunat. Tänään on hyvä päivä koodata. Qapla'!",
+                "theme_got": "WESTEROS (GOT) - Jää ja tuli. Kylmänsinistä terästä ja Valyrian verenpunaisia ​​aksentteja. Talvi on tulossa. Pohjoinen muistaa.",
+                "theme_marvel": "COMIC (MARVEL) – Sankarillisia punaisia ​​ja rohkeita toimintapisteitä. Pow! Wham! Kunnianosoitus sarjakuvien kultakaudelle. Erinomainen!",
+                "theme_dc": "GOTHAM (DC) - Pimein yö, syvin sininen ja keltaista valoa leikkaava sateen läpi. Oikeus ei koskaan nuku."
             },
             "danger_zone": {
-                "title": "// VAARAVYÖHYKSEN PROTOKOLLIT",
+                "title": "// VAARAVYÖHYKKEEN PÖYTÄKIRJAT",
                 "item1_warn": "⚠ IDENTITEETIN PÄÄTTYMINEN:",
                 "item1_text": "Tilin poistamisen vahvistaminen laukaisee **TERMINAL SECURITY ALERT** -ilmoituksen. Tämä toimenpide on peruuttamaton.",
                 "item2_label": "PAKOPROTOKOLLA",

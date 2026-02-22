@@ -358,10 +358,13 @@
                 "theme_force": "FORCE – Une galaxie lointaine, très lointaine. L'orange rebelle brille contre un champ d'étoiles. Le côté lumineux de la grille. Que la directive soit avec vous.",
                 "theme_arrakis": "ARRAKIS — Puissance et épices du désert. Des soleils d'ambre se couchent sur un paysage changeant. La grille coule avec les épices. La peur tue l'esprit.",
                 "theme_renaissance": "RENAISSANCE — L’ère du cyber-or. Les hexagones ambrés palpitent dans une mer de noir absolu. Un monde d'augmentations et de dieux corporatifs. L'humanité divisée.",
-                "theme_klingon": "QO'NOS (KLINGON) — Rouge sang et acier froid. Des bords brutalistes acérés. Aujourd’hui est une bonne journée pour coder. Qapla' !"
+                "theme_klingon": "QO'NOS (KLINGON) — Rouge sang et acier froid. Des bords brutalistes acérés. Aujourd’hui est une bonne journée pour coder. Qapla' !",
+                "theme_got": "WESTEROS (GOT) – Glace et feu. Acier bleu froid et accents rouge sang valyrien. L'hiver arrive. Le Nord s'en souvient.",
+                "theme_marvel": "COMIC (MARVEL) — Points d'action héroïques rouges et audacieux. Pouah ! Pan! Un hommage à l'âge d'or de la bande dessinée. Excelsior!",
+                "theme_dc": "GOTHAM (DC) – La nuit la plus sombre, le bleu le plus profond et un éclat de lumière jaune traversant la pluie. La justice ne dort jamais."
             },
             "danger_zone": {
-                "title": "// PROTOCOLES ZONES DANGEREUSES",
+                "title": "// PROTOCOLES DE ZONES DANGEREUSES",
                 "item1_warn": "⚠ CESSATION D'IDENTITÉ :",
                 "item1_text": "La confirmation de la suppression du compte déclenche l'**ALERTE DE SÉCURITÉ DU TERMINAL**. Cette action est irréversible.",
                 "item2_label": "PROTOCOLE D'ÉVASION",

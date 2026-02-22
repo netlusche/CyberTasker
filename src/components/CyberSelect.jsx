@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CyberSelect = ({ value, onChange, options, label, className = "", neonColor = "cyan" }) => {
+const CyberSelect = ({ value, onChange, options, label, className = "", wrapperClassName = "", neonColor = "cyan", disabled = false }) => {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef(null);
@@ -50,8 +50,8 @@ const CyberSelect = ({ value, onChange, options, label, className = "", neonColo
                         setIsOpen(false);
                     }
                 }}
-                onClick={() => setIsOpen(!isOpen)}
-                className={`input-cyber flex items-center justify-between cursor-pointer min-w-[120px] transition-all duration-200 outline-none ${isOpen ? activeNeonClass : neonClass}`}
+                onClick={() => !disabled && setIsOpen(!isOpen)}
+                className={`input-cyber flex items-center justify-between cursor-pointer min-w-[120px] transition-all duration-200 outline-none ${isOpen ? activeNeonClass : neonClass} ${wrapperClassName} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
                 <span className="truncate pr-2 font-mono uppercase tracking-wider text-sm">
                     {displayValue}

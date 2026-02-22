@@ -358,7 +358,10 @@
                 "theme_force": "FORCE — A galaxy far, far away. Rebel orange glows against a starfield. The light side of the grid. May the directive be with you.",
                 "theme_arrakis": "ARRAKIS — Desert power and spice. Amber suns sink over a shifting landscape. The grid flows with the spice. Fear is the mind-killer.",
                 "theme_renaissance": "RENAISSANCE — The cyber-gold era. Amber hexagons pulse in a sea of absolute black. A world of augmentations and corporate gods. Mankind divided.",
-                "theme_klingon": "QO'NOS (KLINGON) — Blood red and cold steel. Razor-sharp brutalist edges. Today is a good day to code. Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Blood red and cold steel. Razor-sharp brutalist edges. Today is a good day to code. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ice and Fire. Cold blue steel and Valyrian blood red accents. Winter is coming. The North remembers.",
+                "theme_marvel": "COMIC (MARVEL) — Heroic red and bold action dots. Pow! Wham! A tribute to the golden age of comic books. Excelsior!",
+                "theme_dc": "GOTHAM (DC) — Darkest night, deepest blue, and a sliver of yellow light cutting through the rain. Justice never sleeps."
             },
             "danger_zone": {
                 "title": "// DANGER ZONE PROTOCOLS",

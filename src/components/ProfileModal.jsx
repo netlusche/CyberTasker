@@ -1144,6 +1144,73 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         </div>
                                     )}
                                 </button>
+
+                                {/* Game of Thrones Theme (Ice & Fire) */}
+                                <button
+                                    data-testid="theme-switch-got"
+                                    onClick={() => setTheme('got')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'got' ? 'scale-[1.02] border-2 border-[#8cb8cc] shadow-[0_0_15px_rgba(140,184,204,0.6)]' : 'border-[#1f3041] bg-[#111a24] hover:border-[#8cb8cc]/60 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-20" style={{ background: 'radial-gradient(circle at center, #8cb8cc 2px, transparent 2px)', backgroundSize: '15px 15px' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center border-l border-r border-[#8cb8cc]">
+                                            <div className="w-1 h-full bg-[#8cb8cc] shadow-[0_0_5px_#8cb8cc]"></div>
+                                            <div className="absolute w-full h-1 bg-[#c0392b] shadow-[0_0_5px_#c0392b]"></div>
+                                        </div>
+                                        <span className={`text-[10px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'got' ? 'text-[#8cb8cc]' : 'text-gray-400'}`} style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+                                            WESTEROS
+                                        </span>
+                                    </div>
+                                    {theme === 'got' && (
+                                        <div className="absolute top-0 right-0 bg-[#8cb8cc] text-black font-bold text-[7px] px-1.5 py-0.5" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+                                            WINTER
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Marvel Theme (Comic Halftone) */}
+                                <button
+                                    data-testid="theme-switch-marvel"
+                                    onClick={() => setTheme('marvel')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'marvel' ? 'scale-[1.02] border-[3px] border-[#e62429] bg-[#1a1a1a]' : 'border-[3px] border-gray-800 bg-[#111111] hover:border-[#e62429]/60 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-10" style={{ background: 'radial-gradient(#e62429 20%, transparent 20%)', backgroundSize: '10px 10px' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center bg-[#e62429] shadow-[2px_2px_0px_#f0e442]">
+                                            <span className="text-[#ffffff] font-bold text-lg" style={{ fontFamily: "'Bangers', cursive" }}>M</span>
+                                        </div>
+                                        <span className={`text-[12px] font-bold tracking-[0.05em] mt-2 uppercase ${theme === 'marvel' ? 'text-[#ffffff]' : 'text-gray-500'}`} style={{ fontFamily: "'Bangers', cursive" }}>
+                                            COMIC
+                                        </span>
+                                    </div>
+                                    {theme === 'marvel' && (
+                                        <div className="absolute -top-1 -right-1 bg-[#f0e442] text-black font-bold text-[9px] px-2 py-0.5 border-2 border-[#e62429] shadow-[1px_1px_0px_#e62429] transform rotate-12" style={{ fontFamily: "'Bangers', cursive" }}>
+                                            POW!
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* DC Theme (Gotham Dark) */}
+                                <button
+                                    data-testid="theme-switch-dc"
+                                    onClick={() => setTheme('dc')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'dc' ? 'scale-[1.02] border-2 border-[#005ce6] shadow-[0_0_15px_rgba(0,92,230,0.6)]' : 'border-[#1a1a33] bg-[#0a0a14] hover:border-[#005ce6]/60 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-20 bg-gradient-to-b from-transparent to-[#005ce6]/20" />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center border-t-2 border-[#ffcc00] rounded-t-full shadow-[0_0_10px_#ffcc00]">
+                                            <div className="absolute top-1 w-6 h-6 border-l-2 border-r-2 border-[#005ce6] transform scale-x-75"></div>
+                                        </div>
+                                        <span className={`text-[12px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'dc' ? 'text-[#d9d9e6]' : 'text-gray-500'}`} style={{ fontFamily: "'Anton', sans-serif" }}>
+                                            GOTHAM
+                                        </span>
+                                    </div>
+                                    {theme === 'dc' && (
+                                        <div className="absolute top-0 right-0 bg-[#005ce6] text-white font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Anton', sans-serif" }}>
+                                            NIGHT
+                                        </div>
+                                    )}
+                                </button>
                             </div>
                         </div>
 

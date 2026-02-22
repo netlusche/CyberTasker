@@ -199,6 +199,7 @@ const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete, activeCalendar
                                     ]}
                                     neonColor={priorityNeonColors[task.priority]}
                                     className="text-[10px] font-bold h-7"
+                                    wrapperClassName={`marvel-select-prio-${task.priority}`}
                                     disabled={task.status == 1}
                                 />
                             </div>

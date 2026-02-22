@@ -358,7 +358,10 @@
                 "theme_force": "FUERZA: Una galaxia muy, muy lejana. El naranja rebelde brilla contra un campo estelar. El lado luminoso de la parrilla. Que la directiva os acompañe.",
                 "theme_arrakis": "ARRAKIS: poder y sabor del desierto. Los soles ámbar se hunden sobre un paisaje cambiante. La parrilla fluye con la especia. El miedo es el asesino de la mente.",
                 "theme_renaissance": "RENACIMIENTO – La era del ciberoro. Los hexágonos de color ámbar pulsan en un mar de negro absoluto. Un mundo de aumentos y dioses corporativos. La humanidad dividida.",
-                "theme_klingon": "QO'NOS (KLINGON) — Rojo sangre y acero frío. Filos brutalistas afilados. Hoy es un buen día para codificar. ¡Qapla'!"
+                "theme_klingon": "QO'NOS (KLINGON) — Rojo sangre y acero frío. Filos brutalistas afilados. Hoy es un buen día para codificar. ¡Qapla'!",
+                "theme_got": "WESTEROS (GOT) – Hielo y fuego. Acero azul frío y detalles en rojo sangre valyrio. Se acerca el invierno. El Norte lo recuerda.",
+                "theme_marvel": "CÓMIC (MARVEL) — Heroicos puntos de acción rojos y audaces. ¡Guau! ¡Zam! Un homenaje a la época dorada del cómic. ¡Virutas de embalaje!",
+                "theme_dc": "GOTHAM (DC) — La noche más oscura, el azul más profundo y una franja de luz amarilla atravesando la lluvia. La justicia nunca duerme."
             },
             "danger_zone": {
                 "title": "// PROTOCOLOS DE ZONAS DE PELIGRO",
@@ -397,7 +400,7 @@
         "col_history": "HISTORIA",
         "col_actions": "ACCIONES",
         "verified": "VERIFICADO",
-        "unverified": "INCONFIRMADO",
+        "unverified": "NO VERIFICADO",
         "never": "NUNCA",
         "joined_label": "JO",
         "login_label": "LG",
