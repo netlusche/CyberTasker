@@ -233,13 +233,6 @@
 }
 
 /* Background effects for Klingon Theme */
-.theme-klingon .cyber-grid {
-  background-image: repeating-linear-gradient(45deg, #0a0101 25%, transparent 25%, transparent 75%, #0a0101 75%, #0a0101), repeating-linear-gradient(45deg, #0a0101 25%, #050000 25%, #050000 75%, #0a0101 75%, #0a0101);
-  background-position: 0 0, 15px 15px;
-  background-size: 30px 30px;
-  background-attachment: fixed;
-}
-
 .theme-klingon .bg-cyber-surface,
 .theme-klingon .bg-cyber-card {
   background-image: linear-gradient(135deg, rgba(20, 0, 0, 0.9) 0%, rgba(10, 0, 0, 0.95) 100%);

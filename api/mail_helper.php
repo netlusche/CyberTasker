@@ -48,26 +48,7 @@ function sendMail($to, $subject, $body)
     // Send mail and log result
     $success = @mail($to, $subject, $htmlMessage, $headers);
 
-    $logFile = __DIR__ . '/mail_log.txt';
-    $timestamp = date('Y-m-d H:i:s');
-
-    if ($success) {
-        $logMessage = "[$timestamp] MAIL_HELPER: Successfully sent email to $to with subject '$subject'\n";
-    }
-    else {
-        $errorInfo = error_get_last();
-        $errorMessage = $errorInfo ? $errorInfo['message'] : 'Unknown error';
-        $logMessage = "[$timestamp] MAIL_HELPER: Failed to send email to $to with subject '$subject'. Error: $errorMessage\n";
-    }
-
-    // Create a plain text version for easier reading in the terminal
-    $plainBody = str_replace(['<br>', '<br/>', '<br />'], "\n", $body);
-    $plainBody = strip_tags($plainBody);
-
-    // Append the body to the log for local testing visibility
-    $logMessage .= "--- EMAIL BODY ---\n$htmlMessage\n------------------\n\n";
-
-    @file_put_contents($logFile, $logMessage, FILE_APPEND);
+    // error_log($logMessage); // Uncomment for system-level mail debugging
 
     return $success;
 }

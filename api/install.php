@@ -91,15 +91,6 @@ try {
     if (tableExists($pdo, 'users')) {
         echo "System initialized ('users' table detected). Engaging Auto-Lock protocol.<br>\n";
         if (session_status() === PHP_SESSION_NONE) {
-            // Secure session start to check credentials
-            session_set_cookie_params([
-                'lifetime' => 86400,
-                'path' => '/',
-                'secure' => isset($_SERVER['HTTPS']),
-                'httponly' => true,
-                'samesite' => 'Strict'
-            ]);
-            session_name('CYBER_SESSION');
             session_start();
         }
 
@@ -173,6 +164,7 @@ try {
         due_date DATETIME DEFAULT NULL,
         description TEXT NULL,
         attachments TEXT NULL,
+        files TEXT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
     $pdo->exec($sqlTasks);
@@ -192,6 +184,11 @@ try {
     if (!columnExists($pdo, 'tasks', 'attachments')) {
         $pdo->exec("ALTER TABLE tasks ADD COLUMN attachments TEXT NULL");
         echo "Column 'attachments' added to tasks.<br>\n";
+    }
+
+    if (!columnExists($pdo, 'tasks', 'files')) {
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN files TEXT NULL");
+        echo "Column 'files' added to tasks.<br>\n";
     }
 
     // --- USER CATEGORIES TABLE ---
