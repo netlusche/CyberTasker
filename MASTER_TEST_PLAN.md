@@ -1,6 +1,6 @@
-# CyberTasker: Master Automated Test Plan v2.0.0
+# CyberTasker: Master Automated Test Plan v2.1.0
 
-This plan outlines the end-to-end testing strategy for CyberTasker v2.0.0. The goal is to verify all functional requirements, multi-theming architecture, and OWASP-aligned security hardening using automated browser sessions and backend audits.
+This plan outlines the end-to-end testing strategy for CyberTasker v2.1.0. The goal is to verify all functional requirements, multi-theming architecture, and OWASP-aligned security hardening using automated browser sessions and backend audits.
 
 ---
 
@@ -108,8 +108,8 @@ The suite has been hardened against "flakiness" using the following patterns:
 ## 🎨 test-suite-03: Visual Architecture & Multi-Theming
 
 ### TS-03.1: Theme Switching & Isolation
-- **Scenario**: Switch between "Cyberpunk", "LCARS", "Matrix", and "Weyland-Yutani" in the profile.
-- **Validation**: CSS variables and fonts update immediately (e.g., Antonio vs Courier vs VT323 vs Share Tech Mono). Contrast ratios remain compliant across all themes.
+- **Scenario**: Switch between "Cyberpunk", "LCARS", "Matrix", "Weyland-Yutani", "Klingon", "Westeros", "Comic", and "Gotham" in the profile.
+- **Validation**: CSS variables and fonts update immediately (e.g., Wallpoet vs Antonio vs Courier). Contrast ratios remain compliant across all themes.
 
 ### TS-03.2: Theme Persistence [AUTOMATED] (03-theme-persistence.spec.js)
 - **Scenario**: Set theme (e.g., "Matrix"), logout, and verify login screen aesthetics.
@@ -118,6 +118,10 @@ The suite has been hardened against "flakiness" using the following patterns:
 ### TS-03.3: Linguistic Uplink (Language Switching) [AUTOMATED] (06-extended-features.spec.js)
 - **Scenario**: Switch between DE, EN, NL, ES, FR, IT using the LanguageSwitcher.
 - **Validation**: All UI strings, help manuals, and alerts update instantly to the target language without page reload.
+
+### TS-03.4: Localization Completeness Check [AUTOMATED]
+- **Scenario**: Run `npm run check-translations` from the command line.
+- **Validation**: The internal python script parses `AuthController.php` to extract all allowed visual themes, asserting that each possesses a corresponding `theme_<id>` string in the English source. It then recursively traverses the English `translation.json` source-of-truth, ensuring every single key exists across all 18 other locale configurations. If any keys or theme descriptions are missing, the script halts with a precise index of missing identifiers.
 
 ---
 
@@ -165,6 +169,41 @@ The suite has been hardened against "flakiness" using the following patterns:
 ### TS-06.3: Diagnostic Integrity
 - **Scenario**: Run `install.php` and verify diagnostic output.
 - **Validation**: Checks for PHP version, PDO drivers, and database writeability (特に macOS `tmp` redirection).
+
+### TS-06.4: Cross-Database Compatibility [MANUAL]
+- **Scenario**: Configure the backend to sequentially run on SQLite, MariaDB, and MySQL. Initialize Deep Directives with JSON file attachments on each.
+- **Validation**:
+  - The `attachments` and `description` fields reliably parse and store data on all engines.
+  - No database-specific syntax errors occur during connection, pagination, or insertion.
+
+### TS-06.5: Subdomain & Shared Hosting Routing [MANUAL]
+- **Scenario**: Deploy the production build to a strict shared hosting environment (e.g., STRATO Hosting Plus) within both a Subdomain and a Subdirectory.
+- **Validation**:
+  - The `FRONTEND_URL` securely maps CORS headers without path distortion.
+  - HTTPS proxy headers are correctly decoded to permit 2FA and registration secure cookies.
+
+---
+
+## 📁 test-suite-07: Deep Directives (Operative Dossier)
+
+### TS-07.1: Rich-Text Markdown Parsing [AUTOMATED] (07-deep-directives.spec.js)
+- **Scenario**: Open an active directive and inject protocol description using Markdown (Headers, Bold, Lists).
+- **Validation**: The parser securely renders HTML tags without XSS vulnerabilities, applying the active theme's typography rules.
+
+### TS-07.2: Secure Up-Links [AUTOMATED] (07-deep-directives.spec.js)
+- **Scenario**: Embed external HTTPS URLs into the protocol description.
+- **Validation**: URLs are parsed into clickable anchor tags with `target="_blank"` protecting the operational sandbox.
+
+### TS-07.3: Encrypted Asset Uploads [MANUAL]
+- **Scenario**: Drag-and-drop or select image/document files to attach them to a specific directive.
+- **Validation**:
+  - Files are processed securely via Multer/PHP backend as `multipart/form-data`.
+  - Filenames are sanitized and hashed.
+  - The UI accurately renders previews for images and generic icons for documents.
+
+### TS-07.4: Asset Purging [MANUAL]
+- **Scenario**: Delete an attached file from a directive via the frontend interface.
+- **Validation**: The file is completely wiped from the local `uploads/` volume and the JSON array in the database is synchronized.
 
 ---
 

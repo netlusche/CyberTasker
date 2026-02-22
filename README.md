@@ -2,6 +2,24 @@
 
 **CyberTasker** is a gamified, cyberpunk-themed task management application built with **React (Vite)** and **PHP**. It supports **MySQL, MariaDB, and SQLite**, featuring a robust role-based access control (RBAC) system, gamification mechanics (XP, Levels, Badges), and secure Two-Factor Authentication (2FA).
 
+## 📁 New in Version 2.1.3 (Deep Directives & Global Localization)
+
+### 📝 Deep Directives
+*   **Markdown Protocols**: Write extended mission intel with rich-text formatting directly inside directive modals using the integrated Markdown engine.
+*   **External Up-Links**: The system now parses and securely embeds external HTTPS links (`target="_blank"`) into protocol descriptions to maintain a secure sandbox.
+*   **Encrypted Asset Vault**: Upload mission-critical file attachments (images, documents) directly to the server, linked exclusively to individual directives.
+
+### 🌍 Static Localization Engine
+*   **Vanilla JS i18n Hydration**: The static authentication pages (`verify.html`, `reset-password.html`) now hydrate to the user's preferred language natively without booting the full React bundle, preserving microsecond load times.
+
+### 🎨 Aesthetic Refinements
+*   **Klingon Theme Integration**: Introduced the brutalist, blood-red **QO'NOS (Klingon)** theme featuring grinding steel CSS background animations and aggressive typography.
+*   **Pop Culture Themes**: Three new highly stylized visual matrices deployed: **Westeros** (Game of Thrones), **Comic** (Marvel), and **Gotham** (DC), complete with tailored fonts, conditional borders, and unique ambient animations.
+*   **Ambient Animations**: Injected dynamic CSS background behaviors across the existing visual roster (Cyberpunk, LCARS, Matrix, Weyland, RobCo, Grid, Section 9, Outrun, Steampunk) with precision opacity and velocity controls.
+*   **Universal Scrollbars**: Fully styled custom scrollbars deployed across all operational visual themes for maximum immersion.
+
+---
+
 ## 🛡️ New in Version 2.0.4 (Account Verification Hotfix)
 
 ### 🏗️ Modernized Backend
@@ -237,6 +255,11 @@ npm run build && cp -r api dist/
 
 #### 2. Upload
 Upload the **contents** of the `dist` folder to your server directory (e.g., `/public_html/tasks`).
+
+> [!CAUTION]
+> **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply select all visible files in the `dist/api` folder and drag them to your FTP client, the `.htaccess` files **will be left behind**. 
+> Without these files, your `cybertracker.db` SQLite database and all uploaded files are **PUBLICLY DOWNLOADABLE**! 
+> Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
 
 #### 3. Configure Database
 Edit `api/config.php` on the server to match your database environment.

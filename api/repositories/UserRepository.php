@@ -72,11 +72,11 @@ class UserRepository extends Repository
             (?, 'Private', 1), (?, 'Work', 0), (?, 'Health', 0), (?, 'Finance', 0), (?, 'Hobby', 0)";
         $this->pdo->prepare($categoriesSql)->execute([$userId, $userId, $userId, $userId, $userId]);
 
-        $tasksSql = "INSERT INTO tasks (user_id, title, category, priority, points_value) VALUES 
-            (?, 'Debug Neural Link Interface', 'Work', 2, 15),
-            (?, 'Hack Coffee Machine Subnet', 'Work', 2, 15),
-            (?, 'Feed the Techno-Cat', 'Private', 3, 10),
-            (?, 'Install Sleep.exe Patch', 'Health', 1, 20)";
+        $tasksSql = "INSERT INTO tasks (user_id, title, category, priority, points_value, description) VALUES 
+            (?, 'Debug Neural Link Interface', 'Work', 2, 15, 'Connect to the mainframe and identify the latency issues in the temporal cortex bridge. The signal delay is currently at 45ms, which is unacceptable for live-fire operations. Check the primary optical relays.'),
+            (?, 'Hack Coffee Machine Subnet', 'Work', 2, 15, 'The new Weyland-Yutani espresso machine on Level 4 has hardcoded DRM on the extra-dark roast. Bypass the authentication protocol and secure unlimited access.'),
+            (?, 'Feed the Techno-Cat', 'Private', 3, 10, 'Schrödinger requires his daily nutrient paste. Ensure the auto-feeder hopper is loaded and the biometric scanner recognizes him.'),
+            (?, 'Install Sleep.exe Patch', 'Health', 1, 20, 'System fatigue levels approaching critical. Initiate a mandatory 8-hour offline cycle to defragment memory and restore cognitive function levels.')";
         $this->pdo->prepare($tasksSql)->execute([$userId, $userId, $userId, $userId]);
 
         return $userId;

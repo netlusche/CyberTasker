@@ -77,7 +77,19 @@
         },
         "placeholders": {
             "recovery_email": "COM-LINK (EMAIL) FOR RECOVERY",
-            "access_code": "ACCESS CODE"
+            "access_code": "ACCESS CODE",
+            "new_pwd": "NEW PWD"
+        },
+        "static": {
+            "verification_title": "IDENTITY VERIFICATION",
+            "establishing_uplink": "ESTABLISHING SECURE UPLINK...",
+            "missing_verification_token": "ERROR: MISSING VERIFICATION TOKEN.",
+            "proceed_to_login": "PROCEED TO LOGIN",
+            "verification_failed": "VERIFICATION FAILED",
+            "connection_failed": "SYSTEM ERROR: CONNECTION FAILED.",
+            "reset_title": "RESET ACCESS KEY",
+            "override": "OVERRIDE",
+            "missing_reset_token": "ERROR: MISSING RESET TOKEN."
         },
         "status": {
             "resyncing": "[ RESYNCING... ]",
@@ -90,7 +102,13 @@
         "theme_selection": "Theme Selection",
         "themes": {
             "cyberpunk": "Cyberpunk",
-            "lcars": "LCARS (Star Trek)"
+            "lcars": "LCARS (Star Trek)",
+            "matrix": "Matrix",
+            "weyland": "Wey-Yu (Alien)",
+            "robco": "RobCo Terminal (Fallout)",
+            "grid": "The Grid (Tron)",
+            "section9": "Section 9 (GitS)",
+            "outrun": "Outrun 1984"
         },
         "language": "LANGUAGE",
         "messages": {
@@ -187,6 +205,7 @@
         "due_date": "DUE DATE",
         "no_date": "NO DATE",
         "status": "STATUS",
+        "details": "DETAILS",
         "page": "PAGE",
         "cycle_category": "Click to cycle category",
         "edit_directive": "Click to edit",
@@ -201,7 +220,17 @@
         "all_priorities": "ALL PRIORITIES",
         "all_categories": "ALL CATEGORIES",
         "overdue_only": "Overdue",
-        "default_suffix": "(Default)"
+        "default_suffix": "(Default)",
+        "dossier": {
+            "title": "DIRECTIVE DOSSIER",
+            "description": "PROTOCOL DESCRIPTION",
+            "attachments": "ATTACHED UPLINKS",
+            "add_link": "ADD LINK",
+            "edit_mode": "EDIT MODE",
+            "read_mode": "READ MODE",
+            "save_success": "DOSSIER UPDATED",
+            "save_error": "UPLINK FAILED"
+        }
     },
     "help": {
         "title": "CYBER_TASKER OPERATIVE HANDBOOK",
@@ -244,6 +273,15 @@
                 "item4_text": "Click CATEGORY or PRIORITY badges for themed selection.",
                 "item5_label": "EXECUTE",
                 "item5_text": "Mark directives as DONE. System provides NEON FEEDBACK upon completion."
+            },
+            "deep_directives": {
+                "title": "// DEEP DIRECTIVES [Dossier & Intel]",
+                "item1_label": "PROTOCOL DESCRIPTION",
+                "item1_text": "Access the OPERATIVE DOSSIER by clicking any active directive. Encode rich-text intel using the Markdown protocol to maintain mission clarity.",
+                "item2_label": "UP-LINKS",
+                "item2_text": "Establish secure neural connections to external data grids via URL attachments. Ensure proper HTTPS tunneling.",
+                "item3_label": "FILE ATTACHMENTS",
+                "item3_text": "Upload critical mission assets directly into the encrypted vault for localized secure storage."
             },
             "sort_order": {
                 "title": "// SORT ORDER PROTOCOL [Task Management]",
@@ -306,7 +344,24 @@
                 "item2_label": "PERSISTENT SYNC",
                 "item2_text": "Your visual preference is locked to your neural ID across all sessions until a manual override is initiated.",
                 "item3_label": "FUTURE EXTENSIONS",
-                "item3_text": "The grid is architected for expansion. New visual modules will be deployed to the theme selector as they are certified for operative use."
+                "item3_text": "The grid is architected for expansion. New visual modules will be deployed to the theme selector as they are certified for operative use.",
+                "themes_title": "// AVAILABLE VISUAL MODULES",
+                "theme_cyberpunk": "CYBERPUNK — The default neural grid. Neon cyan bleeds through the dark. Your standard operative interface. Stay sharp, stay wired.",
+                "theme_lcars": "LCARS — Library Computer Access/Retrieval System. Starfleet's finest. Rounded terminals, amber and gold. Space is the final directive.",
+                "theme_matrix": "MATRIX — The code rain never lies. Green phosphor signals pulse through corrupted silence. You see it, don't you?",
+                "theme_weyland": "WEYLAND-YUTANI — Corporate amber burns cold. Amber CRT terminals, encrypted by a corporation that built gods and called them products.",
+                "theme_robco": "PIP-BOY — RobCo Industries unified OS. Phosphor-green terminal. Certified pre-war. The wasteland runs on this firmware.",
+                "theme_grid": "THE GRID — Tron's digital frontier. Neon blue light cycles across an infinite lattice. Flynn built something that was never meant for humans.",
+                "theme_section9": "GHOST — Section 9 clearance. A ghost without a shell. Teal holographics flicker across a minimalist dark plane. Kusanagi would approve.",
+                "theme_outrun": "OUTRUN — 1984. Hot magenta suns sink below the synthwave horizon. Drive fast, the neon doesn't sleep. Retrowave never dies.",
+                "theme_steampunk": "STEAMPUNK — Victorian iron and burnished brass. Gears click in the fog. An empire powered by steam and secrets. Your directives, delivered by pneumatic tube.",
+                "theme_force": "FORCE — A galaxy far, far away. Rebel orange glows against a starfield. The light side of the grid. May the directive be with you.",
+                "theme_arrakis": "ARRAKIS — Desert power and spice. Amber suns sink over a shifting landscape. The grid flows with the spice. Fear is the mind-killer.",
+                "theme_renaissance": "RENAISSANCE — The cyber-gold era. Amber hexagons pulse in a sea of absolute black. A world of augmentations and corporate gods. Mankind divided.",
+                "theme_klingon": "QO'NOS (KLINGON) — Blood red and cold steel. Razor-sharp brutalist edges. Today is a good day to code. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ice and Fire. Cold blue steel and Valyrian blood red accents. Winter is coming. The North remembers.",
+                "theme_marvel": "COMIC (MARVEL) — Heroic red and bold action dots. Pow! Wham! A tribute to the golden age of comic books. Excelsior!",
+                "theme_dc": "GOTHAM (DC) — Darkest night, deepest blue, and a sliver of yellow light cutting through the rain. Justice never sleeps."
             },
             "danger_zone": {
                 "title": "// DANGER ZONE PROTOCOLS",
@@ -376,5 +431,8 @@
         "disable_2fa_confirm": "DISABLE 2FA FOR {{username}}? This will remove secondary verification protocols.",
         "2fa_disabled_msg": "2FA Disabled for {{username}}.",
         "disable_2fa_failed": "Failed to disable 2FA"
+    },
+    "calendar": {
+        "clear_date": "CLEAR DATE"
     }
 }

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import CyberSelect from './CyberSelect';
 import CyberConfirm from './CyberConfirm';
 import CyberCalendar from './CyberCalendar';
+import DirectiveModal from './DirectiveModal';
 
 const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete, activeCalendarTaskId, setActiveCalendarTaskId }) => {
     const { t } = useTranslation();
@@ -13,6 +14,7 @@ const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete, activeCalendar
     const [pendingPriority, setPendingPriority] = React.useState(null);
     const [showDateConfirm, setShowDateConfirm] = React.useState(false);
     const [showDeleteConfirm, setShowDeleteConfirm] = React.useState(false);
+    const [showDossier, setShowDossier] = React.useState(false);
     const [pendingDate, setPendingDate] = React.useState(null);
     const [openUpwards, setOpenUpwards] = React.useState(false);
     const cardRef = React.useRef(null);
@@ -197,6 +199,7 @@ const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete, activeCalendar
                                     ]}
                                     neonColor={priorityNeonColors[task.priority]}
                                     className="text-[10px] font-bold h-7"
+                                    wrapperClassName={`marvel-select-prio-${task.priority}`}
                                     disabled={task.status == 1}
                                 />
                             </div>
@@ -237,6 +240,18 @@ const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete, activeCalendar
                             >
                                 {task.title}
                             </h3>
+                        )}
+
+                        {task.description && !isEditing && (
+                            <div
+                                className="mb-2 line-clamp-2 cursor-pointer group/preview px-1 -mx-1 rounded hover:bg-white/5 transition-colors"
+                                onClick={() => setShowDossier(true)}
+                                title={t('tasks.dossier.title')}
+                            >
+                                <p className="text-xs text-gray-400 font-mono opacity-80 group-hover/preview:opacity-100 group-hover/preview:text-cyber-primary transition-colors">
+                                    {task.description.length > 256 ? task.description.substring(0, 256) + '...' : task.description}
+                                </p>
+                            </div>
                         )}
 
                         <div className="relative">
@@ -281,11 +296,21 @@ const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete, activeCalendar
                         </button>
 
                         <button
+                            onClick={() => setShowDossier(true)}
+                            className="min-w-[4rem] w-auto h-auto min-h-8 border border-cyber-primary/40 flex items-center justify-center transition-colors hover:border-cyber-primary hover:bg-cyber-primary/10 text-cyber-primary text-[9px] font-bold px-2 py-1 uppercase leading-none"
+                            title={t('tasks.dossier.title')}
+                        >
+                            {t('tasks.details')}
+                        </button>
+
+                        <button
                             onClick={handleDeleteClick}
-                            className={`w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100 btn-task-delete text-xl pb-0.5 ${task.status == 1 ? 'text-gray-300 hover:text-white hover:border-gray-400' : 'text-gray-500 hover:border-red-500 hover:text-red-500'}`}
+                            className={`w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100 btn-task-delete ${task.status == 1 ? 'text-gray-300 hover:text-white hover:border-gray-400' : 'text-gray-500 hover:border-cyber-danger hover:text-cyber-danger shadow-[0_0_10px_rgba(255,0,0,0.1)] hover:shadow-cyber-danger/30'}`}
                             title={t('tasks.delete_task')}
                         >
-                            ×
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -313,6 +338,14 @@ const TaskCard = ({ task, onToggleStatus, onUpdateTask, onDelete, activeCalendar
                     onConfirm={confirmDelete}
                     onCancel={cancelDelete}
                     neonColor="pink"
+                />
+            )}
+
+            {showDossier && (
+                <DirectiveModal
+                    task={task}
+                    onClose={() => setShowDossier(false)}
+                    onUpdate={onUpdateTask}
                 />
             )}
         </>

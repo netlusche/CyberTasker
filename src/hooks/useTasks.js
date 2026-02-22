@@ -128,12 +128,15 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
 
             if (res.ok) {
                 await fetchTasks(pagination.currentPage);
+                return true;
             } else {
                 const text = await res.text();
                 console.error(`Update failed: ${res.status} ${res.statusText}`, text);
+                return false;
             }
         } catch (err) {
             console.error("Update failed with exception:", err);
+            return false;
         }
     }, [pagination.currentPage, fetchTasks]);
 

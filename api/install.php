@@ -2,6 +2,12 @@
 // install.php
 // Universal Installer for both MySQL/MariaDB and SQLite with Diagnostics
 
+// Initialize session immediately before any HTML output to allow HTTP headers to transmit Session Cookies
+if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params(['path' => '/']);
+    session_start();
+}
+
 // Enable error reporting explicitly for installer troubleshooting
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -90,18 +96,6 @@ try {
     // To proceed with schema updates, the operative MUST be logged in as an Admin.
     if (tableExists($pdo, 'users')) {
         echo "System initialized ('users' table detected). Engaging Auto-Lock protocol.<br>\n";
-        if (session_status() === PHP_SESSION_NONE) {
-            // Secure session start to check credentials
-            session_set_cookie_params([
-                'lifetime' => 86400,
-                'path' => '/',
-                'secure' => isset($_SERVER['HTTPS']),
-                'httponly' => true,
-                'samesite' => 'Strict'
-            ]);
-            session_name('CYBER_SESSION');
-            session_start();
-        }
 
         if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             http_response_code(403);
@@ -171,15 +165,33 @@ try {
         status BOOLEAN DEFAULT 0,
         points_value INT DEFAULT 10,
         due_date DATETIME DEFAULT NULL,
+        description TEXT NULL,
+        attachments TEXT NULL,
+        files TEXT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
     $pdo->exec($sqlTasks);
     echo "Table 'tasks' check/create complete.<br>\n";
 
-    // Add due_date if missing
+    // Add Deep Directive columns if missing
     if (!columnExists($pdo, 'tasks', 'due_date')) {
         $pdo->exec("ALTER TABLE tasks ADD COLUMN due_date DATETIME DEFAULT NULL");
         echo "Column 'due_date' added to tasks.<br>\n";
+    }
+
+    if (!columnExists($pdo, 'tasks', 'description')) {
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN description TEXT NULL");
+        echo "Column 'description' added to tasks.<br>\n";
+    }
+
+    if (!columnExists($pdo, 'tasks', 'attachments')) {
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN attachments TEXT NULL");
+        echo "Column 'attachments' added to tasks.<br>\n";
+    }
+
+    if (!columnExists($pdo, 'tasks', 'files')) {
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN files TEXT NULL");
+        echo "Column 'files' added to tasks.<br>\n";
     }
 
     // --- USER CATEGORIES TABLE ---
@@ -253,18 +265,48 @@ try {
         echo "Default Admin user 'admin' created.<br>\n";
 
         // --- INJECT SECURITY DIRECTIVES ---
+        // Seed Admin Manual PDF
+        $manualSource = __DIR__ . '/../manuals/CyberTasker_Admin_Guide.pdf';
+        $uploadDir = __DIR__ . '/uploads/';
+        $pdfAttachment = null;
+
+        if (file_exists($manualSource)) {
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+            $uniqueName = uniqid('task_file_', true) . '.pdf';
+            $destination = $uploadDir . $uniqueName;
+
+            if (copy($manualSource, $destination)) {
+                $pdfAttachment = json_encode([[
+                        "name" => "CyberTasker_Admin_Guide.pdf",
+                        "path" => "api/index.php?route=tasks/download&file=" . $uniqueName,
+                        "size" => filesize($destination),
+                        "type" => "application/pdf",
+                        "uploaded_at" => date('Y-m-d H:i:s')
+                    ]]);
+            }
+        }
+
         $directives = [
-            ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Security', 1, 15],
-            ['PURGE INSTALLER CORE: Terminate \'install.php\' from the server grid immediately.', 'Security', 1, 10],
-            ['ACTIVATE NEURAL ENCRYPTION: Navigate to Admin Console and toggle \'STRICT_PASSWORD_POLICY\' to Level 1.', 'Security', 1, 10],
-            ['SCRUB RESIDUAL TRACES: Remove \'install_test_user.php\' and other leftover test nodes.', 'Security', 2, 5],
-            ['CALIBRATE NEURAL LINK: Perform a System Reset to optimize your ocular data stream.', 'System', 3, 5],
-            ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'System', 3, 5]
+            ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Security', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
+            ['PURGE INSTALLER CORE: Terminate \'install.php\' from the server grid immediately.', 'Security', 1, 10, 'Leaving the installation script active on a production grid allows unauthorized entities to re-initialize the database, potentially exposing or destroying all operational data. Delete the file immediately.'],
+            ['ACTIVATE NEURAL ENCRYPTION: Navigate to Admin Console and toggle \'STRICT_PASSWORD_POLICY\' to Level 1.', 'Security', 1, 10, 'Activating the strict password policy ensures all new operatives utilize cryptographic-grade access keys, preventing brute-force neural intrusions. Go to the Admin Panel and enforce this setting.'],
+            ['SCRUB RESIDUAL TRACES: Remove \'install_test_user.php\' and other leftover test nodes.', 'Security', 2, 5, 'Clean up any leftover testing scripts that were used to validate the system deployment. These unmonitored endpoints are prime vectors for exploitation.'],
+            ['CALIBRATE NEURAL LINK: Perform a System Reset to optimize your ocular data stream.', 'System', 3, 5, 'The initial boot sequence may leave fragmented data packets in your visual buffer. A quick system refresh will align your UI components correctly and ensure everything is loaded cleanly into RAM.'],
+            ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'System', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
         ];
 
-        $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value) VALUES (?, ?, ?, ?, ?)");
+        $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, attachments, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+        $first = true;
         foreach ($directives as $d) {
-            $stmtTask->execute([$adminId, $d[0], $d[1], $d[2], $d[3]]);
+            $attachments = null;
+            if ($first && $pdfAttachment) {
+                $attachments = $pdfAttachment;
+                $first = false;
+            }
+            $stmtTask->execute([$adminId, $d[0], $d[1], $d[2], $d[3], $attachments, $d[4]]);
         }
         echo "Initial Admin security directives deployed.<br>\n";
     }

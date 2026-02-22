@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const CyberCalendar = ({ value, onChange, onClose }) => {
+    const { i18n } = useTranslation();
+    const locale = i18n.language || 'en';
+
     // viewDate controls the month/year currently visible in the calendar
     const [viewDate, setViewDate] = useState(new Date());
 
@@ -14,10 +18,18 @@ const CyberCalendar = ({ value, onChange, onClose }) => {
         }
     }, [value]);
 
-    const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
+    const months = useMemo(() => {
+        return Array.from({ length: 12 }, (_, i) => {
+            return new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(2020, i, 1));
+        });
+    }, [locale]);
+
+    // Starting from Monday (Jan 6, 2020 was a Monday)
+    const weekdays = useMemo(() => {
+        return Array.from({ length: 7 }, (_, i) => {
+            return new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(new Date(2020, 0, 6 + i));
+        });
+    }, [locale]);
 
     const getDaysInMonth = (year, month) => {
         return new Date(year, month + 1, 0).getDate();
@@ -121,8 +133,8 @@ const CyberCalendar = ({ value, onChange, onClose }) => {
 
             {/* Weekday Headers */}
             <div className="grid grid-cols-7 gap-1 mb-1 text-center">
-                {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
-                    <div key={i} className="text-[10px] text-gray-500 font-bold">{d}</div>
+                {weekdays.map((d, i) => (
+                    <div key={i} className="text-[10px] text-gray-500 font-bold uppercase">{d}</div>
                 ))}
             </div>
 
@@ -139,7 +151,7 @@ const CyberCalendar = ({ value, onChange, onClose }) => {
                         onClick={(e) => { e.stopPropagation(); onChange(''); onClose(); }}
                         className="text-xs text-red-500 hover:text-red-400 uppercase tracking-widest hover:underline"
                     >
-                        Clear Date
+                        {i18n.exists('calendar.clear_date') ? i18n.t('calendar.clear_date') : 'Clear Date'}
                     </button>
                 </div>
             )}

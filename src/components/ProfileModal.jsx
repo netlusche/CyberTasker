@@ -914,6 +914,303 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         </div>
                                     )}
                                 </button>
+
+                                {/* v2.1.0 Themes */}
+                                {/* PIP-BOY Theme — RobCo Terminal CRT */}
+                                <button
+                                    data-testid="theme-switch-robco"
+                                    onClick={() => setTheme('robco')}
+                                    className={`theme-preview-card theme-robco transition-all duration-300 overflow-hidden relative ${theme === 'robco' ? 'border-2 border-green-500 bg-[#001100] shadow-[0_0_20px_rgba(26,255,26,0.5)] scale-[1.02]' : 'border-gray-700 bg-[#001100]/80 hover:border-green-900 scale-100'}`}
+                                >
+                                    {/* Scanline overlay */}
+                                    <div className="absolute inset-0 pointer-events-none" style={{ background: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)', zIndex: 5 }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="font-mono text-green-500 text-[10px] leading-tight text-center opacity-80">
+                                            <div>ROBCO IND.</div>
+                                            <div className="text-[8px] opacity-60">UNIFIED OS v1.4</div>
+                                        </div>
+                                        <div className="w-6 h-[1px] bg-green-500/40 my-0.5" />
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] font-mono flex items-center gap-1 ${theme === 'robco' ? 'text-green-400' : 'text-green-900'}`}>
+                                            <span className="animate-pulse">▋</span> PIP-BOY
+                                        </span>
+                                    </div>
+                                    {theme === 'robco' && (
+                                        <div className="absolute top-0 right-0 bg-green-500 text-black font-bold text-[7px] px-1.5 py-0.5 font-mono">
+                                            ✓ ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* THE GRID Theme — TRON */}
+                                <button
+                                    data-testid="theme-switch-grid"
+                                    onClick={() => setTheme('grid')}
+                                    className={`theme-preview-card theme-grid transition-all duration-300 overflow-hidden relative ${theme === 'grid' ? 'border border-[#6fc3df] bg-[#020d1a] shadow-[0_0_20px_rgba(111,195,223,0.5),inset_0_0_20px_rgba(111,195,223,0.05)] scale-[1.02]' : 'border-gray-800 bg-[#020d1a]/80 hover:border-[#6fc3df]/30 scale-100'}`}
+                                >
+                                    {/* Background grid lines */}
+                                    <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(111,195,223,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(111,195,223,0.5) 1px, transparent 1px)', backgroundSize: '12px 12px', zIndex: 1 }} />
+                                    <div className="flex flex-col items-center gap-2 relative z-10 w-full h-full justify-center">
+                                        {/* TRON disk */}
+                                        <div className="relative w-9 h-9 flex items-center justify-center">
+                                            <div className="absolute inset-0 rounded-full border-2 border-[#6fc3df] shadow-[0_0_8px_#6fc3df,inset_0_0_8px_rgba(111,195,223,0.2)]" />
+                                            <div className="absolute inset-[6px] rounded-full border border-[#6fc3df]/60" />
+                                            <div className="w-2 h-2 rounded-full bg-[#6fc3df] shadow-[0_0_6px_#6fc3df]" />
+                                        </div>
+                                        <span className={`text-[9px] font-bold tracking-[0.25em] ${theme === 'grid' ? 'text-[#6fc3df]' : 'text-[#6fc3df]/40'}`}>
+                                            THE GRID
+                                        </span>
+                                    </div>
+                                    {theme === 'grid' && (
+                                        <div className="absolute top-0 right-0 bg-[#6fc3df] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                            ◉ ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* GHOST Theme — Section 9 */}
+                                <button
+                                    data-testid="theme-switch-section9"
+                                    onClick={() => setTheme('section9')}
+                                    className={`theme-preview-card theme-section9 transition-all duration-300 overflow-hidden relative ${theme === 'section9' ? 'border-l-4 border-[#34e2e2] bg-[#0e0e12] shadow-[0_0_15px_rgba(52,226,226,0.3)] scale-[1.02]' : 'border-gray-800 bg-[#0e0e12]/80 hover:border-[#34e2e2]/20 scale-100'}`}
+                                >
+                                    {/* Glitch scan line */}
+                                    <div className="absolute left-0 right-0 h-[1px] bg-[#34e2e2]/30 top-[40%] pointer-events-none z-5" />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="text-[16px] opacity-80 leading-none" style={{ color: '#34e2e2', textShadow: '0 0 8px #34e2e2, 2px 0 8px rgba(255,0,255,0.3)' }}>
+                                            攻殻
+                                        </div>
+                                        <div className="text-[8px] italic tracking-widest" style={{ color: '#34e2e2', opacity: 0.5 }}>
+                                            SEC∙9
+                                        </div>
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-0.5 ${theme === 'section9' ? 'text-[#34e2e2]' : 'text-gray-600'}`}>
+                                            GHOST
+                                        </span>
+                                    </div>
+                                    {theme === 'section9' && (
+                                        <div className="absolute top-0 right-0 bg-[#34e2e2] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                            ◉ ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* OUTRUN Theme — Retro Synthwave */}
+                                <button
+                                    data-testid="theme-switch-outrun"
+                                    onClick={() => setTheme('outrun')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'outrun' ? 'scale-[1.02]' : 'scale-100 hover:scale-[1.01]'}`}
+                                    style={{
+                                        background: 'linear-gradient(180deg, #1a0033 0%, #0d0021 40%, #1a0033 100%)',
+                                        border: theme === 'outrun' ? '1px solid transparent' : '1px solid #444',
+                                        borderImage: theme === 'outrun' ? 'linear-gradient(135deg, #ff00ff, #00ffff) 1' : 'none',
+                                        boxShadow: theme === 'outrun' ? '0 0 20px rgba(255,0,255,0.4), 0 0 40px rgba(0,255,255,0.15)' : 'none',
+                                    }}
+                                >
+                                    {/* Sunset gradient sky */}
+                                    <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(255,0,128,0.15) 0%, rgba(255,100,0,0.08) 35%, transparent 60%)', zIndex: 1 }} />
+                                    {/* Horizon grid lines */}
+                                    <div className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none overflow-hidden" style={{ zIndex: 2 }}>
+                                        <div style={{ width: '100%', height: '100%', backgroundImage: 'linear-gradient(transparent 0%, rgba(255,0,255,0.3) 100%), repeating-linear-gradient(90deg, rgba(255,0,255,0.2) 0px, rgba(255,0,255,0.2) 1px, transparent 1px, transparent 16px)', backgroundSize: '100% 100%, 100% 100%' }} />
+                                    </div>
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        {/* Retro sun */}
+                                        <div className="relative w-8 h-4 overflow-hidden mb-0.5">
+                                            <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(180deg, #ff9900 0%, #ff00ff 100%)', boxShadow: '0 0 10px rgba(255,0,255,0.6)', transform: 'translateY(25%)' }} />
+                                            <div className="absolute left-0 right-0 h-[1px] bg-[#1a0033]" style={{ top: '45%' }} />
+                                            <div className="absolute left-0 right-0 h-[1px] bg-[#1a0033]" style={{ top: '60%' }} />
+                                            <div className="absolute left-0 right-0 h-[1px] bg-[#1a0033]" style={{ top: '75%' }} />
+                                        </div>
+                                        <span className={`text-[9px] font-black italic tracking-[0.2em] ${theme === 'outrun' ? '' : 'opacity-50'}`} style={{ background: 'linear-gradient(90deg, #ff00ff, #00ffff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                                            OUTRUN
+                                        </span>
+                                    </div>
+                                    {/* Fixed ACTIVE badge — small pill in corner instead of rotated (overflow-hidden would clip it) */}
+                                    {theme === 'outrun' && (
+                                        <div className="absolute top-1 right-1 text-black font-bold text-[7px] px-1.5 py-0.5 rounded-sm z-20" style={{ background: 'linear-gradient(90deg, #ff00ff, #00ffff)' }}>
+                                            ◉ ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Steampunk Theme */}
+                                <button
+                                    data-testid="theme-switch-steampunk"
+                                    onClick={() => setTheme('steampunk')}
+                                    className={`theme-preview-card theme-steampunk transition-all duration-300 overflow-hidden ${theme === 'steampunk' ? 'border-2 border-[#c49e5d] bg-[#c49e5d]/20 shadow-[0_0_15px_rgba(196,158,93,0.4)] scale-[1.02]' : 'border-gray-700 bg-black/40 hover:border-gray-500 scale-100'}`}
+                                >
+                                    <div className="flex flex-col items-center gap-2 relative z-10 w-full h-full justify-center">
+                                        <div className="text-[14px] font-bold tracking-[0.15em]" style={{ color: '#c49e5d' }}>
+                                            ⚙️
+                                        </div>
+                                        <span className={`text-[10px] font-bold tracking-widest ${theme === 'steampunk' ? 'text-[#c49e5d]' : 'text-gray-400'}`}>
+                                            STEAMPUNK
+                                        </span>
+                                    </div>
+                                    {theme === 'steampunk' && (
+                                        <div className="absolute top-0 right-0 bg-[#c49e5d] text-black font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
+                                            ACTIVE
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* FORCE Theme — Star Wars */}
+                                <button
+                                    data-testid="theme-switch-force"
+                                    onClick={() => setTheme('force')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'force' ? 'scale-[1.02] border-2 border-[#cc4422]' : 'border-gray-800 bg-black/40 hover:border-[#cc4422]/40 scale-100'}`}
+                                    style={{ background: '#05070a' }}
+                                >
+                                    {/* Starfield effect */}
+                                    <div className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: 'radial-gradient(1px 1px at 10px 10px, #fff, transparent), radial-gradient(1px 1px at 30px 40px, #fff, transparent), radial-gradient(1px 1px at 50px 20px, #fff, transparent)', backgroundSize: '60px 60px' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="relative w-10 h-1 bg-[#cc4422] rounded-full shadow-[0_0_10px_#cc4422]" style={{ transform: 'rotate(-45deg)' }} />
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-2 ${theme === 'force' ? 'text-[#cc4422]' : 'text-gray-400'}`}>
+                                            FORCE
+                                        </span>
+                                    </div>
+                                    {theme === 'force' && (
+                                        <div className="absolute top-0 right-0 bg-[#cc4422] text-white font-bold text-[7px] px-1.5 py-0.5">
+                                            ◉ ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* ARRAKIS Theme — Dune */}
+                                <button
+                                    data-testid="theme-switch-arrakis"
+                                    onClick={() => setTheme('arrakis')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'arrakis' ? 'scale-[1.02] border-2 border-[#d97706]' : 'border-gray-800 bg-[#1c1917] hover:border-[#d97706]/40 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-20" style={{ background: 'radial-gradient(circle at 100% 0%, #d97706 0%, transparent 70%)' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        {/* Arrakis Sun */}
+                                        <div className="w-8 h-8 rounded-full bg-[#d97706] shadow-[0_0_15px_#d97706]" />
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-1 ${theme === 'arrakis' ? 'text-[#d97706]' : 'text-amber-900/60'}`}>
+                                            ARRAKIS
+                                        </span>
+                                    </div>
+                                    {theme === 'arrakis' && (
+                                        <div className="absolute top-0 right-0 bg-[#d97706] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                            ◉ ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* RENAISSANCE Theme — Deus Ex */}
+                                <button
+                                    data-testid="theme-switch-renaissance"
+                                    onClick={() => setTheme('renaissance')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'renaissance' ? 'scale-[1.02] border-2 border-[#ffb000]' : 'border-gray-800 bg-black hover:border-[#ffb000]/40 scale-100'}`}
+                                >
+                                    {/* Hex pattern bg */}
+                                    <div className="absolute inset-0 pointer-events-none opacity-10" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='17' viewBox='0 0 20 17' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.5L5 0h10l5 8.5L15 17H5L0 8.5z' fill='none' stroke='%23ffb000' stroke-width='1'/%3E%3C/svg%3E\")", backgroundSize: '10px 8.5px' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="grid grid-cols-2 gap-0.5 rotate-45">
+                                            <div className="w-2.5 h-2.5 bg-[#ffb000]/80 shadow-[0_0_5px_#ffb000]" />
+                                            <div className="w-2.5 h-2.5 border border-[#ffb000]/50" />
+                                            <div className="w-2.5 h-2.5 border border-[#ffb000]/50" />
+                                            <div className="w-2.5 h-2.5 bg-[#ffb000]/80 shadow-[0_0_5px_#ffb000]" />
+                                        </div>
+                                        <span className={`text-[9px] font-bold tracking-[0.15em] mt-2 ${theme === 'renaissance' ? 'text-[#ffb000]' : 'text-gray-600'}`}>
+                                            RENAISSANCE
+                                        </span>
+                                    </div>
+                                    {theme === 'renaissance' && (
+                                        <div className="absolute top-0 right-0 bg-[#ffb000] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                            ◉ ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Klingon Empire Theme (Qo'noS) */}
+                                <button
+                                    data-testid="theme-switch-klingon"
+                                    onClick={() => setTheme('klingon')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'klingon' ? 'scale-[1.02] border-2 border-[#ff0000] shadow-[0_0_15px_rgba(255,0,0,0.6)]' : 'border-[#4a0000] bg-[#140000] hover:border-[#ff0000]/60 scale-100'}`}
+                                >
+                                    {/* Aggressive bg stripes */}
+                                    <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ff0000 0px, #ff0000 2px, transparent 2px, transparent 8px)' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center">
+                                            <div className="absolute w-full h-full border-t-2 border-b-2 border-[#ff0000] rounded-full transform rotate-45 shadow-[0_0_5px_#ff0000]"></div>
+                                            <div className="absolute w-2 h-full bg-[#ff0000] transform skew-x-12 shadow-[0_0_5px_#ff0000]"></div>
+                                        </div>
+                                        <span className={`text-[10px] font-bold tracking-[0.2em] mt-2 uppercase ${theme === 'klingon' ? 'text-[#ff0000]' : 'text-[#880000]'}`} style={{ fontFamily: "'Wallpoet', sans-serif" }}>
+                                            QO'NOS
+                                        </span>
+                                    </div>
+                                    {theme === 'klingon' && (
+                                        <div className="absolute top-0 right-0 bg-[#ff0000] text-black font-bold text-[7px] px-1.5 py-0.5" style={{ fontFamily: "'Wallpoet', sans-serif" }}>
+                                            BAT'LETH ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Game of Thrones Theme (Ice & Fire) */}
+                                <button
+                                    data-testid="theme-switch-got"
+                                    onClick={() => setTheme('got')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'got' ? 'scale-[1.02] border-2 border-[#8cb8cc] shadow-[0_0_15px_rgba(140,184,204,0.6)]' : 'border-[#1f3041] bg-[#111a24] hover:border-[#8cb8cc]/60 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-20" style={{ background: 'radial-gradient(circle at center, #8cb8cc 2px, transparent 2px)', backgroundSize: '15px 15px' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center border-l border-r border-[#8cb8cc]">
+                                            <div className="w-1 h-full bg-[#8cb8cc] shadow-[0_0_5px_#8cb8cc]"></div>
+                                            <div className="absolute w-full h-1 bg-[#c0392b] shadow-[0_0_5px_#c0392b]"></div>
+                                        </div>
+                                        <span className={`text-[10px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'got' ? 'text-[#8cb8cc]' : 'text-gray-400'}`} style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+                                            WESTEROS
+                                        </span>
+                                    </div>
+                                    {theme === 'got' && (
+                                        <div className="absolute top-0 right-0 bg-[#8cb8cc] text-black font-bold text-[7px] px-1.5 py-0.5" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+                                            WINTER
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Marvel Theme (Comic Halftone) */}
+                                <button
+                                    data-testid="theme-switch-marvel"
+                                    onClick={() => setTheme('marvel')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'marvel' ? 'scale-[1.02] border-[3px] border-[#e62429] bg-[#1a1a1a]' : 'border-[3px] border-gray-800 bg-[#111111] hover:border-[#e62429]/60 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-10" style={{ background: 'radial-gradient(#e62429 20%, transparent 20%)', backgroundSize: '10px 10px' }} />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center bg-[#e62429] shadow-[2px_2px_0px_#f0e442]">
+                                            <span className="text-[#ffffff] font-bold text-lg" style={{ fontFamily: "'Bangers', cursive" }}>M</span>
+                                        </div>
+                                        <span className={`text-[12px] font-bold tracking-[0.05em] mt-2 uppercase ${theme === 'marvel' ? 'text-[#ffffff]' : 'text-gray-500'}`} style={{ fontFamily: "'Bangers', cursive" }}>
+                                            COMIC
+                                        </span>
+                                    </div>
+                                    {theme === 'marvel' && (
+                                        <div className="absolute -top-1 -right-1 bg-[#f0e442] text-black font-bold text-[9px] px-2 py-0.5 border-2 border-[#e62429] shadow-[1px_1px_0px_#e62429] transform rotate-12" style={{ fontFamily: "'Bangers', cursive" }}>
+                                            POW!
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* DC Theme (Gotham Dark) */}
+                                <button
+                                    data-testid="theme-switch-dc"
+                                    onClick={() => setTheme('dc')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'dc' ? 'scale-[1.02] border-2 border-[#005ce6] shadow-[0_0_15px_rgba(0,92,230,0.6)]' : 'border-[#1a1a33] bg-[#0a0a14] hover:border-[#005ce6]/60 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-20 bg-gradient-to-b from-transparent to-[#005ce6]/20" />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-8 h-8 relative flex items-center justify-center border-t-2 border-[#ffcc00] rounded-t-full shadow-[0_0_10px_#ffcc00]">
+                                            <div className="absolute top-1 w-6 h-6 border-l-2 border-r-2 border-[#005ce6] transform scale-x-75"></div>
+                                        </div>
+                                        <span className={`text-[12px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'dc' ? 'text-[#d9d9e6]' : 'text-gray-500'}`} style={{ fontFamily: "'Anton', sans-serif" }}>
+                                            GOTHAM
+                                        </span>
+                                    </div>
+                                    {theme === 'dc' && (
+                                        <div className="absolute top-0 right-0 bg-[#005ce6] text-white font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Anton', sans-serif" }}>
+                                            NIGHT
+                                        </div>
+                                    )}
+                                </button>
                             </div>
                         </div>
 
@@ -1015,7 +1312,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                     />
                 )
             }
-        </div>
+        </div >
     );
 };
 

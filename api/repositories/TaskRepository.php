@@ -85,11 +85,11 @@ class TaskRepository extends Repository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function createTask(int $userId, string $title, string $category, int $priority, int $points, ?string $dueDate): int
+    public function createTask(int $userId, string $title, string $category, int $priority, int $points, ?string $dueDate, ?string $description = null, ?string $attachments = null): int
     {
-        $sql = "INSERT INTO tasks (user_id, title, category, priority, points_value, due_date) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO tasks (user_id, title, category, priority, points_value, due_date, description, attachments) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$userId, $title, $category, $priority, $points, $dueDate]);
+        $stmt->execute([$userId, $title, $category, $priority, $points, $dueDate, $description, $attachments]);
         return (int)$this->pdo->lastInsertId();
     }
 

@@ -110,8 +110,9 @@ class AuthController extends Controller
             // Standard Login
             session_regenerate_id(true);
             $_SESSION['user_id'] = $user['id'];
-            error_log("AuthController: Login successful for user_id: " . $user['id']);
-            error_log("AuthController: CSRF Token in session: " . ($_SESSION['csrf_token'] ?? 'NULL'));
+            $_SESSION['role'] = $user['role'];
+            // error_log("AuthController: Login successful for user_id: " . $user['id']);
+            // error_log("AuthController: CSRF Token in session: " . ($_SESSION['csrf_token'] ?? 'NULL'));
 
             // Record Last Login
             $this->userRepo->updateLastLogin($user['id']);
@@ -128,7 +129,8 @@ class AuthController extends Controller
                     'theme' => $user['theme'],
                     'stats' => $stats
                 ],
-                'csrf_token' => $_SESSION['csrf_token']
+                'csrf_token' => $_SESSION['csrf_token'],
+                'installer_url' => ($user['role'] === 'admin') ? FRONTEND_URL . '/api/install.php?token=' . $_SESSION['csrf_token'] : null
             ]);
         }
         else {
@@ -370,7 +372,7 @@ class AuthController extends Controller
         $data = $this->getJsonBody();
         $theme = $data['theme'] ?? 'cyberpunk';
 
-        $allowedThemes = ['cyberpunk', 'lcars', 'matrix', 'weyland'];
+        $allowedThemes = ['cyberpunk', 'lcars', 'matrix', 'weyland', 'robco', 'grid', 'section9', 'outrun', 'steampunk', 'force', 'arrakis', 'renaissance', 'klingon', 'got', 'marvel', 'dc'];
         if (!in_array($theme, $allowedThemes)) {
             $this->errorResponse('Invalid theme selection');
         }
@@ -566,6 +568,7 @@ class AuthController extends Controller
         if ($verified) {
             session_regenerate_id(true);
             $_SESSION['user_id'] = $userId;
+            $_SESSION['role'] = $user['role'];
             unset($_SESSION['partial_id']);
 
             $this->userRepo->updateLastLogin($userId);

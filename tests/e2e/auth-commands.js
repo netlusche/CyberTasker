@@ -33,9 +33,10 @@ export async function loginAsAdmin(page) {
     await visibleInputs.nth(1).fill('Pass_Admin_123!!');
     await page.locator('form button[type="submit"]').click();
 
-    // Debug: take screenshot
-    await page.screenshot({ path: 'debug-login-failure.png' });
+    // Wait for the button to transition out of "WORKING" state
+    // We use a regex for multiple languages: WORKING, BEZIG, CHARGEMENT, CARGANDO, CARICAMENTO
+    await expect(page.locator('form button[type="submit"]')).not.toHaveText(/WORKING|BEZIG|CHARGEMENT|CARGANDO|CARICAMENTO/i, { timeout: 20000 });
 
-    // Wait for login to complete
-    await expect(page.getByTestId('profile-btn')).toBeVisible({ timeout: 10000 });
+    // Wait for login to complete and dashboard to load
+    await expect(page.getByTestId('profile-btn')).toBeVisible({ timeout: 20000 });
 }

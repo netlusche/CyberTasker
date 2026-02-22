@@ -112,6 +112,18 @@ class TaskController extends Controller
             $fields[] = 'due_date = ?';
             $params[] = !empty($data['due_date']) ? $data['due_date'] : null;
         }
+        if (array_key_exists('description', $data)) {
+            $fields[] = 'description = ?';
+            $params[] = !empty($data['description']) ? $data['description'] : null;
+        }
+        if (array_key_exists('attachments', $data)) {
+            $fields[] = 'attachments = ?';
+            $params[] = !empty($data['attachments']) ? $data['attachments'] : null;
+        }
+        if (isset($data['files'])) {
+            $fields[] = 'files = ?';
+            $params[] = $data['files'];
+        }
 
         if (empty($fields)) {
             $this->jsonResponse(['message' => 'No changes']);
@@ -133,5 +145,79 @@ class TaskController extends Controller
         $this->taskRepo->deleteTask($id, $this->userId);
 
         $this->jsonResponse(['message' => 'Task deleted']);
+    }
+
+    public function downloadFile()
+    {
+        $this->requireAuth();
+
+        $filename = $_GET['file'] ?? null;
+        if (!$filename) {
+            $this->errorResponse('Filename missing', 400);
+        }
+
+        // Sanitize to prevent path traversal
+        $filename = basename($filename);
+        $filepath = __DIR__ . '/../uploads/' . $filename;
+
+        if (!file_exists($filepath)) {
+            $this->errorResponse('File not found', 404);
+        }
+
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime_type = finfo_file($finfo, $filepath);
+        finfo_close($finfo);
+
+        header('Content-Type: ' . $mime_type);
+        header('Content-Length: ' . filesize($filepath));
+        header('Cache-Control: private, max-age=86400');
+        // 'inline' means the browser will try to display it (PDF/images), rather than forced 'attachment'
+        header('Content-Disposition: inline; filename="' . $filename . '"');
+        readfile($filepath);
+        exit();
+    }
+
+    public function uploadFiles()
+    {
+        $this->requireAuth();
+
+        if (!isset($_FILES['files'])) {
+            $this->errorResponse('No files uploaded', 400);
+        }
+
+        $uploadDir = __DIR__ . '/../uploads/';
+        $allowedExtensions = ['png', 'jpg', 'jpeg', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'odt', 'ods', 'odp'];
+        $uploadedFiles = [];
+
+        foreach ($_FILES['files']['tmp_name'] as $key => $tmpName) {
+            if ($_FILES['files']['error'][$key] === UPLOAD_ERR_OK) {
+                $name = basename($_FILES['files']['name'][$key]);
+                $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+                if ($ext === 'jpeg')
+                    $ext = 'jpg';
+
+                if (!in_array($ext, $allowedExtensions)) {
+                    continue;
+                }
+
+                $uniqueName = uniqid('task_file_', true) . '.' . $ext;
+                $destination = $uploadDir . $uniqueName;
+
+                if (move_uploaded_file($tmpName, $destination)) {
+                    $uploadedFiles[] = [
+                        "name" => $name,
+                        "path" => "api/index.php?route=tasks/download&file=" . $uniqueName,
+                        "size" => $_FILES['files']['size'][$key],
+                        "type" => $_FILES['files']['type'][$key],
+                        "uploaded_at" => date('Y-m-d H:i:s')
+                    ];
+                }
+            }
+        }
+
+        $this->jsonResponse([
+            "status" => "success",
+            "files" => $uploadedFiles
+        ]);
     }
 }
