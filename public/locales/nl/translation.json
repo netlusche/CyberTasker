@@ -282,6 +282,86 @@
                 "item2_text": "Neem URL's op in uw beschrijving om veilige, klikbare links naar externe bronnen te maken.",
                 "item3_label": "BIJLAGEN",
                 "item3_text": "Upload belangrijke bestanden en afbeeldingen rechtstreeks naar een taak voor veilige opslag."
+            },
+            "sort_order": {
+                "title": "// SORTEERORDERPROTOCOL [Taakbeheer]",
+                "item1_label": "SIGNAALLEK (achterstallig)",
+                "item1_text": "Kritieke prioriteit. Elke richtlijn die de deadline overschrijdt, wordt bovenaan de datastroom vastgezet.",
+                "item2_label": "HITTESPIKE (vandaag verwacht)",
+                "item2_text": "Onmiddellijke prioriteit. Richtlijnen die voor vandaag bestemd zijn, volgen op de Signaallekken.",
+                "item3_label": "STRATEGISCH (prioriteit)",
+                "item3_text": "De resterende actieve richtlijnen worden gesorteerd op basisniveau HOOG > MED > LAAG.",
+                "item4_label": "ARCHIEF SORTEREN",
+                "item4_text": "Voltooide richtlijnen worden gesorteerd op de laatste voltooiingstijdstempel (DESC)."
+            },
+            "category_protocols": {
+                "title": "// CATEGORIEPROTOCOLLEN [Aanpassing]",
+                "item1_label": "BEHEER PROTOCOLLEN",
+                "item1_text": "Ga naar uw PROFIEL om aangepaste categorieën te initialiseren, hernoemen of verwijderen.",
+                "item2_label": "STANDAARD OVERSCHRIJVEN",
+                "item2_text": "Markeer elk protocol als VOORRAAD/DEFAULT (★) om er prioriteit aan te geven in de implementatieterminal.",
+                "item3_label": "HER-INITIALISATIE",
+                "item3_text": "Het hernoemen van een protocol zal met terugwerkende kracht alle bijbehorende gearchiveerde richtlijnen patchen."
+            },
+            "neural_search": {
+                "title": "// NEURAAL ZOEKEN & FILTER [Gegevens ophalen]",
+                "item1_label": "VRAAG",
+                "item1_text": "Voer trefwoorden in de neurale zoekbalk in om direct instructies te isoleren.",
+                "item2_label": "VECTOREN",
+                "item2_text": "Filter het raster op PRIORITEIT, CATEGORIE of OVERDUE-status.",
+                "item3_label": "SYSTEEM RESET",
+                "item3_text": "Voer RESET uit om actieve filters te wissen en de volledige gegevensstroom te herstellen."
+            },
+            "chrono_sync": {
+                "title": "// CHRONO-SYNC [Planning]",
+                "item1_label": "TERMIJNEN",
+                "item1_text": "Wijs uitvoeringsdata toe via de CYBER KALENDER-overlay.",
+                "item2_label": "TIJDSPRINGEN",
+                "item2_text": "Gebruik jaarnavigatieknoppen voor langetermijnplanning.",
+                "item3_label": "INTERACTIEVE SYNC",
+                "item3_text": "Wijzig datums rechtstreeks op actieve kaarten via CYBER CONFIRM-protocollen."
+            },
+            "system_resiliency": {
+                "title": "// SYSTEEMVEERKRACHT [Stabiliteit]",
+                "item1_label": "ROBUUSTE CONFIG",
+                "item1_text": "Het systeem maakt nu gebruik van een veerkrachtige fallback-logica voor de configuratie. Als `config.local.php` onvolledig is, levert het kernraster automatisch ontbrekende parameters (zoals `DB_HOST`).",
+                "item2_label": "DIAGNOSTISCHE INSTALLATEUR",
+                "item2_text": "Het `install.php` hulpprogramma beschikt nu over high-immersion diagnostiek, waarbij de stabiliteit van de neurale link en het aantal databaserijen wordt gevolgd voor onmiddellijke verificatie."
+            },
+            "multilingual_sync": {
+                "title": "// MEERTALIGE SYNC [Taalprotocol]",
+                "item1_label": "TAALSELECTIE",
+                "item1_text": "Gebruik de headermodules om de neurale interface tussen beschikbare talen te schakelen.",
+                "item2_label": "REAL-TIME AANPASSING",
+                "item2_text": "Het raster vertaalt alle systeemrichtlijnen en parameters onmiddellijk na het schakelen.",
+                "item3_label": "PERSISTENTE LINK",
+                "item3_text": "Je taalvoorkeur wordt opgeslagen in de lokale opslag van je deck en wordt automatisch geladen bij elke jack-in."
+            },
+            "visual_interface": {
+                "title": "// VISUELE INTERFACE [Themawisseling]",
+                "item1_label": "THEMASELECTIE",
+                "item1_text": "Ga naar uw PROFIEL om te schakelen tussen beschikbare visuele voorinstellingen. Elk thema herconfigureert de esthetiek van het raster, terwijl de integriteit van de kernrichtlijn behouden blijft.",
+                "item2_label": "PERSISTENTE SYNC",
+                "item2_text": "Uw visuele voorkeur is gedurende alle sessies gekoppeld aan uw neurale ID totdat een handmatige overschrijving wordt gestart.",
+                "item3_label": "TOEKOMSTIGE UITBREIDINGEN",
+                "item3_text": "Het netwerk is ontworpen voor uitbreiding. Er zullen nieuwe visuele modules worden ingezet in de themakiezer, omdat deze gecertificeerd zijn voor operationeel gebruik.",
+                "themes_title": "// BESCHIKBARE VISUELE MODULES",
+                "theme_cyberpunk": "CYBERPUNK — Het standaard neurale raster. Neoncyaan bloedt door het donker. Uw standaard operationele interface. Blijf scherp, blijf bedraad.",
+                "theme_lcars": "LCARS — Toegangs-/ophaalsysteem voor bibliotheekcomputers. Het beste van Starfleet. Afgeronde aansluitingen, amber en goud. Ruimte is de laatste richtlijn.",
+                "theme_matrix": "MATRIX — De coderegen liegt nooit. Groene fosforsignalen pulseren door de verstoorde stilte. Je ziet het, nietwaar?",
+                "theme_weyland": "WEYLAND-YUTANI – Bedrijfsamber brandt koud. Amber CRT-terminals, gecodeerd door een bedrijf dat goden bouwde en ze producten noemde.",
+                "theme_robco": "PIP-BOY — RobCo Industries verenigd besturingssysteem. Fosforgroene terminal. Gecertificeerd vooroorlogs. De woestenij draait op deze firmware.",
+                "theme_grid": "THE GRID — De digitale grens van Tron. Neonblauw licht circuleert door een oneindig rooster. Flynn heeft iets gebouwd dat nooit voor mensen bedoeld was.",
+                "theme_section9": "GHOST — Sectie 9 goedkeuring. Een geest zonder omhulsel. Blauwgroen holografische beelden flikkeren over een minimalistisch donker vlak. Kusanagi zou het goedkeuren.",
+                "theme_outrun": "OUTRUN – 1984. Hete magenta zonnen zinken onder de synthwave-horizon. Rijd snel, de neon slaapt niet. Retrowave sterft nooit.",
+                "theme_steampunk": "STEAMPUNK — Victoriaans ijzer en gepolijst messing. Tandwielen klikken in de mist. Een imperium aangedreven door stoom en geheimen. Uw richtlijnen, geleverd per pneumatische buis.",
+                "theme_force": "FORCE — Een sterrenstelsel ver, ver weg. Rebellenoranje gloeit tegen een sterrenveld. De lichte kant van het raster. Moge de richtlijn bij u zijn.",
+                "theme_arrakis": "ARRAKIS – Woestijnkracht en specerijen. Amberkleurige zonnen zinken over een veranderend landschap. Het rooster vloeit mee met het kruid. Angst is de geestdoder.",
+                "theme_renaissance": "RENAISSANCE — Het cybergoudtijdperk. Amberkleurige zeshoeken pulseren in een zee van absoluut zwart. Een wereld van augmentaties en bedrijfsgoden. De mensheid is verdeeld.",
+                "theme_klingon": "QO'NOS (KLINGON) — Bloedrood en koud staal. Vlijmscherpe brutalistische randen. Vandaag is een goede dag om te coderen. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — IJs en vuur. Koud blauw staal en Valyrian bloedrode accenten. De winter komt eraan. Het Noorden herinnert zich.",
+                "theme_marvel": "COMIC (MARVEL) — Heroïsche rode en opvallende actiepunten. Pow! Wham! Een eerbetoon aan de gouden eeuw van stripboeken. Excelsior!",
+                "theme_dc": "GOTHAM (DC) — Donkerste nacht, diepste blauw en een streepje geel licht dat door de regen snijdt. Justitie slaapt nooit."
             }
         }
     },

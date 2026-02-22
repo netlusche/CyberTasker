@@ -282,6 +282,86 @@
                 "item2_text": "Incluya URL en su descripción para crear enlaces seguros en los que se pueda hacer clic a recursos externos.",
                 "item3_label": "ADJUNTOS",
                 "item3_text": "Cargue archivos e imágenes importantes directamente a una tarea para un almacenamiento seguro."
+            },
+            "sort_order": {
+                "title": "// PROTOCOLO DE ORDEN DE ORDEN [Gestión de tareas]",
+                "item1_label": "FUGA DE SEÑAL (Atrasada)",
+                "item1_text": "Prioridad crítica. Cualquier directiva que pase su fecha límite se fija en la parte superior del flujo de datos.",
+                "item2_label": "PICO DE CALOR (vence hoy)",
+                "item2_text": "Prioridad inmediata. Las directivas destinadas a hoy siguen a las fugas de señales.",
+                "item3_label": "ESTRATÉGICO (Prioridad)",
+                "item3_text": "Las directivas activas restantes se clasifican por nivel base ALTO > MEDIO > BAJO.",
+                "item4_label": "ORDENACIÓN DE ARCHIVOS",
+                "item4_text": "Las directivas completadas se ordenan según la última marca de tiempo de finalización (DESC)."
+            },
+            "category_protocols": {
+                "title": "// PROTOCOLOS DE CATEGORÍA [Personalización]",
+                "item1_label": "GESTIONAR PROTOCOLOS",
+                "item1_text": "Acceda a su PERFIL para inicializar, cambiar el nombre o eliminar categorías personalizadas.",
+                "item2_label": "ANULACIÓN PREDETERMINADA",
+                "item2_text": "Etiquete cualquier protocolo como STOCKED/DEFAULT (★) para priorizarlo en la terminal de implementación.",
+                "item3_label": "REINICIALIZACIÓN",
+                "item3_text": "Cambiar el nombre de un protocolo parcheará retroactivamente todas las directivas archivadas asociadas."
+            },
+            "neural_search": {
+                "title": "// BÚSQUEDA NEURAL Y FILTRO [Recuperación de datos]",
+                "item1_label": "CONSULTA",
+                "item1_text": "Ingrese palabras clave en la barra de búsqueda neuronal para aislar directivas instantáneamente.",
+                "item2_label": "VECTORES",
+                "item2_text": "Filtre la cuadrícula por estado de PRIORIDAD, CATEGORÍA o VENCIDO.",
+                "item3_label": "RESTABLECER SISTEMA",
+                "item3_text": "Ejecute RESET para borrar los filtros activos y restaurar el flujo de datos completo."
+            },
+            "chrono_sync": {
+                "title": "// CRONO-SYNC [Programación]",
+                "item1_label": "PLAZOS",
+                "item1_text": "Asigne fechas de ejecución a través de la superposición CYBER CALENDAR.",
+                "item2_label": "SALTOS EN EL TIEMPO",
+                "item2_text": "Utilice controles de navegación anual para planificación a largo plazo.",
+                "item3_label": "SINCRONIZACIÓN INTERACTIVA",
+                "item3_text": "Modifique fechas directamente en tarjetas activas a través de protocolos CYBER CONFIRM."
+            },
+            "system_resiliency": {
+                "title": "// RESILIENCIA DEL SISTEMA [Estabilidad]",
+                "item1_label": "CONFIGURACIÓN ROBUSTA",
+                "item1_text": "El sistema ahora utiliza una lógica alternativa de configuración resistente. Si `config.local.php` está incompleto, la cuadrícula principal proporciona los parámetros faltantes (como `DB_HOST`) automáticamente.",
+                "item2_label": "INSTALADOR DE DIAGNÓSTICO",
+                "item2_text": "La utilidad `install.php` ahora presenta diagnósticos de alta inmersión, seguimiento de la estabilidad de los enlaces neuronales y recuentos de filas de la base de datos para una verificación inmediata."
+            },
+            "multilingual_sync": {
+                "title": "// SINCRONIZACIÓN MULTILINGÜE [Protocolo de idioma]",
+                "item1_label": "SELECCIÓN DE IDIOMA",
+                "item1_text": "Utilice los módulos de encabezado para alternar la interfaz neuronal entre los idiomas disponibles.",
+                "item2_label": "ADAPTACIÓN EN TIEMPO REAL",
+                "item2_text": "La red traduce todas las directivas y parámetros del sistema instantáneamente después de la conmutación.",
+                "item3_label": "ENLACE PERSISTENTE",
+                "item3_text": "Su preferencia de idioma está bloqueada en el almacenamiento local de su plataforma y se carga automáticamente en cada conexión."
+            },
+            "visual_interface": {
+                "title": "// INTERFAZ VISUAL [Cambio de tema]",
+                "item1_label": "SELECCIÓN DE TEMÁTICA",
+                "item1_text": "Acceda a su PERFIL para alternar entre los ajustes preestablecidos visuales disponibles. Cada tema reconfigura la estética de la cuadrícula manteniendo la integridad directiva central.",
+                "item2_label": "SINCRONIZACIÓN PERSISTENTE",
+                "item2_text": "Su preferencia visual está bloqueada en su ID neuronal en todas las sesiones hasta que se inicie una anulación manual.",
+                "item3_label": "FUTURAS EXTENSIONES",
+                "item3_text": "La red está diseñada para la expansión. Se implementarán nuevos módulos visuales en el selector de temas a medida que estén certificados para uso operativo.",
+                "themes_title": "// MÓDULOS VISUALES DISPONIBLES",
+                "theme_cyberpunk": "CYBERPUNK: la red neuronal predeterminada. El cian neón sangra en la oscuridad. Su interfaz operativa estándar. Manténgase alerta, manténgase conectado.",
+                "theme_lcars": "LCARS: Sistema de recuperación/acceso informático de la biblioteca. Lo mejor de la Flota Estelar. Terminales redondeados, ámbar y oro. El espacio es la directiva final.",
+                "theme_matrix": "MATRIX – La lluvia de códigos nunca miente. Las señales de fósforo verde pulsan a través de un silencio corrupto. Lo ves, ¿no?",
+                "theme_weyland": "WEYLAND-YUTANI — El ámbar corporativo arde en frío. Terminales CRT de color ámbar, cifradas por una corporación que construyó dioses y los llamó productos.",
+                "theme_robco": "PIP-BOY: sistema operativo unificado de RobCo Industries. Terminal verde fósforo. Certificado antes de la guerra. El páramo se ejecuta en este firmware.",
+                "theme_grid": "THE GRID: la frontera digital de Tron. La luz azul neón circula a través de una red infinita. Flynn construyó algo que nunca fue diseñado para humanos.",
+                "theme_section9": "FANTASMA – Autorización de la Sección 9. Un fantasma sin caparazón. Los holográficos verde azulado parpadean a través de un plano oscuro minimalista. Kusanagi lo aprobaría.",
+                "theme_outrun": "OUTRUN - 1984. Los soles magentas calientes se hunden bajo el horizonte de ondas sintéticas. Conduce rápido, el neón no duerme. El microondas nunca muere.",
+                "theme_steampunk": "STEAMPUNK: hierro victoriano y latón bruñido. Los engranajes hacen clic en la niebla. Un imperio impulsado por vapor y secretos. Tus directivas, entregadas por tubo neumático.",
+                "theme_force": "FUERZA: Una galaxia muy, muy lejana. El naranja rebelde brilla contra un campo estelar. El lado luminoso de la parrilla. Que la directiva os acompañe.",
+                "theme_arrakis": "ARRAKIS: poder y sabor del desierto. Los soles ámbar se hunden sobre un paisaje cambiante. La parrilla fluye con la especia. El miedo es el asesino de la mente.",
+                "theme_renaissance": "RENACIMIENTO – La era del ciberoro. Los hexágonos de color ámbar pulsan en un mar de negro absoluto. Un mundo de aumentos y dioses corporativos. La humanidad dividida.",
+                "theme_klingon": "QO'NOS (KLINGON) — Rojo sangre y acero frío. Filos brutalistas afilados. Hoy es un buen día para codificar. ¡Qapla'!",
+                "theme_got": "WESTEROS (GOT) – Hielo y fuego. Acero azul frío y detalles en rojo sangre valyrio. Se acerca el invierno. El Norte lo recuerda.",
+                "theme_marvel": "CÓMIC (MARVEL) — Heroicos puntos de acción rojos y audaces. ¡Guau! ¡Zam! Un homenaje a la época dorada del cómic. ¡Virutas de embalaje!",
+                "theme_dc": "GOTHAM (DC) — La noche más oscura, el azul más profundo y una franja de luz amarilla atravesando la lluvia. La justicia nunca duerme."
             }
         }
     },
@@ -315,7 +395,7 @@
         "verified": "VERIFICADO",
         "unverified": "NO VERIFICADO",
         "never": "NUNCA",
-        "joined_label": "JO",
+        "joined_label": "jo",
         "login_label": "LG",
         "downgrade": "DEGRADAR",
         "promote": "PROMOVER",

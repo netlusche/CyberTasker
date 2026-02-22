@@ -282,6 +282,86 @@
                 "item2_text": "Inclua URLs em sua descrição para criar links seguros e clicáveis ​​para recursos externos.",
                 "item3_label": "ANEXOS",
                 "item3_text": "Carregue arquivos e imagens importantes diretamente em uma tarefa para armazenamento seguro."
+            },
+            "sort_order": {
+                "title": "// PROTOCOLO DE ORDEM DE CLASSIFICAÇÃO [Gerenciamento de Tarefas]",
+                "item1_label": "VAZAMENTO DE SINAL (Atrasado)",
+                "item1_text": "Prioridade crítica. Qualquer diretiva que ultrapasse o prazo é fixada no topo do fluxo de dados.",
+                "item2_label": "PICO DE CALOR (vencimento hoje)",
+                "item2_text": "Prioridade imediata. As diretivas destinadas a hoje seguem os Signal Leaks.",
+                "item3_label": "ESTRATÉGICO (Prioridade)",
+                "item3_text": "As diretivas ativas restantes são classificadas por nível base HIGH > MED > LOW.",
+                "item4_label": "CLASSIFICAÇÃO DE ARQUIVO",
+                "item4_text": "As diretivas concluídas são classificadas pelo carimbo de data/hora de conclusão mais recente (DESC)."
+            },
+            "category_protocols": {
+                "title": "// PROTOCOLOS DE CATEGORIA [Personalização]",
+                "item1_label": "GERENCIAR PROTOCOLOS",
+                "item1_text": "Acesse seu PERFIL para inicializar, renomear ou excluir categorias personalizadas.",
+                "item2_label": "SUBSTITUIÇÃO PADRÃO",
+                "item2_text": "Marque qualquer protocolo como STOCKED/DEFAULT (★) para priorizá-lo no terminal de implantação.",
+                "item3_label": "REINICIALIZAÇÃO",
+                "item3_text": "Renomear um protocolo corrigirá retroativamente todas as diretivas arquivadas associadas."
+            },
+            "neural_search": {
+                "title": "// PESQUISA E FILTRO NEURAL [Recuperação de dados]",
+                "item1_label": "CONSULTA",
+                "item1_text": "Insira palavras-chave na barra de pesquisa neural para isolar diretivas instantaneamente.",
+                "item2_label": "VETORES",
+                "item2_text": "Filtre a grade por status PRIORITY, CATEGORY ou OVERDUE.",
+                "item3_label": "REINICIALIZAÇÃO DO SISTEMA",
+                "item3_text": "Execute RESET para limpar os filtros ativos e restaurar o fluxo de dados completo."
+            },
+            "chrono_sync": {
+                "title": "// CHRONO-SYNC [Programação]",
+                "item1_label": "PRAZOS",
+                "item1_text": "Atribua datas de execução através da sobreposição do CYBER CALENDAR.",
+                "item2_label": "SALTOS NO TEMPO",
+                "item2_text": "Use controles de navegação anual para planejamento de longo prazo.",
+                "item3_label": "SINCRONIZAÇÃO INTERATIVA",
+                "item3_text": "Modifique datas diretamente nos cartões ativos através dos protocolos CYBER CONFIRM."
+            },
+            "system_resiliency": {
+                "title": "// RESILIÊNCIA DO SISTEMA [Estabilidade]",
+                "item1_label": "CONFIGURAÇÃO ROBUSTA",
+                "item1_text": "O sistema agora utiliza uma lógica de fallback de configuração resiliente. Se `config.local.php` estiver incompleto, a grade principal fornece parâmetros ausentes (como `DB_HOST`) automaticamente.",
+                "item2_label": "INSTALADOR DE DIAGNÓSTICO",
+                "item2_text": "O utilitário `install.php` agora apresenta diagnósticos de alta imersão, rastreando a estabilidade do link neural e contagens de linhas do banco de dados para verificação imediata."
+            },
+            "multilingual_sync": {
+                "title": "// SINCRONIZAÇÃO MULTILINGUE [Protocolo de Idioma]",
+                "item1_label": "SELEÇÃO DE IDIOMA",
+                "item1_text": "Utilize os módulos de cabeçalho para alternar a interface neural entre os idiomas disponíveis.",
+                "item2_label": "ADAPTAÇÃO EM TEMPO REAL",
+                "item2_text": "A grade traduz todas as diretivas e parâmetros do sistema instantaneamente após a comutação.",
+                "item3_label": "LINK PERSISTENTE",
+                "item3_text": "Sua preferência de idioma fica bloqueada no armazenamento local do seu deck e carregada automaticamente a cada entrada."
+            },
+            "visual_interface": {
+                "title": "// INTERFACE VISUAL [Troca de Tema]",
+                "item1_label": "SELEÇÃO DE TEMAS",
+                "item1_text": "Acesse seu PERFIL para alternar entre as predefinições visuais disponíveis. Cada tema reconfigura a estética da grade, mantendo a integridade diretiva central.",
+                "item2_label": "SINCRONIZAÇÃO PERSISTENTE",
+                "item2_text": "Sua preferência visual fica bloqueada em seu ID neural em todas as sessões até que uma substituição manual seja iniciada.",
+                "item3_label": "EXTENSÕES FUTURAS",
+                "item3_text": "A grade é arquitetada para expansão. Novos módulos visuais serão implantados no seletor de temas à medida que forem certificados para uso operacional.",
+                "themes_title": "// MÓDULOS VISUAIS DISPONÍVEIS",
+                "theme_cyberpunk": "CYBERPUNK — A grade neural padrão. O ciano neon sangra no escuro. Sua interface operacional padrão. Fique atento, fique conectado.",
+                "theme_lcars": "LCARS — Sistema de acesso/recuperação de computadores de biblioteca. O melhor da Frota Estelar. Terminais arredondados, âmbar e dourado. O espaço é a diretiva final.",
+                "theme_matrix": "MATRIX — O código da chuva nunca mente. Sinais de fósforo verde pulsam através do silêncio corrompido. Você vê, não é?",
+                "theme_weyland": "WEYLAND-YUTANI – Âmbar corporativo queima frio. Terminais CRT âmbar, criptografados por uma empresa que construiu deuses e os chamou de produtos.",
+                "theme_robco": "PIP-BOY — SO unificado da RobCo Industries. Terminal verde-fósforo. Pré-guerra certificado. O terreno baldio é executado neste firmware.",
+                "theme_grid": "THE GRID — A fronteira digital de Tron. A luz azul neon circula através de uma rede infinita. Flynn construiu algo que nunca foi feito para humanos.",
+                "theme_section9": "GHOST – Autorização da Seção 9. Um fantasma sem casca. Holográficos azul-petróleo cintilam em um plano escuro minimalista. Kusanagi aprovaria.",
+                "theme_outrun": "OUTRUN — 1984. Sóis quentes magenta afundam abaixo do horizonte das ondas sintéticas. Dirija rápido, o neon não dorme. A retroonda nunca morre.",
+                "theme_steampunk": "STEAMPUNK – Ferro vitoriano e latão polido. As engrenagens clicam no nevoeiro. Um império movido a vapor e segredos. Suas diretrizes, entregues por tubo pneumático.",
+                "theme_force": "FORÇA – Uma galáxia muito, muito distante. A laranja rebelde brilha contra um campo estelar. O lado claro da grade. Que a diretriz esteja com você.",
+                "theme_arrakis": "ARRAKIS – Poder e especiarias do deserto. Sóis âmbar afundam sobre uma paisagem em constante mudança. A grade flui com o tempero. O medo é o assassino da mente.",
+                "theme_renaissance": "RENASCIMENTO — A era do ouro cibernético. Hexágonos âmbar pulsam em um mar de preto absoluto. Um mundo de aumentos e deuses corporativos. A humanidade dividida.",
+                "theme_klingon": "QO'NOS (KLINGON) — Vermelho sangue e aço frio. Bordas brutalistas nítidas. Hoje é um bom dia para codificar. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Gelo e Fogo. Aço azul frio e detalhes em vermelho sangue valiriano. O inverno está chegando. O Norte lembra.",
+                "theme_marvel": "COMIC (MARVEL) — Heroicos pontos de ação vermelhos e ousados. Prisioneiro de guerra! Uau! Uma homenagem à era de ouro dos quadrinhos. Excelsior!",
+                "theme_dc": "GOTHAM (DC) – Noite mais escura, azul mais profundo e um raio de luz amarela cortando a chuva. A justiça nunca dorme."
             }
         }
     },

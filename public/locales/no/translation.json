@@ -282,6 +282,86 @@
                 "item2_text": "Inkluder nettadresser i beskrivelsen for å lage sikre, klikkbare lenker til eksterne ressurser.",
                 "item3_label": "VEDLEGG",
                 "item3_text": "Last opp viktige filer og bilder direkte til en oppgave for sikker lagring."
+            },
+            "sort_order": {
+                "title": "// SORTERE BESTILLINGSPROTOKOLL [Oppgavebehandling]",
+                "item1_label": "SIGNALLEKKASJON (Forsinket)",
+                "item1_text": "Kritisk prioritering. Ethvert direktiv som er over tidsfristen er festet til toppen av datastrømmen.",
+                "item2_label": "HEAT SPIKE (Gjelder i dag)",
+                "item2_text": "Umiddelbar prioritet. Direktivene som er skjebne for i dag følger signallekkasjene.",
+                "item3_label": "STRATEGISK (Prioritet)",
+                "item3_text": "Gjenværende aktive direktiver sorteres etter base HØYT > MED > LAVT nivå.",
+                "item4_label": "ARKIVSORTERING",
+                "item4_text": "Fullførte direktiver er sortert etter siste fullføringstidsstempel (DESC)."
+            },
+            "category_protocols": {
+                "title": "// KATEGORIPROTOKOLLER [Tilpasning]",
+                "item1_label": "ADMINISTRER PROTOKOLLER",
+                "item1_text": "Få tilgang til PROFILEN din for å initialisere, gi nytt navn eller slette egendefinerte kategorier.",
+                "item2_label": "STANDARD OVERSKRID",
+                "item2_text": "Merk hvilken som helst protokoll som STOCKED/DEFAULT (★) for å prioritere den i distribusjonsterminalen.",
+                "item3_label": "RE-INITIALISERING",
+                "item3_text": "Ved å gi nytt navn til en protokoll vil alle tilknyttede arkiverte direktiver lappes med tilbakevirkende kraft."
+            },
+            "neural_search": {
+                "title": "// NEURALSØK OG FILTER [Datahenting]",
+                "item1_label": "SPØRRING",
+                "item1_text": "Skriv inn nøkkelord i den nevrale søkelinjen for å umiddelbart isolere direktiver.",
+                "item2_label": "VEKTORER",
+                "item2_text": "Filtrer rutenettet etter PRIORITET, KATEGORI eller FORSILT status.",
+                "item3_label": "TILBAKESTILLING AV SYSTEM",
+                "item3_text": "Utfør RESET for å fjerne aktive filtre og gjenopprette full datastrøm."
+            },
+            "chrono_sync": {
+                "title": "// CHRONO-SYNC [Planlegging]",
+                "item1_label": "FRIST",
+                "item1_text": "Tildel utførelsesdatoer via CYBER CALENDAR-overlegget.",
+                "item2_label": "TIDSHOPP",
+                "item2_text": "Bruk årsnavigasjonskontroller for langdistanseplanlegging.",
+                "item3_label": "INTERAKTIV SYNC",
+                "item3_text": "Endre datoer direkte på aktive kort via CYBER CONFIRM-protokoller."
+            },
+            "system_resiliency": {
+                "title": "// SYSTEMEFFEKTIGHET [Stabilitet]",
+                "item1_label": "ROBUST KONFIG",
+                "item1_text": "Systemet bruker nå en motstandsdyktig konfigurasjons-reservelogikk. Hvis `config.local.php` er ufullstendig, gir kjernenettet manglende parametere (som `DB_HOST`) automatisk.",
+                "item2_label": "DIAGNOSTISK INSTALLATØR",
+                "item2_text": "'install.php'-verktøyet har nå høy-immersjonsdiagnostikk, sporing av nevrale lenker og antall databaserader for umiddelbar verifisering."
+            },
+            "multilingual_sync": {
+                "title": "// MULTILINGUAL SYNC [Språkprotokoll]",
+                "item1_label": "SPRÅKVALG",
+                "item1_text": "Bruk overskriftsmodulene for å veksle mellom det nevrale grensesnittet mellom tilgjengelige språk.",
+                "item2_label": "TILPASNING I SANNTID",
+                "item2_text": "Rutenettet oversetter alle systemdirektiver og parametere umiddelbart etter bytte.",
+                "item3_label": "PERSONLIG LINK",
+                "item3_text": "Språkpreferansene dine er låst inn i kortstokkens lokale lagring og lastes automatisk inn ved hver jack-in."
+            },
+            "visual_interface": {
+                "title": "// VISUELL GRENSESNITT [Temabytte]",
+                "item1_label": "TEMAVALG",
+                "item1_text": "Gå til PROFIL for å veksle mellom tilgjengelige visuelle forhåndsinnstillinger. Hvert tema rekonfigurerer rutenettets estetikk samtidig som det opprettholder kjernedirektivets integritet.",
+                "item2_label": "VEDVARENDE SYNC",
+                "item2_text": "Din visuelle preferanse er låst til din nevrale ID på tvers av alle økter til en manuell overstyring startes.",
+                "item3_label": "FREMTIDIGE UTVIDELSER",
+                "item3_text": "Gitteret er bygget for utvidelse. Nye visuelle moduler vil bli distribuert til temavelgeren ettersom de er sertifisert for operativ bruk.",
+                "themes_title": "// TILGJENGELIGE VISUELLE MODULER",
+                "theme_cyberpunk": "CYBERPUNK — Standard nevrale rutenett. Neon cyan blør gjennom mørket. Ditt standard operative grensesnitt. Hold deg skarp, hold deg kablet.",
+                "theme_lcars": "LCARS — Library Computer Access/Retrieval System. Stjerneflåtens beste. Avrundede terminaler, rav og gull. Plassen er det endelige direktivet.",
+                "theme_matrix": "MATRIX — Koderegnet lyver aldri. Grønne fosforsignaler pulserer gjennom ødelagt stillhet. Du ser det, gjør du ikke?",
+                "theme_weyland": "WEYLAND-YUTANI — Bedriftsrav brenner kaldt. Amber CRT-terminaler, kryptert av et selskap som bygde guder og kalte dem produkter.",
+                "theme_robco": "PIP-BOY — RobCo Industries enhetlige OS. Fosforgrønn terminal. Sertifisert før krigen. Ødemarken kjører på denne fastvaren.",
+                "theme_grid": "THE GRID — Trons digitale grense. Neonblått lys går over et uendelig gitter. Flynn bygde noe som aldri var ment for mennesker.",
+                "theme_section9": "GHOST — Seksjon 9-klaring. Et spøkelse uten skall. Blågrønne holografier flimrer over et minimalistisk mørkt plan. Kusanagi ville godkjenne.",
+                "theme_outrun": "OUTRUN — 1984. Varme magenta soler synker under synthwave-horisonten. Kjør fort, neonet sover ikke. Retrowave dør aldri.",
+                "theme_steampunk": "STEAMPUNK — viktoriansk jern og polert messing. Gir klikker i tåken. Et imperium drevet av damp og hemmeligheter. Dine direktiver, levert med pneumatisk rør.",
+                "theme_force": "FORCE — En galakse langt, langt unna. Rebelloransje lyser mot et sjøstjernefelt. Den lyse siden av rutenettet. Måtte direktivet være med deg.",
+                "theme_arrakis": "ARRAKIS — Ørkenkraft og krydder. Gule soler synker over et skiftende landskap. Gitteret flyter med krydderet. Frykt er tankedreperen.",
+                "theme_renaissance": "RENESSANSE — Cyber-gull-æraen. Ravsekskanter pulserer i et hav av absolutt svart. En verden av forstørrelser og bedriftsguder. Menneskeheten delte seg.",
+                "theme_klingon": "QO'NOS (KLINGON) — Blodrødt og kaldt stål. Sylskarpe brutalistiske kanter. I dag er en god dag å kode. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ice and Fire. Kaldt blått stål og valyriske blodrøde aksenter. Vinteren kommer. Norden husker.",
+                "theme_marvel": "KOMISK (MARVEL) – Heroiske røde og dristige actionprikker. Pow! Wham! En hyllest til tegneserienes gullalder. Excelsior!",
+                "theme_dc": "GOTHAM (DC) — Mørkeste natt, dypeste blå og et snev av gult lys som skjærer gjennom regnet. Rettferdighet sover aldri."
             }
         }
     },
@@ -321,7 +401,7 @@
         "promote": "PROMOTER",
         "reset_pwd": "RESET PWD",
         "2fa_off": "2FA AV",
-        "erase": "VISKE",
+        "erase": "SLETT",
         "total_recruits": "TOTAL REKRUTTER",
         "policies_title": "SYSTEMREGLER",
         "policy_strict_pwd_title": "Strenge passordpolicy",

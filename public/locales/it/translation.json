@@ -282,6 +282,86 @@
                 "item2_text": "Includi gli URL nella descrizione per creare collegamenti sicuri e selezionabili a risorse esterne.",
                 "item3_label": "ALLEGATI",
                 "item3_text": "Carica file e immagini importanti direttamente in un'attività per l'archiviazione sicura."
+            },
+            "sort_order": {
+                "title": "// PROTOCOLLO ORDINE DI ORDINAMENTO [Gestione attività]",
+                "item1_label": "PERDITA SEGNALE (in ritardo)",
+                "item1_text": "Priorità critica. Qualsiasi direttiva oltre la scadenza viene bloccata nella parte superiore del flusso di dati.",
+                "item2_label": "PUNTO DI CALORE (previsto per oggi)",
+                "item2_text": "Priorità immediata. Le direttive destinate ad oggi seguono i Signal Leaks.",
+                "item3_label": "STRATEGICO (Priorità)",
+                "item3_text": "Le restanti direttive attive sono ordinate per livello base ALTO > MED > BASSO.",
+                "item4_label": "ORDINAMENTO ARCHIVIO",
+                "item4_text": "Le direttive completate vengono ordinate in base all'ultimo timestamp di completamento (DESC)."
+            },
+            "category_protocols": {
+                "title": "// PROTOCOLLI DI CATEGORIA [Personalizzazione]",
+                "item1_label": "GESTIRE I PROTOCOLLI",
+                "item1_text": "Accedi al tuo PROFILO per inizializzare, rinominare o eliminare le categorie personalizzate.",
+                "item2_label": "OVERRIDE PREDEFINITO",
+                "item2_text": "Contrassegna qualsiasi protocollo come STOCKED/DEFAULT (★) per assegnargli la priorità nel terminale di distribuzione.",
+                "item3_label": "REINIZIALIZZAZIONE",
+                "item3_text": "La ridenominazione di un protocollo applicherà retroattivamente tutte le direttive archiviate associate."
+            },
+            "neural_search": {
+                "title": "// RICERCA E FILTRO NEURALE [Recupero dati]",
+                "item1_label": "INTERROGAZIONE",
+                "item1_text": "Inserisci le parole chiave nella barra di ricerca neurale per isolare istantaneamente le direttive.",
+                "item2_label": "VETTORI",
+                "item2_text": "Filtra la griglia in base allo stato PRIORITÀ, CATEGORIA o SCADUTO.",
+                "item3_label": "RESET DEL SISTEMA",
+                "item3_text": "Eseguire RESET per cancellare i filtri attivi e ripristinare il flusso di dati completo."
+            },
+            "chrono_sync": {
+                "title": "// CHRONO-SYNC [Programmazione]",
+                "item1_label": "SCADENZE",
+                "item1_text": "Assegna le date di esecuzione tramite la sovrapposizione CYBER CALENDAR.",
+                "item2_label": "SALTI DI TEMPO",
+                "item2_text": "Utilizza i controlli di navigazione annuale per la pianificazione a lungo termine.",
+                "item3_label": "SINCRONIZZAZIONE INTERATTIVA",
+                "item3_text": "Modifica le date direttamente sulle carte attive tramite i protocolli CYBER CONFIRM."
+            },
+            "system_resiliency": {
+                "title": "// RESILIENZA DEL SISTEMA [Stabilità]",
+                "item1_label": "CONFIGURAZIONE ROBUSTA",
+                "item1_text": "Il sistema ora utilizza una logica di fallback della configurazione resiliente. Se `config.local.php` è incompleto, la griglia principale fornisce automaticamente i parametri mancanti (come `DB_HOST`).",
+                "item2_label": "INSTALLATORE DIAGNOSTICO",
+                "item2_text": "L'utilità \"install.php\" ora offre una diagnostica ad alta immersione, il monitoraggio della stabilità dei collegamenti neurali e il conteggio delle righe del database per una verifica immediata."
+            },
+            "multilingual_sync": {
+                "title": "// SINCRONIZZAZIONE MULTILINGUA [Protocollo lingua]",
+                "item1_label": "SELEZIONE DELLA LINGUA",
+                "item1_text": "Utilizza i moduli di intestazione per alternare l'interfaccia neurale tra le lingue disponibili.",
+                "item2_label": "ADATTAMENTO IN TEMPO REALE",
+                "item2_text": "La griglia traduce tutte le direttive e i parametri del sistema immediatamente dopo la commutazione.",
+                "item3_label": "LINK PERSISTENTE",
+                "item3_text": "La tua preferenza linguistica è bloccata nella memoria locale del tuo deck e caricata automaticamente ad ogni jack-in."
+            },
+            "visual_interface": {
+                "title": "// INTERFACCIA VISIVA [Cambio tema]",
+                "item1_label": "SELEZIONE DEL TEMA",
+                "item1_text": "Accedi al tuo PROFILO per alternare tra le preimpostazioni visive disponibili. Ogni tema riconfigura l'estetica della griglia mantenendo l'integrità della direttiva centrale.",
+                "item2_label": "SINCRONIZZAZIONE PERSISTENTE",
+                "item2_text": "La tua preferenza visiva è bloccata sul tuo ID neurale in tutte le sessioni finché non viene avviato un override manuale.",
+                "item3_label": "FUTURE ESTENSIONI",
+                "item3_text": "La griglia è progettata per l'espansione. Nuovi moduli visivi verranno implementati nel selettore di temi poiché certificati per l'uso operativo.",
+                "themes_title": "// MODULI VISIVI DISPONIBILI",
+                "theme_cyberpunk": "CYBERPUNK: la griglia neurale predefinita. Il ciano neon sanguina nell'oscurità. La tua interfaccia operativa standard. Rimani sveglio, rimani connesso.",
+                "theme_lcars": "LCARS: sistema di accesso/recupero dei computer della biblioteca. Il meglio della Flotta Stellare. Terminali arrotondati, ambra e oro. Lo spazio è la direttiva finale.",
+                "theme_matrix": "MATRIX — La pioggia di codici non mente mai. I segnali di fosforo verde pulsano attraverso il silenzio corrotto. Lo vedi, vero?",
+                "theme_weyland": "WEYLAND-YUTANI – L’ambra aziendale brucia fredda. Terminali CRT color ambra, criptati da una società che ha costruito dei e li ha chiamati prodotti.",
+                "theme_robco": "PIP-BOY: sistema operativo unificato di RobCo Industries. Terminale verde fosforo. Certificato prima della guerra. La zona desolata funziona con questo firmware.",
+                "theme_grid": "THE GRID — La frontiera digitale di Tron. La luce blu al neon scorre attraverso un reticolo infinito. Flynn ha costruito qualcosa che non è mai stato pensato per gli umani.",
+                "theme_section9": "GHOST - Autorizzazione della sezione 9. Un fantasma senza guscio. Ologrammi verde acqua guizzano su un piano scuro e minimalista. Kusanagi approverebbe.",
+                "theme_outrun": "OUTRUN — 1984. Caldi soli magenta sprofondano sotto l'orizzonte delle onde sintetiche. Guida veloce, il neon non dorme. La retroonda non muore mai.",
+                "theme_steampunk": "STEAMPUNK — Ferro vittoriano e ottone brunito. Gli ingranaggi scattano nella nebbia. Un impero alimentato da vapore e segreti. Le vostre direttive, fornite tramite tubo pneumatico.",
+                "theme_force": "FORZA — Una galassia lontana, lontana. L'arancione ribelle brilla contro un campo stellare. Il lato chiaro della griglia. Che la direttiva sia con voi.",
+                "theme_arrakis": "ARRAKIS — Potenza e spezie del deserto. I soli ambrati tramontano su un paesaggio mutevole. La griglia scorre con le spezie. La paura è l’assassino della mente.",
+                "theme_renaissance": "RINASCIMENTO — L’era del cyber-oro. Esagoni d'ambra pulsano in un mare di nero assoluto. Un mondo di potenziamenti e divinità aziendali. L'umanità divisa.",
+                "theme_klingon": "QO'NOS (KLINGON) — Rosso sangue e freddo acciaio. Bordi brutalisti taglienti come rasoi. Oggi è un buon giorno per programmare. Qapla'!",
+                "theme_got": "WESTEROS (GOT) — Ghiaccio e fuoco. Acciaio blu freddo e accenti rosso sangue di Valyria. L'inverno sta arrivando. Il Nord ricorda.",
+                "theme_marvel": "FUMETTO (MARVEL) — Punti rossi eroici e azioni audaci. Pow! Wham! Un omaggio all'epoca d'oro dei fumetti. Eccellente!",
+                "theme_dc": "GOTHAM (DC) — Notte più buia, blu più profondo e un frammento di luce gialla che taglia la pioggia. La giustizia non dorme mai."
             }
         }
     },
@@ -289,7 +369,7 @@
         "loading": "INIZIALIZZAZIONE SISTEMA...",
         "save": "SALVA",
         "cancel": "ANNULLA",
-        "delete": "ELIMINARE",
+        "delete": "ELIMINA",
         "high": "ALTO",
         "med": "MED",
         "low": "BASSO",
