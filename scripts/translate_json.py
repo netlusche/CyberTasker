@@ -58,31 +58,65 @@ def set_nested_value(d, path, value):
 
 def process_lang(lang_code, folder_name):
     print(f"Translating to {folder_name} ({lang_code})...")
-    # Batch strings in chunks of 50 to avoid URL length limits
+    
+    target_path = f"public/locales/{folder_name}/translation.json"
+    existing_data = {}
+    if os.path.exists(target_path):
+        with open(target_path, "r", encoding="utf-8") as f:
+            existing_data = json.load(f)
+            
+    import copy
+    new_data = copy.deepcopy(existing_data)
+    
+    missing_strings = []
+    missing_map = []
+    
+    for path, en_str in zip(key_map, strings_to_translate):
+        keys = path.split('.')
+        d = existing_data
+        found = True
+        for k in keys:
+            if isinstance(d, dict) and k in d:
+                d = d[k]
+            else:
+                found = False
+                break
+        
+        if not found or d == "":
+            missing_strings.append(en_str)
+            missing_map.append(path)
+            
+    if not missing_strings:
+        print(f"  -> Skipping. Already fully synchronized.")
+        return
+        
+    print(f"  -> Found {len(missing_strings)} new/missing strings. Translating...")
+
+    # Batch strings in chunks of 30 to avoid URL length limits
     translated_strings = []
     chunk_size = 30
-    for i in range(0, len(strings_to_translate), chunk_size):
-        chunk = strings_to_translate[i:i+chunk_size]
+    for i in range(0, len(missing_strings), chunk_size):
+        chunk = missing_strings[i:i+chunk_size]
         res = translate_batch(chunk, lang_code)
         if len(res) < len(chunk):
-            # Fallback to appending chunk if parsing failed
             res += chunk[len(res):]
         elif len(res) > len(chunk):
             res = res[:len(chunk)]
         translated_strings.extend(res)
         time.sleep(1) # throttle
     
-    # Rebuild JSON
-    import copy
-    new_data = copy.deepcopy(base_data)
-    for path, val in zip(key_map, translated_strings):
-        # some translations might lose string placeholders randomly, but we'll try to preserve UI
-        set_nested_value(new_data, path, val)
+    # Rebuild JSON incrementally
+    for path, val in zip(missing_map, translated_strings):
+        keys = path.split('.')
+        d = new_data
+        for key in keys[:-1]:
+            d = d.setdefault(key, {})
+        d[keys[-1]] = val.strip() if isinstance(val, str) else val
         
     os.makedirs(f"public/locales/{folder_name}", exist_ok=True)
-    with open(f"public/locales/{folder_name}/translation.json", "w", encoding="utf-8") as f:
+    with open(target_path, "w", encoding="utf-8") as f:
         json.dump(new_data, f, ensure_ascii=False, indent=4)
-    print(f"Saved {folder_name}.")
+    print(f"  -> Saved {folder_name}.")
 
 for lang in TARGETS:
     process_lang(lang, lang if lang != 'zh-CN' else 'zh')
