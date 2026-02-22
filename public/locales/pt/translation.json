@@ -233,7 +233,10 @@
             "edit_mode": "MODO DE EDIÇÃO",
             "read_mode": "MODO LEITURA",
             "save_success": "DOSSIÊ ATUALIZADO",
-            "save_error": "FALHA NO UPLINK"
+            "save_error": "FALHA NO UPLINK",
+            "subroutines": "SUB-ROTINAS",
+            "add_subroutine": "+ ADICIONAR ROTINA",
+            "subroutine_placeholder": "Entre na sub-rotina..."
         }
     },
     "help": {

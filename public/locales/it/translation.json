@@ -233,7 +233,10 @@
             "edit_mode": "MODALITÀ MODIFICA",
             "read_mode": "MODALITÀ LETTURA",
             "save_success": "DOSSIER AGGIORNATO",
-            "save_error": "UPLINK NON FALLITO"
+            "save_error": "UPLINK NON FALLITO",
+            "subroutines": "SOTTOROUTINE",
+            "add_subroutine": "+ AGGIUNGI ROUTINE",
+            "subroutine_placeholder": "Inserisci la subroutine..."
         }
     },
     "help": {

@@ -86,15 +86,21 @@ const CalendarModal = ({ tasks, onClose, onOpenDossier }) => {
                             {dayCounter}
                         </span>
                         <div className="flex-1 overflow-y-auto space-y-1">
-                            {dayTasks.map(task => (
-                                <div
-                                    key={task.id}
-                                    onClick={() => onOpenDossier(task)}
-                                    className={`text-[8px] md:text-[10px] truncate px-1 border-l-2 cursor-pointer transition-colors bg-black/40 hover:bg-cyber-primary/20 hover:text-white ${task.priority == 1 ? 'border-red-500 text-red-400' : task.priority == 2 ? 'border-cyber-warning text-cyber-warning' : 'border-green-500 text-green-400'}`}
-                                >
-                                    {task.title}
-                                </div>
-                            ))}
+                            {dayTasks.map(task => {
+                                const isProj = task.is_projection;
+                                return (
+                                    <div
+                                        key={task.id}
+                                        onClick={() => !isProj && onOpenDossier(task)}
+                                        title={isProj ? t('tasks.holo_projection', 'Holo-Projection (Read-Only)') : task.title}
+                                        className={`text-[8px] md:text-[10px] truncate px-1 border-l-2 transition-colors flex items-center gap-1 ${isProj ? 'cursor-not-allowed opacity-60 bg-repeating-linear-gradient' : 'cursor-pointer bg-black/40 hover:bg-cyber-primary/20 hover:text-white'} ${task.priority == 1 ? 'border-red-500 text-red-400' : task.priority == 2 ? 'border-cyber-warning text-cyber-warning' : 'border-green-500 text-green-400'}`}
+                                        style={isProj ? { backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.05) 5px, rgba(255,255,255,0.05) 10px)' } : {}}
+                                    >
+                                        {isProj && <span className="text-[8px] opacity-70">⟲</span>}
+                                        {task.title}
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 );

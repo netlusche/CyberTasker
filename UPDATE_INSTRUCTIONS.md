@@ -1,6 +1,32 @@
-# CyberTasker Server Update Instructions (v2.1.4 → v2.2.0)
+# CyberTasker Server Update Instructions (v2.2.0 → v2.3.0)
 
-These instructions guide you through the update to **v2.2.0** (The Dashboard & Dossier Upgrade).
+These instructions guide you through the update to **v2.3.0** (The Workflow & Stability Update).
+
+## 1. Backup (MANDATORY)
+- **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory.
+
+## 2. Deploy Files
+1.  Upload the contents of the `dist` folder to your server.
+    > [!CAUTION]
+    > **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply drag the visible files to your FTP client, the `.htaccess` files **will be left behind**, exposing your database and uploads to the public web! 
+    > Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
+2.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
+
+## 3. Database Update
+This update introduces new schemas for sub-routines and scheduled protocols (`subroutines`, `recurrence_interval`, `recurrence_end_date`).
+1.  Navigate to your installer URL: `https://yourdomain.com/tasks/api/install.php`
+2.  The script will automatically detect the missing columns and append them to your active SQLite or MySQL database.
+3.  **Verification**: Ensure the "Database Schema Updated" messages appear indicating the new recurrence columns were attached.
+4.  **Security Note**: Delete `api/install.php` after verification.
+
+## 4. Verify Update
+1.  **Scheduled Protocols**: Open an existing directive and verify the presence of the new `Recurrence Interval` dropdown in the Dossier. Set it to 'Daily' and complete the task to ensure the next one is generated correctly.
+2.  **Sub-Routines**: Within a Dossier, add a new Sub-Routine. Toggle it as completed.
+3.  **Dashboard Progress**: Return to the dashboard and ensure the card reflects the new Sub-Routine completion ratio (e.g., 1/1).
+
+---
+
+# CyberTasker Server Update Instructions (v2.1.4 → v2.2.0)
 
 ## 1. Backup (MANDATORY)
 - **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory.

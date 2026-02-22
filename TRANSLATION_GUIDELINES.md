@@ -30,3 +30,11 @@ If you are an AI Assistant updating translations:
 1. Ensure the English text is precise, professional, and slightly thematic.
 2. Ensure you have not broken any string interpolation placeholders (e.g., `{{username}}`).
 3. If asked to natively translate specific keys into complex languages (like German or Klingon), ensure you bypass the automated translation script for those specific files.
+
+## 6. Official Terminology Mappings (Release 2.3+)
+
+To maintain consistency across releases and languages, abide by these established thematic terms:
+
+*   **Sub-Routine**: Use "Sub-Routine" or "Checklist" (German: *Sub-Routine*). Do not translate as "Unterprogramm" to avoid software development confusion.
+*   **Scheduled Protocol**: Use "Scheduled Protocol" or "Recurrence" (German: *Wiederkehrende Aufgabe* or *Zyklus*). Do not use overly robotic, banking terms like "Dauerauftrag".
+*   **Holo-Projection**: Use "Holo-Projection" (German: *Holo-Projektion*). Used specifically for future calendar visualizations of recurring tasks.

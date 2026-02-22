@@ -233,7 +233,10 @@
             "edit_mode": "DÜZENLEME MODU",
             "read_mode": "OKUMA MODU",
             "save_success": "DOSYA GÜNCELLENDİ",
-            "save_error": "UPLINK BAŞARISIZ OLDU"
+            "save_error": "UPLINK BAŞARISIZ OLDU",
+            "subroutines": "ALT RUTİNLER",
+            "add_subroutine": "+ RUTİN EKLE",
+            "subroutine_placeholder": "Alt rutine girin..."
         }
     },
     "help": {

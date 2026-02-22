@@ -233,7 +233,10 @@
             "edit_mode": "EDIT MODE",
             "read_mode": "LÆSE-TILSTAND",
             "save_success": "DOSSIER OPDATERET",
-            "save_error": "UPLINK FEJLLET"
+            "save_error": "UPLINK FEJLLET",
+            "subroutines": "UNDERRUTINER",
+            "add_subroutine": "+ TILFØJ RUTINE",
+            "subroutine_placeholder": "Indtast underrutine..."
         }
     },
     "help": {

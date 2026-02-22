@@ -233,7 +233,10 @@
             "edit_mode": "MODE ÉDITION",
             "read_mode": "MODE LECTURE",
             "save_success": "DOSSIER MISE À JOUR",
-            "save_error": "ÉCHEC DE LA LIAISON MONTANTE"
+            "save_error": "ÉCHEC DE LA LIAISON MONTANTE",
+            "subroutines": "SOUS-ROUTINES",
+            "add_subroutine": "+ AJOUTER UNE ROUTINE",
+            "subroutine_placeholder": "Entrez le sous-programme..."
         }
     },
     "help": {

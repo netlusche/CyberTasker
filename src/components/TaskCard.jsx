@@ -282,9 +282,41 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
                             )}
                         </div>
 
-                        <p className="text-sm text-cyber-secondary font-mono xp-text">
-                            +{task.points_value} XP
-                        </p>
+                        <div className="flex gap-4 items-center mb-2">
+                            <p className="text-sm text-cyber-secondary font-mono xp-text">
+                                +{task.points_value} XP
+                            </p>
+                            {(() => {
+                                let subTotal = 0;
+                                let subCompleted = 0;
+                                try {
+                                    if (task.subroutines_json) {
+                                        const parsed = JSON.parse(task.subroutines_json);
+                                        if (Array.isArray(parsed) && parsed.length > 0) {
+                                            subTotal = parsed.length;
+                                            subCompleted = parsed.filter(s => s.completed).length;
+                                        }
+                                    }
+                                } catch (e) {
+                                    console.error('Error parsing subroutines:', e);
+                                }
+
+                                if (subTotal > 0) {
+                                    const isAllCompleted = subCompleted === subTotal;
+                                    return (
+                                        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-black/40 border border-cyber-primary/20 text-xs font-mono" title={t('tasks.dossier.sub_routines')}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`w-3 h-3 ${isAllCompleted ? 'text-cyber-success' : 'text-cyber-primary'}`}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                            </svg>
+                                            <span className={isAllCompleted ? 'text-cyber-success font-bold' : 'text-cyber-primary/80'}>
+                                                [{subCompleted}/{subTotal}]
+                                            </span>
+                                        </div>
+                                    );
+                                }
+                                return null;
+                            })()}
+                        </div>
                     </div>
 
                     <div className="flex flex-col gap-2">

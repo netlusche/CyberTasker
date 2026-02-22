@@ -225,7 +225,10 @@
             "edit_mode": "choH",
             "read_mode": "laD",
             "save_success": "nav chu'",
-            "save_error": "lab Qaw'"
+            "save_error": "lab Qaw'",
+            "subroutines": "bIQtIq-mey",
+            "add_subroutine": "+ bIQtIq chel",
+            "subroutine_placeholder": "bIQtIq yIqIQ..."
         }
     },
     "help": {

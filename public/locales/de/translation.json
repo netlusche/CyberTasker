@@ -208,6 +208,15 @@
         "category": "KATEGORIE",
         "due_date": "FÄLLIGKEIT",
         "no_date": "KEIN DATUM",
+        "recurrence": "WIEDERHOLUNG",
+        "recurrence_end": "ENDET AM",
+        "intervals": {
+            "none": "Keine",
+            "daily": "Täglich",
+            "weekly": "Wöchentlich",
+            "monthly": "Monatlich",
+            "yearly": "Jährlich"
+        },
         "status": "STATUS",
         "details": "DETAILS",
         "page": "SEITE",
@@ -233,7 +242,10 @@
             "edit_mode": "BEARBEITUNGSMODUS",
             "read_mode": "LESEMODUS",
             "save_success": "DOSSIER AKTUALISIERT",
-            "save_error": "UPLINK fehlgeschlagen"
+            "save_error": "UPLINK fehlgeschlagen",
+            "subroutines": "SUB-ROUTINEN",
+            "add_subroutine": "+ ROUTINE HINZ.",
+            "subroutine_placeholder": "Sub-Routine eingeben..."
         }
     },
     "help": {

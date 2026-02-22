@@ -233,7 +233,10 @@
             "edit_mode": "편집 모드",
             "read_mode": "읽기 모드",
             "save_success": "관련 문서 업데이트됨",
-            "save_error": "업링크 실패"
+            "save_error": "업링크 실패",
+            "subroutines": "서브루틴",
+            "add_subroutine": "+ 루틴 추가",
+            "subroutine_placeholder": "서브루틴 입력..."
         }
     },
     "help": {

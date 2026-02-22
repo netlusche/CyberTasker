@@ -54,8 +54,14 @@ class TaskController extends Controller
         $priority = $data['priority'] ?? 2;
         $points = $data['points_value'] ?? 10;
         $dueDate = !empty($data['due_date']) ? $data['due_date'] : null;
+        $recurrenceInterval = !empty($data['recurrence_interval']) ? $data['recurrence_interval'] : null;
+        $recurrenceEndDate = !empty($data['recurrence_end_date']) ? $data['recurrence_end_date'] : null;
 
-        $taskId = $this->taskRepo->createTask($this->userId, $title, $category, $priority, $points, $dueDate);
+        if (strtolower($recurrenceInterval) !== 'none' && $recurrenceInterval !== null && empty($dueDate)) {
+            $dueDate = date('Y-m-d');
+        }
+
+        $taskId = $this->taskRepo->createTask($this->userId, $title, $category, $priority, $points, $dueDate, null, null, null, null, $recurrenceInterval, $recurrenceEndDate);
 
         $this->jsonResponse(['id' => $taskId, 'message' => 'Task created']);
     }
@@ -92,6 +98,83 @@ class TaskController extends Controller
 
                 $pointsValue = (int)($task['points_value'] ?? 10);
                 $this->userRepo->addPoints($this->userId, $pointsValue);
+
+                // --- RECURRENCE LOGIC (Create-on-completion) ---
+                $interval = strtolower($task['recurrence_interval'] ?? 'none');
+
+                // If it's becoming a duplicate target, but the interval is removed in this same request, check for it in $data.
+                if (isset($data['recurrence_interval'])) {
+                    $interval = strtolower($data['recurrence_interval']);
+                }
+
+                if ($interval && $interval !== 'none') {
+                    $modifier = '';
+                    switch ($interval) {
+                        case 'daily':
+                            $modifier = '+1 day';
+                            break;
+                        case 'weekly':
+                            $modifier = '+1 week';
+                            break;
+                        case 'monthly':
+                            $modifier = '+1 month';
+                            break;
+                        case 'yearly':
+                            $modifier = '+1 year';
+                            break;
+                    }
+
+                    if ($modifier !== '') {
+                        $baseDate = $task['due_date'] ?? date('Y-m-d H:i:s');
+                        $nextDate = date('Y-m-d H:i:s', strtotime($baseDate . ' ' . $modifier));
+                        $endDateObj = null;
+
+                        $endDateStr = $task['recurrence_end_date'] ?? null;
+                        if (array_key_exists('recurrence_end_date', $data)) {
+                            $endDateStr = $data['recurrence_end_date'];
+                        }
+
+                        if (!empty($endDateStr)) {
+                            $endDateObj = new DateTime($endDateStr);
+                            $endDateObj->setTime(23, 59, 59);
+                        }
+
+                        if (!$endDateObj || new DateTime($nextDate) <= $endDateObj) {
+                            // Reset subroutines completion
+                            $newSubroutines = null;
+                            $oldSubJson = $task['subroutines_json'] ?? null;
+                            if (array_key_exists('subroutines_json', $data)) {
+                                $oldSubJson = $data['subroutines_json']; // Use the updated ones if saving at same time
+                            }
+
+                            if (!empty($oldSubJson)) {
+                                $subs = json_decode($oldSubJson, true);
+                                if (is_array($subs)) {
+                                    foreach ($subs as &$sub) {
+                                        $sub['completed'] = false; // Reset to untouched state
+                                    }
+                                    $newSubroutines = json_encode($subs);
+                                }
+                            }
+
+                            // Clone the task data with the new due_date
+                            $this->taskRepo->createTask(
+                                $this->userId,
+                                $task['title'] ?? (isset($data['title']) ? $data['title'] : 'Task'),
+                                $task['category'] ?? (isset($data['category']) ? $data['category'] : 'General'),
+                                (int)($task['priority'] ?? (isset($data['priority']) ? $data['priority'] : 2)),
+                                (int)($task['points_value'] ?? 10),
+                                $nextDate,
+                                $task['description'] ?? (isset($data['description']) ? $data['description'] : null),
+                                $task['attachments'] ?? (isset($data['attachments']) ? $data['attachments'] : null),
+                                $task['files'] ?? (isset($data['files']) ? $data['files'] : null),
+                                $newSubroutines,
+                                $interval,
+                                $endDateStr
+                            );
+                        }
+                    }
+                }
             }
         }
         if (isset($data['title'])) {
@@ -115,9 +198,18 @@ class TaskController extends Controller
             $fields[] = 'points_value = ?';
             $params[] = $pointsValue;
         }
+        $finalInterval = array_key_exists('recurrence_interval', $data) ? $data['recurrence_interval'] : ($task['recurrence_interval'] ?? null);
+        
         if (array_key_exists('due_date', $data)) {
+            $incomingDueDate = !empty($data['due_date']) ? $data['due_date'] : null;
+            if (empty($incomingDueDate) && strtolower($finalInterval ?? 'none') !== 'none' && !empty($finalInterval)) {
+                $incomingDueDate = date('Y-m-d');
+            }
             $fields[] = 'due_date = ?';
-            $params[] = !empty($data['due_date']) ? $data['due_date'] : null;
+            $params[] = $incomingDueDate;
+        } else if (empty($task['due_date']) && strtolower($finalInterval ?? 'none') !== 'none' && !empty($finalInterval)) {
+            $fields[] = 'due_date = ?';
+            $params[] = date('Y-m-d');
         }
         if (array_key_exists('description', $data)) {
             $fields[] = 'description = ?';
@@ -130,6 +222,18 @@ class TaskController extends Controller
         if (isset($data['files'])) {
             $fields[] = 'files = ?';
             $params[] = $data['files'];
+        }
+        if (array_key_exists('subroutines_json', $data)) {
+            $fields[] = 'subroutines_json = ?';
+            $params[] = !empty($data['subroutines_json']) ? $data['subroutines_json'] : null;
+        }
+        if (array_key_exists('recurrence_interval', $data)) {
+            $fields[] = 'recurrence_interval = ?';
+            $params[] = !empty($data['recurrence_interval']) ? $data['recurrence_interval'] : null;
+        }
+        if (array_key_exists('recurrence_end_date', $data)) {
+            $fields[] = 'recurrence_end_date = ?';
+            $params[] = !empty($data['recurrence_end_date']) ? $data['recurrence_end_date'] : null;
         }
 
         if (empty($fields)) {

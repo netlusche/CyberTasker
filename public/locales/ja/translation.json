@@ -233,7 +233,10 @@
             "edit_mode": "編集モード",
             "read_mode": "読み取りモード",
             "save_success": "関係書類が更新されました",
-            "save_error": "アップリンクが失敗しました"
+            "save_error": "アップリンクが失敗しました",
+            "subroutines": "サブルーチン",
+            "add_subroutine": "+ ルーチンを追加",
+            "subroutine_placeholder": "サブルーチンに入ります..."
         }
     },
     "help": {

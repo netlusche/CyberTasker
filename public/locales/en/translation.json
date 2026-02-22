@@ -208,6 +208,15 @@
         "category": "CATEGORY",
         "due_date": "DUE DATE",
         "no_date": "NO DATE",
+        "recurrence": "RECURRENCE",
+        "recurrence_end": "ENDS ON",
+        "intervals": {
+            "none": "None",
+            "daily": "Daily",
+            "weekly": "Weekly",
+            "monthly": "Monthly",
+            "yearly": "Yearly"
+        },
         "status": "STATUS",
         "details": "DETAILS",
         "page": "PAGE",
@@ -233,7 +242,10 @@
             "edit_mode": "EDIT MODE",
             "read_mode": "READ MODE",
             "save_success": "DOSSIER UPDATED",
-            "save_error": "UPLINK FAILED"
+            "save_error": "UPLINK FAILED",
+            "subroutines": "SUB-ROUTINES",
+            "add_subroutine": "+ ADD ROUTINE",
+            "subroutine_placeholder": "Enter sub-routine..."
         }
     },
     "help": {

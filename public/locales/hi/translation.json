@@ -233,7 +233,10 @@
             "edit_mode": "संपादन मोड",
             "read_mode": "पढ़ें मोड",
             "save_success": "डोजियर अद्यतन",
-            "save_error": "अपलिंक विफल"
+            "save_error": "अपलिंक विफल",
+            "subroutines": "उप-दिनचर्या",
+            "add_subroutine": "+ रूटीन जोड़ें",
+            "subroutine_placeholder": "उप-दिनचर्या दर्ज करें..."
         }
     },
     "help": {

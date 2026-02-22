@@ -233,7 +233,10 @@
             "edit_mode": "REDIGERINGSLÄGE",
             "read_mode": "LÄS-LÄGE",
             "save_success": "DOSSIER UPPDATERAD",
-            "save_error": "UPLINK MISLYCKDES"
+            "save_error": "UPLINK MISLYCKDES",
+            "subroutines": "DELRUTINER",
+            "add_subroutine": "+ LÄGG TILL RUTIN",
+            "subroutine_placeholder": "Ange sub-rutin..."
         }
     },
     "help": {

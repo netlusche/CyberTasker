@@ -233,7 +233,10 @@
             "edit_mode": "SZERKESZTÉSI MÓD",
             "read_mode": "OLVASÁSI MÓD",
             "save_success": "A DOKUMENTÁCIÓ FRISSÍTVE",
-            "save_error": "FELTÉTELEZÉS SIKERTELEN"
+            "save_error": "FELTÉTELEZÉS SIKERTELEN",
+            "subroutines": "ALRUTINOK",
+            "add_subroutine": "+ RUTIN HOZZÁADÁSA",
+            "subroutine_placeholder": "Lépjen be az alrutinba..."
         }
     },
     "help": {
