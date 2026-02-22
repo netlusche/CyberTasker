@@ -25,12 +25,23 @@ const LanguageSwitcher = () => {
     }, []);
 
     const languages = [
-        { code: 'de', label: 'DE', fullName: 'Deutsch' },
         { code: 'en', label: 'EN', fullName: 'English' },
-        { code: 'nl', label: 'NL', fullName: 'Nederlands' },
+        { code: 'de', label: 'DE', fullName: 'Deutsch' },
         { code: 'es', label: 'ES', fullName: 'Español' },
+        { code: 'fr', label: 'FR', fullName: 'Français' },
         { code: 'it', label: 'IT', fullName: 'Italiano' },
-        { code: 'fr', label: 'FR', fullName: 'Français' }
+        { code: 'nl', label: 'NL', fullName: 'Nederlands' },
+        { code: 'da', label: 'DA', fullName: 'Dansk' },
+        { code: 'sv', label: 'SV', fullName: 'Svenska' },
+        { code: 'no', label: 'NO', fullName: 'Norsk' },
+        { code: 'fi', label: 'FI', fullName: 'Suomi' },
+        { code: 'hu', label: 'HU', fullName: 'Magyar' },
+        { code: 'pl', label: 'PL', fullName: 'Polski' },
+        { code: 'pt', label: 'PT', fullName: 'Português' },
+        { code: 'el', label: 'EL', fullName: 'Ελληνικά' },
+        { code: 'ru', label: 'RU', fullName: 'Русский' },
+        { code: 'zh', label: 'ZH', fullName: '中文' },
+        { code: 'tlh', label: 'TLH', fullName: 'tlhIngan Hol' }
     ];
 
     // Fallback to 'de' if code is not found
@@ -87,7 +98,7 @@ const LanguageSwitcher = () => {
                     style={{ top: coords.top, left: coords.left }}
                     className={`fixed z-[10000] w-32 backdrop-blur-md animate-in fade-in zoom-in-95 duration-200 lang-dropdown-layer ${theme === 'lcars' ? 'bg-black/95 border border-gray-600 shadow-2xl p-0' : 'bg-cyber-black/90 border border-cyber-primary shadow-cyber-primary p-1'}`}
                 >
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 max-h-60 overflow-y-auto custom-scrollbar">
                         {languages.map(lang => (
                             <button
                                 key={lang.code}
