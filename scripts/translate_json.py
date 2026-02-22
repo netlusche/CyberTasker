@@ -76,30 +76,5 @@ def process_lang(lang_code, folder_name):
 for lang in TARGETS:
     process_lang(lang, lang if lang != 'zh-CN' else 'zh')
 
-# Handle Klingon (tlh) - just a fun translation of key phrases, leaving the rest in english
-print("Translating Klingon (tlh)...")
-import copy
-klingon_data = copy.deepcopy(base_data)
-# hardcoded klingon replacements for fun
-klingon_dict = {
-    "header.title": "QaQ",
-    "header.subtitle": "ta'",
-    "header.operative": "SuvwI'",
-    "header.logout": "megh",
-    "auth.new_identity": "chu' pong",
-    "auth.jack_in": "yIghoH",
-    "tasks.active_directives": "yIn ta'mey",
-    "tasks.new_directive": "chu' ta'",
-    "common.loading": "yIloStaH...",
-    "common.save": "choD",
-    "common.cancel": "qIl",
-    "common.delete": "Qaw'"
-}
-for path, val in klingon_dict.items():
-    set_nested_value(klingon_data, path, val)
-
-os.makedirs("public/locales/tlh", exist_ok=True)
-with open("public/locales/tlh/translation.json", "w", encoding="utf-8") as f:
-    json.dump(klingon_data, f, ensure_ascii=False, indent=4)
-print("Saved tlh.")
+print("All languages processed.")
 print("All languages processed.")
