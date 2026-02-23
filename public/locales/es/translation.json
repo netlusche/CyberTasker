@@ -236,7 +236,31 @@
             "save_error": "ENLACE ASCENDENTE FALLÓ",
             "subroutines": "SUBRUTINAS",
             "add_subroutine": "+ AÑADIR RUTINA",
-            "subroutine_placeholder": "Ingrese a la subrutina..."
+            "subroutine_placeholder": "Ingrese a la subrutina...",
+            "add_uplink": "+ AÑADIR ENLACE ARRIBA",
+            "files": "ARCHIVOS",
+            "attach_file": "+ ADJUNTAR ARCHIVO",
+            "uploading_evidence": "[ SUBIENDO PRUEBAS... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Vencido",
+                "overdue_tooltip": "Muestra solo directivas que han vencido su fecha límite",
+                "high_prio": "Alto Prio",
+                "high_prio_tooltip": "Muestra solo directivas con prioridad 1 (Alta)",
+                "clear": "Borrar todo",
+                "clear_tooltip": "Restablece todos los filtros activos"
+            }
+        },
+        "duplicate": "DUPLICADO",
+        "recurrence": "RECURRENCIA",
+        "recurrence_end": "TERMINA EL",
+        "intervals": {
+            "none": "Ninguno",
+            "daily": "Diario",
+            "weekly": "Semanal",
+            "monthly": "Mensual",
+            "yearly": "Anual"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) – Hielo y fuego. Acero azul frío y detalles en rojo sangre valyrio. Se acerca el invierno. El Norte lo recuerda.",
                 "theme_marvel": "CÓMIC (MARVEL) — Heroicos puntos de acción rojos y audaces. ¡Guau! ¡Zam! Un homenaje a la época dorada del cómic. ¡Virutas de embalaje!",
                 "theme_dc": "GOTHAM (DC) — La noche más oscura, el azul más profundo y una franja de luz amarilla atravesando la lluvia. La justicia nunca duerme."
+            },
+            "global_shortcuts": {
+                "title": "// ATAJOS GLOBALES [Flujo de trabajo]",
+                "item1_label": "NUEVA DIRECTIVA",
+                "item1_text": "Presione [N] en cualquier lugar de la cuadrícula para abrir y enfocar instantáneamente el módulo de formulación de Nueva Directiva.",
+                "item2_label": "BÚSQUEDA EN BANCO DE DATOS",
+                "item2_text": "Presione [/] para enfocar la barra de búsqueda neuronal y comenzar a consultar los bancos de datos.",
+                "item3_label": "CERRAR SUPERPOSICIONES",
+                "item3_text": "Presione [ESC] para cerrar instantáneamente cualquier superposición de configuración, expediente o modal activo."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "DICIEMBRE"
         },
         "days": {
-            "0": "SOL",
-            "1": "LUN",
-            "2": "MAR",
-            "3": "MIÉ",
-            "4": "JUEVES",
-            "5": "VIE",
-            "6": "SE SENTÓ"
+            "0": "DO",
+            "1": "LU",
+            "2": "MA",
+            "3": "MI",
+            "4": "JU",
+            "5": "VI",
+            "6": "SÁ"
         }
     }
 }

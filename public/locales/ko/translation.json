@@ -236,7 +236,31 @@
             "save_error": "업링크 실패",
             "subroutines": "서브루틴",
             "add_subroutine": "+ 루틴 추가",
-            "subroutine_placeholder": "서브루틴 입력..."
+            "subroutine_placeholder": "서브루틴 입력...",
+            "add_uplink": "+ 업링크 추가",
+            "files": "파일",
+            "attach_file": "+ 파일 첨부",
+            "uploading_evidence": "[ 증거 업로드 중... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "기한이 지났다",
+                "overdue_tooltip": "기한이 지난 지시문만 표시",
+                "high_prio": "높은 우선순위",
+                "high_prio_tooltip": "우선순위가 1(높음)인 지시문만 표시",
+                "clear": "모두 지우기",
+                "clear_tooltip": "모든 활성 필터를 재설정합니다."
+            }
+        },
+        "duplicate": "중복",
+        "recurrence": "재발",
+        "recurrence_end": "종료일",
+        "intervals": {
+            "none": "없음",
+            "daily": "매일",
+            "weekly": "주간",
+            "monthly": "월간",
+            "yearly": "매년"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "웨스테로스(GOT) — 얼음과 불. 차가운 파란색 강철과 발리리아의 핏빛 붉은색 액센트. 겨울이 다가오고 있습니다. 북한은 기억한다.",
                 "theme_marvel": "COMIC (MARVEL) — 영웅적인 빨간색과 대담한 액션 도트. 펑! 왐! 만화책의 황금기에 바치는 찬사입니다. 대팻밥!",
                 "theme_dc": "고담(DC) — 가장 어두운 밤, 가장 깊은 파란색, 그리고 비를 가르는 노란 빛의 조각. 정의는 잠들지 않습니다."
+            },
+            "global_shortcuts": {
+                "title": "// 전역 단축키 [워크플로]",
+                "item1_label": "새로운 지시",
+                "item1_text": "그리드의 아무 곳에서나 [N]을 누르면 새 지침 공식화 모듈이 즉시 열리고 집중됩니다.",
+                "item2_label": "데이터뱅크 검색",
+                "item2_text": "[/]를 눌러 신경망 검색 막대에 초점을 맞추고 데이터뱅크 쿼리를 시작합니다.",
+                "item3_label": "오버레이 닫기",
+                "item3_text": "활성 모달, Dossier 또는 구성 오버레이를 즉시 닫으려면 [ESC]를 누르십시오."
             }
         }
     },

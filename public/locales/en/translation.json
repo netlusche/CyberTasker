@@ -199,6 +199,7 @@
         }
     },
     "tasks": {
+        "duplicate": "DUPLICATE",
         "active_directives": "ACTIVE DIRECTIVES",
         "no_directives": "NO ACTIVE DIRECTIVES",
         "new_directive": "NEW DIRECTIVE",
@@ -245,13 +246,36 @@
             "save_error": "UPLINK FAILED",
             "subroutines": "SUB-ROUTINES",
             "add_subroutine": "+ ADD ROUTINE",
-            "subroutine_placeholder": "Enter sub-routine..."
+            "subroutine_placeholder": "Enter sub-routine...",
+            "add_uplink": "+ ADD UPLINK",
+            "files": "FILES",
+            "attach_file": "+ ATTACH FILE",
+            "uploading_evidence": "[ UPLOADING EVIDENCE... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Overdue",
+                "overdue_tooltip": "Shows only directives that have passed their deadline",
+                "high_prio": "High Prio",
+                "high_prio_tooltip": "Shows only directives with priority 1 (High)",
+                "clear": "Clear All",
+                "clear_tooltip": "Resets all active filters"
+            }
         }
     },
     "help": {
         "title": "CYBER_TASKER SYSTEM MANUAL",
         "acknowledge": "ACKNOWLEDGE",
         "sections": {
+            "global_shortcuts": {
+                "title": "// GLOBAL SHORTCUTS [Workflow]",
+                "item1_label": "NEW DIRECTIVE",
+                "item1_text": "Press [N] anywhere on the grid to instantly open and focus the New Directive formulation module.",
+                "item2_label": "DATABANK SEARCH",
+                "item2_text": "Press [/] to snap focus to the Neural Search bar and begin querying the databanks.",
+                "item3_label": "CLOSE OVERLAYS",
+                "item3_text": "Press [ESC] to instantly close any active modal, dossier, or configuration overlay."
+            },
             "neural_progression": {
                 "title": "// PROGRESSION [XP & Ranks]",
                 "item1_label": "EARNING XP",

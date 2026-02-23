@@ -2,6 +2,22 @@
 
 **CyberTasker** is a gamified, cyberpunk-themed task management application built with **React (Vite)** and **PHP**. It supports **MySQL, MariaDB, and SQLite**, featuring a robust role-based access control (RBAC) system, gamification mechanics (XP, Levels, Badges), and secure Two-Factor Authentication (2FA).
 
+## 📁 New in Version 2.4.0 (The Automation & Precision Update)
+
+### ⌨️ Tactical Controls & Dashboard Polish
+*   **Global Hotkeys**: Control the grid without a mouse. Press `N` to instantiate a new directive, `/` to activate the global cross-grid search, and `Esc` to terminate any active overlay.
+*   **Quick-Filter Pills**: The main dashboard now features contextual pills (Overdue, Due Today, High Priority) for instantaneous tactical sorting at a single click.
+*   **Surface-Level Editing**: Operatives can now alter a directive's Category directly from the dashboard card via a dropdown, bypassing the need to open the full dossier.
+
+### 📝 Advanced Dossier Operations
+*   **Sub-Routine Rearrangement**: Complex sub-routines can now be fluidly reordered via drag-and-drop within the dossier, allowing for immediate tactical reprioritization.
+*   **Directive Cloning**: Instantly duplicate complex, multi-step directives (including all sub-routines, recurrence patterns, and priorities) with a single click to save crucial operational time.
+
+### 🌍 Global Integrity
+*   **Automated Translation Diagnostics**: A specialized Python CI pipeline now scans every language file during integration, preventing releases if translation keys are missing across the 7 supported languages.
+
+---
+
 ## 📁 New in Version 2.3.0 (Workflow & Stability Update)
 
 ### 🔁 Scheduled Protocols & Progress Tracking

@@ -236,7 +236,31 @@
             "save_error": "上行链路失败",
             "subroutines": "子程序",
             "add_subroutine": "+ 添加例程",
-            "subroutine_placeholder": "进入子程序..."
+            "subroutine_placeholder": "进入子程序...",
+            "add_uplink": "+ 添加上行链路",
+            "files": "文件",
+            "attach_file": "+ 附加文件",
+            "uploading_evidence": "[正在上传证据...]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "逾期",
+                "overdue_tooltip": "仅显示已超过截止日期的指令",
+                "high_prio": "高优先级",
+                "high_prio_tooltip": "仅显示优先级为 1（高）的指令",
+                "clear": "全部清除",
+                "clear_tooltip": "重置所有活动过滤器"
+            }
+        },
+        "duplicate": "重复",
+        "recurrence": "复发",
+        "recurrence_end": "结束于",
+        "intervals": {
+            "none": "无",
+            "daily": "每日",
+            "weekly": "每周",
+            "monthly": "每月",
+            "yearly": "每年"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "维斯特洛（得到）——冰与火。冷蓝钢和瓦雷利亚血红色调。冬天来了。北方记得。",
                 "theme_marvel": "COMIC (MARVEL) — 英雄般的红色和大胆的动作圆点。噗！砰！向漫画黄金时代致敬。精益求精！",
                 "theme_dc": "哥谭（华盛顿）——最漆黑的夜晚，最深的蓝色，还有一丝黄光穿过雨丝。正义永不眠。"
+            },
+            "global_shortcuts": {
+                "title": "// 全局快捷键 [工作流程]",
+                "item1_label": "新指令",
+                "item1_text": "在网格上的任意位置按 [N] 可立即打开并聚焦新指令制定模块。",
+                "item2_label": "数据库搜索",
+                "item2_text": "按 [/] 将焦点捕捉到神经搜索栏并开始查询数据库。",
+                "item3_label": "关闭覆盖",
+                "item3_text": "按 [ESC] 可立即关闭任何活动模式、达析报告或配置覆盖。"
             }
         }
     },

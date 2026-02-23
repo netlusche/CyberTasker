@@ -6,7 +6,7 @@ import CyberCalendar from './CyberCalendar';
 import CyberConfirm from './CyberConfirm';
 import CyberSelect from './CyberSelect';
 
-const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
+const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const fileInputRef = useRef(null);
@@ -22,6 +22,8 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
     // Sub-routines state
     const [subroutines, setSubroutines] = useState([]);
     const [newSubroutine, setNewSubroutine] = useState('');
+    const [draggedIdx, setDraggedIdx] = useState(null);
+    const [dragOverIdx, setDragOverIdx] = useState(null);
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const [isRecurrencePickerOpen, setIsRecurrencePickerOpen] = useState(false);
@@ -60,6 +62,17 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
             setSubroutines([]);
         }
     }, [task.attachments, task.files, task.subroutines_json]);
+
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                e.stopImmediatePropagation();
+                if (onClose) onClose();
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [onClose]);
 
     const handleSave = async (updatedTitle = title, updatedDesc = description, updatedLinks = tempLinks, updatedFiles = files, updatedSubroutines = subroutines) => {
         setIsSaving(true);
@@ -200,6 +213,46 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
     };
 
     // --- Sub-Routines Methods ---
+    const handleDragStart = (e, index) => {
+        setDraggedIdx(index);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', index);
+    };
+
+    const handleDragEnter = (e, index) => {
+        e.preventDefault();
+        setDragOverIdx(index);
+    };
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+    };
+
+    const handleDrop = (e, index) => {
+        e.preventDefault();
+        if (draggedIdx === null || draggedIdx === index) {
+            setDraggedIdx(null);
+            setDragOverIdx(null);
+            return;
+        }
+
+        const newRoutines = [...subroutines];
+        const draggedItem = newRoutines.splice(draggedIdx, 1)[0];
+        newRoutines.splice(index, 0, draggedItem);
+
+        setSubroutines(newRoutines);
+        setDraggedIdx(null);
+        setDragOverIdx(null);
+
+        handleSave(title, description, tempLinks, files, newRoutines);
+    };
+
+    const handleDragEnd = () => {
+        setDraggedIdx(null);
+        setDragOverIdx(null);
+    };
+
     const addSubroutine = () => {
         if (!newSubroutine.trim()) return;
         const newRoutines = [...subroutines, { title: newSubroutine, completed: false }];
@@ -312,9 +365,16 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
                     <div className="overflow-y-auto custom-scrollbar flex-1 relative p-6 pr-8">
                         <div className="flex justify-between items-start mb-6 border-b border-cyber-gray pb-2 relative">
                             <div className="w-full pr-8">
-                                <span className="text-sm font-bold text-gray-500 uppercase tracking-widest block mb-2">
-                                    {t('tasks.dossier.title')}:
-                                </span>
+                                <div className="flex justify-between items-center mb-2">
+                                    <span className="text-sm font-bold text-gray-500 uppercase tracking-widest block">
+                                        {t('tasks.dossier.title')}:
+                                    </span>
+                                    {onDuplicate && (
+                                        <button onClick={() => onDuplicate(task)} className="text-[10px] font-bold text-cyber-secondary border border-cyber-secondary px-2 py-0.5 rounded hover:bg-cyber-secondary hover:text-black transition-colors uppercase cursor-pointer z-10">
+                                            [ {t('tasks.duplicate', 'DUPLICATE')} ]
+                                        </button>
+                                    )}
+                                </div>
                                 {editingField === 'title' ? (
                                     <div className="relative">
                                         <input
@@ -495,8 +555,22 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
                                 </h3>
                                 <div className="bg-black/20 border border-cyber-gray/30 p-4 rounded space-y-3">
                                     {subroutines.map((sub, idx) => (
-                                        <div key={idx} className="flex items-center justify-between group">
+                                        <div
+                                            key={idx}
+                                            draggable
+                                            onDragStart={(e) => handleDragStart(e, idx)}
+                                            onDragEnter={(e) => handleDragEnter(e, idx)}
+                                            onDragOver={handleDragOver}
+                                            onDrop={(e) => handleDrop(e, idx)}
+                                            onDragEnd={handleDragEnd}
+                                            className={`flex items-center justify-between group p-1 -mx-1 border transition-all rounded ${draggedIdx === idx ? 'opacity-40' : 'opacity-100'} ${dragOverIdx === idx && draggedIdx !== idx ? 'bg-cyber-primary/10 border-cyber-primary border-dashed' : 'border-transparent'}`}
+                                        >
                                             <div className="flex items-center gap-3 flex-1">
+                                                <div className="cursor-grab active:cursor-grabbing text-cyber-gray hover:text-cyber-primary px-1 transition-colors" title="Drag to reorder">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                                                    </svg>
+                                                </div>
                                                 <div className="relative flex items-center justify-center cursor-pointer">
                                                     <input type="checkbox" checked={sub.completed} onChange={() => toggleSubroutine(idx)} className="peer appearance-none w-5 h-5 border-2 border-cyber-primary bg-black/50 checked:bg-cyber-primary transition-colors cursor-pointer" />
                                                     <svg className="absolute w-3 h-3 pointer-events-none text-black opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -580,14 +654,14 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
                                             )}
                                         </div>
                                     ))}
-                                    <button onClick={(e) => { e.stopPropagation(); addLink(); }} className="w-full border border-dashed border-cyber-secondary p-2 text-xs text-cyber-secondary hover:bg-cyber-secondary/10 transition-all uppercase">+ ADD UPLINK</button>
+                                    <button onClick={(e) => { e.stopPropagation(); addLink(); }} className="w-full border border-dashed border-cyber-secondary p-2 text-xs text-cyber-secondary hover:bg-cyber-secondary/10 transition-all uppercase">{t('tasks.dossier.add_uplink', '+ ADD UPLINK')}</button>
                                 </div>
                             </section>
 
                             {/* File Repository */}
                             <section>
                                 <h3 className="text-cyber-success font-bold text-lg mb-3 uppercase tracking-wider flex items-center gap-2">
-                                    <span className="text-xl">🗄️</span> FILES
+                                    <span className="text-xl">🗄️</span> {t('tasks.dossier.files', 'FILES')}
                                 </h3>
                                 <div className="space-y-3">
                                     {files.map((file, idx) => (
@@ -610,7 +684,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
 
                                     <input type="file" ref={fileInputRef} className="hidden" multiple onChange={handleFileChange} accept=".png,.jpg,.jpeg,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp" />
                                     <button onClick={(e) => { e.stopPropagation(); handleFileClick(); }} disabled={isUploading} className={`w-full border border-dashed border-cyber-secondary p-2 text-xs text-cyber-secondary hover:bg-cyber-secondary/10 transition-all uppercase ${isUploading ? 'opacity-50 animate-pulse' : ''}`}>
-                                        {isUploading ? '[ UPLOADING EVIDENCE... ]' : '+ ATTACH FILE'}
+                                        {isUploading ? t('tasks.dossier.uploading_evidence', '[ UPLOADING EVIDENCE... ]') : t('tasks.dossier.attach_file', '+ ATTACH FILE')}
                                     </button>
                                 </div>
                             </section>

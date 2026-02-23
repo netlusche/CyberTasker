@@ -104,6 +104,14 @@ The suite has been hardened against "flakiness" using the following patterns:
 - **Scenario**: Add, rename, and delete custom categories in the profile.
 - **Validation**: New categories appear in task creation; deleting a category correctly promotes tasks to the default category or deletes them based on user choice.
 
+### TS-02.5: Dashboard Search & Filter Mechanics [AUTOMATED] (03-dashboard-filters.spec.js)
+- **Scenario**: Use the global search bar, priority dropdown, category dropdown, and overdue toggle on the dashboard.
+- **Validation**: 
+  - Typing in the search bar dynamically filters the dashboard cards by title or description.
+  - Selecting a category or priority hides non-matching cards immediately.
+  - Toggling "Overdue Only" exclusively displays overdue items.
+  - The "Reset" button clears all inputs and restores the default full view.
+
 ---
 
 ## 🎨 test-suite-03: Visual Architecture & Multi-Theming
@@ -273,3 +281,53 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Scenario**: Trigger the `api/install.php` routine on an existing v2.2 legacy SQLite database.
 - **Validation**: 
   - The script accurately patches the `tasks` table with the new `subroutines`, `recurrence_interval`, and `recurrence_end_date` columns seamlessly.
+
+---
+
+## 📅 test-suite-10: Release 2.4 Features
+
+### TS-10.1: Sub-Routine Drag & Drop Sorting [AUTOMATED] (09-release-2-4-features.spec.js)
+- **Scenario**: Create a directive with three sub-routines (A, B, C). Drag and drop sub-routine C to the first position. Close the dossier and reload.
+- **Validation**:
+  - The list renders as C, A, B accurately.
+  - The new sort order is successfully persisted to the backend upon dropping.
+
+### TS-10.2: Dashboard Category Dropdown [AUTOMATED] (09-release-2-4-features.spec.js)
+- **Scenario**: Click the category badge on a directive card on the dashboard. Select a new category.
+- **Validation**:
+  - The `CyberSelect` overlay renders natively within the constraints of the active theme.
+  - The localized dropdown options are correctly displayed.
+  - Assigning a category instantly updates the database and reflects visually on the badge.
+
+### TS-10.3: Neural Shortcuts Validation [AUTOMATED] (09-release-2-4-features.spec.js)
+- **Scenario**: Trigger the `N` key from the dashboard, then hit `Esc`. Finally, press `/`.
+- **Validation**:
+  - Pressing `N` opens the *New Directive* modal gracefully.
+  - Pressing `Esc` immediately unmounts any active overlay or modal without issue.
+  - Pressing `/` shifts focus directly into the global search input.
+
+### TS-10.4: Directive Duplication Protocol [AUTOMATED] (09-release-2-4-features.spec.js)
+- **Scenario**: Open an existing Directive Dossier that contains text and a specific category. Click the duplication protocol icon.
+- **Validation**:
+  - The creation modal invokes immediately.
+  - The title and category fields are deeply copied and pre-populated accurately from the source dossier.
+
+### TS-10.5: Quick-Filter Pills Execution [AUTOMATED] (09-release-2-4-features.spec.js)
+- **Scenario**: Navigate to the dashboard header and hover over the filter pills. Click to activate filtering.
+- **Validation**:
+  - The UI accurately renders interactive localized filter pills alongside the search bar, wrapping dynamically on mobile.
+  - Hovering displays instantaneous descriptive tooltips.
+  - Clicking a pill aggressively filters the underlying `DataGrid` (e.g., hiding non-overdue data). Re-clicking dismantles the filter.
+
+### TS-10.6: Pre-Release Translation Diagnostics [AUTOMATED] (e2e-tests.yml)
+- **Scenario**: Trigger the GitHub Actions CI pipeline or run `scripts/check_translations.py` manually before a release.
+- **Validation**:
+  - The script scans the monolithic translation dictionaries (`translation.json`) across all 20+ locales.
+  - Validates full thematic compliance and missing keys, failing the CI action immediately if anomalies exist.
+  - Asserts that `fallbackLng` actively enforces English `en`.
+
+### TS-10.7: Calendar Holo-Projection Limits [AUTOMATED] (10-calendar-projections.spec.js)
+- **Scenario**: Create a daily recurring task without an end date, and another with an explicit end date 200 days in the future. Evaluate the Calendar JSON API payload.
+- **Validation**:
+  - Validates that daily tasks without end dates generate exactly 60 projections.
+  - Validates that setting an extended end date successfully generates up to 365 projections instead of capping at the default limit.

@@ -47,6 +47,8 @@ const CyberSelect = ({ value, onChange, options, label, className = "", wrapperC
                         e.preventDefault();
                         setIsOpen(!isOpen);
                     } else if (e.key === 'Escape') {
+                        e.stopPropagation();
+                        if (e.nativeEvent) e.nativeEvent.stopImmediatePropagation();
                         setIsOpen(false);
                     }
                 }}

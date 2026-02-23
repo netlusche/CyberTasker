@@ -80,3 +80,11 @@ This document provides a categorized overview of the user stories implemented in
 *   **Sub-Routine Integration (US-2.3.2)**: As an operative, I want to break down complex directives into smaller, actionable sub-routines (checklists) directly within the Dossier that I can toggle and edit inline.
 *   **Tactical Progress Tracking (US-2.3.3)**: As an operative, I want to see a visual progress indicator (e.g., "3/5") for active sub-routines directly on the dashboard cards, eliminating the need to open every dossier to gauge mission completion.
 *   **Scheduled Protocols (US-2.3.4)**: As an operative, I want to define recurrence intervals (Daily, Weekly, Monthly) for repetitive tasks. Upon completion, the system should automatically generate a fresh directive for the next operational window, keeping my schedule clear of infinite duplicates.
+
+## 🚀 12. Release 2.4 Features
+*   **Sub-Routine Reordering (US-2.4.1)**: As an operative, I want to reorder my sub-routines via drag-and-drop within a directive's dossier so that I can flexibly adjust the execution priority of step-by-step procedures.
+*   **Aesthetic Category Selection (US-2.4.2)**: As an operative, I want to use a stylized `CyberSelect` dropdown for choosing categories directly on the directive dashboard card, replacing cumbersome cycle-clicking with a fast, thematic UI.
+*   **Keyboard Shortcuts (US-2.4.3)**: As an operative, I want to utilize global keyboard shortcuts (`N` for new directives, `/` for search, `Esc` to close modules) to navigate the grid and execute actions with maximum speed.
+*   **Directive Cloning (US-2.4.4)**: As an operative, I want a 1-click duplicate action within the dossier to rapidly clone complex tasks (including their title, description, and sub-routines) for recurring templates.
+*   **Global Filter Pills (US-2.4.5)**: As an operative, I want quick-access filter toggle pills next to the search bar to instantly isolate "Overdue" or high-priority directives without manual text entry.
+*   **Linguistic Integrity Checks (US-2.4.6)**: As a system developer, I want pre-release scripts to automatically scan and validate the completeness of all translated language keys (while defaulting to English) to prevent broken UI renders across the fleet.

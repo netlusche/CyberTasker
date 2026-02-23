@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp -r api dist/ && cp .htaccess dist/ 2>/dev/null || true && rm -rf dist/api/*.db dist/api/config.local.php dist/api/mail_log.txt dist/api/sessions dist/api/uploads && mkdir dist/api/sessions dist/api/uploads && cp api/uploads/.htaccess dist/api/uploads/ 2>/dev/null || true && cp api/sessions/.htaccess dist/api/sessions/ 2>/dev/null || true",
+    "build": "vite build && cp -r api dist/ && cp -r manuals dist/ 2>/dev/null || true && cp .htaccess dist/ 2>/dev/null || true && rm -rf dist/api/*.db dist/api/config.local.php dist/api/mail_log.txt dist/api/sessions dist/api/uploads && mkdir dist/api/sessions dist/api/uploads && cp api/uploads/.htaccess dist/api/uploads/ 2>/dev/null || true && cp api/sessions/.htaccess dist/api/sessions/ 2>/dev/null || true",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

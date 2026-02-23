@@ -236,7 +236,31 @@
             "save_error": "YLÖSLINKKI EPÄONNISTUI",
             "subroutines": "ALIRUTIINIT",
             "add_subroutine": "+ LISÄÄ RUTIINI",
-            "subroutine_placeholder": "Anna aliohjelma..."
+            "subroutine_placeholder": "Anna aliohjelma...",
+            "add_uplink": "+ LISÄÄ LINKKI",
+            "files": "TIEDOSTOT",
+            "attach_file": "+ LIITTÄ TIEDOSTO",
+            "uploading_evidence": "[ TODISTOJEN LATAAMINEN... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Myöhässä",
+                "overdue_tooltip": "Näyttää vain määräajan ylittäneet käskyt",
+                "high_prio": "High Prio",
+                "high_prio_tooltip": "Näyttää vain käskyt, joiden prioriteetti on 1 (korkea)",
+                "clear": "Tyhjennä kaikki",
+                "clear_tooltip": "Nollaa kaikki aktiiviset suodattimet"
+            }
+        },
+        "duplicate": "DUPLIKAATTI",
+        "recurrence": "TOISTUMINEN",
+        "recurrence_end": "PÄÄTTYY",
+        "intervals": {
+            "none": "Ei mitään",
+            "daily": "Päivittäin",
+            "weekly": "Viikoittain",
+            "monthly": "Kuukausittain",
+            "yearly": "Vuosittain"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) - Jää ja tuli. Kylmänsinistä terästä ja Valyrian verenpunaisia ​​aksentteja. Talvi on tulossa. Pohjoinen muistaa.",
                 "theme_marvel": "COMIC (MARVEL) – Sankarillisia punaisia ​​ja rohkeita toimintapisteitä. Pow! Wham! Kunnianosoitus sarjakuvien kultakaudelle. Erinomainen!",
                 "theme_dc": "GOTHAM (DC) - Pimein yö, syvin sininen ja keltaista valoa leikkaava sateen läpi. Oikeus ei koskaan nuku."
+            },
+            "global_shortcuts": {
+                "title": "// GLOBAL SHORTCUTS [Työnkulku]",
+                "item1_label": "UUSI DIREKTIIVI",
+                "item1_text": "Paina [N] missä tahansa ruudukon kohdassa avataksesi ja keskittääksesi uuden direktiivin muotoilumoduulin välittömästi.",
+                "item2_label": "TIETOPANKKIHAKU",
+                "item2_text": "Paina [/] napsauttaaksesi kohdistuksen hermohakupalkkiin ja aloittaaksesi kyselyn tietopankeista.",
+                "item3_label": "SULJE PEITTOKUVAT",
+                "item3_text": "Paina [ESC] sulkeaksesi välittömästi kaikki aktiiviset modaalit, aineistot tai kokoonpanon peittokuvat."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "JOULUKUU"
         },
         "days": {
-            "0": "AURINKO",
+            "0": "SU",
             "1": "MA",
-            "2": "TUE",
+            "2": "TI",
             "3": "KE",
             "4": "TO",
             "5": "PE",
-            "6": "SAT"
+            "6": "LA"
         }
     }
 }

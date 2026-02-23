@@ -236,7 +236,31 @@
             "save_error": "ÉCHEC DE LA LIAISON MONTANTE",
             "subroutines": "SOUS-ROUTINES",
             "add_subroutine": "+ AJOUTER UNE ROUTINE",
-            "subroutine_placeholder": "Entrez le sous-programme..."
+            "subroutine_placeholder": "Entrez le sous-programme...",
+            "add_uplink": "+ AJOUTER UNE LIAISON MONTANTE",
+            "files": "FICHIERS",
+            "attach_file": "+ JOINDRE LE FICHIER",
+            "uploading_evidence": "[ TÉLÉCHARGEMENT DES PREUVES... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "En retard",
+                "overdue_tooltip": "Affiche uniquement les directives qui ont dépassé leur date limite",
+                "high_prio": "Priorité élevée",
+                "high_prio_tooltip": "Affiche uniquement les directives avec une priorité 1 (Élevée)",
+                "clear": "Tout effacer",
+                "clear_tooltip": "Réinitialise tous les filtres actifs"
+            }
+        },
+        "duplicate": "DUPLIQUER",
+        "recurrence": "RÉCURRENCE",
+        "recurrence_end": "SE TERMINE LE",
+        "intervals": {
+            "none": "Aucun",
+            "daily": "Quotidien",
+            "weekly": "Hebdomadaire",
+            "monthly": "Mensuel",
+            "yearly": "Annuel"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) – Glace et feu. Acier bleu froid et accents rouge sang valyrien. L'hiver arrive. Le Nord s'en souvient.",
                 "theme_marvel": "COMIC (MARVEL) — Points d'action héroïques rouges et audacieux. Pouah ! Pan! Un hommage à l'âge d'or de la bande dessinée. Excelsior!",
                 "theme_dc": "GOTHAM (DC) – La nuit la plus sombre, le bleu le plus profond et un éclat de lumière jaune traversant la pluie. La justice ne dort jamais."
+            },
+            "global_shortcuts": {
+                "title": "// RACCOURCIS GLOBAUX [Workflow]",
+                "item1_label": "NOUVELLE DIRECTIVE",
+                "item1_text": "Appuyez sur [N] n'importe où sur la grille pour ouvrir et focaliser instantanément le module de formulation de la Nouvelle Directive.",
+                "item2_label": "RECHERCHE DANS LA BANQUE DE DONNÉES",
+                "item2_text": "Appuyez sur [/] pour vous concentrer sur la barre de recherche neuronale et commencer à interroger les banques de données.",
+                "item3_label": "FERMER LES SUPERPOSITIONS",
+                "item3_text": "Appuyez sur [ESC] pour fermer instantanément toute superposition modale, dossier ou configuration active."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "DÉCEMBRE"
         },
         "days": {
-            "0": "SOLEIL",
-            "1": "LUN",
-            "2": "MAR",
-            "3": "MER",
-            "4": "JEU",
-            "5": "VEN",
-            "6": "ASSIS"
+            "0": "DI",
+            "1": "LU",
+            "2": "MA",
+            "3": "ME",
+            "4": "JE",
+            "5": "VE",
+            "6": "SA"
         }
     }
 }

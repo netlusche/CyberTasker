@@ -116,33 +116,33 @@ class TaskRepository extends Repository
         $interval = strtolower($task['recurrence_interval'] ?? '');
         $currentDateStr = $task['due_date'];
 
+        $endDateObj = !empty($task['recurrence_end_date']) ? new DateTime($task['recurrence_end_date']) : null;
+        if ($endDateObj) {
+            $endDateObj->setTime(23, 59, 59); // End of day
+        }
+
         $modifier = '';
         $limit = 0;
 
         switch ($interval) {
             case 'daily':
                 $modifier = '+1 day';
-                $limit = 14;
+                $limit = $endDateObj ? 365 : 60; // 1 year if bounded, 2 months if infinite
                 break;
             case 'weekly':
                 $modifier = '+1 week';
-                $limit = 10;
+                $limit = $endDateObj ? 104 : 26; // 2 years if bounded, half year if infinite
                 break;
             case 'monthly':
                 $modifier = '+1 month';
-                $limit = 10;
+                $limit = $endDateObj ? 60 : 12; // 5 years if bounded, 1 year if infinite
                 break;
             case 'yearly':
                 $modifier = '+1 year';
-                $limit = 10;
+                $limit = $endDateObj ? 10 : 5; // 10 years if bounded, 5 years if infinite
                 break;
             default:
                 return [];
-        }
-
-        $endDateObj = !empty($task['recurrence_end_date']) ? new DateTime($task['recurrence_end_date']) : null;
-        if ($endDateObj) {
-            $endDateObj->setTime(23, 59, 59); // End of day
         }
 
         for ($i = 0; $i < $limit; $i++) {

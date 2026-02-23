@@ -236,7 +236,31 @@
             "save_error": "アップリンクが失敗しました",
             "subroutines": "サブルーチン",
             "add_subroutine": "+ ルーチンを追加",
-            "subroutine_placeholder": "サブルーチンに入ります..."
+            "subroutine_placeholder": "サブルーチンに入ります...",
+            "add_uplink": "に終了します+ アップリンクを追加",
+            "files": "ファイル",
+            "attach_file": "+ ファイルを添付",
+            "uploading_evidence": "[ 証拠をアップロード中... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "期限切れ",
+                "overdue_tooltip": "期限を過ぎたディレクティブのみを表示します",
+                "high_prio": "高プリオ",
+                "high_prio_tooltip": "優先度 1 (高) のディレクティブのみを表示します",
+                "clear": "すべてクリア",
+                "clear_tooltip": "すべてのアクティブなフィルターをリセットします"
+            }
+        },
+        "duplicate": "重複",
+        "recurrence": "再発",
+        "recurrence_end": "で終わる",
+        "intervals": {
+            "none": "に終了しますなし",
+            "daily": "毎日",
+            "weekly": "毎週",
+            "monthly": "毎月",
+            "yearly": "毎年"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — 氷と火。冷たい青い鋼とヴァリリアンブラッドレッドのアクセント。冬がやって来ます。北は覚えている。",
                 "theme_marvel": "コミック (マーベル) — 英雄的な赤と大胆なアクション ドット。捕虜！ワム！漫画の黄金時代へのオマージュ。エクセルシオール！",
                 "theme_dc": "ゴッサム (DC) — 最も暗い夜、最も深い青、そして雨を切り裂く一筋の黄色い光。正義は決して眠らない。"
+            },
+            "global_shortcuts": {
+                "title": "// グローバル ショートカット [ワークフロー]",
+                "item1_label": "新しいディレクティブ",
+                "item1_text": "グリッド上の任意の場所で [N] を押すと、即座に New Directive 定式化モジュールが開き、フォーカスされます。",
+                "item2_label": "データベース検索",
+                "item2_text": "[/] を押してニューラル検索バーにフォーカスを移動し、データバンクのクエリを開始します。",
+                "item3_label": "オーバーレイを閉じる",
+                "item3_text": "[ESC] を押すと、アクティブなモーダル、ドシエ、または構成オーバーレイを即座に閉じます。"
             }
         }
     },

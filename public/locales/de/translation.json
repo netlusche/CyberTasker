@@ -199,6 +199,7 @@
         }
     },
     "tasks": {
+        "duplicate": "DUPLIZIEREN",
         "active_directives": "AKTIVE RICHTLINIEN",
         "no_directives": "KEINE AKTIVEN RICHTLINIEN",
         "new_directive": "NEUE RICHTLINIE",
@@ -245,13 +246,36 @@
             "save_error": "UPLINK fehlgeschlagen",
             "subroutines": "SUB-ROUTINEN",
             "add_subroutine": "+ ROUTINE HINZ.",
-            "subroutine_placeholder": "Sub-Routine eingeben..."
+            "subroutine_placeholder": "Sub-Routine eingeben...",
+            "add_uplink": "+ UPLINK HINZUFÜGEN",
+            "files": "DATEIEN",
+            "attach_file": "+ DATEI ANHÄNGEN",
+            "uploading_evidence": "[ BEWEISMATERIAL WIRD HOCHGELADEN... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Überfällig",
+                "overdue_tooltip": "Zeigt nur Directives an, deren Datum überschritten ist",
+                "high_prio": "Hohe Prio",
+                "high_prio_tooltip": "Zeigt nur Directives mit Priorität 1 (Hoch)",
+                "clear": "Alle aufheben",
+                "clear_tooltip": "Setzt alle aktiven Filter zurück"
+            }
         }
     },
     "help": {
         "title": "CYBER_TASKER SYSTEMHANDBUCH",
         "acknowledge": "BESTÄTIGEN",
         "sections": {
+            "global_shortcuts": {
+                "title": "// GLOBALE TASTENKÜRZEL [Workflow]",
+                "item1_label": "NEUE RICHTLINIE",
+                "item1_text": "Drücken Sie überall auf dem Raster [N], um sofort das Formulierungsmodul für neue Anweisungen zu öffnen.",
+                "item2_label": "DATENBANKSUCHE",
+                "item2_text": "Drücken Sie [/], um den Fokus auf die Neuronale Suchleiste zu richten.",
+                "item3_label": "OVERLAYS SCHLIESSEN",
+                "item3_text": "Drücken Sie [ESC], um jede aktive Modalität oder Overlay sofort zu schließen."
+            },
             "neural_progression": {
                 "title": "// FORTSCHRITT [XP & Ränge]",
                 "item1_label": "XP VERDIENEN",
@@ -461,9 +485,9 @@
             "11": "DEZEMBER"
         },
         "days": {
-            "0": "SONNE",
+            "0": "SO",
             "1": "MO",
-            "2": "DIENSTAG",
+            "2": "DI",
             "3": "MI",
             "4": "DO",
             "5": "FR",

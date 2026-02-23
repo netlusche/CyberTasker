@@ -236,7 +236,31 @@
             "save_error": "LIÊN KẾT LÊN THẤT BẠI",
             "subroutines": "CÁC QUY TRÌNH CON",
             "add_subroutine": "+ THÊM QUY TRÌNH",
-            "subroutine_placeholder": "Nhập quy trình phụ..."
+            "subroutine_placeholder": "Nhập quy trình phụ...",
+            "add_uplink": "+ THÊM LIÊN KẾT LÊN",
+            "files": "TẬP TIN",
+            "attach_file": "+ ĐÍNH KÈM FILE",
+            "uploading_evidence": "[ TẢI LÊN BẰNG CHỨNG... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Quá hạn",
+                "overdue_tooltip": "Chỉ hiển thị các chỉ thị đã quá thời hạn",
+                "high_prio": "Ưu tiên cao",
+                "high_prio_tooltip": "Chỉ hiển thị các lệnh có mức độ ưu tiên 1 (Cao)",
+                "clear": "Xóa tất cả",
+                "clear_tooltip": "Đặt lại tất cả các bộ lọc đang hoạt động"
+            }
+        },
+        "duplicate": "SAO CHÉP",
+        "recurrence": "TÁI LẠI",
+        "recurrence_end": "KẾT THÚC TRÊN",
+        "intervals": {
+            "none": "Không có",
+            "daily": "Hàng ngày",
+            "weekly": "Hàng tuần",
+            "monthly": "Hàng tháng",
+            "yearly": "Hàng năm"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — Băng và Lửa. Thép xanh lạnh và điểm nhấn màu đỏ máu Valyrian. Mùa đông đang đến. Miền Bắc nhớ.",
                 "theme_marvel": "COMIC (MARVEL) — Các chấm hành động màu đỏ và đậm nét anh hùng. Phù! Úp! Một sự tôn vinh cho thời kỳ hoàng kim của truyện tranh. Tuyệt vời!",
                 "theme_dc": "GOTHAM (DC) - Đêm tối nhất, màu xanh đậm nhất và một mảnh ánh sáng vàng xuyên qua cơn mưa. Công lý không bao giờ ngủ."
+            },
+            "global_shortcuts": {
+                "title": "// CÁC PHÍM TẮT TOÀN CẦU [Quy trình làm việc]",
+                "item1_label": "CHỈ THỊ MỚI",
+                "item1_text": "Nhấn [N] ở bất kỳ đâu trên lưới để mở và tập trung ngay vào mô-đun xây dựng Chỉ thị Mới.",
+                "item2_label": "TÌM KIẾM NGÂN HÀNG DỮ LIỆU",
+                "item2_text": "Nhấn [/] để chuyển tiêu điểm đến thanh Tìm kiếm thần kinh và bắt đầu truy vấn các ngân hàng dữ liệu.",
+                "item3_label": "ĐÓNG LỚP PHỦ",
+                "item3_text": "Nhấn [ESC] để đóng ngay lập tức mọi lớp phủ phương thức, hồ sơ hoặc cấu hình đang hoạt động."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "THÁNG 12"
         },
         "days": {
-            "0": "MẶT TRỜI",
-            "1": "THÁNG",
-            "2": "Thứ 3",
-            "3": "Thứ Tư",
-            "4": "THU",
-            "5": "THỨ SÁU",
-            "6": "ĐÃ NGỒI"
+            "0": "CN",
+            "1": "T2",
+            "2": "T3",
+            "3": "T4",
+            "4": "T5",
+            "5": "T6",
+            "6": "T7"
         }
     }
 }

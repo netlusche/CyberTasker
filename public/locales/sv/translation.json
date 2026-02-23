@@ -236,7 +236,31 @@
             "save_error": "UPLINK MISLYCKDES",
             "subroutines": "DELRUTINER",
             "add_subroutine": "+ LÄGG TILL RUTIN",
-            "subroutine_placeholder": "Ange sub-rutin..."
+            "subroutine_placeholder": "Ange sub-rutin...",
+            "add_uplink": "+ ADD UPLINK",
+            "files": "FILER",
+            "attach_file": "+ BILAGA FIL",
+            "uploading_evidence": "[ LADDER UPP BEVIS... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Försenad",
+                "overdue_tooltip": "Visar endast direktiv som har passerat sin deadline",
+                "high_prio": "Hög Prio",
+                "high_prio_tooltip": "Visar endast direktiv med prioritet 1 (Hög)",
+                "clear": "Rensa alla",
+                "clear_tooltip": "Återställer alla aktiva filter"
+            }
+        },
+        "duplicate": "DUBLIKAT",
+        "recurrence": "ÅTERKOMMANDE",
+        "recurrence_end": "SLUTAR PÅ",
+        "intervals": {
+            "none": "Inga",
+            "daily": "Dagligen",
+            "weekly": "Veckovis",
+            "monthly": "Månatlig",
+            "yearly": "Årlig"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — Ice and Fire. Kallblått stål och valyriska blodröda accenter. Vintern kommer. Norden minns.",
                 "theme_marvel": "COMIC (MARVEL) — Heroiska röda och djärva actionprickar. Pow! pang! En hyllning till serietidningarnas guldålder. Träull!",
                 "theme_dc": "GOTHAM (DC) — Mörkaste natten, djupast blå och en slinga av gult ljus som skär genom regnet. Rättvisan sover aldrig."
+            },
+            "global_shortcuts": {
+                "title": "// GLOBAL SHORTCUTS [Arbetsflöde]",
+                "item1_label": "NYTT DIREKTIV",
+                "item1_text": "Tryck på [N] var som helst på rutnätet för att omedelbart öppna och fokusera formuleringsmodulen för det nya direktivet.",
+                "item2_label": "DATABANKSÖKNING",
+                "item2_text": "Tryck på [/] för att fästa fokus till den neurala sökfältet och börja söka i databankerna.",
+                "item3_label": "STÄNG OVERLAYS",
+                "item3_text": "Tryck på [ESC] för att omedelbart stänga alla aktiva modal-, underlags- eller konfigurationsöverlägg."
             }
         }
     },

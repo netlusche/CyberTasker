@@ -8,7 +8,8 @@
         "system_help": "pat QaH",
         "admin": "pIn",
         "profile": "pegh",
-        "logout": "mej"
+        "logout": "mej",
+        "calendar": "jaj nav"
     },
     "auth": {
         "title": "NETRUNNER 'el",
@@ -66,7 +67,8 @@
             "2fa_disabled": "let [2FA] Qaw'lu'.",
             "email_2fa_activated": "Email 2FA chu'.",
             "2fa_enabled": "let [2FA] chu'.",
-            "input_required": "ghItlh nIS // pIch pagh"
+            "input_required": "ghItlh nIS // pIch pagh",
+            "password_mismatch": "Qaw': pegh mu' lughbe'."
         },
         "alerts": {
             "id_established": "pong chen",
@@ -78,7 +80,8 @@
         "placeholders": {
             "recovery_email": "COM-LINK (EMAIL) lab",
             "access_code": "pegh mI'",
-            "new_pwd": "chu' pegh mu'"
+            "new_pwd": "chu' pegh mu'",
+            "confirm_new_pwd": "chu' pegh mu' luq"
         },
         "static": {
             "verification_title": "pong yInej",
@@ -90,6 +93,10 @@
             "reset_title": "pegh mu' chenmoHqa'",
             "override": "OVERRIDE",
             "missing_reset_token": "Qaw': mI' pagh."
+        },
+        "status": {
+            "resyncing": "[ choHqa'taH... ]",
+            "resync_uplink": "[ lab choHqa'taH ]"
         }
     },
     "profile": {
@@ -181,6 +188,7 @@
             "update_title": "pegh mu' chu'",
             "current_placeholder": "DaH pegh mu'",
             "new_placeholder": "chu' pegh mu'",
+            "confirm_new_placeholder": "chu' pegh mu' luq",
             "execute": "chu'"
         },
         "danger": {
@@ -194,6 +202,16 @@
         "active_directives": "chu' mu'tlhegh",
         "no_directives": "pagh mu'tlhegh",
         "new_directive": "chu' mu'tlhegh",
+        "duplicate": "chu' ngoy'",
+        "recurrence": "ta'qa'",
+        "recurrence_end": "rIn jaj",
+        "intervals": {
+            "none": "pagh",
+            "daily": "Hoch jaj",
+            "weekly": "Hoch loSmaH",
+            "monthly": "Hoch jar",
+            "yearly": "Hoch DIS"
+        },
         "placeholder": "mu'tlhegh yIghItlh...",
         "add": "chel",
         "priority": "pIn",
@@ -228,13 +246,36 @@
             "save_error": "lab Qaw'",
             "subroutines": "bIQtIq-mey",
             "add_subroutine": "+ bIQtIq chel",
-            "subroutine_placeholder": "bIQtIq yIqIQ..."
+            "subroutine_placeholder": "bIQtIq yIqIQ...",
+            "add_uplink": "+ lab chel",
+            "files": "nav",
+            "attach_file": "+ nav chel",
+            "uploading_evidence": "[ ta'mey labtaH... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "rop jaj",
+                "overdue_tooltip": "jaj rop mu'tlhegh-mey neH leghlu'",
+                "high_prio": "tIn pIn",
+                "high_prio_tooltip": "pIn 1 (tIn) mu'tlhegh-mey neH leghlu'",
+                "clear": "Hoch Qaw'",
+                "clear_tooltip": "Hoch wIv Qaw'lu'"
+            }
         }
     },
     "help": {
         "title": "pat QaH",
         "acknowledge": "luq",
         "sections": {
+            "global_shortcuts": {
+                "title": "// mI' choH [ta']",
+                "item1_label": "chu' mu'tlhegh",
+                "item1_text": "QIn [N] yIpev. chu' mu'tlhegh chentaH.",
+                "item2_label": "tagh nej",
+                "item2_text": "QIn [/] yIpev. nej yItagh.",
+                "item3_label": "nav Qaw'",
+                "item3_text": "QIn [ESC] yIpev. nav Qaw'lu'."
+            },
             "neural_progression": {
                 "title": "// ta' [XP & yaS]",
                 "item1_label": "XP yIta'",
@@ -318,7 +359,9 @@
                 "item2_label": "jaj tIn",
                 "item2_text": "jaj tIn yIwIv.",
                 "item3_label": "choH",
-                "item3_text": "mu'tlhegh jaj yIchoH."
+                "item3_text": "mu'tlhegh jaj yIchoH.",
+                "item4_label": "Hoch jaj nav",
+                "item4_text": "Hoch jaj nav yIwIv. jaj yInej."
             },
             "system_resiliency": {
                 "title": "// pat pIv [pIv]",
@@ -425,30 +468,30 @@
         "disable_2fa_failed": "2FA Qaw' Qaw'"
     },
     "calendar": {
-        "title": "CHRONO-SYNC // CALENDAR",
+        "title": "CHRONO-SYNC // jaj nav",
         "clear_date": "jaj pagh",
         "months": {
-            "0": "JANUARY",
-            "1": "FEBRUARY",
-            "2": "MARCH",
-            "3": "APRIL",
-            "4": "MAY",
-            "5": "JUNE",
-            "6": "JULY",
-            "7": "AUGUST",
-            "8": "SEPTEMBER",
-            "9": "OCTOBER",
-            "10": "NOVEMBER",
-            "11": "DECEMBER"
+            "0": "jar wa'",
+            "1": "jar cha'",
+            "2": "jar wej",
+            "3": "jar loS",
+            "4": "jar vagh",
+            "5": "jar jav",
+            "6": "jar Soch",
+            "7": "jar chorgh",
+            "8": "jar Hut",
+            "9": "jar wa'maH",
+            "10": "jar wa'maH wa'",
+            "11": "jar wa'maH cha'"
         },
         "days": {
-            "0": "SUN",
-            "1": "MON",
-            "2": "TUE",
-            "3": "WED",
-            "4": "THU",
-            "5": "FRI",
-            "6": "SAT"
+            "0": "SO",
+            "1": "WA",
+            "2": "CH",
+            "3": "WE",
+            "4": "LO",
+            "5": "VA",
+            "6": "JA"
         }
     }
 }

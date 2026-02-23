@@ -35,3 +35,4 @@ test-results
 tests/e2e/screenshots/*.png
 *.png
 api/uploads/task_file_*
+_ARCHIV/

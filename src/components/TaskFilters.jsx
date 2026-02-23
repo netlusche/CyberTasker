@@ -28,14 +28,55 @@ const TaskFilters = ({ filters, onFilterChange, categories }) => {
         onFilterChange({ ...filters, [key]: value });
     };
 
+    const applyPill = (filterUpdate) => {
+        // Toggle behavior if the selected filter value is already active
+        const updatedFilters = { ...filters };
+        for (const [k, v] of Object.entries(filterUpdate)) {
+            if (updatedFilters[k] === v) {
+                updatedFilters[k] = (typeof v === 'boolean') ? false : '';
+            } else {
+                updatedFilters[k] = v;
+            }
+        }
+        onFilterChange(updatedFilters);
+    };
+
+    const pills = [
+        {
+            label: t('tasks.filters.pills.overdue'),
+            tooltip: t('tasks.filters.pills.overdue_tooltip'),
+            isActive: filters.overdue === true,
+            onClick: () => applyPill({ overdue: true }),
+            activeClass: 'bg-red-500/20 border-red-500 text-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]',
+            inactiveClass: 'border-cyber-gray text-gray-400 hover:border-red-500 hover:text-red-500'
+        },
+        {
+            label: t('tasks.filters.pills.high_prio'),
+            tooltip: t('tasks.filters.pills.high_prio_tooltip'),
+            isActive: filters.priority === '1',
+            onClick: () => applyPill({ priority: '1' }),
+            activeClass: 'bg-pink-500/20 border-pink-500 text-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.3)]',
+            inactiveClass: 'border-cyber-gray text-gray-400 hover:border-pink-500 hover:text-pink-500'
+        },
+        {
+            label: t('tasks.filters.pills.clear'),
+            tooltip: t('tasks.filters.pills.clear_tooltip'),
+            isActive: false,
+            onClick: () => onFilterChange({ search: '', priority: '', category: '', overdue: false }),
+            activeClass: '',
+            inactiveClass: 'border-cyber-gray text-gray-400 hover:border-cyber-secondary hover:text-cyber-secondary'
+        }
+    ];
+
     return (
         <div className="mb-6 p-4 border border-cyber-gray bg-black/40 rounded-lg backdrop-blur-sm relative z-20">
-            <div className="flex flex-col md:flex-row gap-4 items-center">
+            <div className="flex flex-col md:flex-row gap-4 md:items-start items-center flex-wrap">
 
                 {/* Search Input */}
-                <div className="relative w-full md:w-1/3">
+                <div className="relative w-full md:w-1/3 xl:w-64 flex-shrink-0">
                     <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-cyber-primary">🔍</span>
                     <input
+                        id="global-search-input"
                         type="text"
                         placeholder={t('tasks.search_placeholder')}
                         value={localSearch}
@@ -43,6 +84,24 @@ const TaskFilters = ({ filters, onFilterChange, categories }) => {
                         onFocus={(e) => e.target.select()}
                         className="w-full bg-black border border-cyber-gray text-white pl-10 pr-4 py-2 rounded focus:border-cyber-primary focus:shadow-cyber-primary outline-none transition-all placeholder-gray-200 font-mono input-normal-case"
                     />
+                </div>
+
+                {/* Quick-Filter Pills */}
+                <div className="flex flex-row flex-wrap gap-2 items-center mr-auto">
+                    {pills.map((pill, idx) => (
+                        <div key={idx} className="group relative flex items-center">
+                            <button
+                                onClick={pill.onClick}
+                                className={`text-[10px] whitespace-nowrap font-bold px-2 py-1 rounded border transition-all duration-300 uppercase tracking-wider h-[38px] ${pill.isActive ? pill.activeClass : pill.inactiveClass}`}
+                            >
+                                {pill.label}
+                            </button>
+                            {/* Tooltip */}
+                            <div className="absolute top-full left-0 mt-2 w-48 p-2 bg-black border border-cyber-primary text-cyber-primary text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[60] shadow-cyber-primary hidden md:block">
+                                {pill.tooltip}
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Category Filter */}

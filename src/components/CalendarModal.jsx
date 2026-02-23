@@ -19,6 +19,17 @@ const CalendarModal = ({ tasks, onClose, onOpenDossier }) => {
             .catch(err => console.error("Failed to fetch calendar tasks", err));
     }, [tasks]); // Re-fetch when dashboard tasks change (ensures syncing after edits)
 
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                e.stopImmediatePropagation();
+                if (onClose) onClose();
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [onClose]);
+
     const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
     const firstDayOfMonth = (year, month) => new Date(year, month, 1).getDay();
 

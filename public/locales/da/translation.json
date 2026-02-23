@@ -236,7 +236,31 @@
             "save_error": "UPLINK FEJLLET",
             "subroutines": "UNDERRUTINER",
             "add_subroutine": "+ TILFØJ RUTINE",
-            "subroutine_placeholder": "Indtast underrutine..."
+            "subroutine_placeholder": "Indtast underrutine...",
+            "add_uplink": "+ TILFØJ UPLINK",
+            "files": "FILER",
+            "attach_file": "+ VEDLÆG FIL",
+            "uploading_evidence": "[ UPLOADER BEVISER... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Forfaldne",
+                "overdue_tooltip": "Viser kun direktiver, der har overskredet deres frist",
+                "high_prio": "Høj Prio",
+                "high_prio_tooltip": "Viser kun direktiver med prioritet 1 (Høj)",
+                "clear": "Ryd alle",
+                "clear_tooltip": "Nulstiller alle aktive filtre"
+            }
+        },
+        "duplicate": "DUBLIKAT",
+        "recurrence": "GENTAGELSE",
+        "recurrence_end": "SLUTTER PÅ",
+        "intervals": {
+            "none": "Ingen",
+            "daily": "Dagligt",
+            "weekly": "Ugentligt",
+            "monthly": "Månedlig",
+            "yearly": "Årlig"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — Ice and Fire. Koldblåt stål og valyriske blodrøde accenter. Vinteren kommer. Norden husker.",
                 "theme_marvel": "COMIC (MARVEL) — Heroiske røde og dristige actionprikker. Pow! Puha! En hyldest til tegneseriernes guldalder. Excelsior!",
                 "theme_dc": "GOTHAM (DC) — Mørkeste nat, dybeste blå og en flig gult lys, der skærer gennem regnen. Retfærdigheden sover aldrig."
+            },
+            "global_shortcuts": {
+                "title": "// GLOBALE GENVEJE [Workflow]",
+                "item1_label": "NYT DIREKTIV",
+                "item1_text": "Tryk på [N] hvor som helst på gitteret for øjeblikkeligt at åbne og fokusere formuleringsmodulet til det nye direktiv.",
+                "item2_label": "DATABANKSØGNING",
+                "item2_text": "Tryk på [/] for at sætte fokus på den neurale søgelinje og begynde at forespørge i databankerne.",
+                "item3_label": "LUK OVERLAG",
+                "item3_text": "Tryk på [ESC] for øjeblikkeligt at lukke enhver aktiv modal-, dossier- eller konfigurationsoverlejring."
             }
         }
     },
