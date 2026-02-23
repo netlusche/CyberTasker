@@ -56,12 +56,14 @@ class TaskController extends Controller
         $dueDate = !empty($data['due_date']) ? $data['due_date'] : null;
         $recurrenceInterval = !empty($data['recurrence_interval']) ? $data['recurrence_interval'] : null;
         $recurrenceEndDate = !empty($data['recurrence_end_date']) ? $data['recurrence_end_date'] : null;
+        $description = !empty($data['description']) ? $data['description'] : null;
+        $subroutinesJson = !empty($data['subroutines_json']) ? $data['subroutines_json'] : null;
 
         if (strtolower($recurrenceInterval) !== 'none' && $recurrenceInterval !== null && empty($dueDate)) {
             $dueDate = date('Y-m-d');
         }
 
-        $taskId = $this->taskRepo->createTask($this->userId, $title, $category, $priority, $points, $dueDate, null, null, null, null, $recurrenceInterval, $recurrenceEndDate);
+        $taskId = $this->taskRepo->createTask($this->userId, $title, $category, $priority, $points, $dueDate, $description, null, null, $subroutinesJson, $recurrenceInterval, $recurrenceEndDate);
 
         $this->jsonResponse(['id' => $taskId, 'message' => 'Task created']);
     }
@@ -199,7 +201,7 @@ class TaskController extends Controller
             $params[] = $pointsValue;
         }
         $finalInterval = array_key_exists('recurrence_interval', $data) ? $data['recurrence_interval'] : ($task['recurrence_interval'] ?? null);
-        
+
         if (array_key_exists('due_date', $data)) {
             $incomingDueDate = !empty($data['due_date']) ? $data['due_date'] : null;
             if (empty($incomingDueDate) && strtolower($finalInterval ?? 'none') !== 'none' && !empty($finalInterval)) {
@@ -207,7 +209,8 @@ class TaskController extends Controller
             }
             $fields[] = 'due_date = ?';
             $params[] = $incomingDueDate;
-        } else if (empty($task['due_date']) && strtolower($finalInterval ?? 'none') !== 'none' && !empty($finalInterval)) {
+        }
+        else if (empty($task['due_date']) && strtolower($finalInterval ?? 'none') !== 'none' && !empty($finalInterval)) {
             $fields[] = 'due_date = ?';
             $params[] = date('Y-m-d');
         }

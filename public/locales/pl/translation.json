@@ -236,7 +236,31 @@
             "save_error": "ŁĄCZE NIEUDANE",
             "subroutines": "PODPROCEDURY",
             "add_subroutine": "+ DODAJ PROGRAM",
-            "subroutine_placeholder": "Wejdź do podprogramu..."
+            "subroutine_placeholder": "Wejdź do podprogramu...",
+            "add_uplink": "+ DODAJ LINK DO GÓRY",
+            "files": "PLIKI",
+            "attach_file": "+ DOŁĄCZ PLIK",
+            "uploading_evidence": "[ PRZESYŁANIE DOWODÓW... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Zaległe",
+                "overdue_tooltip": "Pokazuje tylko dyrektywy, dla których upłynął termin",
+                "high_prio": "Wysoki priorytet",
+                "high_prio_tooltip": "Pokazuje tylko dyrektywy z priorytetem 1 (Wysoki)",
+                "clear": "Wyczyść wszystko",
+                "clear_tooltip": "Resetuje wszystkie aktywne filtry"
+            }
+        },
+        "duplicate": "DUPLIKAT",
+        "recurrence": "NAWROT",
+        "recurrence_end": "KOŃCZY SIĘ",
+        "intervals": {
+            "none": "Brak",
+            "daily": "Codziennie",
+            "weekly": "Co tydzień",
+            "monthly": "Miesięcznie",
+            "yearly": "Rocznie"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — Lód i Ogień. Zimnoniebieska stal i valyriańskie akcenty krwistoczerwone. Nadchodzi zima. Północ pamięta.",
                 "theme_marvel": "KOMIKS (MARVEL) — Bohaterskie czerwone i odważne kropki akcji. Pff! Bum! Hołd dla złotej ery komiksów. Wełna drzewna!",
                 "theme_dc": "GOTHAM (DC) — Najciemniejsza noc, najgłębszy błękit i smuga żółtego światła przecinająca deszcz. Sprawiedliwość nigdy nie śpi."
+            },
+            "global_shortcuts": {
+                "title": "// GLOBALNE SKRÓTY [Przebieg pracy]",
+                "item1_label": "NOWA DYREKTYWA",
+                "item1_text": "Naciśnij [N] w dowolnym miejscu siatki, aby natychmiast otworzyć i ustawić moduł formułowania Nowej Dyrektywy.",
+                "item2_label": "WYSZUKIWANIE BANKU DANYCH",
+                "item2_text": "Naciśnij [/], aby przenieść fokus na pasek wyszukiwania neuronowego i rozpocząć przeszukiwanie banków danych.",
+                "item3_label": "ZAMKNIJ NAKŁADKI",
+                "item3_text": "Naciśnij [ESC], aby natychmiast zamknąć dowolny aktywny moduł, dokumentację lub nakładkę konfiguracyjną."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "GRUDNIA"
         },
         "days": {
-            "0": "NIEDZIELA",
-            "1": "PON",
+            "0": "ND",
+            "1": "PN",
             "2": "WT",
             "3": "ŚR",
-            "4": "CZW",
-            "5": "PIĄTEK",
-            "6": "SOBOTA"
+            "4": "CZ",
+            "5": "PT",
+            "6": "SO"
         }
     }
 }

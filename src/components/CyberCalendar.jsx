@@ -20,16 +20,19 @@ const CyberCalendar = ({ value, onChange, onClose }) => {
 
     const months = useMemo(() => {
         return Array.from({ length: 12 }, (_, i) => {
-            return new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(2020, i, 1));
+            return i18n.t(`calendar.months.${i}`);
         });
-    }, [locale]);
+    }, [i18n, locale]);
 
-    // Starting from Monday (Jan 6, 2020 was a Monday)
+    // Starting from Monday (dayKey 1)
     const weekdays = useMemo(() => {
         return Array.from({ length: 7 }, (_, i) => {
-            return new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(new Date(2020, 0, 6 + i));
+            const dayKey = (i + 1) % 7;
+            let trans = i18n.t(`calendar.days.${dayKey}`);
+            // If the translation returns the full english fallback or is too long, slice it (though we just limited all scripts to < 4 chars)
+            return trans.length > 3 ? trans.substring(0, 2) : trans;
         });
-    }, [locale]);
+    }, [i18n, locale]);
 
     const getDaysInMonth = (year, month) => {
         return new Date(year, month + 1, 0).getDate();

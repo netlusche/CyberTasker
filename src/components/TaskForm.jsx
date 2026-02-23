@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import CyberSelect from './CyberSelect';
 import CyberDateInput from './CyberDateInput';
 
-const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
+const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [], prefillData = null }) => {
     const { t } = useTranslation();
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('');
@@ -11,8 +11,29 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
     const [dueDate, setDueDate] = useState('');
     const [recurrenceInterval, setRecurrenceInterval] = useState('None');
     const [recurrenceEndDate, setRecurrenceEndDate] = useState('');
+    const [description, setDescription] = useState('');
+    const [subroutinesJson, setSubroutinesJson] = useState('[]');
     const [error, setError] = useState('');
     const [successFlash, setSuccessFlash] = useState(false);
+
+    useEffect(() => {
+        if (prefillData) {
+            setTitle(prefillData.title ? `${prefillData.title} (Copy)` : '');
+            setCategory(prefillData.category || '');
+            setPriority(prefillData.priority ? String(prefillData.priority) : '2');
+            setDueDate(prefillData.due_date || '');
+            setRecurrenceInterval(prefillData.recurrence_interval || 'None');
+            setRecurrenceEndDate(prefillData.recurrence_end_date || '');
+            setDescription(prefillData.description || '');
+            setSubroutinesJson(prefillData.subroutines_json || '[]');
+
+            const el = document.getElementById('new-directive-input');
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => el.focus(), 300);
+            }
+        }
+    }, [prefillData]);
 
     // Auto-select default or first available if no selection
     useEffect(() => {
@@ -49,7 +70,9 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
             points_value: 10 + (3 - parseInt(priority)) * 5,
             due_date: dueDate, // Pass due date
             recurrence_interval: recurrenceInterval,
-            recurrence_end_date: recurrenceEndDate
+            recurrence_end_date: recurrenceEndDate,
+            description: description,
+            subroutines_json: subroutinesJson
         });
 
         // Trigger Success Animation
@@ -60,6 +83,8 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
         setDueDate(''); // Reset due date
         setRecurrenceInterval('None');
         setRecurrenceEndDate('');
+        setDescription('');
+        setSubroutinesJson('[]');
         setError('');
     };
 
@@ -79,6 +104,7 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
             <div className="flex flex-col gap-4">
                 <div>
                     <input
+                        id="new-directive-input"
                         type="text"
                         value={title}
                         onChange={(e) => {

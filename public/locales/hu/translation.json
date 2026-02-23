@@ -236,7 +236,31 @@
             "save_error": "FELTÉTELEZÉS SIKERTELEN",
             "subroutines": "ALRUTINOK",
             "add_subroutine": "+ RUTIN HOZZÁADÁSA",
-            "subroutine_placeholder": "Lépjen be az alrutinba..."
+            "subroutine_placeholder": "Lépjen be az alrutinba...",
+            "add_uplink": "+ FELHÍVÁS HOZZÁADÁSA",
+            "files": "FÁJLOK",
+            "attach_file": "+ FÁJL CSATLAKOZTATÁSA",
+            "uploading_evidence": "[ BIZONYÍTVÁNY FELTÖLTÉSE... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Késedelmes",
+                "overdue_tooltip": "Csak azokat az utasításokat jeleníti meg, amelyek túllépték a határidőt",
+                "high_prio": "High Prio",
+                "high_prio_tooltip": "Csak az 1-es (Magas) prioritású direktívákat jeleníti meg",
+                "clear": "Összes törlése",
+                "clear_tooltip": "Visszaállítja az összes aktív szűrőt"
+            }
+        },
+        "duplicate": "DUPLIKÁTUM",
+        "recurrence": "ISMÉTLŐDÉS",
+        "recurrence_end": "VÉGE",
+        "intervals": {
+            "none": "Nincs",
+            "daily": "Napi",
+            "weekly": "Heti",
+            "monthly": "Havi",
+            "yearly": "Évente"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) – Jég és tűz. Hidegkék acél és valyriai vérvörös akcentusok. Jön a tél. Észak emlékszik.",
                 "theme_marvel": "COMIC (MARVEL) – Heroikus piros és merész akciópontok. Hadifogoly! Wham! Tisztelgés a képregények aranykora előtt. Excelsior!",
                 "theme_dc": "GOTHAM (DC) – A legsötétebb éjszaka, a legmélyebb kékség, és egy szál sárga fény átszeli az esőt. Az igazságosság soha nem alszik."
+            },
+            "global_shortcuts": {
+                "title": "// GLOBAL SHORTCUTS [Workflow]",
+                "item1_label": "ÚJ IRÁNYELV",
+                "item1_text": "Nyomja meg az [N] gombot bárhol a rácson, hogy azonnal megnyissa és fókuszba állítsa az Új irányelv megfogalmazó modult.",
+                "item2_label": "ADATBANKI KERESÉS",
+                "item2_text": "Nyomja meg a [/] gombot, hogy a fókuszt a neurális keresősávra helyezze, és megkezdje az adatbankok lekérdezését.",
+                "item3_label": "FEDÉSEK ZÁRÁSA",
+                "item3_text": "Az [ESC] gomb megnyomásával azonnal bezárhat minden aktív modális, dokumentációt vagy konfigurációs fedvényt."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "DECEMBER"
         },
         "days": {
-            "0": "VAP",
-            "1": "MON",
-            "2": "TUE",
-            "3": "SZED",
-            "4": "Cs.",
-            "5": "FRI",
-            "6": "ÜLT"
+            "0": "V",
+            "1": "H",
+            "2": "K",
+            "3": "SZE",
+            "4": "CS",
+            "5": "P",
+            "6": "SZO"
         }
     }
 }

@@ -236,7 +236,31 @@
             "save_error": "UPLINK BAŞARISIZ OLDU",
             "subroutines": "ALT RUTİNLER",
             "add_subroutine": "+ RUTİN EKLE",
-            "subroutine_placeholder": "Alt rutine girin..."
+            "subroutine_placeholder": "Alt rutine girin...",
+            "add_uplink": "+ UPLINK EKLE",
+            "files": "DOSYALAR",
+            "attach_file": "+ DOSYA EKLE",
+            "uploading_evidence": "[ DELİL YÜKLENİYOR... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Vadesi geçmiş",
+                "overdue_tooltip": "Yalnızca son tarihi geçen yönergeleri gösterir",
+                "high_prio": "Yüksek Fiyat",
+                "high_prio_tooltip": "Yalnızca önceliği 1 (Yüksek) olan yönergeleri gösterir",
+                "clear": "Tümünü Temizle",
+                "clear_tooltip": "Tüm aktif filtreleri sıfırlar"
+            }
+        },
+        "duplicate": "KOPYA",
+        "recurrence": "TEKRARLAMA",
+        "recurrence_end": "SONUNDA",
+        "intervals": {
+            "none": "Hiçbiri",
+            "daily": "Günlük",
+            "weekly": "Haftalık",
+            "monthly": "Aylık",
+            "yearly": "Yıllık"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — Buz ve Ateş. Soğuk mavi çelik ve Valyria kanı kırmızısı detaylar. Kış geliyor. Kuzey hatırlıyor.",
                 "theme_marvel": "COMIC (MARVEL) — Kahramanca kırmızı ve cesur aksiyon noktaları. Vay be! Vay! Çizgi romanların altın çağına bir saygı duruşu. Mükemmel!",
                 "theme_dc": "GOTHAM (DC) — En karanlık gece, en derin mavi ve yağmuru kesen bir sarı ışık şeridi. Adalet asla uyumaz."
+            },
+            "global_shortcuts": {
+                "title": "// KÜRESEL KISAYOLLAR [İş Akışı]",
+                "item1_label": "YENİ YÖNERGE",
+                "item1_text": "Yeni Direktif formülasyon modülünü anında açmak ve odaklamak için ızgaranın herhangi bir yerinde [N] tuşuna basın.",
+                "item2_label": "VERİ BANKASI ARAMA",
+                "item2_text": "Odağı Nöral Arama çubuğuna getirmek ve veri bankalarını sorgulamaya başlamak için [/] tuşuna basın.",
+                "item3_label": "KAPATMALARI",
+                "item3_text": "Herhangi bir aktif modeli, dosyayı veya konfigürasyon katmanını anında kapatmak için [ESC] tuşuna basın."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "ARALIK"
         },
         "days": {
-            "0": "GÜNEŞ",
-            "1": "Pzt",
-            "2": "SALI",
+            "0": "PAZ",
+            "1": "PZT",
+            "2": "SAL",
             "3": "ÇAR",
-            "4": "Per",
-            "5": "Cuma",
-            "6": "DOYGUNLUK"
+            "4": "PER",
+            "5": "CUM",
+            "6": "CMT"
         }
     }
 }

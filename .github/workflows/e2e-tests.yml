@@ -48,6 +48,9 @@ jobs:
       - name: Seed Test Personas and Directives
         run: php tests/seed_test_data.php
 
+      - name: Verify Translations
+        run: python3 scripts/check_translations.py
+
       - name: Run Playwright Tests
         run: npx playwright test
 

@@ -1,3 +1,14 @@
+# CyberTasker v2.4 (The Automation & Precision Update)
+*Release Date: 2026-02-23*
+
+*   **Tactical Keyboard Controls**: Navigate the grid at lightspeed with global hotkeys: press `N` to create a directive, `/` to focus the search matrix, and `Esc` to instantly close any active overlay.
+*   **Sub-Routine Automation**: Completely re-engineered the Dossier sub-routines with drag-and-drop sorting capabilities, allowing operatives to rearrange complex protocol execution orders on the fly.
+*   **Dashboard QoL Integration**: Implemented rapid-access Category selection directly on the operative dashboard cards, alongside new global Quick-Filter Pills (Overdue, Today, High Priority) for instantaneous tactical sorting without accessing the deep search menu.
+*   **Directive Duplication**: Added the ability to clone entire mission dossiers, instantly copying priorities, categories, recurrent schedules, and sub-routines to drastically cut down on repetitive protocol creation.
+*   **Diagnostics & Translations**: Hardened the global translation engine with a dedicated Python validation script integrated into the Github Actions CI pipeline, and perfected the Klingon localized calendar UI for total cross-language integrity.
+
+---
+
 # CyberTasker v2.3 (Workflow & Stability Update)
 *Release Date: 2026-02-23*
 

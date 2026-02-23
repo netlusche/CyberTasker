@@ -52,6 +52,7 @@ function App() {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showDossierForTask, setShowDossierForTask] = useState(null);
   const [activeCalendarTaskId, setActiveCalendarTaskId] = useState(null);
+  const [taskPrefill, setTaskPrefill] = useState(null);
 
   useEffect(() => {
     checkAuth();
@@ -63,6 +64,35 @@ function App() {
       fetchCategories();
     }
   }, [user, filters, categoryRefreshTrigger, fetchTasks, fetchCategories]);
+
+  // Global Keyboard Shortcuts (N and /)
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      // Ignore if user is typing in an input, textarea, or contenteditable
+      const tagName = e.target.tagName.toLowerCase();
+      if (tagName === 'input' || tagName === 'textarea' || e.target.isContentEditable) {
+        return;
+      }
+      if (e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        const el = document.getElementById('new-directive-input');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => el.focus(), 300); // Wait for scroll
+        }
+      } else if (e.key === '/') {
+        e.preventDefault();
+        const el = document.getElementById('global-search-input');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => el.focus(), 300); // Wait for scroll
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, []);
 
   const handleFullLogout = () => {
     handleLogout();
@@ -195,6 +225,7 @@ function App() {
                 onAddTask={handleAddTask}
                 categoryRefreshTrigger={categoryRefreshTrigger}
                 categories={categories}
+                prefillData={taskPrefill}
               />
             </div>
 
@@ -225,6 +256,9 @@ function App() {
                       onDelete={handleDelete}
                       activeCalendarTaskId={activeCalendarTaskId}
                       setActiveCalendarTaskId={setActiveCalendarTaskId}
+                      onDuplicate={(taskToDuplicate) => {
+                        setTaskPrefill({ ...taskToDuplicate, timestamp: Date.now() });
+                      }}
                     />
                   ))}
                 </div>
@@ -321,6 +355,11 @@ function App() {
               setShowDossierForTask(prev => ({ ...prev, ...updates }));
             }
             return success;
+          }}
+          onDuplicate={(task) => {
+            setTaskPrefill({ ...task, timestamp: Date.now() });
+            setShowDossierForTask(null);
+            setShowCalendar(false); // Make sure calendar is closed if it was behind it
           }}
           onClose={() => {
             setShowDossierForTask(null);

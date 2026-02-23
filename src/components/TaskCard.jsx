@@ -5,7 +5,7 @@ import CyberConfirm from './CyberConfirm';
 import CyberCalendar from './CyberCalendar';
 import DirectiveModal from './DirectiveModal';
 
-const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, activeCalendarTaskId, setActiveCalendarTaskId }) => {
+const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, activeCalendarTaskId, setActiveCalendarTaskId, onDuplicate }) => {
     const { t } = useTranslation();
     const [isEditing, setIsEditing] = React.useState(false);
     const [editTitle, setEditTitle] = React.useState(task.title);
@@ -63,17 +63,19 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
         3: 'LOW',
     };
 
-    const handleCycleCategory = async () => {
-        if (task.status == 1) return; // Prevent editing done tasks
-        const getName = (c) => c.name || c;
-        const validCategories = Array.isArray(categories) && categories.length > 0 ? categories : [{ name: task.category }];
-        const currentIndex = validCategories.findIndex(c => getName(c) === task.category);
-        const nextIndex = (currentIndex + 1) % validCategories.length;
-        const nextCategory = getName(validCategories[nextIndex]);
-        await onUpdateTask(task, { category: nextCategory });
-    };
-
     const isConfirming = React.useRef(false);
+
+    const handleCategoryChange = async (newCategory) => {
+        if (task.status == 1 || isConfirming.current) return;
+        try {
+            isConfirming.current = true;
+            await onUpdateTask(task, { category: newCategory });
+        } catch (err) {
+            console.error("Category update error:", err);
+        } finally {
+            isConfirming.current = false;
+        }
+    };
 
     const handlePriorityChange = (newPriority) => {
         const pNum = Number(newPriority);
@@ -180,14 +182,19 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
                 <div className="flex justify-between items-start">
                     <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                            <button
-                                onClick={handleCycleCategory}
-                                disabled={task.status == 1}
-                                className={`text-[10px] font-bold text-cyber-primary tracking-wider uppercase border border-cyber-primary px-2 py-1 rounded transition-all ${task.status != 1 ? 'hover:bg-cyber-primary hover:text-black cursor-pointer active:scale-95' : 'cursor-default'}`}
-                                title={task.status != 1 ? t('tasks.cycle_category') : ""}
-                            >
-                                {task.category}
-                            </button>
+                            <div className="min-w-[5rem] w-auto max-w-[8rem]">
+                                <CyberSelect
+                                    value={task.category}
+                                    onChange={handleCategoryChange}
+                                    options={(Array.isArray(categories) && categories.length > 0 ? categories : [{ name: task.category }]).map(cat => {
+                                        const catName = cat.name || cat;
+                                        return { value: catName, label: catName };
+                                    })}
+                                    neonColor="green"
+                                    className="text-[10px] font-bold h-7 uppercase tracking-wider"
+                                    disabled={task.status == 1}
+                                />
+                            </div>
 
                             <div className="w-24">
                                 <CyberSelect
@@ -380,6 +387,10 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
                     categories={categories}
                     onClose={() => setShowDossier(false)}
                     onUpdate={onUpdateTask}
+                    onDuplicate={(t) => {
+                        setShowDossier(false);
+                        if (onDuplicate) onDuplicate(t);
+                    }}
                 />
             )}
         </>

@@ -236,7 +236,31 @@
             "save_error": "UPLINK NON FALLITO",
             "subroutines": "SOTTOROUTINE",
             "add_subroutine": "+ AGGIUNGI ROUTINE",
-            "subroutine_placeholder": "Inserisci la subroutine..."
+            "subroutine_placeholder": "Inserisci la subroutine...",
+            "add_uplink": "+ AGGIUNGI COLLEGAMENTO",
+            "files": "FILE",
+            "attach_file": "+ ALLEGA FILE",
+            "uploading_evidence": "[ CARICAMENTO PROVE... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "In ritardo",
+                "overdue_tooltip": "Mostra solo le direttive che hanno superato la scadenza",
+                "high_prio": "Priorità alta",
+                "high_prio_tooltip": "Mostra solo le direttive con priorità 1 (Alta)",
+                "clear": "Cancella tutto",
+                "clear_tooltip": "Reimposta tutti i filtri attivi"
+            }
+        },
+        "duplicate": "DUPLICATO",
+        "recurrence": "RICORRENZA",
+        "recurrence_end": "FINISCE IL",
+        "intervals": {
+            "none": "Nessuno",
+            "daily": "Ogni giorno",
+            "weekly": "Settimanale",
+            "monthly": "Mensile",
+            "yearly": "Annuale"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — Ghiaccio e fuoco. Acciaio blu freddo e accenti rosso sangue di Valyria. L'inverno sta arrivando. Il Nord ricorda.",
                 "theme_marvel": "FUMETTO (MARVEL) — Punti rossi eroici e azioni audaci. Pow! Wham! Un omaggio all'epoca d'oro dei fumetti. Eccellente!",
                 "theme_dc": "GOTHAM (DC) — Notte più buia, blu più profondo e un frammento di luce gialla che taglia la pioggia. La giustizia non dorme mai."
+            },
+            "global_shortcuts": {
+                "title": "// SCORCIATOIE GLOBALI [Flusso di lavoro]",
+                "item1_label": "NUOVA DIRETTIVA",
+                "item1_text": "Premi [N] in un punto qualsiasi della griglia per aprire e focalizzare immediatamente il modulo di formulazione della nuova direttiva.",
+                "item2_label": "RICERCA IN BANCA DATI",
+                "item2_text": "Premi [/] per evidenziare la barra di ricerca neurale e iniziare a interrogare le banche dati.",
+                "item3_label": "CHIUDI SOVRAPPOSIZIONI",
+                "item3_text": "Premi [ESC] per chiudere immediatamente qualsiasi overlay modale, dossier o configurazione attivo."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "DICEMBRE"
         },
         "days": {
-            "0": "SOLE",
-            "1": "LUN",
-            "2": "MAR",
-            "3": "MER",
-            "4": "GIO",
-            "5": "VEN",
-            "6": "SAB"
+            "0": "DO",
+            "1": "LU",
+            "2": "MA",
+            "3": "ME",
+            "4": "GI",
+            "5": "VE",
+            "6": "SA"
         }
     }
 }

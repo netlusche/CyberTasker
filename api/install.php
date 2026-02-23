@@ -105,7 +105,7 @@ try {
         echo "<span style='color: green;'>ACCESS GRANTED. Proceeding with schema update...</span><br>\n";
     }
     else {
-        echo "<span style='color: yellow;'>SYSTEM EMPTY: First-time initialization detected. Auto-Lock bypassed.</span><br>\n";
+        echo "<span style='color: #ff8c00;'>SYSTEM EMPTY: First-time initialization detected. Auto-Lock bypassed.</span><br>\n";
     }
 
     // --- USERS TABLE ---
@@ -369,12 +369,5 @@ catch (Throwable $t) {
     echo "Error: " . $t->getMessage() . "<br>\n";
     echo "File: " . $t->getFile() . " on line " . $t->getLine() . "<br>\n";
     exit(1);
-}
-?> echo "Error: " . $t->getMessage() . "<br>\n";
-echo "File: " . $t->getFile() . " on line " . $t->getLine() . "<br>\n";
-exit(1);
-}
-?? echo "File: " . $t->getFile() . " on line " . $t->getLine() . "<br>\n";
-exit(1);
 }
 ?>

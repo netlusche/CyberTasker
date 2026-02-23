@@ -236,7 +236,31 @@
             "save_error": "FALHA NO UPLINK",
             "subroutines": "SUB-ROTINAS",
             "add_subroutine": "+ ADICIONAR ROTINA",
-            "subroutine_placeholder": "Entre na sub-rotina..."
+            "subroutine_placeholder": "Entre na sub-rotina...",
+            "add_uplink": "+ ADICIONAR UPLINK",
+            "files": "ARQUIVOS",
+            "attach_file": "+ ANEXAR ARQUIVO",
+            "uploading_evidence": "[ CARREGANDO EVIDÊNCIAS... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Atrasado",
+                "overdue_tooltip": "Mostra apenas as diretivas que ultrapassaram o prazo",
+                "high_prio": "Alto Prio",
+                "high_prio_tooltip": "Mostra apenas diretivas com prioridade 1 (Alta)",
+                "clear": "Limpar tudo",
+                "clear_tooltip": "Redefine todos os filtros ativos"
+            }
+        },
+        "duplicate": "DUPLICADO",
+        "recurrence": "RECORRÊNCIA",
+        "recurrence_end": "TERMINA EM",
+        "intervals": {
+            "none": "Nenhum",
+            "daily": "Diariamente",
+            "weekly": "Semanal",
+            "monthly": "Mensalmente",
+            "yearly": "Anualmente"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — Gelo e Fogo. Aço azul frio e detalhes em vermelho sangue valiriano. O inverno está chegando. O Norte lembra.",
                 "theme_marvel": "COMIC (MARVEL) — Heroicos pontos de ação vermelhos e ousados. Prisioneiro de guerra! Uau! Uma homenagem à era de ouro dos quadrinhos. Excelsior!",
                 "theme_dc": "GOTHAM (DC) – Noite mais escura, azul mais profundo e um raio de luz amarela cortando a chuva. A justiça nunca dorme."
+            },
+            "global_shortcuts": {
+                "title": "// ATALHOS GLOBAIS [Fluxo de trabalho]",
+                "item1_label": "NOVA DIRETRIZ",
+                "item1_text": "Pressione [N] em qualquer lugar da grade para abrir e focar instantaneamente o módulo de formulação da Nova Diretiva.",
+                "item2_label": "PESQUISA DE BANCO DE DADOS",
+                "item2_text": "Pressione [/] para focar na barra de pesquisa neural e começar a consultar os bancos de dados.",
+                "item3_label": "FECHAR SOBREPOSIÇÕES",
+                "item3_text": "Pressione [ESC] para fechar instantaneamente qualquer modal, dossiê ou sobreposição de configuração ativa."
             }
         }
     },
@@ -452,13 +485,13 @@
             "11": "DEZEMBRO"
         },
         "days": {
-            "0": "SOL",
+            "0": "DOM",
             "1": "SEG",
             "2": "TER",
             "3": "QUA",
             "4": "QUI",
             "5": "SEX",
-            "6": "SENTADO"
+            "6": "SÁB"
         }
     }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const SystemModal = ({
     isOpen,
@@ -13,6 +13,19 @@ const SystemModal = ({
     allowScroll = true,
     zIndex = 'z-[150]'
 }) => {
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                e.stopImmediatePropagation();
+                if (onClose) onClose();
+            }
+        };
+        if (isOpen) {
+            document.addEventListener('keydown', handleEscape);
+        }
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [isOpen, onClose]);
+
     if (!isOpen) return null;
 
     const accentClass = variant === 'warning' ? 'border-cyber-warning shadow-[0_0_20px_rgba(255,170,0,0.3)] text-yellow-500'

@@ -236,7 +236,31 @@
             "save_error": "UPLINK MISLUKT",
             "subroutines": "SUBROUTINES",
             "add_subroutine": "+ ROUTINE TOEVOEGEN",
-            "subroutine_placeholder": "Subroutine invoeren..."
+            "subroutine_placeholder": "Subroutine invoeren...",
+            "add_uplink": "+ UPLINK TOEVOEGEN",
+            "files": "BESTANDEN",
+            "attach_file": "+ BESTAND BIJVOEGEN",
+            "uploading_evidence": "[ BEWIJS UPLOADEN... ]"
+        },
+        "filters": {
+            "pills": {
+                "overdue": "Te laat",
+                "overdue_tooltip": "Toont alleen richtlijnen waarvan de deadline is verstreken",
+                "high_prio": "Hoge prioriteit",
+                "high_prio_tooltip": "Toont alleen richtlijnen met prioriteit 1 (Hoog)",
+                "clear": "Alles wissen",
+                "clear_tooltip": "Reset alle actieve filters"
+            }
+        },
+        "duplicate": "DUPLICAAT",
+        "recurrence": "HERHALING",
+        "recurrence_end": "EINDIGT OP",
+        "intervals": {
+            "none": "Geen",
+            "daily": "Dagelijks",
+            "weekly": "Wekelijks",
+            "monthly": "Maandelijks",
+            "yearly": "Jaarlijks"
         }
     },
     "help": {
@@ -371,6 +395,15 @@
                 "theme_got": "WESTEROS (GOT) — IJs en vuur. Koud blauw staal en Valyrian bloedrode accenten. De winter komt eraan. Het Noorden herinnert zich.",
                 "theme_marvel": "COMIC (MARVEL) — Heroïsche rode en opvallende actiepunten. Pow! Wham! Een eerbetoon aan de gouden eeuw van stripboeken. Excelsior!",
                 "theme_dc": "GOTHAM (DC) — Donkerste nacht, diepste blauw en een streepje geel licht dat door de regen snijdt. Justitie slaapt nooit."
+            },
+            "global_shortcuts": {
+                "title": "// GLOBALE SNELKOPPELINGEN [Workflow]",
+                "item1_label": "NIEUWE RICHTLIJN",
+                "item1_text": "Druk ergens op het raster op [N] om de module voor het formuleren van de Nieuwe Richtlijn onmiddellijk te openen en scherp te stellen.",
+                "item2_label": "DATABANK ZOEKEN",
+                "item2_text": "Druk op [/] om de focus naar de neurale zoekbalk te verplaatsen en de databanken te doorzoeken.",
+                "item3_label": "SLUIT OVERLAYS",
+                "item3_text": "Druk op [ESC] om elke actieve modale, dossier- of configuratie-overlay onmiddellijk te sluiten."
             }
         }
     },
@@ -452,12 +485,12 @@
             "11": "DECEMBER"
         },
         "days": {
-            "0": "ZON",
+            "0": "ZO",
             "1": "MA",
             "2": "DI",
             "3": "WO",
             "4": "DO",
-            "5": "VRIJ",
+            "5": "VR",
             "6": "ZA"
         }
     }

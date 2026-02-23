@@ -657,7 +657,6 @@ body.theme-robco .card-cyber {
   background: rgba(0, 34, 0, 0.9);
   box-shadow: inset 0 0 15px rgba(26, 255, 26, 0.2);
   position: relative;
-  overflow: hidden;
 }
 
 body.theme-robco .card-cyber::before {
@@ -671,6 +670,7 @@ body.theme-robco .card-cyber::before {
   background-size: 100% 4px, 3px 100%;
   pointer-events: none;
   z-index: 10;
+  border-radius: inherit;
 }
 
 /* --- The Grid Theme (TRON) --- */
@@ -822,7 +822,6 @@ body.theme-force .card-cyber {
   border: 1px solid rgba(52, 226, 226, 0.2);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 10px rgba(204, 68, 34, 0.05);
   position: relative;
-  overflow: hidden;
 }
 
 /* Split "Saber" border fringe */
@@ -835,6 +834,7 @@ body.theme-force .card-cyber::after {
   height: 2px;
   background: linear-gradient(90deg, #cc4422, #34e2e2);
   opacity: 0.6;
+  border-radius: inherit;
 }
 
 /* Button Refinements — The "Saber" Glow */

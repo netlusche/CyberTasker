@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { triggerNeonConfetti } from '../utils/confetti';
 import { useTheme } from '../utils/ThemeContext';
@@ -10,6 +10,17 @@ const HelpModal = ({ onClose }) => {
         triggerNeonConfetti(theme);
         onClose();
     };
+
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                e.stopImmediatePropagation();
+                if (onClose) onClose();
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [onClose]);
 
     return (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
@@ -27,6 +38,15 @@ const HelpModal = ({ onClose }) => {
                     </h2>
 
                     <div className="space-y-6 font-mono text-sm">
+                        <section>
+                            <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.global_shortcuts.title')}</h3>
+                            <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                                <li><strong>{t('help.sections.global_shortcuts.item1_label')}:</strong> {t('help.sections.global_shortcuts.item1_text')}</li>
+                                <li><strong>{t('help.sections.global_shortcuts.item2_label')}:</strong> {t('help.sections.global_shortcuts.item2_text')}</li>
+                                <li><strong>{t('help.sections.global_shortcuts.item3_label')}:</strong> {t('help.sections.global_shortcuts.item3_text')}</li>
+                            </ul>
+                        </section>
+
                         <section>
                             <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.neural_progression.title')}</h3>
                             <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
