@@ -233,7 +233,10 @@
             "edit_mode": "BEWERKMODUS",
             "read_mode": "LEESMODUS",
             "save_success": "DOSSIER BIJGEWERKT",
-            "save_error": "UPLINK MISLUKT"
+            "save_error": "UPLINK MISLUKT",
+            "subroutines": "SUBROUTINES",
+            "add_subroutine": "+ ROUTINE TOEVOEGEN",
+            "subroutine_placeholder": "Subroutine invoeren..."
         }
     },
     "help": {

@@ -2,6 +2,20 @@
 
 **CyberTasker** is a gamified, cyberpunk-themed task management application built with **React (Vite)** and **PHP**. It supports **MySQL, MariaDB, and SQLite**, featuring a robust role-based access control (RBAC) system, gamification mechanics (XP, Levels, Badges), and secure Two-Factor Authentication (2FA).
 
+## 📁 New in Version 2.3.0 (Workflow & Stability Update)
+
+### 🔁 Scheduled Protocols & Progress Tracking
+*   **Recurring Directives**: Assign 'Daily', 'Weekly', or 'Monthly' loops to directives. The system will automatically compute and generate the next iteration only upon completion of the current task, preventing an infinite buildup of duplicate tasks.
+*   **Directive Sub-Routines**: Complex directives can now be split into multiple sub-routines (checklists) directly inside the Dossier. Includes seamless inline text editing and individual progress toggles.
+*   **Tactical Dashboards**: Mission cards instantly display the progress of sub-routines (e.g., "3/5" completed) directly on the grid, minimizing the need to constantly open the Dossier.
+*   **Holo-Projections**: The Global Calendar actively visualizes future iterations of recurring directives as distinct, translucent projections allowing operatives to plan operations deep into the future without database spam.
+
+### 🛡 Core Stability & Multi-Tenant Prep
+*   **Cross-Database Precision**: Massive codebase refinements targeting MariaDB syntax anomalies to ensure 100% feature parity and stability between the lightweight SQLite local-instances and rigid MariaDB production environments.
+*   **Automated E2E Pipelines**: The GitHub infrastructure is now augmented to simultaneously run full Playwright E2E integration tests against *both* SQLite and MySQL whenever the operative timeline is modified.
+
+---
+
 ## 📁 New in Version 2.2.0 (The Dashboard & Dossier Upgrade)
 
 ### 📅 Global Calendar (Chrono-Sync)

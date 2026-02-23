@@ -233,7 +233,10 @@
             "edit_mode": "TRYB EDYCJI",
             "read_mode": "TRYB CZYTAJ",
             "save_success": "AKTUALIZACJA DOKUMENTACJI",
-            "save_error": "ŁĄCZE NIEUDANE"
+            "save_error": "ŁĄCZE NIEUDANE",
+            "subroutines": "PODPROCEDURY",
+            "add_subroutine": "+ DODAJ PROGRAM",
+            "subroutine_placeholder": "Wejdź do podprogramu..."
         }
     },
     "help": {

@@ -34,8 +34,17 @@ if ($pdo->getAttribute(PDO::ATTR_DRIVER_NAME) === 'sqlite') {
     catch (Exception $e) {
     // Table might not exist yet if fresh, ignore
     }
+
+    // forcefully apply the schema updates for tests since install.php might be bypassed or cached improperly
+    try {
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN recurrence_interval VARCHAR(20) DEFAULT NULL");
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN recurrence_end_date DATETIME DEFAULT NULL");
+    }
+    catch (Exception $e) {
+    // Columns might already exist
+    }
 }
-echo "Full database purge complete.\n\n";
+echo "Full database purge and schema patch complete.\n\n";
 
 // 1. Create Admin_Alpha
 echo "1. Generating Admin_Alpha...\n";

@@ -19,11 +19,16 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
     const [isSaving, setIsSaving] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
 
-    // Date/Calendar state
+    // Sub-routines state
+    const [subroutines, setSubroutines] = useState([]);
+    const [newSubroutine, setNewSubroutine] = useState('');
+
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+    const [isRecurrencePickerOpen, setIsRecurrencePickerOpen] = useState(false);
     const [pendingDate, setPendingDate] = useState(null);
     const [showDateConfirm, setShowDateConfirm] = useState(false);
     const dateContainerRef = useRef(null);
+    const recurrenceContainerRef = useRef(null);
 
     // Priority state
     const [pendingPriority, setPendingPriority] = useState(null);
@@ -39,6 +44,9 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
             const parsedFiles = task.files ? JSON.parse(task.files) : [];
             setFiles(Array.isArray(parsedFiles) ? parsedFiles : []);
 
+            const parsedSubroutines = task.subroutines_json ? JSON.parse(task.subroutines_json) : [];
+            setSubroutines(Array.isArray(parsedSubroutines) ? parsedSubroutines : []);
+
             // Sync description when task prop updates (e.g. after a save)
             // But only if we are not actively editing it right now to avoid overwriting typed text
             if (editingField !== 'description' && editingField !== 'title') {
@@ -49,16 +57,18 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
             setAttachments([]);
             setTempLinks([]);
             setFiles([]);
+            setSubroutines([]);
         }
-    }, [task.attachments, task.files]);
+    }, [task.attachments, task.files, task.subroutines_json]);
 
-    const handleSave = async (updatedTitle = title, updatedDesc = description, updatedLinks = tempLinks, updatedFiles = files) => {
+    const handleSave = async (updatedTitle = title, updatedDesc = description, updatedLinks = tempLinks, updatedFiles = files, updatedSubroutines = subroutines) => {
         setIsSaving(true);
         const success = await onUpdate(task, {
             title: updatedTitle,
             description: updatedDesc,
             attachments: JSON.stringify(updatedLinks),
-            files: JSON.stringify(updatedFiles)
+            files: JSON.stringify(updatedFiles),
+            subroutines_json: JSON.stringify(updatedSubroutines)
         });
         setIsSaving(false);
         if (success) {
@@ -77,15 +87,17 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
 
     // --- Date Methods ---
     useEffect(() => {
-        if (!isDatePickerOpen) return;
         const handleClickOutside = (event) => {
-            if (dateContainerRef.current && !dateContainerRef.current.contains(event.target)) {
+            if (isDatePickerOpen && dateContainerRef.current && !dateContainerRef.current.contains(event.target)) {
                 setIsDatePickerOpen(false);
+            }
+            if (isRecurrencePickerOpen && recurrenceContainerRef.current && !recurrenceContainerRef.current.contains(event.target)) {
+                setIsRecurrencePickerOpen(false);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [isDatePickerOpen]);
+    }, [isDatePickerOpen, isRecurrencePickerOpen]);
 
     const handleDateSelect = (date) => {
         setPendingDate(date);
@@ -141,6 +153,27 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
         }
     };
 
+    const handleRecurrenceIntervalChange = async (val) => {
+        try {
+            const updates = { recurrence_interval: val };
+            if (val === 'None') {
+                updates.recurrence_end_date = null;
+            }
+            await onUpdate(task, updates);
+        } catch (err) {
+            console.error("Recurrence interval update error:", err);
+        }
+    };
+
+    const handleRecurrenceEndDateSelect = async (date) => {
+        setIsRecurrencePickerOpen(false);
+        try {
+            await onUpdate(task, { recurrence_end_date: date });
+        } catch (err) {
+            console.error("Recurrence end date update error:", err);
+        }
+    };
+
     const priorityNeonColors = {
         1: 'pink',
         2: 'cyan',
@@ -163,7 +196,44 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
     const removeLink = (index) => {
         const newLinks = tempLinks.filter((_, i) => i !== index);
         setTempLinks(newLinks);
-        handleSave(title, description, newLinks, files);
+        handleSave(title, description, newLinks, files, subroutines);
+    };
+
+    // --- Sub-Routines Methods ---
+    const addSubroutine = () => {
+        if (!newSubroutine.trim()) return;
+        const newRoutines = [...subroutines, { title: newSubroutine, completed: false }];
+        setSubroutines(newRoutines);
+        setNewSubroutine('');
+        handleSave(title, description, tempLinks, files, newRoutines);
+    };
+
+    const toggleSubroutine = (index) => {
+        const newRoutines = [...subroutines];
+        newRoutines[index].completed = !newRoutines[index].completed;
+        setSubroutines(newRoutines);
+        handleSave(title, description, tempLinks, files, newRoutines);
+    };
+
+    const editSubroutineTitle = (index, newTitle) => {
+        const newRoutines = [...subroutines];
+        newRoutines[index].title = newTitle;
+        setSubroutines(newRoutines);
+    };
+
+    const saveSubroutineTitle = (index) => {
+        if (!subroutines[index].title.trim()) {
+            deleteSubroutine(index); // If empty, delete it
+        } else {
+            handleSave(title, description, tempLinks, files, subroutines);
+        }
+        setEditingField(null);
+    };
+
+    const deleteSubroutine = (index) => {
+        const newRoutines = subroutines.filter((_, i) => i !== index);
+        setSubroutines(newRoutines);
+        handleSave(title, description, tempLinks, files, newRoutines);
     };
 
     const handleFileClick = () => {
@@ -188,7 +258,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
             if (result.status === 'success') {
                 const newFiles = [...files, ...result.files];
                 setFiles(newFiles);
-                await handleSave(title, description, tempLinks, newFiles);
+                await handleSave(title, description, tempLinks, newFiles, subroutines);
             } else {
                 alert(result.message || "Upload failed");
             }
@@ -204,7 +274,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
     const removeFile = (index) => {
         const newFiles = files.filter((_, i) => i !== index);
         setFiles(newFiles);
-        handleSave(title, description, tempLinks, newFiles);
+        handleSave(title, description, tempLinks, newFiles, subroutines);
     };
 
     const renderMarkdown = (text) => {
@@ -324,6 +394,54 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
                             </div>
 
                             <div className="flex items-center gap-2 font-mono text-base px-3 py-1.5 border border-gray-700/50 rounded bg-black/20">
+                                <span className="text-cyber-primary xp-text">⟲</span>
+                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mr-1">
+                                    {t('tasks.recurrence')}:
+                                </span>
+                                <div className="w-28">
+                                    <CyberSelect
+                                        value={task.recurrence_interval || 'None'}
+                                        onChange={handleRecurrenceIntervalChange}
+                                        options={[
+                                            { value: 'None', label: t('tasks.intervals.none') },
+                                            { value: 'Daily', label: t('tasks.intervals.daily') },
+                                            { value: 'Weekly', label: t('tasks.intervals.weekly') },
+                                            { value: 'Monthly', label: t('tasks.intervals.monthly') },
+                                            { value: 'Yearly', label: t('tasks.intervals.yearly') }
+                                        ]}
+                                        neonColor="cyan"
+                                        className="text-[10px] font-bold h-7"
+                                        disabled={task.status == 1}
+                                    />
+                                </div>
+                                {task.recurrence_interval && task.recurrence_interval !== 'None' && (
+                                    <div className="flex relative" ref={recurrenceContainerRef}>
+                                        <div
+                                            onClick={() => task.status != 1 && setIsRecurrencePickerOpen(!isRecurrencePickerOpen)}
+                                            className="flex items-center gap-2 font-mono text-base px-2 py-1 cursor-pointer hover:bg-white/5 transition-colors border-l border-gray-700/50"
+                                            title={t('tasks.recurrence_end')}
+                                        >
+                                            <span className="text-[10px] font-bold text-cyber-secondary uppercase tracking-widest">
+                                                {t('tasks.recurrence_end')}:
+                                            </span>
+                                            <span className="text-xs text-gray-300">
+                                                {task.recurrence_end_date ? new Date(task.recurrence_end_date).toLocaleDateString() : '∞'}
+                                            </span>
+                                        </div>
+                                        {isRecurrencePickerOpen && (
+                                            <div className="absolute right-0 z-[100] mt-1 top-full">
+                                                <CyberCalendar
+                                                    value={task.recurrence_end_date}
+                                                    onChange={handleRecurrenceEndDateSelect}
+                                                    onClose={() => setIsRecurrencePickerOpen(false)}
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="flex items-center gap-2 font-mono text-base px-3 py-1.5 border border-gray-700/50 rounded bg-black/20">
                                 <span className="text-cyber-secondary xp-text">📁</span>
                                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mr-1">
                                     {t('tasks.category')}:
@@ -368,6 +486,67 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate }) => {
                                         <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-cyber-primary text-[10px] font-bold">[ EDIT ]</div>
                                     </div>
                                 )}
+                            </section>
+
+                            {/* Sub-Routines */}
+                            <section>
+                                <h3 className="text-cyber-success font-bold text-lg mb-3 uppercase tracking-wider flex items-center gap-2">
+                                    <span className="text-xl">⚡</span> {t('tasks.dossier.subroutines')}
+                                </h3>
+                                <div className="bg-black/20 border border-cyber-gray/30 p-4 rounded space-y-3">
+                                    {subroutines.map((sub, idx) => (
+                                        <div key={idx} className="flex items-center justify-between group">
+                                            <div className="flex items-center gap-3 flex-1">
+                                                <div className="relative flex items-center justify-center cursor-pointer">
+                                                    <input type="checkbox" checked={sub.completed} onChange={() => toggleSubroutine(idx)} className="peer appearance-none w-5 h-5 border-2 border-cyber-primary bg-black/50 checked:bg-cyber-primary transition-colors cursor-pointer" />
+                                                    <svg className="absolute w-3 h-3 pointer-events-none text-black opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                {editingField === `subroutine-${idx}` ? (
+                                                    <input
+                                                        autoFocus
+                                                        type="text"
+                                                        value={sub.title}
+                                                        onChange={(e) => editSubroutineTitle(idx, e.target.value)}
+                                                        onBlur={() => saveSubroutineTitle(idx)}
+                                                        onKeyDown={(e) => e.key === 'Enter' && saveSubroutineTitle(idx)}
+                                                        className="bg-black/40 border-b border-cyber-primary text-sm font-mono flex-1 focus:outline-none text-white py-1"
+                                                    />
+                                                ) : (
+                                                    <span
+                                                        className={`font-mono text-sm transition-all flex-1 cursor-pointer hover:text-cyber-primary ${sub.completed ? 'text-gray-500 line-through opacity-70' : 'text-gray-200'}`}
+                                                        onClick={() => setEditingField(`subroutine-${idx}`)}
+                                                        title="Click to edit sub-routine"
+                                                    >
+                                                        {sub.title}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <button title="Delete Sub-Routine" onClick={(e) => { e.stopPropagation(); deleteSubroutine(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white ml-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
+                                            </button>
+                                        </div>
+                                    ))}
+
+                                    <div className="flex gap-2 mt-2">
+                                        <input
+                                            type="text"
+                                            value={newSubroutine}
+                                            onChange={(e) => setNewSubroutine(e.target.value)}
+                                            onKeyDown={(e) => e.key === 'Enter' && addSubroutine()}
+                                            placeholder={t('tasks.dossier.subroutine_placeholder')}
+                                            className="bg-black/40 border border-cyber-gray p-2 text-sm font-mono flex-1 focus:border-cyber-primary outline-none text-white transition-colors"
+                                        />
+                                        <button
+                                            onClick={addSubroutine}
+                                            disabled={!newSubroutine.trim()}
+                                            className="bg-cyber-primary/20 text-cyber-primary border border-cyber-primary px-4 hover:bg-cyber-primary hover:text-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold"
+                                        >
+                                            {t('tasks.dossier.add_subroutine')}
+                                        </button>
+                                    </div>
+                                </div>
                             </section>
 
                             {/* Web Uplinks */}

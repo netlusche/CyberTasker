@@ -9,6 +9,8 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
     const [category, setCategory] = useState('');
     const [priority, setPriority] = useState('2');
     const [dueDate, setDueDate] = useState('');
+    const [recurrenceInterval, setRecurrenceInterval] = useState('None');
+    const [recurrenceEndDate, setRecurrenceEndDate] = useState('');
     const [error, setError] = useState('');
     const [successFlash, setSuccessFlash] = useState(false);
 
@@ -45,7 +47,9 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
             category: selectedCategory,
             priority: parseInt(priority),
             points_value: 10 + (3 - parseInt(priority)) * 5,
-            due_date: dueDate // Pass due date
+            due_date: dueDate, // Pass due date
+            recurrence_interval: recurrenceInterval,
+            recurrence_end_date: recurrenceEndDate
         });
 
         // Trigger Success Animation
@@ -54,6 +58,8 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
 
         setTitle('');
         setDueDate(''); // Reset due date
+        setRecurrenceInterval('None');
+        setRecurrenceEndDate('');
         setError('');
     };
 
@@ -115,6 +121,32 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [] }) => {
                         onChange={setDueDate}
                         placeholder={t('tasks.due_date')}
                     />
+
+                    <div className="flex items-center gap-2 border border-cyber-gray/30 p-1 rounded">
+                        <span className="text-xs text-cyber-primary">{t('tasks.recurrence')}:</span>
+                        <CyberSelect
+                            value={recurrenceInterval}
+                            onChange={setRecurrenceInterval}
+                            options={[
+                                { value: 'None', label: t('tasks.intervals.none') },
+                                { value: 'Daily', label: t('tasks.intervals.daily') },
+                                { value: 'Weekly', label: t('tasks.intervals.weekly') },
+                                { value: 'Monthly', label: t('tasks.intervals.monthly') },
+                                { value: 'Yearly', label: t('tasks.intervals.yearly') }
+                            ]}
+                            className="w-28 flex-none text-[10px]"
+                        />
+                        {recurrenceInterval !== 'None' && (
+                            <>
+                                <span className="text-xs text-cyber-secondary">{t('tasks.recurrence_end')}:</span>
+                                <CyberDateInput
+                                    value={recurrenceEndDate}
+                                    onChange={setRecurrenceEndDate}
+                                    placeholder={t('tasks.recurrence_end')}
+                                />
+                            </>
+                        )}
+                    </div>
 
                     <button type="submit" className="btn-cyber btn-cyber-primary flex-none w-full sm:w-auto ml-auto">
                         {t('tasks.add')}

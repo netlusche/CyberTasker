@@ -233,7 +233,10 @@
             "edit_mode": "MODO EDITAR",
             "read_mode": "MODO LECTURA",
             "save_success": "DOSSIER ACTUALIZADO",
-            "save_error": "ENLACE ASCENDENTE FALLÓ"
+            "save_error": "ENLACE ASCENDENTE FALLÓ",
+            "subroutines": "SUBRUTINAS",
+            "add_subroutine": "+ AÑADIR RUTINA",
+            "subroutine_placeholder": "Ingrese a la subrutina..."
         }
     },
     "help": {

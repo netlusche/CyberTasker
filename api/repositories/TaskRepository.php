@@ -25,6 +25,9 @@ class TaskRepository extends Repository
             $where[] = "status = 0 AND due_date < ? AND due_date IS NOT NULL";
             $params[] = date('Y-m-d');
         }
+        else {
+            $where[] = "status != 1";
+        }
 
         return ['where' => implode(' AND ', $where), 'params' => $params];
     }
@@ -80,10 +83,85 @@ class TaskRepository extends Repository
 
     public function getCalendarTasks(int $userId): array
     {
-        $sql = "SELECT id, title, due_date, status, priority, category, points_value, description FROM tasks WHERE user_id = ? AND status = 0 AND due_date IS NOT NULL ORDER BY due_date ASC";
+        // Fetch all active calendar tasks, including those with recurrence
+        $sql = "SELECT id, title, due_date, status, priority, category, points_value, description, recurrence_interval, recurrence_end_date FROM tasks WHERE user_id = ? AND status = 0 AND due_date IS NOT NULL ORDER BY due_date ASC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$userId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $baseTasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $calendarTasks = [];
+
+        foreach ($baseTasks as $task) {
+            // Include the real task
+            $task['is_projection'] = false;
+            $calendarTasks[] = $task;
+
+            // Generate Holo-Projections if it is a recurring task
+            if (!empty($task['recurrence_interval']) && $task['recurrence_interval'] !== 'None') {
+                $calendarTasks = array_merge($calendarTasks, $this->generateProjections($task));
+            }
+        }
+
+        // Re-sort the combined array by date
+        usort($calendarTasks, function ($a, $b) {
+            return strtotime($a['due_date']) - strtotime($b['due_date']);
+        });
+
+        return $calendarTasks;
+    }
+
+    private function generateProjections(array $task): array
+    {
+        $projections = [];
+        $interval = strtolower($task['recurrence_interval'] ?? '');
+        $currentDateStr = $task['due_date'];
+
+        $modifier = '';
+        $limit = 0;
+
+        switch ($interval) {
+            case 'daily':
+                $modifier = '+1 day';
+                $limit = 14;
+                break;
+            case 'weekly':
+                $modifier = '+1 week';
+                $limit = 10;
+                break;
+            case 'monthly':
+                $modifier = '+1 month';
+                $limit = 10;
+                break;
+            case 'yearly':
+                $modifier = '+1 year';
+                $limit = 10;
+                break;
+            default:
+                return [];
+        }
+
+        $endDateObj = !empty($task['recurrence_end_date']) ? new DateTime($task['recurrence_end_date']) : null;
+        if ($endDateObj) {
+            $endDateObj->setTime(23, 59, 59); // End of day
+        }
+
+        for ($i = 0; $i < $limit; $i++) {
+            $currentDateStr = date('Y-m-d H:i:s', strtotime($currentDateStr . ' ' . $modifier));
+
+            // Abort if projection goes past the configured end date
+            if ($endDateObj && new DateTime($currentDateStr) > $endDateObj) {
+                break;
+            }
+
+            $projection = $task;
+            $projection['id'] = 'holo_' . $task['id'] . '_' . $i; // Virtual ID
+            $projection['due_date'] = $currentDateStr;
+            $projection['is_projection'] = true;
+
+            $projections[] = $projection;
+        }
+
+        return $projections;
     }
 
     public function getTaskById(int $taskId, int $userId)
@@ -93,11 +171,11 @@ class TaskRepository extends Repository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function createTask(int $userId, string $title, string $category, int $priority, int $points, ?string $dueDate, ?string $description = null, ?string $attachments = null): int
+    public function createTask(int $userId, string $title, string $category, int $priority, int $points, ?string $dueDate, ?string $description = null, ?string $attachments = null, ?string $files = null, ?string $subroutinesJson = null, ?string $recurrenceInterval = null, ?string $recurrenceEndDate = null): int
     {
-        $sql = "INSERT INTO tasks (user_id, title, category, priority, points_value, due_date, description, attachments) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO tasks (user_id, title, category, priority, points_value, due_date, description, attachments, files, subroutines_json, recurrence_interval, recurrence_end_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$userId, $title, $category, $priority, $points, $dueDate, $description, $attachments]);
+        $stmt->execute([$userId, $title, $category, $priority, $points, $dueDate, $description, $attachments, $files, $subroutinesJson, $recurrenceInterval, $recurrenceEndDate]);
         return (int)$this->pdo->lastInsertId();
     }
 

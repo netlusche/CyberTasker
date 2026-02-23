@@ -233,7 +233,10 @@
             "edit_mode": "编辑模式",
             "read_mode": "阅读模式",
             "save_success": "档案更新",
-            "save_error": "上行链路失败"
+            "save_error": "上行链路失败",
+            "subroutines": "子程序",
+            "add_subroutine": "+ 添加例程",
+            "subroutine_placeholder": "进入子程序..."
         }
     },
     "help": {

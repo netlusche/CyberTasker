@@ -10,6 +10,7 @@ This plan outlines the end-to-end testing strategy for CyberTasker v2.1.0. The g
 1. **Feature Gap Analysis**: Review the latest commits and the `USER STORIES.md` to identify any newly implemented functionalities.
 2. **Suite Expansion**: All new features must have a corresponding test case (automated or manual) added to this Master Test Plan.
 3. **Selector Audit**: Ensure new UI components use consistent `data-testid` attributes to maintain E2E stability.
+4. **Linguistic Audit**: Review `TRANSLATION_GUIDELINES.md` to ensure any new terminology or thematic slang adopted in the UI has clear directives for translators.
 
 *Testing is not a static event; the suite must evolve alongside the neural stream.*
 
@@ -238,3 +239,37 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
   - Priority and Category open customized `CyberSelect` dropdown menus with options matching the environment.
   - Priority and Due Date trigger the highest `z-index` `CyberConfirm` modals, blocking background interaction until validated.
   - Category changes update instantly. All field changes persist out to the main dashboard reliably without needing a hard refresh.
+
+---
+
+## 📅 test-suite-09: Release 2.3 Features
+
+### TS-09.1: Cross-Database Pipeline Verification [AUTOMATED]
+- **Scenario**: Validate the health of the application against standard `cybertracker.db` SQLite instances AND `mysql/mariadb` environments.
+- **Validation**: GitHub Actions `.github/workflows/e2e-tests.yml` successfully completes the test suite parallel on both database engines with zero syntax errors.
+
+### TS-09.2: Sub-Routine Creation & Inline Editing [AUTOMATED] (02-directive-management.spec.js)
+- **Scenario**: Add sub-routines to a newly created directive in the dossier. Modify the text of one sub-routine inline. Toggle their state.
+- **Validation**:
+  - Sub-routines can be added, deleted, and text can be modified inline by clicking without reloading.
+  - Toggling sub-routines instantly updates their `completed` state in the database.
+
+### TS-09.3: Dashboard Task Progress Indication [MANUAL/AUTOMATED]
+- **Scenario**: Create a directive with 3 sub-routines, close the dossier, and check the dashboard card.
+- **Validation**:
+  - The dashboard card displays "0/3" (or appropriate progress) if sub-routines exist.
+  - Completing sub-routines updates this real-time to "1/3", "2/3", up to "3/3".
+  - If no sub-routines exist, the progress badge is completely hidden.
+
+### TS-09.4: Scheduled Protocols [AUTOMATED] (02-directive-management.spec.js)
+- **Scenario**: Assign a `recurrence_interval` (Daily/Weekly/Monthly) and optionally an end date to an active protocol. Complete the protocol.
+- **Validation**:
+  - Upon marking as "Done", exactly ONE new open task is spawned for the next interval.
+  - Due dates are correctly computed recursively by PHP.
+  - If the new generated date surpasses the `recurrence_end_date`, the chain terminates harmlessly.
+  - The Global Calendar successfully projects "Holo-Projections" for these tasks in the future without clogging the DB.
+
+### TS-09.5: Installer Schema Verification [MANUAL]
+- **Scenario**: Trigger the `api/install.php` routine on an existing v2.2 legacy SQLite database.
+- **Validation**: 
+  - The script accurately patches the `tasks` table with the new `subroutines`, `recurrence_interval`, and `recurrence_end_date` columns seamlessly.

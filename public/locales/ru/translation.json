@@ -233,7 +233,10 @@
             "edit_mode": "РЕЖИМ РЕДАКТИРОВАНИЯ",
             "read_mode": "РЕЖИМ ЧТЕНИЯ",
             "save_success": "ДОСЬЕ ОБНОВЛЕНО",
-            "save_error": "ОШИБКА ПОДКЛЮЧЕНИЯ"
+            "save_error": "ОШИБКА ПОДКЛЮЧЕНИЯ",
+            "subroutines": "ПОДПРОГРАММЫ",
+            "add_subroutine": "+ ДОБАВИТЬ ПРОЦЕДУРУ",
+            "subroutine_placeholder": "Войти в подпрограмму..."
         }
     },
     "help": {

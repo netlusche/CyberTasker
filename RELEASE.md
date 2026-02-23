@@ -1,3 +1,13 @@
+# CyberTasker v2.3 (Workflow & Stability Update)
+*Release Date: 2026-02-23*
+
+*   **Scheduled Protocols**: Added full support for recurring directives (Daily, Weekly, Monthly) with optional end dates. The Global Calendar creates "Holo-Projections" for future tasks.
+*   **Directive Sub-Routines**: Directly inside the Dossier, operatives can split large directives into trackable sub-routines (checklists) featuring inline text-editing and individual persistence.
+*   **Tactical Progress Tracking**: Directive cards continuously track sub-routine completion ratios on the dashboard (e.g., 3/5).
+*   **Cross-Database Integrity**: Implemented a robust GitHub Actions E2E test-pipeline that evaluates the environment securely and asynchronously against both lightweight SQLite targets and MariaDB clusters to block dialect-anomalies.
+
+---
+
 # CyberTasker v2.2 (The Dashboard & Dossier Upgrade)
 *Release Date: 2026-02-22*
 

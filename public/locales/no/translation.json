@@ -233,7 +233,10 @@
             "edit_mode": "EDIT MODUS",
             "read_mode": "LESEMODUS",
             "save_success": "DOSSIER OPPDATERT",
-            "save_error": "UPLINK FEIL"
+            "save_error": "UPLINK FEIL",
+            "subroutines": "UNDERRUTINER",
+            "add_subroutine": "+ LEGG TIL RUTINE",
+            "subroutine_placeholder": "Angi underrutine..."
         }
     },
     "help": {

@@ -233,7 +233,10 @@
             "edit_mode": "CHẾ ĐỘ CHỈNH SỬA",
             "read_mode": "CHẾ ĐỘ ĐỌC",
             "save_success": "HỒ SƠ CẬP NHẬT",
-            "save_error": "LIÊN KẾT LÊN THẤT BẠI"
+            "save_error": "LIÊN KẾT LÊN THẤT BẠI",
+            "subroutines": "CÁC QUY TRÌNH CON",
+            "add_subroutine": "+ THÊM QUY TRÌNH",
+            "subroutine_placeholder": "Nhập quy trình phụ..."
         }
     },
     "help": {

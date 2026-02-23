@@ -74,3 +74,9 @@ This document provides a categorized overview of the user stories implemented in
 *   **Password Confirmation (US-2.2.5 & 2.2.6)**: As an operative, I want to be prompted to confirm a new password during profile updates and password resets to prevent accidentally locking myself out.
 *   **Chrono-Sync Calendar (US-2.2.7 & 2.2.8)**: As an operative, I want to access a central calendar to visualize all outstanding directives mapped against their deadlines.
 *   **Dossier Field Editing (US-2.2.12)**: As an operative, I want the ability to view and modify my `due_date`, `priority`, and `category` directly inside the Directive Dossier overlay via interactive dropdowns for rapid organization.
+
+## 🚀 11. Release 2.3 Features
+*   **Automated E2E Pipeline (US-2.3.1)**: As a system architect, I want Playwright tests to run fully automated via GitHub Actions against both SQLite and MariaDB to instantly block cross-database incompatibilities.
+*   **Sub-Routine Integration (US-2.3.2)**: As an operative, I want to break down complex directives into smaller, actionable sub-routines (checklists) directly within the Dossier that I can toggle and edit inline.
+*   **Tactical Progress Tracking (US-2.3.3)**: As an operative, I want to see a visual progress indicator (e.g., "3/5") for active sub-routines directly on the dashboard cards, eliminating the need to open every dossier to gauge mission completion.
+*   **Scheduled Protocols (US-2.3.4)**: As an operative, I want to define recurrence intervals (Daily, Weekly, Monthly) for repetitive tasks. Upon completion, the system should automatically generate a fresh directive for the next operational window, keeping my schedule clear of infinite duplicates.

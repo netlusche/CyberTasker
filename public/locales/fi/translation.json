@@ -233,7 +233,10 @@
             "edit_mode": "MUOKKAUSTILA",
             "read_mode": "LUKEMUOTO",
             "save_success": "ASIAKIRJA PÄIVITETTY",
-            "save_error": "YLÖSLINKKI EPÄONNISTUI"
+            "save_error": "YLÖSLINKKI EPÄONNISTUI",
+            "subroutines": "ALIRUTIINIT",
+            "add_subroutine": "+ LISÄÄ RUTIINI",
+            "subroutine_placeholder": "Anna aliohjelma..."
         }
     },
     "help": {
