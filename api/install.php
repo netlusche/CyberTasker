@@ -314,16 +314,16 @@ try {
             ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'System', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
         ];
 
-        $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, attachments, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, files, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
         $first = true;
         foreach ($directives as $d) {
-            $attachments = null;
+            $files = null;
             if ($first && $pdfAttachment) {
-                $attachments = $pdfAttachment;
+                $files = $pdfAttachment;
                 $first = false;
             }
-            $stmtTask->execute([$adminId, $d[0], $d[1], $d[2], $d[3], $attachments, $d[4]]);
+            $stmtTask->execute([$adminId, $d[0], $d[1], $d[2], $d[3], $files, $d[4]]);
         }
         echo "Initial Admin security directives deployed.<br>\n";
     }

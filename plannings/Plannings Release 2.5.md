@@ -9,6 +9,19 @@
 
 ## Neue User Stories
 
+**US-2.5.0: Umfassendes Dokumentations-Update (Bereits umgesetzt)**
+* **Als** Nutzer, Administrator und System-Operator
+* **Möchte ich** eine detaillierte, bebilderte und strukturierte Systemdokumentation in meinem `/manuals` Ordner
+* **Damit** ich alle Features (z.B. 2FA, Gamification) besser verstehe, das System administrieren kann und die technische Architektur nachvollziehbar ist.
+* **Akzeptanzkriterien:**
+  - Erstellung eines umfassenden `User_Guide.md` mit aktuellen Screenshots des Dashboards, Profils und Paginierung.
+  - Erstellung eines modernisierten `CyberTasker_Admin_Guide.md` inkl. Zero-Config Sperre, 2FA-Management und Diagnose-Tools.
+  - Erstellung einer `Technical_Reference.md` inkl. CI/CD Dokumentation, Architektur-Diagramm und Datenbank-ERD (als echte Grafiken konvertiert).
+  - Design und Integration von neuen, horizontalen Cyberpunk-Logos.
+  - Automatische Generierung aller Ressourcen in hochwertige PDFs (`User_Guide.pdf`, `CyberTasker_Admin_Guide.pdf`, `Technical_Reference.pdf`).
+  - *(Status: Vollständig umgesetzt und abgeschlossen vor eigentlichem Release-Start)*
+
+
 **US-2.5.1: Multilinguale Tooltips für Bedienelemente**
 * **Als** Nutzer
 * **Möchte ich** beim Hovern über Icons, Buttons und komplexe Bedienelemente einen kurzen, erklärenden Text (Tooltip) sehen
