@@ -4,6 +4,7 @@
 *Hier sammeln wir kleinere Optimierungen (Quality of Life) und UI/UX-Verbesserungen, die als Zwischen-Release vor dem großen 3.0-Meilenstein eingeschoben werden.*
 - **Sub-Routine Reordering:** Die Reihenfolge von Sub-Routinen soll im Dossier per Drag & Drop nachträglich anpassbar sein.
 - **Installer Cleanup:** Entfernen fehlerhafter Code-Fragmente (Hyroglyphen) am Dateiende der `api/install.php`, da diese außerhalb des regulären PHP-Tags liegen.
+- **UI Bugfix (Force Theme):** Der `CyberSelect` Dropdown-Layer für die Kategorie-Auswahl im "New Directive" Formular wird unten abgeschnitten (z-index / overflow Problem), wenn das Force-Theme (bzw. spezifische Themes) aktiv ist.
 
 ## Neue User Stories
 
