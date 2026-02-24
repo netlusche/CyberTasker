@@ -188,7 +188,7 @@ class AdminController extends Controller
             $this->errorResponse('Missing setting key');
         }
 
-        $allowedSettings = ['strict_password_policy'];
+        $allowedSettings = ['strict_password_policy', 'enforce_email_2fa'];
         if (!in_array($key, $allowedSettings)) {
             $this->errorResponse('Invalid setting key: ' . htmlspecialchars($key));
         }

@@ -398,7 +398,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) - Màu đỏ như máu và thép lạnh. Các cạnh tàn bạo sắc như dao cạo. Hôm nay là một ngày tốt để viết mã. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Băng và Lửa. Thép xanh lạnh và điểm nhấn màu đỏ máu Valyrian. Mùa đông đang đến. Miền Bắc nhớ.",
                 "theme_marvel": "COMIC (MARVEL) — Các chấm hành động màu đỏ và đậm nét anh hùng. Phù! Úp! Một sự tôn vinh cho thời kỳ hoàng kim của truyện tranh. Tuyệt vời!",
-                "theme_dc": "GOTHAM (DC) - Đêm tối nhất, màu xanh đậm nhất và một mảnh ánh sáng vàng xuyên qua cơn mưa. Công lý không bao giờ ngủ."
+                "theme_dc": "GOTHAM (DC) - Đêm tối nhất, màu xanh đậm nhất và một mảnh ánh sáng vàng xuyên qua cơn mưa. Công lý không bao giờ ngủ.",
+                "theme_computerwelt": "COMPUTERWELT — Giao thức Kraftwerk '81. Khung xe màu đen mờ với đèn báo màu xanh neon và màu vàng thận trọng. Người và máy đồng bộ hoàn hảo.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Thẩm mỹ Kraftwerk '78. Màu đỏ thẫm có độ tương phản cao, màu đen tuyệt đối và màu trắng tinh khiết. Chúng tôi là những người máy.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Vượt qua màn đêm. Màu tím đậm được nhuộm bằng màu đỏ tươi tổng hợp và xanh điện. Lưới không bao giờ ngủ.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Thẩm mỹ quỹ đạo ưu tú. Bề mặt trắng chói mắt, các điểm nhấn màu bạc bóng và luồng dữ liệu màu xanh băng. Kinh doanh là chiến tranh."
             },
             "global_shortcuts": {
                 "title": "// CÁC PHÍM TẮT TOÀN CẦU [Quy trình làm việc]",
@@ -408,6 +412,13 @@
                 "item2_text": "Nhấn [/] để chuyển tiêu điểm đến thanh Tìm kiếm thần kinh và bắt đầu truy vấn các ngân hàng dữ liệu.",
                 "item3_label": "ĐÓNG LỚP PHỦ",
                 "item3_text": "Nhấn [ESC] để đóng ngay lập tức mọi lớp phủ phương thức, hồ sơ hoặc cấu hình đang hoạt động."
+            },
+            "danger_zone": {
+                "title": "// KHU NGUY HIỂM [Xóa danh tính]",
+                "item1_warn": "⚠ CẢNH BÁO QUAN TRỌNG:",
+                "item1_text": "Việc chấm dứt tài khoản đầu cuối của bạn là không thể thay đổi được. Tất cả các chỉ thị, kho lưu trữ và liên kết thần kinh sẽ bị xóa sạch.",
+                "item2_label": "XÁC THỰC",
+                "item2_text": "Để tiếp tục, bạn phải xuất trình Khóa truy cập hiện tại của mình làm bằng chứng nhận dạng."
             }
         }
     },
@@ -469,7 +480,9 @@
         "password_reset_msg": "Đặt lại mật khẩu cho {{username}}.",
         "disable_2fa_confirm": "TẮT 2FA CHO {{username}}? Điều này sẽ loại bỏ các giao thức xác minh thứ cấp.",
         "2fa_disabled_msg": "2FA đã bị vô hiệu hóa đối với {{username}}.",
-        "disable_2fa_failed": "Không tắt được 2FA"
+        "disable_2fa_failed": "Không tắt được 2FA",
+        "policy_enforce_email_2fa_title": "Thực thi Email 2FA",
+        "policy_enforce_email_2fa_desc": "Buộc gửi mã dự phòng Email 2FA đến những người đang hoạt động đang cố gắng đăng nhập mà không có trình xác thực TOTP."
     },
     "calendar": {
         "clear_date": "NGÀY XÓA",
@@ -504,5 +517,9 @@
         "lvl_prefix": "LVL",
         "xp_total": "Tổng XP",
         "next_rank_required": "NGÂN HÀNG TIẾP THEO: {{xp}} XP BẮT BUỘC"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "KÍCH HOẠT LIÊN KẾT MÃ HÓA: Thực thi Giao thức 2FA trên toàn lưới",
+        "enforce_2fa_desc": "Các liên kết liên lạc của bạn hiện đang bị đánh cắp gói thần kinh trái phép. Điều hướng tới Bảng điều khiển dành cho quản trị viên ngay lập tức và kích hoạt mô-đun phòng thủ 'Thực thi Email 2FA' cho tất cả các hợp tác xã."
     }
 }

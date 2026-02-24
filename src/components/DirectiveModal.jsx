@@ -11,8 +11,12 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
     const { theme } = useTheme();
     const fileInputRef = useRef(null);
     const [editingField, setEditingField] = useState(null);
-    const [title, setTitle] = useState(task.title || '');
-    const [description, setDescription] = useState(task.description || '');
+
+    const displayTitle = task.title?.startsWith('i18n:') ? t(task.title.replace('i18n:', '')) : task.title;
+    const displayDesc = task.description?.startsWith('i18n:') ? t(task.description.replace('i18n:', '')) : task.description;
+
+    const [title, setTitle] = useState(displayTitle || '');
+    const [description, setDescription] = useState(displayDesc || '');
     const [attachments, setAttachments] = useState([]);
     const [tempLinks, setTempLinks] = useState([]);
     const [files, setFiles] = useState([]);
@@ -52,8 +56,10 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
             // Sync description when task prop updates (e.g. after a save)
             // But only if we are not actively editing it right now to avoid overwriting typed text
             if (editingField !== 'description' && editingField !== 'title') {
-                setTitle(task.title || '');
-                setDescription(task.description || '');
+                const currentDisplayTitle = task.title?.startsWith('i18n:') ? t(task.title.replace('i18n:', '')) : task.title;
+                const currentDisplayDesc = task.description?.startsWith('i18n:') ? t(task.description.replace('i18n:', '')) : task.description;
+                setTitle(currentDisplayTitle || '');
+                setDescription(currentDisplayDesc || '');
             }
         } catch (e) {
             setAttachments([]);

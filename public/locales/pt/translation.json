@@ -398,7 +398,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Vermelho sangue e aço frio. Bordas brutalistas nítidas. Hoje é um bom dia para codificar. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Gelo e Fogo. Aço azul frio e detalhes em vermelho sangue valiriano. O inverno está chegando. O Norte lembra.",
                 "theme_marvel": "COMIC (MARVEL) — Heroicos pontos de ação vermelhos e ousados. Prisioneiro de guerra! Uau! Uma homenagem à era de ouro dos quadrinhos. Excelsior!",
-                "theme_dc": "GOTHAM (DC) – Noite mais escura, azul mais profundo e um raio de luz amarela cortando a chuva. A justiça nunca dorme."
+                "theme_dc": "GOTHAM (DC) – Noite mais escura, azul mais profundo e um raio de luz amarela cortando a chuva. A justiça nunca dorme.",
+                "theme_computerwelt": "COMPUTERWELT — Protocolos do Kraftwerk '81. Chassi preto fosco com indicadores verdes neon e amarelos de cuidado. Homem e máquina em perfeita sincronia.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Estética do Kraftwerk '78. Carmesim de alto contraste, preto absoluto e branco total. Nós somos os robôs.",
+                "theme_neon-syndicate": "NEON SYNDICATE – Fuja da noite. Roxo vazio profundo lavado em magenta synthwave e azul elétrico. A rede nunca dorme.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVO — Estética orbital de elite. Superfícies brancas ofuscantes, detalhes em prata escovada e fluxos de dados em azul gelo. Negócios são guerra."
             },
             "global_shortcuts": {
                 "title": "// ATALHOS GLOBAIS [Fluxo de trabalho]",
@@ -408,6 +412,13 @@
                 "item2_text": "Pressione [/] para focar na barra de pesquisa neural e começar a consultar os bancos de dados.",
                 "item3_label": "FECHAR SOBREPOSIÇÕES",
                 "item3_text": "Pressione [ESC] para fechar instantaneamente qualquer modal, dossiê ou sobreposição de configuração ativa."
+            },
+            "danger_zone": {
+                "title": "// ZONA DE PERIGO [Apagamento de Identidade]",
+                "item1_warn": "⚠ AVISO CRÍTICO:",
+                "item1_text": "O encerramento da sua conta de terminal é irreversível. Todas as diretivas, arquivos e links neurais serão apagados.",
+                "item2_label": "AUTENTICAÇÃO",
+                "item2_text": "Para prosseguir, você deverá apresentar sua Chave de Acesso atual como comprovante de identidade."
             }
         }
     },
@@ -469,7 +480,9 @@
         "password_reset_msg": "Redefinição de senha para {{nome de usuário}}.",
         "disable_2fa_confirm": "DESATIVAR 2FA PARA {{nomedeusuário}}? Isso removerá os protocolos de verificação secundários.",
         "2fa_disabled_msg": "2FA desativado para {{nome de usuário}}.",
-        "disable_2fa_failed": "Falha ao desativar 2FA"
+        "disable_2fa_failed": "Falha ao desativar 2FA",
+        "policy_enforce_email_2fa_title": "Aplicar 2FA de e-mail",
+        "policy_enforce_email_2fa_desc": "Forçar o envio de um código substituto de e-mail 2FA para agentes ativos que tentam fazer login sem um autenticador TOTP."
     },
     "calendar": {
         "clear_date": "LIMPAR DATA",
@@ -504,5 +517,9 @@
         "lvl_prefix": "NVL",
         "xp_total": "Total de EXP",
         "next_rank_required": "PRÓXIMA CLASSIFICAÇÃO: {{xp}} XP NECESSÁRIO"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "ATIVE COMMLINKS CRIPTOGRAFADOS: aplique o protocolo 2FA em toda a rede",
+        "enforce_2fa_desc": "Seus links de comunicação estão atualmente expostos a detecção não autorizada de pacotes neurais. Navegue imediatamente para o Admin Console e ative o módulo defensivo 'Enforce Email 2FA' para todos os agentes."
     }
 }

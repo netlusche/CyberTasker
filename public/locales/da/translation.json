@@ -398,7 +398,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Blodrødt og koldt stål. Knivskarpe brutalistiske kanter. I dag er en god dag at kode. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Ice and Fire. Koldblåt stål og valyriske blodrøde accenter. Vinteren kommer. Norden husker.",
                 "theme_marvel": "COMIC (MARVEL) — Heroiske røde og dristige actionprikker. Pow! Puha! En hyldest til tegneseriernes guldalder. Excelsior!",
-                "theme_dc": "GOTHAM (DC) — Mørkeste nat, dybeste blå og en flig gult lys, der skærer gennem regnen. Retfærdigheden sover aldrig."
+                "theme_dc": "GOTHAM (DC) — Mørkeste nat, dybeste blå og en flig gult lys, der skærer gennem regnen. Retfærdigheden sover aldrig.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81-protokoller. Matsort chassis med neongrøn og forsigtig gule indikatorer. Menneske og maskine i perfekt sync.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 æstetik. Crimson med høj kontrast, absolut sort og skarp hvid. Vi er robotterne.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Løb ud af natten. Deep void lilla vasket i synthwave magenta og elektrisk blå. Gitteret sover aldrig.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital æstetik. Blændende hvide overflader, børstede sølvaccenter og isblå datastrømme. Forretning er krig."
             },
             "global_shortcuts": {
                 "title": "// GLOBALE GENVEJE [Workflow]",
@@ -408,6 +412,13 @@
                 "item2_text": "Tryk på [/] for at sætte fokus på den neurale søgelinje og begynde at forespørge i databankerne.",
                 "item3_label": "LUK OVERLAG",
                 "item3_text": "Tryk på [ESC] for øjeblikkeligt at lukke enhver aktiv modal-, dossier- eller konfigurationsoverlejring."
+            },
+            "danger_zone": {
+                "title": "// FAREZONE [Sletning af identitet]",
+                "item1_warn": "⚠ KRITISK ADVARSEL:",
+                "item1_text": "Opsigelse af din terminalkonto er irreversibel. Alle direktiver, arkiver og neurale links vil blive slettet.",
+                "item2_label": "GODKENDELSE",
+                "item2_text": "For at fortsætte skal du fremvise din nuværende adgangsnøgle som bevis på identitet."
             }
         }
     },
@@ -469,7 +480,9 @@
         "password_reset_msg": "Adgangskode nulstillet for {{brugernavn}}.",
         "disable_2fa_confirm": "DEAKTIVER 2FA FOR {{brugernavn}}? Dette vil fjerne sekundære verifikationsprotokoller.",
         "2fa_disabled_msg": "2FA deaktiveret for {{brugernavn}}.",
-        "disable_2fa_failed": "Kunne ikke deaktivere 2FA"
+        "disable_2fa_failed": "Kunne ikke deaktivere 2FA",
+        "policy_enforce_email_2fa_title": "Håndhæv e-mail 2FA",
+        "policy_enforce_email_2fa_desc": "Tving en e-mail 2FA fallback-kode til at blive sendt til aktive operatører, der forsøger at logge på uden en TOTP-godkendelse."
     },
     "calendar": {
         "clear_date": "RYD DATO",
@@ -504,5 +517,9 @@
         "lvl_prefix": "LVL",
         "xp_total": "XP i alt",
         "next_rank_required": "NÆSTE RANK: {{xp}} XP PÅKRÆVET"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "AKTIVER KRYPTEREDE KOMMLINK: Håndhæv 2FA-protokollen på tværs af nettet",
+        "enforce_2fa_desc": "Dine comm-links er i øjeblikket udsat for uautoriseret neural packet sniffing. Naviger til administrationskonsollen med det samme, og aktiver det defensive modul 'Enforce Email 2FA' for alle operatører."
     }
 }

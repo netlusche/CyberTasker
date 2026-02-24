@@ -398,7 +398,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Blodrött och kallt stål. Knivskarpa brutalistiska kanter. Idag är en bra dag att koda. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Ice and Fire. Kallblått stål och valyriska blodröda accenter. Vintern kommer. Norden minns.",
                 "theme_marvel": "COMIC (MARVEL) — Heroiska röda och djärva actionprickar. Pow! pang! En hyllning till serietidningarnas guldålder. Träull!",
-                "theme_dc": "GOTHAM (DC) — Mörkaste natten, djupast blå och en slinga av gult ljus som skär genom regnet. Rättvisan sover aldrig."
+                "theme_dc": "GOTHAM (DC) — Mörkaste natten, djupast blå och en slinga av gult ljus som skär genom regnet. Rättvisan sover aldrig.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81-protokoll. Mattsvart chassi med neongröna och försiktigt gula indikatorer. Man och maskin i perfekt synk.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 estetik. Hög kontrast crimson, absolut svart och skarp vit. Vi är robotarna.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Run the night. Deep void lila tvättad i synthwave magenta och elektrisk blå. Gallret sover aldrig.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital estetik. Blindande vita ytor, borstad silveraccenter och isblå dataströmmar. Affärer är krig."
             },
             "global_shortcuts": {
                 "title": "// GLOBAL SHORTCUTS [Arbetsflöde]",
@@ -408,6 +412,13 @@
                 "item2_text": "Tryck på [/] för att fästa fokus till den neurala sökfältet och börja söka i databankerna.",
                 "item3_label": "STÄNG OVERLAYS",
                 "item3_text": "Tryck på [ESC] för att omedelbart stänga alla aktiva modal-, underlags- eller konfigurationsöverlägg."
+            },
+            "danger_zone": {
+                "title": "// DANGER ZONE [Identitetsradering]",
+                "item1_warn": "⚠ KRITISK VARNING:",
+                "item1_text": "Att avsluta ditt terminalkonto är oåterkalleligt. Alla direktiv, arkiv och neurala länkar kommer att raderas.",
+                "item2_label": "AUTENTICERING",
+                "item2_text": "För att fortsätta måste du visa upp din nuvarande åtkomstnyckel som bevis på identitet."
             }
         }
     },
@@ -469,7 +480,9 @@
         "password_reset_msg": "Lösenordsåterställning för {{användarnamn}}.",
         "disable_2fa_confirm": "AVAKTIVERA 2FA FÖR {{användarnamn}}? Detta tar bort sekundära verifieringsprotokoll.",
         "2fa_disabled_msg": "2FA inaktiverad för {{användarnamn}}.",
-        "disable_2fa_failed": "Det gick inte att inaktivera 2FA"
+        "disable_2fa_failed": "Det gick inte att inaktivera 2FA",
+        "policy_enforce_email_2fa_title": "Framtvinga e-post 2FA",
+        "policy_enforce_email_2fa_desc": "Tvinga en reservkod för e-post 2FA att skickas till aktiva operatörer som försöker logga in utan TOTP-autentisering."
     },
     "calendar": {
         "clear_date": "RADERA DATUM",
@@ -504,5 +517,9 @@
         "lvl_prefix": "LVL",
         "xp_total": "XP Totalt",
         "next_rank_required": "NÄSTA RANK: {{xp}} XP KRÄVS"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "AKTIVERA KRYPTERADE KOMM.LÄNKAR: Genomför 2FA-protokollet över nätet",
+        "enforce_2fa_desc": "Dina kommunikationslänkar är för närvarande utsatta för obehörig snusning av neurala paket. Navigera till administratörskonsolen omedelbart och aktivera den defensiva modulen 'Enforce Email 2FA' för alla operatörer."
     }
 }

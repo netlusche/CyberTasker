@@ -7,7 +7,7 @@
 - **Directive Dossier Optimierungen:** Bessere visuelle Strukturierung durch Titelumbruch, vollständige Markdown-Unterstützung (inkl. Überschriften) in der Protocol Description und die Möglichkeit, den Directive-Namen direkt im Dossier zu editieren.
 - **Sicherheit & Profil-Verwaltung:** Einführung einer Passwort-Bestätigung ("Confirm new password") bei manuellen Passwort-Änderungen und beim Passwort-Reset (nicht bei der Registrierung).
 - **Personalisiertes Kalender-Feature:** Einführung eines internen Kalenders im Overlay-Format, um Directives mit Fälligkeitsdatum (Due Date) themengerecht und interaktiv darzustellen.
-- **Dokumentations-Update:** Anpassung und Erweiterung von `USER STORIES.md` und `MASTER_TEST_PLAN.md` gemäß den neuen Features.
+- **Dokumentations-Update:** Anpassung und Erweiterung von `manuals/USER STORIES.md` und `manuals/MASTER_TEST_PLAN.md` gemäß den neuen Features.
 
 ## Neue User Stories
 *Hier formulieren wir die daraus resultierenden konkreten User Stories.*
@@ -94,12 +94,12 @@
 
 **US-2.2.10: Nachpflege der zentralen Dokumentationen**
 * **Als** Entwickler/Projekt-Manager
-* **Möchte ich**, dass die Dateien `USER_STORIES.md` und `MASTER_TEST_PLAN.md` nach Abschluss der Release-Planung oder -Übersetzung um die neuen Features ergänzt werden
+* **Möchte ich**, dass die Dateien `USER_STORIES.md` und `manuals/MASTER_TEST_PLAN.md` nach Abschluss der Release-Planung oder -Übersetzung um die neuen Features ergänzt werden
 * **Damit** die zentrale Wissenbasis des Projekts stets aktuell und vollständig den Stand des Releases 2.2 abbildet.
 * **Akzeptanzkriterien:**
   - Alle neuen User Stories (US-2.2.1 bis US-2.2.11) sind in der offiziellen `USER_STORIES.md` nachgepflegt.
-  - Der gesamte Testplan ist in die Datei `MASTER_TEST_PLAN.md` integriert worden.
-  - In der `MASTER_TEST_PLAN.md` wurde klar abgegrenzt, welche der neuen Tests durch Playwright (Automated E2E Tests) und welche manuell (Manual Verification) getestet werden müssen.
+  - Der gesamte Testplan ist in die Datei `manuals/MASTER_TEST_PLAN.md` integriert worden.
+  - In der `manuals/MASTER_TEST_PLAN.md` wurde klar abgegrenzt, welche der neuen Tests durch Playwright (Automated E2E Tests) und welche manuell (Manual Verification) getestet werden müssen.
 
 **US-2.2.11: Erweiterung des Sprachpakets**
 * **Als** globaler Nutzer

@@ -398,7 +398,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Bloedrood en koud staal. Vlijmscherpe brutalistische randen. Vandaag is een goede dag om te coderen. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — IJs en vuur. Koud blauw staal en Valyrian bloedrode accenten. De winter komt eraan. Het Noorden herinnert zich.",
                 "theme_marvel": "COMIC (MARVEL) — Heroïsche rode en opvallende actiepunten. Pow! Wham! Een eerbetoon aan de gouden eeuw van stripboeken. Excelsior!",
-                "theme_dc": "GOTHAM (DC) — Donkerste nacht, diepste blauw en een streepje geel licht dat door de regen snijdt. Justitie slaapt nooit."
+                "theme_dc": "GOTHAM (DC) — Donkerste nacht, diepste blauw en een streepje geel licht dat door de regen snijdt. Justitie slaapt nooit.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81-protocollen. Matzwart chassis met neongroene en waarschuwingsgele indicatoren. Mens en machine perfect synchroon.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 esthetiek. Contrastrijk karmozijnrood, absoluut zwart en spierwit. Wij zijn de robots.",
+                "theme_neon-syndicate": "NEON SYNDICAAT — Ontsnap aan de nacht. Diepe leegte paars gewassen in synthwave magenta en elektrisch blauw. Het elektriciteitsnet slaapt nooit.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbitale esthetiek. Verblindend witte vlakken, geborstelde zilveren accenten en ijsblauwe datastromen. Zakendoen is oorlog."
             },
             "global_shortcuts": {
                 "title": "// GLOBALE SNELKOPPELINGEN [Workflow]",
@@ -408,6 +412,13 @@
                 "item2_text": "Druk op [/] om de focus naar de neurale zoekbalk te verplaatsen en de databanken te doorzoeken.",
                 "item3_label": "SLUIT OVERLAYS",
                 "item3_text": "Druk op [ESC] om elke actieve modale, dossier- of configuratie-overlay onmiddellijk te sluiten."
+            },
+            "danger_zone": {
+                "title": "// GEVAARZONE [Identiteit wissen]",
+                "item1_warn": "⚠ KRITIEKE WAARSCHUWING:",
+                "item1_text": "Het beëindigen van uw terminalaccount is onomkeerbaar. Alle richtlijnen, archieven en neurale links worden gewist.",
+                "item2_label": "AUTHENTICATIE",
+                "item2_text": "Om verder te gaan, moet u uw huidige toegangssleutel als identiteitsbewijs overleggen."
             }
         }
     },
@@ -469,7 +480,9 @@
         "password_reset_msg": "Wachtwoord opnieuw instellen voor {{gebruikersnaam}}.",
         "disable_2fa_confirm": "2FA UITSCHAKELEN VOOR {{username}}? Hierdoor worden secundaire verificatieprotocollen verwijderd.",
         "2fa_disabled_msg": "2FA uitgeschakeld voor {{username}}.",
-        "disable_2fa_failed": "Kan 2FA"
+        "disable_2fa_failed": "Kan 2FA",
+        "policy_enforce_email_2fa_title": "E-mail 2FA afdwingen",
+        "policy_enforce_email_2fa_desc": "Forceer dat een e-mail 2FA-reservecode wordt verzonden naar actieve medewerkers die proberen in te loggen zonder een TOTP-authenticator."
     },
     "calendar": {
         "clear_date": "niet uitschakelen DUIDELIJKE DATUM",
@@ -504,5 +517,9 @@
         "lvl_prefix": "LVL",
         "xp_total": "XP-totaal",
         "next_rank_required": "VOLGENDE RANG: {{xp}} XP VEREIST"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "ACTIVEER VERSLEUTELDE COMMLINKS: Dwing het 2FA-protocol af op het hele netwerk",
+        "enforce_2fa_desc": "Uw communicatieverbindingen worden momenteel blootgesteld aan ongeoorloofd snuiven van neurale pakketten. Navigeer onmiddellijk naar de Admin Console en activeer de verdedigingsmodule 'E-mail 2FA afdwingen' voor alle medewerkers."
     }
 }

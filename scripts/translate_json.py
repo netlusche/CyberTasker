@@ -12,7 +12,7 @@ import time
 # 
 # RULE: Balance theme with clarity. E.g., Use "Re-route Com-Link (Email)" 
 # rather than just "Splice the Datalink".
-# Read TRANSLATION_GUIDELINES.md before adding new keys!
+# Read manuals/TRANSLATION_GUIDELINES.md before adding new keys!
 # ==============================================================================
 
 TARGETS = ['da', 'sv', 'no', 'fi', 'hu', 'pl', 'pt', 'el', 'ru', 'zh-CN', 'de', 'es', 'fr', 'nl', 'it', 'ja', 'ko', 'hi', 'tr', 'vi', 'uk']

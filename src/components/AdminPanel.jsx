@@ -490,6 +490,26 @@ const AdminPanel = ({ onClose }) => {
                 <h3 className="text-cyber-primary font-bold mb-3 flex items-center gap-2">
                     <span>⚙</span> {t('admin.policies_title')}
                 </h3>
+
+                <div className="flex items-center gap-4 bg-cyber-primary/10 p-3 rounded border border-cyber-primary/30 mb-3">
+                    <div className="flex-1">
+                        <h4 className="text-white font-bold text-sm">{t('admin.policy_enforce_email_2fa_title')}</h4>
+                        <p className="text-xs text-gray-300">
+                            {t('admin.policy_enforce_email_2fa_desc')}
+                        </p>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                            type="checkbox"
+                            data-testid="enforce-email-2fa-toggle"
+                            className="sr-only peer"
+                            checked={String(settings.enforce_email_2fa) === '1'}
+                            onChange={() => handleToggleSetting('enforce_email_2fa', String(settings.enforce_email_2fa) === '1' ? '0' : '1')}
+                        />
+                        <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none ring-0 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyber-primary"></div>
+                    </label>
+                </div>
+
                 <div className="flex items-center gap-4 bg-cyber-primary/10 p-3 rounded border border-cyber-primary/30">
                     <div className="flex-1">
                         <h4 className="text-white font-bold text-sm">{t('admin.policy_strict_pwd_title')}</h4>

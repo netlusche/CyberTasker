@@ -88,11 +88,24 @@ class AuthController extends Controller
                 $this->errorResponse('Account not verified. Please check your email.', 403);
             }
 
+            $enforceEmail2FA = ($this->adminRepo->getSetting('enforce_email_2fa') === '1');
+            $requires2FA = false;
+            $twoFactorMethod = null;
+
             // Check 2FA
             if ($user['two_factor_enabled']) {
+                $requires2FA = true;
+                $twoFactorMethod = $user['two_factor_method'];
+            }
+            elseif ($enforceEmail2FA && $user['email']) {
+                $requires2FA = true;
+                $twoFactorMethod = 'email'; // Override locally for this session fallback
+            }
+
+            if ($requires2FA) {
                 $_SESSION['partial_id'] = $user['id'];
 
-                if ($user['two_factor_method'] === 'email') {
+                if ($twoFactorMethod === 'email') {
                     $code = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
                     $_SESSION['email_2fa_code'] = $code;
                     $_SESSION['email_2fa_time'] = time();
@@ -104,7 +117,7 @@ class AuthController extends Controller
                     sendMail($user['email'], $subject, $body);
                 }
 
-                $this->jsonResponse(['success' => true, 'requires_2fa' => true, 'two_factor_method' => $user['two_factor_method']]);
+                $this->jsonResponse(['success' => true, 'requires_2fa' => true, 'two_factor_method' => $twoFactorMethod]);
             }
 
             // Standard Login
@@ -546,22 +559,22 @@ class AuthController extends Controller
 
         // 2. Check Method-specific code
         if (!$verified) {
-            if ($user['two_factor_method'] === 'totp') {
+            $sessCode = $_SESSION['email_2fa_code'] ?? '';
+            $sessTime = $_SESSION['email_2fa_time'] ?? 0;
+            $sessUserId = $_SESSION['email_2fa_user_id'] ?? 0;
+
+            if ($user['two_factor_enabled'] && $user['two_factor_method'] === 'totp') {
                 if ($user['two_factor_secret'] && TOTP::verifyCode($user['two_factor_secret'], $code)) {
                     $verified = true;
                 }
             }
-            elseif ($user['two_factor_method'] === 'email') {
-                $sessCode = $_SESSION['email_2fa_code'] ?? '';
-                $sessTime = $_SESSION['email_2fa_time'] ?? 0;
-                $sessUserId = $_SESSION['email_2fa_user_id'] ?? 0;
 
-                if ($sessCode && $sessCode === $code && $sessUserId == $userId && (time() - $sessTime <= 600)) {
-                    $verified = true;
-                    unset($_SESSION['email_2fa_code']);
-                    unset($_SESSION['email_2fa_time']);
-                    unset($_SESSION['email_2fa_user_id']);
-                }
+            // Check fallback or designated email 2FA
+            if (!$verified && $sessCode && $sessCode === $code && $sessUserId == $userId && (time() - $sessTime <= 600)) {
+                $verified = true;
+                unset($_SESSION['email_2fa_code']);
+                unset($_SESSION['email_2fa_time']);
+                unset($_SESSION['email_2fa_user_id']);
             }
         }
 
@@ -606,7 +619,7 @@ class AuthController extends Controller
 
         $user = $this->userRepo->findById($userId);
 
-        if (!$user || $user['two_factor_method'] !== 'email') {
+        if (!$user || ($user['two_factor_method'] !== 'email' && $this->adminRepo->getSetting('enforce_email_2fa') !== '1')) {
             $this->errorResponse('Email security not active for this operative.');
         }
 

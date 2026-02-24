@@ -38,6 +38,15 @@
   - Das Skript erzwingt vor jedem Start ein `npm run check:all` (i18n & Theme-Checks) und `npm run test` (E2E Playwright CI-Tests).
   - Das Skript nutzt den nativen `npm version <auswahl>` Mechanismus, um die `package.json` abzugraden sowie den Commit und den `vX.X.X` Tag in der korrekten Reihenfolge zu generieren.
 
+**US-2.6.4: "Daily Megacorp Quote" (Message of the Day)**
+* **Als** Nutzer
+* **Möchte ich** jeden Tag ein passendes Cyberpunk-Zitat ("Quote of the Day") im Dashboard sehen
+* **Damit** eine kleine Quality-of-Life-Wertung die thematische Immersion stärkt und die Applikation lebendiger wirkt.
+* **Akzeptanzkriterien:**
+  - Einbindung einer visuell passenden "Message of the Day"-Anzeige im Kopfbereich des Dashboards.
+  - Das System enthält eine Liste von themenbezogenen Zitaten (z.B. Konzern-Ansagen wie "Remember: Efficiency is mandatory." oder Hacker-Sprüche wie "Push the payload, break the ice.").
+  - Ein Pseudo-Zufallsgenerator wählt basierend auf dem aktuellen Datum ein Zitat aus, sodass dieses zuverlässig jeden Tag wechselt.
+
 ## Ergänzungen für den Testplan
 
 **Zu US-2.6.1 (Multilinguale Tooltips):**
@@ -51,3 +60,7 @@
 
 **Zu US-2.6.3 (Release Automation):**
 - **Testfall (Sicherung):** Absichtlich einen Fehler in einen der Tests einbauen (z.B. falsche Farbe in React-File) und das Release-Skript starten. Prüfen, ob das Skript hart abbricht, bevor die Versionsnummer geändert wird.
+
+**Zu US-2.6.4 (Quote of the Day):**
+- **Testfall:** Dashboard laden und prüfen, ob ein Zitat im Kopfbereich angezeigt wird.
+- **Testfall (Datumswechsel):** Durch manuelles Vorstellen des Datums prüfen, ob der Pseudo-Zufallsgenerator das Zitat am Folgetag zuverlässig wechselt.

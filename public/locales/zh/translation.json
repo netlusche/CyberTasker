@@ -398,7 +398,11 @@
                 "theme_klingon": "QO'NOS（克林贡）——血红色和冰冷的钢铁。锋利的野兽派边缘。今天是编码的好日子。卡普拉！",
                 "theme_got": "维斯特洛（得到）——冰与火。冷蓝钢和瓦雷利亚血红色调。冬天来了。北方记得。",
                 "theme_marvel": "COMIC (MARVEL) — 英雄般的红色和大胆的动作圆点。噗！砰！向漫画黄金时代致敬。精益求精！",
-                "theme_dc": "哥谭（华盛顿）——最漆黑的夜晚，最深的蓝色，还有一丝黄光穿过雨丝。正义永不眠。"
+                "theme_dc": "哥谭（华盛顿）——最漆黑的夜晚，最深的蓝色，还有一丝黄光穿过雨丝。正义永不眠。",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 协议。哑光黑色底盘，带有霓虹绿和警告黄色指示灯。人与机器完美同步。",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 美学。高对比度深红色、纯黑和纯白。我们是机器人。",
+                "theme_neon-syndicate": "霓虹灯集团 — 超越黑夜。深空紫以合成波洋红色和电蓝色洗涤。网格从不睡觉。",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — 精英轨道美学。炫目的白色表面、拉丝银色装饰和冰蓝色数据流。商业就是战争。"
             },
             "global_shortcuts": {
                 "title": "// 全局快捷键 [工作流程]",
@@ -408,6 +412,13 @@
                 "item2_text": "按 [/] 将焦点捕捉到神经搜索栏并开始查询数据库。",
                 "item3_label": "关闭覆盖",
                 "item3_text": "按 [ESC] 可立即关闭任何活动模式、达析报告或配置覆盖。"
+            },
+            "danger_zone": {
+                "title": "// 危险区域 [身份擦除]",
+                "item1_warn": "⚠ 严重警告：",
+                "item1_text": "终止您的终端帐户是不可逆转的。所有指令、档案和神经链接都将被擦除。",
+                "item2_label": "身份验证",
+                "item2_text": "要继续，您必须出示当前的访问密钥作为身份证明。"
             }
         }
     },
@@ -469,7 +480,9 @@
         "password_reset_msg": "{{username}} 的密码已重置。",
         "disable_2fa_confirm": "为 {{username}} 禁用 2FA？这将删除辅助验证协议。",
         "2fa_disabled_msg": "{{username}} 的 2FA 已禁用。",
-        "disable_2fa_failed": "无法禁用 2FA"
+        "disable_2fa_failed": "无法禁用 2FA",
+        "policy_enforce_email_2fa_title": "实施电子邮件 2FA",
+        "policy_enforce_email_2fa_desc": "强制将电子邮件 2FA 后备代码分派给尝试在没有 TOTP 身份验证器的情况下登录的活动操作人员。"
     },
     "calendar": {
         "clear_date": "明确日期",
@@ -504,5 +517,9 @@
         "lvl_prefix": "LVL",
         "xp_total": "XP 总计",
         "next_rank_required": "下一个排名：需要 {{xp}} XP"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "激活加密的通信链接：在整个网格中执行 2FA 协议",
+        "enforce_2fa_desc": "您的通讯链接当前暴露于未经授权的神经数据包嗅探。立即导航至管理控制台并为所有操作人员激活“强制执行电子邮件 2FA”防御模块。"
     }
 }

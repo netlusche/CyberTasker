@@ -419,6 +419,13 @@
                 "theme_mensch-maschine": "MENSCH-MASCHINE – Kraftwerk '78-Ästhetik. Kontrastreiches Purpurrot, absolutes Schwarz und kräftiges Weiß. Wir sind die Roboter.",
                 "theme_neon-syndicate": "NEON SYNDICATE – Entkomme der Nacht. Tiefes Void-Lila, gewaschen in Synthwave-Magenta und elektrischem Blau. Das Netz schläft nie.",
                 "theme_megacorp-executive": "MEGACORP EXECUTIVE – Elite-Orbitalästhetik. Strahlend weiße Oberflächen, Akzente in gebürstetem Silber und eisblaue Datenströme. Geschäft ist Krieg."
+            },
+            "danger_zone": {
+                "title": "// GEFAHRENBEREICH [Identitätslöschung]",
+                "item1_warn": "⚠ KRITISCHE WARNUNG:",
+                "item1_text": "Die Kündigung Ihres Terminalkontos ist unwiderruflich. Alle Anweisungen, Archive und neuronalen Links werden gelöscht.",
+                "item2_label": "AUTHENTIFIZIERUNG",
+                "item2_text": "Um fortzufahren, müssen Sie Ihren aktuellen Zugangsschlüssel als Identitätsnachweis vorlegen."
             }
         }
     },
@@ -480,7 +487,9 @@
         "password_reset_msg": "Passwort für {{username}} zurückgesetzt.",
         "disable_2fa_confirm": "2FA für {{username}} DEAKTIVIEREN? Dadurch werden sekundäre Verifizierungsprotokolle entfernt.",
         "2fa_disabled_msg": "2FA für {{username}} deaktiviert.",
-        "disable_2fa_failed": "2FA konnte nicht deaktiviert werden"
+        "disable_2fa_failed": "2FA konnte nicht deaktiviert werden",
+        "policy_enforce_email_2fa_title": "E-Mail 2FA durchsetzen",
+        "policy_enforce_email_2fa_desc": "Erzwingen Sie die Zusendung eines E-Mail-2FA-Fallback-Codes an aktive Mitarbeiter, die versuchen, sich ohne TOTP-Authentifikator anzumelden."
     },
     "calendar": {
         "clear_date": "KLARE DATUM",
@@ -508,5 +517,9 @@
             "5": "FR",
             "6": "SA"
         }
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "AKTIVIEREN SIE VERSCHLÜSSELTE COMMLINKS: Erzwingen Sie das 2FA-Protokoll im gesamten Grid",
+        "enforce_2fa_desc": "Ihre Kommunikationsverbindungen sind derzeit dem unbefugten Ausspähen neuronaler Pakete ausgesetzt. Navigieren Sie sofort zur Admin-Konsole und aktivieren Sie das Verteidigungsmodul „Enforce Email 2FA“ für alle Mitarbeiter."
     }
 }

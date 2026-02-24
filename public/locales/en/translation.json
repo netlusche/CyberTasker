@@ -428,6 +428,10 @@
             }
         }
     },
+    "initial_tasks": {
+        "enforce_2fa_title": "ACTIVATE ENCRYPTED COMMLINKS: Enforce 2FA Protocol across the grid",
+        "enforce_2fa_desc": "Your comm-links are currently exposed to unauthorized neural packet sniffing. Navigate to the Admin Console immediately and activate the 'Enforce Email 2FA' defensive module for all operatives."
+    },
     "common": {
         "loading": "INITIALIZING SYSTEM...",
         "save": "SAVE",
@@ -469,6 +473,8 @@
         "policies_title": "SYSTEM POLICIES",
         "policy_strict_pwd_title": "Strict Password Policy",
         "policy_strict_pwd_desc": "Enforce heavy encryption protocols (Min 12 chars, Upper, Number, Special).",
+        "policy_enforce_email_2fa_title": "Enforce Email 2FA",
+        "policy_enforce_email_2fa_desc": "Force an Email 2FA fallback code to be dispatched to active operatives attempting to log in without a TOTP authenticator.",
         "confirm_title": "CONFIRMATION REQUIRED",
         "input_required": "INPUT REQUIRED",
         "policy_updated_msg": "System Policy Updated: {{key}}",

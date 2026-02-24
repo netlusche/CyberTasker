@@ -398,7 +398,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Kan kırmızısı ve soğuk çelik. Jilet gibi keskin brütalist kenarlar. Bugün kodlamak için güzel bir gün. Kapla'!",
                 "theme_got": "WESTEROS (GOT) — Buz ve Ateş. Soğuk mavi çelik ve Valyria kanı kırmızısı detaylar. Kış geliyor. Kuzey hatırlıyor.",
                 "theme_marvel": "COMIC (MARVEL) — Kahramanca kırmızı ve cesur aksiyon noktaları. Vay be! Vay! Çizgi romanların altın çağına bir saygı duruşu. Mükemmel!",
-                "theme_dc": "GOTHAM (DC) — En karanlık gece, en derin mavi ve yağmuru kesen bir sarı ışık şeridi. Adalet asla uyumaz."
+                "theme_dc": "GOTHAM (DC) — En karanlık gece, en derin mavi ve yağmuru kesen bir sarı ışık şeridi. Adalet asla uyumaz.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 protokolleri. Neon yeşili ve sarı uyarı göstergeli mat siyah kasa. İnsan ve makine mükemmel bir uyum içinde.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 estetiği. Yüksek kontrastlı koyu kırmızı, mutlak siyah ve keskin beyaz. Biz robotuz.",
+                "theme_neon-syndicate": "NEON SENDİKASI — Geceyi geride bırakın. Synthwave macenta ve elektrik mavisi ile yıkanmış derin boşluk moru. Izgara asla uyumaz.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elit yörünge estetiği. Kör edici beyaz yüzeyler, fırçalanmış gümüş vurgular ve buz mavisi veri akışları. İş savaştır."
             },
             "global_shortcuts": {
                 "title": "// KÜRESEL KISAYOLLAR [İş Akışı]",
@@ -408,6 +412,13 @@
                 "item2_text": "Odağı Nöral Arama çubuğuna getirmek ve veri bankalarını sorgulamaya başlamak için [/] tuşuna basın.",
                 "item3_label": "KAPATMALARI",
                 "item3_text": "Herhangi bir aktif modeli, dosyayı veya konfigürasyon katmanını anında kapatmak için [ESC] tuşuna basın."
+            },
+            "danger_zone": {
+                "title": "// TEHLIKE BÖLGESİ [Kimlik Silme]",
+                "item1_warn": "⚠ KRİTİK UYARI:",
+                "item1_text": "Terminal hesabınızın sonlandırılması geri alınamaz. Tüm direktifler, arşivler ve sinirsel bağlantılar silinecek.",
+                "item2_label": "DOĞRULAMA",
+                "item2_text": "Devam etmek için kimlik kanıtı olarak mevcut Erişim Anahtarınızı ibraz etmeniz gerekir."
             }
         }
     },
@@ -469,7 +480,9 @@
         "password_reset_msg": "{{username}} için şifre sıfırlandı.",
         "disable_2fa_confirm": "{{username}} İÇİN 2FA DEVRE DIŞI BIRAKILSIN MI? Bu, ikincil doğrulama protokollerini kaldıracaktır.",
         "2fa_disabled_msg": "{{username}} için 2FA Devre Dışı Bırakıldı.",
-        "disable_2fa_failed": "2FA devre dışı bırakılamadı"
+        "disable_2fa_failed": "2FA devre dışı bırakılamadı",
+        "policy_enforce_email_2fa_title": "E-posta 2FA'yı Zorunlu Hale Getirin",
+        "policy_enforce_email_2fa_desc": "TOTP kimlik doğrulayıcısı olmadan oturum açmaya çalışan aktif operatörlere bir E-posta 2FA yedek kodunun gönderilmesini zorunlu kılın."
     },
     "calendar": {
         "clear_date": "TARİHİ TEMİZLE",
@@ -504,5 +517,9 @@
         "lvl_prefix": "LVL",
         "xp_total": "Toplam Deneyim",
         "next_rank_required": "SONRAKİ SIRALAMA: {{xp}} XP GEREKLİ"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "ŞİFRELENMİŞ İLETİŞİM BAĞLANTILARINI ETKİNLEŞTİRİN: 2FA Protokolünü şebeke genelinde uygulayın",
+        "enforce_2fa_desc": "İletişim bağlantılarınız şu anda yetkisiz sinirsel paket dinlemeye maruz kalıyor. Hemen Admin Console'a gidin ve tüm operatörler için 'E-posta 2FA'yı Zorunlu Kıl' savunma modülünü etkinleştirin."
     }
 }

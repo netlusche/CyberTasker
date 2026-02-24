@@ -429,6 +429,10 @@
             }
         }
     },
+    "initial_tasks": {
+        "enforce_2fa_title": "pe'vIl jabbI'IDmey yIqem: Qapchu' let 2FA patmey",
+        "enforce_2fa_desc": "ghotpu' nuqnej tlhoS lulIng jabbI'IDmeylIj. yuvtlhe' Admin Console yIjaH 'ej 'Enforce Email 2FA' Qel yIchu'."
+    },
     "common": {
         "loading": "nItwI' chentaH...",
         "save": "nav",
@@ -470,6 +474,8 @@
         "policies_title": "pat let",
         "policy_strict_pwd_title": "pegh mu' let",
         "policy_strict_pwd_desc": "pegh mu' let nIS (Min 12, Upper, Number, Special).",
+        "policy_enforce_email_2fa_title": "ra' Email 2FA",
+        "policy_enforce_email_2fa_desc": "Email 2FA mI' lInglu' net poQ TOTP ghajbe'chugh.",
         "confirm_title": "luq nIS",
         "input_required": "ghItlh nIS",
         "policy_updated_msg": "let chu': {{key}}",

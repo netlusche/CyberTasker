@@ -10,7 +10,7 @@ This plan outlines the end-to-end testing strategy for CyberTasker v2.1.0. The g
 1. **Feature Gap Analysis**: Review the latest commits and the `USER STORIES.md` to identify any newly implemented functionalities.
 2. **Suite Expansion**: All new features must have a corresponding test case (automated or manual) added to this Master Test Plan.
 3. **Selector Audit**: Ensure new UI components use consistent `data-testid` attributes to maintain E2E stability.
-4. **Linguistic Audit**: Review `TRANSLATION_GUIDELINES.md` to ensure any new terminology or thematic slang adopted in the UI has clear directives for translators.
+4. **Linguistic Audit**: Review `manuals/TRANSLATION_GUIDELINES.md` to ensure any new terminology or thematic slang adopted in the UI has clear directives for translators.
 
 *Testing is not a static event; the suite must evolve alongside the neural stream.*
 
