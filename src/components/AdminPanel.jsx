@@ -5,6 +5,7 @@ import { apiFetch } from '../utils/api';
 import CyberButton from './ui/CyberButton';
 import SystemModal from './ui/SystemModal';
 import DataGrid from './ui/DataGrid';
+import packageJson from '../../package.json';
 
 // --- Sub-components for Modals ---
 
@@ -511,7 +512,7 @@ const AdminPanel = ({ onClose }) => {
 
             {/* Version Information */}
             <div className="text-center mt-8 text-[10px] text-gray-500 font-mono tracking-widest border-t border-cyber-primary/20 pt-2">
-                CYBERTASKER v2.5
+                CYBERTASKER v{packageJson.version}
             </div>
         </SystemModal>
     );
