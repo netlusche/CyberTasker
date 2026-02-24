@@ -151,27 +151,33 @@ test.describe('Directive Management Pagination', () => {
         const checkBtn = taskCard.locator('button[title="Mark as DONE"]');
         await checkBtn.click();
 
-        // The original task should disappear from the active view (status 1)
+        // The original task now remains visible (status 1)
         // A new computed task with the exact same title should appear via search!
-        // We might need to blur the search and re-trigger or just wait, since WebSocket/API refresh should keep the search active.
         await page.waitForTimeout(500);
 
-        // Find the newly generated task
-        const newTaskCard = page.locator('.card-cyber').filter({ hasText: uniqueTitle }).first();
-        await expect(newTaskCard).toBeVisible();
+        // Find the generated tasks
+        const recurringTasks = page.locator('.card-cyber').filter({ hasText: uniqueTitle });
+
+        // We expect 2 tasks: the completed one and the newly generated active one
+        await expect(recurringTasks).toHaveCount(2);
+
+        // Clean up both tasks
+        await recurringTasks.nth(0).hover();
+        await recurringTasks.nth(0).locator('button[title="Delete Task"]').click();
+        await page.getByTestId('confirm-button').click();
+        await expect(page.getByTestId('confirm-button')).not.toBeVisible();
+        await expect(recurringTasks).toHaveCount(1);
+
+        // The second one shifts up to index 0
+        await recurringTasks.nth(0).hover();
+        await recurringTasks.nth(0).locator('button[title="Delete Task"]').click();
+        await page.getByTestId('confirm-button').click();
+        await expect(page.getByTestId('confirm-button')).not.toBeVisible();
 
         // Clean up: Clear search
         await searchInput.fill('');
         await searchInput.press('Enter');
         await page.waitForTimeout(500);
-
-        // Verify the date is tomorrow (or at least that it exists and is distinct from the completed one)
-        // Clean up
-        const delBtn = newTaskCard.locator('button[title="Delete Task"]');
-
-        // Ensure that clicking delete opens the confirm dialog
-        page.on('dialog', dialog => dialog.accept());
-        await delBtn.click();
     });
 
     test('should NOT duplicate a recurring task if recurrence_end_date is reached (US-2.3.4)', async ({ page }) => {
@@ -224,7 +230,9 @@ test.describe('Directive Management Pagination', () => {
         // Wait a bit for the async update to finish
         await page.waitForTimeout(500);
 
-        // Verify the task is gone and no new duplicate was created
-        await expect(page.getByText(uniqueTitle)).not.toBeVisible();
+        // Verify the task is marked as completed and no new duplicate was created
+        const recurringTasks = page.locator('.card-cyber').filter({ hasText: uniqueTitle });
+        await expect(recurringTasks).toHaveCount(1);
+        await expect(recurringTasks.first()).toHaveClass(/opacity-50/);
     });
 });

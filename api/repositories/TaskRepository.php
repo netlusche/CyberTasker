@@ -25,9 +25,6 @@ class TaskRepository extends Repository
             $where[] = "status = 0 AND due_date < ? AND due_date IS NOT NULL";
             $params[] = date('Y-m-d');
         }
-        else {
-            $where[] = "status != 1";
-        }
 
         return ['where' => implode(' AND ', $where), 'params' => $params];
     }

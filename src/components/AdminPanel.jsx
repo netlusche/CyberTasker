@@ -100,6 +100,8 @@ const AdminPanel = ({ onClose }) => {
 
     // Debounce Search Logic
     useEffect(() => {
+        if (searchQuery === debouncedSearch) return;
+
         const timer = setTimeout(() => {
             setDebouncedSearch(searchQuery);
             fetchUsers(1, sortConfig.key, sortConfig.direction, searchQuery);
