@@ -1,3 +1,10 @@
+# CyberTasker v2.4.1 (Completed Tasks Hotfix)
+*Release Date: 2026-02-24*
+
+*   **Dashboard Visibility Patch**: Fixed a critical backend filtering bug within the SQLite and MySQL repositories that unintentionally wiped all completed tasks (`status = 1`) from the database responses. Completed directives are now correctly tallied and displayed on the operative dashboard again without corrupting pagination boundaries.
+
+---
+
 # CyberTasker v2.4 (The Automation & Precision Update)
 *Release Date: 2026-02-23*
 
