@@ -46,6 +46,23 @@
   - Einbindung einer visuell passenden "Message of the Day"-Anzeige im Kopfbereich des Dashboards.
   - Das System enthält eine Liste von themenbezogenen Zitaten (z.B. Konzern-Ansagen wie "Remember: Efficiency is mandatory." oder Hacker-Sprüche wie "Push the payload, break the ice.").
   - Ein Pseudo-Zufallsgenerator wählt basierend auf dem aktuellen Datum ein Zitat aus, sodass dieses zuverlässig jeden Tag wechselt.
+**US-2.6.5: Multilinguales Setup & Installer-Lokalisierung**
+* **Als** System-Installer (Nutzer)
+* **Möchte ich** den Installationsprozess direkt in meiner bevorzugten Sprache durchführen können
+* **Damit** ich alle Setup-Anweisungen fehlerfrei verstehe und mein initialer Admin-Account direkt mit den richtigen Spracheinstellungen konfiguriert wird.
+* **Akzeptanzkriterien:**
+  - Der Installer (`install.php` / Backend-Setup) ist vollständig lokalisiert und enthält alle Übersetzungen für die unterstützten Sprachen.
+  - Der Benutzer muss im allerersten Schritt der Installation zwingend eine Sprache aus einem Dropdown/Auswahlmenü wählen.
+  - Die hier ausgewählte Sprache wird als `language`-Präferenz für den bei der Installation angelegten Master-Admin-Account in der Datenbank hinterlegt.
+
+**US-2.6.6: Lokalisierung aller vom System generierten E-Mails**
+* **Als** Nutzer
+* **Möchte ich** System-E-Mails (Account-Verifizierung, 2FA-Codes, Passwort-Reset) in der Sprache erhalten, die ich im Interface ausgewählt habe
+* **Damit** ich auch bei sicherheitskritischen Vorgängen genau verstehe, was von mir verlangt wird.
+* **Akzeptanzkriterien:**
+  - Sämtliche E-Mail-Templates (Betreff und Body) werden aus statischen Texten gelöst und über Lokalisierungs-Keys abgebildet.
+  - Vor dem Versand einer E-Mail prüft das Backend die Sprache: Befindet sich der Nutzer im Login/Registrierungs-Screen, wird die dort aktiv ausgewählte Sprache für den Versand genutzt.
+  - Löst ein bereits eingeloggter Nutzer eine E-Mail aus (z.B. Profiländerungen), wird die in seinem Nutzerprofil gespeicherte Präferenz verwendet.
 
 ## Ergänzungen für den Testplan
 
@@ -64,3 +81,10 @@
 **Zu US-2.6.4 (Quote of the Day):**
 - **Testfall:** Dashboard laden und prüfen, ob ein Zitat im Kopfbereich angezeigt wird.
 - **Testfall (Datumswechsel):** Durch manuelles Vorstellen des Datums prüfen, ob der Pseudo-Zufallsgenerator das Zitat am Folgetag zuverlässig wechselt.
+
+**Zu US-2.6.5 (Installer-Lokalisierung):**
+- **Testfall:** Eine frische Installation mit komplett leerer Datenbank anstoßen. Im Setup-Screen die Sprache z. B. auf "Französisch" wechseln und prüfen, ob die UI des Installers übersetzt wird. Nach der Fertigstellung mit dem neuen Admin-Account einloggen und sicherstellen, dass das Dashboard automatisch in der ausgewählten Sprache (Französisch) lädt.
+
+**Zu US-2.6.6 (E-Mail Lokalisierung):**
+- **Testfall (Passwort Reset):** Auf dem Login-Screen die Sprache auf "Spanisch" umstellen und einen Passwort-Reset anfordern. In der `mail_log.txt` (bzw. dem echten Mail-Postfach) verifizieren, dass der Betreff und Inhalt der E-Mail auf Spanisch ist.
+- **Testfall (Eingeloggter User):** Im Nutzerprofil die Sprache auf "Deutsch" stellen und ein 2FA-Backup anfordern. Die entsprechende E-Mail muss zwingend auf Deutsch ankommen.
