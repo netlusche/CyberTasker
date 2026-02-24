@@ -1,0 +1,52 @@
+name: "PR Auth & Security Check"
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  auth-check:
+    name: "Playwright E2E: Critical Auth"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: sqlite3, pdo_sqlite, gd
+
+      - name: Install JS Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Setup Database Configuration
+        run: |
+          echo "<?php" > api/config.local.php
+          echo "define('DB_TYPE', 'sqlite');" >> api/config.local.php
+          echo "define('DB_NAME', __DIR__ . '/cybertracker_ci.db');" >> api/config.local.php
+          echo "define('FRONTEND_URL', 'http://localhost:5174');" >> api/config.local.php
+
+      - name: Initialize Database Schema
+        run: php -r "require 'api/install.php';"
+
+      - name: Seed Test Personas
+        run: php tests/seed_test_data.php
+
+      - name: Run Core Auth Test
+        run: npx playwright test tests/e2e/01-auth.spec.js
+
+      - name: Run Advanced Auth Test
+        run: npx playwright test tests/e2e/11-advanced-auth.spec.js
