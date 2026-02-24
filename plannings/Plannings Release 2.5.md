@@ -66,6 +66,15 @@
   - Alle Themes sind als CSS-Variablen in der `index.css` definiert und sauber im Profil-Modal (inkl. Icons/Namen) auswählbar.
   - Gewährleistung, dass das Skript `check-theme.js` weiterhin erfolgreich durchläuft.
 
+**US-2.5.7b: Dokumentation der neuen UI-Themes in der System Help**
+* **Als** Nutzer
+* **Möchte ich** eine thematisch passende Beschreibung der neuen Themes (Computerwelt, Mensch-Maschine, Neon Syndicate, Megacorp Executive) in der integrierten System Help lesen können
+* **Damit** das immersive Cyberpunk-Gefühl beim Lesen der Anleitung erhalten bleibt.
+* **Akzeptanzkriterien:**
+  - Die englische Basis-Lokalisierung `translation.json` wird im Bereich `help.sections.visual_interface` um 4 neue Keys ergänzt.
+  - Die neuen englischen Beschreibungen nutzen denselben Jargon ("Protocols", "Data streams", "Chassis") wie bestehende Themes.
+  - Die Ergänzungen werden über das Übersetzungs-Skript in alle unterstützten Sprachen übersetzt.
+
 **US-2.5.8: Validierung kritischer Auth-Voränge & PR-Checks**
 * **Als** System-Operator
 * **Möchte ich**, dass kritische Account-Funktionen (Registrierung, Login, 2FA, Email-Versand) automatisiert getestet werden
@@ -93,6 +102,9 @@
 
 **Zu US-2.5.7 (Neue UI-Themes):**
 - **Testfall (Visuelle Kontrolle):** Im Profil alle 4 neuen Themes durchklicken und visuell prüfen, ob Farben und Hover-States konsistent wirken. Insbesondere den Light-Mode ("Megacorp") auf gute Lesbarkeit prüfen.
+
+**Zu US-2.5.7b (Theme Doku System Help):**
+- **Testfall:** Im Dashboard die System Help öffnen, zum Abschnitt "VISUAL INTERFACE" scrollen und prüfen, ob die 4 neuen Themes (Computerwelt, Mensch-Maschine, Neon Syndicate, Megacorp Executive) mitsamt Beschreibung aufgelistet werden. Die Prüfung muss auch in einer übersetzten Sprache (z.B. Deutsch) erfolgen.
 **Zu US-2.5.8 (Auth-Vorgänge & PR-Checks):**
 - **Testfall (Playwright):** Ausführung der Testsuite für `11-advanced-auth.spec.js`. Prüfen, ob der Login-Flow, das Aktivieren der 2FA im Profil-Modal und das Simulieren eines Email-Adressen-Updates von Playwright als Passed markiert werden.
 - **Testfall (CI/CD):** Prüfen, ob eine neue Datei `.github/workflows/pr-auth-check.yml` angelegt wurde, die den E2E-Test für Auth beim Erstellen eines Pull Requests triggert.

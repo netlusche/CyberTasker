@@ -414,7 +414,11 @@
                 "theme_klingon": "QO'NOS (KLINGONISCH) – Blutrot und kalter Stahl. Rasiermesserscharfe brutalistische Kanten. Heute ist ein guter Tag zum Codieren. Qapla'!",
                 "theme_got": "WESTEROS (GOT) – Eis und Feuer. Kaltblauer Stahl und valyrische blutrote Akzente. Der Winter kommt. Der Norden erinnert sich.",
                 "theme_marvel": "COMIC (MARVEL) – Heroische rote und auffällige Action-Punkte. Puh! Wham! Eine Hommage an das goldene Zeitalter der Comics. Holzwolle!",
-                "theme_dc": "GOTHAM (DC) – Dunkelste Nacht, tiefstes Blau und ein gelber Lichtstreifen, der durch den Regen schneidet. Gerechtigkeit schläft nie."
+                "theme_dc": "GOTHAM (DC) – Dunkelste Nacht, tiefstes Blau und ein gelber Lichtstreifen, der durch den Regen schneidet. Gerechtigkeit schläft nie.",
+                "theme_computerwelt": "COMPUTERWELT – Kraftwerk '81-Protokolle. Mattschwarzes Chassis mit neongrünen und gelben Warnleuchten. Mensch und Maschine im perfekten Einklang.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE – Kraftwerk '78-Ästhetik. Kontrastreiches Purpurrot, absolutes Schwarz und kräftiges Weiß. Wir sind die Roboter.",
+                "theme_neon-syndicate": "NEON SYNDICATE – Entkomme der Nacht. Tiefes Void-Lila, gewaschen in Synthwave-Magenta und elektrischem Blau. Das Netz schläft nie.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE – Elite-Orbitalästhetik. Strahlend weiße Oberflächen, Akzente in gebürstetem Silber und eisblaue Datenströme. Geschäft ist Krieg."
             }
         }
     },

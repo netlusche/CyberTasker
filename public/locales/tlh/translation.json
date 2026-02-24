@@ -414,7 +414,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Doq ngeng. batlh! Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Westeros legh. Doq, SuD.",
                 "theme_marvel": "COMIC (MARVEL) — Comic legh. Doq tIn.",
-                "theme_dc": "GOTHAM (DC) — Gotham legh. SuD tIn."
+                "theme_dc": "GOTHAM (DC) — Gotham legh. SuD tIn.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 protocols. Matte black chassis with neon green and caution yellow indicators. Man and machine in perfect sync.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 aesthetics. High-contrast crimson, absolute black, and stark white. We are the robots.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Outrun the night. Deep void purple washed in synthwave magenta and electric blue. The grid never sleeps.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war."
             }
         }
     },

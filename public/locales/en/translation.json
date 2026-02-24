@@ -413,8 +413,11 @@
                 "theme_renaissance": "RENAISSANCE — The cyber-gold era. Amber hexagons pulse in a sea of absolute black. A world of augmentations and corporate gods. Mankind divided.",
                 "theme_klingon": "QO'NOS (KLINGON) — Blood red and cold steel. Razor-sharp brutalist edges. Today is a good day to code. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Ice and Fire. Cold blue steel and Valyrian blood red accents. Winter is coming. The North remembers.",
-                "theme_marvel": "COMIC (MARVEL) — Heroic red and bold action dots. Pow! Wham! A tribute to the golden age of comic books. Excelsior!",
-                "theme_dc": "GOTHAM (DC) — Darkest night, deepest blue, and a sliver of yellow light cutting through the rain. Justice never sleeps."
+                "theme_dc": "GOTHAM (DC) — Darkest night, deepest blue, and a sliver of yellow light cutting through the rain. Justice never sleeps.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 protocols. Matte black chassis with neon green and caution yellow indicators. Man and machine in perfect sync.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 aesthetics. High-contrast crimson, absolute black, and stark white. We are the robots.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Outrun the night. Deep void purple washed in synthwave magenta and electric blue. The grid never sleeps.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war."
             }
         }
     },
