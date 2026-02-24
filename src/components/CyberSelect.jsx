@@ -66,7 +66,7 @@ const CyberSelect = ({ value, onChange, options, label, className = "", wrapperC
             {isOpen && (
                 <ul
                     role="listbox"
-                    className="absolute z-[1000] w-full mt-1 bg-black border border-cyber-primary shadow-xl max-h-60 overflow-y-auto backdrop-blur-xl bg-opacity-95 rounded-sm"
+                    className="absolute z-[1000] w-full mt-1 bg-black border border-cyber-primary shadow-xl max-h-60 overflow-y-auto backdrop-blur-xl transform-gpu bg-opacity-95 rounded-sm"
                 >
                     {options.map((opt, idx) => {
                         const optValue = opt.value || opt.name || opt;

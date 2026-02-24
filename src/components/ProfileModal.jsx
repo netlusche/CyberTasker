@@ -604,7 +604,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
     };
 
     return (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm transform-gpu flex items-center justify-center z-50 p-4">
             <div className="card-cyber w-full max-w-lg border-cyber-primary shadow-cyber-primary relative max-h-[90vh] flex flex-col p-1 overflow-hidden">
                 <button
                     data-testid="profile-close-btn"
@@ -817,7 +817,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                                         setMessage(t('profile.messages.fragment_copied'));
                                                         setTimeout(() => setMessage(""), 2000);
                                                     }}
-                                                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-cyber-primary/20 backdrop-blur-[1px] transition-opacity cursor-pointer border border-cyber-primary scale-105"
+                                                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-cyber-primary/20 backdrop-blur-[1px] transform-gpu transition-opacity cursor-pointer border border-cyber-primary scale-105"
                                                 >
                                                     <span className="bg-cyber-primary text-black text-[9px] px-2 font-bold uppercase shadow-lg">{t('profile.security.copy_fragment')}</span>
                                                 </div>
@@ -862,18 +862,18 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-cyberpunk"
                                     onClick={() => setTheme('cyberpunk')}
-                                    className={`theme-preview-card theme-cyberpunk transition-all duration-300 overflow-hidden ${theme === 'cyberpunk' ? 'border border-cyber-primary bg-cyber-primary/20 shadow-[0_0_20px_rgba(0,255,255,0.4)] scale-[1.02]' : 'border-gray-700 bg-black/40 hover:border-gray-500 scale-100'}`}
+                                    className={`theme-preview-card theme-cyberpunk transition-all duration-300 overflow-hidden ${theme === 'cyberpunk' ? 'border border-[#00ffff] bg-[#00ffff]/20 shadow-[0_0_20px_rgba(0,255,255,0.4)] scale-[1.02]' : 'border-[#4b5563] bg-[#000000]/40 hover:border-[#6b7280] scale-100'}`}
                                 >
                                     <div className="flex flex-col items-center gap-2 relative z-10 w-full h-full justify-center">
-                                        <div className="w-12 h-6 bg-cyber-primary/20 border border-cyber-primary relative overflow-hidden">
-                                            <div className="absolute top-0 left-0 w-full h-[2px] bg-cyber-secondary animate-pulse shadow-cyber-secondary"></div>
+                                        <div className="w-12 h-6 bg-[#00ffff]/20 border border-[#00ffff] relative overflow-hidden">
+                                            <div className="absolute top-0 left-0 w-full h-[2px] bg-[#ff00ff] animate-pulse shadow-[0_0_10px_#ff00ff,0_0_20px_#ff00ff]"></div>
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-widest font-preview-cyberpunk ${theme === 'cyberpunk' ? 'text-cyber-primary' : 'text-gray-400'}`}>
+                                        <span className={`text-[10px] font-bold tracking-widest font-preview-cyberpunk ${theme === 'cyberpunk' ? 'text-[#00ffff]' : 'text-[#9ca3af]'}`}>
                                             {t('profile.themes.cyberpunk', 'CYBERPUNK')}
                                         </span>
                                     </div>
                                     {theme === 'cyberpunk' && (
-                                        <div className="absolute top-0 right-0 bg-cyber-primary text-black font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
+                                        <div className="absolute top-0 right-0 bg-[#00ffff] text-[#000000] font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
                                             ACTIVE
                                         </div>
                                     )}
@@ -882,18 +882,18 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-lcars"
                                     onClick={() => setTheme('lcars')}
-                                    className={`theme-preview-card theme-lcars rounded-2xl transition-all duration-300 overflow-hidden ${theme === 'lcars' ? 'border-[3px] border-cyber-primary bg-black scale-[1.02]' : 'border-[3px] border-gray-700 bg-black/40 hover:border-gray-500 scale-100'}`}
+                                    className={`theme-preview-card theme-lcars rounded-2xl transition-all duration-300 overflow-hidden ${theme === 'lcars' ? 'border-[3px] border-[#ffcc33] bg-[#000000] scale-[1.02]' : 'border-[3px] border-[#4b5563] bg-[#000000]/40 hover:border-[#6b7280] scale-100'}`}
                                 >
                                     <div className="flex flex-col items-center gap-2 relative z-10 w-full h-full justify-center">
-                                        <div className="w-12 h-6 bg-cyber-primary rounded-full flex items-center px-1">
-                                            <div className="w-3 h-3 bg-black rounded-full"></div>
+                                        <div className="w-12 h-6 bg-[#ffcc33] rounded-full flex items-center px-1">
+                                            <div className="w-3 h-3 bg-[#000000] rounded-full"></div>
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-widest font-preview-lcars ${theme === 'lcars' ? 'text-white' : 'text-gray-400'}`}>
+                                        <span className={`text-[10px] font-bold tracking-widest font-preview-lcars ${theme === 'lcars' ? 'text-[#ffffff]' : 'text-[#9ca3af]'}`}>
                                             {t('profile.themes.lcars', 'LCARS')}
                                         </span>
                                     </div>
                                     {theme === 'lcars' && (
-                                        <div className="absolute top-0 right-0 bg-cyber-primary text-black font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
+                                        <div className="absolute top-0 right-0 bg-[#ffcc33] text-[#000000] font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
                                             ACTIVE
                                         </div>
                                     )}
@@ -902,18 +902,18 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-matrix"
                                     onClick={() => setTheme('matrix')}
-                                    className={`theme-preview-card theme-matrix transition-all duration-300 overflow-hidden ${theme === 'matrix' ? 'border border-cyber-primary bg-cyber-primary/10 shadow-[0_0_20px_rgba(0,255,65,0.4)] scale-[1.02]' : 'border-gray-700 bg-black/40 hover:border-gray-500 scale-100'}`}
+                                    className={`theme-preview-card theme-matrix transition-all duration-300 overflow-hidden ${theme === 'matrix' ? 'border border-[#00ff41] bg-[#00ff41]/10 shadow-[0_0_20px_rgba(0,255,65,0.4)] scale-[1.02]' : 'border-[#4b5563] bg-[#000000]/40 hover:border-[#6b7280] scale-100'}`}
                                 >
                                     <div className="flex flex-col items-center gap-2 relative z-10 w-full h-full justify-center">
-                                        <div className="text-[14px] text-cyber-primary font-bold animate-pulse font-preview-matrix">
+                                        <div className="text-[14px] text-[#00ff41] font-bold animate-pulse font-preview-matrix">
                                             &gt;_
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-widest font-preview-matrix ${theme === 'matrix' ? 'text-cyber-primary' : 'text-gray-400'}`}>
+                                        <span className={`text-[10px] font-bold tracking-widest font-preview-matrix ${theme === 'matrix' ? 'text-[#00ff41]' : 'text-[#9ca3af]'}`}>
                                             {t('profile.themes.matrix', 'MATRIX')}
                                         </span>
                                     </div>
                                     {theme === 'matrix' && (
-                                        <div className="absolute top-0 right-0 bg-cyber-primary text-black font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
+                                        <div className="absolute top-0 right-0 bg-[#00ff41] text-[#000000] font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
                                             ACTIVE
                                         </div>
                                     )}
@@ -922,18 +922,18 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-weyland"
                                     onClick={() => setTheme('weyland')}
-                                    className={`theme-preview-card theme-weyland transition-all duration-300 overflow-hidden ${theme === 'weyland' ? 'border border-cyber-primary bg-cyber-primary/10 shadow-[0_0_20px_rgba(255,176,0,0.4)] scale-[1.02]' : 'border-gray-700 bg-black/40 hover:border-gray-500 scale-100'}`}
+                                    className={`theme-preview-card theme-weyland transition-all duration-300 overflow-hidden ${theme === 'weyland' ? 'border border-[#ffb000] bg-[#ffb000]/10 shadow-[0_0_20px_rgba(255,176,0,0.4)] scale-[1.02]' : 'border-[#4b5563] bg-[#000000]/40 hover:border-[#6b7280] scale-100'}`}
                                 >
                                     <div className="flex flex-col items-center gap-2 relative z-10 w-full h-full justify-center">
-                                        <div className="text-[14px] text-cyber-primary font-bold tracking-[0.2em] font-preview-weyland opacity-80">
+                                        <div className="text-[14px] text-[#ffb000] font-bold tracking-[0.2em] font-preview-weyland opacity-80">
                                             W-Y
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-widest font-preview-weyland ${theme === 'weyland' ? 'text-cyber-primary' : 'text-gray-400'}`}>
+                                        <span className={`text-[10px] font-bold tracking-widest font-preview-weyland ${theme === 'weyland' ? 'text-[#ffb000]' : 'text-[#9ca3af]'}`}>
                                             {t('profile.themes.weyland', 'WEY-YU')}
                                         </span>
                                     </div>
                                     {theme === 'weyland' && (
-                                        <div className="absolute top-0 right-0 bg-cyber-primary text-black font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
+                                        <div className="absolute top-0 right-0 bg-[#ffb000] text-[#000000] font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
                                             ACTIVE
                                         </div>
                                     )}
@@ -969,7 +969,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-grid"
                                     onClick={() => setTheme('grid')}
-                                    className={`theme-preview-card theme-grid transition-all duration-300 overflow-hidden relative ${theme === 'grid' ? 'border border-[#6fc3df] bg-[#020d1a] shadow-[0_0_20px_rgba(111,195,223,0.5),inset_0_0_20px_rgba(111,195,223,0.05)] scale-[1.02]' : 'border-gray-800 bg-[#020d1a]/80 hover:border-[#6fc3df]/30 scale-100'}`}
+                                    className={`theme-preview-card theme-grid transition-all duration-300 overflow-hidden relative ${theme === 'grid' ? 'border border-[#6fc3df] bg-[#020d1a] shadow-[0_0_20px_rgba(111,195,223,0.5),inset_0_0_20px_rgba(111,195,223,0.05)] scale-[1.02]' : 'border-[#1f2937] bg-[#020d1a]/80 hover:border-[#6fc3df]/30 scale-100'}`}
                                 >
                                     {/* Background grid lines */}
                                     <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(111,195,223,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(111,195,223,0.5) 1px, transparent 1px)', backgroundSize: '12px 12px', zIndex: 1 }} />
@@ -985,7 +985,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         </span>
                                     </div>
                                     {theme === 'grid' && (
-                                        <div className="absolute top-0 right-0 bg-[#6fc3df] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                        <div className="absolute top-0 right-0 bg-[#6fc3df] text-[#000000] font-bold text-[7px] px-1.5 py-0.5">
                                             ◉ ON
                                         </div>
                                     )}
@@ -995,7 +995,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-section9"
                                     onClick={() => setTheme('section9')}
-                                    className={`theme-preview-card theme-section9 transition-all duration-300 overflow-hidden relative ${theme === 'section9' ? 'border-l-4 border-[#34e2e2] bg-[#0e0e12] shadow-[0_0_15px_rgba(52,226,226,0.3)] scale-[1.02]' : 'border-gray-800 bg-[#0e0e12]/80 hover:border-[#34e2e2]/20 scale-100'}`}
+                                    className={`theme-preview-card theme-section9 transition-all duration-300 overflow-hidden relative ${theme === 'section9' ? 'border-l-4 border-[#34e2e2] bg-[#0e0e12] shadow-[0_0_15px_rgba(52,226,226,0.3)] scale-[1.02]' : 'border-[#1f2937] bg-[#0e0e12]/80 hover:border-[#34e2e2]/20 scale-100'}`}
                                 >
                                     {/* Glitch scan line */}
                                     <div className="absolute left-0 right-0 h-[1px] bg-[#34e2e2]/30 top-[40%] pointer-events-none z-5" />
@@ -1006,12 +1006,12 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         <div className="text-[8px] italic tracking-widest" style={{ color: '#34e2e2', opacity: 0.5 }}>
                                             SEC∙9
                                         </div>
-                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-0.5 ${theme === 'section9' ? 'text-[#34e2e2]' : 'text-gray-600'}`}>
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-0.5 ${theme === 'section9' ? 'text-[#34e2e2]' : 'text-[#4b5563]'}`}>
                                             GHOST
                                         </span>
                                     </div>
                                     {theme === 'section9' && (
-                                        <div className="absolute top-0 right-0 bg-[#34e2e2] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                        <div className="absolute top-0 right-0 bg-[#34e2e2] text-[#000000] font-bold text-[7px] px-1.5 py-0.5">
                                             ◉ ON
                                         </div>
                                     )}
@@ -1059,18 +1059,18 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-steampunk"
                                     onClick={() => setTheme('steampunk')}
-                                    className={`theme-preview-card theme-steampunk transition-all duration-300 overflow-hidden ${theme === 'steampunk' ? 'border-2 border-[#c49e5d] bg-[#c49e5d]/20 shadow-[0_0_15px_rgba(196,158,93,0.4)] scale-[1.02]' : 'border-gray-700 bg-black/40 hover:border-gray-500 scale-100'}`}
+                                    className={`theme-preview-card theme-steampunk transition-all duration-300 overflow-hidden ${theme === 'steampunk' ? 'border-2 border-[#c49e5d] bg-[#c49e5d]/20 shadow-[0_0_15px_rgba(196,158,93,0.4)] scale-[1.02]' : 'border-[#1f2937] bg-[#000000]/40 hover:border-[#6b7280] scale-100'}`}
                                 >
                                     <div className="flex flex-col items-center gap-2 relative z-10 w-full h-full justify-center">
                                         <div className="text-[14px] font-bold tracking-[0.15em]" style={{ color: '#c49e5d' }}>
                                             ⚙️
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-widest ${theme === 'steampunk' ? 'text-[#c49e5d]' : 'text-gray-400'}`}>
+                                        <span className={`text-[10px] font-bold tracking-widest ${theme === 'steampunk' ? 'text-[#c49e5d]' : 'text-[#9ca3af]'}`}>
                                             STEAMPUNK
                                         </span>
                                     </div>
                                     {theme === 'steampunk' && (
-                                        <div className="absolute top-0 right-0 bg-[#c49e5d] text-black font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
+                                        <div className="absolute top-0 right-0 bg-[#c49e5d] text-[#000000] font-bold text-[8px] px-2 py-0.5 transform rotate-45 translate-x-3 translate-y-[-2px] z-20">
                                             ACTIVE
                                         </div>
                                     )}
@@ -1080,19 +1080,19 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-force"
                                     onClick={() => setTheme('force')}
-                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'force' ? 'scale-[1.02] border-2 border-[#cc4422]' : 'border-gray-800 bg-black/40 hover:border-[#cc4422]/40 scale-100'}`}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'force' ? 'scale-[1.02] border-2 border-[#cc4422]' : 'border-[#1f2937] bg-[#000000]/40 hover:border-[#cc4422]/40 scale-100'}`}
                                     style={{ background: '#05070a' }}
                                 >
                                     {/* Starfield effect */}
                                     <div className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: 'radial-gradient(1px 1px at 10px 10px, #fff, transparent), radial-gradient(1px 1px at 30px 40px, #fff, transparent), radial-gradient(1px 1px at 50px 20px, #fff, transparent)', backgroundSize: '60px 60px' }} />
                                     <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
                                         <div className="relative w-10 h-1 bg-[#cc4422] rounded-full shadow-[0_0_10px_#cc4422]" style={{ transform: 'rotate(-45deg)' }} />
-                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-2 ${theme === 'force' ? 'text-[#cc4422]' : 'text-gray-400'}`}>
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-2 ${theme === 'force' ? 'text-[#cc4422]' : 'text-[#9ca3af]'}`}>
                                             FORCE
                                         </span>
                                     </div>
                                     {theme === 'force' && (
-                                        <div className="absolute top-0 right-0 bg-[#cc4422] text-white font-bold text-[7px] px-1.5 py-0.5">
+                                        <div className="absolute top-0 right-0 bg-[#cc4422] text-[#ffffff] font-bold text-[7px] px-1.5 py-0.5">
                                             ◉ ON
                                         </div>
                                     )}
@@ -1102,18 +1102,18 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-arrakis"
                                     onClick={() => setTheme('arrakis')}
-                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'arrakis' ? 'scale-[1.02] border-2 border-[#d97706]' : 'border-gray-800 bg-[#1c1917] hover:border-[#d97706]/40 scale-100'}`}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'arrakis' ? 'scale-[1.02] border-2 border-[#d97706]' : 'border-[#1f2937] bg-[#1c1917] hover:border-[#d97706]/40 scale-100'}`}
                                 >
                                     <div className="absolute inset-0 pointer-events-none opacity-20" style={{ background: 'radial-gradient(circle at 100% 0%, #d97706 0%, transparent 70%)' }} />
                                     <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
                                         {/* Arrakis Sun */}
                                         <div className="w-8 h-8 rounded-full bg-[#d97706] shadow-[0_0_15px_#d97706]" />
-                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-1 ${theme === 'arrakis' ? 'text-[#d97706]' : 'text-amber-900/60'}`}>
+                                        <span className={`text-[9px] font-bold tracking-[0.2em] mt-1 ${theme === 'arrakis' ? 'text-[#d97706]' : 'text-[#78350f]'}`}>
                                             ARRAKIS
                                         </span>
                                     </div>
                                     {theme === 'arrakis' && (
-                                        <div className="absolute top-0 right-0 bg-[#d97706] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                        <div className="absolute top-0 right-0 bg-[#d97706] text-[#000000] font-bold text-[7px] px-1.5 py-0.5">
                                             ◉ ON
                                         </div>
                                     )}
@@ -1123,7 +1123,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-renaissance"
                                     onClick={() => setTheme('renaissance')}
-                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'renaissance' ? 'scale-[1.02] border-2 border-[#ffb000]' : 'border-gray-800 bg-black hover:border-[#ffb000]/40 scale-100'}`}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'renaissance' ? 'scale-[1.02] border-2 border-[#ffb000]' : 'border-[#1f2937] bg-[#000000] hover:border-[#ffb000]/40 scale-100'}`}
                                 >
                                     {/* Hex pattern bg */}
                                     <div className="absolute inset-0 pointer-events-none opacity-10" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='17' viewBox='0 0 20 17' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.5L5 0h10l5 8.5L15 17H5L0 8.5z' fill='none' stroke='%23ffb000' stroke-width='1'/%3E%3C/svg%3E\")", backgroundSize: '10px 8.5px' }} />
@@ -1134,12 +1134,12 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                             <div className="w-2.5 h-2.5 border border-[#ffb000]/50" />
                                             <div className="w-2.5 h-2.5 bg-[#ffb000]/80 shadow-[0_0_5px_#ffb000]" />
                                         </div>
-                                        <span className={`text-[9px] font-bold tracking-[0.15em] mt-2 ${theme === 'renaissance' ? 'text-[#ffb000]' : 'text-gray-600'}`}>
+                                        <span className={`text-[9px] font-bold tracking-[0.15em] mt-2 ${theme === 'renaissance' ? 'text-[#ffb000]' : 'text-[#4b5563]'}`}>
                                             RENAISSANCE
                                         </span>
                                     </div>
                                     {theme === 'renaissance' && (
-                                        <div className="absolute top-0 right-0 bg-[#ffb000] text-black font-bold text-[7px] px-1.5 py-0.5">
+                                        <div className="absolute top-0 right-0 bg-[#ffb000] text-[#000000] font-bold text-[7px] px-1.5 py-0.5">
                                             ◉ ON
                                         </div>
                                     )}
@@ -1181,12 +1181,12 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                             <div className="w-1 h-full bg-[#8cb8cc] shadow-[0_0_5px_#8cb8cc]"></div>
                                             <div className="absolute w-full h-1 bg-[#c0392b] shadow-[0_0_5px_#c0392b]"></div>
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'got' ? 'text-[#8cb8cc]' : 'text-gray-400'}`} style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+                                        <span className={`text-[10px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'got' ? 'text-[#8cb8cc]' : 'text-[#9ca3af]'}`} style={{ fontFamily: "'Cinzel Decorative', serif" }}>
                                             WESTEROS
                                         </span>
                                     </div>
                                     {theme === 'got' && (
-                                        <div className="absolute top-0 right-0 bg-[#8cb8cc] text-black font-bold text-[7px] px-1.5 py-0.5" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
+                                        <div className="absolute top-0 right-0 bg-[#8cb8cc] text-[#000000] font-bold text-[7px] px-1.5 py-0.5" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
                                             WINTER
                                         </div>
                                     )}
@@ -1196,19 +1196,19 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-marvel"
                                     onClick={() => setTheme('marvel')}
-                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'marvel' ? 'scale-[1.02] border-[3px] border-[#e62429] bg-[#1a1a1a]' : 'border-[3px] border-gray-800 bg-[#111111] hover:border-[#e62429]/60 scale-100'}`}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'marvel' ? 'scale-[1.02] border-[3px] border-[#e62429] bg-[#1a1a1a]' : 'border-[3px] border-[#1f2937] bg-[#111111] hover:border-[#e62429]/60 scale-100'}`}
                                 >
                                     <div className="absolute inset-0 pointer-events-none opacity-10" style={{ background: 'radial-gradient(#e62429 20%, transparent 20%)', backgroundSize: '10px 10px' }} />
                                     <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
                                         <div className="w-8 h-8 relative flex items-center justify-center bg-[#e62429] shadow-[2px_2px_0px_#f0e442]">
                                             <span className="text-[#ffffff] font-bold text-lg" style={{ fontFamily: "'Bangers', cursive" }}>M</span>
                                         </div>
-                                        <span className={`text-[12px] font-bold tracking-[0.05em] mt-2 uppercase ${theme === 'marvel' ? 'text-[#ffffff]' : 'text-gray-500'}`} style={{ fontFamily: "'Bangers', cursive" }}>
+                                        <span className={`text-[12px] font-bold tracking-[0.05em] mt-2 uppercase ${theme === 'marvel' ? 'text-[#ffffff]' : 'text-[#6b7280]'}`} style={{ fontFamily: "'Bangers', cursive" }}>
                                             COMIC
                                         </span>
                                     </div>
                                     {theme === 'marvel' && (
-                                        <div className="absolute -top-1 -right-1 bg-[#f0e442] text-black font-bold text-[9px] px-2 py-0.5 border-2 border-[#e62429] shadow-[1px_1px_0px_#e62429] transform rotate-12" style={{ fontFamily: "'Bangers', cursive" }}>
+                                        <div className="absolute -top-1 -right-1 bg-[#f0e442] text-[#000000] font-bold text-[9px] px-2 py-0.5 border-2 border-[#e62429] shadow-[1px_1px_0px_#e62429] transform rotate-12" style={{ fontFamily: "'Bangers', cursive" }}>
                                             POW!
                                         </div>
                                     )}
@@ -1225,12 +1225,12 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         <div className="w-8 h-8 relative flex items-center justify-center border-t-2 border-[#ffcc00] rounded-t-full shadow-[0_0_10px_#ffcc00]">
                                             <div className="absolute top-1 w-6 h-6 border-l-2 border-r-2 border-[#005ce6] transform scale-x-75"></div>
                                         </div>
-                                        <span className={`text-[12px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'dc' ? 'text-[#d9d9e6]' : 'text-gray-500'}`} style={{ fontFamily: "'Anton', sans-serif" }}>
+                                        <span className={`text-[12px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'dc' ? 'text-[#d9d9e6]' : 'text-[#6b7280]'}`} style={{ fontFamily: "'Anton', sans-serif" }}>
                                             GOTHAM
                                         </span>
                                     </div>
                                     {theme === 'dc' && (
-                                        <div className="absolute top-0 right-0 bg-[#005ce6] text-white font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Anton', sans-serif" }}>
+                                        <div className="absolute top-0 right-0 bg-[#005ce6] text-[#ffffff] font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Anton', sans-serif" }}>
                                             NIGHT
                                         </div>
                                     )}
@@ -1246,12 +1246,12 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         <div className="w-full flex items-center justify-center border-y border-[#33ff33] bg-[#111111] py-1">
                                             <span className="text-[#33ff33] text-[10px] tracking-widest" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>1 2 3 4</span>
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'computerwelt' ? 'text-[#33ff33]' : 'text-gray-500'}`} style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
+                                        <span className={`text-[10px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'computerwelt' ? 'text-[#33ff33]' : 'text-[#6b7280]'}`} style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
                                             {t('profile.themes.computerwelt', 'COMPUTERWELT')}
                                         </span>
                                     </div>
                                     {theme === 'computerwelt' && (
-                                        <div className="absolute top-0 right-0 bg-[#33ff33] text-black font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
+                                        <div className="absolute top-0 right-0 bg-[#33ff33] text-[#000000] font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
                                             AKTIV
                                         </div>
                                     )}
@@ -1261,19 +1261,19 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                 <button
                                     data-testid="theme-switch-mensch-maschine"
                                     onClick={() => setTheme('mensch-maschine')}
-                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'mensch-maschine' ? 'scale-[1.02] border-2 border-[#ff0000] shadow-[0_0_15px_rgba(255,0,0,0.6)]' : 'border-[#333333] bg-black hover:border-[#ff0000]/60 scale-100'}`}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'mensch-maschine' ? 'scale-[1.02] border-2 border-[#ff0000] shadow-[0_0_15px_rgba(255,0,0,0.6)]' : 'border-[#333333] bg-[#000000] hover:border-[#ff0000]/60 scale-100'}`}
                                 >
                                     <div className="absolute inset-0 pointer-events-none opacity-20 bg-gradient-to-r from-transparent via-[#ff0000]/20 to-transparent" />
                                     <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
-                                        <div className="flex px-2 py-1 bg-[#ff0000] text-white tracking-[0.2em] font-bold text-[8px]" style={{ fontFamily: "'Antonio', sans-serif" }}>
+                                        <div className="flex px-2 py-1 bg-[#ff0000] text-[#ffffff] tracking-[0.2em] font-bold text-[8px]" style={{ fontFamily: "'Antonio', sans-serif" }}>
                                             MENSCH
                                         </div>
-                                        <span className={`text-[10px] font-bold tracking-[0.1em] uppercase mt-1 ${theme === 'mensch-maschine' ? 'text-white' : 'text-gray-500'}`} style={{ fontFamily: "'Antonio', sans-serif" }}>
+                                        <span className={`text-[10px] font-bold tracking-[0.1em] uppercase mt-1 ${theme === 'mensch-maschine' ? 'text-[#ffffff]' : 'text-[#6b7280]'}`} style={{ fontFamily: "'Antonio', sans-serif" }}>
                                             {t('profile.themes.mensch-maschine', 'MASCHINE')}
                                         </span>
                                     </div>
                                     {theme === 'mensch-maschine' && (
-                                        <div className="absolute top-0 right-0 bg-white text-black font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Antonio', sans-serif" }}>
+                                        <div className="absolute top-0 right-0 bg-[#ffffff] text-[#000000] font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Antonio', sans-serif" }}>
                                             ON
                                         </div>
                                     )}

@@ -23,7 +23,7 @@ const HelpModal = ({ onClose }) => {
     }, [onClose]);
 
     return (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm transform-gpu">
             <div className="card-cyber text-white max-w-2xl w-full max-h-[90vh] flex flex-col p-1 overflow-hidden border-cyber-primary shadow-cyber-primary relative">
                 <button
                     onClick={onClose}

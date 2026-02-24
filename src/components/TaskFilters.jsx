@@ -69,7 +69,7 @@ const TaskFilters = ({ filters, onFilterChange, categories }) => {
     ];
 
     return (
-        <div className="mb-6 p-4 border border-cyber-gray bg-black/40 rounded-lg backdrop-blur-sm relative z-20">
+        <div className="mb-6 p-4 border border-cyber-gray bg-black/40 rounded-lg backdrop-blur-sm transform-gpu relative z-20">
             <div className="flex flex-col md:flex-row gap-4 md:items-start items-center flex-wrap">
 
                 {/* Search Input */}

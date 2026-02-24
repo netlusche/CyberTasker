@@ -130,7 +130,7 @@ const CalendarModal = ({ tasks, onClose, onOpenDossier }) => {
 
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose}></div>
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transform-gpu" onClick={onClose}></div>
             <div className="bg-cyber-black border border-cyber-primary p-4 md:p-6 shadow-cyber-primary relative z-10 w-full max-w-5xl flex flex-col font-mono" style={{ maxHeight: '90vh' }}>
 
                 <div className="flex justify-between items-center mb-6">

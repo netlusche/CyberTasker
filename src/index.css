@@ -99,6 +99,8 @@
   background-size: 300px 300px;
   animation: matrix-rain 20s linear infinite;
   opacity: 0.35;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 @keyframes matrix-rain {
@@ -351,15 +353,17 @@
   background-size: 30px 30px;
   animation: bg-pan-slow 30s linear infinite;
   opacity: 0.15;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* 1, 2, 3, 4, 5, 6, 7, 8 Animation Effect */
-.theme-computerwelt::before {
+body.theme-computerwelt::before {
   content: "1 2 3 4 5 6 7 8";
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   font-family: 'IBM Plex Mono', monospace;
   font-size: 15vw;
   font-weight: 700;
@@ -368,6 +372,7 @@
   pointer-events: none;
   z-index: 0;
   animation: pulse-numbers 4s infinite alternate;
+  will-change: transform, opacity;
 }
 
 @keyframes pulse-numbers {
@@ -410,10 +415,12 @@
       transparent 20px);
   opacity: 0.5;
   animation: mm-pan 15s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Sliding Red Scanner Line */
-.theme-mensch-maschine::before {
+body.theme-mensch-maschine::before {
   content: "";
   position: fixed;
   top: 0;
@@ -425,6 +432,8 @@
   pointer-events: none;
   z-index: 10;
   animation: scanline-vertical 8s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 @keyframes mm-pan {
@@ -465,6 +474,8 @@
   animation: synthwave-grid 5s linear infinite;
   opacity: 0.4;
   perspective: 1000px;
+  transform: translateZ(0);
+  will-change: background-position;
 }
 
 @keyframes synthwave-grid {
@@ -491,7 +502,7 @@
   opacity: 0.8;
 }
 
-.theme-megacorp-executive::before {
+body.theme-megacorp-executive::before {
   content: "";
   position: fixed;
   top: -50%;
@@ -504,9 +515,11 @@
   pointer-events: none;
   z-index: 5;
   animation: ambient-rotate 20s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-.theme-megacorp-executive::after {
+body.theme-megacorp-executive::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -514,6 +527,8 @@
   pointer-events: none;
   z-index: 5;
   animation: megacorp-pulse 4s ease-in-out infinite alternate;
+  transform: translateZ(0);
+  will-change: box-shadow;
 }
 
 @keyframes ambient-rotate {
@@ -554,7 +569,7 @@
   /* Force darker gray for light mode contrast */
 }
 
-.theme-megacorp-executive .text-white {
+.theme-megacorp-executive .text-white:not(.theme-preview-card *) {
   color: #212529 !important;
   /* Prevent text-white from causing invisible text */
 }
@@ -646,8 +661,9 @@
 }
 
 /* Fix generic transparent black backgrounds used across forms */
-.theme-megacorp-executive .bg-black\/30,
-.theme-megacorp-executive .bg-black\/40 {
+.theme-megacorp-executive .bg-black\/30:not(.theme-preview-card *),
+.theme-megacorp-executive .bg-black\/40:not(.theme-preview-card),
+.theme-megacorp-executive .bg-black\/40:not(.theme-preview-card *) {
   background-color: rgba(0, 0, 0, 0.05) !important;
   color: #212529 !important;
 }
@@ -659,7 +675,7 @@
 }
 
 /* CRT Overlay Effects */
-.theme-matrix::after {
+body.theme-matrix::after {
   content: "";
   position: fixed;
   top: 0;
@@ -669,9 +685,10 @@
   background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px);
   pointer-events: none;
   z-index: 9999;
+  transform: translateZ(0);
 }
 
-.theme-weyland::after {
+body.theme-weyland::after {
   content: "";
   position: fixed;
   top: 0;
@@ -681,6 +698,7 @@
   background: radial-gradient(circle at center, transparent 30%, rgba(10, 8, 0, 0.4) 100%), repeating-linear-gradient(0deg, rgba(20, 10, 0, 0.1), rgba(20, 10, 0, 0.1) 2px, transparent 2px, transparent 4px);
   pointer-events: none;
   z-index: 9999;
+  transform: translateZ(0);
 }
 
 /* LCARS Specific Detail Overrides removed to prevent clashing with standard Tailwind semantic styling */

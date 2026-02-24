@@ -66,6 +66,15 @@
   - Alle Themes sind als CSS-Variablen in der `index.css` definiert und sauber im Profil-Modal (inkl. Icons/Namen) auswählbar.
   - Gewährleistung, dass das Skript `check-theme.js` weiterhin erfolgreich durchläuft.
 
+**US-2.5.8: Validierung kritischer Auth-Voränge & PR-Checks**
+* **Als** System-Operator
+* **Möchte ich**, dass kritische Account-Funktionen (Registrierung, Login, 2FA, Email-Versand) automatisiert getestet werden
+* **Damit** Updates nicht unbemerkt die Möglichkeit der Nutzer zur Anmeldung oder Sicherung ihrer Accounts zerstören.
+* **Akzeptanzkriterien:**
+  - Erstellung/Erweiterung der E2E-Tests für 2FA-Einrichtung und Email-Adressen-Updates.
+  - Implementierung eines GitHub-Actions Workflows für Pull Requests, der streng prüft, ob (mindestens) Registrierung und Login noch 100% funktionsfähig sind.
+
+
 ## Ergänzungen für den Testplan
 
 **Zu US-2.5.3 (Lokalisierung XP-Fortschrittsanzeige):**
@@ -84,4 +93,6 @@
 
 **Zu US-2.5.7 (Neue UI-Themes):**
 - **Testfall (Visuelle Kontrolle):** Im Profil alle 4 neuen Themes durchklicken und visuell prüfen, ob Farben und Hover-States konsistent wirken. Insbesondere den Light-Mode ("Megacorp") auf gute Lesbarkeit prüfen.
-- **Testfall (E2E Integration):** Den bestehenden E2E-Test (`03-theme-persistence.spec.js`) erweitern, sodass er mindestens eines der neuen Themes anwählt und prüft, ob die Klasse (`.theme-...`) korrekt persistent bleibt.
+**Zu US-2.5.8 (Auth-Vorgänge & PR-Checks):**
+- **Testfall (Playwright):** Ausführung der Testsuite für `11-advanced-auth.spec.js`. Prüfen, ob der Login-Flow, das Aktivieren der 2FA im Profil-Modal und das Simulieren eines Email-Adressen-Updates von Playwright als Passed markiert werden.
+- **Testfall (CI/CD):** Prüfen, ob eine neue Datei `.github/workflows/pr-auth-check.yml` angelegt wurde, die den E2E-Test für Auth beim Erstellen eines Pull Requests triggert.
