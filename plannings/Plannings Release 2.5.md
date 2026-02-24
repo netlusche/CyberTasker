@@ -96,3 +96,49 @@
 **Zu US-2.5.8 (Auth-Vorgänge & PR-Checks):**
 - **Testfall (Playwright):** Ausführung der Testsuite für `11-advanced-auth.spec.js`. Prüfen, ob der Login-Flow, das Aktivieren der 2FA im Profil-Modal und das Simulieren eines Email-Adressen-Updates von Playwright als Passed markiert werden.
 - **Testfall (CI/CD):** Prüfen, ob eine neue Datei `.github/workflows/pr-auth-check.yml` angelegt wurde, die den E2E-Test für Auth beim Erstellen eines Pull Requests triggert.
+
+**US-2.5.9: E-Mail-Zwang bei der System-Initialisierung**
+* **Als** System-Installer
+* **Möchte ich** bei der Erstinstallation im Setup-Screen zwingend aufgefordert werden, eine gültige E-Mail-Adresse für den primären Admin-Account anzugeben
+* **Damit** der Master-Account einen Kommunikationskanal für E-Mail-2FA und Passwort-Recovery besitzt.
+* **Akzeptanzkriterien:**
+  - Der Installer (`install.html` / `install.php`) enthält ein Pflichtfeld für die E-Mail-Adresse des Admins.
+  - Das Backend verweigert die Anlage des Master-Accounts, falls die E-Mail ungültig oder leer ist.
+
+**US-2.5.10: Globale Policy "Enforce Email 2FA"**
+* **Als** Administrator
+* **Möchte ich** in der Admin-Konsole einen globalen Schalter "Enforce Email 2FA" aktivieren können
+* **Damit** ich systemweit für alle Nutzer ohne Ausnahme eine Zwei-Faktor-Authentifizierung beim Login erzwingen kann.
+* **Akzeptanzkriterien:**
+  - Ein neuer Toggle-Switch im Admin-Panel (oberhalb der Strict Password Policies) für `enforce_email_2fa`.
+  - Ist der Schalter aktiv, so löst der Login-Prozess auch für Nutzer *ohne* aktivierte Authenticator-App zwingend den Versand eines 6-stelligen Codes per E-Mail aus, der eingegeben werden muss.
+  - Hat der Nutzer **bereits eine App-basierte TOTP-2FA** aktiviert, so greift primär diese (um E-Mail-Spam zu vermeiden) und der Email-Code wird *nicht* verschickt.
+
+**US-2.5.11: Initiale Sicherheits-Direktive (Cyberpunk-Jargon)**
+* **Als** frisch installierter Default-Admin
+* **Möchte ich** direkt nach der Installation eine vordefinierte Direktive in meinem Dossier finden
+* **Damit** ich thematisch motiviert daran erinnert werde, die 2FA-Policy scharfzuschalten.
+* **Akzeptanzkriterien:**
+  - Nach Ausführen des Installers liegt eine Aufgabe für den Admin vor: "ACTIVATE ENCRYPTED COMMLINKS: Enforce 2FA Protocol across the grid".
+  - Titel und Beschreibung sind selbstverständlich voll über das i18next-System lokalisiert.
+
+**US-2.5.12: Cyber-Badges System (XP Leveling 1-10+)**
+* **Als** ambitionierter Operative
+* **Möchte ich** abhängig von meinem aktuellen Level coole, thematisch passende Titel/Badges verdienen
+* **Damit** mein Fortschritt greifbarer wird.
+* **Akzeptanzkriterien:**
+  - Definition von 10 Rängen (LVL 1: Script Kiddie ... LVL 10+: Neuromancer), die im Backend oder Frontend zentral gemappt sind.
+  - Das erreichte Badge (Text oder Icon) wird für den Nutzer gut sichtbar im XP-Panel des Dashboards gerendert.
+  - Alle Badge-Namen sind in den Locales definiert, sodass sie auch auf z.B. Deutsch Sinn ergeben.
+
+**Zu US-2.5.9 (E-Mail Setup-Zwang):**
+- **Testfall:** Eine saubere SQLite-Installation starten. Versuchen, den Admin ohne E-Mail-Adresse anzulegen – System muss mit Fehlermeldung blockieren.
+
+**Zu US-2.5.10 (Enforce Email 2FA):**
+- **Testfall:** Im Admin-Panel "Enforce Email 2FA" aktivieren. Mit einem frisch erstellten User (ohne App-2FA) einloggen. Es muss eine E-Mail mit einem Code simuliert abgeschickt und das Login-Prompt-Modal angezeigt werden.
+
+**Zu US-2.5.11 (Initiale Direktive):**
+- **Testfall:** Nach Neuinstallation mit dem Admin einloggen und prüfen, ob die Direktive zur 2FA-Verschlüsselung auf dem Dashboard liegt und bei einem Sprachwechsel (z.B. auf Spanisch) korrekt übersetzt wird.
+
+**Zu US-2.5.12 (Cyber-Badges System):**
+- **Testfall:** Einem Test-User manuell in der DB extrem hohe XP (für Level 10+) zuweisen und prüfen, ob sein Dashboard das End-Badge (Neuromancer) anzeigt. Andere XP-Werte analog testen.
