@@ -111,7 +111,11 @@
             "robco": "RobCo-Terminal (Fallout)",
             "grid": "Das Gitter (Tron)",
             "section9": "Abschnitt 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp Executive"
         },
         "language": "SPRACHE",
         "messages": {
@@ -262,6 +266,13 @@
                 "clear_tooltip": "Setzt alle aktiven Filter zurück"
             }
         }
+    },
+    "dashboard": {
+        "operator_level": "OPERATOR LEVEL",
+        "level_up": "STUFENAUFSTIEG!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP Gesamt",
+        "next_rank_required": "NÄCHSTER RANG: {{xp}} XP BENÖTIGT"
     },
     "help": {
         "title": "CYBER_TASKER SYSTEMHANDBUCH",

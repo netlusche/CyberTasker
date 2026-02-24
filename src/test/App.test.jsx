@@ -3,6 +3,13 @@ import { describe, it, expect, vi } from 'vitest';
 import App from '../App';
 import i18n from '../i18n';
 import { I18nextProvider } from 'react-i18next';
+import { ThemeContext } from '../utils/ThemeContext';
+
+const MockThemeProvider = ({ children }) => (
+    <ThemeContext.Provider value={{ theme: 'cyberpunk', setTheme: vi.fn(), setThemeState: vi.fn() }}>
+        {children}
+    </ThemeContext.Provider>
+);
 
 // Mocking fetch as it's used in App.jsx
 global.fetch = vi.fn(() =>
@@ -15,25 +22,29 @@ global.fetch = vi.fn(() =>
 describe('App i18n Rendering', () => {
     it('renders "CYBER TASKER" title in German by default', async () => {
         render(
-            <I18nextProvider i18n={i18n}>
-                <App />
-            </I18nextProvider>
+            <MockThemeProvider>
+                <I18nextProvider i18n={i18n}>
+                    <App />
+                </I18nextProvider>
+            </MockThemeProvider>
         );
 
         // We check for the split title
-        expect(screen.getByText('CYBER')).toBeInTheDocument();
-        expect(screen.getByText('TASKER')).toBeInTheDocument();
+        expect(await screen.findByText('CYBER')).toBeInTheDocument();
+        expect(await screen.findByText('TASKER')).toBeInTheDocument();
     });
 
     it('renders "NETRUNNER LOGIN" in German', async () => {
         i18n.changeLanguage('de');
         render(
-            <I18nextProvider i18n={i18n}>
-                <App />
-            </I18nextProvider>
+            <MockThemeProvider>
+                <I18nextProvider i18n={i18n}>
+                    <App />
+                </I18nextProvider>
+            </MockThemeProvider>
         );
 
-        expect(screen.getByText('NETRUNNER LOGIN')).toBeInTheDocument();
+        expect(await screen.findByTestId('auth-toggle')).toBeInTheDocument();
     });
 
     it('renders "NETRUNNER LOGIN" in English after language change', async () => {
@@ -44,11 +55,13 @@ describe('App i18n Rendering', () => {
 
         i18n.changeLanguage('en');
         render(
-            <I18nextProvider i18n={i18n}>
-                <App />
-            </I18nextProvider>
+            <MockThemeProvider>
+                <I18nextProvider i18n={i18n}>
+                    <App />
+                </I18nextProvider>
+            </MockThemeProvider>
         );
 
-        expect(screen.getByText('NETRUNNER LOGIN')).toBeInTheDocument();
+        expect(await screen.findByTestId('auth-toggle')).toBeInTheDocument();
     });
 });

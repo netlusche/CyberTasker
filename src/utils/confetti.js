@@ -20,7 +20,11 @@ export const triggerNeonConfetti = (theme = 'cyberpunk') => {
         'klingon': ['#ff0000', '#990000', '#c0c0c0', '#ffffff'],
         'got': ['#8cb8cc', '#ffffff', '#c0392b', '#111a24'],
         'marvel': ['#e62429', '#f0e442', '#ffffff', '#005ce6'],
-        'dc': ['#005ce6', '#ffcc00', '#d9d9e6', '#cc0000']
+        'dc': ['#005ce6', '#ffcc00', '#d9d9e6', '#cc0000'],
+        'computerwelt': ['#33ff33', '#ffff33', '#00cc00', '#111111'],
+        'mensch-maschine': ['#ff0000', '#ffffff', '#990000', '#000000'],
+        'neon-syndicate': ['#ff00ff', '#00ffff', '#8a2be2', '#00ffcc'],
+        'megacorp-executive': ['#212529', '#0dcaf0', '#6c757d', '#ffffff']
     };
 
     const colors = colorMap[theme] || ['#00ffff', '#ff00ff', '#39ff14'];

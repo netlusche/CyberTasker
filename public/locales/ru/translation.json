@@ -111,7 +111,11 @@
             "robco": "Терминал РобКо (Fallout)",
             "grid": "Сетка (Трон)",
             "section9": "Раздел 9 (GitS)",
-            "outrun": "Обгон 1984"
+            "outrun": "Обгон 1984",
+            "computerwelt": "Компьютервельт",
+            "mensch-maschine": "Менш-Машина",
+            "neon-syndicate": "Неоновый синдикат",
+            "megacorp-executive": "Исполнительный директор Мегакорпорации"
         },
         "language": "ЯЗЫК",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "ПТ",
             "6": "СБ"
         }
+    },
+    "dashboard": {
+        "operator_level": "УРОВЕНЬ ОПЕРАТОРА",
+        "level_up": "ПОВЫШАЙТЕ УРОВЕНЬ!",
+        "lvl_prefix": "лат",
+        "xp_total": "Общий опыт",
+        "next_rank_required": "СЛЕДУЮЩИЙ РАНГ: ТРЕБУЕТСЯ {{xp}} XP"
     }
 }

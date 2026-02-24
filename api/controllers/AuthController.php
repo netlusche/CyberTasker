@@ -372,7 +372,7 @@ class AuthController extends Controller
         $data = $this->getJsonBody();
         $theme = $data['theme'] ?? 'cyberpunk';
 
-        $allowedThemes = ['cyberpunk', 'lcars', 'matrix', 'weyland', 'robco', 'grid', 'section9', 'outrun', 'steampunk', 'force', 'arrakis', 'renaissance', 'klingon', 'got', 'marvel', 'dc'];
+        $allowedThemes = ['cyberpunk', 'lcars', 'matrix', 'weyland', 'robco', 'grid', 'section9', 'outrun', 'steampunk', 'force', 'arrakis', 'renaissance', 'klingon', 'got', 'marvel', 'dc', 'computerwelt', 'mensch-maschine', 'neon-syndicate', 'megacorp-executive'];
         if (!in_array($theme, $allowedThemes)) {
             $this->errorResponse('Invalid theme selection');
         }

@@ -111,7 +111,11 @@
             "robco": "RobCo 터미널(폴아웃)",
             "grid": "그리드(트론)",
             "section9": "섹션 9(GitS)",
-            "outrun": "아웃런 1984"
+            "outrun": "아웃런 1984",
+            "computerwelt": "컴퓨터웰트",
+            "mensch-maschine": "멘쉬-마쉬네",
+            "neon-syndicate": "네온 신디케이트",
+            "megacorp-executive": "메가코프 임원"
         },
         "language": "언어",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "금",
             "6": "앉았다"
         }
+    },
+    "dashboard": {
+        "operator_level": "운영자 레벨",
+        "level_up": "레벨 업!",
+        "lvl_prefix": "LVL",
+        "xp_total": "총 XP",
+        "next_rank_required": "다음 순위: {{xp}} XP 필요"
     }
 }

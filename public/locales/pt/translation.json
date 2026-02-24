@@ -111,7 +111,11 @@
             "robco": "Terminal RobCo (Fallout)",
             "grid": "A Grade (Tron)",
             "section9": "Secção 9 (GitS)",
-            "outrun": "Ultrapassar 1984"
+            "outrun": "Ultrapassar 1984",
+            "computerwelt": "Mundo da informática",
+            "mensch-maschine": "Máquina Masculina",
+            "neon-syndicate": "Sindicato Neon",
+            "megacorp-executive": "Executivo da Megacorp"
         },
         "language": "LÍNGUA",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "SEX",
             "6": "SÁB"
         }
+    },
+    "dashboard": {
+        "operator_level": "NÍVEL DE OPERADOR",
+        "level_up": "SUBIR DE NÍVEL!",
+        "lvl_prefix": "NVL",
+        "xp_total": "Total de EXP",
+        "next_rank_required": "PRÓXIMA CLASSIFICAÇÃO: {{xp}} XP NECESSÁRIO"
     }
 }

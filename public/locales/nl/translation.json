@@ -111,7 +111,11 @@
             "robco": "RobCo-terminal (Fallout)",
             "grid": "Het raster (Tron)",
             "section9": "Sectie 9 (GitS)",
-            "outrun": "Ontlopen 1984"
+            "outrun": "Ontlopen 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neonsyndicaat",
+            "megacorp-executive": "Megacorp-uitvoerder"
         },
         "language": "TAAL",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "VR",
             "6": "ZA"
         }
+    },
+    "dashboard": {
+        "operator_level": "OPERATORNIVEAU",
+        "level_up": "NIVEAU OMHOOG!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP-totaal",
+        "next_rank_required": "VOLGENDE RANG: {{xp}} XP VEREIST"
     }
 }

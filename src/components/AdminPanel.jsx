@@ -506,6 +506,11 @@ const AdminPanel = ({ onClose }) => {
                     </label>
                 </div>
             </div>
+
+            {/* Version Information */}
+            <div className="text-center mt-8 text-[10px] text-gray-500 font-mono tracking-widest border-t border-cyber-primary/20 pt-2">
+                CYBERTASKER v2.5
+            </div>
         </SystemModal>
     );
 };

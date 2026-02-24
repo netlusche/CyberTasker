@@ -1,29 +1,53 @@
-# Planning: Release 2.6 (Stub)
+# Planning: Release 2.6
 
 ## Themen & Fokuspunkte
-*Dies ist ein Architektur- und Refactoring-Release (Tech Debt). Bevor neue große Features entwickelt werden, findet eine tiefgreifende Analyse und Bereinigung der Kernlogik statt.*
-- **Applikationslogik-Analyse:** Identifizierung von Flaschenhälsen, Redundanzen und inkonsistenten Architektur-Ansätzen.
-- **Refactoring:** Verbesserung der Code-Qualität, saubere Trennung von UI-Komponenten und Business-Logik, sowie Optimierung von Datenstrukturen.
-- **Vorbereitung Team-Struktur & Branchen-Spezialisierung:** Grundlegung der Datenarchitektur für kommende Team-Funktionen (Release 3.0) sowie die Architekturkomponenten für dynamisches Branding (Release 3 Plus).
+*Vorrangiges Ziel dieses Releases ist die Verbesserung der Barrierefreiheit (Accessibility) und der Usability durch durchgängige Tooltips und eine konsistente Tastatursteuerung. Diese Features wurden aufgrund ihrer Komplexität im Test-Setup aus Release 2.5 verschoben.*
+- **Systemweite Tooltips:** Hinzufügen von erklärenden Kurztexten (MouseOver) an relevanten Bedienelementen, wo diese aktuell fehlen. Vollständig multilingual.
+- **Tastaturnavigation (Tab-Routing):** Vereinheitlichung und Sicherstellung einer logischen, applikationsweiten Navigation primär per Tabulator-Taste.
+- **Automatisierte Release Pipeline:** Ersetzung des unsicheren manuellen Vorgehens durch ein Skript, welches Test-Validierung, Package-Versions-Bumping und Git-Tagging fehlerfrei und synchron zusammenfasst.
 
-## Zielsetzung
-Das primäre Ziel dieses Releases ist **nicht** die Einführung neuer sichtbarer Features für den Endnutzer, sondern die Verbesserung der internen Code-Qualität, Wartbarkeit und Performance für zukünftige Skalierung.
+## Neue User Stories
 
-## Neue Epics / Aufgabenbereiche (Draft)
+**US-2.6.1: Multilinguale Tooltips für Bedienelemente (Verschoben aus 2.5)**
+* **Als** Nutzer
+* **Möchte ich** beim Hovern über Icons, Buttons und komplexe Bedienelemente einen kurzen, erklärenden Text (Tooltip) sehen
+* **Damit** ich die Funktion des Elements ohne Ausprobieren sofort verstehe, insbesondere bei neuen oder selten genutzten Features.
+* **Akzeptanzkriterien:**
+  - Tooltips werden nach einer kurzen Verzögerung beim MouseOver auf relevanten UI-Elementen (ohne offensichtliche Text-Labels) angezeigt.
+  - Alle Tooltip-Texte sind konsequent in das bestehende i18n-System integriert und unterstützen alle verfügbaren Sprachen.
+  - Visuelles Design der Tooltips fügt sich nahtlos in das aktuelle Theme ein.
+> [!WARNING]
+> **Komplexitäts-Hinweis zur Test-Umsetzung:** Bei der ursprünglichen Implementierung in Release 2.5 hat sich gezeigt, dass die Kombination aus React-Portal-basierten Tooltips, synthetischen Hover-Events und Playwright E2E-Tests extrem fehleranfällig ist. Die Hover-Interaktionen wurden oft flakig oder vom Playwright-Runner nicht zuverlässig registriert.
+> **Strategie für 2.6:** Wir benötigen ein robustes Konzept zur Testbarkeit. Idealerweise sollte eine Lösung gefunden werden, bei der der Tooltip-Text direkt an den Trigger-Komponenten mittels Data-Attributen exakt ablesbar ist (z.B. `data-tooltip-content="..."`), ohne visuelle Hover-Overlays erzwingen zu müssen, um die Tests drastisch zu beschleunigen und zu stabilisieren.
 
-**US-2.6.1: Analyse und Konsolidierung der Frontend-Logik**
-* Untersuchung des State-Managements und Datenflusses zwischen den React-Komponenten.
-* Identifizierung von Refactoring-Potential (z.B. Ersetzen komplexer Prop-Drillings durch effizienteres State-Management, Reduzierung unnötiger Re-Renders).
+**US-2.6.2: Applikationsweites Navigationskonzept per Tab-Taste (Verschoben aus 2.5)**
+* **Als** (Power-)Nutzer oder Nutzer mit Einschränkungen
+* **Möchte ich** die gesamte Applikation logisch und konsistent per Tab-Taste bedienen können
+* **Damit** ich Formulare, Listen und Aktionen schnell ohne Mausbefehle durchlaufen und auslösen kann.
+* **Akzeptanzkriterien:**
+  - Konsequente Vergabe bzw. Bereinigung von `tabindex`-Attributen oder Nutzung semantischen HTMLs über alle Views hinweg.
+  - Sichtbarer, barrierefreier Fokus-State (passend zum Theme) für das aktuell per Tab fokussierte Element.
+  - Modals/Layer fangen den Tab-Fokus ein ("Focus Trap"), solange sie geöffnet sind, damit man nicht unsichtbar im Hintergrund weiternavigiert.
 
-**US-2.6.2: Analyse und Konsolidierung der Backend-API**
-* Review sämtlicher PHP-Endpunkte.
-* Vereinheitlichung der Response-Formate, Error-Handling-Mechanismen und Datenbankzugriffe.
-
-**US-2.6.3: Architektur-Vorbereitung für Team-Strukturen und Branchen-Spezialisierungen**
-* Konzeptionierung und Vorbereitung der Datenarchitektur auf die Einführung mandantenfähiger Team-Strukturen (vorgesehen für Release 3.0), um spätere, extrem komplexe Datenmigrationen zu minimieren.
-* Konzeptionierung und erste Implementierung einer flexiblen Theming- und Wording-Architektur (Branding-Engine).
-* Vorbereitung darauf, dass die Anwendung später (in Release 3 Plus) basierend auf einer Konfiguration alle Texte, Themes und evtl. spezifische UI-Elemente dynamisch an eine Branche (z.B. Handwerk, Gesundheitswesen) anpassen kann.
-* Strikte Trennung von Core-Logik und Branchen-spezifischem Wording/Styling; Vorbereitung des Settings-States für dynamische Installationsparameter (die dann z.B. pro Team oder Instanz greifen können).
+**US-2.6.3: Automatisierter "One-Click-Release" Prozess**
+* **Als** Entwickler/Release-Manager
+* **Möchte ich** einen zentralen Terminal-Befehl ausführen können, der den gesamten Release-Prozess absichert
+* **Damit** Versionen, Git Tags und Commits in Zukunft immer zu 100% synchron sind und ich nicht versehentlich defekten Code durch kaputte Tests freigebe.
+* **Akzeptanzkriterien:**
+  - Erstellung eines interaktiven Node-Skripts (`scripts/release.js`).
+  - Das Skript erzwingt vor jedem Start ein `npm run check:all` (i18n & Theme-Checks) und `npm run test` (E2E Playwright CI-Tests).
+  - Das Skript nutzt den nativen `npm version <auswahl>` Mechanismus, um die `package.json` abzugraden sowie den Commit und den `vX.X.X` Tag in der korrekten Reihenfolge zu generieren.
 
 ## Ergänzungen für den Testplan
-*(Wird nach Festlegung der genauen Refactoring-Ziele definiert. Fokus wird auf umfassenden Regressionstests liegen, um sicherzustellen, dass die bestehende Funktionalität durch das Refactoring exakt erhalten bleibt.)*
+
+**Zu US-2.6.1 (Multilinguale Tooltips):**
+- **Testfall:** Dashboard und Directive Dossier öffnen. Mit der Maus über verschiedene Icon-Buttons hovern. Prüfen, ob der Tooltip erscheint und der Text korrekt ist.
+- **Testfall (i18n):** Sprache in den Settings umstellen. Erneut über dieselben Elemente hovern und prüfen, ob die Tooltips in der neuen Sprache angezeigt werden.
+- **E2E Strategie:** E2E Tests sollten die Anwesenheit der Tooltip-Data-Attribute anstatt visuelles Hovering überprüfen (siehe Strategie Hinweis in US).
+
+**Zu US-2.6.2 (Tab-Navigation):**
+- **Testfall:** Applikation laden. Ausschließlich mit der `Tab`-Taste durch das Dashboard navigieren. Prüfen, ob der Fokus logisch wandert und der Fokus-State deutlich sichtbar ist.
+- **Testfall (Focus Trap):** Ein Modal öffnen. Mit `Tab` durch die Felder navigieren. Prüfen, dass der Fokus innerhalb des Modals bleibt und nicht auf das dahinterliegende Dashboard springt.
+
+**Zu US-2.6.3 (Release Automation):**
+- **Testfall (Sicherung):** Absichtlich einen Fehler in einen der Tests einbauen (z.B. falsche Farbe in React-File) und das Release-Skript starten. Prüfen, ob das Skript hart abbricht, bevor die Versionsnummer geändert wird.

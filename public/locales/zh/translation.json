@@ -111,7 +111,11 @@
             "robco": "RobCo 终端（辐射）",
             "grid": "网格（创）",
             "section9": "第 9 节 (GitS)",
-            "outrun": "超越 1984"
+            "outrun": "超越 1984",
+            "computerwelt": "计算机世界",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "霓虹辛迪加",
+            "megacorp-executive": "巨型企业高管"
         },
         "language": "语言",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "星期五",
             "6": "SAT"
         }
+    },
+    "dashboard": {
+        "operator_level": "操作员级别",
+        "level_up": "升级！",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP 总计",
+        "next_rank_required": "下一个排名：需要 {{xp}} XP"
     }
 }

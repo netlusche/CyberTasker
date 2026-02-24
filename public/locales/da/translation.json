@@ -111,7 +111,11 @@
             "robco": "RobCo Terminal (Fallout)",
             "grid": "The Grid (Tron)",
             "section9": "Sektion 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp Executive"
         },
         "language": "SPROG",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "FRI",
             "6": "SAT"
         }
+    },
+    "dashboard": {
+        "operator_level": "OPERATØRNIVEAU",
+        "level_up": "NIVEAU OP!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP i alt",
+        "next_rank_required": "NÆSTE RANK: {{xp}} XP PÅKRÆVET"
     }
 }

@@ -111,7 +111,11 @@
             "robco": "מסוף רובקו (נפילה)",
             "grid": "הרשת (טרון)",
             "section9": "סעיף 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "קומפיוטרוולט",
+            "mensch-maschine": "מנש-משינה",
+            "neon-syndicate": "ניאון סינדיקט",
+            "megacorp-executive": "מנהל תאגיד-על"
         },
         "language": "שפה",
         "messages": {
@@ -263,6 +267,13 @@
             }
         }
     },
+    "dashboard": {
+        "operator_level": "רמת מפעיל",
+        "level_up": "עלה רמה!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP סך הכל",
+        "next_rank_required": "הדרגה הבאה: {{xp}} XP נדרש"
+    },
     "help": {
         "title": "מדריך מערכת CYBER_TASKER",
         "acknowledge": "אישור",
@@ -287,7 +298,7 @@
             },
             "system_access": {
                 "title": "// גישה [אימות]",
-                "item1_label": "הַרשָׁמָה",
+                "item1_label": "הרשמה",
                 "item1_text1": "צור חשבון חדש באמצעות שם קוד (שם משתמש), Com-Link (אימייל) ומפתח גישה (סיסמה).",
                 "item1_warn": "⚠ נדרש אימות דוא\"ל כדי להפעיל את החשבון.",
                 "item2_label": "התחבר",
@@ -356,7 +367,7 @@
                 "title": "// CHRONO-SYNC [תזמון]",
                 "item1_label": "מועדים",
                 "item1_text": "הקצה תאריכי ביצוע באמצעות שכבת העל של CYBER CALENDAR.",
-                "item2_label": "קפיצות זמן",
+                "item2_label": "זמן קופץ",
                 "item2_text": "השתמש בפקדי ניווט לשנה לתכנון לטווח ארוך.",
                 "item3_label": "סנכרון אינטראקטיבי",
                 "item3_text": "שנה תאריכים ישירות בכרטיסים פעילים באמצעות פרוטוקולי CYBER CONFIRM.",
@@ -485,13 +496,13 @@
             "11": "דצמבר"
         },
         "days": {
-            "0": "א'",
-            "1": "ב'",
-            "2": "ג'",
-            "3": "ד'",
+            "0": "SUN",
+            "1": "MON",
+            "2": "TUE",
+            "3": "רביעי",
             "4": "ה'",
-            "5": "ו'",
-            "6": "ש'"
+            "5": "FRI",
+            "6": "SAT"
         }
     }
 }

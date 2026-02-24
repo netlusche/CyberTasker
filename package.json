@@ -1,14 +1,17 @@
 {
   "name": "cyber-tasker",
   "private": true,
-  "version": "2.1.4",
+  "version": "2.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build && cp -r api dist/ && cp -r manuals dist/ 2>/dev/null || true && cp .htaccess dist/ 2>/dev/null || true && rm -rf dist/api/*.db dist/api/config.local.php dist/api/mail_log.txt dist/api/sessions dist/api/uploads && mkdir dist/api/sessions dist/api/uploads && cp api/uploads/.htaccess dist/api/uploads/ 2>/dev/null || true && cp api/sessions/.htaccess dist/api/sessions/ 2>/dev/null || true",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest run",
+    "test": "vitest run src/test",
+    "check:i18n": "node scripts/check-i18n.js",
+    "check:theme": "node scripts/check-theme.js",
+    "check:all": "npm run check:i18n && npm run check:theme",
     "check-translations": "python3 scripts/check_translations.py"
   },
   "dependencies": {

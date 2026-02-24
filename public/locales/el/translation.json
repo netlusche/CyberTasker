@@ -111,7 +111,11 @@
             "robco": "Τερματικό RobCo (Fallout)",
             "grid": "The Grid (Tron)",
             "section9": "Ενότητα 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Συνδικάτο Νέων",
+            "megacorp-executive": "Στέλεχος της Megacorp"
         },
         "language": "ΓΛΩΣΣΑ",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "ΠΑ",
             "6": "ΣΑ"
         }
+    },
+    "dashboard": {
+        "operator_level": "ΕΠΙΠΕΔΟ ΧΕΙΡΙΣΤΗ",
+        "level_up": "ΑΝΕΒΑΤΕ ΕΠΙΠΕΔΟ!",
+        "lvl_prefix": "LVL",
+        "xp_total": "Σύνολο XP",
+        "next_rank_required": "ΕΠΟΜΕΝΗ ΚΑΤΑΤΑΞΗ: ΑΠΑΙΤΕΙΤΑΙ {{xp}} XP"
     }
 }

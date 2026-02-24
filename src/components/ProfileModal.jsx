@@ -1235,6 +1235,93 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                         </div>
                                     )}
                                 </button>
+
+                                {/* Computerwelt Theme (Kraftwerk 1981) */}
+                                <button
+                                    data-testid="theme-switch-computerwelt"
+                                    onClick={() => setTheme('computerwelt')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'computerwelt' ? 'scale-[1.02] border-2 border-[#33ff33] shadow-[0_0_15px_rgba(51,255,51,0.6)]' : 'border-[#1e1e1e] bg-[#0a0a0a] hover:border-[#33ff33]/60 scale-100'}`}
+                                >
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-full flex items-center justify-center border-y border-[#33ff33] bg-[#111111] py-1">
+                                            <span className="text-[#33ff33] text-[10px] tracking-widest" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>1 2 3 4</span>
+                                        </div>
+                                        <span className={`text-[10px] font-bold tracking-[0.1em] mt-2 uppercase ${theme === 'computerwelt' ? 'text-[#33ff33]' : 'text-gray-500'}`} style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
+                                            {t('profile.themes.computerwelt', 'COMPUTERWELT')}
+                                        </span>
+                                    </div>
+                                    {theme === 'computerwelt' && (
+                                        <div className="absolute top-0 right-0 bg-[#33ff33] text-black font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
+                                            AKTIV
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Mensch-Maschine Theme (Kraftwerk 1978) */}
+                                <button
+                                    data-testid="theme-switch-mensch-maschine"
+                                    onClick={() => setTheme('mensch-maschine')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'mensch-maschine' ? 'scale-[1.02] border-2 border-[#ff0000] shadow-[0_0_15px_rgba(255,0,0,0.6)]' : 'border-[#333333] bg-black hover:border-[#ff0000]/60 scale-100'}`}
+                                >
+                                    <div className="absolute inset-0 pointer-events-none opacity-20 bg-gradient-to-r from-transparent via-[#ff0000]/20 to-transparent" />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="flex px-2 py-1 bg-[#ff0000] text-white tracking-[0.2em] font-bold text-[8px]" style={{ fontFamily: "'Antonio', sans-serif" }}>
+                                            MENSCH
+                                        </div>
+                                        <span className={`text-[10px] font-bold tracking-[0.1em] uppercase mt-1 ${theme === 'mensch-maschine' ? 'text-white' : 'text-gray-500'}`} style={{ fontFamily: "'Antonio', sans-serif" }}>
+                                            {t('profile.themes.mensch-maschine', 'MASCHINE')}
+                                        </span>
+                                    </div>
+                                    {theme === 'mensch-maschine' && (
+                                        <div className="absolute top-0 right-0 bg-white text-black font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Antonio', sans-serif" }}>
+                                            ON
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Neon Syndicate Theme (Synthwave) */}
+                                <button
+                                    data-testid="theme-switch-neon-syndicate"
+                                    onClick={() => setTheme('neon-syndicate')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'neon-syndicate' ? 'scale-[1.02] border-2 border-[#ff00ff] shadow-[0_0_15px_rgba(255,0,255,0.6)]' : 'border-[#330066] bg-[#0b001a] hover:border-[#ff00ff]/60 scale-100'}`}
+                                >
+                                    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#00ffff]/20 to-transparent pointer-events-none" />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="text-[#00ffff] font-black italic text-[14px]" style={{ fontFamily: "'Righteous', cursive", textShadow: '0 0 5px #00ffff' }}>
+                                            NEON
+                                        </div>
+                                        <span className={`text-[9px] tracking-[0.1em] uppercase ${theme === 'neon-syndicate' ? 'text-[#ff00ff]' : 'text-[#ff00ff]/50'}`} style={{ fontFamily: "'Righteous', cursive", textShadow: theme === 'neon-syndicate' ? '0 0 8px #ff00ff' : 'none' }}>
+                                            {t('profile.themes.neon-syndicate', 'SYNDICATE')}
+                                        </span>
+                                    </div>
+                                    {theme === 'neon-syndicate' && (
+                                        <div className="absolute top-0 right-0 bg-[#00ffff] text-black font-bold text-[8px] px-1.5 py-0.5" style={{ fontFamily: "'Righteous', cursive" }}>
+                                            PLAY
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Megacorp Executive Theme (Light Mode) */}
+                                <button
+                                    data-testid="theme-switch-megacorp-executive"
+                                    onClick={() => setTheme('megacorp-executive')}
+                                    className={`theme-preview-card transition-all duration-300 overflow-hidden relative ${theme === 'megacorp-executive' ? 'scale-[1.02] border border-[#212529] shadow-[0_4px_6px_rgba(0,0,0,0.1)]' : 'border-[#dee2e6] bg-[#f8f9fa] hover:border-[#adb5bd] scale-100'}`}
+                                >
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0dcaf0]" />
+                                    <div className="flex flex-col items-center gap-1 relative z-10 w-full h-full justify-center">
+                                        <div className="w-6 h-6 border-2 border-[#212529] flex items-center justify-center mb-1">
+                                            <div className="w-2 h-2 bg-[#0dcaf0]" />
+                                        </div>
+                                        <span className={`text-[9px] font-bold tracking-tight uppercase ${theme === 'megacorp-executive' ? 'text-[#212529]' : 'text-[#6c757d]'}`} style={{ fontFamily: "'Inter', sans-serif" }}>
+                                            {t('profile.themes.megacorp-executive', 'MEGACORP')}
+                                        </span>
+                                    </div>
+                                    {theme === 'megacorp-executive' && (
+                                        <div className="absolute bottom-1 right-1 bg-[#212529] text-white font-bold text-[7px] px-1.5 py-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>
+                                            EXEC
+                                        </div>
+                                    )}
+                                </button>
                             </div>
                         </div>
 

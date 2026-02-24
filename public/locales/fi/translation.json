@@ -111,7 +111,11 @@
             "robco": "RobCo Terminal (Fallout)",
             "grid": "Verkko (Tron)",
             "section9": "Jakso 9 (GitS)",
-            "outrun": "Ylitys 1984"
+            "outrun": "Ylitys 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp Executive"
         },
         "language": "KIELI",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "PE",
             "6": "LA"
         }
+    },
+    "dashboard": {
+        "operator_level": "KÄYTTÄJÄTASO",
+        "level_up": "TASO YLÖS!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP yhteensä",
+        "next_rank_required": "SEURAAVA SIJO: {{xp}} XP VAADITTAA"
     }
 }

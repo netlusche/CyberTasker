@@ -11,6 +11,7 @@
   --theme-success: #00ff00;
   --theme-accent: #bc13fe;
   --theme-card: rgba(30, 30, 30, 0.8);
+  --theme-text: #e0e0e0;
   --theme-font: 'Courier New', Courier, monospace;
   --theme-radius: 0.5rem;
 
@@ -28,6 +29,7 @@
   --theme-success: #00ff00;
   --theme-accent: #bc13fe;
   --theme-card: rgba(30, 30, 30, 0.8);
+  --theme-text: #e0e0e0;
   --theme-font: 'Courier New', Courier, monospace;
   --theme-radius: 0.5rem;
 
@@ -232,6 +234,90 @@
   --shadow-accent: 0 0 10px rgba(255, 204, 0, 0.6);
 }
 
+.theme-computerwelt {
+  /* Computerwelt Theme (Kraftwerk 1981) */
+  --theme-bg: #0a0a0a;
+  --theme-surface: #111111;
+  --theme-border: #33ff33;
+  --theme-primary: #33ff33;
+  --theme-secondary: #ffff33;
+  --theme-success: #33ff33;
+  --theme-accent: #00cc00;
+  --theme-danger: #ff3333;
+  --theme-warning: #ffff33;
+  --theme-info: #3333ff;
+  --theme-card: rgba(10, 10, 10, 0.9);
+  --theme-text: #33ff33;
+  --theme-font: 'IBM Plex Mono', monospace;
+  --theme-radius: 0rem;
+  --shadow-primary: 0 0 10px rgba(51, 255, 51, 0.6);
+  --shadow-secondary: 0 0 8px rgba(255, 255, 51, 0.5);
+  --shadow-accent: 0 0 8px rgba(0, 204, 0, 0.4);
+}
+
+.theme-mensch-maschine {
+  /* Mensch-Maschine Theme (Kraftwerk 1978) */
+  --theme-bg: #000000;
+  --theme-surface: #111111;
+  --theme-border: #cc0000;
+  --theme-primary: #ff0000;
+  --theme-secondary: #ffffff;
+  --theme-success: #ffffff;
+  --theme-accent: #990000;
+  --theme-danger: #ff0000;
+  --theme-warning: #ffaa00;
+  --theme-info: #cccccc;
+  --theme-card: rgba(10, 10, 10, 0.95);
+  --theme-text: #ffffff;
+  --theme-font: 'Antonio', sans-serif;
+  --theme-radius: 0rem;
+  --shadow-primary: 0 0 10px rgba(255, 0, 0, 0.6);
+  --shadow-secondary: 0 0 5px rgba(255, 255, 255, 0.5);
+  --shadow-accent: none;
+}
+
+.theme-neon-syndicate {
+  /* Neon Syndicate Theme (Synthwave/Outrun) */
+  --theme-bg: #0b001a;
+  --theme-surface: #160033;
+  --theme-border: #ff00ff;
+  --theme-primary: #ff00ff;
+  --theme-secondary: #00ffff;
+  --theme-success: #00ffcc;
+  --theme-accent: #8a2be2;
+  --theme-danger: #ff0055;
+  --theme-warning: #ffaa00;
+  --theme-info: #00e5ff;
+  --theme-card: rgba(22, 0, 51, 0.85);
+  --theme-text: #f0e6ff;
+  --theme-font: 'Righteous', cursive;
+  --theme-radius: 0.25rem;
+  --shadow-primary: 0 0 15px rgba(255, 0, 255, 0.7);
+  --shadow-secondary: 0 0 10px rgba(0, 255, 255, 0.6);
+  --shadow-accent: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+.theme-megacorp-executive {
+  /* Megacorp Executive Theme (Elitärer Light Mode) */
+  --theme-bg: #e9ecef;
+  --theme-surface: #ffffff;
+  --theme-border: #ced4da;
+  --theme-primary: #212529;
+  --theme-secondary: #6c757d;
+  --theme-success: #198754;
+  --theme-accent: #0dcaf0;
+  --theme-danger: #dc3545;
+  --theme-warning: #fd7e14;
+  --theme-info: #0dcaf0;
+  --theme-card: rgba(255, 255, 255, 0.95);
+  --theme-text: #212529;
+  --theme-font: 'Inter', sans-serif;
+  --theme-radius: 0.25rem;
+  --shadow-primary: 0 4px 6px rgba(33, 37, 41, 0.1);
+  --shadow-secondary: 0 2px 4px rgba(108, 117, 125, 0.1);
+  --shadow-accent: 0 2px 4px rgba(13, 202, 240, 0.15);
+}
+
 /* Background effects for Klingon Theme */
 .theme-klingon .bg-cyber-surface,
 .theme-klingon .bg-cyber-card {
@@ -251,6 +337,325 @@
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+/* -----------------------------------------
+   NEW THEME BACKGROUNDS & EFFECTS
+   ----------------------------------------- */
+
+/* Computerwelt (Kraftwerk 1981) - Green Grid & Bouncing Numbers */
+.theme-computerwelt .cyber-grid {
+  background-image:
+    linear-gradient(rgba(51, 255, 51, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 255, 51, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: bg-pan-slow 30s linear infinite;
+  opacity: 0.15;
+}
+
+/* 1, 2, 3, 4, 5, 6, 7, 8 Animation Effect */
+.theme-computerwelt::before {
+  content: "1 2 3 4 5 6 7 8";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15vw;
+  font-weight: 700;
+  color: rgba(51, 255, 51, 0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  animation: pulse-numbers 4s infinite alternate;
+}
+
+@keyframes pulse-numbers {
+  0% {
+    opacity: 0.2;
+    letter-spacing: 0px;
+  }
+
+  100% {
+    opacity: 0.5;
+    letter-spacing: 15px;
+  }
+}
+
+.theme-computerwelt .bg-cyber-surface,
+.theme-computerwelt .bg-cyber-card {
+  border: 1px solid var(--theme-border);
+  box-shadow: inset 0 0 10px rgba(51, 255, 51, 0.1);
+  position: relative;
+  z-index: 1;
+  /* keep above numbers */
+}
+
+@keyframes bg-pan-slow {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+/* Mensch-Maschine (Kraftwerk 1978) - Bold Diagonal Stripes & Sliding Scanline */
+.theme-mensch-maschine .cyber-grid {
+  background-image: repeating-linear-gradient(45deg,
+      rgba(255, 0, 0, 0.05) 0px,
+      rgba(255, 0, 0, 0.05) 2px,
+      transparent 2px,
+      transparent 20px);
+  opacity: 0.5;
+  animation: mm-pan 15s linear infinite;
+}
+
+/* Sliding Red Scanner Line */
+.theme-mensch-maschine::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 10;
+  animation: scanline-vertical 8s linear infinite;
+}
+
+@keyframes mm-pan {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100px 100px;
+  }
+}
+
+@keyframes scanline-vertical {
+  0% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.theme-mensch-maschine .bg-cyber-surface,
+.theme-mensch-maschine .bg-cyber-card {
+  border: 2px solid var(--theme-border);
+  border-radius: 0 !important;
+  /* brutalist square edges */
+  box-shadow: 4px 4px 0 rgba(255, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Neon Syndicate (Synthwave) - Scrolling Horizon Lines & Glow */
+.theme-neon-syndicate .cyber-grid {
+  background-image:
+    linear-gradient(transparent 0%, rgba(255, 0, 255, 0.3) 100%),
+    repeating-linear-gradient(180deg, rgba(0, 255, 255, 0.2) 0px, rgba(0, 255, 255, 0.2) 2px, transparent 2px, transparent 40px);
+  background-size: 100% 100%, 100% 40px;
+  animation: synthwave-grid 5s linear infinite;
+  opacity: 0.4;
+  perspective: 1000px;
+}
+
+@keyframes synthwave-grid {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 0 40px;
+  }
+}
+
+.theme-neon-syndicate .bg-cyber-surface,
+.theme-neon-syndicate .bg-cyber-card {
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+/* Megacorp Executive (Light Mode) - Clean Watermark & Animated Soft Gradient */
+.theme-megacorp-executive .cyber-grid {
+  background-image: radial-gradient(circle at center, rgba(33, 37, 41, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.8;
+}
+
+.theme-megacorp-executive::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 40% 40%, rgba(13, 202, 240, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 60% 60%, rgba(108, 117, 125, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 5;
+  animation: ambient-rotate 20s linear infinite;
+}
+
+.theme-megacorp-executive::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 80px rgba(13, 202, 240, 0.15);
+  pointer-events: none;
+  z-index: 5;
+  animation: megacorp-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes megacorp-pulse {
+  0% {
+    box-shadow: inset 0 0 40px rgba(13, 202, 240, 0.05);
+  }
+
+  100% {
+    box-shadow: inset 0 0 150px rgba(13, 202, 240, 0.25);
+  }
+}
+
+.theme-megacorp-executive .bg-cyber-surface,
+.theme-megacorp-executive .bg-cyber-card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+.theme-megacorp-executive .text-gray-200,
+.theme-megacorp-executive .text-gray-300,
+.theme-megacorp-executive .text-gray-400,
+.theme-megacorp-executive .text-gray-500 {
+  color: #495057 !important;
+  /* Force darker gray for light mode contrast */
+}
+
+.theme-megacorp-executive .text-white {
+  color: #212529 !important;
+  /* Prevent text-white from causing invisible text */
+}
+
+.theme-megacorp-executive label {
+  color: #212529 !important;
+  /* Ensure form labels are clearly visible */
+  font-weight: 500;
+}
+
+/* Fix specific pill/badge text that might invert poorly */
+.theme-megacorp-executive .bg-cyber-primary {
+  color: #ffffff !important;
+}
+
+/* Fix submit buttons and dark background buttons where text-black is used */
+.theme-megacorp-executive .text-black,
+.theme-megacorp-executive button.text-black {
+  color: #ffffff !important;
+}
+
+/* Fix .btn-cyber components globally in Megacorp */
+.theme-megacorp-executive .btn-cyber,
+.theme-megacorp-executive .btn-cyber-primary {
+  color: #e9ecef !important;
+}
+
+.theme-megacorp-executive .btn-cyber:hover,
+.theme-megacorp-executive .btn-cyber-primary:hover {
+  color: #ffffff !important;
+}
+
+/* Fix CyberButton hover contrasts where text-black on bg-cyber-primary (which is dark gray here) is unreadable */
+.theme-megacorp-executive button.bg-cyber-primary,
+.theme-megacorp-executive button.hover\:bg-cyber-primary:hover,
+.theme-megacorp-executive button.hover\:bg-cyber-secondary:hover {
+  color: #ffffff !important;
+  /* Dark buttons need white text on hover and when active */
+}
+
+/* Fix Filter Pills: They use text-gray-300 hover:bg-gray-800 which is terrible in light mode */
+.theme-megacorp-executive .text-gray-300.hover\:bg-gray-800:hover {
+  background-color: #212529 !important;
+  color: #f8f9fa !important;
+  border-color: #212529 !important;
+}
+
+/* Fix Filter Pill Tooltips (which have a black background but dark text in this theme) */
+.theme-megacorp-executive .group-hover\:opacity-100.bg-black.text-cyber-primary {
+  color: #f8f9fa !important;
+}
+
+/* Fix Select inputs, generic inputs, textareas, and generic dark blocks having near-invisible text or dark backgrounds */
+.theme-megacorp-executive select,
+.theme-megacorp-executive input,
+.theme-megacorp-executive textarea,
+.theme-megacorp-executive .bg-cyber-dark {
+  color: #212529 !important;
+  background-color: #ffffff !important;
+  border-color: #ced4da !important;
+}
+
+/* Fix CyberSelect dropdown menus in Megacorp */
+.theme-megacorp-executive ul[role="listbox"] {
+  background-color: #ffffff !important;
+  border-color: #ced4da !important;
+  color: #212529 !important;
+}
+
+.theme-megacorp-executive ul[role="listbox"] li {
+  color: #212529 !important;
+}
+
+.theme-megacorp-executive ul[role="listbox"] li:hover,
+.theme-megacorp-executive ul[role="listbox"] li[aria-selected="true"] {
+  background-color: #e9ecef !important;
+  color: #000000 !important;
+}
+
+/* Fix neon shadows in Megacorp so they use subtle gray instead of neon glows */
+.theme-megacorp-executive .input-cyber.shadow-cyber-success,
+.theme-megacorp-executive .input-cyber.shadow-cyber-primary,
+.theme-megacorp-executive .input-cyber.shadow-cyber-secondary,
+.theme-megacorp-executive .input-cyber.shadow-cyber-info,
+.theme-megacorp-executive .input-cyber.shadow-cyber-warning,
+.theme-megacorp-executive .input-cyber.shadow-cyber-danger {
+  box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.15) !important;
+  border-color: #6c757d !important;
+}
+
+/* Fix generic transparent black backgrounds used across forms */
+.theme-megacorp-executive .bg-black\/30,
+.theme-megacorp-executive .bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #212529 !important;
+}
+
+/* Fix placeholder texts globally for this theme to be readable */
+.theme-megacorp-executive ::placeholder {
+  color: #6c757d !important;
+  opacity: 1 !important;
 }
 
 /* CRT Overlay Effects */
@@ -481,8 +886,14 @@ body,
   }
 
   .input-cyber {
-    @apply bg-cyber-dark border border-cyber-gray p-2 text-[#e0e0e0] placeholder-gray-500 focus:outline-none focus:border-cyber-primary transition-all duration-300;
+    @apply bg-cyber-dark border border-cyber-gray p-2 focus:outline-none focus:border-cyber-primary transition-all duration-300;
+    color: var(--theme-text);
     border-radius: var(--theme-radius);
+  }
+
+  .input-cyber::placeholder {
+    color: var(--theme-text);
+    opacity: 0.4;
   }
 
   .input-cyber:focus {

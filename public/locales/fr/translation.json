@@ -111,7 +111,11 @@
             "robco": "Terminal RobCo (Fallout)",
             "grid": "La grille (Tron)",
             "section9": "Section 9 (GitS)",
-            "outrun": "Dépasser 1984"
+            "outrun": "Dépasser 1984",
+            "computerwelt": "Monde informatique",
+            "mensch-maschine": "Mensch-Machine",
+            "neon-syndicate": "Syndicat du néon",
+            "megacorp-executive": "Directeur de Megacorp"
         },
         "language": "LANGUE",
         "messages": {
@@ -493,5 +497,12 @@
             "5": "VE",
             "6": "SA"
         }
+    },
+    "dashboard": {
+        "operator_level": "NIVEAU OPÉRATEUR",
+        "level_up": "NIVEAU SUPÉRIEUR !",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP totale",
+        "next_rank_required": "RANG SUIVANT : {{xp}} XP REQUIS"
     }
 }
