@@ -419,6 +419,13 @@
                 "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 aesthetics. High-contrast crimson, absolute black, and stark white. We are the robots.",
                 "theme_neon-syndicate": "NEON SYNDICATE — Outrun the night. Deep void purple washed in synthwave magenta and electric blue. The grid never sleeps.",
                 "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war."
+            },
+            "danger_zone": {
+                "title": "// Hoj wej [pong Qaw']",
+                "item1_warn": "⚠ Hoj:",
+                "item1_text": "pong Qaw'lu'. Hoch mu'tlhegh, nav, QIb Qaw'lu'. Hoch Qaw'lu'.",
+                "item2_label": "pegh",
+                "item2_text": "DaH pegh mu' luq nIS."
             }
         }
     },

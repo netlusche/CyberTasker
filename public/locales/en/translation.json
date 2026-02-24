@@ -418,6 +418,13 @@
                 "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 aesthetics. High-contrast crimson, absolute black, and stark white. We are the robots.",
                 "theme_neon-syndicate": "NEON SYNDICATE — Outrun the night. Deep void purple washed in synthwave magenta and electric blue. The grid never sleeps.",
                 "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war."
+            },
+            "danger_zone": {
+                "title": "// DANGER ZONE [Identity Erasure]",
+                "item1_warn": "⚠ CRITICAL WARNING:",
+                "item1_text": "Terminating your terminal account is irreversible. All directives, archives, and neural links will be wiped.",
+                "item2_label": "AUTHENTICATION",
+                "item2_text": "To proceed, you must present your current Access Key as proof of identity."
             }
         }
     },
