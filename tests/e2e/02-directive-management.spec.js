@@ -167,13 +167,17 @@ test.describe('Directive Management Pagination', () => {
         await page.waitForTimeout(500);
 
         // Clean up both tasks
+        await recurringTasks.nth(0).hover();
         await recurringTasks.nth(0).locator('button[title="Delete Task"]').click();
         await page.getByTestId('confirm-button').click();
-        await page.waitForTimeout(500);
+        await expect(page.getByTestId('confirm-button')).not.toBeVisible();
+        await expect(recurringTasks).toHaveCount(1);
+
         // The second one shifts up to index 0
+        await recurringTasks.nth(0).hover();
         await recurringTasks.nth(0).locator('button[title="Delete Task"]').click();
         await page.getByTestId('confirm-button').click();
-        await page.waitForTimeout(500);
+        await expect(page.getByTestId('confirm-button')).not.toBeVisible();
     });
 
     test('should NOT duplicate a recurring task if recurrence_end_date is reached (US-2.3.4)', async ({ page }) => {

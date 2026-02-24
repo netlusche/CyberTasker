@@ -98,14 +98,9 @@ const AdminPanel = ({ onClose }) => {
         fetchSettings();
     }, []);
 
-    const isFirstMount = React.useRef(true);
-
     // Debounce Search Logic
     useEffect(() => {
-        if (isFirstMount.current) {
-            isFirstMount.current = false;
-            return;
-        }
+        if (searchQuery === debouncedSearch) return;
 
         const timer = setTimeout(() => {
             setDebouncedSearch(searchQuery);
