@@ -36,6 +36,9 @@ Security is paramount. The Admin grid allows you to monitor the 2FA status of al
 *   Users with active Time-Based One-Time Passwords (TOTP) will display a green `[2FA]` badge next to their role.
 *   **Emergency Override:** If an Operative loses their authenticator device and their backup codes, an Admin can click the red **`2FA OFF`** button to forcefully disable the Bio-Lock for that specific user, allowing them to log in with just their password.
 
+### 2.3 System Version Display
+To ensure your grid is synchronized with current security updates, the absolute system version (e.g., `CyberTracker v2.5.0`) is continuously displayed at the bottom of the Admin Console. Use this version string when establishing contact for strategic support.
+
 ## 3. Global System Policies
 
 At the bottom of the Administration Console, you have access to global environment variables.
@@ -48,12 +51,12 @@ By toggling the `Strict Password Policy` switch:
 ### Enforce Email 2FA
 By toggling the `Enforce Email 2FA` switch:
 *   **Disabled (Default):** Operatives without an active Authenticator App (TOTP) can log in with just their password.
-*   **Enabled:** An automatic **Emergency Override Code** (6-digit PIN) is dispatched to the operative's registered Email Address if they attempt to log in without a TOTP token. This acts as a forced, universal Two-Factor Authentication fallback across the grid.
+*   **Enabled:** An automatic **Emergency Override Code** (6-digit PIN) is dispatched to the operative's registered Email Address if they attempt to log in without a TOTP token. This acts as a forced, universal Two-Factor Authentication fallback across the grid. Operatives will also see a persistent warning banner in their profile until they secure their account natively.
 
 ## 4. Diagnostics & Maintenance
 
-*   **Mail Logs & Development:** CyberTasker relies on PHP's `mail()` function for dispatching notifications (e.g., password reset tokens, 2FA fallback codes). For local testing or environments without a live SMTP server configured, developers can manually uncomment the logging function within `api/helpers/mail_helper.php`. When activated, this will write all email traffic to a local `mail_log.txt` file, which can then be inspected directly via the Admin Terminal to ensure the system is dispatching signals correctly.
+*   **Mail Logs & Development:** CyberTasker relies on PHP's `mail()` function for dispatching notifications (e.g., password reset tokens, 2FA fallback codes). For system-level debugging, developers can hook into `api/helpers/mail_helper.php` to analyze dispatch headers.
 
 ---
 > **End of Guide**
-> Maintain constant vigilance over the grid, Admin.
+> Maintain constant vigilance over the grid, Admin. (v2.5)

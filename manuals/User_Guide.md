@@ -41,8 +41,8 @@ For complex operations, click the **"DETAILS"** button on any Task Card to open 
 ## 4. Gamification & Progression
 
 As an Operative, your efficiency is tracked.
-*   **Leveling System:** Completing directives yields **EXP** (Experience Points). Filling your progress bar levels you up. Higher levels may unlock visual tier upgrades.
-*   **Badges:** Exceptional performance grants special security clearance badges, visible in your Navigation Panel.
+*   **Leveling System:** Completing directives yields **EXP** (Experience Points). Filling your progress bar levels you up.
+*   **Cyber-Badges:** Your operational efficiency determines your Tier (Novice to Prime) and Title (Script Kiddie to Singularity). Your current badge is displayed prominently above your XP progress bar. 
 
 ## 5. Holo-Projections (Global Calendar)
 
@@ -59,13 +59,13 @@ Access your **Profile** to configure your personal interface. It contains multip
 
 **Security & Connectors:**
 ![User Profile Top](images/cybertasker_profile_top_1771861511612.png)
-*   **Bio-Lock Security (2FA):** Enable and enforce two-factor authentication via Authenticator Apps or Email.
+*   **Bio-Lock Security (2FA):** Enable and enforce two-factor authentication via Authenticator Apps or Email. If administrators enforce global Email 2FA, you will see a flashing "SYSTEM DIRECTIVE [Admin Policy]" banner here until you set up a dedicated TOTP app.
 *   **Contact Channel:** Configure your Com-Link (Email) for notifications.
-*   **Localization (Multi-Language):** CyberTasker's UI can be hot-swapped between English, German, Spanish, and custom regional dialects.
+*   **Localization (Multi-Language):** CyberTasker's UI can be hot-swapped between localized language packs, updating everything including localized dashboard components.
 
 **Customization & Termination:**
 ![User Profile Bottom](images/cybertasker_profile_bottom_1771861528664.png)
-*   **Theme Selection:** Hot-swap your interface's visual theme (e.g., Cyberpunk, Matrix, LCARS, and more).
+*   **Theme Selection:** Hot-swap your interface's visual theme. Options include Cyberpunk, Matrix, LCARS, and specialized setups like *Computerwelt*, *Mensch-Maschine*, *Neon Syndicate*, and the light-mode *Megacorp Executive*.
 *   **Update Cypher:** Update your system password.
 *   **Danger Zone:** Permanently terminate your identity and wipe allied directives.
 
@@ -82,9 +82,9 @@ Users with `admin` clearance possess access to the restricted Admin Panel.
 ![Admin Terminal](images/cybertasker_admin_populated_2fa_1771862180719.png)
 
 *   **Operative Overrides:** Forcefully alter user roles, reset passwords, or suspend rogue operatives.
-*   **2FA Management (TOTP):** Admins can mandate and enforce Two-Factor Authentication using authenticator apps for elevated security layers.
-*   **System Diagnostics:** Review backend `mail_log.txt` and system metrics directly from the browser.
+*   **2FA Management (TOTP):** Admins can mandate and enforce Two-Factor Authentication system-wide.
+*   **System Integrity:** View the current CyberTasker system build version to ensure your grid is synchronized.
 
 ---
 > **[END OF TRANSMISSION]**
-> CyberTasker Core Logic v2.4 (The Automation & Precision Update)
+> CyberTasker Core Logic v2.5 (The Quality & Immersion Update)
