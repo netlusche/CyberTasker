@@ -179,7 +179,9 @@
             "critical_backup": "⚠ CRITICAL: SECURE BACKUP FRAGMENTS ⚠",
             "emergency_override": "Emergency Override only. Store in Analog format.",
             "copy_fragment": "COPY FRAGMENT",
-            "uplink_complete": "UPLINK SECURED & COMPLETE"
+            "uplink_complete": "UPLINK SECURED & COMPLETE",
+            "system_enforced": "SYSTEM DIRECTIVE [Admin Policy]: EMAIL UPLINK ENFORCED",
+            "system_enforced_desc": "Admins have mandated 2FA constraints. You are currently on the fallback protocol. Initialize a full uplink [Setup 2FA] below."
         },
         "contact": {
             "channel": "CONTACT CHANNEL",
@@ -520,5 +522,22 @@
             "5": "FRI",
             "6": "SAT"
         }
+    },
+    "gamification": {
+        "tier_1": "Novice [Skill Level]",
+        "tier_2": "Adept [Skill Level]",
+        "tier_3": "Veteran [Skill Level]",
+        "tier_4": "Elite [Skill Level]",
+        "tier_5": "Prime [Skill Level]",
+        "title_1": "Script Kiddie [Hacker Role]",
+        "title_2": "Console Cowboy [Hacker Role]",
+        "title_3": "Netrunner [Hacker Role]",
+        "title_4": "Cyberdoc [Hacker Role]",
+        "title_5": "Chrome-Junkie [Hacker Role]",
+        "title_6": "System Architect [Hacker Role]",
+        "title_7": "Ghost in the Shell [Hacker Role]",
+        "title_8": "Neuromancer [Hacker Role]",
+        "title_9": "Digital God [Hacker Role]",
+        "title_10": "Singularity [Hacker Role]"
     }
 }

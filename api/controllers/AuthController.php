@@ -4,20 +4,20 @@
 class AuthController extends Controller
 {
     // --- RATE LIMITING MIDDLEWARE ---
-    private function checkRateLimit(string $endpoint, int $maxAttempts = 5, int $windowMinutes = 15): void
+    private function checkRateLimit(string $endpoint, string $username = '', int $maxAttempts = 5, int $windowMinutes = 15): void
     {
         $ip = $this->getClientIp();
-        $attempts = $this->userRepo->countRecentFailedAttempts($ip, $endpoint, $windowMinutes);
+        $attempts = $this->userRepo->countRecentFailedAttempts($username, $ip, $endpoint, $windowMinutes);
 
         if ($attempts >= $maxAttempts) {
             $this->errorResponse('Too many failed attempts. Please try again later.', 429);
         }
     }
 
-    private function logAuthAttempt(string $endpoint, bool $success): void
+    private function logAuthAttempt(string $endpoint, string $username, bool $success): void
     {
         $ip = $this->getClientIp();
-        $this->userRepo->recordLoginAttempt($ip, $endpoint, $success);
+        $this->userRepo->recordLoginAttempt($username, $ip, $endpoint, $success);
     }
 
     // Helper: Check Password Strength
@@ -51,6 +51,8 @@ class AuthController extends Controller
             $stats = $this->userRepo->getStats($_SESSION['user_id']);
 
             if ($user) {
+                $enforceEmail2FA = ($this->adminRepo->getSetting('enforce_email_2fa') === '1');
+
                 $this->jsonResponse([
                     'isAuthenticated' => true,
                     'user' => [
@@ -61,6 +63,7 @@ class AuthController extends Controller
                         'two_factor_enabled' => (bool)$user['two_factor_enabled'],
                         'two_factor_method' => $user['two_factor_method'],
                         'theme' => $user['theme'],
+                        'system_enforces_email_2fa' => $enforceEmail2FA,
                         'stats' => $stats
                     ],
                     'csrf_token' => $_SESSION['csrf_token']
@@ -72,16 +75,17 @@ class AuthController extends Controller
 
     public function login()
     {
-        $this->checkRateLimit('login');
         $data = $this->getJsonBody();
-
         $username = $data['username'] ?? '';
+
+        $this->checkRateLimit('login', $username);
+
         $password = $data['password'] ?? '';
 
         $user = $this->userRepo->findByUsernameOrEmail($username);
 
         if ($user && password_verify($password, $user['password'])) {
-            $this->logAuthAttempt('login', true);
+            $this->logAuthAttempt('login', $username, true);
 
             // Check Verification Status
             if (isset($user['is_verified']) && $user['is_verified'] == 0) {
@@ -117,7 +121,12 @@ class AuthController extends Controller
                     sendMail($user['email'], $subject, $body);
                 }
 
-                $this->jsonResponse(['success' => true, 'requires_2fa' => true, 'two_factor_method' => $twoFactorMethod]);
+                $this->jsonResponse([
+                    'success' => true,
+                    'requires_2fa' => true,
+                    'two_factor_method' => $twoFactorMethod,
+                    'system_enforces_email_2fa' => $enforceEmail2FA
+                ]);
             }
 
             // Standard Login
@@ -140,6 +149,7 @@ class AuthController extends Controller
                     'role' => $user['role'],
                     'two_factor_enabled' => (bool)$user['two_factor_enabled'],
                     'theme' => $user['theme'],
+                    'system_enforces_email_2fa' => $enforceEmail2FA,
                     'stats' => $stats
                 ],
                 'csrf_token' => $_SESSION['csrf_token'],
@@ -147,7 +157,7 @@ class AuthController extends Controller
             ]);
         }
         else {
-            $this->logAuthAttempt('login', false);
+            $this->logAuthAttempt('login', $username, false);
             $this->errorResponse('Invalid credentials', 401);
         }
     }
@@ -588,6 +598,7 @@ class AuthController extends Controller
 
             $user = $this->userRepo->findById($userId);
             $stats = $this->userRepo->getStats($userId);
+            $enforceEmail2FA = ($this->adminRepo->getSetting('enforce_email_2fa') === '1');
 
             $this->jsonResponse([
                 'success' => true,
@@ -599,6 +610,7 @@ class AuthController extends Controller
                     'two_factor_enabled' => (bool)$user['two_factor_enabled'],
                     'two_factor_method' => $user['two_factor_method'],
                     'theme' => $user['theme'],
+                    'system_enforces_email_2fa' => $enforceEmail2FA,
                     'stats' => $stats
                 ],
                 'csrf_token' => $_SESSION['csrf_token']

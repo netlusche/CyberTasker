@@ -64,6 +64,16 @@
   - Vor dem Versand einer E-Mail prüft das Backend die Sprache: Befindet sich der Nutzer im Login/Registrierungs-Screen, wird die dort aktiv ausgewählte Sprache für den Versand genutzt.
   - Löst ein bereits eingeloggter Nutzer eine E-Mail aus (z.B. Profiländerungen), wird die in seinem Nutzerprofil gespeicherte Präferenz verwendet.
 
+**US-2.6.7: Mobile Touch-Unterstützung für Sub-Routinen Drag & Drop**
+* **Als** mobiler Nutzer (Smartphone / Tablet)
+* **Möchte ich** meine Sub-Routinen im Directive Dossier durch Wischen (Touch & Drag) genauso flüssig sortieren können wie am Desktop
+* **Damit** ich auch von unterwegs meine Workloads effizient priorisieren kann, ohne an den PC wechseln zu müssen.
+* **Akzeptanzkriterien:**
+  - Das aktuelle native HTML5 Drag-and-Drop (`draggable="true"`, `onDragStart`), welches auf iOS/Android Touch-Screens ignoriert wird, wird refactored.
+  - Implementierung einer robusten Touch-Lösung (Entweder durch Migration auf eine moderne React-Bibliothek wie `@dnd-kit/core` oder durch Einbindung eines robusten `mobile-drag-drop` Polyfills).
+  - Wischen/Ziehen an den bestehenden Drag-Handles verschiebt Items sauber auf Touch-Geräten.
+  - Die visuelle Rückmeldung (Das "Geister-Element" beim Ziehen und die gestrichelte Drop-Zone) bleibt auf mobilen Geräten bestehen oder wird durch eine gleichwertig performante Animation ersetzt.
+
 ## Ergänzungen für den Testplan
 
 **Zu US-2.6.1 (Multilinguale Tooltips):**
@@ -88,3 +98,7 @@
 **Zu US-2.6.6 (E-Mail Lokalisierung):**
 - **Testfall (Passwort Reset):** Auf dem Login-Screen die Sprache auf "Spanisch" umstellen und einen Passwort-Reset anfordern. In der `mail_log.txt` (bzw. dem echten Mail-Postfach) verifizieren, dass der Betreff und Inhalt der E-Mail auf Spanisch ist.
 - **Testfall (Eingeloggter User):** Im Nutzerprofil die Sprache auf "Deutsch" stellen und ein 2FA-Backup anfordern. Die entsprechende E-Mail muss zwingend auf Deutsch ankommen.
+
+**Zu US-2.6.7 (Mobile Drag & Drop):**
+- **Testfall:** DevTools öffnen, auf "Device Toolbar" (Mobile-Ansicht, z.B. iPhone 12) umschalten und Touch-Events simulieren. Ein Dossier öffnen, das Sub-Routinen enthält. Den Drag-Handle einer Sub-Routine "antappen" und verschieben. Prüfen, ob die Position nach dem Loslassen korrekt gespeichert wird.
+- **Regressionstest:** Prüfen, ob das Drag-and-Drop auf dem Desktop weiterhin reibungslos mit der klassischen Maus funktioniert.

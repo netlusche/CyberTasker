@@ -14,7 +14,7 @@ Navigating to the root directory will automatically trigger the `install.php` se
 
 ### Zero-Config Auto-Lock
 CyberTasker features a self-locking installation mechanism:
-*   **First Run:** The installer detects an empty grid, creates the necessary SQLite/MySQL tables, injects the initial test user dataset, and generates the default `admin` account.
+*   **First Run:** The installer detects an empty grid, creates the necessary SQLite/MySQL tables, and injects the initial test user dataset. The Administrator must provide an **Email Address** and a robust **Access Key** (Password) during this step.
 *   **Subsequent Runs:** Once the `users` table exists, the installer **locks itself**. If you attempt to access `install.php` again to force a database schema update, you **must** be actively logged in as an `admin`. 
 *   If a standard user or an unauthenticated visitor hits the installer, they receive a severe `[ ACCESS DENIED ]` warning, protecting the database from malicious resets.
 
@@ -43,7 +43,12 @@ At the bottom of the Administration Console, you have access to global environme
 ### Strict Password Policy
 By toggling the `Strict Password Policy` switch:
 *   **Disabled (Default):** Operatives can use simple passwords (e.g., `password123`) for rapid testing and deployment.
-*   **Enabled:** The system enforces cryptographic-grade security. All new passwords (during registration or profile updates) must be at least 8 characters long and contain a mix of uppercase, lowercase, numbers, and special symbols.
+*   **Enabled:** The system enforces cryptographic-grade security. All new passwords (during registration or profile updates) must be at least 12 characters long and contain a mix of uppercase, lowercase, numbers, and special symbols.
+
+### Enforce Email 2FA
+By toggling the `Enforce Email 2FA` switch:
+*   **Disabled (Default):** Operatives without an active Authenticator App (TOTP) can log in with just their password.
+*   **Enabled:** An automatic **Emergency Override Code** (6-digit PIN) is dispatched to the operative's registered Email Address if they attempt to log in without a TOTP token. This acts as a forced, universal Two-Factor Authentication fallback across the grid.
 
 ## 4. Diagnostics & Maintenance
 

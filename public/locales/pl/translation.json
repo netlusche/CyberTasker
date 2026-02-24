@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRYTYCZNY: BEZPIECZNE FRAGMENTY KOPII ZAPASOWEJ ⚠",
             "emergency_override": "Tylko awaryjne obejście. Przechowuj w formacie analogowym.",
             "copy_fragment": "KOPIUJ FRAGMENT",
-            "uplink_complete": "UPLINK ZABEZPIECZONY I KOMPLETNY"
+            "uplink_complete": "UPLINK ZABEZPIECZONY I KOMPLETNY",
+            "system_enforced": "DYREKTYWA SYSTEMOWA [Zasady administratora]: WYMUSZONE LINK DO E-MAIL",
+            "system_enforced_desc": "Administratorzy nakazali ograniczenia 2FA. Obecnie korzystasz z protokołu awaryjnego. Zainicjuj pełne łącze wysyłające [Konfiguracja 2FA] poniżej."
         },
         "contact": {
             "channel": "KANAŁ KONTAKT",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "AKTYWUJ SZYFROWANE ŁĄCZA KOMUNIKACYJNE: Wymuś protokół 2FA w całej sieci",
         "enforce_2fa_desc": "Twoje łącza komunikacyjne są obecnie narażone na nieautoryzowane wąchanie pakietów neuronowych. Natychmiast przejdź do konsoli administracyjnej i aktywuj moduł ochronny „Wymuś e-mail 2FA” dla wszystkich pracowników."
+    },
+    "gamification": {
+        "tier_1": "Nowicjusz [Poziom umiejętności]",
+        "tier_2": "Adept [Poziom umiejętności]",
+        "tier_3": "Weteran [Poziom umiejętności]",
+        "tier_4": "Elita [Poziom umiejętności]",
+        "tier_5": "Prime [Poziom umiejętności]",
+        "title_1": "Skryptowy dzieciak [rola hakera]",
+        "title_2": "Konsolowy kowboj [rola hakera]",
+        "title_3": "Netrunner [Rola hakera]",
+        "title_4": "Cyberdoc [Rola hakera]",
+        "title_5": "Łowca Chrome [rola hakera]",
+        "title_6": "Architekt systemu [rola hakera]",
+        "title_7": "Duch w powłoce [rola hakera]",
+        "title_8": "Neuromanta [Rola hakera]",
+        "title_9": "Cyfrowy Bóg [rola hakera]",
+        "title_10": "Osobliwość [Rola hakera]"
     }
 }

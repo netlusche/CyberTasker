@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRİTİK: GÜVENLİ YEDEKLEME PARÇALARI ⚠",
             "emergency_override": "Yalnızca Acil Durumda Geçersiz Kılma. Analog formatta saklayın.",
             "copy_fragment": "PARÇAYI KOPYALA",
-            "uplink_complete": "UPLINK GÜVENLİ VE TAM"
+            "uplink_complete": "UPLINK GÜVENLİ VE TAM",
+            "system_enforced": "SİSTEM DİREKTİFİ [Yönetici Politikası]: E-POSTA UPLINK ZORUNLUDUR",
+            "system_enforced_desc": "Yöneticiler 2FA kısıtlamalarını zorunlu kıldı. Şu anda geri dönüş protokolündesiniz. Aşağıda tam bir yukarı bağlantı başlatın [2FA Kurulumu]."
         },
         "contact": {
             "channel": "İLETİŞİM KANALI",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "ŞİFRELENMİŞ İLETİŞİM BAĞLANTILARINI ETKİNLEŞTİRİN: 2FA Protokolünü şebeke genelinde uygulayın",
         "enforce_2fa_desc": "İletişim bağlantılarınız şu anda yetkisiz sinirsel paket dinlemeye maruz kalıyor. Hemen Admin Console'a gidin ve tüm operatörler için 'E-posta 2FA'yı Zorunlu Kıl' savunma modülünü etkinleştirin."
+    },
+    "gamification": {
+        "tier_1": "Acemi [Beceri Seviyesi]",
+        "tier_2": "Adept [Beceri Seviyesi]",
+        "tier_3": "Kıdemli [Beceri Seviyesi]",
+        "tier_4": "Elit [Beceri Seviyesi]",
+        "tier_5": "Prime [Beceri Seviyesi]",
+        "title_1": "Senaryo Kiddie [Hacker Rolü]",
+        "title_2": "Konsol Kovboyu [Hacker Rolü]",
+        "title_3": "Netrunner [Hacker Rolü]",
+        "title_4": "Cyberdoc [Hacker Rolü]",
+        "title_5": "Chrome Bağımlısı [Hacker Rolü]",
+        "title_6": "Sistem Mimarı [Hacker Rolü]",
+        "title_7": "Kabuktaki Hayalet [Hacker Rolü]",
+        "title_8": "Neuromancer [Hacker Rolü]",
+        "title_9": "Dijital Tanrı [Hacker Rolü]",
+        "title_10": "Tekillik [Hacker Rolü]"
     }
 }

@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRITISCH: SICHERE BACKUP-FRAGMENTE ⚠",
             "emergency_override": "Nur Notüberbrückung. Im analogen Format speichern.",
             "copy_fragment": "FRAGMENT KOPIEREN",
-            "uplink_complete": "UPLINK GESICHERT UND VOLLSTÄNDIG"
+            "uplink_complete": "UPLINK GESICHERT UND VOLLSTÄNDIG",
+            "system_enforced": "SYSTEMDIREKTIVE [Admin Policy]: E-MAIL-UPLINK ERZWUNGEN",
+            "system_enforced_desc": "Administratoren haben 2FA vorgeschrieben. Du nutzt momentan das Fallback-Protokoll. Initialisiere unten einen vollständigen Uplink [Setup 2FA]."
         },
         "contact": {
             "channel": "KONTAKTKANAL",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "AKTIVIEREN SIE VERSCHLÜSSELTE COMMLINKS: Erzwingen Sie das 2FA-Protokoll im gesamten Grid",
         "enforce_2fa_desc": "Ihre Kommunikationsverbindungen sind derzeit dem unbefugten Ausspähen neuronaler Pakete ausgesetzt. Navigieren Sie sofort zur Admin-Konsole und aktivieren Sie das Verteidigungsmodul „Enforce Email 2FA“ für alle Mitarbeiter."
+    },
+    "gamification": {
+        "tier_1": "Anfänger [Fähigkeitsniveau]",
+        "tier_2": "Adept [Fähigkeitsstufe]",
+        "tier_3": "Veteran [Fähigkeitsstufe]",
+        "tier_4": "Elite [Fähigkeitsstufe]",
+        "tier_5": "Prime [Fähigkeitsstufe]",
+        "title_1": "Script Kiddie [Hacker-Rolle]",
+        "title_2": "Konsolen-Cowboy [Hacker-Rolle]",
+        "title_3": "Netrunner [Hacker-Rolle]",
+        "title_4": "Cyberdoc [Hacker-Rolle]",
+        "title_5": "Chrome-Junkie [Hacker-Rolle]",
+        "title_6": "Systemarchitekt [Hacker-Rolle]",
+        "title_7": "Ghost in the Shell [Hacker-Rolle]",
+        "title_8": "Neuromant [Hacker-Rolle]",
+        "title_9": "Digitaler Gott [Hacker-Rolle]",
+        "title_10": "Singularität [Hacker-Rolle]"
     }
 }

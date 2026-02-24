@@ -26,6 +26,8 @@ cybertracker.db
 api/config.local.php
 api/database.sqlite
 database.sqlite
+api/tasks.sqlite
+api/mail_log.txt
 api/sessions/
 
 

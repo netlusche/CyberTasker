@@ -179,7 +179,9 @@
             "critical_backup": "⚠ CRITIQUE : FRAGMENTS DE SAUVEGARDE SÉCURISÉS ⚠",
             "emergency_override": "Commande prioritaire d'urgence uniquement. Stocker au format analogique.",
             "copy_fragment": "COPIER UN FRAGMENT",
-            "uplink_complete": "LIAISON MONTANTE SÉCURISÉE ET COMPLÈTE"
+            "uplink_complete": "LIAISON MONTANTE SÉCURISÉE ET COMPLÈTE",
+            "system_enforced": "DIRECTIVE SYSTÈME [Politique d'administration] : LIAISON MONTANTE PAR EMAIL APPLIQUÉE",
+            "system_enforced_desc": "Les administrateurs ont imposé des contraintes 2FA. Vous êtes actuellement sur le protocole de secours. Initialisez une liaison montante complète [Configuration 2FA] ci-dessous."
         },
         "contact": {
             "channel": "CANAL DE CONTACT",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "ACTIVEZ LES LIENS COMMLINKS CHIFFRÉS : appliquez le protocole 2FA sur toute la grille",
         "enforce_2fa_desc": "Vos liens de communication sont actuellement exposés à un reniflage non autorisé de paquets neuronaux. Accédez immédiatement à la console d'administration et activez le module défensif « Enforce Email 2FA » pour tous les agents."
+    },
+    "gamification": {
+        "tier_1": "Novice [Niveau de compétence]",
+        "tier_2": "Adepte [Niveau de compétence]",
+        "tier_3": "Vétéran [Niveau de compétence]",
+        "tier_4": "Élite [Niveau de compétence]",
+        "tier_5": "Premier [Niveau de compétence]",
+        "title_1": "Script Kiddie [Rôle de hacker]",
+        "title_2": "Console Cowboy [Rôle de hacker]",
+        "title_3": "Netrunner [Rôle de hacker]",
+        "title_4": "Cyberdoc [Rôle de hacker]",
+        "title_5": "Chrome-Junkie [Rôle de hacker]",
+        "title_6": "Architecte système [Rôle de hacker]",
+        "title_7": "Ghost in the Shell [Rôle de hacker]",
+        "title_8": "Neuromancien [Rôle de hacker]",
+        "title_9": "Dieu numérique [Rôle de hacker]",
+        "title_10": "Singularité [Rôle de hacker]"
     }
 }

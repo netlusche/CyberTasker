@@ -49,7 +49,8 @@ function sendMail($to, $subject, $body)
     $success = @mail($to, $subject, $htmlMessage, $headers);
 
     // [TESTING HOOK] Log all outgoing emails to a local file for E2E validation
-    file_put_contents(__DIR__ . '/mail_log.txt', "TO: $to\nSUBJECT: $subject\nBODY:\n$htmlMessage\n------------------------\n", FILE_APPEND);
+    $plainBody = strip_tags(str_replace('<br>', "\n", $body));
+    file_put_contents(__DIR__ . '/mail_log.txt', "===================================\nTO: $to\nSUBJECT: $subject\nBODY:\n$plainBody\n===================================\n\n", FILE_APPEND);
 
     // error_log($logMessage); // Uncomment for system-level mail debugging
 

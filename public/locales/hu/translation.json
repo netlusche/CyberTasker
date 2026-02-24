@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRITIKUS: BIZTONSÁGOS BIZTONSÁGI TÖREDÉKEK ⚠",
             "emergency_override": "Csak vészhelyzeti felülírás. Tárolás Analóg formátumban.",
             "copy_fragment": "MÁSOLÁS TÖREDÉK",
-            "uplink_complete": "BIZTONSÁGOS FELÜLVIZSGÁLAT ÉS TELJES"
+            "uplink_complete": "BIZTONSÁGOS FELÜLVIZSGÁLAT ÉS TELJES",
+            "system_enforced": "RENDSZERIRÁNYELV [Rendszergazdai szabályzat]: E-MAIL-FELÉPÍTÉSI LINK KÖTELEZETT",
+            "system_enforced_desc": "Az adminisztrátorok 2FA megkötéseket írtak elő. Jelenleg a tartalék protokollt használja. Alább inicializáljon egy teljes felfelé irányuló kapcsolatot [Setup 2FA]."
         },
         "contact": {
             "channel": "KAPCSOLATOS CSATORNA",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "TITKOSÍTOTT KOMMUNIKÁCIÓK AKTIVÁLÁSA: A 2FA-protokoll érvényesítése a hálózaton keresztül",
         "enforce_2fa_desc": "Kommunikációs hivatkozásai jelenleg jogosulatlan neurális csomagszippelésnek vannak kitéve. Azonnal nyissa meg a Felügyeleti konzolt, és aktiválja az „Enforce Email 2FA” védelmi modult minden munkatárs számára."
+    },
+    "gamification": {
+        "tier_1": "Kezdő [készségszint]",
+        "tier_2": "Adept [készségszint]",
+        "tier_3": "Veterán [készségszint]",
+        "tier_4": "Elit [készségszint]",
+        "tier_5": "Prime [készségszint]",
+        "title_1": "Script Kiddie [Hacker szerep]",
+        "title_2": "Console Cowboy [Hacker szerep]",
+        "title_3": "Netrunner [Hacker szerep]",
+        "title_4": "Cyberdoc [Hacker szerep]",
+        "title_5": "Chrome-Junkie [Hacker szerep]",
+        "title_6": "Rendszerépítész [Hacker szerepkör]",
+        "title_7": "Ghost in the Shell [Hacker szerep]",
+        "title_8": "Neuromancer [Hacker szerep]",
+        "title_9": "Digitális Isten [Hacker szerep]",
+        "title_10": "Szingularitás [hacker szerep]"
     }
 }

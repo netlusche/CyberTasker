@@ -179,7 +179,9 @@
             "critical_backup": "⚠ Hoj: let mI' ⚠",
             "emergency_override": "Emergency Override. yInIteb.",
             "copy_fragment": "mI' nIteb",
-            "uplink_complete": "lab chu'"
+            "uplink_complete": "lab chu'",
+            "system_enforced": "PAT RA' [Admin Policy]: QUMWI' YINISLU'",
+            "system_enforced_desc": "cha'logh yI'ang 'e' ra'ta' pat pIn. chutmey rur bID. QumwI' yIchel [Setup 2FA]."
         },
         "contact": {
             "channel": "lab pat",
@@ -521,5 +523,22 @@
             "5": "VA",
             "6": "JA"
         }
+    },
+    "gamification": {
+        "tier_1": "chu'wI' [Skill Level]",
+        "tier_2": "po'wI' [Skill Level]",
+        "tier_3": "valwI' [Skill Level]",
+        "tier_4": "laDqu'wI' [Skill Level]",
+        "tier_5": "Dunqu'wI' [Skill Level]",
+        "title_1": "tay'wI'Hom [Hacker Role]",
+        "title_2": "De'wI' mang [Hacker Role]",
+        "title_3": "QonoS nItlh [Hacker Role]",
+        "title_4": "De'wI' Qel [Hacker Role]",
+        "title_5": "baS nIv ghonwI' [Hacker Role]",
+        "title_6": "pat chenmoHwI' [Hacker Role]",
+        "title_7": "pel'aQ qa' [Hacker Role]",
+        "title_8": "neUromAncer [Hacker Role]",
+        "title_9": "De'wI' Qun [Hacker Role]",
+        "title_10": "wa' Dol [Hacker Role]"
     }
 }

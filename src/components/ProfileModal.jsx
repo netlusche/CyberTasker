@@ -732,13 +732,25 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
 
                             {/* PHASE 1: SELECTION */}
                             {!user.two_factor_enabled && !show2FA && !backupCodes && (
-                                <div className="grid grid-cols-2 gap-3">
-                                    <button onClick={handleSetup2FA} className="btn-cyber btn-cyber-primary btn-cyber-primary text-[10px] py-3 uppercase font-bold tracking-tighter">
-                                        {t('profile.security.auth_app')}
-                                    </button>
-                                    <button onClick={handleSetupEmail2FA} className="btn-cyber btn-cyber-accent text-[10px] py-3 uppercase font-bold tracking-tighter">
-                                        {t('profile.security.email_security')}
-                                    </button>
+                                <div className="space-y-3">
+                                    {user.system_enforces_email_2fa && (
+                                        <div className="bg-cyber-accent/20 border border-cyber-accent p-2 rounded text-center animate-pulse">
+                                            <p className="text-cyber-accent text-[10px] font-bold tracking-widest uppercase">
+                                                {t('profile.security.system_enforced', 'SYSTEM DIRECTIVE: EMAIL UPLINK ENFORCED')}
+                                            </p>
+                                            <p className="text-gray-300 text-[9px] mt-1">
+                                                {t('profile.security.system_enforced_desc', 'Admins have mandated 2FA. You are currently on the fallback. Initialize a full uplink below.')}
+                                            </p>
+                                        </div>
+                                    )}
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <button onClick={handleSetup2FA} className="btn-cyber btn-cyber-primary text-[10px] py-3 uppercase font-bold tracking-tighter">
+                                            {t('profile.security.auth_app')}
+                                        </button>
+                                        <button onClick={handleSetupEmail2FA} className="btn-cyber btn-cyber-accent text-[10px] py-3 uppercase font-bold tracking-tighter">
+                                            {t('profile.security.email_security')}
+                                        </button>
+                                    </div>
                                 </div>
                             )}
 

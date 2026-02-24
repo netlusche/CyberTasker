@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRITISK: SIKKER BACKUP FRAGMENTS ⚠",
             "emergency_override": "Kun tilsidesættelse af nødstilfælde. Gem i analogt format.",
             "copy_fragment": "KOPIFRAGMENT",
-            "uplink_complete": "UPLINK SIKKERT OG KOMPLETT"
+            "uplink_complete": "UPLINK SIKKERT OG KOMPLETT",
+            "system_enforced": "SYSTEMDIREKTIV [Administratorpolitik]: EMAIL UPLINK HÅNDHÆVES",
+            "system_enforced_desc": "Administratorer har pålagt 2FA-begrænsninger. Du er i øjeblikket på fallback-protokollen. Initialiser et fuldt uplink [Setup 2FA] nedenfor."
         },
         "contact": {
             "channel": "KONTAKTKANAL",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "AKTIVER KRYPTEREDE KOMMLINK: Håndhæv 2FA-protokollen på tværs af nettet",
         "enforce_2fa_desc": "Dine comm-links er i øjeblikket udsat for uautoriseret neural packet sniffing. Naviger til administrationskonsollen med det samme, og aktiver det defensive modul 'Enforce Email 2FA' for alle operatører."
+    },
+    "gamification": {
+        "tier_1": "Begynder [færdighedsniveau]",
+        "tier_2": "Adept [Skill Level]",
+        "tier_3": "Veteran [færdighedsniveau]",
+        "tier_4": "Elite [Skill Level]",
+        "tier_5": "Prime [Skill Level]",
+        "title_1": "Script Kiddie [Hacker Rolle]",
+        "title_2": "Konsol Cowboy [Hacker Rolle]",
+        "title_3": "Netrunner [Hacker-rolle]",
+        "title_4": "Cyberdoc [Hacker-rolle]",
+        "title_5": "Chrome-junkie [Hacker-rolle]",
+        "title_6": "Systemarkitekt [Hacker-rolle]",
+        "title_7": "Ghost in the Shell [Hacker-rolle]",
+        "title_8": "Neuromancer [Hacker-rolle]",
+        "title_9": "Digital Gud [Hacker Rolle]",
+        "title_10": "Singularitet [Hacker-rolle]"
     }
 }

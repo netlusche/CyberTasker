@@ -179,7 +179,9 @@
             "critical_backup": "⚠ 중요: 보안 백업 조각 ⚠",
             "emergency_override": "긴급 재정의만 가능합니다. 아날로그 형식으로 저장합니다.",
             "copy_fragment": "조각 복사",
-            "uplink_complete": "업링크 보안 및 완료"
+            "uplink_complete": "업링크 보안 및 완료",
+            "system_enforced": "시스템 지침 [관리자 정책]: 이메일 업링크 시행",
+            "system_enforced_desc": "관리자는 2FA 제약을 의무화했습니다. 현재 대체 프로토콜을 사용 중입니다. 아래에서 전체 업링크 [2FA 설정]을 초기화하세요."
         },
         "contact": {
             "channel": "연락처 채널",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "암호화된 COMMLINK 활성화: 그리드 전반에 걸쳐 2FA 프로토콜 시행",
         "enforce_2fa_desc": "귀하의 통신 링크는 현재 무단 신경 패킷 스니핑에 노출되어 있습니다. 즉시 관리 콘솔로 이동하여 모든 요원에 대해 '이메일 2FA 시행' 방어 모듈을 활성화하십시오."
+    },
+    "gamification": {
+        "tier_1": "초보자 [스킬레벨]",
+        "tier_2": "숙달 [스킬 레벨]",
+        "tier_3": "베테랑 [스킬레벨]",
+        "tier_4": "엘리트 [스킬레벨]",
+        "tier_5": "프라임 [스킬레벨]",
+        "title_1": "Script Kiddie [해커 역할]",
+        "title_2": "콘솔 카우보이 [해커 역할]",
+        "title_3": "Netrunner [해커 역할]",
+        "title_4": "Cyberdoc [해커 역할]",
+        "title_5": "Chrome 중독자 [해커 역할]",
+        "title_6": "시스템 설계자 [해커 역할]",
+        "title_7": "공각기동대 [해커 역할]",
+        "title_8": "뉴로맨서 [해커 역할]",
+        "title_9": "디지털 신 [해커 역할]",
+        "title_10": "특이점 [해커 역할]"
     }
 }

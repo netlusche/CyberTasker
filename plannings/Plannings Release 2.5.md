@@ -83,6 +83,65 @@
   - Erstellung/Erweiterung der E2E-Tests für 2FA-Einrichtung und Email-Adressen-Updates.
   - Implementierung eines GitHub-Actions Workflows für Pull Requests, der streng prüft, ob (mindestens) Registrierung und Login noch 100% funktionsfähig sind.
 
+**US-2.5.9: E-Mail-Zwang bei der System-Initialisierung**
+* **Als** System-Installer
+* **Möchte ich** bei der Erstinstallation im Setup-Screen zwingend aufgefordert werden, eine gültige E-Mail-Adresse für den primären Admin-Account anzugeben
+* **Damit** der Master-Account einen Kommunikationskanal für E-Mail-2FA und Passwort-Recovery besitzt.
+* **Akzeptanzkriterien:**
+  - Der Installer (`install.html` / `install.php`) enthält ein Pflichtfeld für die E-Mail-Adresse des Admins.
+  - Das Backend verweigert die Anlage des Master-Accounts, falls die E-Mail ungültig oder leer ist.
+
+**US-2.5.10: Globale Policy "Enforce Email 2FA"**
+* **Als** Administrator
+* **Möchte ich** in der Admin-Konsole einen globalen Schalter "Enforce Email 2FA" aktivieren können
+* **Damit** ich systemweit für alle Nutzer ohne Ausnahme eine Zwei-Faktor-Authentifizierung beim Login erzwingen kann.
+* **Akzeptanzkriterien:**
+  - Ein neuer Toggle-Switch im Admin-Panel (oberhalb der Strict Password Policies) für `enforce_email_2fa`.
+  - Ist der Schalter aktiv, so löst der Login-Prozess auch für Nutzer *ohne* aktivierte Authenticator-App zwingend den Versand eines 6-stelligen Codes per E-Mail aus, der eingegeben werden muss.
+  - Hat der Nutzer **bereits eine App-basierte TOTP-2FA** aktiviert, so greift primär diese (um E-Mail-Spam zu vermeiden) und der Email-Code wird *nicht* verschickt.
+
+**US-2.5.10b: Transparenz bei erzwungener 2FA (Aktive Sessions)**
+* **Als** eingelogger Nutzer
+* **Möchte ich** in meinem operativem Profil visuell darauf hingewiesen werden, falls Administratoren 2FA zwingend vorschreiben
+* **Damit** ich beim nächsten Login nicht von einer Codeabfrage überrascht werde und idealerweise direkt auf eine sicherere TOTP-App wechsle.
+* **Akzeptanzkriterien:**
+  - Ist `enforce_email_2fa` global aktiv und der Nutzer hat selbst noch keine App-2FA konfiguriert, erscheint im Modal (`ProfileModal.jsx`) unter BIO-LOCK SECURITY ein pulsierender Informationsbanner.
+  - Der Text "SYSTEM DIRECTIVE [Admin Policy]: EMAIL UPLINK ENFORCED" wird durchgängig über i18next in alle Sprachen übersetzt, unter strikter Einhaltung des Klammer-Kontextes.
+
+**US-2.5.10c: Kontext-Aufklärung beim Login-Flow**
+* **Als** Nutzer, der sich neu anmeldet
+* **Möchte ich** bei einer unerwarteten E-Mail-Code-Abfrage sofort den administrativen Grund dafür erfahren
+* **Damit** ich nicht annehme, mein Account sei gehackt oder fehlerhaft konfiguriert worden.
+* **Akzeptanzkriterien:**
+  - Fordert das Backend beim Login (`AuthForm.jsx`) einen E-Mail-Code an, weil `enforce_email_2fa` greift, wird direkt über dem Eingabefeld der "SYSTEM DIRECTIVE" Banner angezeigt.
+  - Auch hierbei werden die Klammer-Translation-Guidelines angewandt.
+
+**US-2.5.11: Initiale Sicherheits-Direktive (Cyberpunk-Jargon)**
+* **Als** frisch installierter Default-Admin
+* **Möchte ich** direkt nach der Installation eine vordefinierte Direktive in meinem Dossier finden
+* **Damit** ich thematisch motiviert daran erinnert werde, die 2FA-Policy scharfzuschalten.
+* **Akzeptanzkriterien:**
+  - Nach Ausführen des Installers liegt eine Aufgabe für den Admin vor: "ACTIVATE ENCRYPTED COMMLINKS: Enforce 2FA Protocol across the grid".
+  - Titel und Beschreibung sind selbstverständlich voll über das i18next-System lokalisiert.
+
+**US-2.5.12: Skalierbares Cyber-Badge System (Core Logic)**
+* **Als** Entwickler
+* **Möchte ich** eine skalierbare Logik implementieren, die aus einem numerischen User-Level dynamisch ein zweigeteiltes Badge berechnet (Tier + Titel)
+* **Damit** das Gamification-System nicht bei einem Hardcap endet, sondern strukturiert bis Level 50 wachsen kann, ohne dass Code dupliziert werden muss.
+* **Akzeptanzkriterien:**
+  - Erstellung eines API/Frontend-Utils `badgeMapping.js`.
+  - Die Funktion `calculateBadge(level)` nimmt das User-Level entgegen und berechnet das aktuelle 'Tier' (1-5, rotiert z.B. alle Level) und den 'Titel' (1-10, rotiert alle 5 Level).
+  - Folgende 5 Tiers müssen gemappt sein: 1:`Novice`, 2:`Adept`, 3:`Veteran`, 4:`Elite`, 5:`Prime`.
+  - Folgende 10 Titles müssen gemappt sein: 1 (Lvl 1-5):`Script Kiddie`, 2 (Lvl 6-10):`Console Cowboy`, 3:`Netrunner`, 4:`Cyberdoc`, 5:`Chrome-Junkie`, 6:`System Architect`, 7:`Ghost in the Shell`, 8:`Neuromancer`, 9:`Digital God`, 10:`Singularity`.
+
+**US-2.5.13: Gamification UX & Bracket-Translation**
+* **Als** ambitionierter Operative
+* **Möchte ich** mein aktuelles Cyber-Badge (z.B. "Veteran Netrunner") prominent im XP-Dashboard sehen
+* **Damit** mein Fortschritt motivierend und thematisch passend visualisiert wird, auch wenn ich die UI-Sprache wechsle.
+* **Akzeptanzkriterien:**
+  - Das aus `US-2.5.12` berechnete Badge wird im Dashboard gut sichtbar über dem XP-Fortschrittsbalken gerendert.
+  - **Kritisch:** Alle Tiers und Titles werden in der `en/translation.json` zwingend mit beschreibendem Klammer-Kontext angelegt (z.B. `"tier_1": "Novice [Skill Level]"`, `"title_2": "Console Cowboy [Hacker Role]"`).
+  - Das Python-Updateskript `translate_json.py` muss diese neuen Strukturen fehlerfrei in alle unterstützten Sprachen übersetzen können.
 
 ## Ergänzungen für den Testplan
 
@@ -109,48 +168,24 @@
 - **Testfall (Playwright):** Ausführung der Testsuite für `11-advanced-auth.spec.js`. Prüfen, ob der Login-Flow, das Aktivieren der 2FA im Profil-Modal und das Simulieren eines Email-Adressen-Updates von Playwright als Passed markiert werden.
 - **Testfall (CI/CD):** Prüfen, ob eine neue Datei `.github/workflows/pr-auth-check.yml` angelegt wurde, die den E2E-Test für Auth beim Erstellen eines Pull Requests triggert.
 
-**US-2.5.9: E-Mail-Zwang bei der System-Initialisierung**
-* **Als** System-Installer
-* **Möchte ich** bei der Erstinstallation im Setup-Screen zwingend aufgefordert werden, eine gültige E-Mail-Adresse für den primären Admin-Account anzugeben
-* **Damit** der Master-Account einen Kommunikationskanal für E-Mail-2FA und Passwort-Recovery besitzt.
-* **Akzeptanzkriterien:**
-  - Der Installer (`install.html` / `install.php`) enthält ein Pflichtfeld für die E-Mail-Adresse des Admins.
-  - Das Backend verweigert die Anlage des Master-Accounts, falls die E-Mail ungültig oder leer ist.
-
-**US-2.5.10: Globale Policy "Enforce Email 2FA"**
-* **Als** Administrator
-* **Möchte ich** in der Admin-Konsole einen globalen Schalter "Enforce Email 2FA" aktivieren können
-* **Damit** ich systemweit für alle Nutzer ohne Ausnahme eine Zwei-Faktor-Authentifizierung beim Login erzwingen kann.
-* **Akzeptanzkriterien:**
-  - Ein neuer Toggle-Switch im Admin-Panel (oberhalb der Strict Password Policies) für `enforce_email_2fa`.
-  - Ist der Schalter aktiv, so löst der Login-Prozess auch für Nutzer *ohne* aktivierte Authenticator-App zwingend den Versand eines 6-stelligen Codes per E-Mail aus, der eingegeben werden muss.
-  - Hat der Nutzer **bereits eine App-basierte TOTP-2FA** aktiviert, so greift primär diese (um E-Mail-Spam zu vermeiden) und der Email-Code wird *nicht* verschickt.
-
-**US-2.5.11: Initiale Sicherheits-Direktive (Cyberpunk-Jargon)**
-* **Als** frisch installierter Default-Admin
-* **Möchte ich** direkt nach der Installation eine vordefinierte Direktive in meinem Dossier finden
-* **Damit** ich thematisch motiviert daran erinnert werde, die 2FA-Policy scharfzuschalten.
-* **Akzeptanzkriterien:**
-  - Nach Ausführen des Installers liegt eine Aufgabe für den Admin vor: "ACTIVATE ENCRYPTED COMMLINKS: Enforce 2FA Protocol across the grid".
-  - Titel und Beschreibung sind selbstverständlich voll über das i18next-System lokalisiert.
-
-**US-2.5.12: Cyber-Badges System (XP Leveling 1-10+)**
-* **Als** ambitionierter Operative
-* **Möchte ich** abhängig von meinem aktuellen Level coole, thematisch passende Titel/Badges verdienen
-* **Damit** mein Fortschritt greifbarer wird.
-* **Akzeptanzkriterien:**
-  - Definition von 10 Rängen (LVL 1: Script Kiddie ... LVL 10+: Neuromancer), die im Backend oder Frontend zentral gemappt sind.
-  - Das erreichte Badge (Text oder Icon) wird für den Nutzer gut sichtbar im XP-Panel des Dashboards gerendert.
-  - Alle Badge-Namen sind in den Locales definiert, sodass sie auch auf z.B. Deutsch Sinn ergeben.
-
 **Zu US-2.5.9 (E-Mail Setup-Zwang):**
 - **Testfall:** Eine saubere SQLite-Installation starten. Versuchen, den Admin ohne E-Mail-Adresse anzulegen – System muss mit Fehlermeldung blockieren.
 
 **Zu US-2.5.10 (Enforce Email 2FA):**
 - **Testfall:** Im Admin-Panel "Enforce Email 2FA" aktivieren. Mit einem frisch erstellten User (ohne App-2FA) einloggen. Es muss eine E-Mail mit einem Code simuliert abgeschickt und das Login-Prompt-Modal angezeigt werden.
 
+**Zu US-2.5.10b (Profil Banner für aktive Sessions):**
+- **Testfall:** Als normaler User ohne eingerichtete 2FA einloggen, während die Policy "Enforce Email 2FA" aktiv ist. Das Profilfenster öffnen. Es muss zwingend der warnende Banner ("SYSTEM DIRECTIVE [Admin Policy]: EMAIL UPLINK ENFORCED") im Sicherheits-Tab erscheinen. Nach Aktivierung der normalen App-2FA muss der Banner verschwinden.
+
+**Zu US-2.5.10c (Login Context-Banner):**
+- **Testfall:** Mit einem User ohne TOTP-2FA einloggen, wenn die Policy aktiv ist. In Phase 2 des Logins (Eingabe des Zugangscodes) prüfen, ob der Erklär-Banner über dem Eingabefeld gerendert wird.
+
 **Zu US-2.5.11 (Initiale Direktive):**
 - **Testfall:** Nach Neuinstallation mit dem Admin einloggen und prüfen, ob die Direktive zur 2FA-Verschlüsselung auf dem Dashboard liegt und bei einem Sprachwechsel (z.B. auf Spanisch) korrekt übersetzt wird.
 
-**Zu US-2.5.12 (Cyber-Badges System):**
-- **Testfall:** Einem Test-User manuell in der DB extrem hohe XP (für Level 10+) zuweisen und prüfen, ob sein Dashboard das End-Badge (Neuromancer) anzeigt. Andere XP-Werte analog testen.
+**Zu US-2.5.12 (Cyber-Badges System / Core):**
+- **Testfall:** Eine Unit-Test-Funktion oder ein Konsolen-Log ausführen, das `calculateBadge(level)` für die Level 1, 13, 25 und 50 aufruft. Prüfen, ob für Level 13 z.B. "Tier 3, Title 3" (Veteran Netrunner) zurückgegeben wird.
+
+**Zu US-2.5.13 (Gamification UX & i18n):**
+- **Testfall (Visuell):** Einem Test-User manuell in der DB exakt 160.000 XP und Level 38 zuweisen ("Veteran Neuromancer"). Das Dashboard aufrufen und prüfen, ob das Badge gerendert wird.
+- **Testfall (Translation):** Die UI-Sprache auf Spanisch umstellen und prüfen, ob sich der Badge-Name anpasst, ohne dass unsinnige Grammatik entstanden ist.

@@ -179,7 +179,9 @@
             "critical_backup": "⚠ 关键：保护备份片段 ⚠",
             "emergency_override": "仅紧急覆盖。以模拟格式存储。",
             "copy_fragment": "复制片段",
-            "uplink_complete": "上行链路安全且完整"
+            "uplink_complete": "上行链路安全且完整",
+            "system_enforced": "系统指令 [管理策略]：强制执行电子邮件上行",
+            "system_enforced_desc": "管理员已强制实施 2FA 限制。您目前正在使用后备协议。下面初始化完整的上行链路 [设置 2FA]。"
         },
         "contact": {
             "channel": "联系渠道",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "激活加密的通信链接：在整个网格中执行 2FA 协议",
         "enforce_2fa_desc": "您的通讯链接当前暴露于未经授权的神经数据包嗅探。立即导航至管理控制台并为所有操作人员激活“强制执行电子邮件 2FA”防御模块。"
+    },
+    "gamification": {
+        "tier_1": "新手[技能等级]",
+        "tier_2": "熟练[技能等级]",
+        "tier_3": "老兵[技能等级]",
+        "tier_4": "精英[技能等级]",
+        "tier_5": "Prime [技能等级]",
+        "title_1": "Script Kiddie [黑客角色]",
+        "title_2": "控制台牛仔[黑客角色]",
+        "title_3": "Netrunner [黑客角色]",
+        "title_4": "Cyber​​doc [黑客角色]",
+        "title_5": "Chrome-Junkie [黑客角色]",
+        "title_6": "系统架构师[黑客角色]",
+        "title_7": "攻壳机动队[黑客角色]",
+        "title_8": "神经漫游者【黑客角色】",
+        "title_9": "数字神【黑客角色】",
+        "title_10": "奇点【黑客角色】"
     }
 }

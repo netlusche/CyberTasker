@@ -179,7 +179,9 @@
             "critical_backup": "⚠ QUAN TRỌNG: BẢO MẬT CÁC PHẦN DỰ PHÒNG AN TOÀN ⚠",
             "emergency_override": "Chỉ ghi đè khẩn cấp. Lưu trữ ở định dạng Analog.",
             "copy_fragment": "SAO CHÉP MÃNH",
-            "uplink_complete": "UPLINK ĐẢM BẢO & HOÀN THÀNH"
+            "uplink_complete": "UPLINK ĐẢM BẢO & HOÀN THÀNH",
+            "system_enforced": "CHỈ THỊ HỆ THỐNG [Chính sách quản trị]: EMAIL UPLINK ĐƯỢC THỰC THI",
+            "system_enforced_desc": "Quản trị viên đã bắt buộc các ràng buộc 2FA. Bạn hiện đang sử dụng giao thức dự phòng. Khởi tạo đường lên đầy đủ [Setup 2FA] bên dưới."
         },
         "contact": {
             "channel": "KÊNH LIÊN HỆ",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "KÍCH HOẠT LIÊN KẾT MÃ HÓA: Thực thi Giao thức 2FA trên toàn lưới",
         "enforce_2fa_desc": "Các liên kết liên lạc của bạn hiện đang bị đánh cắp gói thần kinh trái phép. Điều hướng tới Bảng điều khiển dành cho quản trị viên ngay lập tức và kích hoạt mô-đun phòng thủ 'Thực thi Email 2FA' cho tất cả các hợp tác xã."
+    },
+    "gamification": {
+        "tier_1": "Người mới [Cấp độ kỹ năng]",
+        "tier_2": "Thành thạo [Cấp độ kỹ năng]",
+        "tier_3": "Cựu chiến binh [Cấp độ kỹ năng]",
+        "tier_4": "Ưu tú [Cấp độ kỹ năng]",
+        "tier_5": "Prime [Cấp độ kỹ năng]",
+        "title_1": "Kịch Bản Kiddie [Vai Hacker]",
+        "title_2": "Console Cowboy [Vai trò hacker]",
+        "title_3": "Netrunner [Vai trò hacker]",
+        "title_4": "Cyberdoc [Vai trò hacker]",
+        "title_5": "Chrome-Junkie [Vai trò hacker]",
+        "title_6": "Kiến trúc sư hệ thống [Vai trò hacker]",
+        "title_7": "Ghost in the Shell [Vai trò hacker]",
+        "title_8": "Neuromancer [Vai trò hacker]",
+        "title_9": "Thần kỹ thuật số [Vai trò hacker]",
+        "title_10": "Điểm kỳ dị [Vai trò hacker]"
     }
 }

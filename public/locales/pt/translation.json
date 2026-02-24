@@ -179,7 +179,9 @@
             "critical_backup": "⚠ CRÍTICO: FRAGMENTOS DE BACKUP SEGUROS ⚠",
             "emergency_override": "Somente substituição de emergência. Armazene em formato analógico.",
             "copy_fragment": "CÓPIA FRAGMENTO",
-            "uplink_complete": "UPLINK SEGURO E COMPLETO"
+            "uplink_complete": "UPLINK SEGURO E COMPLETO",
+            "system_enforced": "DIRETIVA DO SISTEMA [Política de Administração]: UPLINK DE E-MAIL APLICADO",
+            "system_enforced_desc": "Os administradores impuseram restrições 2FA. Você está atualmente no protocolo substituto. Inicialize um uplink completo [Setup 2FA] abaixo."
         },
         "contact": {
             "channel": "CANAL DE CONTATO",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "ATIVE COMMLINKS CRIPTOGRAFADOS: aplique o protocolo 2FA em toda a rede",
         "enforce_2fa_desc": "Seus links de comunicação estão atualmente expostos a detecção não autorizada de pacotes neurais. Navegue imediatamente para o Admin Console e ative o módulo defensivo 'Enforce Email 2FA' para todos os agentes."
+    },
+    "gamification": {
+        "tier_1": "Novato [Nível de Habilidade]",
+        "tier_2": "Adepto [Nível de Habilidade]",
+        "tier_3": "Veterano [Nível de Habilidade]",
+        "tier_4": "Elite [Nível de Habilidade]",
+        "tier_5": "Prime [Nível de Habilidade]",
+        "title_1": "Script Kiddie [Papel de Hacker]",
+        "title_2": "Console Cowboy [Papel de Hacker]",
+        "title_3": "Netrunner [Papel de Hacker]",
+        "title_4": "Cyberdoc [Papel de Hacker]",
+        "title_5": "Chrome-Junkie [Papel de Hacker]",
+        "title_6": "Arquiteto de Sistemas [Função de Hacker]",
+        "title_7": "Fantasma na Concha [Papel de Hacker]",
+        "title_8": "Neuromante [Papel de Hacker]",
+        "title_9": "Deus Digital [Papel de Hacker]",
+        "title_10": "Singularidade [papel de hacker]"
     }
 }

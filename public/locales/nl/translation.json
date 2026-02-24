@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRITIEK: VEILIGE BACK-UPFRAGMENTEN ⚠",
             "emergency_override": "Alleen noodoverbrugging. Opslaan in analoog formaat.",
             "copy_fragment": "KOPIEER FRAGMENT",
-            "uplink_complete": "UPLINK BEVEILIGD EN VOLLEDIG"
+            "uplink_complete": "UPLINK BEVEILIGD EN VOLLEDIG",
+            "system_enforced": "SYSTEEMRICHTLIJN [Beheerbeleid]: UPLINK VOOR E-MAIL AFGEHANDELD",
+            "system_enforced_desc": "Beheerders hebben 2FA-beperkingen opgelegd. U gebruikt momenteel het fallback-protocol. Initialiseer een volledige uplink [Setup 2FA] hieronder."
         },
         "contact": {
             "channel": "CONTACTKANAAL",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "ACTIVEER VERSLEUTELDE COMMLINKS: Dwing het 2FA-protocol af op het hele netwerk",
         "enforce_2fa_desc": "Uw communicatieverbindingen worden momenteel blootgesteld aan ongeoorloofd snuiven van neurale pakketten. Navigeer onmiddellijk naar de Admin Console en activeer de verdedigingsmodule 'E-mail 2FA afdwingen' voor alle medewerkers."
+    },
+    "gamification": {
+        "tier_1": "Beginner [Vaardigheidsniveau]",
+        "tier_2": "Bedreven [Vaardigheidsniveau]",
+        "tier_3": "Veteraan [Vaardigheidsniveau]",
+        "tier_4": "Elite [Vaardigheidsniveau]",
+        "tier_5": "Prime [Vaardigheidsniveau]",
+        "title_1": "Script Kiddie [Hackerrol]",
+        "title_2": "Console Cowboy [Hacker-rol]",
+        "title_3": "Netrunner [Hackerrol]",
+        "title_4": "Cyberdoc [Hackerrol]",
+        "title_5": "Chrome-junkie [hackerrol]",
+        "title_6": "Systeemarchitect [Hackerrol]",
+        "title_7": "Ghost in the Shell [Hackerrol]",
+        "title_8": "Neuromancer [Hackerrol]",
+        "title_9": "Digitale God [Hackerrol]",
+        "title_10": "Singulariteit [Hackerrol]"
     }
 }

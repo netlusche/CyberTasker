@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRIITTINEN: TURVAT VARMUUSKOPIOT ⚠",
             "emergency_override": "Vain hätätilanteen ohitus. Tallenna analogisessa muodossa.",
             "copy_fragment": "KOPIOI Fragmentti",
-            "uplink_complete": "UPLINK SUOJATTU JA VALMIS"
+            "uplink_complete": "UPLINK SUOJATTU JA VALMIS",
+            "system_enforced": "JÄRJESTELMÄDIREKTIIVI [Järjestelmänvalvojakäytäntö]: SÄHKÖPOSTI YLÖSLINKKI KÄYTETTY",
+            "system_enforced_desc": "Järjestelmänvalvojat ovat määrittäneet 2FA-rajoitukset. Käytät tällä hetkellä varaprotokollaa. Alusta täydellinen uplink [Setup 2FA] alla."
         },
         "contact": {
             "channel": "OTA YHTEYTTÄ KANAVAAN",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "AKTIVOI SALATUT YHTEYDET: Ota 2FA-protokolla käyttöön ruudukossa",
         "enforce_2fa_desc": "Viestintälinkkesi ovat tällä hetkellä alttiina luvattomalle hermopakettien haistelemiselle. Siirry välittömästi hallintakonsoliin ja aktivoi \"Enforce Email 2FA\" -suojausmoduuli kaikille toimijoille."
+    },
+    "gamification": {
+        "tier_1": "Noviisi [taitotaso]",
+        "tier_2": "Adept [taitotaso]",
+        "tier_3": "Veteraani [taitotaso]",
+        "tier_4": "Elite [taitotaso]",
+        "tier_5": "Prime [taitotaso]",
+        "title_1": "Käsikirjoitus Kiddie [Hakkerin rooli]",
+        "title_2": "Konsoli Cowboy [Hakkerirooli]",
+        "title_3": "Netrunner [Hakkerin rooli]",
+        "title_4": "Cyberdoc [hakkerirooli]",
+        "title_5": "Chrome-Junkie [Hakkerirooli]",
+        "title_6": "Järjestelmäarkkitehti [Hakkerirooli]",
+        "title_7": "Ghost in the Shell [Hakkerin rooli]",
+        "title_8": "Neuromancer [Hakkerin rooli]",
+        "title_9": "Digitaalinen jumala [Hakkerin rooli]",
+        "title_10": "Singulariteetti [hakkerirooli]"
     }
 }

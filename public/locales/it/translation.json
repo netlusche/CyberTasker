@@ -179,7 +179,9 @@
             "critical_backup": "⚠ CRITICO: FRAMMENTI DI BACKUP SICURI ⚠",
             "emergency_override": "Solo esclusione di emergenza. Memorizzare in formato analogico.",
             "copy_fragment": "COPIA FRAMMENTO",
-            "uplink_complete": "UPLINK PROTETTO E COMPLETO"
+            "uplink_complete": "UPLINK PROTETTO E COMPLETO",
+            "system_enforced": "DIRETTIVA DI SISTEMA [Criteri amministrativi]: UPLINK EMAIL IMPOSTATO",
+            "system_enforced_desc": "Gli amministratori hanno imposto vincoli 2FA. Attualmente utilizzi il protocollo di fallback. Inizializzare un uplink completo [Setup 2FA] di seguito."
         },
         "contact": {
             "channel": "CANALE DI CONTATTO",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "ATTIVA COMLINK CRITTOGRAFATI: applica il protocollo 2FA su tutta la rete",
         "enforce_2fa_desc": "I tuoi collegamenti di comunicazione sono attualmente esposti allo sniffing di pacchetti neurali non autorizzati. Accedi immediatamente alla Console di amministrazione e attiva il modulo difensivo \"Applica email 2FA\" per tutti gli operatori."
+    },
+    "gamification": {
+        "tier_1": "Principiante [Livello di abilità]",
+        "tier_2": "Esperto [Livello abilità]",
+        "tier_3": "Veterano [Livello abilità]",
+        "tier_4": "Elite [Livello abilità]",
+        "tier_5": "Prime [Livello abilità]",
+        "title_1": "Script Kiddie [Ruolo Hacker]",
+        "title_2": "Cowboy della console [Ruolo hacker]",
+        "title_3": "Netrunner [Ruolo hacker]",
+        "title_4": "Cyberdoc [Ruolo hacker]",
+        "title_5": "Chrome-Dunkie [Ruolo Hacker]",
+        "title_6": "Architetto di sistema [Ruolo hacker]",
+        "title_7": "Ghost in the Shell [Ruolo Hacker]",
+        "title_8": "Neuromante [Ruolo Hacker]",
+        "title_9": "Dio digitale [Ruolo hacker]",
+        "title_10": "Singolarità [Ruolo Hacker]"
     }
 }

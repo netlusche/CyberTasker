@@ -179,7 +179,9 @@
             "critical_backup": "⚠ KRITISK: SIKRE SIKKERHETSSIKKERHETSFRAGMENT ⚠",
             "emergency_override": "Kun nødoverstyring. Lagre i analogt format.",
             "copy_fragment": "KOPIER FRAGMENT",
-            "uplink_complete": "UPLINK SIKRET OG FULLSTENDIG"
+            "uplink_complete": "UPLINK SIKRET OG FULLSTENDIG",
+            "system_enforced": "SYSTEMDIREKTIV [Admin Policy]: E-POST UPLINK HÅNDHÅVES",
+            "system_enforced_desc": "Administratorer har pålagt 2FA-begrensninger. Du bruker for øyeblikket reserveprotokollen. Initialiser en full opplink [Setup 2FA] nedenfor."
         },
         "contact": {
             "channel": "KONTAKTKANAL",
@@ -521,5 +523,22 @@
     "initial_tasks": {
         "enforce_2fa_title": "AKTIVER KRYPTERT KOMMLINKER: Håndhev 2FA-protokollen på tvers av rutenettet",
         "enforce_2fa_desc": "Kommunikasjonskoblingene dine er for øyeblikket utsatt for uautorisert nevrale pakkesniffing. Naviger til administrasjonskonsollen umiddelbart og aktiver den defensive modulen 'Enforce Email 2FA' for alle operatører."
+    },
+    "gamification": {
+        "tier_1": "Nybegynner [ferdighetsnivå]",
+        "tier_2": "Adept [ferdighetsnivå]",
+        "tier_3": "Veteran [ferdighetsnivå]",
+        "tier_4": "Elite [ferdighetsnivå]",
+        "tier_5": "Prime [ferdighetsnivå]",
+        "title_1": "Manus Kiddie [Hacker-rolle]",
+        "title_2": "Console Cowboy [Hacker Rolle]",
+        "title_3": "Netrunner [Hacker-rolle]",
+        "title_4": "Cyberdoc [Hacker-rolle]",
+        "title_5": "Chrome-junkie [Hacker-rolle]",
+        "title_6": "Systemarkitekt [Hacker-rolle]",
+        "title_7": "Ghost in the Shell [Hacker-rolle]",
+        "title_8": "Neuromancer [Hacker-rolle]",
+        "title_9": "Digital Gud [Hacker-rolle]",
+        "title_10": "Singularitet [Hacker-rolle]"
     }
 }
