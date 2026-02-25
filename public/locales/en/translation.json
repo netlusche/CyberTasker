@@ -111,7 +111,12 @@
             "robco": "RobCo Terminal (Fallout)",
             "grid": "The Grid (Tron)",
             "section9": "Section 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp Executive",
+            "marvel": "Marvel"
         },
         "language": "LANGUAGE",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ CRITICAL: SECURE BACKUP FRAGMENTS ⚠",
             "emergency_override": "Emergency Override only. Store in Analog format.",
             "copy_fragment": "COPY FRAGMENT",
-            "uplink_complete": "UPLINK SECURED & COMPLETE"
+            "uplink_complete": "UPLINK SECURED & COMPLETE",
+            "system_enforced": "SYSTEM DIRECTIVE [Admin Policy]: EMAIL UPLINK ENFORCED",
+            "system_enforced_desc": "Admins have mandated 2FA constraints. You are currently on the fallback protocol. Initialize a full uplink [Setup 2FA] below."
         },
         "contact": {
             "channel": "CONTACT CHANNEL",
@@ -262,6 +269,13 @@
                 "clear_tooltip": "Resets all active filters"
             }
         }
+    },
+    "dashboard": {
+        "operator_level": "OPERATOR LEVEL",
+        "level_up": "LEVEL UP!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP Total",
+        "next_rank_required": "NEXT RANK: {{xp}} XP REQUIRED"
     },
     "help": {
         "title": "CYBER_TASKER SYSTEM MANUAL",
@@ -402,10 +416,25 @@
                 "theme_renaissance": "RENAISSANCE — The cyber-gold era. Amber hexagons pulse in a sea of absolute black. A world of augmentations and corporate gods. Mankind divided.",
                 "theme_klingon": "QO'NOS (KLINGON) — Blood red and cold steel. Razor-sharp brutalist edges. Today is a good day to code. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Ice and Fire. Cold blue steel and Valyrian blood red accents. Winter is coming. The North remembers.",
-                "theme_marvel": "COMIC (MARVEL) — Heroic red and bold action dots. Pow! Wham! A tribute to the golden age of comic books. Excelsior!",
-                "theme_dc": "GOTHAM (DC) — Darkest night, deepest blue, and a sliver of yellow light cutting through the rain. Justice never sleeps."
+                "theme_dc": "GOTHAM (DC) — Darkest night, deepest blue, and a sliver of yellow light cutting through the rain. Justice never sleeps.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 protocols. Matte black chassis with neon green and caution yellow indicators. Man and machine in perfect sync.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 aesthetics. High-contrast crimson, absolute black, and stark white. We are the robots.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Outrun the night. Deep void purple washed in synthwave magenta and electric blue. The grid never sleeps.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war.",
+                "theme_marvel": "MARVEL — Avengers assemble. Bright crimson, deep cobalt, and golden accents. Whatever it takes."
+            },
+            "danger_zone": {
+                "title": "// DANGER ZONE [Identity Erasure]",
+                "item1_warn": "⚠ CRITICAL WARNING:",
+                "item1_text": "Terminating your terminal account is irreversible. All directives, archives, and neural links will be wiped.",
+                "item2_label": "AUTHENTICATION",
+                "item2_text": "To proceed, you must present your current Access Key as proof of identity."
             }
         }
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "ACTIVATE ENCRYPTED COMMLINKS: Enforce 2FA Protocol across the grid",
+        "enforce_2fa_desc": "Your comm-links are currently exposed to unauthorized neural packet sniffing. Navigate to the Admin Console immediately and activate the 'Enforce Email 2FA' defensive module for all operatives."
     },
     "common": {
         "loading": "INITIALIZING SYSTEM...",
@@ -448,6 +477,8 @@
         "policies_title": "SYSTEM POLICIES",
         "policy_strict_pwd_title": "Strict Password Policy",
         "policy_strict_pwd_desc": "Enforce heavy encryption protocols (Min 12 chars, Upper, Number, Special).",
+        "policy_enforce_email_2fa_title": "Enforce Email 2FA",
+        "policy_enforce_email_2fa_desc": "Force an Email 2FA fallback code to be dispatched to active operatives attempting to log in without a TOTP authenticator.",
         "confirm_title": "CONFIRMATION REQUIRED",
         "input_required": "INPUT REQUIRED",
         "policy_updated_msg": "System Policy Updated: {{key}}",
@@ -493,5 +524,22 @@
             "5": "FRI",
             "6": "SAT"
         }
+    },
+    "gamification": {
+        "tier_1": "Novice [Skill Level]",
+        "tier_2": "Adept [Skill Level]",
+        "tier_3": "Veteran [Skill Level]",
+        "tier_4": "Elite [Skill Level]",
+        "tier_5": "Prime [Skill Level]",
+        "title_1": "Script Kiddie [Hacker Role]",
+        "title_2": "Console Cowboy [Hacker Role]",
+        "title_3": "Netrunner [Hacker Role]",
+        "title_4": "Cyberdoc [Hacker Role]",
+        "title_5": "Chrome-Junkie [Hacker Role]",
+        "title_6": "System Architect [Hacker Role]",
+        "title_7": "Ghost in the Shell [Hacker Role]",
+        "title_8": "Neuromancer [Hacker Role]",
+        "title_9": "Digital God [Hacker Role]",
+        "title_10": "Singularity [Hacker Role]"
     }
 }

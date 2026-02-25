@@ -111,7 +111,12 @@
             "robco": "Terminal RobCo (Fallout)",
             "grid": "Siatka (Tron)",
             "section9": "Sekcja 9 (GitS)",
-            "outrun": "Wyprzedzić 1984"
+            "outrun": "Wyprzedzić 1984",
+            "computerwelt": "Sieć komputerowa",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Syndykat Neonów",
+            "megacorp-executive": "Dyrektor Megakorporacji",
+            "marvel": "Podziwiać"
         },
         "language": "JĘZYK",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ KRYTYCZNY: BEZPIECZNE FRAGMENTY KOPII ZAPASOWEJ ⚠",
             "emergency_override": "Tylko awaryjne obejście. Przechowuj w formacie analogowym.",
             "copy_fragment": "KOPIUJ FRAGMENT",
-            "uplink_complete": "UPLINK ZABEZPIECZONY I KOMPLETNY"
+            "uplink_complete": "UPLINK ZABEZPIECZONY I KOMPLETNY",
+            "system_enforced": "DYREKTYWA SYSTEMOWA [Zasady administratora]: WYMUSZONE LINK DO E-MAIL",
+            "system_enforced_desc": "Administratorzy nakazali ograniczenia 2FA. Obecnie korzystasz z protokołu awaryjnego. Zainicjuj pełne łącze wysyłające [Konfiguracja 2FA] poniżej."
         },
         "contact": {
             "channel": "KANAŁ KONTAKT",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Krwawa czerwień i zimna stal. Ostre jak brzytwa, brutalistyczne krawędzie. Dziś jest dobry dzień na kodowanie. Kapla!",
                 "theme_got": "WESTEROS (GOT) — Lód i Ogień. Zimnoniebieska stal i valyriańskie akcenty krwistoczerwone. Nadchodzi zima. Północ pamięta.",
                 "theme_marvel": "KOMIKS (MARVEL) — Bohaterskie czerwone i odważne kropki akcji. Pff! Bum! Hołd dla złotej ery komiksów. Wełna drzewna!",
-                "theme_dc": "GOTHAM (DC) — Najciemniejsza noc, najgłębszy błękit i smuga żółtego światła przecinająca deszcz. Sprawiedliwość nigdy nie śpi."
+                "theme_dc": "GOTHAM (DC) — Najciemniejsza noc, najgłębszy błękit i smuga żółtego światła przecinająca deszcz. Sprawiedliwość nigdy nie śpi.",
+                "theme_computerwelt": "COMPUTERWELT — protokoły Kraftwerk '81. Matowa czarna obudowa z neonowymi zielonymi i ostrzegawczymi żółtymi kierunkowskazami. Człowiek i maszyna w doskonałej synchronizacji.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — estetyka Kraftwerk '78. Karmazyn o wysokim kontraście, absolutna czerń i jaskrawa biel. Jesteśmy robotami.",
+                "theme_neon-syndicate": "NEONOWY SYNDYKAT — Wyprzedź noc. Głęboki, pusty fiolet przepłukany synthwave magentą i elektrycznym błękitem. Sieć nigdy nie śpi.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elitarna estetyka orbitalna. Oślepiające białe powierzchnie, szczotkowane srebrne akcenty i lodowatoniebieskie strumienie danych. Biznes to wojna."
             },
             "global_shortcuts": {
                 "title": "// GLOBALNE SKRÓTY [Przebieg pracy]",
@@ -404,6 +415,13 @@
                 "item2_text": "Naciśnij [/], aby przenieść fokus na pasek wyszukiwania neuronowego i rozpocząć przeszukiwanie banków danych.",
                 "item3_label": "ZAMKNIJ NAKŁADKI",
                 "item3_text": "Naciśnij [ESC], aby natychmiast zamknąć dowolny aktywny moduł, dokumentację lub nakładkę konfiguracyjną."
+            },
+            "danger_zone": {
+                "title": "// STREFA NIEBEZPIECZEŃSTWA [Usunięcie tożsamości]",
+                "item1_warn": "⚠ KRYTYCZNE OSTRZEŻENIE:",
+                "item1_text": "Zamknięcie konta terminalowego jest nieodwracalne. Wszystkie dyrektywy, archiwa i łącza neuronowe zostaną usunięte.",
+                "item2_label": "UWIERZYTELNIANIE",
+                "item2_text": "Aby kontynuować, musisz przedstawić swój aktualny klucz dostępu jako dowód tożsamości."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "Resetowanie hasła dla {{username}}.",
         "disable_2fa_confirm": "WYŁĄCZYĆ 2FA DLA {{username}}? Spowoduje to usunięcie wtórnych protokołów weryfikacji.",
         "2fa_disabled_msg": "2FA wyłączone dla {{username}}.",
-        "disable_2fa_failed": "Nie udało się wyłączyć 2FA"
+        "disable_2fa_failed": "Nie udało się wyłączyć 2FA",
+        "policy_enforce_email_2fa_title": "Wymuś e-mail 2FA",
+        "policy_enforce_email_2fa_desc": "Wymuś wysłanie awaryjnego kodu e-mail 2FA do aktywnych agentów próbujących zalogować się bez uwierzytelnienia TOTP."
     },
     "calendar": {
         "clear_date": "WYCZYŚĆ DATĘ",
@@ -493,5 +513,33 @@
             "5": "PT",
             "6": "SO"
         }
+    },
+    "dashboard": {
+        "operator_level": "POZIOM OPERATORA",
+        "level_up": "PODNIEŚĆ DO WŁAŚCIWEGO POZIOMU!",
+        "lvl_prefix": "LVL",
+        "xp_total": "Razem XP",
+        "next_rank_required": "NASTĘPNA RANGA: WYMAGANE {{xp}} XP"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "AKTYWUJ SZYFROWANE ŁĄCZA KOMUNIKACYJNE: Wymuś protokół 2FA w całej sieci",
+        "enforce_2fa_desc": "Twoje łącza komunikacyjne są obecnie narażone na nieautoryzowane wąchanie pakietów neuronowych. Natychmiast przejdź do konsoli administracyjnej i aktywuj moduł ochronny „Wymuś e-mail 2FA” dla wszystkich pracowników."
+    },
+    "gamification": {
+        "tier_1": "Nowicjusz [Poziom umiejętności]",
+        "tier_2": "Adept [Poziom umiejętności]",
+        "tier_3": "Weteran [Poziom umiejętności]",
+        "tier_4": "Elita [Poziom umiejętności]",
+        "tier_5": "Prime [Poziom umiejętności]",
+        "title_1": "Skryptowy dzieciak [rola hakera]",
+        "title_2": "Konsolowy kowboj [rola hakera]",
+        "title_3": "Netrunner [Rola hakera]",
+        "title_4": "Cyberdoc [Rola hakera]",
+        "title_5": "Łowca Chrome [rola hakera]",
+        "title_6": "Architekt systemu [rola hakera]",
+        "title_7": "Duch w powłoce [rola hakera]",
+        "title_8": "Neuromanta [Rola hakera]",
+        "title_9": "Cyfrowy Bóg [rola hakera]",
+        "title_10": "Osobliwość [Rola hakera]"
     }
 }

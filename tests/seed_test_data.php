@@ -26,6 +26,13 @@ $pdo->exec("DELETE FROM user_stats");
 $pdo->exec("DELETE FROM auth_logs");
 $pdo->exec("DELETE FROM users");
 
+// Reset system setttings to prevent state pollution (e.g. enforce_email_2fa=1 from breaking other tests)
+try {
+    $pdo->exec("DELETE FROM system_settings");
+}
+catch (Exception $e) {
+}
+
 // For SQLite, reset auto-increment counters to ensure ID-based tests are stable
 if ($pdo->getAttribute(PDO::ATTR_DRIVER_NAME) === 'sqlite') {
     try {
@@ -147,15 +154,17 @@ echo "   [V] 55 Directives initialized.\n\n";
 // 3. Create 100 baseline users for Admin pagination
 echo "3. Generating 100 baseline users for Admin Datagrid pagination test...\n";
 $insertUserStmt = $pdo->prepare("INSERT INTO users (username, password, email, is_verified, role) VALUES (?, ?, ?, 1, 'user')");
+$insertStatsStmt = $pdo->prepare("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES (?, 0, 1, '[]')");
+
 $pdo->beginTransaction();
-for ($i = 1; $i <= 200; $i++) {
+$pass = password_hash('Baseline_Pass_1!', PASSWORD_DEFAULT);
+for ($i = 1; $i <= 100; $i++) {
     $uname = "Test_User_" . str_pad($i, 3, '0', STR_PAD_LEFT);
-    $pass = password_hash('Baseline_Pass_1!', PASSWORD_DEFAULT);
     $email = "test.user.$i@cybertasker.local";
     $insertUserStmt->execute([$uname, $pass, $email]);
     $uid = $pdo->lastInsertId();
     // Insert stats row to prevent foreign key errors later
-    $pdo->prepare("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES (?, 0, 1, '[]')")->execute([$uid]);
+    $insertStatsStmt->execute([$uid]);
 }
 $pdo->commit();
 echo "   [V] 100 baseline test users injected into registry.\n\n";

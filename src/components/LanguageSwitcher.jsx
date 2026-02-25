@@ -101,7 +101,7 @@ const LanguageSwitcher = () => {
                 <div
                     ref={portalRef}
                     style={{ top: coords.top, left: coords.left }}
-                    className={`fixed z-[10000] w-32 backdrop-blur-md animate-in fade-in zoom-in-95 duration-200 lang-dropdown-layer ${theme === 'lcars' ? 'bg-black/95 border border-gray-600 shadow-2xl p-0' : 'bg-cyber-black/90 border border-cyber-primary shadow-cyber-primary p-1'}`}
+                    className={`fixed z-[10000] w-32 backdrop-blur-md transform-gpu animate-in fade-in zoom-in-95 duration-200 lang-dropdown-layer ${theme === 'lcars' ? 'bg-black/95 border border-gray-600 shadow-2xl p-0' : 'bg-cyber-black/90 border border-cyber-primary shadow-cyber-primary p-1'}`}
                 >
                     <div className="flex flex-col gap-1 max-h-60 overflow-y-auto custom-scrollbar">
                         {languages.map(lang => (

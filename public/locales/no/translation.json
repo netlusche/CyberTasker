@@ -111,7 +111,12 @@
             "robco": "RobCo Terminal (Fallout)",
             "grid": "The Grid (Tron)",
             "section9": "Seksjon 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp Executive",
+            "marvel": "Marvel"
         },
         "language": "SPRÅK",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ KRITISK: SIKRE SIKKERHETSSIKKERHETSFRAGMENT ⚠",
             "emergency_override": "Kun nødoverstyring. Lagre i analogt format.",
             "copy_fragment": "KOPIER FRAGMENT",
-            "uplink_complete": "UPLINK SIKRET OG FULLSTENDIG"
+            "uplink_complete": "UPLINK SIKRET OG FULLSTENDIG",
+            "system_enforced": "SYSTEMDIREKTIV [Admin Policy]: E-POST UPLINK HÅNDHÅVES",
+            "system_enforced_desc": "Administratorer har pålagt 2FA-begrensninger. Du bruker for øyeblikket reserveprotokollen. Initialiser en full opplink [Setup 2FA] nedenfor."
         },
         "contact": {
             "channel": "KONTAKTKANAL",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Blodrødt og kaldt stål. Sylskarpe brutalistiske kanter. I dag er en god dag å kode. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Ice and Fire. Kaldt blått stål og valyriske blodrøde aksenter. Vinteren kommer. Norden husker.",
                 "theme_marvel": "KOMISK (MARVEL) – Heroiske røde og dristige actionprikker. Pow! Wham! En hyllest til tegneserienes gullalder. Excelsior!",
-                "theme_dc": "GOTHAM (DC) — Mørkeste natt, dypeste blå og et snev av gult lys som skjærer gjennom regnet. Rettferdighet sover aldri."
+                "theme_dc": "GOTHAM (DC) — Mørkeste natt, dypeste blå og et snev av gult lys som skjærer gjennom regnet. Rettferdighet sover aldri.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81-protokoller. Mattsvart chassis med neongrønne og forsiktig gule indikatorer. Menneske og maskin i perfekt synkronisering.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 estetikk. Crimson med høy kontrast, absolutt svart og skarp hvit. Vi er robotene.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Løp ut av natten. Dyp tom lilla vasket i synthwave magenta og elektrisk blått. Gitteret sover aldri.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital estetikk. Blindende hvite overflater, børstet sølvaksenter og isblå datastrømmer. Business er krig."
             },
             "global_shortcuts": {
                 "title": "// GLOBALE Snarveier [Arbeidsflyt]",
@@ -404,6 +415,13 @@
                 "item2_text": "Trykk på [/] for å feste fokus til den nevrale søkelinjen og begynne å søke i databankene.",
                 "item3_label": "LUKK OVERLEGG",
                 "item3_text": "Trykk på [ESC] for å umiddelbart lukke enhver aktiv modal, dokumentasjon eller konfigurasjonsoverlegg."
+            },
+            "danger_zone": {
+                "title": "// FARESONE [Identitetssletting]",
+                "item1_warn": "⚠ KRITISK ADVARSEL:",
+                "item1_text": "Å avslutte terminalkontoen din er irreversibel. Alle direktiver, arkiver og nevrale lenker vil bli slettet.",
+                "item2_label": "AUTENTISERING",
+                "item2_text": "To proceed, you must present your current Access Key as proof of identity."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "Passord tilbakestilt for {{brukernavn}}.",
         "disable_2fa_confirm": "DEAKTIVER 2FA FOR {{brukernavn}}? Dette vil fjerne sekundære verifiseringsprotokoller.",
         "2fa_disabled_msg": "2FA deaktivert for {{brukernavn}}.",
-        "disable_2fa_failed": "Kunne ikke deaktivere 2FA"
+        "disable_2fa_failed": "Kunne ikke deaktivere 2FA",
+        "policy_enforce_email_2fa_title": "Håndhev e-post 2FA",
+        "policy_enforce_email_2fa_desc": "Tving en e-post 2FA reservekode til å sendes til aktive operatører som prøver å logge på uten en TOTP-autentisering."
     },
     "calendar": {
         "clear_date": "SLETT DATO",
@@ -493,5 +513,33 @@
             "5": "FRI",
             "6": "SAT"
         }
+    },
+    "dashboard": {
+        "operator_level": "OPERATØRNIVÅ",
+        "level_up": "NIVÅ OPP!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP Totalt",
+        "next_rank_required": "NESTE RANK: {{xp}} XP KREVES"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "AKTIVER KRYPTERT KOMMLINKER: Håndhev 2FA-protokollen på tvers av rutenettet",
+        "enforce_2fa_desc": "Kommunikasjonskoblingene dine er for øyeblikket utsatt for uautorisert nevrale pakkesniffing. Naviger til administrasjonskonsollen umiddelbart og aktiver den defensive modulen 'Enforce Email 2FA' for alle operatører."
+    },
+    "gamification": {
+        "tier_1": "Nybegynner [ferdighetsnivå]",
+        "tier_2": "Adept [ferdighetsnivå]",
+        "tier_3": "Veteran [ferdighetsnivå]",
+        "tier_4": "Elite [ferdighetsnivå]",
+        "tier_5": "Prime [ferdighetsnivå]",
+        "title_1": "Manus Kiddie [Hacker-rolle]",
+        "title_2": "Console Cowboy [Hacker Rolle]",
+        "title_3": "Netrunner [Hacker-rolle]",
+        "title_4": "Cyberdoc [Hacker-rolle]",
+        "title_5": "Chrome-junkie [Hacker-rolle]",
+        "title_6": "Systemarkitekt [Hacker-rolle]",
+        "title_7": "Ghost in the Shell [Hacker-rolle]",
+        "title_8": "Neuromancer [Hacker-rolle]",
+        "title_9": "Digital Gud [Hacker-rolle]",
+        "title_10": "Singularitet [Hacker-rolle]"
     }
 }

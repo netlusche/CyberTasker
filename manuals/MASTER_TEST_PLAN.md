@@ -10,7 +10,7 @@ This plan outlines the end-to-end testing strategy for CyberTasker v2.1.0. The g
 1. **Feature Gap Analysis**: Review the latest commits and the `USER STORIES.md` to identify any newly implemented functionalities.
 2. **Suite Expansion**: All new features must have a corresponding test case (automated or manual) added to this Master Test Plan.
 3. **Selector Audit**: Ensure new UI components use consistent `data-testid` attributes to maintain E2E stability.
-4. **Linguistic Audit**: Review `TRANSLATION_GUIDELINES.md` to ensure any new terminology or thematic slang adopted in the UI has clear directives for translators.
+4. **Linguistic Audit**: Review `manuals/TRANSLATION_GUIDELINES.md` to ensure any new terminology or thematic slang adopted in the UI has clear directives for translators.
 
 *Testing is not a static event; the suite must evolve alongside the neural stream.*
 
@@ -331,3 +331,47 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Validation**:
   - Validates that daily tasks without end dates generate exactly 60 projections.
   - Validates that setting an extended end date successfully generates up to 365 projections instead of capping at the default limit.
+
+---
+
+## 📅 test-suite-11: Release 2.5 Features
+
+### TS-11.1: Localized XP Progress Box [MANUAL]
+- **Scenario**: Switch the system language (e.g., to German) and observe the XP progress box on the dashboard.
+- **Validation**: All texts (Level, XP to next level) translate correctly without breaking the layout, even with longer text strings.
+
+### TS-11.2: Admin Panel Version Display [MANUAL]
+- **Scenario**: Log in as an administrator and navigate to the Admin Panel.
+- **Validation**: The current system version ("CyberTracker vX.X.X") is visibly rendered at the bottom of the console.
+
+### TS-11.3: CI/CD Pipeline Checks [AUTOMATED]
+- **Scenario**: Run the localization checker script and the theme linter locally with intentional errors (missing keys or hardcoded `#000` colors).
+- **Validation**:
+  - The i18n script throws an error/warning for missing keys.
+  - The theme script triggers a warning for forbidden static color codes instead of CSS variables.
+
+### TS-11.4: UI Themes & Guidelines [MANUAL]
+- **Scenario**: Cycle through the 4 new themes (Computerwelt, Mensch-Maschine, Neon Syndicate, Megacorp Executive) and check the "System Help" modal.
+- **Validation**:
+  - Themes render cleanly with consistent colors and readable text (especially the Light Mode "Megacorp Executive").
+  - The "System Help" accurately lists and describes the new themes in the current localized language.
+
+### TS-11.5: Critical Auth E2E Operations [AUTOMATED] (11-advanced-auth.spec.js)
+- **Scenario**: Execute the comprehensive Auth E2E suite covering login flows, 2FA activation, and simulated email updates.
+- **Validation**: Playwright successfully passes all critical authentication pathways without regression.
+
+### TS-11.6: Setup Email Requirement [MANUAL]
+- **Scenario**: Run the installer `install.php` on a fresh SQLite database and attempt to create the master account with an empty/invalid email.
+- **Validation**: The backend rejects the initialization and blocks completion until a valid email is provided.
+
+### TS-11.7: Enforced Email 2FA Policy [AUTOMATED] (05-security-policies.spec.js)
+- **Scenario**: Enable "Enforce Email 2FA" in the Admin Panel. Log in with a fresh user without an authenticator app.
+- **Validation**:
+  - A contextual warning banner appears above the OTP input field during login.
+  - The session is halted until the 6-digit email code is entered.
+
+### TS-11.8: Gamification Logic & UX [AUTOMATED] (14-gamification.spec.js)
+- **Scenario**: Execute the Gamification E2E suite to validate math logic and UI rendering.
+- **Validation**:
+  - The `calculateBadge(level)` logic correctly outputs tier/title arrays matching levels 1-99 boundaries.
+  - The translated cyber-badge (e.g., "Veteran Netrunner") is visibly rendered above the XP bar on the dashboard and reacts to language swaps.

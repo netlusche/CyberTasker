@@ -111,7 +111,12 @@
             "robco": "RobCo-terminal (Fallout)",
             "grid": "Het raster (Tron)",
             "section9": "Sectie 9 (GitS)",
-            "outrun": "Ontlopen 1984"
+            "outrun": "Ontlopen 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neonsyndicaat",
+            "megacorp-executive": "Megacorp-uitvoerder",
+            "marvel": "Wonder"
         },
         "language": "TAAL",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ KRITIEK: VEILIGE BACK-UPFRAGMENTEN ⚠",
             "emergency_override": "Alleen noodoverbrugging. Opslaan in analoog formaat.",
             "copy_fragment": "KOPIEER FRAGMENT",
-            "uplink_complete": "UPLINK BEVEILIGD EN VOLLEDIG"
+            "uplink_complete": "UPLINK BEVEILIGD EN VOLLEDIG",
+            "system_enforced": "SYSTEEMRICHTLIJN [Beheerbeleid]: UPLINK VOOR E-MAIL AFGEHANDELD",
+            "system_enforced_desc": "Beheerders hebben 2FA-beperkingen opgelegd. U gebruikt momenteel het fallback-protocol. Initialiseer een volledige uplink [Setup 2FA] hieronder."
         },
         "contact": {
             "channel": "CONTACTKANAAL",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Bloedrood en koud staal. Vlijmscherpe brutalistische randen. Vandaag is een goede dag om te coderen. Qapla'!",
                 "theme_got": "WESTEROS (GOT) — IJs en vuur. Koud blauw staal en Valyrian bloedrode accenten. De winter komt eraan. Het Noorden herinnert zich.",
                 "theme_marvel": "COMIC (MARVEL) — Heroïsche rode en opvallende actiepunten. Pow! Wham! Een eerbetoon aan de gouden eeuw van stripboeken. Excelsior!",
-                "theme_dc": "GOTHAM (DC) — Donkerste nacht, diepste blauw en een streepje geel licht dat door de regen snijdt. Justitie slaapt nooit."
+                "theme_dc": "GOTHAM (DC) — Donkerste nacht, diepste blauw en een streepje geel licht dat door de regen snijdt. Justitie slaapt nooit.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81-protocollen. Matzwart chassis met neongroene en waarschuwingsgele indicatoren. Mens en machine perfect synchroon.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 esthetiek. Contrastrijk karmozijnrood, absoluut zwart en spierwit. Wij zijn de robots.",
+                "theme_neon-syndicate": "NEON SYNDICAAT — Ontsnap aan de nacht. Diepe leegte paars gewassen in synthwave magenta en elektrisch blauw. Het elektriciteitsnet slaapt nooit.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbitale esthetiek. Verblindend witte vlakken, geborstelde zilveren accenten en ijsblauwe datastromen. Zakendoen is oorlog."
             },
             "global_shortcuts": {
                 "title": "// GLOBALE SNELKOPPELINGEN [Workflow]",
@@ -404,6 +415,13 @@
                 "item2_text": "Druk op [/] om de focus naar de neurale zoekbalk te verplaatsen en de databanken te doorzoeken.",
                 "item3_label": "SLUIT OVERLAYS",
                 "item3_text": "Druk op [ESC] om elke actieve modale, dossier- of configuratie-overlay onmiddellijk te sluiten."
+            },
+            "danger_zone": {
+                "title": "// GEVAARZONE [Identiteit wissen]",
+                "item1_warn": "⚠ KRITIEKE WAARSCHUWING:",
+                "item1_text": "Het beëindigen van uw terminalaccount is onomkeerbaar. Alle richtlijnen, archieven en neurale links worden gewist.",
+                "item2_label": "AUTHENTICATIE",
+                "item2_text": "Om verder te gaan, moet u uw huidige toegangssleutel als identiteitsbewijs overleggen."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "Wachtwoord opnieuw instellen voor {{gebruikersnaam}}.",
         "disable_2fa_confirm": "2FA UITSCHAKELEN VOOR {{username}}? Hierdoor worden secundaire verificatieprotocollen verwijderd.",
         "2fa_disabled_msg": "2FA uitgeschakeld voor {{username}}.",
-        "disable_2fa_failed": "Kan 2FA"
+        "disable_2fa_failed": "Kan 2FA",
+        "policy_enforce_email_2fa_title": "E-mail 2FA afdwingen",
+        "policy_enforce_email_2fa_desc": "Forceer dat een e-mail 2FA-reservecode wordt verzonden naar actieve medewerkers die proberen in te loggen zonder een TOTP-authenticator."
     },
     "calendar": {
         "clear_date": "niet uitschakelen DUIDELIJKE DATUM",
@@ -493,5 +513,33 @@
             "5": "VR",
             "6": "ZA"
         }
+    },
+    "dashboard": {
+        "operator_level": "OPERATORNIVEAU",
+        "level_up": "NIVEAU OMHOOG!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP-totaal",
+        "next_rank_required": "VOLGENDE RANG: {{xp}} XP VEREIST"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "ACTIVEER VERSLEUTELDE COMMLINKS: Dwing het 2FA-protocol af op het hele netwerk",
+        "enforce_2fa_desc": "Uw communicatieverbindingen worden momenteel blootgesteld aan ongeoorloofd snuiven van neurale pakketten. Navigeer onmiddellijk naar de Admin Console en activeer de verdedigingsmodule 'E-mail 2FA afdwingen' voor alle medewerkers."
+    },
+    "gamification": {
+        "tier_1": "Beginner [Vaardigheidsniveau]",
+        "tier_2": "Bedreven [Vaardigheidsniveau]",
+        "tier_3": "Veteraan [Vaardigheidsniveau]",
+        "tier_4": "Elite [Vaardigheidsniveau]",
+        "tier_5": "Prime [Vaardigheidsniveau]",
+        "title_1": "Script Kiddie [Hackerrol]",
+        "title_2": "Console Cowboy [Hacker-rol]",
+        "title_3": "Netrunner [Hackerrol]",
+        "title_4": "Cyberdoc [Hackerrol]",
+        "title_5": "Chrome-junkie [hackerrol]",
+        "title_6": "Systeemarchitect [Hackerrol]",
+        "title_7": "Ghost in the Shell [Hackerrol]",
+        "title_8": "Neuromancer [Hackerrol]",
+        "title_9": "Digitale God [Hackerrol]",
+        "title_10": "Singulariteit [Hackerrol]"
     }
 }

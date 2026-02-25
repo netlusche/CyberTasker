@@ -22,6 +22,7 @@ const AuthForm = ({ onLogin }) => {
     const [requires2FA, setRequires2FA] = useState(false);
     const [twoFactorMethod, setTwoFactorMethod] = useState('totp');
     const [twoFaCode, setTwoFaCode] = useState('');
+    const [systemEnforcesEmail2FA, setSystemEnforcesEmail2FA] = useState(false);
 
     // Forgot Password State
     const [isForgot, setIsForgot] = useState(false);
@@ -76,6 +77,7 @@ const AuthForm = ({ onLogin }) => {
                 if (data.requires_2fa) {
                     setRequires2FA(true);
                     setTwoFactorMethod(data.two_factor_method || 'totp');
+                    setSystemEnforcesEmail2FA(data.system_enforces_email_2fa || false);
                 } else {
                     if (data.csrf_token) {
                         setCsrfToken(data.csrf_token);
@@ -339,6 +341,16 @@ const AuthForm = ({ onLogin }) => {
 
                     {requires2FA && (
                         <div className="text-center space-y-4">
+                            {systemEnforcesEmail2FA && twoFactorMethod === 'email' && (
+                                <div className="bg-cyber-accent/20 border border-cyber-accent p-2 rounded text-center animate-pulse">
+                                    <p className="text-cyber-accent text-[10px] font-bold tracking-widest uppercase mb-1">
+                                        {t('profile.security.system_enforced', 'SYSTEM DIRECTIVE [Admin Policy]: EMAIL UPLINK ENFORCED')}
+                                    </p>
+                                    <p className="text-gray-300 text-[9px]">
+                                        {t('profile.security.system_enforced_desc', 'Admins have mandated 2FA constraints. You are currently on the fallback protocol. Initialize a full uplink [Setup 2FA] below.')}
+                                    </p>
+                                </div>
+                            )}
                             <p className="text-xs text-gray-400 font-mono">
                                 {twoFactorMethod === 'totp'
                                     ? t('auth.messages.bio_lock_active')

@@ -111,7 +111,12 @@
             "robco": "Terminal RobCo (Fallout)",
             "grid": "La grille (Tron)",
             "section9": "Section 9 (GitS)",
-            "outrun": "Dépasser 1984"
+            "outrun": "Dépasser 1984",
+            "computerwelt": "Monde informatique",
+            "mensch-maschine": "Mensch-Machine",
+            "neon-syndicate": "Syndicat du néon",
+            "megacorp-executive": "Directeur de Megacorp",
+            "marvel": "Merveille"
         },
         "language": "LANGUE",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ CRITIQUE : FRAGMENTS DE SAUVEGARDE SÉCURISÉS ⚠",
             "emergency_override": "Commande prioritaire d'urgence uniquement. Stocker au format analogique.",
             "copy_fragment": "COPIER UN FRAGMENT",
-            "uplink_complete": "LIAISON MONTANTE SÉCURISÉE ET COMPLÈTE"
+            "uplink_complete": "LIAISON MONTANTE SÉCURISÉE ET COMPLÈTE",
+            "system_enforced": "DIRECTIVE SYSTÈME [Politique d'administration] : LIAISON MONTANTE PAR EMAIL APPLIQUÉE",
+            "system_enforced_desc": "Les administrateurs ont imposé des contraintes 2FA. Vous êtes actuellement sur le protocole de secours. Initialisez une liaison montante complète [Configuration 2FA] ci-dessous."
         },
         "contact": {
             "channel": "CANAL DE CONTACT",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Rouge sang et acier froid. Des bords brutalistes acérés. Aujourd’hui est une bonne journée pour coder. Qapla' !",
                 "theme_got": "WESTEROS (GOT) – Glace et feu. Acier bleu froid et accents rouge sang valyrien. L'hiver arrive. Le Nord s'en souvient.",
                 "theme_marvel": "COMIC (MARVEL) — Points d'action héroïques rouges et audacieux. Pouah ! Pan! Un hommage à l'âge d'or de la bande dessinée. Excelsior!",
-                "theme_dc": "GOTHAM (DC) – La nuit la plus sombre, le bleu le plus profond et un éclat de lumière jaune traversant la pluie. La justice ne dort jamais."
+                "theme_dc": "GOTHAM (DC) – La nuit la plus sombre, le bleu le plus profond et un éclat de lumière jaune traversant la pluie. La justice ne dort jamais.",
+                "theme_computerwelt": "COMPUTERWELT — Protocoles Kraftwerk '81. Châssis noir mat avec indicateurs vert fluo et jaune d'avertissement. L’homme et la machine en parfaite synchronisation.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — L'esthétique de Kraftwerk '78. Pourpre très contrasté, noir absolu et blanc éclatant. Nous sommes les robots.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Dépassez la nuit. Violet vide profond lavé de magenta synthwave et de bleu électrique. La grille ne dort jamais.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Esthétique orbitale d’élite. Surfaces blanches aveuglantes, accents argentés brossés et flux de données bleu glacier. Les affaires, c'est la guerre."
             },
             "global_shortcuts": {
                 "title": "// RACCOURCIS GLOBAUX [Workflow]",
@@ -404,6 +415,13 @@
                 "item2_text": "Appuyez sur [/] pour vous concentrer sur la barre de recherche neuronale et commencer à interroger les banques de données.",
                 "item3_label": "FERMER LES SUPERPOSITIONS",
                 "item3_text": "Appuyez sur [ESC] pour fermer instantanément toute superposition modale, dossier ou configuration active."
+            },
+            "danger_zone": {
+                "title": "// ZONE DE DANGER [Effacement d'Identité]",
+                "item1_warn": "⚠ AVERTISSEMENT CRITIQUE :",
+                "item1_text": "La résiliation de votre compte terminal est irréversible. Toutes les directives, archives et liens neuronaux seront effacés.",
+                "item2_label": "AUTHENTIFICATION",
+                "item2_text": "Pour continuer, vous devez présenter votre clé d'accès actuelle comme preuve d'identité."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "Réinitialisation du mot de passe pour {{username}}.",
         "disable_2fa_confirm": "DÉSACTIVER 2FA POUR {{username}} ? Cela supprimera les protocoles de vérification secondaires.",
         "2fa_disabled_msg": "2FA désactivé pour {{username}}.",
-        "disable_2fa_failed": "Échec de la désactivation de 2FA"
+        "disable_2fa_failed": "Échec de la désactivation de 2FA",
+        "policy_enforce_email_2fa_title": "Appliquer le courrier électronique 2FA",
+        "policy_enforce_email_2fa_desc": "Forcez l'envoi d'un code de secours Email 2FA aux agents actifs qui tentent de se connecter sans authentificateur TOTP."
     },
     "calendar": {
         "clear_date": "EFFACER LA DATE",
@@ -493,5 +513,33 @@
             "5": "VE",
             "6": "SA"
         }
+    },
+    "dashboard": {
+        "operator_level": "NIVEAU OPÉRATEUR",
+        "level_up": "NIVEAU SUPÉRIEUR !",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP totale",
+        "next_rank_required": "RANG SUIVANT : {{xp}} XP REQUIS"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "ACTIVEZ LES LIENS COMMLINKS CHIFFRÉS : appliquez le protocole 2FA sur toute la grille",
+        "enforce_2fa_desc": "Vos liens de communication sont actuellement exposés à un reniflage non autorisé de paquets neuronaux. Accédez immédiatement à la console d'administration et activez le module défensif « Enforce Email 2FA » pour tous les agents."
+    },
+    "gamification": {
+        "tier_1": "Novice [Niveau de compétence]",
+        "tier_2": "Adepte [Niveau de compétence]",
+        "tier_3": "Vétéran [Niveau de compétence]",
+        "tier_4": "Élite [Niveau de compétence]",
+        "tier_5": "Premier [Niveau de compétence]",
+        "title_1": "Script Kiddie [Rôle de hacker]",
+        "title_2": "Console Cowboy [Rôle de hacker]",
+        "title_3": "Netrunner [Rôle de hacker]",
+        "title_4": "Cyberdoc [Rôle de hacker]",
+        "title_5": "Chrome-Junkie [Rôle de hacker]",
+        "title_6": "Architecte système [Rôle de hacker]",
+        "title_7": "Ghost in the Shell [Rôle de hacker]",
+        "title_8": "Neuromancien [Rôle de hacker]",
+        "title_9": "Dieu numérique [Rôle de hacker]",
+        "title_10": "Singularité [Rôle de hacker]"
     }
 }

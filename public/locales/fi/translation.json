@@ -111,7 +111,12 @@
             "robco": "RobCo Terminal (Fallout)",
             "grid": "Verkko (Tron)",
             "section9": "Jakso 9 (GitS)",
-            "outrun": "Ylitys 1984"
+            "outrun": "Ylitys 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp Executive",
+            "marvel": "Marvel"
         },
         "language": "KIELI",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ KRIITTINEN: TURVAT VARMUUSKOPIOT ⚠",
             "emergency_override": "Vain hätätilanteen ohitus. Tallenna analogisessa muodossa.",
             "copy_fragment": "KOPIOI Fragmentti",
-            "uplink_complete": "UPLINK SUOJATTU JA VALMIS"
+            "uplink_complete": "UPLINK SUOJATTU JA VALMIS",
+            "system_enforced": "JÄRJESTELMÄDIREKTIIVI [Järjestelmänvalvojakäytäntö]: SÄHKÖPOSTI YLÖSLINKKI KÄYTETTY",
+            "system_enforced_desc": "Järjestelmänvalvojat ovat määrittäneet 2FA-rajoitukset. Käytät tällä hetkellä varaprotokollaa. Alusta täydellinen uplink [Setup 2FA] alla."
         },
         "contact": {
             "channel": "OTA YHTEYTTÄ KANAVAAN",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) – Verenpunainen ja kylmä teräs. Partaterävät brutalistiset reunat. Tänään on hyvä päivä koodata. Qapla'!",
                 "theme_got": "WESTEROS (GOT) - Jää ja tuli. Kylmänsinistä terästä ja Valyrian verenpunaisia ​​aksentteja. Talvi on tulossa. Pohjoinen muistaa.",
                 "theme_marvel": "COMIC (MARVEL) – Sankarillisia punaisia ​​ja rohkeita toimintapisteitä. Pow! Wham! Kunnianosoitus sarjakuvien kultakaudelle. Erinomainen!",
-                "theme_dc": "GOTHAM (DC) - Pimein yö, syvin sininen ja keltaista valoa leikkaava sateen läpi. Oikeus ei koskaan nuku."
+                "theme_dc": "GOTHAM (DC) - Pimein yö, syvin sininen ja keltaista valoa leikkaava sateen läpi. Oikeus ei koskaan nuku.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 -protokollat. Mattamusta runko neonvihreällä ja varovaisuuskeltaisella merkkivalolla. Mies ja kone täydellisessä synkronoinnissa.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 estetiikka. Korkeakontrastinen karmiininpunainen, absoluuttinen musta ja jyrkän valkoinen. Me olemme robotteja.",
+                "theme_neon-syndicate": "NEONSYNDICATE – päihittää yön. Syvä tyhjiö violetti pesty synthwave magenta ja sähkösininen. Verkko ei koskaan nuku.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital estetiikka. Häikäisevän valkoiset pinnat, harjattu hopeakorostus ja jäänsiniset tietovirrat. Bisnes on sotaa."
             },
             "global_shortcuts": {
                 "title": "// GLOBAL SHORTCUTS [Työnkulku]",
@@ -404,6 +415,13 @@
                 "item2_text": "Paina [/] napsauttaaksesi kohdistuksen hermohakupalkkiin ja aloittaaksesi kyselyn tietopankeista.",
                 "item3_label": "SULJE PEITTOKUVAT",
                 "item3_text": "Paina [ESC] sulkeaksesi välittömästi kaikki aktiiviset modaalit, aineistot tai kokoonpanon peittokuvat."
+            },
+            "danger_zone": {
+                "title": "// VAARALYÖHKE [Identity Erasure]",
+                "item1_warn": "⚠ KRIITTINEN VAROITUS:",
+                "item1_text": "Päätetilin lopettaminen on peruuttamaton. Kaikki käskyt, arkistot ja hermolinkit pyyhitään.",
+                "item2_label": "TODENNUS",
+                "item2_text": "Jatkaaksesi sinun on esitettävä nykyinen pääsyavain henkilöllisyytesi todisteeksi."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "Salasana palautettu käyttäjälle {{username}}.",
         "disable_2fa_confirm": "POISTAMINEN KÄYTÖSTÄ 2FA:lta {{käyttäjänimi}}? Tämä poistaa toissijaiset vahvistusprotokollat.",
         "2fa_disabled_msg": "2FA poistettu käytöstä käyttäjälle {{username}}.",
-        "disable_2fa_failed": "2FA:n poistaminen käytöstä epäonnistui"
+        "disable_2fa_failed": "2FA:n poistaminen käytöstä epäonnistui",
+        "policy_enforce_email_2fa_title": "Pakota sähköposti 2FA",
+        "policy_enforce_email_2fa_desc": "Pakota sähköpostin 2FA-varakoodi lähetettäväksi aktiivisille toimijoille, jotka yrittävät kirjautua sisään ilman TOTP-todennusta."
     },
     "calendar": {
         "clear_date": "TYHJENNÄ PÄIVÄMÄÄRÄ",
@@ -493,5 +513,33 @@
             "5": "PE",
             "6": "LA"
         }
+    },
+    "dashboard": {
+        "operator_level": "KÄYTTÄJÄTASO",
+        "level_up": "TASO YLÖS!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP yhteensä",
+        "next_rank_required": "SEURAAVA SIJO: {{xp}} XP VAADITTAA"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "AKTIVOI SALATUT YHTEYDET: Ota 2FA-protokolla käyttöön ruudukossa",
+        "enforce_2fa_desc": "Viestintälinkkesi ovat tällä hetkellä alttiina luvattomalle hermopakettien haistelemiselle. Siirry välittömästi hallintakonsoliin ja aktivoi \"Enforce Email 2FA\" -suojausmoduuli kaikille toimijoille."
+    },
+    "gamification": {
+        "tier_1": "Noviisi [taitotaso]",
+        "tier_2": "Adept [taitotaso]",
+        "tier_3": "Veteraani [taitotaso]",
+        "tier_4": "Elite [taitotaso]",
+        "tier_5": "Prime [taitotaso]",
+        "title_1": "Käsikirjoitus Kiddie [Hakkerin rooli]",
+        "title_2": "Konsoli Cowboy [Hakkerirooli]",
+        "title_3": "Netrunner [Hakkerin rooli]",
+        "title_4": "Cyberdoc [hakkerirooli]",
+        "title_5": "Chrome-Junkie [Hakkerirooli]",
+        "title_6": "Järjestelmäarkkitehti [Hakkerirooli]",
+        "title_7": "Ghost in the Shell [Hakkerin rooli]",
+        "title_8": "Neuromancer [Hakkerin rooli]",
+        "title_9": "Digitaalinen jumala [Hakkerin rooli]",
+        "title_10": "Singulariteetti [hakkerirooli]"
     }
 }

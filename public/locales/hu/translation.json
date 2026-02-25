@@ -111,7 +111,12 @@
             "robco": "RobCo terminál (Fallout)",
             "grid": "A rács (Tron)",
             "section9": "9. szakasz (GitS)",
-            "outrun": "Lehagyás 1984"
+            "outrun": "Lehagyás 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp ügyvezető",
+            "marvel": "Csoda"
         },
         "language": "NYELV",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ KRITIKUS: BIZTONSÁGOS BIZTONSÁGI TÖREDÉKEK ⚠",
             "emergency_override": "Csak vészhelyzeti felülírás. Tárolás Analóg formátumban.",
             "copy_fragment": "MÁSOLÁS TÖREDÉK",
-            "uplink_complete": "BIZTONSÁGOS FELÜLVIZSGÁLAT ÉS TELJES"
+            "uplink_complete": "BIZTONSÁGOS FELÜLVIZSGÁLAT ÉS TELJES",
+            "system_enforced": "RENDSZERIRÁNYELV [Rendszergazdai szabályzat]: E-MAIL-FELÉPÍTÉSI LINK KÖTELEZETT",
+            "system_enforced_desc": "Az adminisztrátorok 2FA megkötéseket írtak elő. Jelenleg a tartalék protokollt használja. Alább inicializáljon egy teljes felfelé irányuló kapcsolatot [Setup 2FA]."
         },
         "contact": {
             "channel": "KAPCSOLATOS CSATORNA",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) – Vérvörös és hideg acél. Borotvaéles brutalista élek. Ma jó nap a kódolásra. Qapla'!",
                 "theme_got": "WESTEROS (GOT) – Jég és tűz. Hidegkék acél és valyriai vérvörös akcentusok. Jön a tél. Észak emlékszik.",
                 "theme_marvel": "COMIC (MARVEL) – Heroikus piros és merész akciópontok. Hadifogoly! Wham! Tisztelgés a képregények aranykora előtt. Excelsior!",
-                "theme_dc": "GOTHAM (DC) – A legsötétebb éjszaka, a legmélyebb kékség, és egy szál sárga fény átszeli az esőt. Az igazságosság soha nem alszik."
+                "theme_dc": "GOTHAM (DC) – A legsötétebb éjszaka, a legmélyebb kékség, és egy szál sárga fény átszeli az esőt. Az igazságosság soha nem alszik.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 protokollok. Matt fekete alváz neonzöld és óvatosságsárga jelzésekkel. Ember és gép tökéletes szinkronban.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 esztétika. Nagy kontrasztú bíbor, abszolút fekete és éles fehér. Mi vagyunk a robotok.",
+                "theme_neon-syndicate": "NEON SYNDICATE – Légy túl az éjszakán. Mély üres lila szinthullámú bíbor és elektromos kék színnel mosva. A rács soha nem alszik.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elit orbitális esztétika. Vakító fehér felületek, csiszolt ezüst akcentusok és jégkék adatfolyamok. Az üzlet háború."
             },
             "global_shortcuts": {
                 "title": "// GLOBAL SHORTCUTS [Workflow]",
@@ -404,6 +415,13 @@
                 "item2_text": "Nyomja meg a [/] gombot, hogy a fókuszt a neurális keresősávra helyezze, és megkezdje az adatbankok lekérdezését.",
                 "item3_label": "FEDÉSEK ZÁRÁSA",
                 "item3_text": "Az [ESC] gomb megnyomásával azonnal bezárhat minden aktív modális, dokumentációt vagy konfigurációs fedvényt."
+            },
+            "danger_zone": {
+                "title": "// VESZÉLYZÓNA [Identity Erasure]",
+                "item1_warn": "⚠ KRITIKUS FIGYELMEZTETÉS:",
+                "item1_text": "A terminálfiók megszüntetése visszafordíthatatlan. Minden direktíva, archívum és neurális hivatkozás törlődik.",
+                "item2_label": "HITELESÍTÉS",
+                "item2_text": "A folytatáshoz be kell mutatnia jelenlegi hozzáférési kulcsát személyazonosság igazolásaként."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "Jelszó visszaállítása a következőhöz: {{username}}.",
         "disable_2fa_confirm": "LETILTÁSA A 2FA-t {{felhasználónév}} számára? Ez eltávolítja a másodlagos ellenőrző protokollokat.",
         "2fa_disabled_msg": "2FA letiltva a(z) {{username}} számára.",
-        "disable_2fa_failed": "Nem sikerült letiltani a 2FA"
+        "disable_2fa_failed": "Nem sikerült letiltani a 2FA",
+        "policy_enforce_email_2fa_title": "E-mail kényszerítése 2FA",
+        "policy_enforce_email_2fa_desc": "Kényszerítsen egy e-mail 2FA tartalék kódot azoknak az aktív munkatársaknak, akik TOTP hitelesítő nélkül próbálnak bejelentkezni."
     },
     "calendar": {
         "clear_date": "DÁTUM TÖRLÉSE",
@@ -493,5 +513,33 @@
             "5": "P",
             "6": "SZO"
         }
+    },
+    "dashboard": {
+        "operator_level": "KEZELŐI SZINT",
+        "level_up": "SZINTET FEL!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP összesen",
+        "next_rank_required": "KÖVETKEZŐ RANCS: {{xp}} XP SZÜKSÉGES"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "TITKOSÍTOTT KOMMUNIKÁCIÓK AKTIVÁLÁSA: A 2FA-protokoll érvényesítése a hálózaton keresztül",
+        "enforce_2fa_desc": "Kommunikációs hivatkozásai jelenleg jogosulatlan neurális csomagszippelésnek vannak kitéve. Azonnal nyissa meg a Felügyeleti konzolt, és aktiválja az „Enforce Email 2FA” védelmi modult minden munkatárs számára."
+    },
+    "gamification": {
+        "tier_1": "Kezdő [készségszint]",
+        "tier_2": "Adept [készségszint]",
+        "tier_3": "Veterán [készségszint]",
+        "tier_4": "Elit [készségszint]",
+        "tier_5": "Prime [készségszint]",
+        "title_1": "Script Kiddie [Hacker szerep]",
+        "title_2": "Console Cowboy [Hacker szerep]",
+        "title_3": "Netrunner [Hacker szerep]",
+        "title_4": "Cyberdoc [Hacker szerep]",
+        "title_5": "Chrome-Junkie [Hacker szerep]",
+        "title_6": "Rendszerépítész [Hacker szerepkör]",
+        "title_7": "Ghost in the Shell [Hacker szerep]",
+        "title_8": "Neuromancer [Hacker szerep]",
+        "title_9": "Digitális Isten [Hacker szerep]",
+        "title_10": "Szingularitás [hacker szerep]"
     }
 }

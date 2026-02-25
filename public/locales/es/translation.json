@@ -111,7 +111,12 @@
             "robco": "Terminal RobCo (Fallout)",
             "grid": "La Red (Tron)",
             "section9": "Sección 9 (GitS)",
-            "outrun": "Superar 1984"
+            "outrun": "Superar 1984",
+            "computerwelt": "Mundo informático",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Sindicato de neón",
+            "megacorp-executive": "Ejecutivo Megacorp",
+            "marvel": "Maravilla"
         },
         "language": "IDIOMA",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ CRÍTICO: FRAGMENTOS DE RESPALDO SEGUROS ⚠",
             "emergency_override": "Anulación de emergencia únicamente. Almacenar en formato analógico.",
             "copy_fragment": "COPIAR FRAGMENTO",
-            "uplink_complete": "ENLACE ASCENDENTE SEGURO Y COMPLETO"
+            "uplink_complete": "ENLACE ASCENDENTE SEGURO Y COMPLETO",
+            "system_enforced": "DIRECTIVA DEL SISTEMA [Política de administración]: ENLACE ARRIBA DE CORREO ELECTRÓNICO APLICADO",
+            "system_enforced_desc": "Los administradores han impuesto restricciones 2FA. Actualmente estás en el protocolo alternativo. Inicialice un enlace ascendente completo [Configuración 2FA] a continuación."
         },
         "contact": {
             "channel": "CANAL DE CONTACTO",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Rojo sangre y acero frío. Filos brutalistas afilados. Hoy es un buen día para codificar. ¡Qapla'!",
                 "theme_got": "WESTEROS (GOT) – Hielo y fuego. Acero azul frío y detalles en rojo sangre valyrio. Se acerca el invierno. El Norte lo recuerda.",
                 "theme_marvel": "CÓMIC (MARVEL) — Heroicos puntos de acción rojos y audaces. ¡Guau! ¡Zam! Un homenaje a la época dorada del cómic. ¡Virutas de embalaje!",
-                "theme_dc": "GOTHAM (DC) — La noche más oscura, el azul más profundo y una franja de luz amarilla atravesando la lluvia. La justicia nunca duerme."
+                "theme_dc": "GOTHAM (DC) — La noche más oscura, el azul más profundo y una franja de luz amarilla atravesando la lluvia. La justicia nunca duerme.",
+                "theme_computerwelt": "COMPUTERWELT — Protocolos Kraftwerk '81. Chasis negro mate con indicadores verde neón y amarillo de precaución. Hombre y máquina en perfecta sincronía.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Estética Kraftwerk '78. Carmesí de alto contraste, negro absoluto y blanco intenso. Nosotros somos los robots.",
+                "theme_neon-syndicate": "NEON SYNDICATE – Supera la noche. Púrpura vacío profundo lavado en magenta de onda sintética y azul eléctrico. La red nunca duerme.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Estética orbital de élite. Superficies blancas deslumbrantes, detalles en plata cepillada y flujos de datos en azul hielo. Los negocios son guerra."
             },
             "global_shortcuts": {
                 "title": "// ATAJOS GLOBALES [Flujo de trabajo]",
@@ -404,6 +415,13 @@
                 "item2_text": "Presione [/] para enfocar la barra de búsqueda neuronal y comenzar a consultar los bancos de datos.",
                 "item3_label": "CERRAR SUPERPOSICIONES",
                 "item3_text": "Presione [ESC] para cerrar instantáneamente cualquier superposición de configuración, expediente o modal activo."
+            },
+            "danger_zone": {
+                "title": "// ZONA DE PELIGRO [Borrado de identidad]",
+                "item1_warn": "⚠ ADVERTENCIA CRÍTICA:",
+                "item1_text": "La cancelación de su cuenta terminal es irreversible. Se borrarán todas las directivas, archivos y enlaces neuronales.",
+                "item2_label": "AUTENTICACIÓN",
+                "item2_text": "Para continuar, debe presentar su Clave de Acceso actual como prueba de identidad."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "Restablecimiento de contraseña para {{nombre de usuario}}.",
         "disable_2fa_confirm": "¿DESHABILITAR 2FA PARA {{username}}? Esto eliminará los protocolos de verificación secundarios.",
         "2fa_disabled_msg": "2FA deshabilitada para {{nombre de usuario}}.",
-        "disable_2fa_failed": "No se pudo desactivar 2FA"
+        "disable_2fa_failed": "No se pudo desactivar 2FA",
+        "policy_enforce_email_2fa_title": "Aplicar 2FA de correo electrónico",
+        "policy_enforce_email_2fa_desc": "Fuerce el envío de un código alternativo de 2FA de correo electrónico a los operadores activos que intentan iniciar sesión sin un autenticador TOTP."
     },
     "calendar": {
         "clear_date": "FECHA CLARA",
@@ -493,5 +513,33 @@
             "5": "VI",
             "6": "SÁ"
         }
+    },
+    "dashboard": {
+        "operator_level": "NIVEL DE OPERADOR",
+        "level_up": "¡ELEVAR A MISMO NIVEL!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP total",
+        "next_rank_required": "SIGUIENTE RANGO: {{xp}} XP REQUERIDA"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "ACTIVAR ENLACES DE COMUNICACIÓN CIFRADOS: Aplicar el protocolo 2FA en toda la red",
+        "enforce_2fa_desc": "Sus enlaces de comunicación están actualmente expuestos a un rastreo no autorizado de paquetes neuronales. Navegue a la Consola de administración inmediatamente y active el módulo defensivo 'Enforce Email 2FA' para todos los operativos."
+    },
+    "gamification": {
+        "tier_1": "Novato [Nivel de habilidad]",
+        "tier_2": "Adepto [Nivel de habilidad]",
+        "tier_3": "Veterano [Nivel de habilidad]",
+        "tier_4": "Élite [Nivel de habilidad]",
+        "tier_5": "Prime [Nivel de habilidad]",
+        "title_1": "Guión Kiddie [Papel de hacker]",
+        "title_2": "Vaquero de consola [rol de hacker]",
+        "title_3": "Netrunner [Rol de hacker]",
+        "title_4": "Cyberdoc [Rol del hacker]",
+        "title_5": "Chrome-Junkie [Rol de hacker]",
+        "title_6": "Arquitecto de sistemas [rol de hacker]",
+        "title_7": "Fantasma en el caparazón [Rol de hacker]",
+        "title_8": "Neuromante [Rol de hacker]",
+        "title_9": "Dios digital [papel de hacker]",
+        "title_10": "Singularidad [rol de hacker]"
     }
 }

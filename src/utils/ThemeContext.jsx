@@ -1,7 +1,18 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { apiFetch } from './api';
 
-const ThemeContext = createContext();
+export const ThemeContext = createContext();
+
+export const availableThemes = [
+    'cyberpunk',
+    'retro',
+    'hacker',
+    'high-contrast',
+    'computerwelt',
+    'mensch-maschine',
+    'neon-syndicate',
+    'megacorp-executive'
+];
 
 export const ThemeProvider = ({ children, initialTheme = 'cyberpunk' }) => {
     // Try to get theme from localStorage, otherwise use initialTheme

@@ -40,18 +40,33 @@ class UserRepository extends Repository
     }
 
     // Rate Limiting Auth
-    public function recordLoginAttempt(string $ip, string $endpoint, bool $success): void
+    public function recordLoginAttempt(string $username, string $ip, string $endpoint, bool $success): void
     {
-        $stmt = $this->pdo->prepare("INSERT INTO auth_logs (ip_address, endpoint, success) VALUES (?, ?, ?)");
-        $stmt->execute([$ip, $endpoint, $success ? 1 : 0]);
+        try {
+            $stmt = $this->pdo->prepare("INSERT INTO auth_logs (ip_address, endpoint, success, username) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$ip, $endpoint, $success ? 1 : 0, $username]);
+        }
+        catch (PDOException $e) {
+            $this->pdo->exec("ALTER TABLE auth_logs ADD COLUMN username VARCHAR(50) DEFAULT NULL");
+            $stmt = $this->pdo->prepare("INSERT INTO auth_logs (ip_address, endpoint, success, username) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$ip, $endpoint, $success ? 1 : 0, $username]);
+        }
     }
 
-    public function countRecentFailedAttempts(string $ip, string $endpoint, int $windowMinutes): int
+    public function countRecentFailedAttempts(string $username, string $ip, string $endpoint, int $windowMinutes): int
     {
         $threshold = date('Y-m-d H:i:s', strtotime("-$windowMinutes minutes"));
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM auth_logs WHERE ip_address = ? AND endpoint = ? AND success = 0 AND created_at > ?");
-        $stmt->execute([$ip, $endpoint, $threshold]);
-        return (int)$stmt->fetchColumn();
+        try {
+            $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM auth_logs WHERE (ip_address = ? OR username = ?) AND endpoint = ? AND success = 0 AND created_at > ?");
+            $stmt->execute([$ip, $username, $endpoint, $threshold]);
+            return (int)$stmt->fetchColumn();
+        }
+        catch (PDOException $e) {
+            // Fallback if column not yet created
+            $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM auth_logs WHERE ip_address = ? AND endpoint = ? AND success = 0 AND created_at > ?");
+            $stmt->execute([$ip, $endpoint, $threshold]);
+            return (int)$stmt->fetchColumn();
+        }
     }
 
     public function updateLastLogin(int $userId): void

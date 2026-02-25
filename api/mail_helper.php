@@ -48,6 +48,10 @@ function sendMail($to, $subject, $body)
     // Send mail and log result
     $success = @mail($to, $subject, $htmlMessage, $headers);
 
+    // Write to a log file for E2E tests to read (Disabled for Production/Strato test)
+    $logFile = __DIR__ . '/mail_log.txt';
+    // file_put_contents($logFile, $htmlMessage);
+
     // error_log($logMessage); // Uncomment for system-level mail debugging
 
     return $success;

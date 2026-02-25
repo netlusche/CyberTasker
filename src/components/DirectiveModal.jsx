@@ -11,8 +11,12 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
     const { theme } = useTheme();
     const fileInputRef = useRef(null);
     const [editingField, setEditingField] = useState(null);
-    const [title, setTitle] = useState(task.title || '');
-    const [description, setDescription] = useState(task.description || '');
+
+    const displayTitle = task.title?.startsWith('i18n:') ? t(task.title.replace('i18n:', '')) : task.title;
+    const displayDesc = task.description?.startsWith('i18n:') ? t(task.description.replace('i18n:', '')) : task.description;
+
+    const [title, setTitle] = useState(displayTitle || '');
+    const [description, setDescription] = useState(displayDesc || '');
     const [attachments, setAttachments] = useState([]);
     const [tempLinks, setTempLinks] = useState([]);
     const [files, setFiles] = useState([]);
@@ -52,8 +56,10 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
             // Sync description when task prop updates (e.g. after a save)
             // But only if we are not actively editing it right now to avoid overwriting typed text
             if (editingField !== 'description' && editingField !== 'title') {
-                setTitle(task.title || '');
-                setDescription(task.description || '');
+                const currentDisplayTitle = task.title?.startsWith('i18n:') ? t(task.title.replace('i18n:', '')) : task.title;
+                const currentDisplayDesc = task.description?.startsWith('i18n:') ? t(task.description.replace('i18n:', '')) : task.description;
+                setTitle(currentDisplayTitle || '');
+                setDescription(currentDisplayDesc || '');
             }
         } catch (e) {
             setAttachments([]);
@@ -355,7 +361,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
 
     return (
         <>
-            <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-[200] backdrop-blur-sm" onClick={() => handleSave()}>
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-[200] backdrop-blur-sm transform-gpu" onClick={() => handleSave()}>
                 <div className="card-cyber text-white max-w-3xl w-full max-h-[90vh] flex flex-col p-1 overflow-hidden border-cyber-primary shadow-cyber-primary relative animate-in fade-in zoom-in duration-300" onClick={(e) => e.stopPropagation()}>
 
                     <button onClick={onClose} className={`absolute font-bold text-xl transition-colors z-50 ${theme === 'lcars' ? 'top-0 right-0 bg-[#ffaa00] text-black px-3 py-1 rounded-tr-[1.5rem] hover:brightness-110' : `top-1 ${(theme === 'matrix' || theme === 'weyland' || theme === 'cyberpunk') ? 'right-6' : 'right-1'} text-cyber-secondary hover:text-white`}`}>

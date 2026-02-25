@@ -105,5 +105,4 @@ $csrfExemptRoutes = [
 if (!in_array($route, $csrfExemptRoutes)) {
     verify_csrf_token();
 }
-
 $router->dispatch($method, $route);

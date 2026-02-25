@@ -111,7 +111,12 @@
             "robco": "RobCo-Terminal (Fallout)",
             "grid": "Das Gitter (Tron)",
             "section9": "Abschnitt 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "Computerwelt",
+            "mensch-maschine": "Mensch-Maschine",
+            "neon-syndicate": "Neon Syndicate",
+            "megacorp-executive": "Megacorp Executive",
+            "marvel": "Wunder"
         },
         "language": "SPRACHE",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ KRITISCH: SICHERE BACKUP-FRAGMENTE ⚠",
             "emergency_override": "Nur Notüberbrückung. Im analogen Format speichern.",
             "copy_fragment": "FRAGMENT KOPIEREN",
-            "uplink_complete": "UPLINK GESICHERT UND VOLLSTÄNDIG"
+            "uplink_complete": "UPLINK GESICHERT UND VOLLSTÄNDIG",
+            "system_enforced": "SYSTEMDIREKTIVE [Admin Policy]: E-MAIL-UPLINK ERZWUNGEN",
+            "system_enforced_desc": "Administratoren haben 2FA vorgeschrieben. Du nutzt momentan das Fallback-Protokoll. Initialisiere unten einen vollständigen Uplink [Setup 2FA]."
         },
         "contact": {
             "channel": "KONTAKTKANAL",
@@ -262,6 +269,13 @@
                 "clear_tooltip": "Setzt alle aktiven Filter zurück"
             }
         }
+    },
+    "dashboard": {
+        "operator_level": "OPERATOR LEVEL",
+        "level_up": "STUFENAUFSTIEG!",
+        "lvl_prefix": "LVL",
+        "xp_total": "XP Gesamt",
+        "next_rank_required": "NÄCHSTER RANG: {{xp}} XP BENÖTIGT"
     },
     "help": {
         "title": "CYBER_TASKER SYSTEMHANDBUCH",
@@ -403,7 +417,18 @@
                 "theme_klingon": "QO'NOS (KLINGONISCH) – Blutrot und kalter Stahl. Rasiermesserscharfe brutalistische Kanten. Heute ist ein guter Tag zum Codieren. Qapla'!",
                 "theme_got": "WESTEROS (GOT) – Eis und Feuer. Kaltblauer Stahl und valyrische blutrote Akzente. Der Winter kommt. Der Norden erinnert sich.",
                 "theme_marvel": "COMIC (MARVEL) – Heroische rote und auffällige Action-Punkte. Puh! Wham! Eine Hommage an das goldene Zeitalter der Comics. Holzwolle!",
-                "theme_dc": "GOTHAM (DC) – Dunkelste Nacht, tiefstes Blau und ein gelber Lichtstreifen, der durch den Regen schneidet. Gerechtigkeit schläft nie."
+                "theme_dc": "GOTHAM (DC) – Dunkelste Nacht, tiefstes Blau und ein gelber Lichtstreifen, der durch den Regen schneidet. Gerechtigkeit schläft nie.",
+                "theme_computerwelt": "COMPUTERWELT – Kraftwerk '81-Protokolle. Mattschwarzes Chassis mit neongrünen und gelben Warnleuchten. Mensch und Maschine im perfekten Einklang.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE – Kraftwerk '78-Ästhetik. Kontrastreiches Purpurrot, absolutes Schwarz und kräftiges Weiß. Wir sind die Roboter.",
+                "theme_neon-syndicate": "NEON SYNDICATE – Entkomme der Nacht. Tiefes Void-Lila, gewaschen in Synthwave-Magenta und elektrischem Blau. Das Netz schläft nie.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE – Elite-Orbitalästhetik. Strahlend weiße Oberflächen, Akzente in gebürstetem Silber und eisblaue Datenströme. Geschäft ist Krieg."
+            },
+            "danger_zone": {
+                "title": "// GEFAHRENBEREICH [Identitätslöschung]",
+                "item1_warn": "⚠ KRITISCHE WARNUNG:",
+                "item1_text": "Die Kündigung Ihres Terminalkontos ist unwiderruflich. Alle Anweisungen, Archive und neuronalen Links werden gelöscht.",
+                "item2_label": "AUTHENTIFIZIERUNG",
+                "item2_text": "Um fortzufahren, müssen Sie Ihren aktuellen Zugangsschlüssel als Identitätsnachweis vorlegen."
             }
         }
     },
@@ -465,7 +490,9 @@
         "password_reset_msg": "Passwort für {{username}} zurückgesetzt.",
         "disable_2fa_confirm": "2FA für {{username}} DEAKTIVIEREN? Dadurch werden sekundäre Verifizierungsprotokolle entfernt.",
         "2fa_disabled_msg": "2FA für {{username}} deaktiviert.",
-        "disable_2fa_failed": "2FA konnte nicht deaktiviert werden"
+        "disable_2fa_failed": "2FA konnte nicht deaktiviert werden",
+        "policy_enforce_email_2fa_title": "E-Mail 2FA durchsetzen",
+        "policy_enforce_email_2fa_desc": "Erzwingen Sie die Zusendung eines E-Mail-2FA-Fallback-Codes an aktive Mitarbeiter, die versuchen, sich ohne TOTP-Authentifikator anzumelden."
     },
     "calendar": {
         "clear_date": "KLARE DATUM",
@@ -493,5 +520,26 @@
             "5": "FR",
             "6": "SA"
         }
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "AKTIVIEREN SIE VERSCHLÜSSELTE COMMLINKS: Erzwingen Sie das 2FA-Protokoll im gesamten Grid",
+        "enforce_2fa_desc": "Ihre Kommunikationsverbindungen sind derzeit dem unbefugten Ausspähen neuronaler Pakete ausgesetzt. Navigieren Sie sofort zur Admin-Konsole und aktivieren Sie das Verteidigungsmodul „Enforce Email 2FA“ für alle Mitarbeiter."
+    },
+    "gamification": {
+        "tier_1": "Anfänger [Fähigkeitsniveau]",
+        "tier_2": "Adept [Fähigkeitsstufe]",
+        "tier_3": "Veteran [Fähigkeitsstufe]",
+        "tier_4": "Elite [Fähigkeitsstufe]",
+        "tier_5": "Prime [Fähigkeitsstufe]",
+        "title_1": "Script Kiddie [Hacker-Rolle]",
+        "title_2": "Konsolen-Cowboy [Hacker-Rolle]",
+        "title_3": "Netrunner [Hacker-Rolle]",
+        "title_4": "Cyberdoc [Hacker-Rolle]",
+        "title_5": "Chrome-Junkie [Hacker-Rolle]",
+        "title_6": "Systemarchitekt [Hacker-Rolle]",
+        "title_7": "Ghost in the Shell [Hacker-Rolle]",
+        "title_8": "Neuromant [Hacker-Rolle]",
+        "title_9": "Digitaler Gott [Hacker-Rolle]",
+        "title_10": "Singularität [Hacker-Rolle]"
     }
 }

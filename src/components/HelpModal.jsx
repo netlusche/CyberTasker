@@ -23,7 +23,7 @@ const HelpModal = ({ onClose }) => {
     }, [onClose]);
 
     return (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm transform-gpu">
             <div className="card-cyber text-white max-w-2xl w-full max-h-[90vh] flex flex-col p-1 overflow-hidden border-cyber-primary shadow-cyber-primary relative">
                 <button
                     onClick={onClose}
@@ -175,7 +175,11 @@ const HelpModal = ({ onClose }) => {
                                         { key: 'klingon', color: '#ff0000' },
                                         { key: 'got', color: '#8cb8cc' },
                                         { key: 'marvel', color: '#e62429' },
-                                        { key: 'dc', color: '#005ce6' }
+                                        { key: 'dc', color: '#005ce6' },
+                                        { key: 'computerwelt', color: '#aaff00' },
+                                        { key: 'mensch-maschine', color: '#ff2a2a' },
+                                        { key: 'neon-syndicate', color: '#ff00ff' },
+                                        { key: 'megacorp-executive', color: '#cccccc' }
                                     ].map(({ key, color }) => {
                                         const full = t(`help.sections.visual_interface.theme_${key}`, '');
                                         const match = full.match(/(\s*—\s*|\s*-\s*|\s*–\s*|:\s*|——)/);

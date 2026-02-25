@@ -7,8 +7,11 @@ import DirectiveModal from './DirectiveModal';
 
 const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, activeCalendarTaskId, setActiveCalendarTaskId, onDuplicate }) => {
     const { t } = useTranslation();
+    const displayTitle = task.title?.startsWith('i18n:') ? t(task.title.replace('i18n:', '')) : task.title;
+    const displayDesc = task.description?.startsWith('i18n:') ? t(task.description.replace('i18n:', '')) : task.description;
+
     const [isEditing, setIsEditing] = React.useState(false);
-    const [editTitle, setEditTitle] = React.useState(task.title);
+    const [editTitle, setEditTitle] = React.useState(displayTitle);
     const [isSaving, setIsSaving] = React.useState(false);
     const [showPriorityConfirm, setShowPriorityConfirm] = React.useState(false);
     const [pendingPriority, setPendingPriority] = React.useState(null);
@@ -165,7 +168,7 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
         if (e.key === 'Enter') {
             handleSave();
         } else if (e.key === 'Escape') {
-            setEditTitle(task.title);
+            setEditTitle(displayTitle);
             setIsEditing(false);
         }
     };
@@ -239,25 +242,25 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
                             <h3
                                 onClick={() => {
                                     if (task.status != 1) {
-                                        setEditTitle(task.title);
+                                        setEditTitle(displayTitle);
                                         setIsEditing(true);
                                     }
                                 }}
                                 className={`text-lg font-bold text-white mb-1 cursor-pointer hover:text-cyber-primary transition-colors ${task.status == 1 ? 'line-through text-gray-400 pointer-events-none' : ''}`}
                                 title={task.status != 1 ? t('tasks.edit_directive') : ""}
                             >
-                                {task.title}
+                                {displayTitle}
                             </h3>
                         )}
 
-                        {task.description && !isEditing && (
+                        {displayDesc && !isEditing && (
                             <div
                                 className="mb-2 line-clamp-2 cursor-pointer group/preview px-1 -mx-1 rounded hover:bg-white/5 transition-colors"
                                 onClick={() => setShowDossier(true)}
                                 title={t('tasks.dossier.title')}
                             >
-                                <p className="text-xs text-gray-400 font-mono opacity-80 group-hover/preview:opacity-100 group-hover/preview:text-cyber-primary transition-colors">
-                                    {task.description.length > 256 ? task.description.substring(0, 256) + '...' : task.description}
+                                <p className="text-xs text-gray-400 font-mono opacity-80 group-hover/preview:opacity-100 group-hover/preview:text-cyber-primary transition-colors whitespace-pre-wrap">
+                                    {displayDesc.length > 256 ? displayDesc.substring(0, 256) + '...' : displayDesc}
                                 </p>
                             </div>
                         )}

@@ -111,7 +111,12 @@
             "robco": "RobCo 터미널(폴아웃)",
             "grid": "그리드(트론)",
             "section9": "섹션 9(GitS)",
-            "outrun": "아웃런 1984"
+            "outrun": "아웃런 1984",
+            "computerwelt": "컴퓨터웰트",
+            "mensch-maschine": "멘쉬-마쉬네",
+            "neon-syndicate": "네온 신디케이트",
+            "megacorp-executive": "메가코프 임원",
+            "marvel": "놀라운 일"
         },
         "language": "언어",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ 중요: 보안 백업 조각 ⚠",
             "emergency_override": "긴급 재정의만 가능합니다. 아날로그 형식으로 저장합니다.",
             "copy_fragment": "조각 복사",
-            "uplink_complete": "업링크 보안 및 완료"
+            "uplink_complete": "업링크 보안 및 완료",
+            "system_enforced": "시스템 지침 [관리자 정책]: 이메일 업링크 시행",
+            "system_enforced_desc": "관리자는 2FA 제약을 의무화했습니다. 현재 대체 프로토콜을 사용 중입니다. 아래에서 전체 업링크 [2FA 설정]을 초기화하세요."
         },
         "contact": {
             "channel": "연락처 채널",
@@ -394,7 +401,11 @@
                 "theme_klingon": "QO'NOS (KLINGON) — 핏빛 붉은색과 차가운 강철. 면도칼처럼 날카로운 잔혹한 가장자리. 오늘은 코딩하기 좋은 날이다. 카플라'!",
                 "theme_got": "웨스테로스(GOT) — 얼음과 불. 차가운 파란색 강철과 발리리아의 핏빛 붉은색 액센트. 겨울이 다가오고 있습니다. 북한은 기억한다.",
                 "theme_marvel": "COMIC (MARVEL) — 영웅적인 빨간색과 대담한 액션 도트. 펑! 왐! 만화책의 황금기에 바치는 찬사입니다. 대팻밥!",
-                "theme_dc": "고담(DC) — 가장 어두운 밤, 가장 깊은 파란색, 그리고 비를 가르는 노란 빛의 조각. 정의는 잠들지 않습니다."
+                "theme_dc": "고담(DC) — 가장 어두운 밤, 가장 깊은 파란색, 그리고 비를 가르는 노란 빛의 조각. 정의는 잠들지 않습니다.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 프로토콜. 네온 녹색 및 노란색 주의 표시가 있는 무광 검정색 섀시. 인간과 기계가 완벽하게 동기화됩니다.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 미학. 고대비 진홍색, 완전 검정색, 완전 흰색. 우리는 로봇입니다.",
+                "theme_neon-syndicate": "NEON SYNDICATE — 밤을 뛰어넘으세요. 신스웨이브 마젠타색과 일렉트릭 블루로 세척된 딥 보이드 퍼플. 그리드는 절대 잠들지 않습니다.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — 엘리트 궤도 미학. 눈부신 흰색 표면, 브러시 처리된 은색 액센트, 아이스 블루 데이터 스트림. 사업은 전쟁이다."
             },
             "global_shortcuts": {
                 "title": "// 전역 단축키 [워크플로]",
@@ -404,6 +415,13 @@
                 "item2_text": "[/]를 눌러 신경망 검색 막대에 초점을 맞추고 데이터뱅크 쿼리를 시작합니다.",
                 "item3_label": "오버레이 닫기",
                 "item3_text": "활성 모달, Dossier 또는 구성 오버레이를 즉시 닫으려면 [ESC]를 누르십시오."
+            },
+            "danger_zone": {
+                "title": "// DANGER ZONE [신원 삭제]",
+                "item1_warn": "⚠ 중요한 경고:",
+                "item1_text": "터미널 계정 종료는 되돌릴 수 없습니다. 모든 지시문, 아카이브 및 신경 링크가 지워집니다.",
+                "item2_label": "인증",
+                "item2_text": "계속 진행하려면 신원 증명으로 현재 액세스 키를 제시해야 합니다."
             }
         }
     },
@@ -465,7 +483,9 @@
         "password_reset_msg": "{{username}}의 비밀번호가 재설정되었습니다.",
         "disable_2fa_confirm": "{{username}}에 대한 2FA를 비활성화하시겠습니까? 그러면 보조 확인 프로토콜이 제거됩니다.",
         "2fa_disabled_msg": "{{username}}에 대해 2FA가 비활성화되었습니다.",
-        "disable_2fa_failed": "2FA를 비활성화하지 못했습니다"
+        "disable_2fa_failed": "2FA를 비활성화하지 못했습니다",
+        "policy_enforce_email_2fa_title": "이메일 2FA 시행",
+        "policy_enforce_email_2fa_desc": "TOTP 인증자 없이 로그인을 시도하는 활성 요원에게 이메일 2FA 대체 코드가 강제로 발송되도록 합니다."
     },
     "calendar": {
         "clear_date": "날짜 지우기",
@@ -493,5 +513,33 @@
             "5": "금",
             "6": "앉았다"
         }
+    },
+    "dashboard": {
+        "operator_level": "운영자 레벨",
+        "level_up": "레벨 업!",
+        "lvl_prefix": "LVL",
+        "xp_total": "총 XP",
+        "next_rank_required": "다음 순위: {{xp}} XP 필요"
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "암호화된 COMMLINK 활성화: 그리드 전반에 걸쳐 2FA 프로토콜 시행",
+        "enforce_2fa_desc": "귀하의 통신 링크는 현재 무단 신경 패킷 스니핑에 노출되어 있습니다. 즉시 관리 콘솔로 이동하여 모든 요원에 대해 '이메일 2FA 시행' 방어 모듈을 활성화하십시오."
+    },
+    "gamification": {
+        "tier_1": "초보자 [스킬레벨]",
+        "tier_2": "숙달 [스킬 레벨]",
+        "tier_3": "베테랑 [스킬레벨]",
+        "tier_4": "엘리트 [스킬레벨]",
+        "tier_5": "프라임 [스킬레벨]",
+        "title_1": "Script Kiddie [해커 역할]",
+        "title_2": "콘솔 카우보이 [해커 역할]",
+        "title_3": "Netrunner [해커 역할]",
+        "title_4": "Cyberdoc [해커 역할]",
+        "title_5": "Chrome 중독자 [해커 역할]",
+        "title_6": "시스템 설계자 [해커 역할]",
+        "title_7": "공각기동대 [해커 역할]",
+        "title_8": "뉴로맨서 [해커 역할]",
+        "title_9": "디지털 신 [해커 역할]",
+        "title_10": "특이점 [해커 역할]"
     }
 }

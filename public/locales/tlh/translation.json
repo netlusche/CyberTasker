@@ -111,7 +111,12 @@
             "robco": "RobCo Terminal (Fallout)",
             "grid": "The Grid (Tron)",
             "section9": "Section 9 (GitS)",
-            "outrun": "Outrun 1984"
+            "outrun": "Outrun 1984",
+            "computerwelt": "De'wI' qo'",
+            "mensch-maschine": "loD-jan",
+            "neon-syndicate": "neon boq",
+            "megacorp-executive": "tayqeq pIn'a'",
+            "marvel": "Marvel"
         },
         "language": "Hol",
         "messages": {
@@ -175,7 +180,9 @@
             "critical_backup": "⚠ Hoj: let mI' ⚠",
             "emergency_override": "Emergency Override. yInIteb.",
             "copy_fragment": "mI' nIteb",
-            "uplink_complete": "lab chu'"
+            "uplink_complete": "lab chu'",
+            "system_enforced": "PAT RA' [Admin Policy]: QUMWI' YINISLU'",
+            "system_enforced_desc": "cha'logh yI'ang 'e' ra'ta' pat pIn. chutmey rur bID. QumwI' yIchel [Setup 2FA]."
         },
         "contact": {
             "channel": "lab pat",
@@ -262,6 +269,13 @@
                 "clear_tooltip": "Hoch wIv Qaw'lu'"
             }
         }
+    },
+    "dashboard": {
+        "operator_level": "mI' yaS",
+        "level_up": "yaS tIn!",
+        "lvl_prefix": "mI'",
+        "xp_total": "Hoch XP",
+        "next_rank_required": "chu' yaS: {{xp}} XP nIS"
     },
     "help": {
         "title": "pat QaH",
@@ -403,9 +417,24 @@
                 "theme_klingon": "QO'NOS (KLINGON) — Doq ngeng. batlh! Qapla'!",
                 "theme_got": "WESTEROS (GOT) — Westeros legh. Doq, SuD.",
                 "theme_marvel": "COMIC (MARVEL) — Comic legh. Doq tIn.",
-                "theme_dc": "GOTHAM (DC) — Gotham legh. SuD tIn."
+                "theme_dc": "GOTHAM (DC) — Gotham legh. SuD tIn.",
+                "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 protocols. Matte black chassis with neon green and caution yellow indicators. Man and machine in perfect sync.",
+                "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 aesthetics. High-contrast crimson, absolute black, and stark white. We are the robots.",
+                "theme_neon-syndicate": "NEON SYNDICATE — Outrun the night. Deep void purple washed in synthwave magenta and electric blue. The grid never sleeps.",
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war."
+            },
+            "danger_zone": {
+                "title": "// Hoj wej [pong Qaw']",
+                "item1_warn": "⚠ Hoj:",
+                "item1_text": "pong Qaw'lu'. Hoch mu'tlhegh, nav, QIb Qaw'lu'. Hoch Qaw'lu'.",
+                "item2_label": "pegh",
+                "item2_text": "DaH pegh mu' luq nIS."
             }
         }
+    },
+    "initial_tasks": {
+        "enforce_2fa_title": "pe'vIl jabbI'IDmey yIqem: Qapchu' let 2FA patmey",
+        "enforce_2fa_desc": "ghotpu' nuqnej tlhoS lulIng jabbI'IDmeylIj. yuvtlhe' Admin Console yIjaH 'ej 'Enforce Email 2FA' Qel yIchu'."
     },
     "common": {
         "loading": "nItwI' chentaH...",
@@ -448,6 +477,8 @@
         "policies_title": "pat let",
         "policy_strict_pwd_title": "pegh mu' let",
         "policy_strict_pwd_desc": "pegh mu' let nIS (Min 12, Upper, Number, Special).",
+        "policy_enforce_email_2fa_title": "ra' Email 2FA",
+        "policy_enforce_email_2fa_desc": "Email 2FA mI' lInglu' net poQ TOTP ghajbe'chugh.",
         "confirm_title": "luq nIS",
         "input_required": "ghItlh nIS",
         "policy_updated_msg": "let chu': {{key}}",
@@ -493,5 +524,22 @@
             "5": "VA",
             "6": "JA"
         }
+    },
+    "gamification": {
+        "tier_1": "chu'wI' [Skill Level]",
+        "tier_2": "po'wI' [Skill Level]",
+        "tier_3": "valwI' [Skill Level]",
+        "tier_4": "laDqu'wI' [Skill Level]",
+        "tier_5": "Dunqu'wI' [Skill Level]",
+        "title_1": "tay'wI'Hom [Hacker Role]",
+        "title_2": "De'wI' mang [Hacker Role]",
+        "title_3": "QonoS nItlh [Hacker Role]",
+        "title_4": "De'wI' Qel [Hacker Role]",
+        "title_5": "baS nIv ghonwI' [Hacker Role]",
+        "title_6": "pat chenmoHwI' [Hacker Role]",
+        "title_7": "pel'aQ qa' [Hacker Role]",
+        "title_8": "neUromAncer [Hacker Role]",
+        "title_9": "De'wI' Qun [Hacker Role]",
+        "title_10": "wa' Dol [Hacker Role]"
     }
 }

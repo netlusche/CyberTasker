@@ -108,6 +108,35 @@ try {
         echo "<span style='color: #ff8c00;'>SYSTEM EMPTY: First-time initialization detected. Auto-Lock bypassed.</span><br>\n";
     }
 
+    $isCli = (php_sapi_name() === 'cli');
+    $initEmail = null;
+    $initPassword = 'password';
+
+    if (!$isCli && !tableExists($pdo, 'users')) {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            // Redirect to the frontend installer
+            header("Location: ../install.html");
+            exit;
+        }
+
+        // Handle POST credentials
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        if (!$data || empty($data['email']) || empty($data['password'])) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Email and Password are required.']);
+            exit;
+        }
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid email address.']);
+            exit;
+        }
+        $initEmail = trim($data['email']);
+        $initPassword = $data['password'];
+    }
+
+
     // --- USERS TABLE ---
     $autoIncrement = ($dbType === 'sqlite') ? 'INTEGER PRIMARY KEY AUTOINCREMENT' : 'INT AUTO_INCREMENT PRIMARY KEY';
 
@@ -268,11 +297,11 @@ try {
     $stmt->execute([$adminUsername]);
 
     if (!$stmt->fetch()) {
-        $adminPassword = password_hash('password', PASSWORD_DEFAULT);
+        $adminPassword = password_hash($initPassword, PASSWORD_DEFAULT);
 
         // Insert Admin
-        $stmt = $pdo->prepare("INSERT INTO users (username, password, role, is_verified) VALUES (?, ?, 'admin', 1)");
-        $stmt->execute([$adminUsername, $adminPassword]);
+        $stmt = $pdo->prepare("INSERT INTO users (username, password, role, is_verified, email) VALUES (?, ?, 'admin', 1, ?)");
+        $stmt->execute([$adminUsername, $adminPassword, $initEmail]);
         $adminId = $pdo->lastInsertId();
 
         // Initialize Stats
@@ -306,6 +335,7 @@ try {
         }
 
         $directives = [
+            ['i18n:initial_tasks.enforce_2fa_title', 'Security', 1, 15, 'i18n:initial_tasks.enforce_2fa_desc'],
             ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Security', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
             ['PURGE INSTALLER CORE: Terminate \'install.php\' from the server grid immediately.', 'Security', 1, 10, 'Leaving the installation script active on a production grid allows unauthorized entities to re-initialize the database, potentially exposing or destroying all operational data. Delete the file immediately.'],
             ['ACTIVATE NEURAL ENCRYPTION: Navigate to Admin Console and toggle \'STRICT_PASSWORD_POLICY\' to Level 1.', 'Security', 1, 10, 'Activating the strict password policy ensures all new operatives utilize cryptographic-grade access keys, preventing brute-force neural intrusions. Go to the Admin Panel and enforce this setting.'],
@@ -314,16 +344,16 @@ try {
             ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'System', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
         ];
 
-        $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, attachments, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, files, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
         $first = true;
         foreach ($directives as $d) {
-            $attachments = null;
+            $files = null;
             if ($first && $pdfAttachment) {
-                $attachments = $pdfAttachment;
+                $files = $pdfAttachment;
                 $first = false;
             }
-            $stmtTask->execute([$adminId, $d[0], $d[1], $d[2], $d[3], $attachments, $d[4]]);
+            $stmtTask->execute([$adminId, $d[0], $d[1], $d[2], $d[3], $files, $d[4]]);
         }
         echo "Initial Admin security directives deployed.<br>\n";
     }
@@ -346,6 +376,14 @@ try {
         $pdo->prepare("INSERT INTO system_settings (setting_key, setting_value) VALUES (?, ?)")
             ->execute(['strict_password_policy', '0']);
         echo "Default setting 'strict_password_policy' initialized to '0'.<br>\n";
+    }
+
+    $stmt = $pdo->prepare("SELECT setting_value FROM system_settings WHERE setting_key = ?");
+    $stmt->execute(['enforce_email_2fa']);
+    if (!$stmt->fetch()) {
+        $pdo->prepare("INSERT INTO system_settings (setting_key, setting_value) VALUES (?, ?)")
+            ->execute(['enforce_email_2fa', '0']);
+        echo "Default setting 'enforce_email_2fa' initialized to '0'.<br>\n";
     }
 
     echo "<h4>Installation/Update Final Verification:</h4>";
