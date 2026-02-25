@@ -12,6 +12,12 @@ require_once __DIR__ . '/../api/repositories/TaskRepository.php';
 require_once __DIR__ . '/../api/TOTP.php';
 
 $pdo = getDBConnection();
+
+// Set SQLite busy timeout to wait for locks instead of failing immediately
+if ($pdo->getAttribute(PDO::ATTR_DRIVER_NAME) === 'sqlite') {
+    $pdo->exec("PRAGMA busy_timeout = 5000;");
+}
+
 $userRepo = new UserRepository($pdo);
 $taskRepo = new TaskRepository($pdo);
 

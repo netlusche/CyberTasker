@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../utils/ThemeContext';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 const CalendarModal = ({ tasks, onClose, onOpenDossier }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const [currentDate, setCurrentDate] = useState(new Date());
     const [calendarTasks, setCalendarTasks] = useState([]);
+    const modalRef = useRef(null);
+    useFocusTrap(modalRef);
 
     useEffect(() => {
         // Fetch all calendar tasks regardless of dashboard pagination
@@ -131,7 +134,7 @@ const CalendarModal = ({ tasks, onClose, onOpenDossier }) => {
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transform-gpu" onClick={onClose}></div>
-            <div className="bg-cyber-black border border-cyber-primary p-4 md:p-6 shadow-cyber-primary relative z-10 w-full max-w-5xl flex flex-col font-mono" style={{ maxHeight: '90vh' }}>
+            <div ref={modalRef} className="bg-cyber-black border border-cyber-primary p-4 md:p-6 shadow-cyber-primary relative z-10 w-full max-w-5xl flex flex-col font-mono" style={{ maxHeight: '90vh' }}>
 
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-xl md:text-2xl font-bold text-cyber-primary flex items-center gap-2 uppercase tracking-widest">

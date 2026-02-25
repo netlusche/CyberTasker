@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import CyberConfirm from './CyberConfirm';
 import CyberAlert from './CyberAlert';
 import { useTheme } from '../utils/ThemeContext';
 import { apiFetch } from '../utils/api';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 // Internal reusable component for password fields with toggle
 const PasswordInput = ({ value, onChange, placeholder, className, required = false, onInvalid, error, t, onFocus }) => {
@@ -28,8 +29,7 @@ const PasswordInput = ({ value, onChange, placeholder, className, required = fal
             <button
                 type="button"
                 onClick={() => setShow(!show)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-primary hover:text-white transition-colors p-1"
-                tabIndex="-1"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-primary hover:text-white transition-colors p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyber-primary focus-visible:outline-offset-2"
                 data-tooltip-content={show ? t('tooltip.hide_password', 'Hide Password') : t('tooltip.show_password', 'Show Password')}
             >
                 {show ? (
@@ -52,6 +52,8 @@ const PasswordInput = ({ value, onChange, placeholder, className, required = fal
 const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate }) => {
     const { t, i18n } = useTranslation();
     const { theme, setTheme } = useTheme();
+    const modalRef = useRef(null);
+    useFocusTrap(modalRef);
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
@@ -606,7 +608,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
 
     return (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm transform-gpu flex items-center justify-center z-50 p-4">
-            <div className="card-cyber w-full max-w-lg border-cyber-primary shadow-cyber-primary relative max-h-[90vh] flex flex-col p-1 overflow-x-hidden">
+            <div ref={modalRef} className="card-cyber w-full max-w-lg border-cyber-primary shadow-cyber-primary relative max-h-[90vh] flex flex-col p-1 overflow-x-hidden">
                 <button
                     data-testid="profile-close-btn"
                     onClick={onClose}

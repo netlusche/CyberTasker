@@ -23,16 +23,7 @@ function clearEmailLog() {
 
 test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
 
-    test.beforeAll(async () => {
-        // Reset the database before testing 2FA flows to avoid cascading locked states
-        try {
-            execSync('php tests/seed_test_data.php', { stdio: 'inherit' });
-        } catch (error) {
-            console.error('Seed script failed:', error.message);
-            // Retry once just in case of transient DB lock
-            execSync('php tests/seed_test_data.php', { stdio: 'inherit' });
-        }
-    });
+    // Database is now seeded once globally via global.setup.js
 
     test.beforeEach(async () => {
         clearEmailLog();
@@ -70,14 +61,13 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         expect(mailContent).toContain(testUser);
         expect(mailContent).toContain('/verify.html?token=');
 
-        // Extract the verification link
-        const match = mailContent.match(/href='([^']+)'/);
+        // Extract the verification token (64 char hex string after token=)
+        const match = mailContent.match(/token=([a-f0-9]{64})/);
         expect(match).toBeTruthy();
-        const verifyLink = match[1];
+        const verifyToken = match[1];
 
-        // Format link to avoid internal proxy URL
-        const verifyUrlObj = new URL(verifyLink);
-        const verifyPath = verifyUrlObj.pathname + verifyUrlObj.search;
+        // Format link manually based on the test environment
+        const verifyPath = `/verify.html?token=${verifyToken}`;
 
         // Navigate to verify link (using base URL automatically)
         await page.goto(verifyPath);
@@ -116,8 +106,9 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         const mailContent = getLatestEmailContent();
         expect(mailContent).toBeTruthy();
 
-        // Extract 6 digit code from the email HTML (the <b ...>123456</b>)
-        const codeMatch = mailContent.match(/<b[^>]*>(\d{6})<\/b>/);
+        // Extract 6 digit code from the email log text
+        // The log is now plaintext (strip_tags) and might lack spaces around the code
+        const codeMatch = mailContent.match(/(\d{6})/);
         expect(codeMatch).toBeTruthy();
         const code = codeMatch[1];
 
@@ -168,7 +159,7 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         await page.waitForTimeout(2000);
         const loginMail = getLatestEmailContent();
         expect(loginMail).toBeTruthy();
-        const loginCodeMatch = loginMail.match(/<b[^>]*>(\d{6})<\/b>/);
+        const loginCodeMatch = loginMail.match(/(\d{6})/);
         expect(loginCodeMatch).toBeTruthy();
         const loginCode = loginCodeMatch[1];
 

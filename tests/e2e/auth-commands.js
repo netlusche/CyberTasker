@@ -2,6 +2,13 @@
 import { expect } from '@playwright/test';
 
 export async function loginAsAdmin(page) {
+    // Clear any potential leftover state from previous tests in the same context
+    await page.context().clearCookies();
+    await page.addInitScript(() => {
+        window.localStorage.clear();
+        window.sessionStorage.clear();
+    });
+
     await page.goto('/');
 
     // Wait for "INITIALIZING SYSTEM..." to disappear

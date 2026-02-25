@@ -26,6 +26,19 @@ body,
   overflow-x: hidden;
 }
 
+/* Accessibility: Global Focus State */
+:focus-visible {
+  outline: 2px solid var(--theme-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 8px var(--theme-primary);
+  border-radius: 2px;
+  transition: outline-color 0.2s, box-shadow 0.2s;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .theme-cyberpunk {
   --theme-bg: #0a0a0a;
   --theme-surface: #121212;

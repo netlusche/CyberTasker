@@ -9,7 +9,7 @@ export default defineConfig({
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
-    workers: process.env.CI ? 1 : undefined,
+    workers: 1, // Enforced sequential execution to prevent SQLite locks and state leakage
     timeout: 60000,
     reporter: 'html',
     use: {
@@ -24,6 +24,8 @@ export default defineConfig({
             use: { ...devices['Desktop Chrome'] },
         }
     ],
+
+    globalSetup: './tests/global.setup.cjs',
 
     // webServer: {
     //     command: 'bash start_local.sh',

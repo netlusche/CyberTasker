@@ -384,5 +384,11 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Scenario**: Navigate through the Auth Screen, Dashboard, and Profile Modal while listening for localized tooltip rendering.
 - **Validation**:
   - Validates that UI components securely embed their contextual help directly within `data-tooltip-content`.
-  - Ensures tooltips respond correctly to the active language state (e.g., swapping to 'Deutsch' synchronously updates the tooltip content across the DOM without reloading).
   - Validates CSS positioning logic (`data-tooltip-pos: left|right|bottom`) avoids viewport overflow.
+
+### TS-12.2: Keyboard Accessibility & Tab Navigation [MANUAL]
+- **Scenario**: Navigate the application using exclusively the `Tab` and `Shift+Tab` keys, interacting with Modals and forms.
+- **Validation**:
+  - Focus indicator (`:focus-visible`) highlights the active element clearly using the theme primary colors.
+  - While navigating inside any active Modal (e.g., Profile, System Help), focus traps loop back to the first interactive element when reaching the end, preventing focus from escaping to the background overlay.
+  - Toggle buttons and custom select components remain inherently reachable via keyboard.

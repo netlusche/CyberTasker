@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 
 const SystemModal = ({
     isOpen,
@@ -13,6 +14,9 @@ const SystemModal = ({
     allowScroll = true,
     zIndex = 'z-[150]'
 }) => {
+    const modalRef = useRef(null);
+    useFocusTrap(modalRef, isOpen);
+
     useEffect(() => {
         const handleEscape = (e) => {
             if (e.key === 'Escape') {
@@ -38,7 +42,7 @@ const SystemModal = ({
 
     return (
         <div className={`fixed inset-0 bg-black/80 backdrop-blur-sm transform-gpu flex items-center justify-center ${zIndex} p-4 font-mono animate-in fade-in duration-300`}>
-            <div className={`bg-cyber-black p-6 ${maxWidth} w-full border-2 ${accentClass.split(' ')[0]} ${accentClass.split(' ')[1]} relative overflow-hidden flex flex-col max-h-[90vh] ${className}`}>
+            <div ref={modalRef} className={`bg-cyber-black p-6 ${maxWidth} w-full border-2 ${accentClass.split(' ')[0]} ${accentClass.split(' ')[1]} relative overflow-hidden flex flex-col max-h-[90vh] ${className}`}>
 
                 {!hideCloseBtn && onClose && (
                     <button

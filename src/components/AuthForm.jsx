@@ -300,8 +300,7 @@ const AuthForm = ({ onLogin }) => {
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-primary hover:text-white transition-colors p-1"
-                                    tabIndex="-1"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-primary hover:text-white transition-colors p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyber-primary focus-visible:outline-offset-2"
                                     data-tooltip-content={showPassword ? t('tooltip.hide_password', 'Hide Password') : t('tooltip.show_password', 'Show Password')}
                                 >
                                     {showPassword ? (

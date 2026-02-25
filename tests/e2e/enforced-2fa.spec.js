@@ -5,10 +5,7 @@ import { execSync } from 'child_process';
 
 test.describe('US-2.5.10: Enforced Email 2FA Policy', () => {
 
-    test.afterAll(async () => {
-        console.log('Resetting Database after enforced-2fa test...');
-        execSync('php tests/seed_test_data.php');
-    });
+    // Database is now seeded once globally via global.setup.js
 
     test('Admin can enable Enforce Email 2FA and intercept non-TOTP logins', async ({ page }) => {
         // 1. Login as Admin
@@ -46,5 +43,21 @@ test.describe('US-2.5.10: Enforced Email 2FA Policy', () => {
 
         // 6. Assert intercept screen appears
         await expect(page.getByText(/EMERGENCY OVERRIDE/i)).toBeVisible({ timeout: 15000 });
+
+        // --- TEARDOWN: Revert Enforced 2FA so it doesn't break other tests ---
+
+        // We are currently on the intercept screen for Test_User_001. We must log them out.
+        await page.goto('/');
+        await page.evaluate(() => {
+            localStorage.clear();
+            sessionStorage.clear();
+            document.cookie.split(";").forEach((c) => {
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+            });
+        });
+
+        // Disable the setting directly in the database to avoid admin 2FA lockouts during teardown
+        execSync('php tests/teardown_enforce_2fa.php');
+        console.log('Teardown: Enforced Email 2FA disabled via DB helper.');
     });
 });

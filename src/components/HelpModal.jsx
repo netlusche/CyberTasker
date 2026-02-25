@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { triggerNeonConfetti } from '../utils/confetti';
 import { useTheme } from '../utils/ThemeContext';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 const HelpModal = ({ onClose }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
+    const modalRef = useRef(null);
+    useFocusTrap(modalRef);
+
     const handleAcknowledge = () => {
         triggerNeonConfetti(theme);
         onClose();
@@ -24,7 +28,7 @@ const HelpModal = ({ onClose }) => {
 
     return (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm transform-gpu">
-            <div className="card-cyber text-white max-w-2xl w-full max-h-[90vh] flex flex-col p-1 overflow-hidden border-cyber-primary shadow-cyber-primary relative">
+            <div ref={modalRef} className="card-cyber text-white max-w-2xl w-full max-h-[90vh] flex flex-col p-1 overflow-hidden border-cyber-primary shadow-cyber-primary relative">
                 <button
                     onClick={onClose}
                     className={`absolute font-bold text-xl transition-colors z-50 ${theme === 'lcars' ? 'top-0 right-0 bg-[#ffaa00] text-black px-3 py-1 rounded-tr-[1.5rem] hover:brightness-110' : `top-1 ${(theme === 'matrix' || theme === 'weyland' || theme === 'cyberpunk') ? 'right-6' : 'right-1'} text-cyber-secondary hover:text-white`}`}
