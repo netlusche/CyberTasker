@@ -38,7 +38,7 @@
   - Sichtbarer, barrierefreier Fokus-State (passend zum Theme) für das aktuell per Tab fokussierte Element.
   - Modals/Layer fangen den Tab-Fokus ein ("Focus Trap"), solange sie geöffnet sind, damit man nicht unsichtbar im Hintergrund weiternavigiert.
 
-**US-2.6.3: Automatisierter "One-Click-Release" Prozess**
+**US-2.6.3: Automatisierter "One-Click-Release" Prozess (Umgesetzt)**
 * **Als** Entwickler/Release-Manager
 * **Möchte ich** einen zentralen Terminal-Befehl ausführen können, der den gesamten Release-Prozess absichert
 * **Damit** Versionen, Git Tags und Commits in Zukunft immer zu 100% synchron sind und ich nicht versehentlich defekten Code durch kaputte Tests freigebe.

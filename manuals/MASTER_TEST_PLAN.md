@@ -392,3 +392,10 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
   - Focus indicator (`:focus-visible`) highlights the active element clearly using the theme primary colors.
   - While navigating inside any active Modal (e.g., Profile, System Help), focus traps loop back to the first interactive element when reaching the end, preventing focus from escaping to the background overlay.
   - Toggle buttons and custom select components remain inherently reachable via keyboard.
+
+### TS-12.3: Automated Release Pipeline [MANUAL]
+- **Scenario**: Execute the interactive release script (`./scripts/release.sh`) with an intentional test failure.
+- **Validation**:
+  - The script asserts valid translation completeness (`npm run check-translations`) and theme coherence.
+  - E2E Playwright tests act as a strict pass/fail gatekeeper.
+  - Version bumping via prompt accurately patches `package.json` and stages the git tag (`vX.X.X`).
