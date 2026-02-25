@@ -101,3 +101,12 @@ This document provides a categorized overview of the user stories implemented in
 *   **Global "Enforce Email 2FA" Policy (US-2.5.10, 2.5.10b, 2.5.10c)**: As an administrator, I want a global switch to enforce Email 2FA for all users (unless they have apps configured), with clear visual warnings in active sessions and context banners during login for transparency.
 *   **Initial Security Directive (US-2.5.11)**: As a newly installed admin, I want a predefined directive in my dossier reminding me to activate the 2FA policy to stay immersed and secure the system.
 *   **Scalable Gamification Badges (US-2.5.12 & US-2.5.13)**: As an operative, I want a scalable gamification system that dynamically calculates a two-part badge (Tier + Title) up to Level 50, displaying it prominently on my dashboard and seamlessly translating it across all languages using bracket-context guidelines.
+
+## 🚀 14. Release 2.6 Features
+*   **Multilingual Tooltips (US-2.6.1)**: As a new operative, I want to hover over icons and receive localized tooltips so that I understand features without a crowded UI.
+*   **Tab Navigation (US-2.6.2)**: As a keyboard user, I want visual focus outlines and trapped focus in modals so that I can rapidly navigate options without using a mouse.
+*   **Automated Release Script (US-2.6.3)**: As a system maintainer, I want a single script to automate E2E tests, translation checks, version bumping, and version tagging.
+*   **Cyberpunk Daily Quote (US-2.6.4)**: As an operative, I want to see a daily rotating thematic quote on my dashboard to increase immersion.
+*   **Multilingual Installer (US-2.6.5)**: As a system admin deploying the grid, I want the installer interface to load in my selected language and set this preference for the first account.
+*   **Localized System Emails (US-2.6.6)**: As a non-English speaking user, I want system emails (Recovery, Verification) to be written entirely in my profile's selected language.
+*   **Sub-Routine Mobile DND (US-2.6.9)**: As a mobile operative, I want to fluidly drag-and-drop sub-routines using touch controls so I can prioritize tasks on the go.

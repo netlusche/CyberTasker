@@ -6,6 +6,97 @@ import CyberCalendar from './CyberCalendar';
 import CyberConfirm from './CyberConfirm';
 import CyberSelect from './CyberSelect';
 import { useFocusTrap } from '../hooks/useFocusTrap';
+import {
+    DndContext,
+    closestCenter,
+    KeyboardSensor,
+    PointerSensor,
+    useSensor,
+    useSensors,
+} from '@dnd-kit/core';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates,
+    verticalListSortingStrategy,
+    useSortable
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+
+const SortableSubroutine = ({
+    sub,
+    subId,
+    idx,
+    toggleSubroutine,
+    editingField,
+    setEditingField,
+    editSubroutineTitle,
+    saveSubroutineTitle,
+    deleteSubroutine,
+    t
+}) => {
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+        isDragging
+    } = useSortable({ id: subId });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.4 : 1,
+        ...(isDragging ? { zIndex: 50, position: 'relative' } : {})
+    };
+
+    return (
+        <div
+            ref={setNodeRef}
+            style={style}
+            data-testid="subroutine-item"
+            className={`flex items-center justify-between group p-1 -mx-1 border transition-all rounded ${isDragging ? 'bg-cyber-primary/10 border-cyber-primary border-dashed' : 'border-transparent'}`}
+        >
+            <div className="flex items-center gap-3 flex-1">
+                <div {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing text-cyber-gray hover:text-cyber-primary px-1 transition-colors touch-none" data-tooltip-content={t('tooltip.drag', 'Drag to reorder')}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                    </svg>
+                </div>
+                <div className="relative flex items-center justify-center cursor-pointer">
+                    <input type="checkbox" checked={sub.completed} onChange={() => toggleSubroutine(idx)} className="peer appearance-none w-5 h-5 border-2 border-cyber-primary bg-black/50 checked:bg-cyber-primary transition-colors cursor-pointer" />
+                    <svg className="absolute w-3 h-3 pointer-events-none text-black opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </div>
+                {editingField === subId ? (
+                    <input
+                        autoFocus
+                        type="text"
+                        value={sub.title}
+                        onChange={(e) => editSubroutineTitle(idx, e.target.value)}
+                        onBlur={() => saveSubroutineTitle(idx)}
+                        onKeyDown={(e) => e.key === 'Enter' && saveSubroutineTitle(idx)}
+                        className="bg-black/40 border-b border-cyber-primary text-sm font-mono flex-1 focus:outline-none text-white py-1"
+                    />
+                ) : (
+                    <span
+                        className={`font-mono text-sm transition-all flex-1 cursor-pointer hover:text-cyber-primary ${sub.completed ? 'text-gray-500 line-through opacity-70' : 'text-gray-200'}`}
+                        onClick={() => setEditingField(subId)}
+                        title="Click to edit sub-routine"
+                    >
+                        {sub.title}
+                    </span>
+                )}
+            </div>
+            <button data-tooltip-content={t('tooltip.delete', 'Delete')} onClick={(e) => { e.stopPropagation(); deleteSubroutine(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
+            </button>
+        </div>
+    );
+};
+
 
 const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) => {
     const { t } = useTranslation();
@@ -29,8 +120,17 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
     // Sub-routines state
     const [subroutines, setSubroutines] = useState([]);
     const [newSubroutine, setNewSubroutine] = useState('');
-    const [draggedIdx, setDraggedIdx] = useState(null);
-    const [dragOverIdx, setDragOverIdx] = useState(null);
+
+    const sensors = useSensors(
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                distance: 5, // 5px movement required to start dragging, allows tapping
+            },
+        }),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates,
+        })
+    );
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const [isRecurrencePickerOpen, setIsRecurrencePickerOpen] = useState(false);
@@ -54,7 +154,11 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
             setFiles(Array.isArray(parsedFiles) ? parsedFiles : []);
 
             const parsedSubroutines = task.subroutines_json ? JSON.parse(task.subroutines_json) : [];
-            setSubroutines(Array.isArray(parsedSubroutines) ? parsedSubroutines : []);
+            const subroutinesWithIds = (Array.isArray(parsedSubroutines) ? parsedSubroutines : []).map(s => ({
+                ...s,
+                id: s.id || `sub-${Math.random().toString(36).substr(2, 9)}`
+            }));
+            setSubroutines(subroutinesWithIds);
 
             // Sync description when task prop updates (e.g. after a save)
             // But only if we are not actively editing it right now to avoid overwriting typed text
@@ -222,49 +326,22 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
     };
 
     // --- Sub-Routines Methods ---
-    const handleDragStart = (e, index) => {
-        setDraggedIdx(index);
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', index);
-    };
+    const handleDragEnd = (event) => {
+        const { active, over } = event;
 
-    const handleDragEnter = (e, index) => {
-        e.preventDefault();
-        setDragOverIdx(index);
-    };
+        if (active.id !== over?.id) {
+            const oldIndex = subroutines.findIndex((sub) => sub.id === active.id);
+            const newIndex = subroutines.findIndex((sub) => sub.id === over.id);
 
-    const handleDragOver = (e) => {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-    };
-
-    const handleDrop = (e, index) => {
-        e.preventDefault();
-        if (draggedIdx === null || draggedIdx === index) {
-            setDraggedIdx(null);
-            setDragOverIdx(null);
-            return;
+            const newRoutines = arrayMove(subroutines, oldIndex, newIndex);
+            setSubroutines(newRoutines);
+            handleSave(title, description, tempLinks, files, newRoutines);
         }
-
-        const newRoutines = [...subroutines];
-        const draggedItem = newRoutines.splice(draggedIdx, 1)[0];
-        newRoutines.splice(index, 0, draggedItem);
-
-        setSubroutines(newRoutines);
-        setDraggedIdx(null);
-        setDragOverIdx(null);
-
-        handleSave(title, description, tempLinks, files, newRoutines);
-    };
-
-    const handleDragEnd = () => {
-        setDraggedIdx(null);
-        setDragOverIdx(null);
     };
 
     const addSubroutine = () => {
         if (!newSubroutine.trim()) return;
-        const newRoutines = [...subroutines, { title: newSubroutine, completed: false }];
+        const newRoutines = [...subroutines, { id: `sub-${Math.random().toString(36).substr(2, 9)}`, title: newSubroutine, completed: false }];
         setSubroutines(newRoutines);
         setNewSubroutine('');
         handleSave(title, description, tempLinks, files, newRoutines);
@@ -563,54 +640,32 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                     <span className="text-xl">⚡</span> {t('tasks.dossier.subroutines')}
                                 </h3>
                                 <div className="bg-black/20 border border-cyber-gray/30 p-4 rounded space-y-3">
-                                    {subroutines.map((sub, idx) => (
-                                        <div
-                                            key={idx}
-                                            draggable
-                                            onDragStart={(e) => handleDragStart(e, idx)}
-                                            onDragEnter={(e) => handleDragEnter(e, idx)}
-                                            onDragOver={handleDragOver}
-                                            onDrop={(e) => handleDrop(e, idx)}
-                                            onDragEnd={handleDragEnd}
-                                            className={`flex items-center justify-between group p-1 -mx-1 border transition-all rounded ${draggedIdx === idx ? 'opacity-40' : 'opacity-100'} ${dragOverIdx === idx && draggedIdx !== idx ? 'bg-cyber-primary/10 border-cyber-primary border-dashed' : 'border-transparent'}`}
+                                    <DndContext
+                                        sensors={sensors}
+                                        collisionDetection={closestCenter}
+                                        onDragEnd={handleDragEnd}
+                                    >
+                                        <SortableContext
+                                            items={subroutines.map(sub => sub.id)}
+                                            strategy={verticalListSortingStrategy}
                                         >
-                                            <div className="flex items-center gap-3 flex-1">
-                                                <div className="cursor-grab active:cursor-grabbing text-cyber-gray hover:text-cyber-primary px-1 transition-colors" data-tooltip-content={t('tooltip.drag', 'Drag to reorder')}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-                                                    </svg>
-                                                </div>
-                                                <div className="relative flex items-center justify-center cursor-pointer">
-                                                    <input type="checkbox" checked={sub.completed} onChange={() => toggleSubroutine(idx)} className="peer appearance-none w-5 h-5 border-2 border-cyber-primary bg-black/50 checked:bg-cyber-primary transition-colors cursor-pointer" />
-                                                    <svg className="absolute w-3 h-3 pointer-events-none text-black opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M11.6666 3.5L5.24992 9.91667L2.33325 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                {editingField === `subroutine-${idx}` ? (
-                                                    <input
-                                                        autoFocus
-                                                        type="text"
-                                                        value={sub.title}
-                                                        onChange={(e) => editSubroutineTitle(idx, e.target.value)}
-                                                        onBlur={() => saveSubroutineTitle(idx)}
-                                                        onKeyDown={(e) => e.key === 'Enter' && saveSubroutineTitle(idx)}
-                                                        className="bg-black/40 border-b border-cyber-primary text-sm font-mono flex-1 focus:outline-none text-white py-1"
-                                                    />
-                                                ) : (
-                                                    <span
-                                                        className={`font-mono text-sm transition-all flex-1 cursor-pointer hover:text-cyber-primary ${sub.completed ? 'text-gray-500 line-through opacity-70' : 'text-gray-200'}`}
-                                                        onClick={() => setEditingField(`subroutine-${idx}`)}
-                                                        title="Click to edit sub-routine"
-                                                    >
-                                                        {sub.title}
-                                                    </span>
-                                                )}
-                                            </div>
-                                            <button data-tooltip-content={t('tooltip.delete', 'Delete')} onClick={(e) => { e.stopPropagation(); deleteSubroutine(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white ml-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
-                                            </button>
-                                        </div>
-                                    ))}
+                                            {subroutines.map((sub, idx) => (
+                                                <SortableSubroutine
+                                                    key={sub.id}
+                                                    sub={sub}
+                                                    subId={sub.id}
+                                                    idx={idx}
+                                                    toggleSubroutine={toggleSubroutine}
+                                                    editingField={editingField}
+                                                    setEditingField={setEditingField}
+                                                    editSubroutineTitle={editSubroutineTitle}
+                                                    saveSubroutineTitle={saveSubroutineTitle}
+                                                    deleteSubroutine={deleteSubroutine}
+                                                    t={t}
+                                                />
+                                            ))}
+                                        </SortableContext>
+                                    </DndContext>
 
                                     <div className="flex gap-2 mt-2">
                                         <input

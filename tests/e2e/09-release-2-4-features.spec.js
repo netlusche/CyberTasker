@@ -126,7 +126,7 @@ test.describe('Release 2.4 Features', () => {
         await page.waitForTimeout(500);
 
         // The items are draggable, let's locate them
-        const subItems = directiveModal.locator('div[draggable="true"]');
+        const subItems = directiveModal.locator('[data-testid="subroutine-item"]');
         await expect(subItems).toHaveCount(3);
 
         // Assert initial order
@@ -134,8 +134,17 @@ test.describe('Release 2.4 Features', () => {
         await expect(subItems.nth(1)).toContainText('Sub B');
         await expect(subItems.nth(2)).toContainText('Sub C');
 
-        // Drag Sub C (index 2) to Top (index 0)
-        await subItems.nth(2).dragTo(subItems.nth(0));
+        // Drag Sub C (index 2) to Top (index 0) using the keyboard (dnd-kit default bindings)
+        const handleC = subItems.nth(2).locator('.cursor-grab');
+        await handleC.focus();
+        await page.keyboard.press('Space');
+        await page.waitForTimeout(200);
+        await page.keyboard.press('ArrowUp');
+        await page.waitForTimeout(200);
+        await page.keyboard.press('ArrowUp');
+        await page.waitForTimeout(200);
+        await page.keyboard.press('Space');
+
         await page.waitForTimeout(1000); // wait for drop & save
 
         // Verify local update
@@ -165,7 +174,7 @@ test.describe('Release 2.4 Features', () => {
         await expect(page.locator('.fixed.inset-0.backdrop-blur-sm').first()).toBeVisible();
 
         // Verify order is persisted
-        const refreshedSubItems = page.locator('.fixed.inset-0.backdrop-blur-sm').first().locator('div[draggable="true"]');
+        const refreshedSubItems = page.locator('.fixed.inset-0.backdrop-blur-sm').first().locator('[data-testid="subroutine-item"]');
         await expect(refreshedSubItems).toHaveCount(3);
         await expect(refreshedSubItems.nth(0)).toContainText('Sub C');
     });

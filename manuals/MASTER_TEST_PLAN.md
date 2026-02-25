@@ -398,4 +398,14 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Validation**:
   - The script asserts valid translation completeness (`npm run check-translations`) and theme coherence.
   - E2E Playwright tests act as a strict pass/fail gatekeeper.
-  - Version bumping via prompt accurately patches `package.json` and stages the git tag (`vX.X.X`).
+### TS-12.4: Multilingual Installer & System Emails Check [MANUAL]
+- **Scenario**: Boot `install.php` on a fresh system. Change the language selector (e.g., to French) and create the Admin account. Request a password reset for that Admin.
+- **Validation**:
+  - The installer UI translates instantly to French.
+  - The resulting automated System Email containing the recovery Override Code is completely localized in French.
+
+### TS-12.5: Sub-Routine Mobile Drag & Drop [AUTOMATED]
+- **Scenario**: Create a directive with 3 sub-routines (A, B, C). Simulate a mobile viewport and perform a touch-drag to move C to the top.
+- **Validation**:
+  - The `@dnd-kit` generic sensors accurately capture the touch-event without interpreting it as a scroll.
+  - The item drops successfully and fires an API update persisting the new C, A, B order.

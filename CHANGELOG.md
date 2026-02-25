@@ -1,3 +1,14 @@
+# CyberTasker v2.6.0 (The Accessibility & Automation Update)
+*Release Date: 2026-02-26*
+
+*   **Mobile Drag & Drop**: Upgraded the Directive Dossier's Sub-Routines list to utilize `@dnd-kit` for flawless drag-and-drop sorting on both desktop mice and mobile touch screens.
+*   **Localized Installer & Emails**: The zero-configuration installer now supports language selection, automatically applying it to the newly provisioned Admin. All system emails (verification, recovery, 2FA) are now dynamically translated into the user's preferred language.
+*   **Accessibility Overhaul**: Implemented comprehensive multilingual tooltips across all interactive UI elements and standardized visible `Tab` key navigation with focus-traps for all modals.
+*   **Cyberpunk Immersion**: Added a daily changing "Quote of the Day" on the dashboard to enhance the thematic experience.
+*   **Automated Release Pipeline**: Replaced manual deployment steps with a robust Bash release script (`scripts/release.sh`) that automates i18n checks, CSS linting, E2E validation, and Git version tagging.
+
+---
+
 # CyberTasker v2.4.1 (Completed Tasks Hotfix)
 *Release Date: 2026-02-24*
 

@@ -2,6 +2,22 @@
 
 **CyberTasker** is a gamified, cyberpunk-themed task management application built with **React (Vite)** and **PHP**. It supports **MySQL, MariaDB, and SQLite**, featuring a robust role-based access control (RBAC) system, gamification mechanics (XP, Levels, Badges), and secure Two-Factor Authentication (2FA).
 
+## 📁 New in Version 2.6.0 (The Accessibility & Automation Update)
+
+### ♿ Accessibility & Mobile Fluidity
+*   **Touch-Native Sub-Routines**: Migrated Dossier sorting to `@dnd-kit`, fully unlocking fluid drag-and-drop prioritization on iOS and Android viewports.
+*   **Global Tooltips**: Injected localized, low-latency tooltips across the entire grid to guide new operatives seamlessly.
+*   **Keyboard Navigation Matrix**: All interactive components now feature highly visible focus outlines, and all overlay modals strictly trap focus for flawless `Tab` key iteration.
+
+### 🌍 Global Deep-Integration
+*   **Multilingual Installer**: The initial system bootstrap now allows Administrators to select their operational language before provisioning the system, setting the default localized baseline.
+*   **Localized Comm-Links**: All external system transmissions (Verification, Recovery, 2FA Override) are now fully translated into the operative's specific language vector.
+
+### ⚙️ Automation & Pipeline Refinements
+*   **Automated Release Deployment**: Integrated a single-command Bash pipeline (`scripts/release.sh`) to execute validation suites, linting, and Git-tagging automatically, reducing human deployment errors to zero.
+
+---
+
 ## 📁 New in Version 2.5.1 (The Security & Gamification Update)
 
 ### 🛡 Enforced Security & Installation
