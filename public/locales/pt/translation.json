@@ -541,5 +541,29 @@
         "title_8": "Neuromante [Papel de Hacker]",
         "title_9": "Deus Digital [Papel de Hacker]",
         "title_10": "Singularidade [papel de hacker]"
+    },
+    "tooltip": {
+        "edit": "Editar",
+        "delete": "Excluir",
+        "mark_done": "Marcar como concluído",
+        "mark_todo": "Marcar como fazer",
+        "calendar": "Calendário",
+        "dossier": "Abrir Dossiê",
+        "settings": "Configurações",
+        "logout": "Sair",
+        "add_task": "Adicionar tarefa",
+        "search": "Pesquisar",
+        "filter": "Filtrar",
+        "priority": "Alterar prioridade",
+        "category": "Alterar categoria",
+        "close": "Fechar",
+        "drag": "Arraste para reordenar",
+        "cancel": "Cancelar",
+        "save": "Salvar",
+        "language": "Alterar idioma",
+        "show_password": "Mostrar senha",
+        "hide_password": "Ocultar senha",
+        "set_default": "Definir padrão",
+        "rename": "Renomear"
     }
 }

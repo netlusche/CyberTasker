@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Hacker Role]",
         "title_9": "Digital God [Hacker Role]",
         "title_10": "Singularity [Hacker Role]"
+    },
+    "tooltip": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "mark_done": "Mark Done",
+        "mark_todo": "Mark To Do",
+        "calendar": "Calendar",
+        "dossier": "Open Dossier",
+        "settings": "Settings",
+        "logout": "Logout",
+        "add_task": "Add Task",
+        "search": "Search",
+        "filter": "Filter",
+        "priority": "Change Priority",
+        "category": "Change Category",
+        "close": "Close",
+        "drag": "Drag to reorder",
+        "cancel": "Cancel",
+        "save": "Save",
+        "language": "Change Language",
+        "show_password": "Show Password",
+        "hide_password": "Hide Password",
+        "set_default": "Set Default",
+        "rename": "Rename"
     }
 }

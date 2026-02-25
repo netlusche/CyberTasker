@@ -142,11 +142,13 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [], prefillD
                         neonColor="cyan"
                     />
 
-                    <CyberDateInput
-                        value={dueDate}
-                        onChange={setDueDate}
-                        placeholder={t('tasks.due_date')}
-                    />
+                    <div data-tooltip-content={t('tooltip.calendar')}>
+                        <CyberDateInput
+                            value={dueDate}
+                            onChange={setDueDate}
+                            placeholder={t('tasks.due_date')}
+                        />
+                    </div>
 
                     <div className="flex items-center gap-2 border border-cyber-gray/30 p-1 rounded">
                         <span className="text-xs text-cyber-primary">{t('tasks.recurrence')}:</span>

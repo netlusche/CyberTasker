@@ -1,10 +1,19 @@
 # Planning: Release 2.6
 
+> [!IMPORTANT]
+> **Branching-Strategie:** Sämtliche Entwicklungsarbeiten für dieses Release finden exklusiv auf dem Branch `next-up_2.6` statt. Falls dieser Branch noch nicht existiert, muss er initial abgeleitet werden.
+
 ## Themen & Fokuspunkte
 *Vorrangiges Ziel dieses Releases ist die Verbesserung der Barrierefreiheit (Accessibility) und der Usability durch durchgängige Tooltips und eine konsistente Tastatursteuerung. Diese Features wurden aufgrund ihrer Komplexität im Test-Setup aus Release 2.5 verschoben.*
 - **Systemweite Tooltips:** Hinzufügen von erklärenden Kurztexten (MouseOver) an relevanten Bedienelementen, wo diese aktuell fehlen. Vollständig multilingual.
 - **Tastaturnavigation (Tab-Routing):** Vereinheitlichung und Sicherstellung einer logischen, applikationsweiten Navigation primär per Tabulator-Taste.
 - **Automatisierte Release Pipeline:** Ersetzung des unsicheren manuellen Vorgehens durch ein Skript, welches Test-Validierung, Package-Versions-Bumping und Git-Tagging fehlerfrei und synchron zusammenfasst.
+- **Striktes QA & Tagging (Rollback-Sicherheit):** Da die Usability-Updates (2.6.1 und 2.6.2) tiefgreifende DOM- und Fokus-Änderungen an fast allen Komponenten verursachen, werden nach Abschluss kritischer Stories harte Git-Tags gesetzt, um bei UI-Regressionen sofort zurückrollen zu können. Die QA-Prüfsteine sind:
+  - **Nach US-2.6.1 (Tooltips):** Tag `v2.6.0-dev1` setzen und **manueller Durchlauf des *Master Test Plans***.
+  - **Nach US-2.6.2 (Tab-Navigation):** Tag `v2.6.0-dev2` setzen und **erneuter manueller Durchlauf des *Master Test Plans***.
+  - **Nach US-2.6.3 (Release Skript):** Tag `v2.6.0-dev3` setzen. (Hier entfällt der Master Test Plan, da das CLI-Skript weder Frontend noch Backend der Applikation tangiert).
+  - **Nach US-2.6.8 (Backend & QoL Block):** Tag `v2.6.0-dev4` setzen nach Abschluss von 2.6.4 bis 2.6.8. (Kein Master Test Plan nötig, nur isolierte Thementests).
+  - **Nach US-2.6.9 (Mobile Drag & Drop):** Tag `v2.6.0-dev5` setzen. Zwingend **manueller Durchlauf des "Task & Directive Management"** Testblocks (Desktop & Mobile-Simulation) zur Vermeidung von Drag-and-Drop Regressionen.
 
 ## Neue User Stories
 
@@ -64,7 +73,24 @@
   - Vor dem Versand einer E-Mail prüft das Backend die Sprache: Befindet sich der Nutzer im Login/Registrierungs-Screen, wird die dort aktiv ausgewählte Sprache für den Versand genutzt.
   - Löst ein bereits eingeloggter Nutzer eine E-Mail aus (z.B. Profiländerungen), wird die in seinem Nutzerprofil gespeicherte Präferenz verwendet.
 
-**US-2.6.7: Mobile Touch-Unterstützung für Sub-Routinen Drag & Drop**
+**US-2.6.7: Sichtbarkeit von Groß-/Kleinschreibung in Auth-Eingabefeldern**
+* **Als** Nutzer
+* **Möchte ich** bei der Eingabe meiner Login-Daten (Benutzername und Passwort) exakt sehen können, ob ich einen Groß- oder Kleinbuchstaben tippe
+* **Damit** ich mich nicht permanent vertippe, weil das aktive UI-Theme alle Buchstaben künstlich als Großbuchstaben rendert, das Backend aber Case-Sensitive prüft.
+* **Akzeptanzkriterien:**
+  - In allen Eingabefeldern für Login und Registrierung (Codename, Access Key, etc.) wird systemweit via CSS erzwungen, dass `text-transform: none;` greift.
+  - Diese Regel überschreibt hart alle potenziellen `text-transform: uppercase;` Konstanten, die ein Cyberpunk-Theme (z.B. Neon Syndicate) versehentlich auf `<input>` Felder vererbt.
+  - Die Backend-Validierung für Usernamen und Passwörter bleibt strikt Case-Sensitive.
+
+**US-2.6.8: Verbesserte Lesbarkeit von System-E-Mails (Accessibility)**
+* **Als** Nutzer
+* **Möchte ich**, dass wichtige Informationen (wie der 6-stellige 2FA-Code) in System-E-Mails deutlich lesbar sind
+* **Damit** ich den Code schnell und fehlerfrei abtippen kann, unabhängig davon, ob mein E-Mail-Client im Light- oder Dark-Mode läuft.
+* **Akzeptanzkriterien:**
+  - Die Textfarbe für den hervorgehobenen 2FA-Überprüfungscode in den E-Mail-Templates (`api/helpers/mail_helper.php`) wird von dem schwer lesbaren hellen Neon-Cyan auf ein satteres, kontrastreicheres Standard-Blau geändert.
+  - Der neue Farbton muss sowohl auf einem rein weißen Hintergrund (Light Mode) als auch auf einem dunklen Hintergrund (Dark Mode) visuell gut lesbar sein (Accessibility/WCAG-konform).
+
+**US-2.6.9: Mobile Touch-Unterstützung für Sub-Routinen Drag & Drop**
 * **Als** mobiler Nutzer (Smartphone / Tablet)
 * **Möchte ich** meine Sub-Routinen im Directive Dossier durch Wischen (Touch & Drag) genauso flüssig sortieren können wie am Desktop
 * **Damit** ich auch von unterwegs meine Workloads effizient priorisieren kann, ohne an den PC wechseln zu müssen.
@@ -99,6 +125,12 @@
 - **Testfall (Passwort Reset):** Auf dem Login-Screen die Sprache auf "Spanisch" umstellen und einen Passwort-Reset anfordern. In der `mail_log.txt` (bzw. dem echten Mail-Postfach) verifizieren, dass der Betreff und Inhalt der E-Mail auf Spanisch ist.
 - **Testfall (Eingeloggter User):** Im Nutzerprofil die Sprache auf "Deutsch" stellen und ein 2FA-Backup anfordern. Die entsprechende E-Mail muss zwingend auf Deutsch ankommen.
 
-**Zu US-2.6.7 (Mobile Drag & Drop):**
+**Zu US-2.6.7 (Auth Case Visibility):**
+- **Testfall:** Ein stark stilisiertes Theme (z.B. "Computerwelt" oder "Neon Syndicate") aktivieren. Zum Login-Screen wechseln. In das Feld "Codename" das Wort "aBcDeF" tippen. Prüfen, ob optisch exakt die Mischung aus Groß- und Kleinbuchstaben zu sehen ist und keine automatische Uppercase-Formatierung stattfindet.
+
+**Zu US-2.6.8 (E-Mail Lesbarkeit):**
+- **Testfall (Visuell):** Eine E-Mail mit 2FA-Code (z.B. Emergency Override) auslösen. Den generierten HTML-Code der E-Mail im Browser öffnen und den Hintergrund testweise rein weiß sowie rein schwarz färben. Prüfen, ob der 6-stellige Code in dem neuen, satteren Blau unter beiden Bedingungen komfortabel lesbar ist.
+
+**Zu US-2.6.9 (Mobile Drag & Drop):**
 - **Testfall:** DevTools öffnen, auf "Device Toolbar" (Mobile-Ansicht, z.B. iPhone 12) umschalten und Touch-Events simulieren. Ein Dossier öffnen, das Sub-Routinen enthält. Den Drag-Handle einer Sub-Routine "antappen" und verschieben. Prüfen, ob die Position nach dem Loslassen korrekt gespeichert wird.
 - **Regressionstest:** Prüfen, ob das Drag-and-Drop auf dem Desktop weiterhin reibungslos mit der klassischen Maus funktioniert.

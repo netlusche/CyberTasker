@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Hacker szerep]",
         "title_9": "Digitális Isten [Hacker szerep]",
         "title_10": "Szingularitás [hacker szerep]"
+    },
+    "tooltip": {
+        "edit": "Szerkesztés",
+        "delete": "Törlés",
+        "mark_done": "Késznek jelölés",
+        "mark_todo": "Teendők megjelölése",
+        "calendar": "Naptár",
+        "dossier": "Nyissa meg a dossziét",
+        "settings": "Beállítások",
+        "logout": "Kijelentkezés",
+        "add_task": "Feladat hozzáadása",
+        "search": "Keresés",
+        "filter": "Szűrés",
+        "priority": "Prioritás módosítása",
+        "category": "Kategória módosítása",
+        "close": "Bezárás",
+        "drag": "Húzza az átrendezéshez",
+        "cancel": "Mégse",
+        "save": "Mentés",
+        "language": "Nyelv módosítása",
+        "show_password": "Jelszó megjelenítése",
+        "hide_password": "Jelszó elrejtése",
+        "set_default": "Alapértelmezés beállítása",
+        "rename": "Átnevezés"
     }
 }

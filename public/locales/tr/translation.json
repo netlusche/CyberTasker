@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Hacker Rolü]",
         "title_9": "Dijital Tanrı [Hacker Rolü]",
         "title_10": "Tekillik [Hacker Rolü]"
+    },
+    "tooltip": {
+        "edit": "Düzenle",
+        "delete": "Sil",
+        "mark_done": "Tamamlandı Olarak İşaretle",
+        "mark_todo": "Yapılacak İşi İşaretle",
+        "calendar": "Takvim",
+        "dossier": "Dosyayı Aç",
+        "settings": "Ayarlar",
+        "logout": "Oturumu kapat",
+        "add_task": "Görev Ekle",
+        "search": "Ara",
+        "filter": "Filtre",
+        "priority": "Önceliği Değiştir",
+        "category": "Kategoriyi Değiştir",
+        "close": "Kapat",
+        "drag": "Yeniden sıralamak için sürükleyin",
+        "cancel": "İptal",
+        "save": "Kaydet",
+        "language": "Dili Değiştir",
+        "show_password": "Şifreyi Göster",
+        "hide_password": "Şifreyi Gizle",
+        "set_default": "Varsayılanı Ayarla",
+        "rename": "Yeniden isimlendirmek"
     }
 }

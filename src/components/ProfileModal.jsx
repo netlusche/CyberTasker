@@ -30,6 +30,7 @@ const PasswordInput = ({ value, onChange, placeholder, className, required = fal
                 onClick={() => setShow(!show)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-primary hover:text-white transition-colors p-1"
                 tabIndex="-1"
+                data-tooltip-content={show ? t('tooltip.hide_password', 'Hide Password') : t('tooltip.show_password', 'Show Password')}
             >
                 {show ? (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -676,10 +677,10 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                                 </div>
                                                 <div className="flex gap-2">
                                                     {!cat.is_default && (
-                                                        <button onClick={() => handleSetDefault(cat.id)} className="text-gray-500 hover:text-yellow-500" title={t('profile.categories.set_default')}>★</button>
+                                                        <button onClick={() => handleSetDefault(cat.id)} className="text-gray-500 hover:text-yellow-500" data-tooltip-content={t('tooltip.set_default', 'Set Default')}>★</button>
                                                     )}
-                                                    <button onClick={() => handleStartEdit(cat)} className="text-gray-500 hover:text-cyber-primary" title={t('profile.categories.rename')}>✎</button>
-                                                    <button onClick={() => handleDeleteCategory(cat.id)} className="text-gray-500 hover:text-red-500 bg-cyber-danger text-white rounded px-2 py-0.5 hover:brightness-110" title={t('profile.categories.delete')}>🗑</button>
+                                                    <button onClick={() => handleStartEdit(cat)} className="text-gray-500 hover:text-cyber-primary" data-tooltip-content={t('tooltip.rename', 'Rename')}>✎</button>
+                                                    <button onClick={() => handleDeleteCategory(cat.id)} className="text-gray-500 hover:text-red-500 bg-cyber-danger text-white rounded px-2 py-0.5 hover:brightness-110" data-tooltip-content={t('tooltip.delete', 'Delete')}>🗑</button>
                                                 </div>
                                             </>
                                         )}

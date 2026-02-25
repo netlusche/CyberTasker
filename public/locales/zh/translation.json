@@ -541,5 +541,29 @@
         "title_8": "神经漫游者【黑客角色】",
         "title_9": "数字神【黑客角色】",
         "title_10": "奇点【黑客角色】"
+    },
+    "tooltip": {
+        "edit": "编辑",
+        "delete": "删除",
+        "mark_done": "标记完成",
+        "mark_todo": "标记待办事项",
+        "calendar": "日历",
+        "dossier": "打开档案",
+        "settings": "设置",
+        "logout": "退出",
+        "add_task": "添加任务",
+        "search": "搜索",
+        "filter": "过滤",
+        "priority": "更改优先级",
+        "category": "更改类别",
+        "close": "关闭",
+        "drag": "拖动重新排序",
+        "cancel": "取消",
+        "save": "保存",
+        "language": "更改语言",
+        "show_password": "显示密码",
+        "hide_password": "隐藏密码",
+        "set_default": "设置默认值",
+        "rename": "重命名"
     }
 }

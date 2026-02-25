@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Hackerrol]",
         "title_9": "Digitale God [Hackerrol]",
         "title_10": "Singulariteit [Hackerrol]"
+    },
+    "tooltip": {
+        "edit": "Bewerken",
+        "delete": "Verwijder",
+        "mark_done": "Markeer gereed",
+        "mark_todo": "Markeer om te doen",
+        "calendar": "Kalender",
+        "dossier": "Dossier openen",
+        "settings": "Instellingen",
+        "logout": "Uitloggen",
+        "add_task": "Taak toevoegen",
+        "search": "Zoek",
+        "filter": "Filter",
+        "priority": "Prioriteit wijzigen",
+        "category": "Categorie wijzigen",
+        "close": "Sluit",
+        "drag": "Sleep om de volgorde te wijzigen",
+        "cancel": "Annuleren",
+        "save": "Opslaan",
+        "language": "Taal wijzigen",
+        "show_password": "Wachtwoord tonen",
+        "hide_password": "Wachtwoord verbergen",
+        "set_default": "Standaard instellen",
+        "rename": "Hernoemen"
     }
 }

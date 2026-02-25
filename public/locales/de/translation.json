@@ -541,5 +541,29 @@
         "title_8": "Neuromant [Hacker-Rolle]",
         "title_9": "Digitaler Gott [Hacker-Rolle]",
         "title_10": "Singularität [Hacker-Rolle]"
+    },
+    "tooltip": {
+        "edit": "Bearbeiten",
+        "delete": "Löschen Sie",
+        "mark_done": "Als erledigt markieren",
+        "mark_todo": "Zu erledigen markieren",
+        "calendar": "Kalender",
+        "dossier": "Dossier öffnen",
+        "settings": "Einstellungen",
+        "logout": "Abmelden",
+        "add_task": "Aufgabe hinzufügen",
+        "search": "Suche",
+        "filter": "Filter",
+        "priority": "Priorität ändern",
+        "category": "Kategorie ändern",
+        "close": "Schließen",
+        "drag": "Zum Neuordnen ziehen",
+        "cancel": "Abbrechen",
+        "save": "Speichern",
+        "language": "Sprache ändern",
+        "show_password": "Passwort anzeigen",
+        "hide_password": "Passwort ausblenden",
+        "set_default": "Als Standard festlegen",
+        "rename": "Umbenennen"
     }
 }

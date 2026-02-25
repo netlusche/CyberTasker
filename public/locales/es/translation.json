@@ -541,5 +541,29 @@
         "title_8": "Neuromante [Rol de hacker]",
         "title_9": "Dios digital [papel de hacker]",
         "title_10": "Singularidad [rol de hacker]"
+    },
+    "tooltip": {
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "mark_done": "Marcar como hecho",
+        "mark_todo": "Marcar por hacer",
+        "calendar": "Calendario",
+        "dossier": "Abrir dossier",
+        "settings": "Configuración",
+        "logout": "Cerrar sesión",
+        "add_task": "Agregar tarea",
+        "search": "Buscar",
+        "filter": "Filtro",
+        "priority": "Cambiar prioridad",
+        "category": "Cambiar categoría",
+        "close": "Cerrar",
+        "drag": "Arrastra para reordenar",
+        "cancel": "Cancelar",
+        "save": "Guardar",
+        "language": "Cambiar idioma",
+        "show_password": "Mostrar contraseña",
+        "hide_password": "Ocultar contraseña",
+        "set_default": "Establecer valor predeterminado",
+        "rename": "Rebautizar"
     }
 }

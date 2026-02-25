@@ -2244,3 +2244,59 @@ body.theme-steampunk .input-cyber:focus {
     opacity: 0.9 !important;
   }
 }
+/* =========================================
+   TOOLTIP DATA-ATTRIBUTE STRATEGY
+   ========================================= */
+
+[data-tooltip-content] {
+  position: relative;
+}
+
+[data-tooltip-content]::after {
+  content: attr(data-tooltip-content);
+  position: absolute;
+  bottom: 120%; /* Position above the element */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 0.25rem 0.5rem;
+  background-color: var(--theme-card);
+  color: var(--theme-text);
+  border: 1px solid var(--theme-primary);
+  border-radius: var(--theme-radius);
+  font-family: var(--theme-font);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  pointer-events: none; /* Crucial: Do not block mouse events on the element itself */
+  z-index: 50;
+  box-shadow: var(--shadow-primary);
+}
+
+/* Optional: small triangle pointing down */
+[data-tooltip-content]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(120% - 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--theme-primary) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Show tooltip on hover or when it has keyboard focus */
+[data-tooltip-content]:hover::after,
+[data-tooltip-content]:hover::before,
+[data-tooltip-content]:focus-visible::after,
+[data-tooltip-content]:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}

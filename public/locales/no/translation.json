@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Hacker-rolle]",
         "title_9": "Digital Gud [Hacker-rolle]",
         "title_10": "Singularitet [Hacker-rolle]"
+    },
+    "tooltip": {
+        "edit": "Rediger",
+        "delete": "Slett",
+        "mark_done": "Merk som ferdig",
+        "mark_todo": "Mark To Do",
+        "calendar": "Kalender",
+        "dossier": "Åpne dossier",
+        "settings": "Innstillinger",
+        "logout": "Logg ut",
+        "add_task": "Legg til oppgave",
+        "search": "Søk",
+        "filter": "Filter",
+        "priority": "Endre prioritet",
+        "category": "Endre kategori",
+        "close": "Lukk",
+        "drag": "Dra for å omorganisere",
+        "cancel": "Avbryt",
+        "save": "Lagre",
+        "language": "Endre språk",
+        "show_password": "Vis passord",
+        "hide_password": "Skjul passord",
+        "set_default": "Sett som standard",
+        "rename": "Gi nytt navn"
     }
 }

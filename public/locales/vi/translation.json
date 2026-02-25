@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Vai trò hacker]",
         "title_9": "Thần kỹ thuật số [Vai trò hacker]",
         "title_10": "Điểm kỳ dị [Vai trò hacker]"
+    },
+    "tooltip": {
+        "edit": "Chỉnh sửa",
+        "delete": "Xóa",
+        "mark_done": "Đánh dấu là xong",
+        "mark_todo": "Đánh dấu việc cần làm",
+        "calendar": "Lịch",
+        "dossier": "Mở hồ sơ",
+        "settings": "Cài đặt",
+        "logout": "Đăng xuất",
+        "add_task": "Thêm nhiệm vụ",
+        "search": "Tìm kiếm",
+        "filter": "Lọc",
+        "priority": "Thay đổi mức độ ưu tiên",
+        "category": "Thay đổi danh mục",
+        "close": "Đóng",
+        "drag": "Kéo để sắp xếp lại",
+        "cancel": "Hủy",
+        "save": "Lưu",
+        "language": "Thay đổi ngôn ngữ",
+        "show_password": "Hiển thị mật khẩu",
+        "hide_password": "Ẩn mật khẩu",
+        "set_default": "Đặt mặc định",
+        "rename": "Đổi tên"
     }
 }

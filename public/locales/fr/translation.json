@@ -541,5 +541,29 @@
         "title_8": "Neuromancien [Rôle de hacker]",
         "title_9": "Dieu numérique [Rôle de hacker]",
         "title_10": "Singularité [Rôle de hacker]"
+    },
+    "tooltip": {
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "mark_done": "Marquer terminé",
+        "mark_todo": "Marquer à faire",
+        "calendar": "Calendrier",
+        "dossier": "Dossier ouvert",
+        "settings": "Paramètres",
+        "logout": "Déconnexion",
+        "add_task": "Ajouter une tâche",
+        "search": "Rechercher",
+        "filter": "Filtrer",
+        "priority": "Changer la priorité",
+        "category": "Changer de catégorie",
+        "close": "Fermer",
+        "drag": "Faites glisser pour réorganiser",
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "language": "Changer de langue",
+        "show_password": "Afficher le mot de passe",
+        "hide_password": "Masquer le mot de passe",
+        "set_default": "Définir par défaut",
+        "rename": "Rebaptiser"
     }
 }

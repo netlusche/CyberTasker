@@ -541,5 +541,29 @@
         "title_8": "ニューロマンサー [ハッカーの役割]",
         "title_9": "デジタル ゴッド [ハッカーの役割]",
         "title_10": "シンギュラリティ [ハッカーの役割]"
+    },
+    "tooltip": {
+        "edit": "編集",
+        "delete": "削除",
+        "mark_done": "完了マークを付けます",
+        "mark_todo": "やるべきことをマーク",
+        "calendar": "カレンダー",
+        "dossier": "書類を開く",
+        "settings": "設定",
+        "logout": "ログアウト",
+        "add_task": "タスクを追加",
+        "search": "検索",
+        "filter": "フィルター",
+        "priority": "優先順位の変更",
+        "category": "カテゴリを変更",
+        "close": "閉じる",
+        "drag": "ドラッグして並べ替えます",
+        "cancel": "キャンセル",
+        "save": "保存",
+        "language": "言語を変更する",
+        "show_password": "パスワードを表示",
+        "hide_password": "パスワードを隠す",
+        "set_default": "デフォルトに設定",
+        "rename": "名前の変更"
     }
 }

@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Hakkerin rooli]",
         "title_9": "Digitaalinen jumala [Hakkerin rooli]",
         "title_10": "Singulariteetti [hakkerirooli]"
+    },
+    "tooltip": {
+        "edit": "Muokkaa",
+        "delete": "Poista",
+        "mark_done": "Merkitse valmiiksi",
+        "mark_todo": "Merkitse tehtäväksi",
+        "calendar": "Kalenteri",
+        "dossier": "Avaa asiakirja",
+        "settings": "Asetukset",
+        "logout": "Kirjaudu ulos",
+        "add_task": "Lisää tehtävä",
+        "search": "Haku",
+        "filter": "Suodata",
+        "priority": "Muuta prioriteettia",
+        "category": "Muuta luokkaa",
+        "close": "Sulje",
+        "drag": "Järjestä uudelleen vetämällä",
+        "cancel": "Peruuta",
+        "save": "Tallenna",
+        "language": "Vaihda kieli",
+        "show_password": "Näytä salasana",
+        "hide_password": "Piilota salasana",
+        "set_default": "Aseta oletus",
+        "rename": "Nimeä uudelleen"
     }
 }

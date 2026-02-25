@@ -541,5 +541,29 @@
         "title_8": "neUromAncer [Hacker Role]",
         "title_9": "De'wI' Qun [Hacker Role]",
         "title_10": "wa' Dol [Hacker Role]"
+    },
+    "tooltip": {
+        "edit": "choH",
+        "delete": "Qaw'",
+        "mark_done": "rIn moj",
+        "mark_todo": "ta' moj",
+        "calendar": "DIS",
+        "dossier": "chovnatlh bIpoSmoH",
+        "settings": "choHwI'",
+        "logout": "megh",
+        "add_task": "ta' tIchel",
+        "search": "nej",
+        "filter": "vIt",
+        "priority": "poQ choH",
+        "category": "mey choH",
+        "close": "SoQ",
+        "drag": "lIH",
+        "cancel": "wegh",
+        "save": "choj",
+        "language": "Hol choH",
+        "show_password": "ngoq 'ang",
+        "hide_password": "ngoq So'",
+        "set_default": "nIteb",
+        "rename": "pong choH"
     }
 }

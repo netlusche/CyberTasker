@@ -302,6 +302,7 @@ const AuthForm = ({ onLogin }) => {
                                     onClick={() => setShowPassword(!showPassword)}
                                     className="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-primary hover:text-white transition-colors p-1"
                                     tabIndex="-1"
+                                    data-tooltip-content={showPassword ? t('tooltip.hide_password', 'Hide Password') : t('tooltip.show_password', 'Show Password')}
                                 >
                                     {showPassword ? (
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

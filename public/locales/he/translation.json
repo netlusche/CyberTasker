@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [תפקיד האקר]",
         "title_9": "אלוהים דיגיטלי [תפקיד האקר]",
         "title_10": "סינגולריות [תפקיד האקר]"
+    },
+    "tooltip": {
+        "edit": "ערוך",
+        "delete": "מחק",
+        "mark_done": "סמן בוצע",
+        "mark_todo": "סמן לעשות",
+        "calendar": "לוח שנה",
+        "dossier": "פתיחת תיק",
+        "settings": "הגדרות",
+        "logout": "התנתק",
+        "add_task": "הוסף משימה",
+        "search": "חפש",
+        "filter": "סינון",
+        "priority": "שנה עדיפות",
+        "category": "שנה קטגוריה",
+        "close": "סגור",
+        "drag": "גרור כדי לסדר מחדש",
+        "cancel": "בטל",
+        "save": "שמור",
+        "language": "שנה שפה",
+        "show_password": "הצג סיסמה",
+        "hide_password": "הסתר סיסמה",
+        "set_default": "הגדר ברירת מחדל",
+        "rename": "שנה שם"
     }
 }

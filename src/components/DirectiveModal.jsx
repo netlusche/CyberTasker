@@ -364,7 +364,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
             <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-[200] backdrop-blur-sm transform-gpu" onClick={() => handleSave()}>
                 <div className="card-cyber text-white max-w-3xl w-full max-h-[90vh] flex flex-col p-1 overflow-hidden border-cyber-primary shadow-cyber-primary relative animate-in fade-in zoom-in duration-300" onClick={(e) => e.stopPropagation()}>
 
-                    <button onClick={onClose} className={`absolute font-bold text-xl transition-colors z-50 ${theme === 'lcars' ? 'top-0 right-0 bg-[#ffaa00] text-black px-3 py-1 rounded-tr-[1.5rem] hover:brightness-110' : `top-1 ${(theme === 'matrix' || theme === 'weyland' || theme === 'cyberpunk') ? 'right-6' : 'right-1'} text-cyber-secondary hover:text-white`}`}>
+                    <button onClick={onClose} className={`absolute font-bold text-xl transition-colors z-50 ${theme === 'lcars' ? 'top-0 right-0 bg-[#ffaa00] text-black px-3 py-1 rounded-tr-[1.5rem] hover:brightness-110' : `top-1 ${(theme === 'matrix' || theme === 'weyland' || theme === 'cyberpunk') ? 'right-6' : 'right-1'} text-cyber-secondary hover:text-white`}`} data-tooltip-content={t('tooltip.close', 'Close')}>
                         [X]
                     </button>
 
@@ -395,7 +395,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                         <div className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-cyber-primary opacity-50 bg-black/60 px-1">ENTER to save</div>
                                     </div>
                                 ) : (
-                                    <div className="group relative inline-block cursor-pointer" onClick={() => setEditingField('title')} title="Click to edit title">
+                                    <div className="group relative inline-block cursor-pointer" onClick={() => setEditingField('title')} data-tooltip-content={t('tooltip.edit', 'Edit')}>
                                         <h2 className="text-2xl font-bold text-cyber-primary uppercase tracking-widest break-words leading-tight group-hover:text-white transition-colors">
                                             {title}
                                         </h2>
@@ -412,7 +412,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                 <div
                                     onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
                                     className="flex items-center gap-2 font-mono text-base px-3 py-1.5 cursor-pointer hover:bg-white/5 transition-colors border border-gray-700/50 rounded"
-                                    title={t('tasks.change_date')}
+                                    data-tooltip-content={t('tooltip.calendar')}
                                 >
                                     <span className="text-cyber-secondary xp-text">🕒</span>
                                     <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mr-1">
@@ -485,7 +485,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                         <div
                                             onClick={() => task.status != 1 && setIsRecurrencePickerOpen(!isRecurrencePickerOpen)}
                                             className="flex items-center gap-2 font-mono text-base px-2 py-1 cursor-pointer hover:bg-white/5 transition-colors border-l border-gray-700/50"
-                                            title={t('tasks.recurrence_end')}
+                                            data-tooltip-content={t('tooltip.calendar')}
                                         >
                                             <span className="text-[10px] font-bold text-cyber-secondary uppercase tracking-widest">
                                                 {t('tasks.recurrence_end')}:
@@ -572,7 +572,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                             className={`flex items-center justify-between group p-1 -mx-1 border transition-all rounded ${draggedIdx === idx ? 'opacity-40' : 'opacity-100'} ${dragOverIdx === idx && draggedIdx !== idx ? 'bg-cyber-primary/10 border-cyber-primary border-dashed' : 'border-transparent'}`}
                                         >
                                             <div className="flex items-center gap-3 flex-1">
-                                                <div className="cursor-grab active:cursor-grabbing text-cyber-gray hover:text-cyber-primary px-1 transition-colors" title="Drag to reorder">
+                                                <div className="cursor-grab active:cursor-grabbing text-cyber-gray hover:text-cyber-primary px-1 transition-colors" data-tooltip-content={t('tooltip.drag', 'Drag to reorder')}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
                                                     </svg>
@@ -603,7 +603,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                                     </span>
                                                 )}
                                             </div>
-                                            <button title="Delete Sub-Routine" onClick={(e) => { e.stopPropagation(); deleteSubroutine(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white ml-2">
+                                            <button data-tooltip-content={t('tooltip.delete', 'Delete')} onClick={(e) => { e.stopPropagation(); deleteSubroutine(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white ml-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
                                             </button>
                                         </div>
@@ -642,8 +642,8 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                                     <input autoFocus type="text" placeholder="Label" value={link.label} onChange={(e) => updateLink(idx, 'label', e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSave()} className="bg-transparent border-b border-cyber-gray p-2 text-xs flex-1 focus:border-cyber-primary outline-none text-white" />
                                                     <input type="text" placeholder="URL" value={link.url} onChange={(e) => updateLink(idx, 'url', e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSave()} className="bg-transparent border-b border-cyber-gray p-2 text-xs flex-[2] focus:border-cyber-primary outline-none text-white" />
                                                     <div className="flex gap-2 pl-2 border-l border-cyber-gray">
-                                                        <button title="Cancel Changes" onClick={(e) => { e.stopPropagation(); const orig = task.attachments ? JSON.parse(task.attachments) : []; setTempLinks(orig); setEditingField(null); }} className="text-red-500 hover:text-white px-1 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg></button>
-                                                        <button title="Save" onClick={(e) => { e.stopPropagation(); handleSave(); }} className="text-cyber-success hover:scale-110 transition-transform"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></button>
+                                                        <button data-tooltip-content={t('tooltip.cancel', 'Cancel')} onClick={(e) => { e.stopPropagation(); const orig = task.attachments ? JSON.parse(task.attachments) : []; setTempLinks(orig); setEditingField(null); }} className="text-red-500 hover:text-white px-1 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg></button>
+                                                        <button data-tooltip-content={t('tooltip.save', 'Save')} onClick={(e) => { e.stopPropagation(); handleSave(); }} className="text-cyber-success hover:scale-110 transition-transform"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></button>
                                                     </div>
                                                 </div>
                                             ) : (
@@ -655,7 +655,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                                         </div>
                                                         <a href={link.url} target="_blank" rel="noopener noreferrer" className="ml-4 p-2 bg-cyber-primary/10 rounded hover:bg-cyber-primary hover:text-black transition-colors" onClick={(e) => e.stopPropagation()}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" /></svg></a>
                                                     </div>
-                                                    <button title="Remove Uplink" onClick={(e) => { e.stopPropagation(); removeLink(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg></button>
+                                                    <button data-tooltip-content={t('tooltip.delete', 'Remove Uplink')} onClick={(e) => { e.stopPropagation(); removeLink(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg></button>
                                                 </div>
                                             )}
                                         </div>
@@ -684,7 +684,7 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M7.5 11.75 12 16.25l4.5-4.5M12 3v13.25" /></svg>
                                                 </a>
                                             </div>
-                                            <button title="Remove File" onClick={(e) => { e.stopPropagation(); removeFile(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg></button>
+                                            <button data-tooltip-content={t('tooltip.delete', 'Remove File')} onClick={(e) => { e.stopPropagation(); removeFile(idx); }} className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-red-500 hover:text-white transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg></button>
                                         </div>
                                     ))}
 

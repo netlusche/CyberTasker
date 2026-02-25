@@ -55,6 +55,7 @@ const PromptModal = ({ message, onConfirm, onCancel }) => {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-2 top-2 text-cyber-primary hover:text-white transition-colors"
+                    data-tooltip-content={showPassword ? t('tooltip.hide_password', 'Hide Password') : t('tooltip.show_password', 'Show Password')}
                 >
                     {showPassword ? (
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

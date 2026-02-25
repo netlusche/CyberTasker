@@ -54,6 +54,7 @@ const CyberSelect = ({ value, onChange, options, label, className = "", wrapperC
                 }}
                 onClick={() => !disabled && setIsOpen(!isOpen)}
                 className={`input-cyber flex items-center justify-between cursor-pointer min-w-[120px] transition-all duration-200 outline-none ${isOpen ? activeNeonClass : neonClass} ${wrapperClassName} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                data-tooltip-content={label || null}
             >
                 <span className="truncate pr-2 font-mono uppercase tracking-wider text-sm">
                     {displayValue}

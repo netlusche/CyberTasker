@@ -541,5 +541,29 @@
         "title_8": "Neuromancer [Hackerroll]",
         "title_9": "Digital Gud [Hackerroll]",
         "title_10": "Singularitet [Hackerroll]"
+    },
+    "tooltip": {
+        "edit": "Redigera",
+        "delete": "Ta bort",
+        "mark_done": "Markera som klar",
+        "mark_todo": "Markera att göra",
+        "calendar": "Kalender",
+        "dossier": "Öppna dossier",
+        "settings": "Inställningar",
+        "logout": "Logga ut",
+        "add_task": "Lägg till uppgift",
+        "search": "Sök",
+        "filter": "Filter",
+        "priority": "Ändra prioritet",
+        "category": "Ändra kategori",
+        "close": "Stäng",
+        "drag": "Dra för att ändra ordning",
+        "cancel": "Avbryt",
+        "save": "Spara",
+        "language": "Ändra språk",
+        "show_password": "Visa lösenord",
+        "hide_password": "Dölj lösenord",
+        "set_default": "Ställ in som standard",
+        "rename": "Döpa om"
     }
 }

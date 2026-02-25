@@ -541,5 +541,29 @@
         "title_8": "뉴로맨서 [해커 역할]",
         "title_9": "디지털 신 [해커 역할]",
         "title_10": "특이점 [해커 역할]"
+    },
+    "tooltip": {
+        "edit": "편집",
+        "delete": "삭제",
+        "mark_done": "완료로 표시",
+        "mark_todo": "할 일을 표시하세요",
+        "calendar": "달력",
+        "dossier": "서류 열기",
+        "settings": "설정",
+        "logout": "로그아웃",
+        "add_task": "작업 추가",
+        "search": "검색",
+        "filter": "필터",
+        "priority": "우선순위 변경",
+        "category": "카테고리 변경",
+        "close": "닫기",
+        "drag": "드래그하여 재정렬",
+        "cancel": "취소",
+        "save": "저장",
+        "language": "언어 변경",
+        "show_password": "비밀번호 표시",
+        "hide_password": "비밀번호 숨기기",
+        "set_default": "기본값 설정",
+        "rename": "이름 바꾸기"
     }
 }

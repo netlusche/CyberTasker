@@ -541,5 +541,29 @@
         "title_8": "Neuromanta [Rola hakera]",
         "title_9": "Cyfrowy Bóg [rola hakera]",
         "title_10": "Osobliwość [Rola hakera]"
+    },
+    "tooltip": {
+        "edit": "Edytuj",
+        "delete": "Usuń",
+        "mark_done": "Oznacz jako gotowe",
+        "mark_todo": "Zaznacz zadanie do wykonania",
+        "calendar": "Kalendarz",
+        "dossier": "Otwórz dokumentację",
+        "settings": "Ustawienia",
+        "logout": "Wyloguj się",
+        "add_task": "Dodaj zadanie",
+        "search": "Szukaj",
+        "filter": "Filtruj",
+        "priority": "Zmień priorytet",
+        "category": "Zmień kategorię",
+        "close": "Zamknij",
+        "drag": "Przeciągnij, aby zmienić kolejność",
+        "cancel": "Anuluj",
+        "save": "Zapisz",
+        "language": "Zmień język",
+        "show_password": "Pokaż hasło",
+        "hide_password": "Ukryj hasło",
+        "set_default": "Ustaw domyślne",
+        "rename": "Przemianować"
     }
 }
