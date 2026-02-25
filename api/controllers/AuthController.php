@@ -1,5 +1,6 @@
 <?php
 // api/controllers/AuthController.php
+require_once __DIR__ . '/../i18n.php';
 
 class AuthController extends Controller
 {
@@ -116,9 +117,11 @@ class AuthController extends Controller
                     $_SESSION['email_2fa_user_id'] = $user['id'];
 
                     require_once __DIR__ . '/../mail_helper.php';
-                    $subject = "CYBER_TASKER // EMERGENCY OVERRIDE CODE";
-                    $body = "Operative " . $user['username'] . ",<br><br>A restricted access signal is required for neural link establishment.<br>Use this code to verify your identity:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #00ffff;'>" . $code . "</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes.";
-                    sendMail($user['email'], $subject, $body);
+                    $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+                    $subject = I18nHelper::t($lang, 'emails.emergency_override.subject');
+                    $bodyTemplate = I18nHelper::t($lang, 'emails.emergency_override.body');
+                    $body = str_replace(['{{username}}', '{{code}}'], [$user['username'], $code], $bodyTemplate);
+                    sendMail($user['email'], $subject, $body, $lang);
                 }
 
                 $this->jsonResponse([
@@ -203,9 +206,11 @@ class AuthController extends Controller
             $mailSuccess = false;
             try {
                 $verifyLink = FRONTEND_URL . "/verify.html?token=" . $verificationToken;
-                $subject = "CYBER_TASKER // IDENTITY VERIFICATION";
-                $body = "Welcome Operative $username.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='$verifyLink' style='color: #00ffff; text-decoration: none;'>$verifyLink</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.";
-                $mailSuccess = sendMail($email, $subject, $body);
+                $lang = $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+                $subject = I18nHelper::t($lang, 'emails.identity_verification.subject');
+                $bodyTemplate = I18nHelper::t($lang, 'emails.identity_verification.body');
+                $body = str_replace(['{{username}}', '{{link}}'], [$username, $verifyLink], $bodyTemplate);
+                $mailSuccess = sendMail($email, $subject, $body, $lang);
             }
             catch (Throwable $e) {
                 error_log("Registration mail failed: " . $e->getMessage());
@@ -272,11 +277,13 @@ class AuthController extends Controller
             $this->userRepo->updateEmailAndVerification($this->userId, $newEmail, $token);
 
             $verifyLink = FRONTEND_URL . "/verify.html?token=" . $token;
-            $subject = "CyberTasker Email Update Verification";
-            $body = "Operative,<br><br>Your communication channel is being re-routed to: $newEmail.<br>Confirm this frequency change:<br><a href='$verifyLink'>$verifyLink</a><br><br>Access is restricted until confirmed.";
+            $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+            $subject = I18nHelper::t($lang, 'emails.email_update.subject');
+            $bodyTemplate = I18nHelper::t($lang, 'emails.email_update.body');
+            $body = str_replace(['{{email}}', '{{link}}'], [$newEmail, $verifyLink], $bodyTemplate);
 
             require_once __DIR__ . '/../mail_helper.php';
-            sendMail($newEmail, $subject, $body);
+            sendMail($newEmail, $subject, $body, $lang);
 
             $this->jsonResponse(['success' => true, 'message' => 'Email updated. Please check your inbox to re-verify.']);
         }
@@ -328,11 +335,13 @@ class AuthController extends Controller
                 $this->userRepo->setPasswordResetToken($user['id'], $token, $expires);
 
                 $resetLink = FRONTEND_URL . "/reset-password.html?token=" . $token;
-                $subject = "CyberTasker Password Reset";
-                $body = "Operative " . $user['username'] . ",<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='$resetLink'>$resetLink</a><br><br>This link self-destructs in 60 minutes.";
+                $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+                $subject = I18nHelper::t($lang, 'emails.password_reset.subject');
+                $bodyTemplate = I18nHelper::t($lang, 'emails.password_reset.body');
+                $body = str_replace(['{{username}}', '{{link}}'], [$user['username'], $resetLink], $bodyTemplate);
 
                 require_once __DIR__ . '/../mail_helper.php';
-                sendMail($email, $subject, $body);
+                sendMail($email, $subject, $body, $lang);
             }
             catch (Exception $e) {
                 error_log("Password reset database update failed: " . $e->getMessage());
@@ -471,10 +480,12 @@ class AuthController extends Controller
         $_SESSION['email_2fa_user_id'] = $this->userId;
 
         require_once __DIR__ . '/../mail_helper.php';
-        $subject = "CYBER_TASKER // EMERGENCY OVERRIDE CODE";
-        $body = "Operative " . $user['username'] . ",<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #00ffff;'>" . $code . "</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes.";
+        $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+        $subject = I18nHelper::t($lang, 'emails.emergency_override.subject');
+        $bodyTemplate = I18nHelper::t($lang, 'emails.emergency_override.body');
+        $body = str_replace(['{{username}}', '{{code}}'], [$user['username'], $code], $bodyTemplate);
 
-        if (sendMail($user['email'], $subject, $body)) {
+        if (sendMail($user['email'], $subject, $body, $lang)) {
             $this->jsonResponse(['success' => true, 'message' => 'Transmission sent. Check your secure comm-link.']);
         }
         else {
@@ -641,10 +652,12 @@ class AuthController extends Controller
         $_SESSION['email_2fa_user_id'] = $userId;
 
         require_once __DIR__ . '/../mail_helper.php';
-        $subject = "CYBER_TASKER // EMERGENCY OVERRIDE CODE";
-        $body = "Operative " . $user['username'] . ",<br><br>A new emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #00ffff;'>" . $code . "</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes.";
+        $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+        $subject = I18nHelper::t($lang, 'emails.emergency_override.subject');
+        $bodyTemplate = I18nHelper::t($lang, 'emails.emergency_override.body');
+        $body = str_replace(['{{username}}', '{{code}}'], [$user['username'], $code], $bodyTemplate);
 
-        if (sendMail($user['email'], $subject, $body)) {
+        if (sendMail($user['email'], $subject, $body, $lang)) {
             $this->jsonResponse(['success' => true, 'message' => 'Transmission re-sent. Check your secure comm-link.']);
         }
         else {

@@ -6,6 +6,7 @@ export const setCsrfToken = (token) => {
 
 export const apiFetch = async (url, options = {}) => {
     const headers = {
+        'X-App-Language': localStorage.getItem('i18nextLng') || 'en',
         ...options.headers,
     };
 

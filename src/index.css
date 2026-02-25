@@ -942,6 +942,13 @@ body,
     border-radius: var(--theme-radius);
   }
 
+  /* US-2.6.7: Auth input fields without artificial uppercase */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    text-transform: none !important;
+  }
+
   .input-cyber::placeholder {
     color: var(--theme-text);
     opacity: 0.4;

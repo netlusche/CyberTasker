@@ -134,6 +134,7 @@ try {
         }
         $initEmail = trim($data['email']);
         $initPassword = $data['password'];
+        $initLanguage = $data['language'] ?? 'en';
     }
 
 
@@ -155,6 +156,7 @@ try {
         reset_expires DATETIME DEFAULT NULL,
         last_login TIMESTAMP NULL DEFAULT NULL,
         theme VARCHAR(20) DEFAULT 'cyberpunk',
+        language VARCHAR(10) DEFAULT 'en',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
     $pdo->exec($sqlUsers);
@@ -173,7 +175,8 @@ try {
         'reset_token' => "VARCHAR(64) DEFAULT NULL",
         'reset_expires' => "DATETIME DEFAULT NULL",
         'last_login' => "TIMESTAMP NULL DEFAULT NULL",
-        'theme' => "VARCHAR(20) DEFAULT 'cyberpunk'"
+        'theme' => "VARCHAR(20) DEFAULT 'cyberpunk'",
+        'language' => "VARCHAR(10) DEFAULT 'en'"
     ];
 
     foreach ($newColumns as $col => $def) {
@@ -300,8 +303,8 @@ try {
         $adminPassword = password_hash($initPassword, PASSWORD_DEFAULT);
 
         // Insert Admin
-        $stmt = $pdo->prepare("INSERT INTO users (username, password, role, is_verified, email) VALUES (?, ?, 'admin', 1, ?)");
-        $stmt->execute([$adminUsername, $adminPassword, $initEmail]);
+        $stmt = $pdo->prepare("INSERT INTO users (username, password, role, is_verified, email, language) VALUES (?, ?, 'admin', 1, ?, ?)");
+        $stmt->execute([$adminUsername, $adminPassword, $initEmail, $initLanguage]);
         $adminId = $pdo->lastInsertId();
 
         // Initialize Stats

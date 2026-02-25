@@ -586,5 +586,40 @@
         "last_page": "마지막 페이지",
         "toggle_2fa": "2FA 시행 토글",
         "toggle_strict_pwd": "Toggle 엄격한 비밀번호 정책"
+    },
+    "quotes": [
+        "조용해질수록 더 많은 것을 들을 수 있습니다.",
+        "숟가락이 없습니다.",
+        "나는 죽음, 세계의 파괴자가 되었습니다.",
+        "일어나세요, 네오.",
+        "정보는 자유롭기를 원합니다.",
+        "껐다가 다시 켜보셨나요?",
+        "이상한 게임. 유일한 승리의 움직임은 플레이하지 않는 것입니다.",
+        "네가 그렇게 하도록 놔둘 수는 없어, 데이브.",
+        "안드로이드는 전기양을 꿈꾸는가?",
+        "저항은 소용없습니다."
+    ],
+    "emails": {
+        "identity_verification": {
+            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
+            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
+            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+        },
+        "email_update": {
+            "subject": "CyberTasker Email Update Verification",
+            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+        },
+        "password_reset": {
+            "subject": "CyberTasker Password Reset",
+            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+        },
+        "emergency_override": {
+            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
+            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+        },
+        "template": {
+            "transmission": "CYBER TASKER // TRANSMISSION",
+            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+        }
     }
 }

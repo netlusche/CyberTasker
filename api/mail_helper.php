@@ -1,7 +1,8 @@
 <?php
 // api/mail_helper.php
+require_once __DIR__ . '/i18n.php';
 
-function sendMail($to, $subject, $body)
+function sendMail($to, $subject, $body, $lang = 'en')
 {
     if (!$to)
         return false;
@@ -34,11 +35,10 @@ function sendMail($to, $subject, $body)
     </head>
     <body>
         <div class='container'>
-            <h1>CYBER TASKER // TRANSMISSION</h1>
+            <h1>" . I18nHelper::t($lang, 'emails.template.transmission') . "</h1>
             <p>$body</p>
             <div class='footer'>
-                SECURE CHANNEL ESTABLISHED.<br>
-                ORIGIN: CYBER_TASKER_CORE
+                " . I18nHelper::t($lang, 'emails.template.footer') . "
             </div>
         </div>
     </body>
@@ -51,9 +51,10 @@ function sendMail($to, $subject, $body)
     // Write to a log file for E2E tests to read (Disabled for Production/Strato test)
     $logFile = __DIR__ . '/mail_log.txt';
     $logHeader = "=== [MAIL ENQUEUED] ===\nTo: $to\nSubject: $subject\n";
-    file_put_contents($logFile, $logHeader . strip_tags($body) . "\n========================\n\n", FILE_APPEND);
+    $logMessage = $logHeader . strip_tags($body) . "\n========================\n\n";
+    file_put_contents($logFile, $logMessage, FILE_APPEND);
 
-    // error_log($logMessage); // Uncomment for system-level mail debugging
+    error_log($logMessage); // Uncomment for system-level mail debugging
 
     return $success;
 }

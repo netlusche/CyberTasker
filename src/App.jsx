@@ -178,6 +178,15 @@ function App() {
               {t('header.operative')}: <span className="text-cyber-success">{user ? user.username : t('header.unknown')}</span>
               {user?.role === 'admin' && <span className="ml-2 text-cyber-secondary border border-cyber-secondary/30 px-1 rounded">{t('header.admin_clearance')}</span>}
             </div>
+            {user && (
+              <div className="mt-2 text-[10px] md:text-xs text-cyber-primary italic opacity-90 border-l-2 border-cyber-primary pl-2 font-mono">
+                "{t(`quotes.${(() => {
+                  const today = new Date();
+                  const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+                  return seed % 10;
+                })()}`)}"
+              </div>
+            )}
           </div>
 
           <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 justify-start lg:justify-end ${theme === 'lcars' ? 'flex-col items-start lg:items-end gap-1' : 'flex-wrap items-center gap-2'}`}>

@@ -586,5 +586,40 @@
         "last_page": "Ultima pagina",
         "toggle_2fa": "Attiva/disattiva Applica 2FA",
         "toggle_strict_pwd": "Attiva/disattiva la politica rigorosa della password"
+    },
+    "quotes": [
+        "Più diventi silenzioso, più puoi sentire.",
+        "Non c'è nessun cucchiaio.",
+        "Sono diventato la morte, il distruttore di mondi.",
+        "Svegliati, Neo.",
+        "L'informazione vuole essere gratuita.",
+        "Hai provato a spegnerlo e riaccenderlo?",
+        "Uno strano gioco. L'unica mossa vincente è non giocare.",
+        "Non posso lasciartelo fare, Dave.",
+        "Gli androidi sognano pecore elettriche?",
+        "La resistenza è inutile."
+    ],
+    "emails": {
+        "identity_verification": {
+            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
+            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
+            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+        },
+        "email_update": {
+            "subject": "CyberTasker Email Update Verification",
+            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+        },
+        "password_reset": {
+            "subject": "CyberTasker Password Reset",
+            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+        },
+        "emergency_override": {
+            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
+            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+        },
+        "template": {
+            "transmission": "CYBER TASKER // TRANSMISSION",
+            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+        }
     }
 }

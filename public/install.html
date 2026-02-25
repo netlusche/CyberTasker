@@ -58,10 +58,25 @@
             letter-spacing: 1px;
         }
 
-        input:focus {
+        input:focus,
+        select:focus {
             border-color: #00ff9d;
             outline: none;
             box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+        }
+
+        select {
+            background: #111;
+            border: 1px solid #333;
+            color: #00ff9d;
+            padding: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-family: inherit;
+            font-weight: bold;
+            letter-spacing: 1px;
+            appearance: none;
+            cursor: pointer;
         }
 
         button {
@@ -138,25 +153,56 @@
 
 <body>
     <div class="card" id="card">
-        <h1>INITIALIZE GRID</h1>
-        <p class="subtitle">Establish the Master Admin parameters to initialize the CyberTasker core.</p>
+        <h1 data-i18n="common.loading">INITIALIZE GRID</h1>
+        <div style="text-align: right; margin-bottom: 10px;">
+            <select id="lang-select" onchange="changeLanguage()">
+                <option value="en">EN - English</option>
+                <option value="de">DE - Deutsch</option>
+                <option value="es">ES - Español</option>
+                <option value="fr">FR - Français</option>
+                <option value="it">IT - Italiano</option>
+                <option value="da">DA - Dansk</option>
+                <option value="sv">SV - Svenska</option>
+                <option value="no">NO - Norsk</option>
+                <option value="fi">FI - Suomi</option>
+                <option value="hu">HU - Magyar</option>
+                <option value="pl">PL - Polski</option>
+                <option value="pt">PT - Português</option>
+                <option value="el">EL - Ελληνικά</option>
+                <option value="ru">RU - Русский</option>
+                <option value="zh">ZH - 中文</option>
+                <option value="nl">NL - Nederlands</option>
+                <option value="ja">JA - 日本語</option>
+                <option value="ko">KO - 한국어</option>
+                <option value="hi">HI - हिन्दी</option>
+                <option value="tr">TR - Türkçe</option>
+                <option value="vi">VI - Tiếng Việt</option>
+                <option value="uk">UK - Українська</option>
+                <option value="he">HE - עברית</option>
+                <option value="tlh">TLH - tlhIngan Hol (Klingon)</option>
+            </select>
+        </div>
+        <p class="subtitle" data-i18n="auth.alerts.uplink_required">Establish the Master Admin parameters to initialize
+            the CyberTasker core.</p>
         <div id="form-container">
-            <input type="email" id="admin-email" placeholder="COM-LINK (EMAIL) [REQUIRED]" required>
+            <input type="email" id="admin-email" data-i18n="auth.comlink_only" placeholder="COM-LINK (EMAIL)" required>
 
             <div class="password-container">
-                <input type="password" id="admin-password" placeholder="ACCESS KEY (PASSWORD)" required>
+                <input type="password" id="admin-password" data-i18n="auth.access_key" placeholder="ACCESS KEY"
+                    required>
                 <button type="button" class="toggle-btn" onclick="togglePassword('admin-password', this)"
                     title="Toggle Visibility">👁</button>
             </div>
 
             <div class="password-container">
-                <input type="password" id="confirm-password" placeholder="CONFIRM ACCESS KEY" required>
+                <input type="password" id="confirm-password" data-i18n="profile.contact.confirm_password"
+                    placeholder="CONFIRM ACCESS KEY" required>
                 <button type="button" class="toggle-btn" onclick="togglePassword('confirm-password', this)"
                     title="Toggle Visibility">👁</button>
             </div>
 
             <br>
-            <button onclick="initializeSystem()">INITIALIZE</button>
+            <button onclick="initializeSystem()" data-i18n="common.submit">INITIALIZE</button>
             <div id="message"></div>
         </div>
     </div>
@@ -198,6 +244,22 @@
             });
         }
 
+        function changeLanguage() {
+            const select = document.getElementById('lang-select');
+            localStorage.setItem('i18nextLng', select.value);
+            loadTranslations();
+        }
+
+        function initDropdown() {
+            let lang = localStorage.getItem('i18nextLng') || 'en';
+            if (lang.includes('-')) lang = lang.split('-')[0];
+            const select = document.getElementById('lang-select');
+            if (select.querySelector(`option[value="${lang}"]`)) {
+                select.value = lang;
+            }
+        }
+
+        initDropdown();
         loadTranslations();
 
         function togglePassword(inputId, btn) {
@@ -215,55 +277,56 @@
             const email = document.getElementById('admin-email').value.trim();
             const password = document.getElementById('admin-password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
+            const language = document.getElementById('lang-select').value;
             const messageDiv = document.getElementById('message');
 
             if (!email || !password || !confirmPassword) {
                 messageDiv.className = 'error';
-                messageDiv.innerText = 'ERROR: ALL FIELDS ARE REQUIRED.';
+                messageDiv.innerText = getNestedTranslation(translations, 'auth.messages.input_required') || 'ERROR: ALL FIELDS ARE REQUIRED.';
                 return;
             }
 
             if (password !== confirmPassword) {
                 messageDiv.className = 'error';
-                messageDiv.innerText = 'ERROR: PASSWORDS DO NOT MATCH.';
+                messageDiv.innerText = getNestedTranslation(translations, 'auth.messages.password_mismatch') || 'ERROR: PASSWORDS DO NOT MATCH.';
                 return;
             }
 
             messageDiv.className = 'success';
-            messageDiv.innerText = '[ UPLOADING CREDENTIALS... ]';
+            messageDiv.innerText = getNestedTranslation(translations, 'common.loading') || '[ UPLOADING CREDENTIALS... ]';
 
-            fetch('api/install.php', {
+            fetch('/api/install.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, password: password })
+                body: JSON.stringify({ email: email, password: password, language: language })
             })
                 .then(res => res.text())
                 .then(html => {
                     // If it succeeds, install.php returns HTML showing completion
                     if (html.includes('Installation/Update Complete!')) {
                         document.getElementById('form-container').innerHTML = `
-    <p class="success">SYSTEM INITIALIZED SUCCESSFULLY.</p>
-    <a href="./">PROCEED TO LOGIN</a>
+    <p class="success">${getNestedTranslation(translations, 'auth.messages.login_success') || 'SYSTEM INITIALIZED SUCCESSFULLY.'}</p>
+    <a href="./">${getNestedTranslation(translations, 'auth.static.proceed_to_login') || 'PROCEED TO LOGIN'}</a>
     `;
                     } else if (html.includes('ACCESS DENIED')) {
                         messageDiv.className = 'error';
-                        messageDiv.innerText = 'SYSTEM ALREADY INITIALIZED.';
+                        messageDiv.innerText = getNestedTranslation(translations, 'auth.messages.unauthorized') || 'SYSTEM ALREADY INITIALIZED.';
                     } else {
                         // Try to parse as JSON if it's an error response
                         try {
                             const data = JSON.parse(html);
                             messageDiv.className = 'error';
-                            messageDiv.innerText = data.error || 'ERROR: INITIALIZATION FAILED.';
+                            messageDiv.innerText = data.error || getNestedTranslation(translations, 'auth.messages.request_failed') || 'ERROR: INITIALIZATION FAILED.';
                         } catch (e) {
                             messageDiv.className = 'error';
-                            messageDiv.innerText = 'ERROR: UNKNOWN RESPONSE FROM SERVER.';
+                            messageDiv.innerText = getNestedTranslation(translations, 'auth.messages.system_error') || 'ERROR: UNKNOWN RESPONSE FROM SERVER.';
                             console.error(html);
                         }
                     }
                 })
                 .catch(err => {
                     messageDiv.className = 'error';
-                    messageDiv.innerText = 'SYSTEM ERROR: CONNECTION FAILED.';
+                    messageDiv.innerText = getNestedTranslation(translations, 'auth.static.connection_failed') || 'SYSTEM ERROR: CONNECTION FAILED.';
                     console.error(err);
                 });
         }

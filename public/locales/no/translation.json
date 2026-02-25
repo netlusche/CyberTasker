@@ -586,5 +586,40 @@
         "last_page": "Siste side",
         "toggle_2fa": "Slå av/på Enforce 2FA",
         "toggle_strict_pwd": "Slå av og på streng passordpolicy"
+    },
+    "quotes": [
+        "Jo roligere du blir, jo mer kan du høre.",
+        "Det er ingen skje.",
+        "Jeg er blitt døden, verdens ødelegger.",
+        "Våkn opp, Neo.",
+        "Informasjon ønsker å være gratis.",
+        "Har du prøvd å slå den av og på igjen?",
+        "Et merkelig spill. Det eneste vinnende trekket er ikke å spille.",
+        "Jeg kan ikke la deg gjøre det, Dave.",
+        "Drømmer androider om elektriske sauer?",
+        "Motstand er fåfengt."
+    ],
+    "emails": {
+        "identity_verification": {
+            "subject": "CYBER_TASKER // IDENTITETSVERIFIKASJON",
+            "body": "Velkommen Operativ {{username}}.<br><br>Identitetsparameterne dine er etablert.<br>Bekreft frekvensen av com-link for å bygge bro over gapet:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Tilgangen er begrenset inntil bekreftet.",
+            "unverified_fallback": "Identitet etablert, men com-link-signalet mislyktes. Kontakt Admin for å bekrefte kontoen din manuelt."
+        },
+        "email_update": {
+            "subject": "CyberTasker e-postoppdatering bekreftelse",
+            "body": "Operativ,<br><br>Din kommunikasjonskanal blir omdirigert til: {{email}}.<br>Bekreft denne frekvensendringen:<br><a href='{{link}}'>{{link}}</a><br><br>Tilgangen er begrenset inntil bekreftet."
+        },
+        "password_reset": {
+            "subject": "CyberTasker Passord Tilbakestill",
+            "body": "Operativ {{username}},<br><br>En forespørsel om å tilbakestille tilgangsnøkkelen din ble mottatt.<br>Hvis dette var deg, fortsett her:<br><a href='{{link}}'>{{link}}</a><br><br>Denne koblingen destruerer seg selv på 60 minutter."
+        },
+        "emergency_override": {
+            "subject": "CYBER_TASKER // NØDOVERKODE",
+            "body": "Operativ {{username}},<br><br>Et nødoverstyringssignal har blitt bedt om.<br>Bruk denne begrensede tilgangskoden for å bygge bro over nevrale lenken:<br><br><b style='font-size: 24px; bokstavavstand: 5px; farge: #3b82f6;'>{{code}}</b><br><br>SIGNALFALL OPPAKT. Kode selvdestruerer på 10 minutter."
+        },
+        "template": {
+            "transmission": "CYBER TASKER // OVERFØRING",
+            "footer": "SIKKER KANAL ETABLERET.<br>OPPRINNELSE: CYBER_TASKER_CORE"
+        }
     }
 }

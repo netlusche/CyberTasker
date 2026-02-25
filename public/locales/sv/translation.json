@@ -586,5 +586,40 @@
         "last_page": "Sista sidan",
         "toggle_2fa": "Växla Enforce 2FA",
         "toggle_strict_pwd": "Växla strikt lösenordspolicy"
+    },
+    "quotes": [
+        "Ju tystare du blir, desto mer kan du höra.",
+        "Det finns ingen sked.",
+        "Jag har blivit döden, världarnas förstörare.",
+        "Vakna, Neo.",
+        "Information vill vara gratis.",
+        "Har du testat att stänga av och slå på den igen?",
+        "Ett konstigt spel. Det enda vinnande draget är att inte spela.",
+        "Jag kan inte låta dig göra det, Dave.",
+        "Drömmer androider om elektriska får?",
+        "Motstånd är meningslöst."
+    ],
+    "emails": {
+        "identity_verification": {
+            "subject": "CYBER_TASKER // IDENTITETSVERIFIKATION",
+            "body": "Välkommen Operativ {{användarnamn}}.<br><br>Dina identitetsparametrar har fastställts.<br>Bekräfta din com-länkfrekvens för att överbrygga gapet:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Åtkomsten är begränsad tills den bekräftas.",
+            "unverified_fallback": "Identitet fastställd, men com-länksignalen misslyckades. Kontakta administratören för att verifiera ditt konto manuellt."
+        },
+        "email_update": {
+            "subject": "CyberTasker Verifiering av e-postuppdatering",
+            "body": "Verksam,<br><br>Din kommunikationskanal omdirigeras till: {{email}}.<br>Bekräfta denna frekvensändring:<br><a href='{{link}}'>{{link}}</a><br><br>Åtkomsten är begränsad tills den bekräftas."
+        },
+        "password_reset": {
+            "subject": "CyberTasker Lösenord Återställ",
+            "body": "Operativ {{username}},<br><br>En begäran om att återställa din åtkomstnyckel togs emot.<br>Om det här var du, fortsätt här:<br><a href='{{link}}'>{{link}}</a><br><br>Den här länken förstörs själv på 60 minuter."
+        },
+        "emergency_override": {
+            "subject": "CYBER_TASKER // NÖDSTOPPKOD",
+            "body": "Operativ {{username}},<br><br>En nödsignal har begärts.<br>Använd denna begränsade åtkomstkod för att överbrygga neurala länken:<br><br><b style='font-size: 24px; bokstavsmellanrum: 5px; färg: #3b82f6;'>{{code}}</b><br><br>SIGNALFÖRSÖDELSE UPPTÄCKT. Koden förstör själv på 10 minuter."
+        },
+        "template": {
+            "transmission": "CYBER TASKER // ÖVERFÖRING",
+            "footer": "SÄKER KANAL ETABLERAD.<br>URSPRUNG: CYBER_TASKER_CORE"
+        }
     }
 }

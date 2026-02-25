@@ -105,6 +105,7 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         await page.waitForTimeout(2000);
         const mailContent = getLatestEmailContent();
         expect(mailContent).toBeTruthy();
+        expect(mailContent).toContain('#3b82f6'); // US-2.6.8: Verifying accessible color structure
 
         // Extract 6 digit code from the email log text
         // The log is now plaintext (strip_tags) and might lack spaces around the code
@@ -159,6 +160,7 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         await page.waitForTimeout(2000);
         const loginMail = getLatestEmailContent();
         expect(loginMail).toBeTruthy();
+        expect(loginMail).toContain('#3b82f6'); // US-2.6.8: Verifying accessible color structure
         const loginCodeMatch = loginMail.match(/(\d{6})/);
         expect(loginCodeMatch).toBeTruthy();
         const loginCode = loginCodeMatch[1];

@@ -586,5 +586,40 @@
         "last_page": "Viimeinen sivu",
         "toggle_2fa": "Ota käyttöön 2FA",
         "toggle_strict_pwd": "Vaihda Tiukka salasanakäytäntö päälle"
+    },
+    "quotes": [
+        "Mitä hiljaisemmaksi tulet, sitä enemmän kuulet.",
+        "Ei ole lusikkaa.",
+        "Minusta on tullut kuolema, maailmojen tuhoaja.",
+        "Herää, Neo.",
+        "Tieto haluaa olla ilmaista.",
+        "Oletko yrittänyt sammuttaa ja käynnistää uudelleen?",
+        "Outo peli. Ainoa voittava liike on olla pelaamatta.",
+        "En voi antaa sinun tehdä sitä, Dave.",
+        "Unelmoivatko androidit sähkölampaista?",
+        "Vastarinta on turhaa."
+    ],
+    "emails": {
+        "identity_verification": {
+            "subject": "CYBER_TASKER // IDENTITEETIN VAHVISTAMINEN",
+            "body": "Tervetuloa operatiiviseen {{username}}.<br><br>Identiteettiparametrisi on määritetty.<br>Vahvista yhteystiheys umpeen kuromiseksi:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>SIGNAALIN VIKEMINEN HAVAITTU. Pääsy on rajoitettu vahvistukseen asti.",
+            "unverified_fallback": "Identiteetti on määritetty, mutta com-link-signaali epäonnistui. Ota yhteyttä järjestelmänvalvojaan vahvistaaksesi tilisi manuaalisesti."
+        },
+        "email_update": {
+            "subject": "CyberTasker-sähköpostipäivityksen vahvistus",
+            "body": "Toimiva,<br><br>Viestintäkanavasi reititetään uudelleen osoitteeseen: {{email}}.<br>Vahvista tämä taajuusmuutos:<br><a href='{{link}}'>{{link}}</a><br><br>Pääsyä rajoitetaan, kunnes se vahvistetaan."
+        },
+        "password_reset": {
+            "subject": "CyberTasker salasanan palautus",
+            "body": "Toimihenkilö {{username}},<br><br>Pyyntö nollata pääsyavaimesi vastaanotettu.<br>Jos tämä olit sinä, jatka tästä:<br><a href='{{link}}'>{{link}}</a><br><br>Tämä linkki tuhoutuu itsestään 60 minuutissa."
+        },
+        "emergency_override": {
+            "subject": "CYBER_TASKER // HÄTÄTILAN OHITUSKOODI",
+            "body": "Toimiva {{username}},<br><br>Hätäohitussignaalia on pyydetty.<br>Käytä tätä rajoitettua pääsykoodia hermolinkin siltaukseen:<br><br><b style='font-size: 24px; kirjainväli: 5px; väri: #3b82f6;'>{{code}}</b><br><br>SIGNAALIN VIKEMINEN TUNNISTETTU. Koodi tuhoutuu itsestään 10 minuutissa."
+        },
+        "template": {
+            "transmission": "CYBER TASKER // SIIRTO",
+            "footer": "TURVALLINEN KANAVA PERUSTETTU.<br>ALKUPERÄ: CYBER_TASKER_CORE"
+        }
     }
 }

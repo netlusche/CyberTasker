@@ -586,5 +586,40 @@
         "last_page": "De' Qav",
         "toggle_2fa": "cha' pat choH",
         "toggle_strict_pwd": "ngoq nIv choH"
-    }
+    },
+    "emails": {
+        "identity_verification": {
+            "subject": "CYBER_TASKER // ngoqmeyvo' bop VERIFICATION",
+            "body": "qaH vIngaQ {{username}}.<br><br>qechlIj ngoqmey DanoH.<br>qIHlIj Qap yIlaD:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>nuqneH. Hegh ngoqmey.",
+            "unverified_fallback": "ngoqmey DanoH, 'ach qIHlIj Qap. Admin yIghojmoH."
+        },
+        "email_update": {
+            "subject": "CyberTasker QIHlIj ngoqmey",
+            "body": "qaH,<br><br>qIHlIj ngoqmey law': {{email}}.<br>qIHlIj Qap yIlaD:<br><a href='{{link}}'>{{link}}</a><br><br>nuqneH. Hegh ngoqmey."
+        },
+        "password_reset": {
+            "subject": "CyberTasker Password ChoH",
+            "body": "qaH {{username}},<br><br>Password ChoH Qap tlho'.<br>bIjatlhchugh tIvwI' choH:<br><a href='{{link}}'>{{link}}</a><br><br>60 tupmey bIHegh."
+        },
+        "emergency_override": {
+            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE",
+            "body": "qaH {{username}},<br><br>Emergency Override Qap tlho'.<br>ngoqmey DanoH choH:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>10 tupmey bIHegh."
+        },
+        "template": {
+            "transmission": "CYBER TASKER // TRANSMISSION",
+            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+        }
+    },
+    "quotes": [
+        "Sopbe' tlhInganpu', ngoqmeyvo' bop",
+        "Spoon tlhegh",
+        "Hegh vImoj, qo'mey Qaw'wI'",
+        "Neo, yIvem",
+        "ghovlu'qang De'",
+        "bIchu'Ha'DI' bIchu'qa'ta'a'?",
+        "Quj Huj. Qujbe'lu'chugh wa' ghaH.",
+        "Dave, botlh 'e' vIbot.",
+        "nuj qeq qo' no'",
+        "lI'be' Qapla'."
+    ]
 }

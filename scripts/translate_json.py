@@ -27,6 +27,11 @@ def extract_strings(d, strings_list, map_keys, current_path=""):
         path = f"{current_path}.{k}" if current_path else k
         if isinstance(v, dict):
             extract_strings(v, strings_list, map_keys, path)
+        elif isinstance(v, list):
+            for i, item in enumerate(v):
+                if isinstance(item, str):
+                    strings_list.append(item)
+                    map_keys.append(f"{path}[{i}]")
         elif isinstance(v, str):
             strings_list.append(v)
             map_keys.append(path)
@@ -72,15 +77,40 @@ def process_lang(lang_code, folder_name):
     missing_map = []
     
     for path, en_str in zip(key_map, strings_to_translate):
-        keys = path.split('.')
+        # path could be "quotes[0]" or "emails.subject"
         d = existing_data
         found = True
-        for k in keys:
-            if isinstance(d, dict) and k in d:
-                d = d[k]
+        
+        # We need a custom traverse to handle lists
+        parts = []
+        import re
+        for piece in path.split('.'):
+            match = re.match(r"(.+)\[(\d+)\]", piece)
+            if match:
+                parts.append((match.group(1), 'list'))
+                parts.append((int(match.group(2)), 'index'))
             else:
-                found = False
-                break
+                parts.append((piece, 'dict'))
+                
+        for i, (k, t) in enumerate(parts):
+            if t == 'dict':
+                if isinstance(d, dict) and k in d:
+                    d = d[k]
+                else:
+                    found = False
+                    break
+            elif t == 'list':
+                if isinstance(d, dict) and k in d:
+                    d = d[k]
+                else:
+                    found = False
+                    break
+            elif t == 'index':
+                if isinstance(d, list) and k < len(d):
+                    d = d[k]
+                else:
+                    found = False
+                    break
         
         if not found or d == "":
             missing_strings.append(en_str)
@@ -107,11 +137,36 @@ def process_lang(lang_code, folder_name):
     
     # Rebuild JSON incrementally
     for path, val in zip(missing_map, translated_strings):
-        keys = path.split('.')
+        parts = []
+        import re
+        for piece in path.split('.'):
+            match = re.match(r"(.+)\[(\d+)\]", piece)
+            if match:
+                parts.append((match.group(1), 'list'))
+                parts.append((int(match.group(2)), 'index'))
+            else:
+                parts.append((piece, 'dict'))
+                
         d = new_data
-        for key in keys[:-1]:
-            d = d.setdefault(key, {})
-        d[keys[-1]] = val.strip() if isinstance(val, str) else val
+        for i, (k, t) in enumerate(parts[:-1]):
+            nxt_t = parts[i+1][1]
+            if t == 'dict' or t == 'list':
+                if k not in d:
+                    d[k] = [] if nxt_t == 'index' else {}
+                d = d[k]
+            elif t == 'index':
+                while len(d) <= k:
+                    d.append({} if (nxt_t == 'dict' or nxt_t == 'list') else "")
+                d = d[k]
+                
+        last_k, last_t = parts[-1]
+        val_clean = val.strip() if isinstance(val, str) else val
+        if last_t == 'dict' or last_t == 'list':
+            d[last_k] = val_clean
+        elif last_t == 'index':
+            while len(d) <= last_k:
+                d.append("")
+            d[last_k] = val_clean
         
     os.makedirs(f"public/locales/{folder_name}", exist_ok=True)
     with open(target_path, "w", encoding="utf-8") as f:

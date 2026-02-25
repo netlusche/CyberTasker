@@ -129,37 +129,42 @@
             });
         }
 
-        // Ensure translations load immediately
-        loadTranslations();
-
         // --- Core Logic ---
-        if (!token) {
-            card.classList.add('error');
-            const errorText = getNestedTranslation(translations, 'auth.static.missing_verification_token') || "ERROR: MISSING VERIFICATION TOKEN.";
-            content.innerHTML = `<p>${errorText}</p>`;
-        } else {
-            fetch('api/index.php?route=auth/verify_email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ token: token })
-            })
-                .then(res => res.json())
-                .then(data => {
-                    const proceedText = getNestedTranslation(translations, 'auth.static.proceed_to_login') || "PROCEED TO LOGIN";
-                    if (data.success) {
-                        content.innerHTML = `<p>${data.message}</p><a href="./">${proceedText}</a>`;
-                    } else {
-                        card.classList.add('error');
-                        const failedText = getNestedTranslation(translations, 'auth.static.verification_failed') || "VERIFICATION FAILED";
-                        content.innerHTML = `<p>${failedText}:<br>${data.error}</p>`;
-                    }
+        async function init() {
+            await loadTranslations();
+
+            if (!token) {
+                card.classList.add('error');
+                const errorText = getNestedTranslation(translations, 'auth.static.missing_verification_token') || "ERROR: MISSING VERIFICATION TOKEN.";
+                content.innerHTML = `<p>${errorText}</p>`;
+            } else {
+                fetch('api/index.php?route=auth/verify_email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: token })
                 })
-                .catch(err => {
-                    card.classList.add('error');
-                    const connFailedText = getNestedTranslation(translations, 'auth.static.connection_failed') || "SYSTEM ERROR: CONNECTION FAILED.";
-                    content.innerHTML = `<p>${connFailedText}</p>`;
-                });
+                    .then(res => res.json())
+                    .then(data => {
+                        const proceedText = getNestedTranslation(translations, 'auth.static.proceed_to_login') || "PROCEED TO LOGIN";
+                        if (data.success) {
+                            const verifiedMsg = getNestedTranslation(translations, 'auth.login_success') || data.message;
+                            content.innerHTML = `<p>${verifiedMsg}</p><a href="./">${proceedText}</a>`;
+                        } else {
+                            card.classList.add('error');
+                            const failedText = getNestedTranslation(translations, 'auth.static.verification_failed') || "VERIFICATION FAILED";
+                            const errorMsg = data.error === 'Invalid or expired token' ? (getNestedTranslation(translations, 'auth.messages.invalid_or_expired_token') || data.error) : data.error;
+                            content.innerHTML = `<p>${failedText}:<br>${errorMsg}</p>`;
+                        }
+                    })
+                    .catch(err => {
+                        card.classList.add('error');
+                        const connFailedText = getNestedTranslation(translations, 'auth.static.connection_failed') || "SYSTEM ERROR: CONNECTION FAILED.";
+                        content.innerHTML = `<p>${connFailedText}</p>`;
+                    });
+            }
         }
+
+        init();
     </script>
 </body>
 
