@@ -375,3 +375,14 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Validation**:
   - The `calculateBadge(level)` logic correctly outputs tier/title arrays matching levels 1-99 boundaries.
   - The translated cyber-badge (e.g., "Veteran Netrunner") is visibly rendered above the XP bar on the dashboard and reacts to language swaps.
+
+---
+
+## 📅 test-suite-12: Release 2.6 Features
+
+### TS-12.1: Multilingual Tooltips Verification [AUTOMATED] (15-tooltips.spec.js)
+- **Scenario**: Navigate through the Auth Screen, Dashboard, and Profile Modal while listening for localized tooltip rendering.
+- **Validation**:
+  - Validates that UI components securely embed their contextual help directly within `data-tooltip-content`.
+  - Ensures tooltips respond correctly to the active language state (e.g., swapping to 'Deutsch' synchronously updates the tooltip content across the DOM without reloading).
+  - Validates CSS positioning logic (`data-tooltip-pos: left|right|bottom`) avoids viewport overflow.
