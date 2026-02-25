@@ -115,7 +115,8 @@
             "computerwelt": "Computerwelt",
             "mensch-maschine": "Mensch-Maschine",
             "neon-syndicate": "Neon Syndicate",
-            "megacorp-executive": "Megacorp Executive"
+            "megacorp-executive": "Megacorp Executive",
+            "marvel": "Marvel"
         },
         "language": "МОВА",
         "messages": {
@@ -419,7 +420,8 @@
                 "theme_computerwelt": "COMPUTERWELT — Протоколи Kraftwerk '81. Матово-чорне шасі з неоново-зеленими та застережними жовтими індикаторами. Людина і машина в ідеальній синхронізації.",
                 "theme_mensch-maschine": "MENSCH-MASCHINE — Естетика Kraftwerk '78. Висококонтрастний малиновий, абсолютний чорний і абсолютно білий. Ми роботи.",
                 "theme_neon-syndicate": "NEON SYNDICATE — Випереджайте ніч. Насичений фіолетовий відтінок пурпурного відтінку synthwave і синього електрику. Сітка ніколи не спить.",
-                "theme_megacorp-executive": "MEGACORP EXECUTIVE — елітна орбітальна естетика. Сліпучі білі поверхні, матові сріблясті акценти та крижано-блакитні потоки даних. Бізнес – це війна."
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — елітна орбітальна естетика. Сліпучі білі поверхні, матові сріблясті акценти та крижано-блакитні потоки даних. Бізнес – це війна.",
+                "theme_marvel": "MARVEL — Месники збираються. Яскравий малиновий, глибокий кобальт і золотисті акценти. Все, що потрібно."
             },
             "danger_zone": {
                 "title": "// НЕБЕЗПЕЧНА ЗОНА [Стирання особи]",

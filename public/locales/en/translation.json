@@ -115,7 +115,8 @@
             "computerwelt": "Computerwelt",
             "mensch-maschine": "Mensch-Maschine",
             "neon-syndicate": "Neon Syndicate",
-            "megacorp-executive": "Megacorp Executive"
+            "megacorp-executive": "Megacorp Executive",
+            "marvel": "Marvel"
         },
         "language": "LANGUAGE",
         "messages": {
@@ -419,7 +420,8 @@
                 "theme_computerwelt": "COMPUTERWELT — Kraftwerk '81 protocols. Matte black chassis with neon green and caution yellow indicators. Man and machine in perfect sync.",
                 "theme_mensch-maschine": "MENSCH-MASCHINE — Kraftwerk '78 aesthetics. High-contrast crimson, absolute black, and stark white. We are the robots.",
                 "theme_neon-syndicate": "NEON SYNDICATE — Outrun the night. Deep void purple washed in synthwave magenta and electric blue. The grid never sleeps.",
-                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war."
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE — Elite orbital aesthetics. Blinding white surfaces, brushed silver accents, and ice blue data streams. Business is war.",
+                "theme_marvel": "MARVEL — Avengers assemble. Bright crimson, deep cobalt, and golden accents. Whatever it takes."
             },
             "danger_zone": {
                 "title": "// DANGER ZONE [Identity Erasure]",

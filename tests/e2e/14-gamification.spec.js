@@ -67,47 +67,42 @@ test.describe('US-2.5.12 & US-2.5.13: Gamification UX and Logic', () => {
             mfaHeader.waitFor({ state: 'visible', timeout: 15000 })
         ]).catch(() => { }); // ignore timeout if one finishes
 
-        try {
-            if (await mfaHeader.isVisible()) {
-                console.log("2FA is enforced. Extracting OTP from email log...");
-                await page.waitForTimeout(1000); // Wait for the email hook to write
+        if (await mfaHeader.isVisible()) {
+            console.log("2FA is enforced. Extracting OTP from email log...");
+            await page.waitForTimeout(1000); // Wait for the email hook to write
 
-                const emailLogPath = path.join(process.cwd(), 'api', 'logs', 'email_log.txt');
-                const emailLog = fs.readFileSync(emailLogPath, 'utf8');
+            const emailLogPath = path.join(process.cwd(), 'api', 'mail_log.txt');
+            const emailLog = fs.readFileSync(emailLogPath, 'utf8');
 
-                // The OTP is a 6 digit code in the email log
-                // Format usually like: Code: 123456 or simply a 6 digit number
-                const codeMatch = emailLog.match(/([0-9]{6})/);
-                if (codeMatch) {
-                    const otp = codeMatch[1];
-                    const otpInput = page.locator('input[type="text"]').first();
-                    await otpInput.fill(otp);
-                    await page.locator('button', { hasText: /VERIFY|OVERRIDE|BESTÄTIGEN/i }).click();
-                }
+            // The OTP is a 6 digit code in the email log
+            // Format usually like: Code: 123456 or simply a 6 digit number
+            const codeMatch = emailLog.match(/([0-9]{6})/);
+            if (codeMatch) {
+                const otp = codeMatch[1];
+                const otpInput = page.locator('input[type="text"]').first();
+                await otpInput.fill(otp);
+                await page.locator('button', { hasText: /VERIFY|OVERRIDE|BESTÄTIGEN/i }).click();
             }
-
-            await expect(profileBtn).toBeVisible({ timeout: 15000 });
-
-            // Verify Gamification badge exists in LevelBar
-            const levelBarLocator = page.locator('.lvl-bar-container');
-            await expect(levelBarLocator).toBeVisible({ timeout: 5000 });
-
-            const badgeLocator = levelBarLocator.locator('.text-cyber-primary');
-            await expect(badgeLocator).toBeVisible();
-            const badgeText = await badgeLocator.textContent();
-            expect(badgeText.trim().length).toBeGreaterThan(0);
-
-            // Switch Language to Spanish and verify the translation occurs
-            const initialBadgeText = badgeText.trim();
-
-            await page.click('header button[data-testid="profile-btn"]');
-            await page.selectOption('select', { label: 'Español' });
-            await page.locator('button.absolute.top-4.right-4').first().click(); // close modal
-
-            await expect(badgeLocator).not.toHaveText(initialBadgeText, { timeout: 5000 });
-        } catch (e) {
-            console.log("Login flow was intercepted or timed out (likely 2FA environment). Skipping strict UI assertion.");
-            test.skip();
         }
+
+        await expect(profileBtn).toBeVisible({ timeout: 15000 });
+
+        // Verify Gamification badge exists in LevelBar
+        const levelBarLocator = page.locator('.lvl-bar-container');
+        await expect(levelBarLocator).toBeVisible({ timeout: 5000 });
+
+        const badgeLocator = levelBarLocator.locator('.text-cyber-primary');
+        await expect(badgeLocator).toBeVisible();
+        const badgeText = await badgeLocator.textContent();
+        expect(badgeText.trim().length).toBeGreaterThan(0);
+
+        // Switch Language to Spanish and verify the translation occurs
+        const initialBadgeText = badgeText.trim();
+
+        // The language switcher is in the header. We click it and then click 'ES' or Spanish option
+        await page.locator('.btn-lang-yellow').click();
+        await page.getByRole('button', { name: 'Español' }).click();
+
+        await expect(badgeLocator).not.toHaveText(initialBadgeText, { timeout: 5000 });
     });
 });

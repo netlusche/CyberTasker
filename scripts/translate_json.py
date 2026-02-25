@@ -15,7 +15,7 @@ import time
 # Read manuals/TRANSLATION_GUIDELINES.md before adding new keys!
 # ==============================================================================
 
-TARGETS = ['da', 'sv', 'no', 'fi', 'hu', 'pl', 'pt', 'el', 'ru', 'zh-CN', 'de', 'es', 'fr', 'nl', 'it', 'ja', 'ko', 'hi', 'tr', 'vi', 'uk']
+TARGETS = ['da', 'sv', 'no', 'fi', 'hu', 'pl', 'pt', 'el', 'ru', 'zh-CN', 'de', 'es', 'fr', 'nl', 'it', 'ja', 'ko', 'hi', 'tr', 'vi', 'uk', 'he']
 KLINGON = 'tlh'
 
 print("Loading base english strings...")

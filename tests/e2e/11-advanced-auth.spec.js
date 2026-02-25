@@ -23,8 +23,13 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
 
     test.beforeAll(async () => {
         // Reset the database before testing 2FA flows to avoid cascading locked states
-        console.log('Seeding Database...');
-        execSync('php tests/seed_test_data.php');
+        try {
+            execSync('php tests/seed_test_data.php', { stdio: 'inherit' });
+        } catch (error) {
+            console.error('Seed script failed:', error.message);
+            // Retry once just in case of transient DB lock
+            execSync('php tests/seed_test_data.php', { stdio: 'inherit' });
+        }
     });
 
     test.beforeEach(async () => {
@@ -48,16 +53,19 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
 
         await page.locator('form button[type="submit"]').click();
 
-        // Wait for success alert
+        // Wait for success alert and read its text
         const alertBox = page.getByTestId('cyber-alert');
         await expect(alertBox).toBeVisible({ timeout: 15000 });
+        const alertText = await alertBox.textContent();
+        console.log('ALERT BOX TEXT: ' + alertText);
+        expect(alertText).toMatch(/registered|ESTABLISHED/i); // Should contain part of the success message
         await alertBox.getByTestId('alert-acknowledge').click();
 
         // Give it a moment to write to the log
         await page.waitForTimeout(2000);
 
         const mailContent = getLatestEmailContent();
-        expect(mailContent).toContain(email);
+        expect(mailContent).toContain(testUser);
         expect(mailContent).toContain('/verify.html?token=');
 
         // Extract the verification link
@@ -174,7 +182,7 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         await page.waitForTimeout(1000);
         await page.locator('button', { hasText: /TERMINATE SECURITY PROTOCOLS|TERMINATE/i }).first().click();
         // CyberConfirm modal
-        await page.locator('button', { hasText: /CONFIRM/i }).click();
+        await page.getByTestId('confirm-button').click();
         await expect(page.locator('text=/DISABLED/i').first()).toBeVisible({ timeout: 5000 });
     });
 });

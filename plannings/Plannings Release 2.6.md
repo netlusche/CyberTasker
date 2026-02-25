@@ -69,10 +69,10 @@
 * **Möchte ich** meine Sub-Routinen im Directive Dossier durch Wischen (Touch & Drag) genauso flüssig sortieren können wie am Desktop
 * **Damit** ich auch von unterwegs meine Workloads effizient priorisieren kann, ohne an den PC wechseln zu müssen.
 * **Akzeptanzkriterien:**
-  - Das aktuelle native HTML5 Drag-and-Drop (`draggable="true"`, `onDragStart`), welches auf iOS/Android Touch-Screens ignoriert wird, wird refactored.
-  - Implementierung einer robusten Touch-Lösung (Entweder durch Migration auf eine moderne React-Bibliothek wie `@dnd-kit/core` oder durch Einbindung eines robusten `mobile-drag-drop` Polyfills).
-  - Wischen/Ziehen an den bestehenden Drag-Handles verschiebt Items sauber auf Touch-Geräten.
-  - Die visuelle Rückmeldung (Das "Geister-Element" beim Ziehen und die gestrichelte Drop-Zone) bleibt auf mobilen Geräten bestehen oder wird durch eine gleichwertig performante Animation ersetzt.
+  - Das aktuelle native HTML5 Drag-and-Drop (`draggable="true"`, `onDragStart`), welches auf iOS/Android Touch-Screens ignoriert wird, wird vollständig entfernt.
+  - Implementierung einer robusten Touch-Lösung durch saubere Migration auf eine moderne React-Bibliothek (`@dnd-kit/core` und `@dnd-kit/sortable`).
+  - Wischen/Ziehen an den bestehenden Drag-Handles verschiebt Items sauber und flüssig auf mobilen Geräten (Smartphones, Tablets).
+  - Die visuelle Rückmeldung (Das Sortier-Overlay und die Einrast-Animationen) wird durch die nativen Mechanismen von `@dnd-kit` bereitgestellt und an den Cyber-Tasker Stil angepasst.
 
 ## Ergänzungen für den Testplan
 

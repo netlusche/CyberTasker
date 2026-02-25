@@ -115,7 +115,8 @@
             "computerwelt": "Computerwelt",
             "mensch-maschine": "מנש-מכונה",
             "neon-syndicate": "סינדיקט ניאון",
-            "megacorp-executive": "Megacorp Executive"
+            "megacorp-executive": "Megacorp Executive",
+            "marvel": "מארוול"
         },
         "language": "שפה",
         "messages": {
@@ -179,7 +180,9 @@
             "critical_backup": "⚠ קריטי: שברי גיבוי מאובטחים ⚠",
             "emergency_override": "ביטול חירום בלבד. אחסן בפורמט אנלוגי.",
             "copy_fragment": "עותק שבר",
-            "uplink_complete": "UPLINK מאובטח והשלם"
+            "uplink_complete": "UPLINK מאובטח והשלם",
+            "system_enforced": "הוראת מערכת [מדיניות אדמין]: דואר אלקטרוני UPLINK נאכף",
+            "system_enforced_desc": "מנהלי מערכת קבעו אילוצי 2FA. אתה נמצא כעת בפרוטוקול החלפה. אתחל קישור למעלה מלא [Setup 2FA] למטה."
         },
         "contact": {
             "channel": "צור קשר",
@@ -417,7 +420,8 @@
                 "theme_computerwelt": "COMPUTERWELT - פרוטוקולי Kraftwerk '81. מארז שחור מט עם מחוונים בצבע ירוק ניאון ובצהוב זהירות. אדם ומכונה בסנכרון מושלם.",
                 "theme_mensch-maschine": "MENSCH-MASCHINE — אסתטיקת Kraftwerk '78. ארגמן בעל ניגודיות גבוהה, שחור מוחלט ולבן חד. אנחנו הרובוטים.",
                 "theme_neon-syndicate": "NEON SYNDICATE - לצאת מהלילה. סגול ריק עמוק שטוף במגנטה גלי סינת' וכחול חשמלי. הרשת אף פעם לא ישנה.",
-                "theme_megacorp-executive": "MEGACORP EXECUTIVE - אסתטיקת אורביטלית עילית. משטחים לבנים מסמאים, הדגשות כסף מוברש וזרמי נתונים כחולים קרח. עסקים זה מלחמה."
+                "theme_megacorp-executive": "MEGACORP EXECUTIVE - אסתטיקת אורביטלית עילית. משטחים לבנים מסמאים, הדגשות כסף מוברש וזרמי נתונים כחולים קרח. עסקים זה מלחמה.",
+                "theme_marvel": "MARVEL - הנוקמים מתאספים. ארגמן בהיר, קובלט עמוק, ודגשים זהובים. מה שנדרש."
             },
             "danger_zone": {
                 "title": "// אזור סכנה [מחיקת זהות]",
@@ -520,5 +524,22 @@
             "5": "FRI",
             "6": "SAT"
         }
+    },
+    "gamification": {
+        "tier_1": "טירון [רמת מיומנות]",
+        "tier_2": "Adept [רמת מיומנות]",
+        "tier_3": "ותיק [רמת מיומנות]",
+        "tier_4": "עילית [רמת מיומנות]",
+        "tier_5": "ראשי [רמת מיומנות]",
+        "title_1": "תסריט Kiddie [תפקיד האקר]",
+        "title_2": "קונסול קאובוי [תפקיד האקר]",
+        "title_3": "Netrunner [תפקיד האקר]",
+        "title_4": "Cyberdoc [תפקיד האקר]",
+        "title_5": "Chrome-Junkie [תפקיד האקר]",
+        "title_6": "אדריכל מערכת [תפקיד האקר]",
+        "title_7": "Ghost in the Shell [תפקיד האקר]",
+        "title_8": "Neuromancer [תפקיד האקר]",
+        "title_9": "אלוהים דיגיטלי [תפקיד האקר]",
+        "title_10": "סינגולריות [תפקיד האקר]"
     }
 }
