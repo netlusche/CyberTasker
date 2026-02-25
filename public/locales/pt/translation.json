@@ -564,6 +564,27 @@
         "show_password": "Mostrar senha",
         "hide_password": "Ocultar senha",
         "set_default": "Definir padrão",
-        "rename": "Renomear"
+        "rename": "Renomear",
+        "forgot_password": "Esqueceu sua senha?",
+        "system_help": "Ajuda do sistema",
+        "remembered": "Voltar para Login",
+        "no_identity": "Criar nova identidade",
+        "has_identity": "Usar identidade existente",
+        "prev_month": "Mês Anterior",
+        "next_month": "Próximo Mês",
+        "add_directive": "Adicionar diretiva",
+        "revoke_access": "Revogar acesso",
+        "grant_access": "Conceder acesso",
+        "downgrade_user": "Fazer downgrade da função do usuário",
+        "promote_user": "Promova a função do usuário",
+        "reset_password": "Redefinir senha",
+        "disable_2fa": "Desativar 2FA",
+        "delete_user": "Excluir usuário",
+        "first_page": "Primeira página",
+        "prev_page": "Página Anterior",
+        "next_page": "Próxima página",
+        "last_page": "Última página",
+        "toggle_2fa": "Alternar Aplicar 2FA",
+        "toggle_strict_pwd": "Alternar política de senha estrita"
     }
 }

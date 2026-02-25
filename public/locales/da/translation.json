@@ -564,6 +564,27 @@
         "show_password": "Vis adgangskode",
         "hide_password": "Skjul adgangskode",
         "set_default": "Sæt som standard",
-        "rename": "Omdøb"
+        "rename": "Omdøb",
+        "forgot_password": "Glemt adgangskode?",
+        "system_help": "Systemhjælp",
+        "remembered": "Tilbage til Login",
+        "no_identity": "Opret ny identitet",
+        "has_identity": "Brug eksisterende identitet",
+        "prev_month": "Forrige måned",
+        "next_month": "Næste måned",
+        "add_directive": "Tilføj direktiv",
+        "revoke_access": "Tilbagekald adgang",
+        "grant_access": "Giv adgang",
+        "downgrade_user": "Nedgrader brugerrolle",
+        "promote_user": "Fremme brugerrolle",
+        "reset_password": "Nulstil adgangskode",
+        "disable_2fa": "Deaktiver 2FA",
+        "delete_user": "Slet bruger",
+        "first_page": "Første side",
+        "prev_page": "Forrige side",
+        "next_page": "Næste side",
+        "last_page": "Sidste side",
+        "toggle_2fa": "Slå håndhæv 2FA",
+        "toggle_strict_pwd": "Slå streng adgangskodepolitik til/fra"
     }
 }

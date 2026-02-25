@@ -564,6 +564,27 @@
         "show_password": "Pokaż hasło",
         "hide_password": "Ukryj hasło",
         "set_default": "Ustaw domyślne",
-        "rename": "Przemianować"
+        "rename": "Przemianować",
+        "forgot_password": "Zapomniałeś hasła?",
+        "system_help": "Pomoc systemowa",
+        "remembered": "Powrót do logowania",
+        "no_identity": "Stwórz nową tożsamość",
+        "has_identity": "Użyj istniejącej tożsamości",
+        "prev_month": "Poprzedni miesiąc",
+        "next_month": "Następny miesiąc",
+        "add_directive": "Dodaj dyrektywę",
+        "revoke_access": "Odbierz dostęp",
+        "grant_access": "Przyznaj dostęp",
+        "downgrade_user": "Zmień rolę użytkownika",
+        "promote_user": "Promuj rolę użytkownika",
+        "reset_password": "Zresetuj hasło",
+        "disable_2fa": "Wyłącz 2FA",
+        "delete_user": "Usuń użytkownika",
+        "first_page": "Pierwsza strona",
+        "prev_page": "Poprzednia strona",
+        "next_page": "Następna strona",
+        "last_page": "Ostatnia strona",
+        "toggle_2fa": "Przełącz opcję Wymuś 2FA",
+        "toggle_strict_pwd": "Przełącz rygorystyczne zasady dotyczące haseł"
     }
 }

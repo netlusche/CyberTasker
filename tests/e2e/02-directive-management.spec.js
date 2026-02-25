@@ -86,7 +86,7 @@ test.describe('Directive Management Pagination', () => {
         await expect(firstTask.getByText(/\[\d+\/\d+\]/)).toBeVisible();
 
         // 4. Delete Sub-Routine
-        const deleteBtn = modal.locator('.group', { hasText: 'E2E Test Sub-Routine 1 - EDITED' }).first().locator('button[title="Delete Sub-Routine"]');
+        const deleteBtn = modal.locator('.group', { hasText: 'E2E Test Sub-Routine 1 - EDITED' }).first().locator('button[data-tooltip-content="Delete Sub-Routine"], button[data-tooltip-content="Delete"]');
         // We might need to hover to make it visible
         await textSpan.hover();
         await deleteBtn.click();
@@ -148,7 +148,7 @@ test.describe('Directive Management Pagination', () => {
 
         // Mark it as done
         const taskCard = page.locator('.card-cyber').filter({ hasText: uniqueTitle }).first();
-        const checkBtn = taskCard.locator('button[title="Mark as DONE"]');
+        const checkBtn = taskCard.locator('button[data-tooltip-content="Mark Done"], button[data-tooltip-content="Mark as DONE"]');
         await checkBtn.click();
 
         // The original task now remains visible (status 1)
@@ -163,14 +163,14 @@ test.describe('Directive Management Pagination', () => {
 
         // Clean up both tasks
         await recurringTasks.nth(0).hover();
-        await recurringTasks.nth(0).locator('button[title="Delete Task"]').click();
+        await recurringTasks.nth(0).locator('button[data-tooltip-content="Delete Task"], button[data-tooltip-content="Delete"]').click();
         await page.getByTestId('confirm-button').click();
         await expect(page.getByTestId('confirm-button')).not.toBeVisible();
         await expect(recurringTasks).toHaveCount(1);
 
         // The second one shifts up to index 0
         await recurringTasks.nth(0).hover();
-        await recurringTasks.nth(0).locator('button[title="Delete Task"]').click();
+        await recurringTasks.nth(0).locator('button[data-tooltip-content="Delete Task"], button[data-tooltip-content="Delete"]').click();
         await page.getByTestId('confirm-button').click();
         await expect(page.getByTestId('confirm-button')).not.toBeVisible();
 
@@ -224,7 +224,7 @@ test.describe('Directive Management Pagination', () => {
 
         // Mark it as done
         const taskCard = page.locator('.card-cyber').filter({ hasText: uniqueTitle }).first();
-        const checkBtn = taskCard.locator('button[title="Mark as DONE"]');
+        const checkBtn = taskCard.locator('button[data-tooltip-content="Mark Done"], button[data-tooltip-content="Mark as DONE"]');
         await checkBtn.click();
 
         // Wait a bit for the async update to finish

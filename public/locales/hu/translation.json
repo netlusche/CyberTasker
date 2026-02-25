@@ -564,6 +564,27 @@
         "show_password": "Jelszó megjelenítése",
         "hide_password": "Jelszó elrejtése",
         "set_default": "Alapértelmezés beállítása",
-        "rename": "Átnevezés"
+        "rename": "Átnevezés",
+        "forgot_password": "Elfelejtett jelszó?",
+        "system_help": "Rendszer súgó",
+        "remembered": "Vissza a Bejelentkezéshez",
+        "no_identity": "Új identitás létrehozása",
+        "has_identity": "Használja a meglévő identitást",
+        "prev_month": "Előző hónap",
+        "next_month": "Következő hónap",
+        "add_directive": "Irányelv hozzáadása",
+        "revoke_access": "Hozzáférés visszavonása",
+        "grant_access": "Hozzáférés engedélyezése",
+        "downgrade_user": "Felhasználói szerepkör visszaminősítése",
+        "promote_user": "Felhasználói szerepkör előmozdítása",
+        "reset_password": "Jelszó visszaállítása",
+        "disable_2fa": "2FA letiltása",
+        "delete_user": "Felhasználó törlése",
+        "first_page": "Első oldal",
+        "prev_page": "Előző oldal",
+        "next_page": "Következő oldal",
+        "last_page": "Utolsó oldal",
+        "toggle_2fa": "Váltás: Enforce 2FA",
+        "toggle_strict_pwd": "Kapcsolja be a Szigorú jelszóházirendet"
     }
 }

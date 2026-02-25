@@ -564,6 +564,27 @@
         "show_password": "पासवर्ड दिखाएँ",
         "hide_password": "पासवर्ड छुपाएं",
         "set_default": "डिफ़ॉल्ट सेट करें",
-        "rename": "नाम बदलें"
+        "rename": "नाम बदलें",
+        "forgot_password": "पासवर्ड भूल गए?",
+        "system_help": "सिस्टम सहायता",
+        "remembered": "लॉगिन पर वापस जाएँ",
+        "no_identity": "नई पहचान बनाएं",
+        "has_identity": "मौजूदा पहचान का प्रयोग करें",
+        "prev_month": "पिछला महीना",
+        "next_month": "अगले महीने",
+        "add_directive": "निर्देश जोड़ें",
+        "revoke_access": "पहुंच निरस्त करें",
+        "grant_access": "पहुंच प्रदान करें",
+        "downgrade_user": "उपयोगकर्ता भूमिका डाउनग्रेड करें",
+        "promote_user": "उपयोगकर्ता भूमिका को बढ़ावा दें",
+        "reset_password": "पासवर्ड रीसेट करें",
+        "disable_2fa": "2FA अक्षम करें",
+        "delete_user": "उपयोगकर्ता हटाएं",
+        "first_page": "प्रथम पृष्ठ",
+        "prev_page": "पिछला पृष्ठ",
+        "next_page": "अगला पेज",
+        "last_page": "अंतिम पृष्ठ",
+        "toggle_2fa": "एनफोर्स 2एफए",
+        "toggle_strict_pwd": "को टॉगल करें सख्त पासवर्ड नीति टॉगल करें"
     }
 }

@@ -137,19 +137,26 @@ const CalendarModal = ({ tasks, onClose, onOpenDossier }) => {
                     <h2 className="text-xl md:text-2xl font-bold text-cyber-primary flex items-center gap-2 uppercase tracking-widest">
                         <span>📅</span> {t('calendar.title', 'CHRONO-SYNC // CALENDAR')}
                     </h2>
-                    <button onClick={onClose} className="text-gray-500 hover:text-white transition-colors text-2xl font-bold leading-none px-2 py-1">
+                    <button onClick={onClose} className="text-gray-500 hover:text-white transition-colors text-2xl font-bold leading-none px-2 py-1"
+                        data-tooltip-content={t('tooltip.close', 'Close')}
+                        data-tooltip-pos="left"
+                    >
                         &times;
                     </button>
                 </div>
 
                 <div className="flex justify-between items-center mb-4 bg-cyber-primary/10 border border-cyber-primary/30 p-2 md:p-4 rounded-sm">
-                    <button onClick={prevMonth} className="btn-cyber min-w-[3rem] px-2 py-1 flex items-center justify-center border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black">
+                    <button onClick={prevMonth} className="btn-cyber min-w-[3rem] px-2 py-1 flex items-center justify-center border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black"
+                        data-tooltip-content={t('tooltip.prev_month', 'Previous Month')}
+                    >
                         &#9664;
                     </button>
                     <h3 className="text-lg md:text-xl font-bold text-white tracking-widest uppercase">
                         {monthNames[month]} <span className="text-cyber-secondary">{year}</span>
                     </h3>
-                    <button onClick={nextMonth} className="btn-cyber min-w-[3rem] px-2 py-1 flex items-center justify-center border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black">
+                    <button onClick={nextMonth} className="btn-cyber min-w-[3rem] px-2 py-1 flex items-center justify-center border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black"
+                        data-tooltip-content={t('tooltip.next_month', 'Next Month')}
+                    >
                         &#9654;
                     </button>
                 </div>

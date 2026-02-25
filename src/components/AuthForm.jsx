@@ -394,6 +394,7 @@ const AuthForm = ({ onLogin }) => {
                         disabled={loading}
                         className={`btn-cyber btn-cyber-primary mt-4 ${loading ? 'opacity-70 cursor-wait' : ''}`}
                         style={theme === 'lcars' ? { backgroundColor: '#ffaa00', borderColor: '#ffaa00' } : {}}
+                        data-tooltip-content={requires2FA ? t('tooltip.verify_2fa', 'Verify Access Code') : undefined}
                     >
                         {loading ? t('auth.working') : (requires2FA ? t('auth.verify_identity') : (isForgot ? t('auth.send_reset') : (isLogin ? t('auth.jack_in') : t('auth.establish_link'))))}
                     </button>
@@ -405,6 +406,7 @@ const AuthForm = ({ onLogin }) => {
                             <button
                                 onClick={() => setIsForgot(true)}
                                 className="text-sm text-gray-300 hover:text-cyber-secondary underline decoration-dotted underline-offset-4"
+                                data-tooltip-content={t('tooltip.forgot_password', 'Forgot Password?')}
                             >
                                 {t('auth.forgot_key')}
                             </button>
@@ -413,6 +415,7 @@ const AuthForm = ({ onLogin }) => {
                             data-testid="auth-toggle"
                             onClick={() => { setIsLogin(!isLogin); setIsForgot(false); setError(''); setValidationErrors({}); }}
                             className="text-sm text-gray-300 hover:text-cyber-success underline decoration-dotted underline-offset-4"
+                            data-tooltip-content={isForgot ? t('tooltip.remembered', 'Back to Login') : (isLogin ? t('tooltip.no_identity', 'Create new identity') : t('tooltip.has_identity', 'Use existing identity'))}
                         >
                             {isForgot ? t('auth.remembered') : (isLogin ? t('auth.no_identity') : t('auth.has_identity'))}
                         </button>
@@ -423,6 +426,8 @@ const AuthForm = ({ onLogin }) => {
                     <button
                         onClick={() => setShowHelp(true)}
                         className="text-xs text-cyber-primary hover:text-white transition-colors tracking-widest"
+                        data-tooltip-content={t('tooltip.system_help', 'System Help')}
+                        data-tooltip-pos="bottom"
                     >
                         {t('header.system_help')}
                     </button>

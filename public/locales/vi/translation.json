@@ -564,6 +564,27 @@
         "show_password": "Hiển thị mật khẩu",
         "hide_password": "Ẩn mật khẩu",
         "set_default": "Đặt mặc định",
-        "rename": "Đổi tên"
+        "rename": "Đổi tên",
+        "forgot_password": "Quên mật khẩu?",
+        "system_help": "Trợ giúp hệ thống",
+        "remembered": "Quay lại Đăng nhập",
+        "no_identity": "Tạo danh tính mới",
+        "has_identity": "Sử dụng danh tính hiện có",
+        "prev_month": "Tháng trước",
+        "next_month": "Tháng tới",
+        "add_directive": "Thêm chỉ thị",
+        "revoke_access": "Thu hồi quyền truy cập",
+        "grant_access": "Cấp quyền truy cập",
+        "downgrade_user": "Hạ cấp vai trò người dùng",
+        "promote_user": "Quảng bá vai trò người dùng",
+        "reset_password": "Đặt lại mật khẩu",
+        "disable_2fa": "Tắt 2FA",
+        "delete_user": "Xóa người dùng",
+        "first_page": "Trang đầu tiên",
+        "prev_page": "Trang trước",
+        "next_page": "Trang tiếp theo",
+        "last_page": "Trang cuối cùng",
+        "toggle_2fa": "Chuyển đổi Thực thi 2FA",
+        "toggle_strict_pwd": "Chuyển đổi chính sách mật khẩu nghiêm ngặt"
     }
 }

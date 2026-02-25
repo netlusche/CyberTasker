@@ -10,7 +10,7 @@ const CyberButton = ({
     fullWidth = false,
     ...props
 }) => {
-    const baseClasses = "relative overflow-hidden font-mono uppercase tracking-widest transition-all duration-300 font-bold " + (fullWidth ? "w-full " : "");
+    const baseClasses = "relative font-mono uppercase tracking-widest transition-all duration-300 font-bold " + (fullWidth ? "w-full " : "");
 
     let variantClasses = "";
 

@@ -564,6 +564,27 @@
         "show_password": "Wachtwoord tonen",
         "hide_password": "Wachtwoord verbergen",
         "set_default": "Standaard instellen",
-        "rename": "Hernoemen"
+        "rename": "Hernoemen",
+        "forgot_password": "Wachtwoord vergeten?",
+        "system_help": "Systeemhulp",
+        "remembered": "Terug naar inloggen",
+        "no_identity": "Nieuwe identiteit creëren",
+        "has_identity": "Gebruik bestaande identiteit",
+        "prev_month": "Vorige maand",
+        "next_month": "Volgende maand",
+        "add_directive": "Richtlijn",
+        "revoke_access": "toevoegen Toegang intrekken",
+        "grant_access": "Toegang verlenen",
+        "downgrade_user": "Gebruikersrol downgraden",
+        "promote_user": "Gebruikersrol promoten",
+        "reset_password": "Wachtwoord opnieuw instellen",
+        "disable_2fa": "Schakel 2FA uit",
+        "delete_user": "Gebruiker",
+        "first_page": "verwijderen Eerste pagina",
+        "prev_page": "Vorige pagina",
+        "next_page": "Volgende pagina",
+        "last_page": "Laatste pagina",
+        "toggle_2fa": "Schakel 2FA afdwingen",
+        "toggle_strict_pwd": "in Schakel Strikt wachtwoordbeleid in"
     }
 }

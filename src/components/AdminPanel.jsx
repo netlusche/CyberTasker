@@ -326,6 +326,8 @@ const AdminPanel = ({ onClose }) => {
                     onClick={() => handleToggleVerified(u)}
                     className={`text-xs font-bold btn-admin-status ${u.is_verified == 1 ? 'verified text-cyber-success hover:text-green-400' : 'unverified text-red-500 hover:text-red-400'}`}
                     title="Toggle Verification"
+                    data-tooltip-content={u.is_verified == 1 ? t('tooltip.revoke_access', 'Revoke Access') : t('tooltip.grant_access', 'Grant Access')}
+                    data-tooltip-pos="left"
                 >
                     {u.is_verified == 1 ? `✓ ${t('admin.verified')}` : `✖ ${t('admin.unverified')}`}
                 </button>
@@ -354,6 +356,8 @@ const AdminPanel = ({ onClose }) => {
                         onClick={() => handleToggleRoleClick(u)}
                         variant="info"
                         className="!text-[10px] !py-1 !px-2 min-w-[70px]"
+                        data-tooltip-content={u.role === 'admin' ? t('tooltip.downgrade_user', 'Downgrade User Role') : t('tooltip.promote_user', 'Promote User Role')}
+                        data-tooltip-pos="left"
                     >
                         {u.role === 'admin' ? t('admin.downgrade') : t('admin.promote')}
                     </CyberButton>
@@ -362,6 +366,8 @@ const AdminPanel = ({ onClose }) => {
                         onClick={() => handleResetPasswordClick(u)}
                         variant="ghost"
                         className="!text-[10px] !py-1 !px-2 min-w-[70px]"
+                        data-tooltip-content={t('tooltip.reset_password', 'Reset Password')}
+                        data-tooltip-pos="left"
                     >
                         {t('admin.reset_pwd')}
                     </CyberButton>
@@ -369,6 +375,8 @@ const AdminPanel = ({ onClose }) => {
                         <CyberButton
                             onClick={() => handleDisable2FAClick(u)}
                             className="!text-[10px] !px-2 !py-1 min-w-[70px] bg-orange-900/30 border border-orange-900 text-orange-600 hover:bg-orange-900 hover:text-white"
+                            data-tooltip-content={t('tooltip.disable_2fa', 'Disable 2FA')}
+                            data-tooltip-pos="left"
                         >
                             {t('admin.2fa_off')}
                         </CyberButton>
@@ -377,6 +385,8 @@ const AdminPanel = ({ onClose }) => {
                         onClick={() => handleDeleteUserClick(u)}
                         variant="danger"
                         className="!text-[10px] !py-1 !px-2 min-w-[70px]"
+                        data-tooltip-content={t('tooltip.delete_user', 'Delete User')}
+                        data-tooltip-pos="left"
                     >
                         {t('admin.erase')}
                     </CyberButton>
@@ -447,7 +457,7 @@ const AdminPanel = ({ onClose }) => {
                         disabled={pagination.currentPage <= 1}
                         onClick={() => fetchUsers(1)}
                         className="px-3 py-1 border border-cyber-primary/50 text-cyber-primary hover:bg-cyber-primary/20 disabled:opacity-30 disabled:hover:bg-transparent font-bold"
-                        title="First Page"
+                        data-tooltip-content={t('tooltip.first_page', 'First Page')}
                     >
                         &laquo;
                     </button>
@@ -456,7 +466,7 @@ const AdminPanel = ({ onClose }) => {
                         disabled={pagination.currentPage <= 1}
                         onClick={() => fetchUsers(pagination.currentPage - 1)}
                         className="px-3 py-1 border border-cyber-primary/50 text-cyber-primary hover:bg-cyber-primary/20 disabled:opacity-30 disabled:hover:bg-transparent font-bold"
-                        title="Previous Page"
+                        data-tooltip-content={t('tooltip.prev_page', 'Previous Page')}
                     >
                         &lsaquo;
                     </button>
@@ -470,7 +480,7 @@ const AdminPanel = ({ onClose }) => {
                         disabled={pagination.currentPage >= pagination.totalPages}
                         onClick={() => fetchUsers(pagination.currentPage + 1)}
                         className="px-3 py-1 border border-cyber-primary/50 text-cyber-primary hover:bg-cyber-primary/20 disabled:opacity-30 disabled:hover:bg-transparent font-bold"
-                        title="Next Page"
+                        data-tooltip-content={t('tooltip.next_page', 'Next Page')}
                     >
                         &rsaquo;
                     </button>
@@ -479,7 +489,7 @@ const AdminPanel = ({ onClose }) => {
                         disabled={pagination.currentPage >= pagination.totalPages}
                         onClick={() => fetchUsers(pagination.totalPages)}
                         className="px-3 py-1 border border-cyber-primary/50 text-cyber-primary hover:bg-cyber-primary/20 disabled:opacity-30 disabled:hover:bg-transparent font-bold"
-                        title="Last Page"
+                        data-tooltip-content={t('tooltip.last_page', 'Last Page')}
                     >
                         &raquo;
                     </button>
@@ -499,7 +509,11 @@ const AdminPanel = ({ onClose }) => {
                             {t('admin.policy_enforce_email_2fa_desc')}
                         </p>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
+                    <label
+                        className="relative inline-flex items-center cursor-pointer"
+                        data-tooltip-content={t('tooltip.toggle_2fa', 'Toggle Enforce 2FA')}
+                        data-tooltip-pos="left"
+                    >
                         <input
                             type="checkbox"
                             data-testid="enforce-email-2fa-toggle"
@@ -518,7 +532,11 @@ const AdminPanel = ({ onClose }) => {
                             {t('admin.policy_strict_pwd_desc')}
                         </p>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
+                    <label
+                        className="relative inline-flex items-center cursor-pointer"
+                        data-tooltip-content={t('tooltip.toggle_strict_pwd', 'Toggle Strict Password Policy')}
+                        data-tooltip-pos="left"
+                    >
                         <input
                             type="checkbox"
                             data-testid="strict-password-toggle"

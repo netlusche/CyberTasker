@@ -8,7 +8,9 @@ import { loginAsAdmin } from './auth-commands.js';
 function getLatestEmailContent() {
     const logPath = path.join(process.cwd(), 'api/mail_log.txt');
     if (!fs.existsSync(logPath)) return null;
-    return fs.readFileSync(logPath, 'utf8');
+    const content = fs.readFileSync(logPath, 'utf8');
+    const parts = content.split('=== [MAIL ENQUEUED] ===');
+    return parts.length > 1 ? parts[parts.length - 1] : content;
 }
 
 // Helper to clear the email log before a test step

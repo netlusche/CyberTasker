@@ -564,6 +564,27 @@
         "show_password": "Show Password",
         "hide_password": "Hide Password",
         "set_default": "Set Default",
-        "rename": "Rename"
+        "rename": "Rename",
+        "forgot_password": "Forgot Password?",
+        "system_help": "System Help",
+        "remembered": "Back to Login",
+        "no_identity": "Create new identity",
+        "has_identity": "Use existing identity",
+        "prev_month": "Previous Month",
+        "next_month": "Next Month",
+        "add_directive": "Add Directive",
+        "revoke_access": "Revoke Access",
+        "grant_access": "Grant Access",
+        "downgrade_user": "Downgrade User Role",
+        "promote_user": "Promote User Role",
+        "reset_password": "Reset Password",
+        "disable_2fa": "Disable 2FA",
+        "delete_user": "Delete User",
+        "first_page": "First Page",
+        "prev_page": "Previous Page",
+        "next_page": "Next Page",
+        "last_page": "Last Page",
+        "toggle_2fa": "Toggle Enforce 2FA",
+        "toggle_strict_pwd": "Toggle Strict Password Policy"
     }
 }

@@ -24,6 +24,7 @@ $pdo->exec("DELETE FROM tasks");
 $pdo->exec("DELETE FROM user_categories");
 $pdo->exec("DELETE FROM user_stats");
 $pdo->exec("DELETE FROM auth_logs");
+// Remove ALL users to avoid unique constraint violations on email
 $pdo->exec("DELETE FROM users");
 
 // Reset system setttings to prevent state pollution (e.g. enforce_email_2fa=1 from breaking other tests)

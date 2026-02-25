@@ -564,6 +564,27 @@
         "show_password": "パスワードを表示",
         "hide_password": "パスワードを隠す",
         "set_default": "デフォルトに設定",
-        "rename": "名前の変更"
+        "rename": "名前の変更",
+        "forgot_password": "パスワードをお忘れですか？",
+        "system_help": "システムヘルプ",
+        "remembered": "ログインに戻る",
+        "no_identity": "新しいアイデンティティを作成する",
+        "has_identity": "既存の ID を使用する",
+        "prev_month": "Previous Month",
+        "next_month": "Next Month",
+        "add_directive": "Add Directive",
+        "revoke_access": "Revoke Access",
+        "grant_access": "Grant Access",
+        "downgrade_user": "Downgrade User Role",
+        "promote_user": "Promote User Role",
+        "reset_password": "Reset Password",
+        "disable_2fa": "Disable 2FA",
+        "delete_user": "Delete User",
+        "first_page": "First Page",
+        "prev_page": "Previous Page",
+        "next_page": "Next Page",
+        "last_page": "Last Page",
+        "toggle_2fa": "2FA の適用を切り替え",
+        "toggle_strict_pwd": "Toggle 厳格なパスワードポリシー"
     }
 }

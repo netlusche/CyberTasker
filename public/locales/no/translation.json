@@ -564,6 +564,27 @@
         "show_password": "Vis passord",
         "hide_password": "Skjul passord",
         "set_default": "Sett som standard",
-        "rename": "Gi nytt navn"
+        "rename": "Gi nytt navn",
+        "forgot_password": "Glemt passord?",
+        "system_help": "Systemhjelp",
+        "remembered": "Tilbake til Logg inn",
+        "no_identity": "Opprett ny identitet",
+        "has_identity": "Bruk eksisterende identitet",
+        "prev_month": "Forrige måned",
+        "next_month": "Neste måned",
+        "add_directive": "Legg til direktiv",
+        "revoke_access": "Opphev tilgang",
+        "grant_access": "Gi tilgang",
+        "downgrade_user": "Nedgrader brukerrolle",
+        "promote_user": "Markedsfør brukerrolle",
+        "reset_password": "Tilbakestill passord",
+        "disable_2fa": "Deaktiver 2FA",
+        "delete_user": "Slett bruker",
+        "first_page": "Første side",
+        "prev_page": "Forrige side",
+        "next_page": "Neste side",
+        "last_page": "Siste side",
+        "toggle_2fa": "Slå av/på Enforce 2FA",
+        "toggle_strict_pwd": "Slå av og på streng passordpolicy"
     }
 }

@@ -564,6 +564,27 @@
         "show_password": "הצג סיסמה",
         "hide_password": "הסתר סיסמה",
         "set_default": "הגדר ברירת מחדל",
-        "rename": "שנה שם"
+        "rename": "שנה שם",
+        "forgot_password": "שכחת סיסמא?",
+        "system_help": "עזרה למערכת",
+        "remembered": "חזרה להתחבר",
+        "no_identity": "צור זהות חדשה",
+        "has_identity": "השתמש בזהות קיימת",
+        "prev_month": "החודש הקודם",
+        "next_month": "חודש הבא",
+        "add_directive": "הוסף הוראה",
+        "revoke_access": "בטל גישה",
+        "grant_access": "הענק גישה",
+        "downgrade_user": "שדרוג לאחור של תפקיד משתמש",
+        "promote_user": "קדם את תפקיד המשתמש",
+        "reset_password": "איפוס סיסמה",
+        "disable_2fa": "השבת את 2FA",
+        "delete_user": "מחק משתמש",
+        "first_page": "עמוד ראשון",
+        "prev_page": "עמוד קודם",
+        "next_page": "העמוד הבא",
+        "last_page": "עמוד אחרון",
+        "toggle_2fa": "החלף אכיפת 2FA",
+        "toggle_strict_pwd": "החלף מצב של מדיניות סיסמאות קפדנית"
     }
 }

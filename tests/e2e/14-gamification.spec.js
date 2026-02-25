@@ -72,7 +72,9 @@ test.describe('US-2.5.12 & US-2.5.13: Gamification UX and Logic', () => {
             await page.waitForTimeout(1000); // Wait for the email hook to write
 
             const emailLogPath = path.join(process.cwd(), 'api', 'mail_log.txt');
-            const emailLog = fs.readFileSync(emailLogPath, 'utf8');
+            const emailLogFull = fs.readFileSync(emailLogPath, 'utf8');
+            const parts = emailLogFull.split('=== [MAIL ENQUEUED] ===');
+            const emailLog = parts.length > 1 ? parts[parts.length - 1] : emailLogFull;
 
             // The OTP is a 6 digit code in the email log
             // Format usually like: Code: 123456 or simply a 6 digit number

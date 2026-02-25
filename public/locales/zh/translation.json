@@ -564,6 +564,27 @@
         "show_password": "显示密码",
         "hide_password": "隐藏密码",
         "set_default": "设置默认值",
-        "rename": "重命名"
+        "rename": "重命名",
+        "forgot_password": "忘记密码？",
+        "system_help": "系统帮助",
+        "remembered": "返回登录",
+        "no_identity": "创建新身份",
+        "has_identity": "使用现有身份",
+        "prev_month": "上个月",
+        "next_month": "下个月",
+        "add_directive": "添加指令",
+        "revoke_access": "撤销访问权限",
+        "grant_access": "授予访问权限",
+        "downgrade_user": "降级用户角色",
+        "promote_user": "提升用户角色",
+        "reset_password": "重置密码",
+        "disable_2fa": "禁用 2FA",
+        "delete_user": "删除用户",
+        "first_page": "首页",
+        "prev_page": "上一页",
+        "next_page": "下一页",
+        "last_page": "最后一页",
+        "toggle_2fa": "Toggle 强制实施 2FA",
+        "toggle_strict_pwd": "Toggle 严格的密码策略"
     }
 }

@@ -255,11 +255,12 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
 
                         {displayDesc && !isEditing && (
                             <div
-                                className="mb-2 line-clamp-2 cursor-pointer group/preview px-1 -mx-1 rounded hover:bg-white/5 transition-colors"
+                                className="mb-2 cursor-pointer group/preview px-1 -mx-1 rounded hover:bg-white/5 transition-colors"
                                 onClick={() => setShowDossier(true)}
                                 data-tooltip-content={t('tooltip.dossier')}
+                                data-tooltip-pos="bottom"
                             >
-                                <p className="text-xs text-gray-400 font-mono opacity-80 group-hover/preview:opacity-100 group-hover/preview:text-cyber-primary transition-colors whitespace-pre-wrap">
+                                <p className="line-clamp-2 text-xs text-gray-400 font-mono opacity-80 group-hover/preview:opacity-100 group-hover/preview:text-cyber-primary transition-colors whitespace-pre-wrap">
                                     {displayDesc.length > 256 ? displayDesc.substring(0, 256) + '...' : displayDesc}
                                 </p>
                             </div>
@@ -329,7 +330,7 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 items-end">
                         <button
                             onClick={() => onToggleStatus(task)}
                             className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors text-xl pb-0.5 ${task.status == 1 ? 'bg-cyber-success text-black' : 'bg-transparent border border-gray-500 hover:border-cyber-success hover:text-cyber-success'}`}

@@ -535,13 +535,13 @@ const DirectiveModal = ({ task, categories, onClose, onUpdate, onDuplicate }) =>
                                     <span className="text-xl">📄</span> {t('tasks.dossier.description')}
                                 </h3>
                                 {editingField === 'description' ? (
-                                    <div className="relative group">
-                                        <textarea autoFocus className="w-full h-64 bg-black/40 border border-cyber-primary p-4 text-gray-200 font-mono resize-none focus:outline-none transition-colors custom-scrollbar" value={description} onChange={(e) => setDescription(e.target.value)} onBlur={(e) => handleBlur(e, 'description')} placeholder="Enter description..." />
+                                    <div className="relative group" tabIndex="-1" onBlur={(e) => handleBlur(e, 'description')}>
+                                        <textarea autoFocus className="w-full h-64 bg-black/40 border border-cyber-primary p-4 text-gray-200 font-mono resize-none focus:outline-none transition-colors custom-scrollbar" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter description..." />
                                         <div className="absolute bottom-4 right-4 flex gap-2">
-                                            <button title="Cancel Changes" onClick={(e) => { e.stopPropagation(); setDescription(task.description || ''); setEditingField(null); }} className="bg-red-900/80 text-white p-2 rounded hover:bg-red-700 transition-all border border-red-500 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+                                            <button data-tooltip-content={t('tooltip.cancel', 'Cancel')} onClick={(e) => { e.stopPropagation(); setDescription(task.description || ''); setEditingField(null); }} className="bg-red-900/80 text-white p-2 rounded hover:bg-red-700 transition-all border border-red-500 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
                                             </button>
-                                            <button title="Save Protocol" onClick={(e) => { e.stopPropagation(); handleSave(); }} className="bg-cyber-success text-black p-2 rounded hover:brightness-110 transition-all shadow-[0_0_10px_rgba(0,255,0,0.5)]">
+                                            <button data-tooltip-content={t('tooltip.save', 'Save')} onClick={(e) => { e.stopPropagation(); handleSave(); }} className="bg-cyber-success text-black p-2 rounded hover:brightness-110 transition-all shadow-[0_0_10px_rgba(0,255,0,0.5)]">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
                                             </button>
                                         </div>

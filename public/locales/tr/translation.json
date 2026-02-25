@@ -564,6 +564,27 @@
         "show_password": "Şifreyi Göster",
         "hide_password": "Şifreyi Gizle",
         "set_default": "Varsayılanı Ayarla",
-        "rename": "Yeniden isimlendirmek"
+        "rename": "Yeniden isimlendirmek",
+        "forgot_password": "Parolanızı mı unuttunuz?",
+        "system_help": "Sistem Yardımı",
+        "remembered": "Girişe Geri Dön",
+        "no_identity": "Yeni kimlik oluştur",
+        "has_identity": "Mevcut kimliği kullan",
+        "prev_month": "Önceki Ay",
+        "next_month": "Gelecek Ay",
+        "add_directive": "Yönerge Ekle",
+        "revoke_access": "Erişimi İptal Et",
+        "grant_access": "Erişim Ver",
+        "downgrade_user": "Kullanıcı Rolünü Düşürme",
+        "promote_user": "Kullanıcı Rolünü Yükselt",
+        "reset_password": "Şifreyi Sıfırla",
+        "disable_2fa": "2FA'yı devre dışı bırak",
+        "delete_user": "Kullanıcıyı Sil",
+        "first_page": "İlk Sayfa",
+        "prev_page": "Önceki Sayfa",
+        "next_page": "Sonraki Sayfa",
+        "last_page": "Son Sayfa",
+        "toggle_2fa": "2FA'yı Zorunlu Tut'u aç/kapa",
+        "toggle_strict_pwd": "Katı Şifre Politikasını Değiştir"
     }
 }

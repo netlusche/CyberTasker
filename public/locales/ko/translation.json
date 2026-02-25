@@ -564,6 +564,27 @@
         "show_password": "비밀번호 표시",
         "hide_password": "비밀번호 숨기기",
         "set_default": "기본값 설정",
-        "rename": "이름 바꾸기"
+        "rename": "이름 바꾸기",
+        "forgot_password": "비밀번호를 잊으셨나요?",
+        "system_help": "시스템 도움말",
+        "remembered": "로그인으로 돌아가기",
+        "no_identity": "새로운 신원 만들기",
+        "has_identity": "기존 ID 사용",
+        "prev_month": "지난달",
+        "next_month": "다음 달",
+        "add_directive": "지시문 추가",
+        "revoke_access": "액세스 취소",
+        "grant_access": "액세스 권한 부여",
+        "downgrade_user": "사용자 역할 다운그레이드",
+        "promote_user": "사용자 역할 승격",
+        "reset_password": "비밀번호 재설정",
+        "disable_2fa": "2FA 비활성화",
+        "delete_user": "사용자 삭제",
+        "first_page": "첫 페이지",
+        "prev_page": "이전 페이지",
+        "next_page": "다음 페이지",
+        "last_page": "마지막 페이지",
+        "toggle_2fa": "2FA 시행 토글",
+        "toggle_strict_pwd": "Toggle 엄격한 비밀번호 정책"
     }
 }

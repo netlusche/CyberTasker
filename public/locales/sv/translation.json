@@ -564,6 +564,27 @@
         "show_password": "Visa lösenord",
         "hide_password": "Dölj lösenord",
         "set_default": "Ställ in som standard",
-        "rename": "Döpa om"
+        "rename": "Döpa om",
+        "forgot_password": "Glömt lösenordet?",
+        "system_help": "Systemhjälp",
+        "remembered": "Tillbaka till Logga in",
+        "no_identity": "Skapa ny identitet",
+        "has_identity": "Använd befintlig identitet",
+        "prev_month": "Föregående månad",
+        "next_month": "Nästa månad",
+        "add_directive": "Lägg till direktiv",
+        "revoke_access": "Återkalla åtkomst",
+        "grant_access": "Bevilja åtkomst",
+        "downgrade_user": "Nedgradera användarroll",
+        "promote_user": "Marknadsför användarroll",
+        "reset_password": "Återställ lösenord",
+        "disable_2fa": "Inaktivera 2FA",
+        "delete_user": "Ta bort användare",
+        "first_page": "Första sidan",
+        "prev_page": "Föregående sida",
+        "next_page": "Nästa sida",
+        "last_page": "Sista sidan",
+        "toggle_2fa": "Växla Enforce 2FA",
+        "toggle_strict_pwd": "Växla strikt lösenordspolicy"
     }
 }

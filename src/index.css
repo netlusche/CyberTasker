@@ -20,6 +20,12 @@
   --shadow-accent: 0 0 10px var(--theme-accent), 0 0 20px var(--theme-accent);
 }
 
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+
 .theme-cyberpunk {
   --theme-bg: #0a0a0a;
   --theme-surface: #121212;
@@ -660,12 +666,26 @@ body.theme-megacorp-executive::after {
   border-color: #6c757d !important;
 }
 
-/* Fix generic transparent black backgrounds used across forms */
+/* Fix generic transparent black backgrounds used across forms and Profile Modals */
 .theme-megacorp-executive .bg-black\/30:not(.theme-preview-card *),
 .theme-megacorp-executive .bg-black\/40:not(.theme-preview-card),
-.theme-megacorp-executive .bg-black\/40:not(.theme-preview-card *) {
-  background-color: rgba(0, 0, 0, 0.05) !important;
+.theme-megacorp-executive .bg-black\/40:not(.theme-preview-card *),
+.theme-megacorp-executive .bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.03) !important;
   color: #212529 !important;
+}
+
+.theme-megacorp-executive .bg-cyber-primary\/5 {
+  background-color: #ffffff !important;
+}
+
+.theme-megacorp-executive .bg-red-900\/10 {
+  background-color: rgba(220, 53, 69, 0.1) !important;
+}
+
+.theme-megacorp-executive .border-cyber-primary\/30,
+.theme-megacorp-executive .border-cyber-danger\/50 {
+  border-color: #e9ecef !important;
 }
 
 /* Fix placeholder texts globally for this theme to be readable */
@@ -2244,18 +2264,20 @@ body.theme-steampunk .input-cyber:focus {
     opacity: 0.9 !important;
   }
 }
+
 /* =========================================
    TOOLTIP DATA-ATTRIBUTE STRATEGY
    ========================================= */
 
-[data-tooltip-content] {
+[data-tooltip-content]:not(.absolute):not(.fixed):not(.sticky):not(.relative) {
   position: relative;
 }
 
 [data-tooltip-content]::after {
   content: attr(data-tooltip-content);
   position: absolute;
-  bottom: 120%; /* Position above the element */
+  /* Default: Top */
+  bottom: 120%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   padding: 0.25rem 0.5rem;
@@ -2269,15 +2291,15 @@ body.theme-steampunk .input-cyber:focus {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-  pointer-events: none; /* Crucial: Do not block mouse events on the element itself */
+  pointer-events: none;
   z-index: 50;
   box-shadow: var(--shadow-primary);
 }
 
-/* Optional: small triangle pointing down */
 [data-tooltip-content]::before {
   content: '';
   position: absolute;
+  /* Default: Top */
   bottom: calc(120% - 4px);
   left: 50%;
   transform: translateX(-50%);
@@ -2291,12 +2313,95 @@ body.theme-steampunk .input-cyber:focus {
   z-index: 50;
 }
 
+/* Modifiers for Tooltip Position */
+[data-tooltip-content][data-tooltip-pos="bottom"]::after {
+  bottom: auto;
+  top: 120%;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+[data-tooltip-content][data-tooltip-pos="bottom"]::before {
+  bottom: auto;
+  top: calc(120% - 4px);
+  border-color: transparent transparent var(--theme-primary) transparent;
+}
+
+[data-tooltip-content][data-tooltip-pos="left"]::after {
+  bottom: 50%;
+  left: auto;
+  right: 120%;
+  transform: translateY(50%) translateX(10px);
+}
+
+[data-tooltip-content][data-tooltip-pos="left"]::before {
+  bottom: 50%;
+  left: auto;
+  right: calc(120% - 4px);
+  transform: translateY(50%);
+  border-color: transparent transparent transparent var(--theme-primary);
+}
+
+[data-tooltip-content][data-tooltip-pos="right"]::after {
+  bottom: 50%;
+  left: 120%;
+  transform: translateY(50%) translateX(-10px);
+}
+
+[data-tooltip-content][data-tooltip-pos="right"]::before {
+  bottom: 50%;
+  left: calc(120% - 4px);
+  transform: translateY(50%);
+  border-color: transparent var(--theme-primary) transparent transparent;
+}
+
+
 /* Show tooltip on hover or when it has keyboard focus */
 [data-tooltip-content]:hover::after,
-[data-tooltip-content]:hover::before,
-[data-tooltip-content]:focus-visible::after,
-[data-tooltip-content]:focus-visible::before {
+[data-tooltip-content]:focus-visible::after {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+[data-tooltip-content]:hover::before,
+[data-tooltip-content]:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+[data-tooltip-content][data-tooltip-pos="left"]:hover::after,
+[data-tooltip-content][data-tooltip-pos="left"]:focus-visible::after {
+  transform: translateY(50%) translateX(0);
+}
+
+[data-tooltip-content][data-tooltip-pos="right"]:hover::after,
+[data-tooltip-content][data-tooltip-pos="right"]:focus-visible::after {
+  transform: translateY(50%) translateX(0);
+}
+
+[data-tooltip-content][data-tooltip-pos="bottom"]:hover::after,
+[data-tooltip-content][data-tooltip-pos="bottom"]:focus-visible::after {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Specific transform resets for visible state based on pos */
+[data-tooltip-content]:hover::after,
+[data-tooltip-content]:focus-visible::after {
+  transform: translateX(-50%) translateY(0);
+  /* Default Top */
+}
+
+[data-tooltip-content][data-tooltip-pos="bottom"]:hover::after,
+[data-tooltip-content][data-tooltip-pos="bottom"]:focus-visible::after {
+  transform: translateX(-50%) translateY(0);
+}
+
+[data-tooltip-content][data-tooltip-pos="left"]:hover::after,
+[data-tooltip-content][data-tooltip-pos="left"]:focus-visible::after {
+  transform: translateY(50%) translateX(0);
+}
+
+[data-tooltip-content][data-tooltip-pos="right"]:hover::after,
+[data-tooltip-content][data-tooltip-pos="right"]:focus-visible::after {
+  transform: translateY(50%) translateX(0);
 }

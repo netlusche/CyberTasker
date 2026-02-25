@@ -29,6 +29,7 @@ const HelpModal = ({ onClose }) => {
                     onClick={onClose}
                     className={`absolute font-bold text-xl transition-colors z-50 ${theme === 'lcars' ? 'top-0 right-0 bg-[#ffaa00] text-black px-3 py-1 rounded-tr-[1.5rem] hover:brightness-110' : `top-1 ${(theme === 'matrix' || theme === 'weyland' || theme === 'cyberpunk') ? 'right-6' : 'right-1'} text-cyber-secondary hover:text-white`}`}
                     data-tooltip-content={t('tooltip.close', 'Close')}
+                    data-tooltip-pos="left"
                 >
                     [X]
                 </button>

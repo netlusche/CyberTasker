@@ -43,7 +43,8 @@ test.describe('Deep Directives & Dossier Flow', () => {
         await textarea.fill(description);
 
         // 5. Save using the checkmark button
-        await page.click('button[title="Save Protocol"]', { force: true });
+        // 5. Save using the checkmark button
+        await page.locator('.relative.group').filter({ has: page.locator('textarea') }).locator('button[data-tooltip-content="Save"]').click({ force: true });
 
         // Wait for it to go back to read mode (textarea should disappear)
         await expect(textarea).not.toBeVisible({ timeout: 5000 });
@@ -51,7 +52,7 @@ test.describe('Deep Directives & Dossier Flow', () => {
         // 5a. Verify Cancel button
         await page.click('.markdown-body', { force: true }); // Click to edit again
         await textarea.fill('This should be discarded');
-        await page.click('button[title="Cancel Changes"]', { force: true });
+        await page.locator('.relative.group').filter({ has: page.locator('textarea') }).locator('button[data-tooltip-content="Cancel"]').click({ force: true });
         await expect(textarea).not.toBeVisible();
         await expect(page.locator('.markdown-body')).toContainText(/Level 5/i);
         await expect(page.locator('.markdown-body')).not.toContainText(/discarded/i);
@@ -89,20 +90,21 @@ test.describe('Deep Directives & Dossier Flow', () => {
         await linkItem.click();
         await expect(linkLabel).toBeVisible();
         await linkLabel.fill('Updated Uplink');
-        await page.click('button[title="Save"]');
+        await linkLabel.press('Enter');
         await expect(linkLabel).not.toBeVisible();
         await expect(page.locator('text=Updated Uplink')).toBeVisible();
 
         // 8a. Verify Deletion
-        await page.hover('.bg-black\\/30.border-l-cyber-primary'); // Reveal delete button
-        await page.click('button[title="Remove Uplink"]');
+        const updatedLinkItem = page.locator('.group').filter({ hasText: /Updated Uplink/i }).first();
+        await updatedLinkItem.hover(); // Reveal delete button
+        await updatedLinkItem.locator('button[data-tooltip-content="Delete"]').click();
         await expect(page.locator('text=Updated Uplink')).not.toBeVisible();
 
         // 9. Persistence Check (Reload) - Re-add a link first
         await page.click('button:has-text("+ ADD UPLINK")');
         await linkLabel.fill('Persistent Link');
         await linkUrl.fill('https://persistent.link');
-        await page.click('button[title="Save"]');
+        await linkUrl.press('Enter');
 
         await page.reload();
         await page.waitForSelector('.card-cyber');

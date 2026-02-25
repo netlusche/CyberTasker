@@ -564,6 +564,27 @@
         "show_password": "Näytä salasana",
         "hide_password": "Piilota salasana",
         "set_default": "Aseta oletus",
-        "rename": "Nimeä uudelleen"
+        "rename": "Nimeä uudelleen",
+        "forgot_password": "Unohtuiko salasana?",
+        "system_help": "Järjestelmän ohje",
+        "remembered": "Takaisin kirjautumiseen",
+        "no_identity": "Luo uusi identiteetti",
+        "has_identity": "Käytä olemassa olevaa identiteettiä",
+        "prev_month": "Edellinen kuukausi",
+        "next_month": "Ensi kuussa",
+        "add_directive": "Lisää direktiivi",
+        "revoke_access": "Peruuta käyttöoikeus",
+        "grant_access": "Myönnä käyttöoikeus",
+        "downgrade_user": "Päivitä käyttäjärooli",
+        "promote_user": "Mainosta käyttäjän roolia",
+        "reset_password": "Palauta salasana",
+        "disable_2fa": "Poista 2FA käytöstä",
+        "delete_user": "Poista käyttäjä",
+        "first_page": "Ensimmäinen sivu",
+        "prev_page": "Edellinen sivu",
+        "next_page": "Seuraava sivu",
+        "last_page": "Viimeinen sivu",
+        "toggle_2fa": "Ota käyttöön 2FA",
+        "toggle_strict_pwd": "Vaihda Tiukka salasanakäytäntö päälle"
     }
 }

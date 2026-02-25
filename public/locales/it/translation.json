@@ -564,6 +564,27 @@
         "show_password": "Mostra password",
         "hide_password": "Nascondi password",
         "set_default": "Imposta predefinito",
-        "rename": "Rinominare"
+        "rename": "Rinominare",
+        "forgot_password": "Ha dimenticato la password?",
+        "system_help": "Guida di sistema",
+        "remembered": "Torna al login",
+        "no_identity": "Crea nuova identità",
+        "has_identity": "Utilizza l'identità esistente",
+        "prev_month": "Mese precedente",
+        "next_month": "Il prossimo mese",
+        "add_directive": "Aggiungi direttiva",
+        "revoke_access": "Revoca accesso",
+        "grant_access": "Concedi l'accesso",
+        "downgrade_user": "Downgrade del ruolo utente",
+        "promote_user": "Promuovi ruolo utente",
+        "reset_password": "Reimposta password",
+        "disable_2fa": "Disabilita 2FA",
+        "delete_user": "Elimina utente",
+        "first_page": "Prima pagina",
+        "prev_page": "Pagina precedente",
+        "next_page": "Pagina successiva",
+        "last_page": "Ultima pagina",
+        "toggle_2fa": "Attiva/disattiva Applica 2FA",
+        "toggle_strict_pwd": "Attiva/disattiva la politica rigorosa della password"
     }
 }

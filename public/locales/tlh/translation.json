@@ -564,6 +564,27 @@
         "show_password": "ngoq 'ang",
         "hide_password": "ngoq So'",
         "set_default": "nIteb",
-        "rename": "pong choH"
+        "rename": "pong choH",
+        "forgot_password": "ngoq chaw' vlIlajpu'?",
+        "system_help": "pat qaH",
+        "remembered": "yaH ghoS",
+        "no_identity": "chu' DIch choH",
+        "has_identity": "DIch lo'",
+        "prev_month": "jar let",
+        "next_month": "jar pIm",
+        "add_directive": "ra' chel",
+        "revoke_access": "chaw' Qaw'",
+        "grant_access": "chaw' nob",
+        "downgrade_user": "ghu' bIng",
+        "promote_user": "ghu' jen",
+        "reset_password": "ngoq choH",
+        "disable_2fa": "cha' pat Qaw'",
+        "delete_user": "lo'wI' Qaw'",
+        "first_page": "De' wa'",
+        "prev_page": "De' puS",
+        "next_page": "De' pIm",
+        "last_page": "De' Qav",
+        "toggle_2fa": "cha' pat choH",
+        "toggle_strict_pwd": "ngoq nIv choH"
     }
 }

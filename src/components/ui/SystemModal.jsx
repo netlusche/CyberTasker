@@ -44,6 +44,8 @@ const SystemModal = ({
                     <button
                         onClick={onClose}
                         className={`absolute top-0 right-0 font-bold transition-colors z-50 flex items-center justify-center focus:outline-none ${closeBtnClassName || `p-4 text-2xl hover:text-white ${accentClass.split(' ')[2]}`}`}
+                        data-tooltip-content={title ? 'Close' : undefined}
+                        data-tooltip-pos="left"
                     >
                         [X]
                     </button>

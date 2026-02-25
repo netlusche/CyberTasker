@@ -564,6 +564,27 @@
         "show_password": "Passwort anzeigen",
         "hide_password": "Passwort ausblenden",
         "set_default": "Als Standard festlegen",
-        "rename": "Umbenennen"
+        "rename": "Umbenennen",
+        "forgot_password": "Passwort vergessen?",
+        "system_help": "Systemhilfe",
+        "remembered": "Zurück zum Anmelden",
+        "no_identity": "Neue Identität erstellen",
+        "has_identity": "Vorhandene Identität verwenden",
+        "prev_month": "Vorheriger Monat",
+        "next_month": "Nächsten Monat",
+        "add_directive": "Richtlinie hinzufügen",
+        "revoke_access": "Zugriff widerrufen",
+        "grant_access": "Zugriff gewähren",
+        "downgrade_user": "Benutzerrolle herabstufen",
+        "promote_user": "Benutzerrolle heraufstufen",
+        "reset_password": "Passwort zurücksetzen",
+        "disable_2fa": "2FA deaktivieren",
+        "delete_user": "Benutzer löschen",
+        "first_page": "Erste Seite",
+        "prev_page": "Vorherige Seite",
+        "next_page": "Nächste Seite",
+        "last_page": "Letzte Seite",
+        "toggle_2fa": "2FA durchsetzen umschalten",
+        "toggle_strict_pwd": "Strikte Passwortrichtlinie umschalten"
     }
 }
