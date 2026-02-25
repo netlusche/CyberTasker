@@ -5,6 +5,18 @@
 
 ---
 
+# CyberTasker v2.5.1 (The Security & Gamification Update)
+*Release Date: 2026-02-25*
+
+*   **Enforce Email 2FA Policy**: Administrators can now flip the system-wide "Enforce Email 2FA" switch. If active, any operative without an Authenticator App will be forced to use an Emergency Override Code sent to their registered email before accessing the grid. Banners proactively warn operatives in their profile and during the login flow.
+*   **Scalable Gamification Matrix**: Replaced the static level system with an infinitely scalable "Cyber-Badge" matrix. Operatives now earn progressive Tiers (`Novice` to `Prime`) and Titles (`Script Kiddie` to `Singularity`) as they gain XP and level up. Badges are fully translated into all 7 supported languages.
+*   **Four New Visual Matrices**: Added highly stylized retro and corporate themes: **Computerwelt** (Matte Black & Neon Green), **Mensch-Maschine** (High-Contrast Crimson), **Neon Syndicate** (Synthwave), and **Megacorp Executive** (Orbital White & Ice Blue).
+*   **Deep Installation Security**: The zero-configuration installer now strictly requires a valid email address when provisioning the Master Admin account, guaranteeing an open comm-link for 2FA and recovery protocols.
+*   **Quality of Life**: Implemented a password visibility toggle (Eye Icon) natively within the operative Profile and Auth screens. The Administration Console now clearly displays the active system version at the bottom.
+*   **Automated Quality Assurance**: Deployed Python-based translation validation (`check_translations.py`) and JS-based CSS-variable linting (`check-theme.js`) to the GitHub Actions CI pipeline to permanently eliminate missing translations and hardcoded "theme bleeding".
+
+---
+
 # CyberTasker v2.4 (The Automation & Precision Update)
 *Release Date: 2026-02-23*
 

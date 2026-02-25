@@ -2,6 +2,23 @@
 
 **CyberTasker** is a gamified, cyberpunk-themed task management application built with **React (Vite)** and **PHP**. It supports **MySQL, MariaDB, and SQLite**, featuring a robust role-based access control (RBAC) system, gamification mechanics (XP, Levels, Badges), and secure Two-Factor Authentication (2FA).
 
+## 📁 New in Version 2.5.1 (The Security & Gamification Update)
+
+### 🛡 Enforced Security & Installation
+*   **Enforce Email 2FA Policy**: Administrators can now flip the system-wide "Enforce Email 2FA" switch. If active, any operative without an Authenticator App will be forced to use an Emergency Override Code sent to their registered email before accessing the grid. Banners proactively warn operatives in their profile and during the login flow.
+*   **Deep Installation Security**: The zero-configuration installer now strictly requires a valid email address when provisioning the Master Admin account, guaranteeing an open comm-link for 2FA and recovery protocols.
+
+### 🏆 Gamification & Visuals
+*   **Scalable Gamification Matrix**: Replaced the static level system with an infinitely scalable "Cyber-Badge" matrix. Operatives now earn progressive Tiers (`Novice` to `Prime`) and Titles (`Script Kiddie` to `Singularity`) as they gain XP and level up. Badges are fully translated into all 7 supported languages.
+*   **Four New Visual Matrices**: Added highly stylized retro and corporate themes: **Computerwelt** (Matte Black & Neon Green), **Mensch-Maschine** (High-Contrast Crimson), **Neon Syndicate** (Synthwave), and **Megacorp Executive** (Orbital White & Ice Blue).
+
+### ⚙️ Quality of Life & Assurance
+*   **Password Visibility**: Implemented a password visibility toggle (Eye Icon) natively within the operative Profile and Auth screens. 
+*   **Automated Quality Assurance**: Deployed Python-based translation validation (`check_translations.py`) and JS-based CSS-variable linting (`check-theme.js`) to the GitHub Actions CI pipeline to permanently eliminate missing translations and hardcoded "theme bleeding".
+*   **Version Transparency**: The Administration Console now clearly displays the active system version at the bottom.
+
+---
+
 ## 📁 New in Version 2.4.1 (Completed Tasks Hotfix)
 
 *   **Dashboard Visibility Patch**: Fixed a critical backend filtering bug within the SQLite and MySQL repositories that unintentionally wiped all completed tasks (`status = 1`) from the database responses. Completed directives are now correctly tallied and displayed on the operative dashboard again.
