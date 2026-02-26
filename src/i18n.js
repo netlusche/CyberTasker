@@ -3,10 +3,6 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
 
-// For Vitest: Load translations synchronously to avoid HttpApi issues
-import enTranslation from '../public/locales/en/translation.json';
-import deTranslation from '../public/locales/de/translation.json';
-
 const isTest = import.meta.env.MODE === 'test';
 
 const i18nConfig = {
@@ -21,10 +17,7 @@ const i18nConfig = {
 };
 
 if (isTest) {
-    i18nConfig.resources = {
-        en: { translation: enTranslation },
-        de: { translation: deTranslation }
-    };
+    i18nConfig.resources = {}; // Tests will inject translations manually
 }
 
 const instance = i18n.use(initReactI18next);

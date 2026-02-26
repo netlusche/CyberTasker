@@ -127,13 +127,12 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         const code = codeMatch[1];
 
         // Fill the setup code verification field
-        // We use a broader locator to find the input that resembles a 2FA code field
-        const codeInput = page.locator('input[type="text"]').last();
+        const codeInput = page.getByTestId('2fa-setup-code-input');
         await expect(codeInput).toBeVisible({ timeout: 10000 });
         await codeInput.fill(code);
 
-        // Click Bridge / Verify (bypassing text translation with structural search)
-        const verifyBtn = codeInput.locator('xpath=ancestor::form').first().locator('button[type="submit"]');
+        // Click Bridge / Verify 
+        const verifyBtn = page.getByTestId('2fa-setup-verify-btn');
         await expect(verifyBtn).toBeVisible({ timeout: 5000 });
         await verifyBtn.click();
 

@@ -797,6 +797,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                                 onInvalid={e => handleInvalid(e, 'two_fa_code')}
                                                 className={`input-cyber text-center w-full text-sm h-10 tracking-[0.3em] font-bold input-normal-case ${validationErrors.two_fa_code ? 'border-cyber-secondary shadow-cyber-secondary' : 'border-cyber-success/40'}`}
                                                 maxLength={6}
+                                                data-testid="2fa-setup-code-input"
                                                 required
                                                 autoFocus
                                             />
@@ -810,6 +811,7 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                                             type="submit"
                                             className="btn-cyber bg-cyber-success text-black font-bold text-xs px-6 h-10 shadow-cyber-success hover:brightness-110 active:scale-95 transition-all"
                                             data-tooltip-content={t('tooltip.verify_2fa', 'Verify Access Code')}
+                                            data-testid="2fa-setup-verify-btn"
                                         >
                                             {t('profile.security.bridge')}
                                         </button>
