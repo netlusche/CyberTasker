@@ -1,3 +1,5 @@
+import i18n from '../i18n';
+
 let csrfToken = null;
 
 export const setCsrfToken = (token) => {
@@ -5,7 +7,7 @@ export const setCsrfToken = (token) => {
 };
 
 export const apiFetch = async (url, options = {}) => {
-    let lang = localStorage.getItem('i18nextLng') || 'en';
+    let lang = i18n.language || localStorage.getItem('i18nextLng') || 'en';
     if (lang.includes('-')) lang = lang.split('-')[0];
 
     const headers = {

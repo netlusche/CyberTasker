@@ -8,7 +8,7 @@ import CyberAlert from './CyberAlert';
 
 
 const AuthForm = ({ onLogin }) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { theme } = useTheme();
     const [isLogin, setIsLogin] = useState(true);
     const [showHelp, setShowHelp] = useState(false);
@@ -50,7 +50,7 @@ const AuthForm = ({ onLogin }) => {
             return;
         }
 
-        let langCode = localStorage.getItem('i18nextLng') || 'en';
+        let langCode = i18n.language || 'en';
         if (langCode.includes('-')) langCode = langCode.split('-')[0];
 
         const endpoint = isLogin ? 'api/index.php?route=auth/login' : 'api/index.php?route=auth/register';
@@ -130,7 +130,7 @@ const AuthForm = ({ onLogin }) => {
     const handleForgotSubmit = async () => {
         setLoading(true);
         try {
-            let langCode = localStorage.getItem('i18nextLng') || 'en';
+            let langCode = i18n.language || 'en';
             if (langCode.includes('-')) langCode = langCode.split('-')[0];
 
             const res = await apiFetch('api/index.php?route=auth/request_password_reset', {
