@@ -159,3 +159,24 @@
 
 **Zu US-2.6.11 (Session Invalidierung):**
 - **Testfall (Security):** Einloggen und das Profil-Modal öffnen. Eine Änderung des Passworts durchführen. Prüfen, ob nach der Erfolgsmeldung automatisch ein Redirect auf den Login-Screen erfolgt und ein direkter Aufruf der internen `index.html` durch den Session-Schutz abgewiesen wird.
+
+---
+
+### US-2.6.12: Wählbarer Administrator-Benutzername bei der Installation
+
+**Beschreibung:**
+Als Administrator, der CyberTasker initial aufsetzt, möchte ich bei der Installation meinen gewünschten "Codename" (Benutzernamen) für das Master-Konto frei wählen können, anstatt dass der Benutzername systemseitig starr auf "admin" festgelegt ist. Dies erhöht die Sicherheit (Schutz vor automatisierten Brute-Force-Attacken auf den Loginnamen "admin") und ermöglicht eine direktere Personalisierung ab der ersten Sekunde. 
+
+**Akzeptanzkriterien:**
+- **Neues Eingabefeld:** Im Installer (`install.html`) gibt es ein neues, valides Eingabefeld für den "Codename (Benutzername)" oberhalb des Com-Link (E-Mail) Feldes.
+- **Backend Verarbeitung:** Die `api/install.php` übernimmt den übergebenen Benutzernamen und speichert ihn anstelle des bisher hartcodierten Strings `'admin'` bei der `$userRepo->create(...)` Methode.
+- **Validierung:** Der gewählte Benutzername darf nicht leer sein und sollte auf unzulässige Sonderzeichen oder Leerzeichen geprüft werden (analog zur regulären Registrierung).
+- **Dokumentations-Update:** Die Datei `manuals/CyberTasker_Admin_Guide.md` (Installationsanleitung) wird aktualisiert, um diesen Schritt zu beschreiben.
+- **Dokumentations-Update 2:** Das `README.md` (Quick Start) spiegelt wieder, dass man sich mit dem selbst gewählten Namen (statt "admin") einloggt.
+
+---
+
+**Testfälle für die User Stories (Manuell & Automatisiert)**
+
+**Zu US-2.6.12 (Custom Admin Username):**
+- **Testfall (Installer):** Die lokale Datenbank löschen und den Installer `install.html` aufrufen. Einen Administrator-Account mit dem Codenamen "CyberBoss" anlegen. Anschließend versuchen, sich über den Login-Screen mit "CyberBoss" und dem vergebenen Passwort einzuloggen. Der Login muss erfolgreich sein. Ein Login-Versuch mit dem Namen "admin" muss abgelehnt werden.

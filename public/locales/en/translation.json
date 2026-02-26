@@ -92,7 +92,9 @@
             "connection_failed": "SYSTEM ERROR: CONNECTION FAILED.",
             "reset_title": "RESET ACCESS KEY",
             "override": "OVERRIDE",
-            "missing_reset_token": "ERROR: MISSING RESET TOKEN."
+            "missing_reset_token": "ERROR: MISSING RESET TOKEN.",
+            "install_title": "INITIALIZE GRID",
+            "install_subtitle": "Establish the Master Admin parameters to initialize the CyberTasker core."
         },
         "status": {
             "resyncing": "[ RESYNCING... ]",

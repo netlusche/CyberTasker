@@ -23,8 +23,13 @@ npm run check:theme
 echo -e "${GREEN}[3/6] Running Playwright E2E tests...${RESET}"
 npx playwright test --workers=1
 
-# 4. Version Bumping
-echo -e "\n${GREEN}[4/6] Version Bumping${RESET}"
+# 4. Clean Artifacts
+echo -e "\n${GREEN}[4/7] Scrubbing Development Artifacts...${RESET}"
+rm -f api/mail_log.txt api/cybertracker.db
+echo "Deleted api/mail_log.txt and api/cybertracker.db"
+
+# 5. Version Bumping
+echo -e "\n${GREEN}[5/7] Version Bumping${RESET}"
 CURRENT_VERSION=$(node -p "require('./package.json').version")
 echo -e "Current version is: ${YELLOW}${CURRENT_VERSION}${RESET}"
 
@@ -44,15 +49,24 @@ pkg.version = '$NEW_VERSION';
 fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
 "
 
-# 5. Git Commit & Tag
-echo -e "\n${GREEN}[5/6] Git Commit & Tag${RESET}"
+# 6. Document Version Bumping
+echo -e "\n${GREEN}[6/8] Document Version Bumping${RESET}"
+echo -e "Updating manuals to version ${NEW_VERSION}..."
+sed -i '' "s/# CyberTasker v[0-9]*\.[0-9]*.* - /# CyberTasker v${NEW_VERSION} - /g" manuals/*.md
+
+# 7. PDF Generation
+echo -e "\n${GREEN}[7/8] Generating PDF Manuals${RESET}"
+node scripts/build_pdfs.cjs
+
+# 8. Git Commit & Tag
+echo -e "\n${GREEN}[8/8] Git Commit & Tag${RESET}"
 git add .
-git commit -m "chore(release): bump version to v${NEW_VERSION}"
+git commit -m "chore(release): bump version to v${NEW_VERSION} and update manuals"
 git tag "v${NEW_VERSION}"
 echo -e "Committed and tagged as v${NEW_VERSION}\n"
 
-# 6. Push
-echo -e "${GREEN}[6/6] Push to remote${RESET}"
+# 9. Push
+echo -e "${GREEN}[9/9] Push to remote${RESET}"
 read -p "Do you want to push the commit and tags to origin? (y/N): " PUSH_CONFIRM
 if [[ "$PUSH_CONFIRM" =~ ^[Yy]$ ]]; then
     echo -e "Pushing commits and tags..."

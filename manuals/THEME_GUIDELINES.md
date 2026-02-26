@@ -26,6 +26,9 @@ Every theme MUST define the following CSS variables inside a specific `.theme-[n
 - `--theme-font`: The primary font-family used across the app (e.g., `'Courier New', monospace`).
 - `--theme-radius`: The border-radius for buttons and cards (e.g., `0.5rem` or `0rem` for blocky themes).
 
+**⚠️ Important Typography Rule for Inputs:** 
+If your chosen custom font (like *Cinzel* for Arrakis) does not clearly distinguish between uppercase and lowercase characters (e.g., it is an "all-caps" or "small-caps" font), you **MUST** add a CSS override in `src/index.css` for `input[type="text"]`, `input[type="password"]`, and `input[type="email"]`. Form inputs must always use a highly legible, standard system font so users can verify case sensitivity for usernames and passwords.
+
 ### Shadows (Glows)
 - `--shadow-primary`: `0 0 10px var(--theme-primary)` etc.
 - `--shadow-secondary`: Used for secondary glowing elements.
@@ -44,11 +47,12 @@ Every theme MUST define the following CSS variables inside a specific `.theme-[n
 To add a new theme (e.g., "Mensch-Maschine"):
 
 1. **Define the CSS:** Add `.theme-mensch-maschine { ... }` to `src/index.css` defining all variables listed in section 1.
-2. **Register the Key:** Add the translation key (e.g., `"mensch-maschine": "Mensch-Maschine"`) to `public/locales/en/translation.json` under `profile.themes`.
-3. **Register in Context:** Update the `themes` array in `src/utils/ThemeContext.jsx` with the new theme ID.
-4. **Create a Profile UI Card:** Edit `src/components/ProfileModal.jsx` to render a selectable card for the new theme, including a visually appropriate SVG icon that matches the aesthetic.
+2. **Register the Keys (24 Languages):** Add the translation key (e.g., `"mensch-maschine": "Mensch-Maschine"`) to `public/locales/en/translation.json` under `profile.themes`. **CRITICAL:** You must add this key to all 24 supported language folders (`de`, `es`, `fr`, `ja`, etc.) or the CI pipeline will fail.
+3. **Register in Context:** Update the `availableThemes` array in `src/utils/ThemeContext.jsx` with the new theme ID.
+4. **Create a Profile UI Card:** Edit `src/components/ProfileModal.jsx` to render a selectable card for the new theme, taking care to use the correct `data-tooltip-content` translation call. Ensure the SVG icon matches the aesthetic.
 5. **Ensure Legibility:** When creating a new theme, the readability of all UI elements with labels/text must be guaranteed. Pay special attention to contrast on hover states, form inputs, and buttons.
-6. **Run the Checks:** Execute `npm run check:all` to ensure no validation scripts fail.
+6. **Theme Variable Validation:** Execute `npm run check:theme` (which runs `scripts/check-theme.js`). This CI script specifically scans your `.jsx` files to ensure no "theme bleeding" occurs (e.g., hardcoded HEX colors that bypass the semantic `--theme` variables).
+7. **Translation Validation:** Execute `npm run check-translations` to ensure your new theme key is perfectly synchronized across all 24 language arrays.
 
 ## 4. Light Mode vs. Dark Mode Considerations
 

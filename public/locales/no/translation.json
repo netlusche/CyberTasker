@@ -92,7 +92,9 @@
             "connection_failed": "SYSTEMFEIL: TILKOBLING MISLYKKES.",
             "reset_title": "TILBAKESTILLINGSNØKKEL",
             "override": "OVERSTYR",
-            "missing_reset_token": "FEIL: MANGLER RESET TOKEN."
+            "missing_reset_token": "FEIL: MANGLER RESET TOKEN.",
+            "install_title": "INITIALISERER SYSTEMNORD",
+            "install_subtitle": "Etabler Master Admin parametere for å initialisere CyberTasker kjernen."
         },
         "status": {
             "resyncing": "[ RESYNCING... ]",

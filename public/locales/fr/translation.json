@@ -92,7 +92,9 @@
             "connection_failed": "ERREUR SYSTÈME : ÉCHEC DE LA CONNEXION.",
             "reset_title": "RÉINITIALISER LA CLÉ D'ACCÈS",
             "override": "REMPLACER",
-            "missing_reset_token": "ERREUR : JETON DE RÉINITIALISATION MANQUANT."
+            "missing_reset_token": "ERREUR : JETON DE RÉINITIALISATION MANQUANT.",
+            "install_title": "INITIALISATION DE LA MATRICE",
+            "install_subtitle": "Établissez les paramètres de l'Administrateur Maître pour initialiser le cœur de CyberTasker."
         },
         "status": {
             "resyncing": "[ RESYNCATION... ]",

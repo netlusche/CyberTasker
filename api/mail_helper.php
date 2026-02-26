@@ -48,13 +48,14 @@ function sendMail($to, $subject, $body, $lang = 'en')
     // Send mail and log result
     $success = @mail($to, $subject, $htmlMessage, $headers);
 
-    // Write to a log file for E2E tests to read (Disabled for Production/Strato test)
-    $logFile = __DIR__ . '/mail_log.txt';
-    $logHeader = "=== [MAIL ENQUEUED] ===\nTo: $to\nSubject: $subject\n";
-    $logMessage = $logHeader . $htmlMessage . "\n========================\n\n";
-    file_put_contents($logFile, $logMessage, FILE_APPEND);
-
-    error_log($logMessage); // Uncomment for system-level mail debugging
+    // SECURITY: Write to a log file for E2E tests ONLY when running via local development server
+    if (php_sapi_name() === 'cli-server') {
+        $logFile = __DIR__ . '/mail_log.txt';
+        $logHeader = "=== [MAIL ENQUEUED] ===\nTo: $to\nSubject: $subject\n";
+        $logMessage = $logHeader . $htmlMessage . "\n========================\n\n";
+        file_put_contents($logFile, $logMessage, FILE_APPEND);
+    // error_log($logMessage); // Uncomment for system-level console debugging
+    }
 
     return $success;
 }

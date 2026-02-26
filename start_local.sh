@@ -1,6 +1,7 @@
 #!/bin/bash
-echo "Cleaning up port 8000 and 5174..."
+echo "Cleaning up port 8000, 5173 and 5174..."
 lsof -ti:8000 | xargs kill -9 2>/dev/null
+lsof -ti:5173 | xargs kill -9 2>/dev/null
 lsof -ti:5174 | xargs kill -9 2>/dev/null
 pkill -f "php -S localhost:8000"
 

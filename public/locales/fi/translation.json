@@ -92,7 +92,9 @@
             "connection_failed": "JÄRJESTELMÄVIRHE: YHTEYDEN MUOTOS EIVÄLLÄ.",
             "reset_title": "PALAUTA KÄYTTÖAvain",
             "override": "OHITTA",
-            "missing_reset_token": "VIRHE: NOLLAUSVALIKKO PUUTUU."
+            "missing_reset_token": "VIRHE: NOLLAUSVALIKKO PUUTUU.",
+            "install_title": "ALUSTA NEUROVERKKO",
+            "install_subtitle": "Määritä Master Admin -parametrit CyberTasker-ytimen alustamiseksi."
         },
         "status": {
             "resyncing": "[ UUDELLEENSYNKROINTI... ]",

@@ -4,7 +4,7 @@ import { loginAsAdmin } from './auth-commands.js';
 test.describe('Deep Directives & Dossier Flow', () => {
     test.beforeEach(async ({ page }) => {
         // Use the dev server URL
-        await page.goto('http://localhost:5174/');
+        await page.goto('/');
         await loginAsAdmin(page);
         await expect(page.getByTestId('profile-btn')).toBeVisible({ timeout: 15000 });
     });

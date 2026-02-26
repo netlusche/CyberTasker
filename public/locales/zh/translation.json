@@ -92,7 +92,9 @@
             "connection_failed": "系统错误：连接失败。",
             "reset_title": "重置访问密钥",
             "override": "覆盖",
-            "missing_reset_token": "错误：缺少重置令牌。"
+            "missing_reset_token": "错误：缺少重置令牌。",
+            "install_title": "初始化神经网络",
+            "install_subtitle": "建立主管理员参数以初始化 CyberTasker 核心。"
         },
         "status": {
             "resyncing": "[ 正在重新同步... ]",
@@ -601,25 +603,25 @@
     ],
     "emails": {
         "identity_verification": {
-            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
-            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
-            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+            "subject": "CYBER_TASKER // 身份验证",
+            "body": "欢迎特工 {{username}}。<br><br>您的身份参数已建立。<br>确认您的通讯链路频率以建立连接：<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>检测到信号衰减。访问受限，直至确认。",
+            "unverified_fallback": "身份已建立，但通讯链路信号失败。请联系管理员手动验证您的帐户。"
         },
         "email_update": {
-            "subject": "CyberTasker Email Update Verification",
-            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+            "subject": "CyberTasker 电子邮件更新验证",
+            "body": "特工，<br><br>您的通信渠道正在被重新路由至：{{email}}。<br>确认此频率更改：<br><a href='{{link}}'>{{link}}</a><br><br>访问受限，直至确认。"
         },
         "password_reset": {
-            "subject": "CyberTasker Password Reset",
-            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+            "subject": "CyberTasker 密码重置",
+            "body": "特工 {{username}}，<br><br>已收到重置您的访问密钥的请求。<br>如果是您本人的操作，请在此处继续：<br><a href='{{link}}'>{{link}}</a><br><br>此链接将在 60 分钟后自毁。"
         },
         "emergency_override": {
-            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
-            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+            "subject": "CYBER_TASKER // 紧急覆盖代码",
+            "body": "特工 {{username}}，<br><br>已请求紧急覆盖信号。<br>使用此受限访问代码建立神经链接：<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>检测到信号衰减。代码将在 10 分钟后自毁。"
         },
         "template": {
-            "transmission": "CYBER TASKER // TRANSMISSION",
-            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+            "transmission": "CYBER TASKER // 传输",
+            "footer": "安全通道已建立。<br>来源：CYBER_TASKER_CORE"
         }
     }
 }

@@ -153,7 +153,7 @@
 
 <body>
     <div class="card" id="card">
-        <h1 data-i18n="common.loading">INITIALIZE GRID</h1>
+        <h1 data-i18n="auth.static.install_title">INITIALIZE GRID</h1>
         <div style="text-align: right; margin-bottom: 10px;">
             <select id="lang-select" onchange="changeLanguage()">
                 <option value="en">EN - English</option>
@@ -182,23 +182,39 @@
                 <option value="tlh">TLH - tlhIngan Hol (Klingon)</option>
             </select>
         </div>
-        <p class="subtitle" data-i18n="auth.alerts.uplink_required">Establish the Master Admin parameters to initialize
+        <p class="subtitle" data-i18n="auth.static.install_subtitle">Establish the Master Admin parameters to initialize
             the CyberTasker core.</p>
         <div id="form-container">
+            <input type="text" id="admin-username" data-i18n="auth.codename_only" placeholder="CODENAME (USERNAME)"
+                required>
             <input type="email" id="admin-email" data-i18n="auth.comlink_only" placeholder="COM-LINK (EMAIL)" required>
 
             <div class="password-container">
                 <input type="password" id="admin-password" data-i18n="auth.access_key" placeholder="ACCESS KEY"
                     required>
                 <button type="button" class="toggle-btn" onclick="togglePassword('admin-password', this)"
-                    title="Toggle Visibility">👁</button>
+                    title="Toggle Visibility">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                </button>
             </div>
 
             <div class="password-container">
                 <input type="password" id="confirm-password" data-i18n="profile.contact.confirm_password"
                     placeholder="CONFIRM ACCESS KEY" required>
                 <button type="button" class="toggle-btn" onclick="togglePassword('confirm-password', this)"
-                    title="Toggle Visibility">👁</button>
+                    title="Toggle Visibility">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                </button>
             </div>
 
             <br>
@@ -262,27 +278,43 @@
         initDropdown();
         loadTranslations();
 
+        const eyeOpenSVG = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>`;
+
+        const eyeClosedSVG = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+        </svg>`;
+
         function togglePassword(inputId, btn) {
             const input = document.getElementById(inputId);
             if (input.type === 'password') {
                 input.type = 'text';
-                btn.innerText = '✕';
+                btn.innerHTML = eyeClosedSVG;
             } else {
                 input.type = 'password';
-                btn.innerText = '👁';
+                btn.innerHTML = eyeOpenSVG;
             }
         }
 
         function initializeSystem() {
+            const username = document.getElementById('admin-username').value.trim();
             const email = document.getElementById('admin-email').value.trim();
             const password = document.getElementById('admin-password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
             const language = document.getElementById('lang-select').value;
             const messageDiv = document.getElementById('message');
 
-            if (!email || !password || !confirmPassword) {
+            if (!username || !email || !password || !confirmPassword) {
                 messageDiv.className = 'error';
                 messageDiv.innerText = getNestedTranslation(translations, 'auth.messages.input_required') || 'ERROR: ALL FIELDS ARE REQUIRED.';
+                return;
+            }
+
+            if (username.length < 3 || /[^a-zA-Z0-9_\-]/.test(username)) {
+                messageDiv.className = 'error';
+                messageDiv.innerText = getNestedTranslation(translations, 'auth.messages.invalid_credentials') || 'ERROR: USERNAME INVALID.';
                 return;
             }
 
@@ -298,7 +330,7 @@
             fetch('api/install.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, password: password, language: language })
+                body: JSON.stringify({ username: username, email: email, password: password, language: language })
             })
                 .then(res => res.text())
                 .then(html => {

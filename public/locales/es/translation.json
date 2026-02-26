@@ -92,7 +92,9 @@
             "connection_failed": "ERROR DEL SISTEMA: FALLÓ LA CONEXIÓN.",
             "reset_title": "RESTABLECER CLAVE DE ACCESO",
             "override": "ANULACIÓN",
-            "missing_reset_token": "ERROR: FALTA EL TOKEN DE RESET."
+            "missing_reset_token": "ERROR: FALTA EL TOKEN DE RESET.",
+            "install_title": "INICIALIZANDO RED NEURONAL",
+            "install_subtitle": "Establece los parámetros del Administrador Maestro para inicializar el núcleo de CyberTasker."
         },
         "status": {
             "resyncing": "[ RESINCRONIZANDO... ]",

@@ -1,131 +1,322 @@
-# CyberTasker v2.6.0 (The Accessibility & Automation Update)
-*Release Date: 2026-02-26*
+# Changelog
 
-*   **Mobile Drag & Drop**: Upgraded the Directive Dossier's Sub-Routines list to utilize `@dnd-kit` for flawless drag-and-drop sorting on both desktop mice and mobile touch screens.
-*   **Localized Installer & Emails**: The zero-configuration installer now supports language selection, automatically applying it to the newly provisioned Admin. All system emails (verification, recovery, 2FA) are now dynamically translated into the user's preferred language.
-*   **Accessibility Overhaul**: Implemented comprehensive multilingual tooltips across all interactive UI elements and standardized visible `Tab` key navigation with focus-traps for all modals.
-*   **Cyberpunk Immersion**: Added a daily changing "Quote of the Day" on the dashboard to enhance the thematic experience.
-*   **Automated Release Pipeline**: Replaced manual deployment steps with a robust Bash release script (`scripts/release.sh`) that automates i18n checks, CSS linting, E2E validation, and Git version tagging.
-*   **Database-Driven Localization**: Migrated the language preference "source of truth" from browser LocalStorage directly into the user profile database. Language syncing is now completely frictionless across multiple computers and mobile devices (US-2.6.10).
-*   **Forced Session Invalidation**: To lock down security, successfully changing a password or executing a cypher update now forcefully terminates the current session, requiring the operative to re-authenticate immediately (US-2.6.11).
+All notable changes to this project will be documented in this file. The format is based on the system's aesthetic release history.
+
+# CyberTasker 2.6.0 (The Accessibility & Automation Update)
+
+### ♿ Accessibility & Mobile Fluidity
+*   **Touch-Native Sub-Routines**: Migrated Dossier sorting to `@dnd-kit`, fully unlocking fluid drag-and-drop prioritization on iOS and Android viewports.
+*   **Global Tooltips**: Injected localized, low-latency tooltips across the entire grid to guide new operatives seamlessly.
+*   **Keyboard Navigation Matrix**: All interactive components now feature highly visible focus outlines, and all overlay modals strictly trap focus for flawless `Tab` key iteration.
+
+### 🌍 Global Deep-Integration
+*   **Multilingual Installer**: The initial system bootstrap now allows Administrators to select their operational language before provisioning the system, setting the default localized baseline.
+*   **Localized Comm-Links**: All external system transmissions (Verification, Recovery, 2FA Override) are now fully translated into the operative's specific language vector.
+
+### ⚙️ Automation & Pipeline Refinements
+*   **Automated Release Deployment**: Integrated a single-command Bash pipeline (`scripts/release.sh`) to execute validation suites, linting, and Git-tagging automatically, reducing human deployment errors to zero.
 
 ---
 
-# CyberTasker v2.5.1 (The Security & Gamification Update)
-*Release Date: 2026-02-25*
+# CyberTasker 2.5.1 (The Security & Gamification Update)
 
+### 🛡 Enforced Security & Installation
 *   **Enforce Email 2FA Policy**: Administrators can now flip the system-wide "Enforce Email 2FA" switch. If active, any operative without an Authenticator App will be forced to use an Emergency Override Code sent to their registered email before accessing the grid. Banners proactively warn operatives in their profile and during the login flow.
+*   **Deep Installation Security**: The zero-configuration installer now strictly requires a valid email address when provisioning the Master Admin account, guaranteeing an open comm-link for 2FA and recovery protocols.
+
+### 🏆 Gamification & Visuals
 *   **Scalable Gamification Matrix**: Replaced the static level system with an infinitely scalable "Cyber-Badge" matrix. Operatives now earn progressive Tiers (`Novice` to `Prime`) and Titles (`Script Kiddie` to `Singularity`) as they gain XP and level up. Badges are fully translated into all 7 supported languages.
 *   **Four New Visual Matrices**: Added highly stylized retro and corporate themes: **Computerwelt** (Matte Black & Neon Green), **Mensch-Maschine** (High-Contrast Crimson), **Neon Syndicate** (Synthwave), and **Megacorp Executive** (Orbital White & Ice Blue).
-*   **Deep Installation Security**: The zero-configuration installer now strictly requires a valid email address when provisioning the Master Admin account, guaranteeing an open comm-link for 2FA and recovery protocols.
-*   **Quality of Life**: Implemented a password visibility toggle (Eye Icon) natively within the operative Profile and Auth screens. The Administration Console now clearly displays the active system version at the bottom.
+
+### ⚙️ Quality of Life & Assurance
+*   **Password Visibility**: Implemented a password visibility toggle (Eye Icon) natively within the operative Profile and Auth screens. 
 *   **Automated Quality Assurance**: Deployed Python-based translation validation (`check_translations.py`) and JS-based CSS-variable linting (`check-theme.js`) to the GitHub Actions CI pipeline to permanently eliminate missing translations and hardcoded "theme bleeding".
+*   **Version Transparency**: The Administration Console now clearly displays the active system version at the bottom.
 
 ---
 
-# CyberTasker v2.4.1 (Completed Tasks Hotfix)
-*Release Date: 2026-02-24*
+# CyberTasker 2.4.1 (Completed Tasks Hotfix)
 
-*   **Dashboard Visibility Patch**: Fixed a critical backend filtering bug within the SQLite and MySQL repositories that unintentionally wiped all completed tasks (`status = 1`) from the database responses. Completed directives are now correctly tallied and displayed on the operative dashboard again without corrupting pagination boundaries.
-
----
-
-# CyberTasker v2.4 (The Automation & Precision Update)
-*Release Date: 2026-02-23*
-
-*   **Tactical Keyboard Controls**: Navigate the grid at lightspeed with global hotkeys: press `N` to create a directive, `/` to focus the search matrix, and `Esc` to instantly close any active overlay.
-*   **Sub-Routine Automation**: Completely re-engineered the Dossier sub-routines with drag-and-drop sorting capabilities, allowing operatives to rearrange complex protocol execution orders on the fly.
-*   **Dashboard QoL Integration**: Implemented rapid-access Category selection directly on the operative dashboard cards, alongside new global Quick-Filter Pills (Overdue, Today, High Priority) for instantaneous tactical sorting without accessing the deep search menu.
-*   **Directive Duplication**: Added the ability to clone entire mission dossiers, instantly copying priorities, categories, recurrent schedules, and sub-routines to drastically cut down on repetitive protocol creation.
-*   **Diagnostics & Translations**: Hardened the global translation engine with a dedicated Python validation script integrated into the Github Actions CI pipeline, and perfected the Klingon localized calendar UI for total cross-language integrity.
+*   **Dashboard Visibility Patch**: Fixed a critical backend filtering bug within the SQLite and MySQL repositories that unintentionally wiped all completed tasks (`status = 1`) from the database responses. Completed directives are now correctly tallied and displayed on the operative dashboard again.
 
 ---
 
-# CyberTasker v2.3 (Workflow & Stability Update)
-*Release Date: 2026-02-23*
+# CyberTasker 2.4.0 (The Automation & Precision Update)
 
-*   **Scheduled Protocols**: Added full support for recurring directives (Daily, Weekly, Monthly) with optional end dates. The Global Calendar creates "Holo-Projections" for future tasks.
-*   **Directive Sub-Routines**: Directly inside the Dossier, operatives can split large directives into trackable sub-routines (checklists) featuring inline text-editing and individual persistence.
-*   **Tactical Progress Tracking**: Directive cards continuously track sub-routine completion ratios on the dashboard (e.g., 3/5).
-*   **Cross-Database Integrity**: Implemented a robust GitHub Actions E2E test-pipeline that evaluates the environment securely and asynchronously against both lightweight SQLite targets and MariaDB clusters to block dialect-anomalies.
+### ⌨️ Tactical Controls & Dashboard Polish
+*   **Global Hotkeys**: Control the grid without a mouse. Press `N` to instantiate a new directive, `/` to activate the global cross-grid search, and `Esc` to terminate any active overlay.
+*   **Quick-Filter Pills**: The main dashboard now features contextual pills (Overdue, Due Today, High Priority) for instantaneous tactical sorting at a single click.
+*   **Surface-Level Editing**: Operatives can now alter a directive's Category directly from the dashboard card via a dropdown, bypassing the need to open the full dossier.
 
----
+### 📝 Advanced Dossier Operations
+*   **Sub-Routine Rearrangement**: Complex sub-routines can now be fluidly reordered via drag-and-drop within the dossier, allowing for immediate tactical reprioritization.
+*   **Directive Cloning**: Instantly duplicate complex, multi-step directives (including all sub-routines, recurrence patterns, and priorities) with a single click to save crucial operational time.
 
-# CyberTasker v2.2 (The Dashboard & Dossier Upgrade)
-*Release Date: 2026-02-22*
-
-*   **Global Chrono-Sync Calendar**: A dedicated top-level Calendar UI mapped to the header navigation, allowing operatives to visualize deadlines and interface directly with dossiers.
-*   **Dossier Field Editing**: Integrated native dropdowns for changing Priority and Category directly within the Directive Dossier overlay with correctly stacked `CyberConfirm` z-index layers.
-*   **Internationalization Scale-up**: Deployed robust language packs for Japanese, Korean, Hindi, Turkish, and Vietnamese.
-*   **Security & UX Polish**: Implemented double-entry confirmation for password changes, inline Dossier title editing, and optimized Dashboard pagination rendering limits.
+### 🌍 Global Integrity
+*   **Automated Translation Diagnostics**: A specialized Python CI pipeline now scans every language file during integration, preventing releases if translation keys are missing across the 7 supported languages.
 
 ---
 
-# CyberTasker v2.1 (Deep Directives & Global Localization)
-*Release Date: 2026-02-22*
+# CyberTasker 2.3.0 (Workflow & Stability Update)
 
-*   **Deep Directives**: Markdown-powered extended mission intel with external Up-Links and an encrypted asset vault for file attachments.
-*   **Targeted Hotfixes**: Backend session routing stabilization for restrictive Linux hosting (Strato) and critical PHP schema update sequencing fixes.
-*   **Static Localization**: The authentication pages now hydrate natively without booting React, resulting in microsecond load times.
-*   **Aesthetic Refinements**: Introduced Klingon, Westeros, Marvel, and Gotham matrices. Global custom scrollbar support injected for Firefox parity and Matrix alpha-compositing brightened.
+### 🔁 Scheduled Protocols & Progress Tracking
+*   **Recurring Directives**: Assign 'Daily', 'Weekly', or 'Monthly' loops to directives. The system will automatically compute and generate the next iteration only upon completion of the current task, preventing an infinite buildup of duplicate tasks.
+*   **Directive Sub-Routines**: Complex directives can now be split into multiple sub-routines (checklists) directly inside the Dossier. Includes seamless inline text editing and individual progress toggles.
+*   **Tactical Dashboards**: Mission cards instantly display the progress of sub-routines (e.g., "3/5" completed) directly on the grid, minimizing the need to constantly open the Dossier.
+*   **Holo-Projections**: The Global Calendar actively visualizes future iterations of recurring directives as distinct, translucent projections allowing operatives to plan operations deep into the future without database spam.
 
----
-
-# CyberTasker v2.0 (The Architecture Update)
-*Release Date: 2026-02-21*
-
-*   **MVC Backend Revolution**: Transitioned to a centralized Front Controller, Domain Controllers, and Repository patterns for database interactions without external frameworks.
-*   **Shared Hosting Compatibility**: Integrated whitespace resistance buffering, session stability fallback routing, and dynamic CORS/HTTPS proxy headers to unblock deployments on rigid shared hosting endpoints.
-*   **Visual Precision**: Rolled out the Matrix and Weyland-Yutani themes. Standardized LCARS "pill-shape" geometry and implemented dynamic webkit scrollbars.
-*   **Industrial Automation**: Playwright E2E suite deployed, verifying critical mission stories and security policies automatically.
+### 🛡 Core Stability & Multi-Tenant Prep
+*   **Cross-Database Precision**: Massive codebase refinements targeting MariaDB syntax anomalies to ensure 100% feature parity and stability between the lightweight SQLite local-instances and rigid MariaDB production environments.
+*   **Automated E2E Pipelines**: The GitHub infrastructure is now augmented to simultaneously run full Playwright E2E integration tests against *both* SQLite and MySQL whenever the operative timeline is modified.
 
 ---
 
-# CyberTasker v1.9 (Security Hardening & Multi-Theme)
-*Release Date: 2026-02-20*
+# CyberTasker 2.2.0 (The Dashboard & Dossier Upgrade)
 
-*   **OWASP Security Baseline**: Zero-config auto-locks prevent unauthorized installer access. Implemented enterprise CSRF middleware, strict CORS, and session fixation regenerations. Database errors are now sterilized before hitting the client.
-*   **Anti-Brute Force Protocols**: Database-backed rate limiting automatically locks terminals over-attempting 2FA or Passwords. CDN dependencies secured via Subresource Integrity (SRI) hashes.
-*   **Theme Engine**: Introduced the robust Multi-Theme architecture supporting persistent visual identities (Cyberpunk vs. LCARS), strictly isolating CSS semantic variables to prevent "theme bleeding".
+### 📅 Global Calendar (Chrono-Sync)
+*   **Header Navigation**: Instantly access the newly integrated Calendar module from the main navigation header to view a chronological sorting of all active deadlines.
+*   **Interactive Modal Links**: Click any scheduled directive within the calendar to instantly open its Dossier overlay for rapid field editing.
 
----
+### 📝 Elevated Dossier Interactions
+*   **Interactive Dropdowns**: Replaced static text labels with fully styled `CyberSelect` dropdowns for changing **Priority** and **Category** directly inside the Directive Dossier.
+*   **Inline Title Editing**: Operatives can now rename directives directly from within the Dossier by clicking the title.
+*   **Markdown Headers**: The internal markdown parser now natively supports structural headers (`#`, `##`, `###`) without strict spacing requirements.
 
-# CyberTasker v1.8 (Uplink Stability & Validation Polish)
-*Release Date: 2026-02-18*
+### 🌍 Massive Localization Expansion
+*   **5 New Languages**: The Neural Link now fully supports Japanese (`ja`), Korean (`ko`), Hindi (`hi`), Turkish (`tr`), and Vietnamese (`vi`).
+*   **Alphabetical Sorting**: The language switching overlay automatically sorts all dialects by their native names for faster intuitive selection.
 
-*   **Database Agnosticism**: Standardized session math across SQLite, MySQL, and MariaDB environments using PHP date logic instead of native SQL functions to guarantee 100% interoperability.
-*   **Enterprise Scaling**: Successfully stress-tested the application under 250+ simultaneous directives and 40+ recruited operatives with zero pagination degradation.
-*   **Multilingual Link**: Fully localized UI payloads deployed for DE, EN, NL, ES, FR, and IT.
-*   **Validation UX**: Streamlined recovery flows, global "Clear-on-Focus" tooltips, and uniform high-immersion CyberAlert modals.
-
----
-
-# CyberTasker v1.5 (Residue-Free Security)
-*Release Date: 2026-02-17*
-
-*   **Deep Purge Protocols**: Account deletion accurately cascades to nullify all 2FA artifacts, bespoke categories, and orphaned task assignments.
-*   **Administration Contrast**: Re-tuned the backend fleet management console for higher data density and structural boundary visibility.
-*   **SQLite Default**: Re-configured the deployment architecture to use SQLite out-of-the-box for instant zero-configuration boot sequences.
+### 🛡 QA & Polishing
+*   **Password Confirmation**: Hardened the system Profile and Recovery flow by requiring a matching "Confirm Password" input before executing cryptographic changes.
+*   **Pagination Adjustments**: Reduced the default dashboard data chunking limit to 25 directives to optimize rendering speed on heavy dossiers.
+*   **System Help Updates**: Synchronized the operational manual to reflect new Global Calendar features across all supported dialects.
 
 ---
 
-# CyberTasker v1.4 (Deep Security & Overrides)
-*Release Date: 2026-02-15*
+# CyberTasker 2.1.4 (Deep Directives & Global Localization)
 
-*   **Administrative Overrides**: Admins granted access to mechanically disable operative 2FA via the Management Console if authenticators are lost.
-*   **CyberConfirm System**: Replaced all native browser warnings with immersive neon-colored modals for high-risk operations (Data Wipes).
-*   **Calendar Stabilization**: Portal-based calendar rendering prevents mobile container clipping and orphaned boundary issues.
+### 📝 Deep Directives
+*   **Markdown Protocols**: Write extended mission intel with rich-text formatting directly inside directive modals using the integrated Markdown engine.
+*   **External Up-Links**: The system now parses and securely embeds external HTTPS links (`target="_blank"`) into protocol descriptions to maintain a secure sandbox.
+*   **Encrypted Asset Vault**: Upload mission-critical file attachments (images, documents) directly to the server, linked exclusively to individual directives.
+
+### 🌍 Static Localization Engine
+*   **Vanilla JS i18n Hydration**: The static authentication pages (`verify.html`, `reset-password.html`) now hydrate to the user's preferred language natively without booting the full React bundle, preserving microsecond load times.
+
+### 🎨 Aesthetic Refinements
+*   **Klingon Theme Integration**: Introduced the brutalist, blood-red **QO'NOS (Klingon)** theme featuring grinding steel CSS background animations and aggressive typography.
+*   **Pop Culture Themes**: Three new highly stylized visual matrices deployed: **Westeros** (Game of Thrones), **Comic** (Marvel), and **Gotham** (DC), complete with tailored fonts, conditional borders, and unique ambient animations.
+*   **Ambient Animations**: Injected dynamic CSS background behaviors across the existing visual roster (Cyberpunk, LCARS, Matrix, Weyland, RobCo, Grid, Section 9, Outrun, Steampunk) with precision opacity and velocity controls.
+*   **Universal Scrollbars**: Fully styled custom scrollbars deployed across all operational visual themes for maximum immersion.
 
 ---
 
-# CyberTasker v1.3 (The Neon Update)
-*Release Date: 2026-02-15*
+# CyberTasker 2.0.4 (Account Verification Hotfix)
 
-*   **Personal Protocols**: Custom operative task categories.
-*   **Smart Scheduling**: Immersive neon date picker with Imminent/Future/Overdue visual indicators.
-*   **Deep Search & Filters**: Live title indexing and advanced semantic filtering.
+### 🏗️ Modernized Backend
+*   **MVC Architecture**: Refactored monolithic scripts into a clean Controller/Router pattern.
+*   **Repository Pattern**: Abstracted database interactions into dedicated Repositories for better testability and maintenance.
+*   **Front Controller**: All API traffic now routes through a single secure entry point (`api/index.php`).
+
+### 🎨 Visual Expansion
+*   **Two New Themes**: Introduced the **Matrix** (Green Phosphor) and **Weyland-Yutani** (Industrial Amber) themes, joining **Cyberpunk** and **LCARS**.
+*   **Custom Scrollbars**: Every theme now features custom-styled scrollbars (e.g., green glow for Matrix, neon pink for Cyberpunk).
+*   **LCARS Flush Frames**: Precision alignment and standardized `1.5rem` rounding for all LCARS modals and panels.
+
+### 🩹 Critical Fixes
+*   **Account Verification**: Restored the connection between static HTML pages (`verify.html`, `reset-password.html`) and the new router-based API, fixing the "CONNECTION FAILED" error.
+*   **HTTPS Protocol Detection**: Improved detection for shared hosting environments (Strato) to ensure secure links and valid CORS headers.
+*   **Dynamic CORS Mapping**: The system now automatically adapts its security headers to the request protocol (HTTP vs HTTPS).
+
+---
+---
+---
+
+## 🛠 Tech Stack
+
+*   **Frontend**: React 18, Vite, Tailwind CSS
+*   **Backend**: Vanilla PHP 8.x (No frameworks, dependency-free)
+*   **Database**: MySQL, MariaDB, or SQLite (Hybrid Support)
+
+---
+---
+---
+
+# CyberTasker 1.9.4 (Security & Feature Polish)
+
+### 🐛 Bug Fixes & UX Finetuning
+*   **Task Limit Controls**: Enforced a strict 255-character limit on task titles at both the UI and Database layers for maximum stability.
+*   **Editing Synchronization**: Patched an inline editing anomaly where new task text was appended instead of replacing the old state.
+*   **Admin Console CSRF**: Restored Admin override capabilities (like 2FA disable) by ensuring proper CSRF token transmission via the internal `apiFetch` wrapper.
+*   **LCARS Readability**: Significantly enlarged the hit-targets and icons for the 'Complete' and 'Delete' task actions, optimizing tactile interaction in the LCARS theme.
+
+# CyberTasker 1.9.3 (Security Hardening Phase 3)
+
+### 🚫 Anti-Brute-Force & Integrity Protocols
+*   **Database-Backed Rate Limiting**: The authorization grid (`api/auth.php`) now actively tracks and evaluates login and 2FA verification attempts. If a terminal exceeds 5 failed attempts within a 15-minute window, it is locked out (`HTTP 429 Too Many Requests`), neutralizing automated brute-force and dictionary attacks.
+*   **Subresource Integrity (SRI)**: Mathematical SHA-384 cryptographic hashes have been injected into `index.html` for all external CDN dependencies (e.g., `qrcode.min.js`). The browser will now physically refuse to execute the neural scripts if the Content Delivery Network is ever compromised.
+
+# CyberTasker 1.9.2 (Security Hardening Phase 1 & 2)
+
+### 🔒 Enterprise-Grade Security Patches
+*   **Zero-Config Auto-Lock**: The installer (`api/install.php`) now detects initialized grids. If the system is active, it strictly requires an authenticated Admin session to execute schema updates, physically preventing unauthorized resets without compromising 1-click deployments on shared hosting.
+*   **CSRF Middleware**: Developed a centralized token-negotiation protocol (`api/csrf.php`) and a uniform frontend API wrapper (`apiFetch`). All state-changing requests (POST/PUT/DELETE) are now cryptographically verified to block Cross-Site Request Forgery.
+*   **Strict CORS Policy**: Restricted API access (`Access-Control-Allow-Origin`) exclusively to the operational frontend domain, neutralizing cross-origin data exfiltration vectors.
+*   **Session Fixation Mitigation**: Embedded forced session regeneration (`session_regenerate_id()`) within all critical authorization uplinks (Login & 2FA Verification) to stop session hijacking.
+*   **Information Leakage Sanitization**: Intercepted and scrubbed all raw database exception outputs (`$e->getMessage()`). Vulnerability details are now securely routed to sterile server logs, returning only generic HTTP 500 status codes to the client.
+
+# CyberTasker 1.9.1 (Robust Theme Engine)
+
+### 🎨 Semantic Theming & Geometry
+*   **Zero-Bleed Architecture**: Re-engineered the CSS backend to utilize strict, locally-scoped semantic variables (`--theme-primary`). This completely eliminates "theme bleeding" (e.g., cyan buttons showing up in the LCARS theme).
+*   **LCARS Geometric Enforcement**: Applied rigorous shape-control to the LCARS theme. All action buttons are now perfectly oval (pill-shaped), and all modal containers feature deeply rounded corners (1.5rem radius) to match authentic Starfleet topology.
+*   **Aesthetic Finetuning**: Corrected tactical confetti sequences to match the active theme's palette, optimized the visual contrast of Admin "Promote" buttons, and explicitly colored critical LCARS interactables with tactical `#ffaa00`.
+
+# CyberTasker 1.9.0 (Visual Paradigm Shift)
+
+### 🎨 Multi-Theme Visual Architecture
+*   **Aesthetic Toggle**: Operatives can now switch between the classic **Cyberpunk** neon look and the new **LCARS (Library Computer Access and Retrieval System)** interface.
+*   **LCARS Authentication**: Re-engineered the "Jack In" terminal with authentic Starfleet aesthetics, including a theme-specific yellow/orange palette.
+*   **Theme-Authentic Typography**: Integrated the **Antonio** Google Font for the LCARS theme to ensure high-immersion readability.
+*   **Persistent Aesthetics**: Theme selection is stored in the neural database and synchronized across sessions.
+*   **System-Wide Adaption**: All system components (Cards, Modals, Buttons, Confetti, and Alerts) automatically reconfigure their color schemes to match the active theme.
+
+### ⚙️ UX & Grid Stability
+*   **Global Case-Enforcement Revert**: Restored freedom of identity. The grid no longer forces lower-case inputs for Codenames, Emails, or Passwords—mixed-case inputs are strictly preserved.
+*   **LCARS Header Optimization**: Re-architected the navigation modules to prevent overlap on mission-critical displays.
+*   **Dynamic Visual Help**: Updated the "System Help" handbook with a dedicated section on Multi-Theme protocols, localized across all 6 languages.
+
+# CyberTasker 1.8.2 (Mobile Polish & Test Strategy)
+
+### 📱 Mobile UX Polish
+*   **Dynamic Language Overlay**: Patched the coordinate calculation for the language selection menu. It now utilizes viewport bounds checking to ensure the overlay remains fully visible on smartphones, maintaining a 16px safety margin from the screen edges.
+
+### 🧪 Test Strategy & Protocol
+*   **Expanded Test Coverage**: Updated the `manuals/MASTER_TEST_PLAN.md` with `test-suite-06`, dedicated to Category Management (Adding, Renaming, Deleting, and Defaulting protocols).
+*   **Bug Reporting Handshake**: Established a formal execution policy. Operatives/Agents will now document discovered failures in their reports before proceeding with fixes, ensuring a clear audit trail and manual intervention options.
+
+# CyberTasker 1.8.1 (Stress Tested & Secure)
+
+### 🛡 Enhanced Security & Stress Testing
+*   **Strict Password Policy**: Administrators can now enforce complexity requirements via the Admin Console. Rejects weak passwords (min 12 chars, Case/Num/Special required).
+*   **Stress-Tested Pagination**: Verified seamless handling of **250+ directives** in the Operative Dashboard and **40+ recruits** in the Administration Console.
+*   **Neural Progression Integrity**: Validated XP-to-Rank calculation and level-up animations across multiple tier boundaries.
+*   **Maintenance Protocol**: Decommissioned debug mail logging and purged diagnostic residues for a cleaner deployment.
+
+### 🌐 Localization & UX Polish
+*   **German Neural Link**: Corrected "LOGOUT" translation to "ABMELDEN" for linguistic accuracy.
+*   **Select-All on Focus**: Standardized input behavior across the grid; clicking any field now automatically selects its content for efficient modification.
+
+# CyberTasker 1.8.0 (Uplink Stability & Validation Polish)
+
+### 🛡 Core Stability & Database Agnosticism
+*   **Universal SQL Protocol**: Refactored backend logic to handle system dates and expires via PHP. Fully compatible with **SQLite, MySQL, and MariaDB** without database-specific syntax errors.
+*   **Enhanced Recovery Flow**: Successfully streamlined the password reset handshake. Acknowledging the transmission alert now redirects the operative directly to the Login terminal.
+
+### ✨ Validation UX & Alert Standardization
+*   **Global Tooltip Wipe**: Implemented "Clear-on-Focus" logic. Clicking or tabbing into any input field instantly clears all active validation tooltips across the entire form for a cleaner workspace.
+*   **Standardized Alert System**: Migrated all authentication feedback (Registration, 2FA, Recovery) to the `CyberAlert` overlay system, decommissioning legacy inline alerts.
+*   **Secure Enumeration Protection**: Updated recovery success messaging to follow "If this email exists..." patterns, protecting operative identities from scanning.
+
+### 🌐 Multilingual Neural Link
+*   **Global Expansion**: CyberTasker now supports 6 major languages: **English, German (Deutsch), Dutch (Nederlands), Spanish (Español), French (Français), and Italian (Italiano)**.
+*   **Dynamic Switcher**: Integrated a high-immersion language selection overlay.
+*   **Unified Localization**: Every system alert, directive, and help handbook is fully localized for localized operations.
+
+# CyberTasker 1.5.1 (Patch: SQLite Default & Stability)
+
+### ⚙️ Core Configuration & Stability
+*   **SQLite Default Protocol**: Updated `api/config.php` to use SQLite as the default database type.
+*   **Dependency Locking**: Synchronized `package-lock.json` with the updated package version.
+
+# CyberTasker 1.5.0 (Residue-Free Security & UI Optimization)
+
+### 🛡 Deep Purge Protocols & Stability
+*   **Exhaustive User Deletion**: Account termination (both Admin-led and Self-led) now performs a "residue-free" purge, explicitly clearing all tasks, user-specific categories, and 2FA artifacts.
+*   **2FA Cleanup**: Confirmed that deactivation logic (and deletion) fully terminates all TOTP secrets and Email-2FA artifacts.
+*   **Resilient Configuration**: Refactored `api/config.php` to utilize robust fallback logic.
+*   **Diagnostic Installer**: The `api/install.php` utility now includes high-immersion diagnostics.
+
+### 🕵️‍♂️ Administration Console Optimization
+*   **High-Contrast Scan-ability**: Re-tuned secondary information (IDs, History, Metrics) from dull grays to high-contrast colors (`gray-300/400`).
+*   **Flex-Grid Alignment**: Optimized table headers for better alignment.
+*   **Structural Visibility**: Brightened structural boundaries for faster navigation.
+
+### ✨ Neural Link Readability
+*   **Enlarged Typography**: Increased instruction font sizes for 2FA sequences.
+*   **Secret-Key Contrast**: Lightened background and brightened text for 2FA Secret Keys and Backup Fragments.
+
+# CyberTasker 1.4.1 (Admin Override & UI Polish)
+
+### 🕵️‍♂️ Admin Override Protocols
+*   **2FA Override**: Administrators can now deactivate 2FA for any operative via the Admin Panel ("2FA OFF" button).
+*   **Polished Administration Console**: Optimized table layout and higher data density for easier fleet management.
+
+### 🛡 Security & Alerts
+*   **CyberAlert System**: Replaced native browser alerts with high-immersion, neon-blue cyberpunk modals.
+*   **Dynamic Input Glow**: Enhanced readability for all terminal inputs with neon-cyan focus states.
+
+### 📱 Mobile Neural Link
+- **Calendar Portals**: The scheduling calendar now uses React Portals to render at the body level, bypassing all parent container clipping.
+- **Dynamic Orbital Logic**: Added intelligent coordinate calculation to ensure the calendar always remains within the operative's viewport.
+- **Hotfix: Interaction Protocol**: Patched the event listener system to allow date selection within the portaled calendar, which was previously blocked by the "click-outside" security logic.
+
+# CyberTasker 1.4.0 (Deep Security & Polish)
+
+### 🛡 Deep Security Refinements
+*   **Specialized Alerts**: Neon-pink themed "SECURITY ALERT" modals for high-risk operations like 2FA deactivation.
+*   **State Synchronization**: Real-time user context refresh ensures the UI always reflects precisely when 2FA is active.
+*   **CyberConfirm Integration**: All sensitive actions (deletions, terminations, 2FA, data sync) now use custom-themed cyberpunk confirmation modals instead of native alerts.
+
+### ⚙️ Operational Logic & Stability
+*   **Cyber-Triage Sorting Protocol**: Implemented high-immersion sorting hierarchy: Overdue > Today > Priority (High/Med/Low).
+*   **Neural Calendar Synchronization**: Resolved critical bugs with the primary calendar overlay:
+    *   **Mutual Exclusion**: Only one calendar can be active on the grid at a time.
+    *   **Boundary Detection**: Calendar automatically adjusts positioning (up/down) based on grid edge proximity to prevent clipping.
+    *   **Click-Outside Closing**: Instant collapse when operative's focus shifts.
+*   **Automated Admin Briefing**: New installations automatically provision the default `admin` account with critical security directives (Password Override, Installer Purge, Neural Encryption) using high-immersion jargon.
+
+### ✨ Tactile Polish & UX
+*   **Enhanced Neural Progression Manual**: The "NEURAL PROGRESSION" section is now prioritized at the top of the System Help, completely rewritten for maximum cyberpunk immersion.
+*   **Optimized Terminal**: The "New Directive" box now pulses with a neon-cyan glow upon initialization.
+*   **Confetti Protocol**: System-wide neon confetti celebration upon successful task creation.
+*   **Standardized Controls**: Uniform pink `[X]` close buttons and custom `CyberSelect` dropdowns across all modals.
+*   **Responsive Layouts**: Profile headers now wrap intelligently to prevent overlap on smaller viewports.
+
+# CyberTasker 1.3.0 (The "Neon" Update)
+
+### 📂 Custom Categories & Due Dates
+*   **Personal Protocols**: Create and manage your own task categories.
+*   **Smart Calendar**: Integrated date picker with neon visuals.
+*   **Visual Deadlines**: Clock icons and color-coded timestamps for imminent deadlines.
+
+### 🔍 Search & Filtering
+*   **Deep Search**: Locate specific tasks instantly.
+*   **Advanced Filters**: Filter by Priority, Category, and Overdue status.
+
+### ✨ Polish & Gamification
+*   **Level Up**: New animations when you gain a level.
+*   **Developer Tools**: Test user generator for load testing.
 
 ---
 
-# CyberTasker v1.2 (Fleet Management 2.0)
-*   **Admin Console Overhaul**: Advanced sorting, real-time code-name filtering, and smart pagination for bulk user management.
+# CyberTasker 1.2.1
+
+### 🛠 Fixes & Improvements
+*   **Admin Password Visibility**: Admins can now toggle password visibility when resetting user credentials.
+*   **UI Polish**: Sidebar and modal inputs now share a consistent Cyberpunk aesthetic.
+
+# CyberTasker 1.2.0
+
+### 🕵️‍♂️ Admin Panel 2.0
+*   **Search & Filter**: Instantly find any operative by codename with real-time filtering.
+*   **Dynamic Sorting**: Sort tables by **ID, Codename, Verification Status, or Last Login**.
+*   **Pagination**: Smoothly navigate through large user databases.
+*   **Activity Logs**: Track exactly when users last accessed the system.
+
+### 🛡 Core Improvements
+*   **Admin Priority**: Administrators are pinned to the top of lists for immediate access.
+*   **Universal Seeding**: Robust tools to generate test data for both SQL and SQLite environments.
+
+---
+

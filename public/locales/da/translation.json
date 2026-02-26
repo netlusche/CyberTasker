@@ -92,7 +92,9 @@
             "connection_failed": "SYSTEMFEJL: FORBINDELSE FEJLLET.",
             "reset_title": "NULSTIL ADGANGSTAST",
             "override": "TILSIDE",
-            "missing_reset_token": "FEJL: MANGLER NULSTILTOKEN."
+            "missing_reset_token": "FEJL: MANGLER NULSTILTOKEN.",
+            "install_title": "INITIALISERER NEURALT NETVÆRK",
+            "install_subtitle": "Etabler Master Admin parametrene for at initialisere CyberTasker kernen."
         },
         "status": {
             "resyncing": "[ RESYNCING... ]",

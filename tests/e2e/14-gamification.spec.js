@@ -117,5 +117,10 @@ test.describe('US-2.5.12 & US-2.5.13: Gamification UX and Logic', () => {
         await page.getByRole('button', { name: 'Español' }).click();
 
         await expect(badgeLocator).not.toHaveText(initialBadgeText, { timeout: 5000 });
+
+        // Teardown: Revert language to English to avoid polluting subsequent tests using Admin_Alpha
+        await page.locator('.btn-lang-yellow').click();
+        await page.getByRole('button', { name: 'English' }).click();
+        await expect(badgeLocator).toHaveText(initialBadgeText, { timeout: 5000 });
     });
 });

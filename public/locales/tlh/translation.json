@@ -92,7 +92,9 @@
             "connection_failed": "pat Qaw': SeHlaw rurbe'.",
             "reset_title": "pegh mu' chenmoHqa'",
             "override": "OVERRIDE",
-            "missing_reset_token": "Qaw': mI' pagh."
+            "missing_reset_token": "Qaw': mI' pagh.",
+            "install_title": "ghogh lulIng",
+            "install_subtitle": "pongmey tIghunmeH CyberTasker quv yIcher."
         },
         "status": {
             "resyncing": "[ choHqa'taH... ]",

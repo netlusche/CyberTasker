@@ -92,7 +92,9 @@
             "connection_failed": "SYSTEMFEHLER: VERBINDUNG FEHLGESCHLAGEN.",
             "reset_title": "ZUGRIFFSSCHLÜSSEL ZURÜCKSETZEN",
             "override": "ÜBERSCHREIBEN",
-            "missing_reset_token": "FEHLER: RESET-TOKEN FEHLT."
+            "missing_reset_token": "FEHLER: RESET-TOKEN FEHLT.",
+            "install_title": "INITIALISIERE NEURAL-KNOTEN",
+            "install_subtitle": "Etabliere die Master-Admin-Parameter, um den CyberTasker-Kern hochzufahren."
         },
         "status": {
             "resyncing": "[ WIRD NEU SYNCHRONISIERT... ]",

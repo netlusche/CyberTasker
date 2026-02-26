@@ -92,7 +92,9 @@
             "connection_failed": "SYSTEMFEL: ANSLUTNING MISLYCKES.",
             "reset_title": "ÅTERSTÄLLNINGSKNAPP",
             "override": "ÅSNITT",
-            "missing_reset_token": "FEL: ÅTERSTÄLLNINGSTOKEN saknas."
+            "missing_reset_token": "FEL: ÅTERSTÄLLNINGSTOKEN saknas.",
+            "install_title": "INITIALISERAR NÄTVERK",
+            "install_subtitle": "Etablera Master Admin-parametrarna för att initiera CyberTaskers kärna."
         },
         "status": {
             "resyncing": "[ ÅTERSYNKAR... ]",

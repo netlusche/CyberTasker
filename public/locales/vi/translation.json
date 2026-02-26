@@ -92,7 +92,9 @@
             "connection_failed": "LỖI HỆ THỐNG: KHÔNG KẾT NỐI.",
             "reset_title": "THIẾT LẬP LẠI KHÓA TRUY CẬP",
             "override": "GHI ĐÈ",
-            "missing_reset_token": "LỖI: THIẾU MÃ THIẾT LẬP LẠI."
+            "missing_reset_token": "LỖI: THIẾU MÃ THIẾT LẬP LẠI.",
+            "install_title": "KHỞI TẠO MẠNG LƯỚI",
+            "install_subtitle": "Thiết lập các tham số Master Admin để khởi tạo lõi CyberTasker."
         },
         "status": {
             "resyncing": "[ ĐANG ĐỒNG BỘ... ]",
@@ -601,25 +603,25 @@
     ],
     "emails": {
         "identity_verification": {
-            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
-            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
-            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+            "subject": "CYBER_TASKER // XÁC MINH DANH TÍNH",
+            "body": "Chào mừng Nhà điều hành {{username}}.<br><br>Các tham số nhận dạng của bạn đã được thiết lập.<br>Xác nhận tần suất liên kết com của bạn để thu hẹp khoảng cách:<br><br><a href='{{link}}' style='color: #0088cc; text-trang trí: none;'>{{link}</a><br><br>PHÁT HIỆN TÍN HIỆU PHÁ HỦY. Quyền truy cập bị hạn chế cho đến khi được xác nhận.",
+            "unverified_fallback": "Đã thiết lập danh tính nhưng tín hiệu liên kết com không thành công. Liên hệ với Quản trị viên để xác minh tài khoản của bạn theo cách thủ công."
         },
         "email_update": {
-            "subject": "CyberTasker Email Update Verification",
-            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+            "subject": "Xác minh cập nhật email của CyberTasker",
+            "body": "Điều hành viên,<br><br>Kênh liên lạc của bạn đang được định tuyến lại tới: {{email}}.<br>Xác nhận việc thay đổi tần suất này:<br><a href='{{link}}'>{{link}</a><br><br>Quyền truy cập bị hạn chế cho đến khi được xác nhận."
         },
         "password_reset": {
-            "subject": "CyberTasker Password Reset",
-            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+            "subject": "Đặt lại mật khẩu CyberTasker",
+            "body": "Điều hành viên {{username}},<br><br>Đã nhận được yêu cầu đặt lại khóa truy cập của bạn.<br>Nếu đó là bạn, hãy tiếp tục tại đây:<br><a href='{{link}}'>{{link}</a><br><br>Liên kết này sẽ tự hủy sau 60 phút."
         },
         "emergency_override": {
-            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
-            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+            "subject": "CYBER_TASKER // MÃ GHI ĐÈ KHẨN CẤP",
+            "body": "Người điều hành {{username}},<br><br>Tín hiệu ghi đè khẩn cấp đã được yêu cầu.<br>Hãy sử dụng mã truy cập hạn chế này để kết nối liên kết thần kinh:<br><br><b style='font-size: 24px; khoảng cách chữ: 5px; màu: #3b82f6;'>{{code}></b><br><br>PHÁT HIỆN TÍN HIỆU PHÁ HỦY. Mã tự hủy sau 10 phút."
         },
         "template": {
-            "transmission": "CYBER TASKER // TRANSMISSION",
-            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+            "transmission": "NHIỆM VỤ MẠNG // TRUYỀN THÔNG",
+            "footer": "KÊNH BẢO MẬT ĐƯỢC THIẾT LẬP.<br>NGUỒN GỐC: CYBER_TASKER_CORE"
         }
     }
 }

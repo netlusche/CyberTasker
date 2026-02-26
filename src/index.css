@@ -949,6 +949,18 @@ body,
     text-transform: none !important;
   }
 
+  /* Hotfix: Arrakis and Westeros fonts are intrinsically all-caps/small-caps.
+     Override inputs with standard system sans-serif for legibility. */
+  .theme-arrakis input[type="text"],
+  .theme-arrakis input[type="password"],
+  .theme-arrakis input[type="email"],
+  .theme-got input[type="text"],
+  .theme-got input[type="password"],
+  .theme-got input[type="email"] {
+    font-family: system-ui, -apple-system, sans-serif !important;
+    letter-spacing: normal !important;
+  }
+
   .input-cyber::placeholder {
     color: var(--theme-text);
     opacity: 0.4;

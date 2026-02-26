@@ -92,7 +92,9 @@
             "connection_failed": "שגיאת מערכת: החיבור נכשל.",
             "reset_title": "מפתח גישה לאיפוס",
             "override": "ביטול",
-            "missing_reset_token": "שגיאה: אסימון איפוס חסר."
+            "missing_reset_token": "שגיאה: אסימון איפוס חסר.",
+            "install_title": "אתחול רשת נוירונית",
+            "install_subtitle": "קבע את פרמטרי מנהל המערכת הראשי כדי לאתחל את ליבת ה-CyberTasker."
         },
         "status": {
             "resyncing": "[ מסנכרן מחדש... ]",
@@ -601,25 +603,25 @@
     ],
     "emails": {
         "identity_verification": {
-            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
-            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
-            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+            "subject": "CYBER_TASKER // אימות זהות",
+            "body": "ברוך הבא אופרטיבי {{username}}.<br><br>פרמטרי הזהות שלך נקבעו.<br>אשר את תדירות ה-com-link שלך כדי לגשר על הפער:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. הגישה מוגבלת עד לאישור.",
+            "unverified_fallback": "זהות הוקמה, אך אות ה-com-link נכשל. צור קשר עם מנהל המערכת כדי לאמת את חשבונך באופן ידני."
         },
         "email_update": {
-            "subject": "CyberTasker Email Update Verification",
-            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+            "subject": "אימות עדכון דוא\"ל CyberTasker",
+            "body": "פעיל,<br><br>ערוץ התקשורת שלך מנותב מחדש אל: {{email}}.<br>אשר שינוי תדירות זה:<br><a href='{{link}}'>{{link}}</a><br><br>הגישה מוגבלת עד לאישור."
         },
         "password_reset": {
-            "subject": "CyberTasker Password Reset",
-            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+            "subject": "איפוס סיסמת CyberTasker",
+            "body": "המבצע {{username}},<br><br>התקבלה בקשה לאיפוס מפתח הגישה שלך.<br>אם זה היית אתה, המשך לכאן:<br><a href='{{link}}'>{{link}}</a><br><br>קישור זה משמיד את עצמו תוך 60 דקות."
         },
         "emergency_override": {
-            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
-            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+            "subject": "CYBER_TASKER // קוד ביטול חירום",
+            "body": "אופרטיבי {{username}},<br><br>התבקש אות לעקוף חירום.<br>השתמש בקוד גישה מוגבל זה כדי לגשר על הקישור העצבי:<br><br><b style='font-size: 24px; מרווח אותיות: 5 פיקסלים; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. הקוד משמיד את עצמו תוך 10 דקות."
         },
         "template": {
             "transmission": "CYBER TASKER // TRANSMISSION",
-            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+            "footer": "הוקם ערוץ מאובטח.<br>מקור: CYBER_TASKER_CORE"
         }
     }
 }

@@ -92,7 +92,9 @@
             "connection_failed": "सिस्टम त्रुटि: कनेक्शन विफल.",
             "reset_title": "पहुंच कुंजी रीसेट करें",
             "override": "ओवरराइड",
-            "missing_reset_token": "त्रुटि: रीसेट टोकन गायब है।"
+            "missing_reset_token": "त्रुटि: रीसेट टोकन गायब है।",
+            "install_title": "न्यूरल ग्रिड प्रारंभ करें",
+            "install_subtitle": "साइबरटास्कर कोर को प्रारंभ करने के लिए मास्टर एडमिन पैरामीटर स्थापित करें।"
         },
         "status": {
             "resyncing": "[ पुनः समन्वयित हो रहा है... ]",
@@ -601,25 +603,25 @@
     ],
     "emails": {
         "identity_verification": {
-            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
-            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
-            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+            "subject": "CYBER_TASKER // पहचान सत्यापन",
+            "body": "आपका स्वागत है ऑपरेटिव {{उपयोगकर्ता नाम}}।<br><br>आपके पहचान पैरामीटर स्थापित कर दिए गए हैं।<br>अंतराल को पाटने के लिए अपनी कॉम-लिंक आवृत्ति की पुष्टि करें:<br><br><a href='{{link}}' style='color: #0088cc; पाठ-सजावट: कोई नहीं;'>{{लिंक}}</a><br><br>संकेत क्षय का पता चला। पुष्टि होने तक प्रवेश प्रतिबंधित है।",
+            "unverified_fallback": "पहचान स्थापित हो गई, लेकिन कॉम-लिंक सिग्नल विफल हो गया। अपने खाते को मैन्युअल रूप से सत्यापित करने के लिए व्यवस्थापक से संपर्क करें।"
         },
         "email_update": {
-            "subject": "CyberTasker Email Update Verification",
-            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+            "subject": "साइबरटास्कर ईमेल अपडेट सत्यापन",
+            "body": "ऑपरेटिव,<br><br>आपका संचार चैनल इस पर पुनः रूट किया जा रहा है: {{ईमेल}}।<br>इस आवृत्ति परिवर्तन की पुष्टि करें:<br><a href='{{link}}'>{{link}}</a><br><br>पुष्टि होने तक पहुंच प्रतिबंधित है।"
         },
         "password_reset": {
-            "subject": "CyberTasker Password Reset",
-            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+            "subject": "साइबरटास्कर पासवर्ड रीसेट",
+            "body": "ऑपरेटिव {{उपयोगकर्ता नाम}},<br><br>आपकी एक्सेस कुंजी को रीसेट करने का अनुरोध प्राप्त हुआ था।<br>यदि यह आप थे, तो यहां आगे बढ़ें:<br><a href='{{link}}'>{{link}}</a><br><br>यह लिंक 60 मिनट में स्वयं नष्ट हो जाता है।"
         },
         "emergency_override": {
-            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
-            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+            "subject": "साइबर_टास्कर // आपातकालीन ओवरराइड कोड",
+            "body": "ऑपरेटिव {{उपयोगकर्ता नाम}},<br><br>एक आपातकालीन ओवरराइड सिग्नल का अनुरोध किया गया है।<br>न्यूरल लिंक को पाटने के लिए इस प्रतिबंधित एक्सेस कोड का उपयोग करें:<br><br><b style='font-size: 24px; अक्षर-रिक्ति: 5px; रंग: #3b82f6;'>{{कोड}}</b><br><br>संकेत क्षय का पता चला। कोड 10 मिनट में स्वयं नष्ट हो जाता है।"
         },
         "template": {
-            "transmission": "CYBER TASKER // TRANSMISSION",
-            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+            "transmission": "साइबर टास्कर // ट्रांसमिशन",
+            "footer": "सुरक्षित चैनल स्थापित।<br>उत्पत्ति: CYBER_TASKER_CORE"
         }
     }
 }

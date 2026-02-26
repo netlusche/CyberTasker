@@ -1,4 +1,4 @@
-# CyberTasker v2.4 - Administration Guide
+# CyberTasker v2.6.0 - Administration Guide
 
 ![CyberTasker Logo](images/cybertasker_logo_horizontal.png)
 
@@ -10,11 +10,11 @@ Welcome to the CyberTasker Administration Console documentation. This guide outl
 ## 1. System Initialization (The `install.php` Protocol)
 
 When deploying CyberTasker to a new server grid, the database is initially empty. 
-Navigating to the root directory will automatically trigger the `install.php` sequence.
+Navigating to the root directory will automatically trigger the `install.php` sequence. You can select your operational language from the dropdown menu, which will automatically become the system default for the master account.
 
 ### Zero-Config Auto-Lock
 CyberTasker features a self-locking installation mechanism:
-*   **First Run:** The installer detects an empty grid, creates the necessary SQLite/MySQL tables, and injects the initial test user dataset. The Administrator must provide an **Email Address** and a robust **Access Key** (Password) during this step.
+*   **First Run:** The installer detects an empty grid, creates the necessary SQLite/MySQL tables, and injects the initial test user dataset. The Administrator must provide a **Codename (Username)**, an **Email Address**, and a robust **Access Key** (Password) during this step.
 *   **Subsequent Runs:** Once the `users` table exists, the installer **locks itself**. If you attempt to access `install.php` again to force a database schema update, you **must** be actively logged in as an `admin`. 
 *   If a standard user or an unauthenticated visitor hits the installer, they receive a severe `[ ACCESS DENIED ]` warning, protecting the database from malicious resets.
 
@@ -37,7 +37,7 @@ Security is paramount. The Admin grid allows you to monitor the 2FA status of al
 *   **Emergency Override:** If an Operative loses their authenticator device and their backup codes, an Admin can click the red **`2FA OFF`** button to forcefully disable the Bio-Lock for that specific user, allowing them to log in with just their password.
 
 ### 2.3 System Version Display
-To ensure your grid is synchronized with current security updates, the absolute system version (e.g., `CyberTracker v2.5.0`) is continuously displayed at the bottom of the Admin Console. Use this version string when establishing contact for strategic support.
+To ensure your grid is synchronized with current security updates, the absolute system version (e.g., `CyberTracker v2.6.0`) is continuously displayed at the bottom of the Admin Console. Use this version string when establishing contact for strategic support.
 
 ## 3. Global System Policies
 
@@ -59,4 +59,4 @@ By toggling the `Enforce Email 2FA` switch:
 
 ---
 > **End of Guide**
-> Maintain constant vigilance over the grid, Admin. (v2.5)
+> Maintain constant vigilance over the grid, Admin. (v2.6)

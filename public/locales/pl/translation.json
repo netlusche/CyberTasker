@@ -92,7 +92,9 @@
             "connection_failed": "BŁĄD SYSTEMU: POŁĄCZENIE NIEUDANE.",
             "reset_title": "ZRESETUJ KLUCZ DOSTĘPU",
             "override": "NADPISZ",
-            "missing_reset_token": "BŁĄD: BRAK TOKENA RESETOWANIA."
+            "missing_reset_token": "BŁĄD: BRAK TOKENA RESETOWANIA.",
+            "install_title": "INICJALIZACJA SIECI NEURONOWEJ",
+            "install_subtitle": "Ustal parametry Głównego Administratora, aby zainicjować rdzeń CyberTasker."
         },
         "status": {
             "resyncing": "[ PONOWNA SYNCHRONIZACJA... ]",
@@ -601,25 +603,25 @@
     ],
     "emails": {
         "identity_verification": {
-            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
-            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
-            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+            "subject": "CYBER_TASKER // WERYFIKACJA TOŻSAMOŚCI",
+            "body": "Witamy Operatora {{username}}.<br><br>Twoje parametry tożsamości zostały ustalone.<br>Potwierdź częstotliwość łącza komunikacyjnego, aby wypełnić lukę:<br><br><a href='{{link}}' style='color: #0088cc; dekoracja tekstu: brak;'>{{link}</a><br><br>Wykryto zanik sygnału. Dostęp jest ograniczony do czasu potwierdzenia.",
+            "unverified_fallback": "Tożsamość ustalona, ​​ale sygnał połączenia komunikacyjnego nie powiódł się. Skontaktuj się z administratorem, aby ręcznie zweryfikować swoje konto."
         },
         "email_update": {
-            "subject": "CyberTasker Email Update Verification",
-            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+            "subject": "Weryfikacja aktualizacji poczty e-mail CyberTaskera",
+            "body": "Działacz,<br><br>Twój kanał komunikacji został przekierowany na: {{email}}.<br>Potwierdź tę zmianę częstotliwości:<br><a href='{{link}}'>{{link}</a><br><br>Dostęp jest ograniczony do czasu potwierdzenia."
         },
         "password_reset": {
-            "subject": "CyberTasker Password Reset",
-            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+            "subject": "Resetowanie hasła CyberTaskera",
+            "body": "Operator {{username}},<br><br>Otrzymano prośbę o zresetowanie Twojego klucza dostępu.<br>Jeśli to byłeś Ty, przejdź tutaj:<br><a href='{{link}}'>{{link}</a><br><br>Ten link ulega samozniszczeniu w ciągu 60 minut."
         },
         "emergency_override": {
-            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
-            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+            "subject": "CYBER_TASKER // AWARYJNY KOD OBEJŚCIA",
+            "body": "Operative {{username}},<br><br>Zażądano awaryjnego sygnału obejścia.<br>Użyj tego kodu ograniczonego dostępu, aby połączyć łącze neuronowe:<br><br><b style='font-size: 24px; odstępy między literami: 5px; kolor: #3b82f6;'>{{code}</b><br><br>Wykryto zanik sygnału. Kod ulega samozniszczeniu w ciągu 10 minut."
         },
         "template": {
-            "transmission": "CYBER TASKER // TRANSMISSION",
-            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+            "transmission": "CYBER ZADANIE // TRANSMISJA",
+            "footer": "USTANOWIONO BEZPIECZNY KANAŁ.<br>ORIGIN: CYBER_TASKER_CORE"
         }
     }
 }

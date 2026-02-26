@@ -1,4 +1,4 @@
-# CyberTasker v2.4 - Technical Reference
+# CyberTasker v2.6.0 - Technical Reference
 
 ![CyberTasker Logo](images/cybertasker_logo_horizontal.png)
 
@@ -29,10 +29,11 @@ The backend relies on a custom front-controller pattern configured via `.htacces
 3.  **Dispatch:** Controller files handle domain logic. For instance, `route=tasks/list` mapped to `GET` will dispatch to `api/tasks.php` -> `get_tasks()`.
 4.  **Response:** Controllers return normalized JSON structures strictly defined by the API contract.
 
-## 4. Localization (i18next)
+## 4. Localization (i18next & Database-Driven)
 
-The frontend's text layer is entirely abstracted using `react-i18next`.
+The frontend's text layer is abstracted using `react-i18next`.
 *   Translation files (`.json`) are dynamically loaded via `i18next-http-backend`.
+*   **Database Source of Truth:** As of v2.6.0, the operative's language preference is stored in the `users` table, overwriting browser `localStorage` upon authentication to ensure cross-device consistency.
 *   A custom python script (`scripts/check_translations.py`) exists in the pipeline to validate synchronization between language keys.
 
 ## 5. Testing Suite (Playwright E2E)
@@ -40,12 +41,12 @@ The frontend's text layer is entirely abstracted using `react-i18next`.
 Quality assurance is strictly enforced via **Playwright** End-to-End tests simulating Chromium browsers.
 
 *   `tests/e2e/`: Contains complex user-journey scenarios.
-*   **Notable test paths:** Re-authentication after 2FA toggles, accurately rendering recurrence projections in the Calendar component, and drag-and-drop resilience for sub-routines.
+*   **Notable test paths:** Re-authentication after 2FA toggles, accurately rendering recurrence projections in the Calendar component, and `@dnd-kit` drag-and-drop resilience for sub-routines. The zero-config installer is completely automated via Playwright to guarantee master account creation security.
 
 ## 6. CI/CD Pipeline & Build Orchestration
 
-The project leverages automated pipelines (GitHub Actions based on implementation US-2.3.1).
+The project leverages automated pipelines (GitHub Actions based on implementation US-2.3.1) and a streamlined Bash release protocol.
 
-1.  **Lint & Unit:** Standard ESLint checks and Vite-based unit tests.
+1.  **Lint & Unit:** Standard ESLint checks and Vite-based unit tests. Theme CSS bleed is validated via `scripts/check-theme.js`.
 2.  **Cross-Database E2E Matrix:** A critical step that spins up Docker containers. Playwright tests execute concurrently against both an SQLite instance and a MySQL instance to ensure PDO abstraction remains agnostic and functional.
-3.  **Release Bundling:** Upon success, `.htaccess` files are injected into `dist/`, local configuration files are scrubbed, and the final production asset is packaged into a release ZIP.
+3.  **Bash Release Pipeline (`scripts/release.sh`):** Automates the finalization phase. It runs all translation/theme checks, executes the Playwright E2E suite, increments version numbers in `package.json` and backend headers, builds the Vite `dist/` directory, and concludes by deploying a signed Git tag for the release.

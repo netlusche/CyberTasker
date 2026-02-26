@@ -398,6 +398,12 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Validation**:
   - The script asserts valid translation completeness (`npm run check-translations`) and theme coherence.
   - E2E Playwright tests act as a strict pass/fail gatekeeper.
+
+### TS-12.5: Database-Synchronized Localization [AUTOMATED]
+- **Scenario**: A user explicitly selects "French (FR)" via the language switcher, logging out, and then a second user with a different language profile (e.g. "Dutch (NL)") logs in on the exact same browser/device.
+- **Validation**:
+  - The UI language forcefully and immediately snaps to the authenticating user's specific database language preference (NL), overwriting the previous session's `localStorage` state (FR).
+  - Page refreshes via `api/index.php?route=auth/me` perfectly retain the database language state, preventing fallback drift.
 ### TS-12.4: Multilingual Installer & System Emails Check [MANUAL]
 - **Scenario**: Boot `install.php` on a fresh system. Change the language selector (e.g., to French) and create the Admin account. Request a password reset for that Admin.
 - **Validation**:
@@ -415,3 +421,27 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Validation**: 
   - The action links (Verification/Reset) use the `#0088cc` cyan-blue color code.
   - The text remains distinctly legible and compliant with WCAG contrast ratios against both bright white and dark charcoal message backgrounds.
+
+### TS-12.8: Forced Session Invalidation on Password Change [AUTOMATED]
+- **Scenario**: An active operative accesses their profile and successfully executes the Cypher Update protocol (Password Change).
+- **Validation**:
+  - All current session cookies for this operative are immediately terminated server-side.
+  - The active client is forcefully logged out and redirected to the `/login` screen to re-authenticate using the newly established access key.
+
+### TS-12.9: Installer Custom Admin Provisioning [AUTOMATED] (00-installer.spec.js)
+- **Scenario**: Boot `install.html` on a completely uninitialized grid and provision a non-default master admin account.
+- **Validation**:
+  - The script executes the entire form sequence and receives the "System Initialized Successfully" message.
+  - The database is accurately populated with the custom username, overriding default legacy credentials.
+
+### TS-12.10: Privilege Escalation Protection [AUTOMATED] (00-installer.spec.js)
+- **Scenario**: Attempt to reload and submit the `/install.html` POST request after the grid has already been initialized by `TS-12.9`.
+- **Validation**:
+  - The backend explicitly rejects the POST payload with a 403 Forbidden state, completely blocking the creation of unlimited master admin accounts.
+  - The frontend catches this strict rejection and displays "ACCESS DENIED: SYSTEM ALREADY INITIALIZED." to the rogue operative.
+
+### TS-12.9: Installer Custom Admin Provisioning [AUTOMATED] (00-installer.spec.js)
+- **Scenario**: Boot `install.html` on a fresh system. Fill in the desired Codename, Email, and Access Key.
+- **Validation**:
+  - The UI securely submits the custom attributes to the backend installer.
+  - The API initializes the `users` table with the requested Codename (e.g., `CyberBoss`) acting as the Master Administrator, thereby eliminating exposure from legacy default identities.

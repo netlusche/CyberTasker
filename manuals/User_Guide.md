@@ -1,4 +1,4 @@
-# CyberTasker v2.4 - Operative Manual
+# CyberTasker v2.6.0 - Operative Manual
 
 ![CyberTasker Logo](images/cybertasker_logo_horizontal.png)
 
@@ -35,7 +35,7 @@ For complex operations, click the **"DETAILS"** button on any Task Card to open 
 *   **Sub-Routines:** Break complex directives down into actionable steps.
     *   Add new sub-routines.
     *   Edit them inline simply by clicking on the text.
-    *   **Drag & Drop:** Reorder them visually to map out your execution plan.
+    *   **Drag & Drop:** Reorder them visually to map out your execution plan (fully touch-native for iOS and Android).
 *   **Uplinks:** Securely attach necessary schematics or files directly to the task via the Uplink interface.
 
 ## 4. Gamification & Progression
@@ -60,13 +60,13 @@ Access your **Profile** to configure your personal interface. It contains multip
 **Security & Connectors:**
 ![User Profile Top](images/cybertasker_profile_top_1771861511612.png)
 *   **Bio-Lock Security (2FA):** Enable and enforce two-factor authentication via Authenticator Apps or Email. If administrators enforce global Email 2FA, you will see a flashing "SYSTEM DIRECTIVE [Admin Policy]" banner here until you set up a dedicated TOTP app.
-*   **Contact Channel:** Configure your Com-Link (Email) for notifications.
-*   **Localization (Multi-Language):** CyberTasker's UI can be hot-swapped between localized language packs, updating everything including localized dashboard components.
+*   **Contact Channel:** Configure your Com-Link (Email) for notifications. All system emails respond dynamically to your chosen UI language.
+*   **Localization (Multi-Language):** CyberTasker's UI can be hot-swapped between 24 localized language packs, updating everything including localized dashboard components. Your selection synchronizes deeply with the neural database across all devices.
 
 **Customization & Termination:**
 ![User Profile Bottom](images/cybertasker_profile_bottom_1771861528664.png)
-*   **Theme Selection:** Hot-swap your interface's visual theme. Options include Cyberpunk, Matrix, LCARS, and specialized setups like *Computerwelt*, *Mensch-Maschine*, *Neon Syndicate*, and the light-mode *Megacorp Executive*.
-*   **Update Cypher:** Update your system password.
+*   **Theme Selection:** Hot-swap your interface's visual theme. Options include 24 unique visual matrices such as Cyberpunk, Matrix, LCARS, Computerwelt, and Megacorp Executive.
+*   **Update Cypher:** Update your system password. **Security Note:** Changing your access key will forcefully invalidate all your active sessions globally, requiring immediate re-authentication.
 *   **Danger Zone:** Permanently terminate your identity and wipe allied directives.
 
 ## 7. System Help (Integrated Database)
@@ -87,4 +87,4 @@ Users with `admin` clearance possess access to the restricted Admin Panel.
 
 ---
 > **[END OF TRANSMISSION]**
-> CyberTasker Core Logic v2.5 (The Quality & Immersion Update)
+> CyberTasker Core Logic v2.6 (The Accessibility & Automation Update)

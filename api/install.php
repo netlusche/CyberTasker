@@ -98,10 +98,10 @@ try {
         // To proceed with schema updates, the operative MUST be logged in as an Admin.
         // BYPASS for CLI (tests, automated deployments)
         if (php_sapi_name() !== 'cli' && (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin')) {
+            ob_clean();
             http_response_code(403);
-            echo "<h3 style='color: red;'>[ ACCESS DENIED: SECURITY AUTO-LOCK ]</h3>\n";
-            echo "<p>The grid has already been initialized. To execute schema updates, you must establish an active neural link as an 'admin' via the main login terminal first.</p>\n";
-            exit(1);
+            echo json_encode(['error' => '[ ACCESS DENIED: SECURITY AUTO-LOCK ] The grid operates under Admin lock. Only registered administrators may execute schema updates.']);
+            exit;
         }
         echo "<span style='color: green;'>ACCESS GRANTED. Proceeding with schema update...</span><br>\n";
     }
@@ -112,30 +112,55 @@ try {
     $isCli = (php_sapi_name() === 'cli');
     $initEmail = null;
     $initPassword = 'password';
+    $initUsername = 'admin';
 
-    if (!$isCli && !tableExists($pdo, 'users')) {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            // Redirect to the frontend installer
-            header("Location: ../install.html");
-            exit;
-        }
+    if (!$isCli) {
+        if (!tableExists($pdo, 'users')) {
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                // Redirect to the frontend installer
+                header("Location: ../install.html");
+                exit;
+            }
 
-        // Handle POST credentials
-        $json = file_get_contents('php://input');
-        $data = json_decode($json, true);
-        if (!$data || empty($data['email']) || empty($data['password'])) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Email and Password are required.']);
-            exit;
+            // Handle POST credentials
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+            if (!$data || empty($data['username']) || empty($data['email']) || empty($data['password'])) {
+                ob_clean();
+                http_response_code(400);
+                echo json_encode(['error' => 'Username, Email, and Password are required.']);
+                exit;
+            }
+
+            $initUsername = trim($data['username']);
+            if (strlen($initUsername) < 3 || !preg_match('/^[a-zA-Z0-9_\-]+$/', $initUsername)) {
+                ob_clean();
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid username format. Must be at least 3 alphanumeric characters.']);
+                exit;
+            }
+
+            if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                ob_clean();
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid email address.']);
+                exit;
+            }
+            $initEmail = trim($data['email']);
+            $initPassword = $data['password'];
+            $initLanguage = $data['language'] ?? 'en';
         }
-        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Invalid email address.']);
-            exit;
+        else {
+            // CRITICAL FIX: If the table exists, NEVER allow a POST request to proceed.
+            // This prevents a malicious user from reloading the installer to inject a default 'admin' account
+            // while the site is already initialized with a custom username.
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                ob_clean();
+                http_response_code(403);
+                echo json_encode(['error' => 'ACCESS DENIED: SYSTEM ALREADY INITIALIZED.']);
+                exit;
+            }
         }
-        $initEmail = trim($data['email']);
-        $initPassword = $data['password'];
-        $initLanguage = $data['language'] ?? 'en';
     }
 
 
@@ -296,7 +321,7 @@ try {
     echo "Table 'auth_logs' check/create complete.<br>\n";
 
     // --- DEFAULT ADMIN USER ---
-    $adminUsername = 'admin';
+    $adminUsername = $initUsername;
     $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
     $stmt->execute([$adminUsername]);
 
@@ -312,7 +337,7 @@ try {
         $stmtStats = $pdo->prepare("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES (?, 0, 1, '[]')");
         $stmtStats->execute([$adminId]);
 
-        echo "Default Admin user 'admin' created.<br>\n";
+        echo "Master Admin account '$adminUsername' created.<br>\n";
 
         // --- INJECT SECURITY DIRECTIVES ---
         // Seed Admin Manual PDF
@@ -402,18 +427,14 @@ try {
 }
 catch (PDOException $e) {
     ob_clean();
-    echo "<h4>CRITICAL ERROR:</h4>";
-    echo "Error: " . $e->getMessage() . "<br>\n";
-    echo "SQL State: " . $e->getCode() . "<br>\n";
-    ob_end_flush();
-    exit(1);
+    http_response_code(500);
+    echo json_encode(['error' => "CRITICAL ERROR: " . $e->getMessage() . " (SQL State: " . $e->getCode() . ")"]);
+    exit;
 }
 catch (Throwable $t) {
     ob_clean();
-    echo "<h4>GENERAL ERROR:</h4>";
-    echo "Error: " . $t->getMessage() . "<br>\n";
-    echo "File: " . $t->getFile() . " on line " . $t->getLine() . "<br>\n";
-    ob_end_flush();
-    exit(1);
+    http_response_code(500);
+    echo json_encode(['error' => "GENERAL ERROR: " . $t->getMessage() . " in " . $t->getFile() . ":" . $t->getLine()]);
+    exit;
 }
 ?>
