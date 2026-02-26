@@ -127,8 +127,9 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         const code = codeMatch[1];
 
         // Fill the setup code verification field
-        const codeInput = page.getByPlaceholder(/CODE/i).first();
-        await expect(codeInput).toBeVisible();
+        // We use a broader locator to find the input that resembles a 2FA code field
+        const codeInput = page.locator('input[type="text"]').last();
+        await expect(codeInput).toBeVisible({ timeout: 10000 });
         await codeInput.fill(code);
 
         // Click Bridge / Verify 

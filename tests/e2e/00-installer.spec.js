@@ -49,7 +49,7 @@ test.describe('TS-12.9: Installer Custom Admin Provisioning', () => {
         await expect(successMessage).toBeVisible({ timeout: 15000 });
 
         // Ensure the "PROCEED TO LOGIN" link is visible
-        const proceedLink = page.locator('a', { hasText: /PROCEED TO LOGIN/i });
+        const proceedLink = page.locator('a', { hasText: /PROCEED TO LOGIN|WEITER ZUM ANMELDEN/i });
         await expect(proceedLink).toBeVisible();
     });
 
