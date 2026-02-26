@@ -197,4 +197,25 @@ class AdminController extends Controller
 
         $this->jsonResponse(['success' => true]);
     }
+
+    public function toggleMailLogging()
+    {
+        // This is a special Dev/Test utility route
+        // We only allow this if the environment is local/test, but for simplicity here we just toggle the flag
+        $data = $this->getJsonBody();
+        $enabled = $data['enabled'] ?? false;
+
+        $flagFile = __DIR__ . '/../../mail_logging_enabled.flag';
+
+        if ($enabled) {
+            file_put_contents($flagFile, '1');
+            $this->jsonResponse(['message' => 'Mail logging enabled']);
+        }
+        else {
+            if (file_exists($flagFile)) {
+                unlink($flagFile);
+            }
+            $this->jsonResponse(['message' => 'Mail logging disabled']);
+        }
+    }
 }

@@ -50,8 +50,11 @@ const AuthForm = ({ onLogin }) => {
             return;
         }
 
+        let langCode = localStorage.getItem('i18nextLng') || 'en';
+        if (langCode.includes('-')) langCode = langCode.split('-')[0];
+
         const endpoint = isLogin ? 'api/index.php?route=auth/login' : 'api/index.php?route=auth/register';
-        const body = isLogin ? { username, password } : { username, password, email };
+        const body = isLogin ? { username, password, language: langCode } : { username, password, email, language: langCode };
 
         try {
             const res = await apiFetch(endpoint, {
@@ -127,10 +130,13 @@ const AuthForm = ({ onLogin }) => {
     const handleForgotSubmit = async () => {
         setLoading(true);
         try {
+            let langCode = localStorage.getItem('i18nextLng') || 'en';
+            if (langCode.includes('-')) langCode = langCode.split('-')[0];
+
             const res = await apiFetch('api/index.php?route=auth/request_password_reset', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email, language: langCode }),
             });
             const data = await res.json();
             if (res.ok) {

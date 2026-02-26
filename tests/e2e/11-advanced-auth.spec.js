@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, request } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
@@ -24,6 +24,19 @@ function clearEmailLog() {
 test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
 
     // Database is now seeded once globally via global.setup.js
+
+    // Enable Mail logging for this suite
+    test.beforeAll(async ({ request }) => {
+        await request.post('/api/toggle_mail_logging.php', {
+            data: { enabled: true }
+        });
+    });
+
+    test.afterAll(async ({ request }) => {
+        await request.post('/api/toggle_mail_logging.php', {
+            data: { enabled: false }
+        });
+    });
 
     test.beforeEach(async () => {
         clearEmailLog();

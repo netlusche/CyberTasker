@@ -87,11 +87,14 @@ $router->delete('categories', [CategoryController::class , 'destroy']);
 // --- User Routes ---
 $router->get('user/stats', [UserController::class , 'getStats']);
 
+// --- Dev Utilities --
+$router->post('dev/toggle_mail_logging', [AdminController::class , 'toggleMailLogging']);
+
+
 // Dispatch
 $method = $_SERVER['REQUEST_METHOD'];
 $route = $_GET['route'] ?? '';
 
-// CSRF Protection
 $csrfExemptRoutes = [
     'auth/login',
     'auth/register',
@@ -99,7 +102,8 @@ $csrfExemptRoutes = [
     'auth/request_password_reset',
     'auth/reset_password',
     'auth/verify_2fa',
-    'auth/resend_email_2fa'
+    'auth/resend_email_2fa',
+    'dev/toggle_mail_logging'
 ];
 
 if (!in_array($route, $csrfExemptRoutes)) {

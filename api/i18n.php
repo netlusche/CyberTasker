@@ -10,11 +10,30 @@ class I18nHelper
     public static function load($lang)
     {
         $lang = strtolower(explode('-', $lang)[0]); // e.g., 'en-US' -> 'en'
-        $path = __DIR__ . '/../public/locales/' . $lang . '/translation.json';
 
-        if (!file_exists($path)) {
+        $possiblePaths = [
+            __DIR__ . '/../locales/' . $lang . '/translation.json', // Production (dist relative to dist/api)
+            __DIR__ . '/../public/locales/' . $lang . '/translation.json' // Development relative to /api
+        ];
+
+        $path = '';
+        foreach ($possiblePaths as $p) {
+            if (file_exists($p)) {
+                $path = $p;
+                break;
+            }
+        }
+
+        if (!$path) {
             $lang = self::$defaultLang;
-            $path = __DIR__ . '/../public/locales/' . $lang . '/translation.json';
+            foreach ($possiblePaths as $p) {
+                // Try fallback lang
+                $fallbackPath = str_replace('/' . $lang . '/', '/' . self::$defaultLang . '/', $p);
+                if (file_exists($fallbackPath)) {
+                    $path = $fallbackPath;
+                    break;
+                }
+            }
         }
 
         if (!isset(self::$translations[$lang])) {

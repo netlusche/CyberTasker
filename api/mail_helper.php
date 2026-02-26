@@ -29,8 +29,8 @@ function sendMail($to, $subject, $body, $lang = 'en')
             .container { border: 1px solid #00ff9d; padding: 20px; max-width: 600px; margin: 0 auto; }
             h1 { border-bottom: 1px solid #00ff9d; padding-bottom: 10px; }
             .footer { margin-top: 20px; font-size: 0.8em; color: #555; border-top: 1px dashed #333; padding-top: 10px; }
-            a { color: #3b82f6; text-decoration: none; font-weight: bold; }
-            a:hover { text-decoration: underline; color: #60a5fa; }
+            a { color: #0056b3; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; color: #003d82; }
         </style>
     </head>
     <body>

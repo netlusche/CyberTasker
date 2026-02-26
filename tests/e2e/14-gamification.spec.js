@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, request } from '@playwright/test';
 import { calculateBadge } from '../../src/utils/badgeMapping';
 import { execSync } from 'child_process';
 import path from 'path';
@@ -8,6 +8,17 @@ import { loginAsAdmin } from './auth-commands.js';
 test.describe('US-2.5.12 & US-2.5.13: Gamification UX and Logic', () => {
 
 
+    test.beforeAll(async ({ request }) => {
+        await request.post('/api/toggle_mail_logging.php', {
+            data: { enabled: true }
+        });
+    });
+
+    test.afterAll(async ({ request }) => {
+        await request.post('/api/toggle_mail_logging.php', {
+            data: { enabled: false }
+        });
+    });
 
     test('calculateBadge logic should return correct mapped titles based on level', async () => {
         // Test Level 1

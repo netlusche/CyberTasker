@@ -5,8 +5,11 @@ export const setCsrfToken = (token) => {
 };
 
 export const apiFetch = async (url, options = {}) => {
+    let lang = localStorage.getItem('i18nextLng') || 'en';
+    if (lang.includes('-')) lang = lang.split('-')[0];
+
     const headers = {
-        'X-App-Language': localStorage.getItem('i18nextLng') || 'en',
+        'X-App-Language': lang,
         ...options.headers,
     };
 

@@ -9,13 +9,6 @@
 
 ---
 
-# CyberTasker v2.4.1 (Completed Tasks Hotfix)
-*Release Date: 2026-02-24*
-
-*   **Dashboard Visibility Patch**: Fixed a critical backend filtering bug within the SQLite and MySQL repositories that unintentionally wiped all completed tasks (`status = 1`) from the database responses. Completed directives are now correctly tallied and displayed on the operative dashboard again without corrupting pagination boundaries.
-
----
-
 # CyberTasker v2.5.1 (The Security & Gamification Update)
 *Release Date: 2026-02-25*
 
@@ -25,6 +18,13 @@
 *   **Deep Installation Security**: The zero-configuration installer now strictly requires a valid email address when provisioning the Master Admin account, guaranteeing an open comm-link for 2FA and recovery protocols.
 *   **Quality of Life**: Implemented a password visibility toggle (Eye Icon) natively within the operative Profile and Auth screens. The Administration Console now clearly displays the active system version at the bottom.
 *   **Automated Quality Assurance**: Deployed Python-based translation validation (`check_translations.py`) and JS-based CSS-variable linting (`check-theme.js`) to the GitHub Actions CI pipeline to permanently eliminate missing translations and hardcoded "theme bleeding".
+
+---
+
+# CyberTasker v2.4.1 (Completed Tasks Hotfix)
+*Release Date: 2026-02-24*
+
+*   **Dashboard Visibility Patch**: Fixed a critical backend filtering bug within the SQLite and MySQL repositories that unintentionally wiped all completed tasks (`status = 1`) from the database responses. Completed directives are now correctly tallied and displayed on the operative dashboard again without corrupting pagination boundaries.
 
 ---
 

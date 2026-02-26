@@ -602,7 +602,7 @@
     "emails": {
         "identity_verification": {
             "subject": "CYBER_TASKER // IDENTITEETIN VAHVISTAMINEN",
-            "body": "Tervetuloa operatiiviseen {{username}}.<br><br>Identiteettiparametrisi on määritetty.<br>Vahvista yhteystiheys umpeen kuromiseksi:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>SIGNAALIN VIKEMINEN HAVAITTU. Pääsy on rajoitettu vahvistukseen asti.",
+            "body": "Tervetuloa operatiiviseen {{username}}.<br><br>Identiteettiparametrisi on määritetty.<br>Vahvista yhteystiheys umpeen kuromiseksi:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAALIN VIKEMINEN HAVAITTU. Pääsy on rajoitettu vahvistukseen asti.",
             "unverified_fallback": "Identiteetti on määritetty, mutta com-link-signaali epäonnistui. Ota yhteyttä järjestelmänvalvojaan vahvistaaksesi tilisi manuaalisesti."
         },
         "email_update": {

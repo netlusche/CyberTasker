@@ -15,8 +15,9 @@ error_reporting(E_ALL);
 
 require_once 'db.php';
 
-// Detect DB Type from config or default to mysql
 $dbType = defined('DB_TYPE') ? DB_TYPE : 'mysql';
+
+ob_start();
 
 echo "<h3>CyberTasker Installer Diagnostic Mode</h3>\n";
 echo "PHP Version: " . phpversion() . "<br>\n";
@@ -397,18 +398,22 @@ try {
     }
 
     echo "Installation/Update Complete!";
-
+    ob_end_flush();
 }
 catch (PDOException $e) {
+    ob_clean();
     echo "<h4>CRITICAL ERROR:</h4>";
     echo "Error: " . $e->getMessage() . "<br>\n";
     echo "SQL State: " . $e->getCode() . "<br>\n";
+    ob_end_flush();
     exit(1);
 }
 catch (Throwable $t) {
+    ob_clean();
     echo "<h4>GENERAL ERROR:</h4>";
     echo "Error: " . $t->getMessage() . "<br>\n";
     echo "File: " . $t->getFile() . " on line " . $t->getLine() . "<br>\n";
+    ob_end_flush();
     exit(1);
 }
 ?>

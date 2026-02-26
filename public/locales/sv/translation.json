@@ -602,7 +602,7 @@
     "emails": {
         "identity_verification": {
             "subject": "CYBER_TASKER // IDENTITETSVERIFIKATION",
-            "body": "Välkommen Operativ {{användarnamn}}.<br><br>Dina identitetsparametrar har fastställts.<br>Bekräfta din com-länkfrekvens för att överbrygga gapet:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Åtkomsten är begränsad tills den bekräftas.",
+            "body": "Välkommen Operativ {{användarnamn}}.<br><br>Dina identitetsparametrar har fastställts.<br>Bekräfta din com-länkfrekvens för att överbrygga gapet:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Åtkomsten är begränsad tills den bekräftas.",
             "unverified_fallback": "Identitet fastställd, men com-länksignalen misslyckades. Kontakta administratören för att verifiera ditt konto manuellt."
         },
         "email_update": {

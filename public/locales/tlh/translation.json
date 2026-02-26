@@ -590,7 +590,7 @@
     "emails": {
         "identity_verification": {
             "subject": "CYBER_TASKER // ngoqmeyvo' bop VERIFICATION",
-            "body": "qaH vIngaQ {{username}}.<br><br>qechlIj ngoqmey DanoH.<br>qIHlIj Qap yIlaD:<br><br><a href='{{link}}' style='color: #00ffff; text-decoration: none;'>{{link}}</a><br><br>nuqneH. Hegh ngoqmey.",
+            "body": "qaH vIngaQ {{username}}.<br><br>qechlIj ngoqmey DanoH.<br>qIHlIj Qap yIlaD:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>nuqneH. Hegh ngoqmey.",
             "unverified_fallback": "ngoqmey DanoH, 'ach qIHlIj Qap. Admin yIghojmoH."
         },
         "email_update": {

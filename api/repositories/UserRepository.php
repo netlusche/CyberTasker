@@ -75,10 +75,10 @@ class UserRepository extends Repository
     }
 
     // Creating User
-    public function create(string $username, string $email, string $hash, string $vToken): int
+    public function create(string $username, string $email, string $hash, string $vToken, string $lang = 'en'): int
     {
-        $stmt = $this->pdo->prepare("INSERT INTO users (username, password, email, verification_token, is_verified) VALUES (?, ?, ?, ?, 0)");
-        $stmt->execute([$username, $hash, $email, $vToken]);
+        $stmt = $this->pdo->prepare("INSERT INTO users (username, password, email, verification_token, is_verified, language) VALUES (?, ?, ?, ?, 0, ?)");
+        $stmt->execute([$username, $hash, $email, $vToken, $lang]);
         $userId = (int)$this->pdo->lastInsertId();
 
         $this->pdo->prepare("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES (?, 0, 1, '[]')")->execute([$userId]);

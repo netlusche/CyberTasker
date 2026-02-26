@@ -49,8 +49,8 @@ const LanguageSwitcher = () => {
         { code: 'tlh', label: 'TLH', fullName: 'tlhIngan Hol' }
     ].sort((a, b) => a.fullName.localeCompare(b.fullName));
 
-    // Fallback to 'de' if code is not found
-    const currentLang = languages.find(l => l.code === i18n.language) || languages.find(l => l.code === 'de');
+    // Fallback to 'en' if code is not found
+    const currentLang = languages.find(l => l.code === i18n.language) || languages.find(l => l.code === 'en');
 
     const [coords, setCoords] = useState({ top: 0, left: 0 });
 

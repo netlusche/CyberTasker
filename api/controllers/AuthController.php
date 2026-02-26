@@ -193,9 +193,10 @@ class AuthController extends Controller
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $verificationToken = bin2hex(random_bytes(32));
+        $lang = $data['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
 
         try {
-            $userId = $this->userRepo->create($username, $email, $hash, $verificationToken);
+            $userId = $this->userRepo->create($username, $email, $hash, $verificationToken, $lang);
 
             // Auto-verify for E2E Test users
             if (str_ends_with($email, '@cyber.local')) {
@@ -205,8 +206,7 @@ class AuthController extends Controller
             require_once __DIR__ . '/../mail_helper.php';
             $mailSuccess = false;
             try {
-                $verifyLink = FRONTEND_URL . "/verify.html?token=" . $verificationToken;
-                $lang = $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+                $verifyLink = FRONTEND_URL . "/verify.html?token=" . $verificationToken . "&lang=" . $lang;
                 $subject = I18nHelper::t($lang, 'emails.identity_verification.subject');
                 $bodyTemplate = I18nHelper::t($lang, 'emails.identity_verification.body');
                 $body = str_replace(['{{username}}', '{{link}}'], [$username, $verifyLink], $bodyTemplate);
@@ -276,8 +276,8 @@ class AuthController extends Controller
         try {
             $this->userRepo->updateEmailAndVerification($this->userId, $newEmail, $token);
 
-            $verifyLink = FRONTEND_URL . "/verify.html?token=" . $token;
             $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+            $verifyLink = FRONTEND_URL . "/verify.html?token=" . $token . "&lang=" . $lang;
             $subject = I18nHelper::t($lang, 'emails.email_update.subject');
             $bodyTemplate = I18nHelper::t($lang, 'emails.email_update.body');
             $body = str_replace(['{{email}}', '{{link}}'], [$newEmail, $verifyLink], $bodyTemplate);
