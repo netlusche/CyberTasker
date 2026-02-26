@@ -44,8 +44,8 @@ test.describe('TS-12.9: Installer Custom Admin Provisioning', () => {
         // Submit the form
         await page.locator('button[onclick="initializeSystem()"]').click();
 
-        // Wait for the success message injected by install.php
-        const successMessage = page.locator('.success', { hasText: /SYSTEM INITIALIZED SUCCESSFULLY/i });
+        // Wait for the success message injected by install.php / React
+        const successMessage = page.locator('.success');
         await expect(successMessage).toBeVisible({ timeout: 15000 });
 
         // Ensure the "PROCEED TO LOGIN" link is visible

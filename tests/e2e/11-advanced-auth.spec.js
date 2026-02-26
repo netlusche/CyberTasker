@@ -127,7 +127,7 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         const code = codeMatch[1];
 
         // Fill the setup code verification field
-        const codeInput = page.locator('input[placeholder*="CODE"]');
+        const codeInput = page.getByPlaceholder(/CODE/i).first();
         await expect(codeInput).toBeVisible();
         await codeInput.fill(code);
 
