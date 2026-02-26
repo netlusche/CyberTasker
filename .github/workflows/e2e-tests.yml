@@ -40,7 +40,7 @@ jobs:
           echo "<?php" > api/config.local.php
           echo "define('DB_TYPE', 'sqlite');" >> api/config.local.php
           echo "define('DB_NAME', __DIR__ . '/cybertracker_ci.db');" >> api/config.local.php
-          echo "define('FRONTEND_URL', 'http://localhost:5174');" >> api/config.local.php
+          echo "define('FRONTEND_URL', 'http://localhost:5173');" >> api/config.local.php
 
       - name: Initialize Database Schema
         run: php -r "require 'api/install.php';"
@@ -99,7 +99,7 @@ jobs:
           echo "define('DB_USER', 'root');" >> api/config.local.php
           echo "define('DB_PASS', 'rootpw');" >> api/config.local.php
           echo "define('DB_NAME', 'cybertasker_ci');" >> api/config.local.php
-          echo "define('FRONTEND_URL', 'http://localhost:5174');" >> api/config.local.php
+          echo "define('FRONTEND_URL', 'http://localhost:5173');" >> api/config.local.php
 
       - name: Initialize Database Schema
         run: php -r "require 'api/install.php';"

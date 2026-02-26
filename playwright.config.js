@@ -29,10 +29,10 @@ export default defineConfig({
 
     globalSetup: './tests/global.setup.cjs',
 
-    // webServer: {
-    //     command: 'bash start_local.sh',
-    //     url: 'http://localhost:5174',
-    //     reuseExistingServer: !process.env.CI,
-    //     timeout: 30 * 1000,
-    // },
+    webServer: {
+        command: 'bash start_local.sh',
+        url: 'http://localhost:5173',
+        reuseExistingServer: !process.env.CI,
+        timeout: 30 * 1000,
+    },
 });
