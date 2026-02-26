@@ -13,7 +13,9 @@ export default defineConfig({
     timeout: 60000,
     reporter: 'html',
     use: {
-        baseURL: 'http://localhost:5174',
+        // Base URL to use in actions like `await page.goto('/')`.
+        // The Vite dev server usually runs on 5173 or 5174. 
+        baseURL: 'http://localhost:5173',
         trace: 'on-first-retry',
         viewport: { width: 1280, height: 720 },
     },

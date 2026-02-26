@@ -64,6 +64,7 @@ class AuthController extends Controller
                         'two_factor_enabled' => (bool)$user['two_factor_enabled'],
                         'two_factor_method' => $user['two_factor_method'],
                         'theme' => $user['theme'],
+                        'language' => $user['language'],
                         'system_enforces_email_2fa' => $enforceEmail2FA,
                         'stats' => $stats
                     ],
@@ -153,6 +154,7 @@ class AuthController extends Controller
                     'role' => $user['role'],
                     'two_factor_enabled' => (bool)$user['two_factor_enabled'],
                     'theme' => $user['theme'],
+                    'language' => $user['language'],
                     'system_enforces_email_2fa' => $enforceEmail2FA,
                     'stats' => $stats
                 ],
@@ -647,6 +649,7 @@ class AuthController extends Controller
                     'two_factor_enabled' => (bool)$user['two_factor_enabled'],
                     'two_factor_method' => $user['two_factor_method'],
                     'theme' => $user['theme'],
+                    'language' => $user['language'],
                     'system_enforces_email_2fa' => $enforceEmail2FA,
                     'stats' => $stats
                 ],

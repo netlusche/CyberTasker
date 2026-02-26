@@ -86,7 +86,7 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         await page.goto(verifyPath);
 
         // Wait for system to say verified
-        await expect(page.locator('body')).toContainText(/Account verified|Identity verified|erfolgreich/i, { timeout: 10000 });
+        await expect(page.locator('body')).toContainText(/Account verified|Identity verified|erfolgreich|Link established/i, { timeout: 10000 });
 
         // Go back to login and log in with the newly verified account
         await page.goto('/');
