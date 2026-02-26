@@ -60,6 +60,13 @@ node scripts/build_pdfs.cjs
 
 # 8. Git Commit & Tag
 echo -e "\n${GREEN}[8/8] Git Commit & Tag${RESET}"
+
+read -p "Did you update CHANGELOG.md and README.md with the release notes? (y/N): " DOCS_CONFIRM
+if [[ ! "$DOCS_CONFIRM" =~ ^[Yy]$ ]]; then
+    echo -e "${YELLOW}Release paused. Please update CHANGELOG.md and README.md, then run the commit manually or restart the script.${RESET}"
+    exit 1
+fi
+
 git add .
 git commit -m "chore(release): bump version to v${NEW_VERSION} and update manuals"
 git tag "v${NEW_VERSION}"

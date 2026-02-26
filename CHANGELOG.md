@@ -9,12 +9,17 @@ All notable changes to this project will be documented in this file. The format 
 *   **Global Tooltips**: Injected localized, low-latency tooltips across the entire grid to guide new operatives seamlessly.
 *   **Keyboard Navigation Matrix**: All interactive components now feature highly visible focus outlines, and all overlay modals strictly trap focus for flawless `Tab` key iteration.
 
+### 🛡 Core Security & Installation
+*   **Custom Master-Admin Provisioning**: Administrators can now define their specific Codename and Access Key directly during the zero-config initialization phase.
+*   **Privilege Escalation Protection**: The backend Installer strictly verifies database state and actively blocks any secondary initialization attempts, preventing host-level takeovers.
+
 ### 🌍 Global Deep-Integration
 *   **Multilingual Installer**: The initial system bootstrap now allows Administrators to select their operational language before provisioning the system, setting the default localized baseline.
+*   **Database-Level Localization**: All dynamically generated database strings (default categories, introductory directives) are now strictly injected in the Administrator's chosen setup language.
 *   **Localized Comm-Links**: All external system transmissions (Verification, Recovery, 2FA Override) are now fully translated into the operative's specific language vector.
 
 ### ⚙️ Automation & Pipeline Refinements
-*   **Automated Release Deployment**: Integrated a single-command Bash pipeline (`scripts/release.sh`) to execute validation suites, linting, and Git-tagging automatically, reducing human deployment errors to zero.
+*   **Automated Release Deployment**: Integrated a single-command Bash pipeline (`scripts/release.sh`) to execute validation suites, linting, document generation, and Git-tagging automatically.
 
 ---
 

@@ -65,18 +65,17 @@ define('DB_NAME', 'path/to/database.sqlite'); // usually inside the api folder o
 ```
 
 #### 5. Install & Setup
-Run the installer via your browser:
-`https://yourdomain.com/tasks/api/install.php`
+Run the fully-localized installer via your browser:
+`https://yourdomain.com/tasks/install.html` (or `http://localhost:5173/install.html` locally)
 
-*   **Database**: Creates all tables (users, tasks, user_stats).
-*   **Master Account**: Automatically creates a master initialization account:
-    *   **User**: The custom Codename (Username) you provided during setup.
-    *   **Password**: The custom Access Key (Password) you provided.
+*   **Custom Admin Provisioning**: You can now define your Master Admin Codename and Password directly in the installer interface.
+*   **Privilege Escalation Protection**: Once a Master Admin is actively registered, the installer automatically locks itself out to prevent unauthorized overrides.
+*   **Language Selection**: Choose your operational language upfront for localized system bootstrapping.
 
 #### 6. Cleanup
 Delete ALL installation and diagnostic scripts from the server after the grid is stable:
 - `api/install.php`
-- `api/migrate_2fa.php` / `api/migrate_2fa_v2.php` (if used)
+- `install.html`
 
 ---
 
