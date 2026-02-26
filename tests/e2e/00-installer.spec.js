@@ -6,13 +6,10 @@ import path from 'path';
 test.describe('TS-12.9: Installer Custom Admin Provisioning', () => {
 
     test.beforeAll(() => {
-        // Wipe the local SQLite database to force a fresh install screen
-        // In this project, the DB is typically located at api/cybertracker.db or similar.
-        const dbPath = path.resolve(process.cwd(), 'api/cybertracker.db');
-        if (fs.existsSync(dbPath)) {
-            fs.unlinkSync(dbPath);
-            console.log('00-installer.spec.js: Wiped existing database for fresh install.');
-        }
+        // Run a PHP script to drop all tables, simulating a fresh environment
+        // for both SQLite and MariaDB across all test environments
+        console.log('00-installer.spec.js: Wiping database tables for fresh install...');
+        execSync('php tests/e2e_wipe_db.php', { stdio: 'inherit' });
     });
 
     test.afterAll(() => {

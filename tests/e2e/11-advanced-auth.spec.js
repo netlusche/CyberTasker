@@ -132,11 +132,14 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         await expect(codeInput).toBeVisible({ timeout: 10000 });
         await codeInput.fill(code);
 
-        // Click Bridge / Verify 
-        await page.locator('button', { hasText: /BRIDGE/i }).click();
+        // Click Bridge / Verify (bypassing text translation with structural search)
+        const verifyBtn = codeInput.locator('xpath=ancestor::form').first().locator('button[type="submit"]');
+        await expect(verifyBtn).toBeVisible({ timeout: 5000 });
+        await verifyBtn.click();
 
-        // Verify it says "Active"
-        await expect(page.locator('text=/EMAIL UPLINK SECURED|UPLINK SECURED/i')).toBeVisible({ timeout: 5000 });
+        // Verify success by checking if the Backup Codes container appeared (it only appears upon success)
+        const backupCodesContainer = page.locator('.grid.grid-cols-2.gap-2.font-mono').first();
+        await expect(backupCodesContainer).toBeVisible({ timeout: 15000 });
 
         // Ensure Backup codes modal closed / confirmed (It shows an alert or UI)
         // If there's an alert modal, acknowledge it
