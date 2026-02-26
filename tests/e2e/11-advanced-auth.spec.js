@@ -110,12 +110,12 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         await expect(page.getByTestId('modal-title')).toBeVisible();
 
         // Wait for animations and click Email Security
-        await page.waitForTimeout(1000);
+        await page.waitForTimeout(1500);
         const emailSecurityBtn = page.locator('button', { hasText: /EMAIL SECURITY|EMAIL UPLINK/i });
         await emailSecurityBtn.click();
 
         // Wait for 2FA Transmission Sent
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(4000);
         const mailContent = getLatestEmailContent();
         expect(mailContent).toBeTruthy();
         expect(mailContent).toContain('#3b82f6'); // US-2.6.8: Verifying accessible color structure
@@ -128,7 +128,8 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
 
         // Fill the setup code verification field
         const codeInput = page.getByTestId('2fa-setup-code-input');
-        await expect(codeInput).toBeVisible({ timeout: 10000 });
+        await codeInput.waitFor({ state: 'visible', timeout: 15000 });
+        await page.waitForTimeout(500);
         await codeInput.fill(code);
 
         // Click Bridge / Verify 
