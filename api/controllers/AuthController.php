@@ -117,7 +117,8 @@ class AuthController extends Controller
                     $_SESSION['email_2fa_user_id'] = $user['id'];
 
                     require_once __DIR__ . '/../mail_helper.php';
-                    $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+                    // Start US-2.6.10: DB localization priorities
+                    $lang = $user['language'] ?? 'en';
                     $subject = I18nHelper::t($lang, 'emails.emergency_override.subject');
                     $bodyTemplate = I18nHelper::t($lang, 'emails.emergency_override.body');
                     $body = str_replace(['{{username}}', '{{code}}'], [$user['username'], $code], $bodyTemplate);
@@ -276,7 +277,8 @@ class AuthController extends Controller
         try {
             $this->userRepo->updateEmailAndVerification($this->userId, $newEmail, $token);
 
-            $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+            // Strict DB user language mapping
+            $lang = $user['language'] ?? 'en';
             $verifyLink = FRONTEND_URL . "/verify.html?token=" . $token . "&lang=" . $lang;
             $subject = I18nHelper::t($lang, 'emails.email_update.subject');
             $bodyTemplate = I18nHelper::t($lang, 'emails.email_update.body');
@@ -309,7 +311,13 @@ class AuthController extends Controller
 
             $newHash = password_hash($newPassword, PASSWORD_DEFAULT);
             $this->userRepo->updatePassword($this->userId, $newHash);
-            $this->jsonResponse(['success' => true, 'message' => 'Password updated']);
+
+            // US-2.6.11: Destroy Session to force re-login
+            session_destroy();
+            setcookie(session_name(), '', time() - 3600, '/');
+            unset($_SESSION['user_id']);
+
+            $this->jsonResponse(['success' => true, 'message' => 'Password updated. Access terminated. Re-authentication required.']);
         }
         else {
             $this->errorResponse('Incorrect current password', 401);
@@ -335,7 +343,8 @@ class AuthController extends Controller
                 $this->userRepo->setPasswordResetToken($user['id'], $token, $expires);
 
                 $resetLink = FRONTEND_URL . "/reset-password.html?token=" . $token;
-                $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+                // Enforce DB Locale
+                $lang = $user['language'] ?? 'en';
                 $subject = I18nHelper::t($lang, 'emails.password_reset.subject');
                 $bodyTemplate = I18nHelper::t($lang, 'emails.password_reset.body');
                 $body = str_replace(['{{username}}', '{{link}}'], [$user['username'], $resetLink], $bodyTemplate);
@@ -418,6 +427,23 @@ class AuthController extends Controller
         }
     }
 
+    public function updateLanguage()
+    {
+        $this->requireAuth();
+        $data = $this->getJsonBody();
+        $lang = $data['language'] ?? 'en';
+
+        $lang = substr(strip_tags($lang), 0, 10);
+
+        try {
+            $this->userRepo->updateLanguage($this->userId, $lang);
+            $this->jsonResponse(['success' => true, 'language' => $lang]);
+        }
+        catch (Exception $e) {
+            $this->errorResponse('Failed to update language', 500);
+        }
+    }
+
     // --- 2FA ENDPOINTS ---
 
     public function setup2fa()
@@ -480,7 +506,7 @@ class AuthController extends Controller
         $_SESSION['email_2fa_user_id'] = $this->userId;
 
         require_once __DIR__ . '/../mail_helper.php';
-        $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+        $lang = $user['language'] ?? 'en';
         $subject = I18nHelper::t($lang, 'emails.emergency_override.subject');
         $bodyTemplate = I18nHelper::t($lang, 'emails.emergency_override.body');
         $body = str_replace(['{{username}}', '{{code}}'], [$user['username'], $code], $bodyTemplate);
@@ -652,7 +678,7 @@ class AuthController extends Controller
         $_SESSION['email_2fa_user_id'] = $userId;
 
         require_once __DIR__ . '/../mail_helper.php';
-        $lang = $user['language'] ?? $_SERVER['HTTP_X_APP_LANGUAGE'] ?? 'en';
+        $lang = $user['language'] ?? 'en';
         $subject = I18nHelper::t($lang, 'emails.emergency_override.subject');
         $bodyTemplate = I18nHelper::t($lang, 'emails.emergency_override.body');
         $body = str_replace(['{{username}}', '{{code}}'], [$user['username'], $code], $bodyTemplate);

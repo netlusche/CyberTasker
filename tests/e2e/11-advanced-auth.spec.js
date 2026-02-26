@@ -121,8 +121,8 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         expect(mailContent).toContain('#3b82f6'); // US-2.6.8: Verifying accessible color structure
 
         // Extract 6 digit code from the email log text
-        // The log is now plaintext (strip_tags) and might lack spaces around the code
-        const codeMatch = mailContent.match(/(\d{6})/);
+        // The log is now HTML, so we must avoid matching 6-digit hex colors (e.g. 0d0d0d) by ensuring word boundaries
+        const codeMatch = mailContent.match(/\b(\d{6})\b/);
         expect(codeMatch).toBeTruthy();
         const code = codeMatch[1];
 

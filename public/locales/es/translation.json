@@ -601,25 +601,25 @@
     ],
     "emails": {
         "identity_verification": {
-            "subject": "CYBER_TASKER // IDENTITY VERIFICATION",
-            "body": "Welcome Operative {{username}}.<br><br>Your identity parameters have been established.<br>Confirm your com-link frequency to bridge the gap:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>SIGNAL DECAY DETECTED. Access is restricted until confirmed.",
-            "unverified_fallback": "Identity established, but com-link signal failed. Contact Admin to verify your account manually."
+            "subject": "CIBER_TASADOR // VERIFICACIÓN DE IDENTIDAD",
+            "body": "Bienvenido Operativo {{username}}.<br><br>Sus parámetros de identidad han sido establecidos.<br>Confirme la frecuencia de su enlace de comunicación para salvar la brecha:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>DECAIMIENTO DE LA SEÑAL DETECTADO. El acceso está restringido hasta que se confirme.",
+            "unverified_fallback": "Identidad establecida, pero falló la señal del enlace de comunicación. Póngase en contacto con el administrador para verificar su cuenta manualmente."
         },
         "email_update": {
-            "subject": "CyberTasker Email Update Verification",
-            "body": "Operative,<br><br>Your communication channel is being re-routed to: {{email}}.<br>Confirm this frequency change:<br><a href='{{link}}'>{{link}}</a><br><br>Access is restricted until confirmed."
+            "subject": "Verificación de actualización de correo electrónico de CyberTasker",
+            "body": "Operativo,<br><br>Su canal de comunicación se está redirigiendo a: {{email}}.<br>Confirme este cambio de frecuencia:<br><a href='{{link}}'>{{link}}</a><br><br>El acceso está restringido hasta que se confirme."
         },
         "password_reset": {
-            "subject": "CyberTasker Password Reset",
-            "body": "Operative {{username}},<br><br>A request to reset your access key was received.<br>If this was you, proceed here:<br><a href='{{link}}'>{{link}}</a><br><br>This link self-destructs in 60 minutes."
+            "subject": "Restablecimiento de contraseña de CyberTasker",
+            "body": "Operativo {{username}},<br><br>Se recibió una solicitud para restablecer su clave de acceso.<br>Si fue usted, proceda aquí:<br><a href='{{link}}'>{{link}}</a><br><br>Este enlace se autodestruye en 60 minutos."
         },
         "emergency_override": {
-            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE CODE",
-            "body": "Operative {{username}},<br><br>An emergency override signal has been requested.<br>Use this restricted access code to bridge the neural link:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>SIGNAL DECAY DETECTED. Code self-destructs in 10 minutes."
+            "subject": "CIBER_TASADOR // CÓDIGO DE ANULACIÓN DE EMERGENCIA",
+            "body": "Operativo {{username}},<br><br>Se ha solicitado una señal de anulación de emergencia.<br>Utilice este código de acceso restringido para salvar la brecha neuronal:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>DECAIMIENTO DE LA SEÑAL DETECTADO. El código se autodestruye en 10 minutos."
         },
         "template": {
-            "transmission": "CYBER TASKER // TRANSMISSION",
-            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+            "transmission": "CIBER TASADOR // TRANSMISIÓN",
+            "footer": "CANAL SEGURO ESTABLECIDO.<br>ORIGEN: CYBER_TASKER_CORE"
         }
     }
 }

@@ -589,25 +589,25 @@
     },
     "emails": {
         "identity_verification": {
-            "subject": "CYBER_TASKER // ngoqmeyvo' bop VERIFICATION",
-            "body": "qaH vIngaQ {{username}}.<br><br>qechlIj ngoqmey DanoH.<br>qIHlIj Qap yIlaD:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>nuqneH. Hegh ngoqmey.",
-            "unverified_fallback": "ngoqmey DanoH, 'ach qIHlIj Qap. Admin yIghojmoH."
+            "subject": "CYBER_TASKER // pegh mI' nItebHa'",
+            "body": "nuqneH {{username}}.<br><br>DaHlIj pegh mI' lulIjchu'ta'.<br>com-link DaQaw'laH net boQjaj:<br><br><a href='{{link}}' style='color: #0088cc; text-decoration: none;'>{{link}}</a><br><br>Huj! mI' qem 'e' Qaw' lugh.",
+            "unverified_fallback": "pegh mI' nItebHa', 'ach com-link ghaytan. poHlIj ghobe' mI' Qaw'wI'."
         },
         "email_update": {
-            "subject": "CyberTasker QIHlIj ngoqmey",
-            "body": "qaH,<br><br>qIHlIj ngoqmey law': {{email}}.<br>qIHlIj Qap yIlaD:<br><a href='{{link}}'>{{link}}</a><br><br>nuqneH. Hegh ngoqmey."
+            "subject": "CyberTasker com-link tu'lu'",
+            "body": "SuvwI',<br><br>com-link ghu'lIj {{email}}.<br>net boQjaj ghap:<br><a href='{{link}}'>{{link}}</a><br><br>Huj! mI' qem 'e' Qaw' lugh."
         },
         "password_reset": {
-            "subject": "CyberTasker Password ChoH",
-            "body": "qaH {{username}},<br><br>Password ChoH Qap tlho'.<br>bIjatlhchugh tIvwI' choH:<br><a href='{{link}}'>{{link}}</a><br><br>60 tupmey bIHegh."
+            "subject": "CyberTasker pegh mI' nItebHa'",
+            "body": "SuvwI' {{username}},<br><br>pegh mI' nItebHa' net chaw'.<br>bIghaj 'emvo':<br><a href='{{link}}'>{{link}}</a><br><br>Huj! javmaH tup mI' Qaw'lu'."
         },
         "emergency_override": {
-            "subject": "CYBER_TASKER // EMERGENCY OVERRIDE",
-            "body": "qaH {{username}},<br><br>Emergency Override Qap tlho'.<br>ngoqmey DanoH choH:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>10 tupmey bIHegh."
+            "subject": "CYBER_TASKER // pegh mI' Qaw'",
+            "body": "SuvwI' {{username}},<br><br>pegh mI' Qaw' net chaw'.<br>pa' pegh mI' nItebHa' net boQjaj:<br><br><b style='font-size: 24px; letter-spacing: 5px; color: #3b82f6;'>{{code}}</b><br><br>Huj! mI' qem 'e' Qaw' wa'maH tup."
         },
         "template": {
-            "transmission": "CYBER TASKER // TRANSMISSION",
-            "footer": "SECURE CHANNEL ESTABLISHED.<br>ORIGIN: CYBER_TASKER_CORE"
+            "transmission": "CYBER TASKER // nuqneH",
+            "footer": "tu'lu' chu'.<br>CYBER_TASKER_CORE"
         }
     },
     "quotes": [

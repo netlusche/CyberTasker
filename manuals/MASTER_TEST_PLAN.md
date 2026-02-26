@@ -404,8 +404,14 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
   - The installer UI translates instantly to French.
   - The resulting automated System Email containing the recovery Override Code is completely localized in French.
 
-### TS-12.5: Sub-Routine Mobile Drag & Drop [AUTOMATED]
-- **Scenario**: Create a directive with 3 sub-routines (A, B, C). Simulate a mobile viewport and perform a touch-drag to move C to the top.
+### TS-12.6: Secure Session Link Localization [MANUAL]
+- **Scenario**: Register a new user with a specific non-default language (e.g. Klingon `tlh`) or request a password reset for that user. Open the resulting email link in a completely fresh incognito session.
 - **Validation**:
-  - The `@dnd-kit` generic sensors accurately capture the touch-event without interpreting it as a scroll.
-  - The item drops successfully and fires an API update persisting the new C, A, B order.
+  - The email transmission explicitly includes the `&lang=tlh` parameter in the generated URL.
+  - The static `verify.html` and `reset-password.html` endpoints detect the `lang` parameter and successfully translate all text to Klingon, completely bypassing any default `localStorage` `en` fallbacks.
+
+### TS-12.7: System Email Accessibility Contrast [MANUAL]
+- **Scenario**: Trigger an Identity Verification or Password Reset transmission and view the email in standard Light and Dark email client themes (e.g. Apple Mail, Gmail).
+- **Validation**: 
+  - The action links (Verification/Reset) use the `#0088cc` cyan-blue color code.
+  - The text remains distinctly legible and compliant with WCAG contrast ratios against both bright white and dark charcoal message backgrounds.

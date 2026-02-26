@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { apiFetch, setCsrfToken } from '../utils/api';
 import { useTheme } from '../utils/ThemeContext';
 import { triggerNeonConfetti } from '../utils/confetti';
+import i18n from '../i18n';
 
 export function useAuth() {
     const [user, setUser] = useState(null);
@@ -22,6 +23,9 @@ export function useAuth() {
                 if (data.user.theme) {
                     setThemeState(data.user.theme);
                 }
+                if (data.user.language) {
+                    i18n.changeLanguage(data.user.language);
+                }
             }
         } catch (err) {
             console.error("Auth check failed", err);
@@ -34,6 +38,9 @@ export function useAuth() {
         setUser(userData);
         if (userData.theme) {
             setThemeState(userData.theme);
+        }
+        if (userData.language) {
+            i18n.changeLanguage(userData.language);
         }
     }, [setThemeState]);
 

@@ -11,6 +11,12 @@ class UserRepository extends Repository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function updateLanguage(int $id, string $lang): bool
+    {
+        $stmt = $this->pdo->prepare("UPDATE users SET language = ? WHERE id = ?");
+        return $stmt->execute([$lang, $id]);
+    }
+
     public function findByUsernameOrEmail(string $identifier)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");

@@ -100,6 +100,24 @@
   - Wischen/Ziehen an den bestehenden Drag-Handles verschiebt Items sauber und flüssig auf mobilen Geräten (Smartphones, Tablets).
   - Die visuelle Rückmeldung (Das Sortier-Overlay und die Einrast-Animationen) wird durch die nativen Mechanismen von `@dnd-kit` bereitgestellt und an den Cyber-Tasker Stil angepasst.
 
+**US-2.6.10: Datenbank-Synchronisierte Lokalisierung über alle Geräte hinweg**
+* **Als** Benutzer, der an mehreren Computern arbeitet (oder sich ein Gerät teilt)
+* **Möchte ich**, dass meine ausgewählte UI-Sprache zentral in meinem Profil gespeichert wird und nicht nur lokal im Browser
+* **Damit** ich nicht auf jedem neuen Gerät die Sprache manuell umstellen muss und alle vom System generierten E-Mails (wie 2FA oder Verifizierung) garantiert immer in meiner gewählten Profil-Sprache versendet werden.
+* **Akzeptanzkriterien:**
+  - Die `language`-Einstellung wird zur "Single Source of Truth" in der `users`-Tabelle auf dem Server.
+  - Beim erfolgreichen Login überschreibt die API-Antwort sofort die lokale Browser-Sprache (Fallback) mit der beim User hinterlegten Sprache.
+  - Ein Wechsel der Sprache über das UI-Dropdown (LanguageSwitcher) sendet im Hintergrund ein Update an einen neuen API-Endpunkt (`api/index.php?route=auth/update_language`), der diese Auswahl direkt im Backend verankert.
+  - Alle Backend-Endpunkte (Passwort-Reset, E-Mail-Wechsel, Profil-Verifizierung) ignorieren den fehleranfälligen `HTTP_X_APP_LANGUAGE` Header für *eingeloggte* Accounts und nutzen stattdessen strikt die in der Datenbank hinterlegte `language` Spalte, um die E-Mail-Templates zu kompilieren. *(Behebt die GitHub-Issues bezüglich NL-Links und englischen Fallback-E-Mails im Profil).*
+
+**US-2.6.11: Zwanghaftes Ausloggen nach sensiblen Kontodaten-Änderungen**
+* **Als** sicherheitsbewusster Nutzer
+* **Möchte ich**, dass meine aktuelle Session nach einer erfolgreichen Änderung des Passworts sofort invalidiert und beendet wird
+* **Damit** ich mich mit den neuen Zugangsdaten zwingend neu authentifizieren muss und gestohlene, parallel noch offene Sessions auf anderen Geräten verfallen.
+* **Akzeptanzkriterien:**
+  - Nach Ausführung des `change_password` Endpunkts sendet der Server einen Zerstörungsbefehl für die aktuelle Session (inkl. session_destroy auf Backend-Ebene).
+  - Das Frontend fängt diese Invalidierung ab, zeigt eine kurze Erfolgsmeldung an und erzwingt dann den Rücksturz auf den Login-Screen, exakt wie es momentan bereits bei einer Änderung der primären E-Mail-Adresse `update_email` geschieht.
+
 ## Ergänzungen für den Testplan
 
 **Zu US-2.6.1 (Multilinguale Tooltips):**
@@ -134,3 +152,10 @@
 **Zu US-2.6.9 (Mobile Drag & Drop):**
 - **Testfall:** DevTools öffnen, auf "Device Toolbar" (Mobile-Ansicht, z.B. iPhone 12) umschalten und Touch-Events simulieren. Ein Dossier öffnen, das Sub-Routinen enthält. Den Drag-Handle einer Sub-Routine "antappen" und verschieben. Prüfen, ob die Position nach dem Loslassen korrekt gespeichert wird.
 - **Regressionstest:** Prüfen, ob das Drag-and-Drop auf dem Desktop weiterhin reibungslos mit der klassischen Maus funktioniert.
+
+**Zu US-2.6.10 (DB-Sprachsynchronisierung):**
+- **Testfall (Multi-Device):** Einloggen und die Sprache im UI auf "Klingonisch" stellen. In einem komplett neuen Inkognito-Fenster (ohne `localStorage`) mit denselben Daten einloggen. Prüfen, ob das Dashboard sofort auf Klingonisch gerendert wird.
+- **Testfall (Auth-Mails):** Als eingeloggter User mit aktiver Sprache "Spanisch" das Passwort im Backend ändern. Prüfen, ob die ankommende (oder via Log gespeicherte) Systemmail auf Spanisch verfasst ist und die internen Links den `&lang=es` Parameter enthalten.
+
+**Zu US-2.6.11 (Session Invalidierung):**
+- **Testfall (Security):** Einloggen und das Profil-Modal öffnen. Eine Änderung des Passworts durchführen. Prüfen, ob nach der Erfolgsmeldung automatisch ein Redirect auf den Login-Screen erfolgt und ein direkter Aufruf der internen `index.html` durch den Session-Schutz abgewiesen wird.

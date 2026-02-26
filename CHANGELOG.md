@@ -6,6 +6,8 @@
 *   **Accessibility Overhaul**: Implemented comprehensive multilingual tooltips across all interactive UI elements and standardized visible `Tab` key navigation with focus-traps for all modals.
 *   **Cyberpunk Immersion**: Added a daily changing "Quote of the Day" on the dashboard to enhance the thematic experience.
 *   **Automated Release Pipeline**: Replaced manual deployment steps with a robust Bash release script (`scripts/release.sh`) that automates i18n checks, CSS linting, E2E validation, and Git version tagging.
+*   **Database-Driven Localization**: Migrated the language preference "source of truth" from browser LocalStorage directly into the user profile database. Language syncing is now completely frictionless across multiple computers and mobile devices (US-2.6.10).
+*   **Forced Session Invalidation**: To lock down security, successfully changing a password or executing a cypher update now forcefully terminates the current session, requiring the operative to re-authenticate immediately (US-2.6.11).
 
 ---
 

@@ -123,9 +123,10 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate 
                         setAlertModal({
                             show: true,
                             title: t('profile.alerts.cypher_success'),
-                            message: t('auth.messages.password_updated'),
+                            message: t('auth.messages.password_updated') + " " + t('profile.messages.session_restart'),
                             variant: 'pink'
                         });
+                        setTimeout(() => onLogout(), 2500);
                         setCurrentPassword('');
                         setNewPassword('');
                         setConfirmNewPassword('');

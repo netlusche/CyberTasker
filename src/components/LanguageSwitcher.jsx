@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
 import { useTheme } from '../utils/ThemeContext';
 
+import { apiFetch } from '../utils/api';
+
 const LanguageSwitcher = () => {
     const { i18n, t } = useTranslation();
     const { theme } = useTheme();
@@ -78,6 +80,18 @@ const LanguageSwitcher = () => {
         }
     }, [isOpen]);
 
+    const handleLanguageSelect = (langCode) => {
+        i18n.changeLanguage(langCode);
+        setIsOpen(false);
+
+        // Sync to backend DB without blocking UI
+        apiFetch('api/index.php?route=auth/update_language', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ language: langCode })
+        }).catch(err => console.error("Failed to sync language to backend", err));
+    };
+
     return (
         <div className="relative inline-block" ref={containerRef}>
             {/* Trigger Button */}
@@ -108,10 +122,7 @@ const LanguageSwitcher = () => {
                         {languages.map(lang => (
                             <button
                                 key={lang.code}
-                                onClick={() => {
-                                    i18n.changeLanguage(lang.code);
-                                    setIsOpen(false);
-                                }}
+                                onClick={() => handleLanguageSelect(lang.code)}
                                 className={`relative text-[10px] md:text-xs px-3 py-2 text-left transition-all font-bold uppercase tracking-widest hover:bg-cyber-primary hover:text-black flex items-center justify-between group/item ${i18n.language === lang.code ? (theme === 'lcars' ? 'text-white bg-white/10 active-lang' : 'text-cyber-primary active-lang') : 'text-gray-400'
                                     }`}
                             >

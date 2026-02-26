@@ -48,6 +48,7 @@ $router->post('auth/request_password_reset', [AuthController::class , 'requestPa
 $router->post('auth/reset_password', [AuthController::class , 'resetPassword']);
 $router->post('auth/delete_account', [AuthController::class , 'deleteAccount']);
 $router->post('auth/update_theme', [AuthController::class , 'updateTheme']);
+$router->post('auth/update_language', [AuthController::class , 'updateLanguage']);
 
 // --- 2FA Routes ---
 $router->get('auth/setup_2fa', [AuthController::class , 'setup2fa']);

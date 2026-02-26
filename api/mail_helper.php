@@ -51,7 +51,7 @@ function sendMail($to, $subject, $body, $lang = 'en')
     // Write to a log file for E2E tests to read (Disabled for Production/Strato test)
     $logFile = __DIR__ . '/mail_log.txt';
     $logHeader = "=== [MAIL ENQUEUED] ===\nTo: $to\nSubject: $subject\n";
-    $logMessage = $logHeader . strip_tags($body) . "\n========================\n\n";
+    $logMessage = $logHeader . $htmlMessage . "\n========================\n\n";
     file_put_contents($logFile, $logMessage, FILE_APPEND);
 
     error_log($logMessage); // Uncomment for system-level mail debugging

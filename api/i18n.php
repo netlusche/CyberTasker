@@ -18,6 +18,7 @@ class I18nHelper
 
         $path = '';
         foreach ($possiblePaths as $p) {
+            // e.g. ../public/locales/es/translation.json
             if (file_exists($p)) {
                 $path = $p;
                 break;
@@ -25,12 +26,14 @@ class I18nHelper
         }
 
         if (!$path) {
-            $lang = self::$defaultLang;
+            // Only if NO translation file exists for the user language, we load English default.
+            $fallbackLang = self::$defaultLang;
             foreach ($possiblePaths as $p) {
                 // Try fallback lang
-                $fallbackPath = str_replace('/' . $lang . '/', '/' . self::$defaultLang . '/', $p);
+                $fallbackPath = str_replace('/' . $lang . '/', '/' . $fallbackLang . '/', $p);
                 if (file_exists($fallbackPath)) {
                     $path = $fallbackPath;
+                    $lang = $fallbackLang; // Successfully hit English fallback
                     break;
                 }
             }
