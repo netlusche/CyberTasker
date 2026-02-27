@@ -146,6 +146,8 @@ const TaskFilters = ({ filters, onFilterChange, categories }) => {
                 <button
                     onClick={() => onFilterChange({ search: '', priority: '', category: '', overdue: false })}
                     className="text-xs text-cyber-primary border border-cyber-primary px-3 py-2 rounded hover:bg-cyber-primary hover:text-black transition-all font-bold ml-auto"
+                    data-tooltip-content={t('tasks.filters.pills.clear_tooltip', 'Resets all active filters')}
+                    data-tooltip-pos="top"
                 >
                     {t('common.reset')}
                 </button>
