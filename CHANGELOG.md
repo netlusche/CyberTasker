@@ -20,6 +20,11 @@ All notable changes to this project will be documented in this file. The format 
 
 ### ⚙️ Automation & Pipeline Refinements
 *   **Automated Release Deployment**: Integrated a single-command Bash pipeline (`scripts/release.sh`) to execute validation suites, linting, document generation, and Git-tagging automatically.
+*   **Translation Guidelines Engine**: Forbade overly formal wording ("Löschen Sie") in `TRANSLATION_GUIDELINES.md` to guide localized grammar, and laid the groundwork for future AI-driven API translations in Release 2.7.
+
+### 🩹 Critical Fixes & QA
+*   **Tooltip Conflict Resolution**: Fixed a CSS stacking/transform conflict preventing tooltips from rendering on heavily styled buttons (e.g., the "Add" button and Filter "Reset" button).
+*   **CI E2E Stability**: Forced the E2E internal mailer mock to invariably return `true` within the `cli-server` environment. This entirely stops random GitHub Actions pipeline failures caused by missing Mail Transfer Agents (MTAs) and ensures the 2FA inputs reliably trigger during tests.
 
 ---
 
