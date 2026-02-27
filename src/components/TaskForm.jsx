@@ -176,11 +176,11 @@ const TaskForm = ({ onAddTask, categoryRefreshTrigger, categories = [], prefillD
                         )}
                     </div>
 
-                    <button type="submit" className="btn-cyber btn-cyber-primary flex-none w-full sm:w-auto ml-auto"
-                        data-tooltip-content={t('tooltip.add_directive', 'Add Directive')}
-                    >
-                        {t('tasks.add')}
-                    </button>
+                    <div className="w-full sm:w-auto ml-auto" data-tooltip-content={t('tooltip.add_directive', 'Add Directive')} data-tooltip-pos="top">
+                        <button type="submit" className="btn-cyber btn-cyber-primary w-full">
+                            {t('tasks.add')}
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
