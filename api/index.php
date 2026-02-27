@@ -67,6 +67,7 @@ $router->post('tasks', [TaskController::class , 'store']);
 $router->post('tasks/upload', [TaskController::class , 'uploadFiles']);
 $router->put('tasks', [TaskController::class , 'update']);
 $router->delete('tasks', [TaskController::class , 'destroy']);
+$router->delete('tasks/bulk_delete_completed', [TaskController::class , 'bulkDeleteCompleted']);
 
 // --- Admin Routes ---
 $router->get('admin/users', [AdminController::class , 'listUsers']);
