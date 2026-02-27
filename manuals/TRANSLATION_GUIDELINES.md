@@ -25,7 +25,12 @@ If a cyberpunk term is required for immersion, always anchor it with a widely un
 ### 4. Provide Context for Native Overrides
 For languages that require precise, hand-crafted manual overrides (like the Klingon `tlh` or specific German `de` UI verbs like "Befördern"/"Degradieren"), ensure that you manually re-apply these changes *after* running the `translate_json.py` script, or define an exclusion block within the script to protect those specific files/keys.
 
-### 5. AI Agent Directive
+### 5. Concise UI Copy (Tooltips & Buttons)
+When translating simple UI elements like buttons or tooltips, use the infinitive or shortest natural form in the target language. Avoid overly formal or conversational phrasings.
+*   **BAD (Too Formal):** "Löschen Sie" (German) or "Por favor, elimine" (Spanish)
+*   **GOOD (Concise):** "Löschen" or "Eliminar"
+
+### 6. AI Agent Directive
 If you are an AI Assistant updating translations:
 1. Ensure the English text is precise, professional, and slightly thematic.
 2. Ensure you have not broken any string interpolation placeholders (e.g., `{{username}}`).
