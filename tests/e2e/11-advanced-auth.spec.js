@@ -128,8 +128,11 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
 
         // Fill the setup code verification field
         const codeInput = page.getByTestId('2fa-setup-code-input');
-        await codeInput.waitFor({ state: 'visible', timeout: 15000 });
-        await page.waitForTimeout(500);
+        await codeInput.waitFor({ state: 'attached', timeout: 15000 });
+        await expect(codeInput).toBeVisible({ timeout: 15000 });
+        await expect(codeInput).toBeEnabled({ timeout: 5000 });
+        await codeInput.click(); // Ensure element is focused and interactive
+        await page.waitForTimeout(500); // Small delay to ensure the element is fully interactive
         await codeInput.fill(code);
 
         // Click Bridge / Verify 
