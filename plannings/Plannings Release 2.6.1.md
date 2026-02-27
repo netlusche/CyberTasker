@@ -20,7 +20,7 @@
 ### Epic 2: Flotten-Administration (Backend & Admin Panel)
 
 **US-2.6.1.3: Automatisiertes Löschen inaktiver Operatives (Issue #24)**
-* Erweiterung des Admin-Panels um eine Funktion (Button), welche die Datenbank nach "Ghost-Accounts" scannt (z.B. `last_login` älter als X Jahre/Monate) und diese rückstandsfrei (inklusive Tasks und Kategorien) aus der Datenbank purged.
+* Erweiterung des Admin-Panels um eine Select-Auswahl (1 Jahr, 2 Jahre, ..., 10 Jahre) und einen Button, welche die Datenbank nach "Ghost-Accounts" scannt (z.B. `last_login` älter als die gewählte Zeit) und diese rückstandsfrei (inklusive Tasks und Kategorien) aus der Datenbank purged.
 
 **US-2.6.1.4: Purge unverifizierter Accounts (Issue #22)**
 * Ähnlich wie US-2.6.1.3, jedoch fokussiert auf Accounts, die zwar erstellt, aber nie mittels E-Mail-Token verifiziert wurden (`is_verified = 0`) und deren Erstellung (oder `created_at` / `last_login = NULL`) länger als 14 Tage zurückliegt.
@@ -32,3 +32,7 @@
 ## Ergänzungen für den Testplan
 * Die Lösch-Logiken im Backend (US-2.6.1.2, .3, .4) extrem gut absichern und via E2E-Tests durchspielen, da hier massiv in die Datenintegrität eingegriffen wird. 
 * Für E2E-Tests müssen ggf. im Seeder-Skript alte Ghost-Accounts erzeugt werden, um das Löschen validieren zu können.
+
+## UI & Lokalisierung
+* Alle neuen UI-Elemente müssen den `THEME_GUIDELINES.md` entsprechen (keine harten HEX-Farben, Nutzung von Tailwind/Theme-Variablen, Legibility im Auge behalten).
+* Neue Texte und Buttons müssen nach `TRANSLATION_GUIDELINES.md` übersetzt werden (klare englische Basis, nutzen von Keys in `translation.json`).
