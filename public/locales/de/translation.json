@@ -546,7 +546,7 @@
     },
     "tooltip": {
         "edit": "Bearbeiten",
-        "delete": "Löschen Sie",
+        "delete": "Löschen",
         "mark_done": "Als erledigt markieren",
         "mark_todo": "Zu erledigen markieren",
         "calendar": "Kalender",
