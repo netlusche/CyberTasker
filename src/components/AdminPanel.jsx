@@ -554,14 +554,14 @@ const AdminPanel = ({ onClose }) => {
                 </h3>
 
                 <div className="flex items-center gap-4 bg-cyber-primary/10 p-3 rounded border border-cyber-primary/30 mb-3">
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                         <h4 className="text-white font-bold text-sm">{t('admin.policy_enforce_email_2fa_title')}</h4>
-                        <p className="text-xs text-gray-300">
+                        <p className="text-xs text-gray-300 break-words">
                             {t('admin.policy_enforce_email_2fa_desc')}
                         </p>
                     </div>
                     <label
-                        className="relative inline-flex items-center cursor-pointer"
+                        className="relative inline-flex items-center cursor-pointer shrink-0"
                         data-tooltip-content={t('tooltip.toggle_2fa', 'Toggle Enforce 2FA')}
                         data-tooltip-pos="left"
                     >
@@ -577,14 +577,14 @@ const AdminPanel = ({ onClose }) => {
                 </div>
 
                 <div className="flex items-center gap-4 bg-cyber-primary/10 p-3 rounded border border-cyber-primary/30">
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                         <h4 className="text-white font-bold text-sm">{t('admin.policy_strict_pwd_title')}</h4>
-                        <p className="text-xs text-gray-300">
+                        <p className="text-xs text-gray-300 break-words">
                             {t('admin.policy_strict_pwd_desc')}
                         </p>
                     </div>
                     <label
-                        className="relative inline-flex items-center cursor-pointer"
+                        className="relative inline-flex items-center cursor-pointer shrink-0"
                         data-tooltip-content={t('tooltip.toggle_strict_pwd', 'Toggle Strict Password Policy')}
                         data-tooltip-pos="left"
                     >
@@ -608,17 +608,17 @@ const AdminPanel = ({ onClose }) => {
 
                 <div className="space-y-4">
                     <div className="flex flex-col md:flex-row items-start md:items-center justify-between bg-black/40 p-4 border border-cyber-danger/30 rounded gap-4">
-                        <div>
+                        <div className="flex-1 min-w-0">
                             <h4 className="text-white font-bold text-sm">{t('admin.purge_inactive_title', 'Purge Inactive Operatives')}</h4>
-                            <p className="text-xs text-gray-400 mt-1 max-w-lg">
+                            <p className="text-xs text-gray-400 mt-1 max-w-lg break-words">
                                 {t('admin.purge_inactive_desc', 'Permanently delete accounts (and their data) that have not logged in for the selected duration.')}
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 shrink-0">
+                        <div className="flex flex-wrap items-center gap-3 shrink-0 mt-2 md:mt-0">
                             <select
                                 value={retentionYears}
                                 onChange={(e) => setRetentionYears(Number(e.target.value))}
-                                className="bg-black border border-cyber-primary text-cyber-primary px-2 py-1 outline-none font-mono text-sm"
+                                className="bg-black border border-cyber-primary text-cyber-primary px-2 py-1 outline-none font-mono text-sm max-w-full"
                             >
                                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(y => (
                                     <option key={y} value={y}>{y} {t('common.years', 'Year' + (y > 1 ? 's' : ''))}</option>
@@ -635,19 +635,21 @@ const AdminPanel = ({ onClose }) => {
                     </div>
 
                     <div className="flex flex-col md:flex-row items-start md:items-center justify-between bg-black/40 p-4 border border-cyber-danger/30 rounded gap-4">
-                        <div>
+                        <div className="flex-1 min-w-0">
                             <h4 className="text-white font-bold text-sm">{t('admin.purge_unverified_title', 'Purge Unverified Ghost Accounts')}</h4>
-                            <p className="text-xs text-gray-400 mt-1 max-w-lg">
+                            <p className="text-xs text-gray-400 mt-1 max-w-lg break-words">
                                 {t('admin.purge_unverified_desc', 'Permanently delete accounts that have never been verified and were created more than 14 days ago.')}
                             </p>
                         </div>
-                        <CyberButton
-                            variant="danger"
-                            className="!py-1.5 !px-4 !text-xs shrink-0 whitespace-nowrap"
-                            onClick={handlePurgeUnverifiedClick}
-                        >
-                            {t('admin.btn_purge_unverified', 'PURGE UNVERIFIED')}
-                        </CyberButton>
+                        <div className="shrink-0 mt-2 md:mt-0">
+                            <CyberButton
+                                variant="danger"
+                                className="!py-1.5 !px-4 !text-xs whitespace-nowrap"
+                                onClick={handlePurgeUnverifiedClick}
+                            >
+                                {t('admin.btn_purge_unverified', 'PURGE UNVERIFIED')}
+                            </CyberButton>
+                        </div>
                     </div>
                 </div>
             </div>

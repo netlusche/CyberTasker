@@ -63,7 +63,7 @@ const SystemModal = ({
                 </div>
 
                 {/* Body */}
-                <div className={`${allowScroll ? 'overflow-y-auto custom-scrollbar' : 'overflow-hidden'} flex-1 relative pr-2`}>
+                <div className={`${allowScroll ? 'overflow-y-auto overflow-x-hidden custom-scrollbar' : 'overflow-hidden'} flex-1 relative pr-2`}>
                     {children}
                 </div>
 
