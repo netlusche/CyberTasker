@@ -275,7 +275,7 @@
         "attachments_indicator": "暗号化された添付ファイルが含まれています。",
         "subroutines_indicator": "埋め込みサブルーチンが含まれています。",
         "purge_confirm": "警告: これにより、完了したディレクティブがすべて完全に削除されます。進む？",
-        "purge_completed": "パージが完了しました",
+        "purge_completed": "完了タスクを削除",
         "purge_completed_tooltip": "完了したすべてのディレクティブを完全に削除します"
     },
     "help": {

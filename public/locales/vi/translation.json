@@ -275,7 +275,7 @@
         "attachments_indicator": "Chứa tệp đính kèm được mã hóa.",
         "subroutines_indicator": "Chứa các chương trình con nhúng.",
         "purge_confirm": "CẢNH BÁO: ĐIỀU NÀY SẼ XÓA VĨNH VIỄN TẤT CẢ CÁC CHỈ THỊ ĐÃ HOÀN THÀNH. TIẾP TỤC?",
-        "purge_completed": "THANH LỌC HOÀN THÀNH",
+        "purge_completed": "XÓA ĐÃ HOÀN THÀNH",
         "purge_completed_tooltip": "Xóa vĩnh viễn tất cả các chỉ thị đã hoàn thành"
     },
     "help": {

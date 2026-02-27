@@ -275,8 +275,8 @@
         "attachments_indicator": "Zawiera zaszyfrowane załączniki plików.",
         "subroutines_indicator": "Zawiera wbudowane podprogramy.",
         "purge_confirm": "OSTRZEŻENIE: SPOWODUJE TO TRWAŁE USUNIĘCIE WSZYSTKICH WYKOŃCZONYCH DYREKTYW. PRZYSTĘPOWAĆ?",
-        "purge_completed": "USUWANIE ZAKOŃCZONE",
-        "purge_completed_tooltip": "Trwale usuń wszystkie wypełnione dyrektywy"
+        "purge_completed": "USUŃ ZAKOŃCZONE",
+        "purge_completed_tooltip": "Trwale usuń wszystkie zakończone dyrektywy"
     },
     "help": {
         "title": "INSTRUKCJA SYSTEMU CYBER_TASKER",

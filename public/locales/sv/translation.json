@@ -275,8 +275,8 @@
         "attachments_indicator": "Innehåller krypterade filbilagor.",
         "subroutines_indicator": "Innehåller inbäddade subrutiner.",
         "purge_confirm": "VARNING: DETTA KOMMER PERMANENT RADERA ALLA FULLSTÄNDIGA DIREKTIV. FORTSÄTTA?",
-        "purge_completed": "RENING AVSLUTAD",
-        "purge_completed_tooltip": "Ta bort alla färdiga direktiv permanent"
+        "purge_completed": "RENSA SLUTFÖRDA",
+        "purge_completed_tooltip": "Ta bort alla slutförda direktiv permanent"
     },
     "help": {
         "title": "CYBER_TASKER SYSTEMMANUAL",

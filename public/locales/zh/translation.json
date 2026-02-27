@@ -275,7 +275,7 @@
         "attachments_indicator": "包含加密的文件附件。",
         "subroutines_indicator": "包含嵌入式子程序。",
         "purge_confirm": "警告：这将永久删除所有已完成的指令。继续？",
-        "purge_completed": "清除完成",
+        "purge_completed": "清除已完成",
         "purge_completed_tooltip": "永久删除所有已完成的指令"
     },
     "help": {

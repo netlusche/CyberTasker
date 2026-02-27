@@ -275,7 +275,7 @@
         "attachments_indicator": "Bevat gecodeerde bestandsbijlagen.",
         "subroutines_indicator": "Bevat ingebedde subroutines.",
         "purge_confirm": "WAARSCHUWING: DIT WORDT ALLE INGEVOERDE RICHTLIJNEN PERMANENT VERWIJDERD. DOORGAAN?",
-        "purge_completed": "ZUIVEREN VOLTOOID",
+        "purge_completed": "VOLTOOIDE WISSEN",
         "purge_completed_tooltip": "Verwijder permanent alle voltooide richtlijnen"
     },
     "help": {

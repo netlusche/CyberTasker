@@ -248,7 +248,7 @@
         "all_categories": "ALL CATEGORIES",
         "overdue_only": "Overdue",
         "purge_completed": "PURGE COMPLETED",
-        "purge_completed_tooltip": "Permanently delete all completed directives",
+        "purge_completed_tooltip": "Permanently purge all completed directives",
         "default_suffix": "(Default)",
         "dossier": {
             "title": "DIRECTIVE DOSSIER",

@@ -275,7 +275,7 @@
         "attachments_indicator": "Inneholder krypterte filvedlegg.",
         "subroutines_indicator": "Inneholder innebygde underrutiner.",
         "purge_confirm": "ADVARSEL: DETTE VIL PERMANENT SLETTE ALLE FULLFØRTE DIREKTIVER. FORTSETTE?",
-        "purge_completed": "RENGJØRING FERDIG",
+        "purge_completed": "SLETT FULLFØRTE",
         "purge_completed_tooltip": "Slett alle fullførte direktiver permanent"
     },
     "help": {

@@ -275,8 +275,8 @@
         "attachments_indicator": "Titkosított fájlmellékleteket tartalmaz.",
         "subroutines_indicator": "Beágyazott szubrutinokat tartalmaz.",
         "purge_confirm": "FIGYELMEZTETÉS: EZ VÉGLEGESEN TÖRLÉS AZ ÖSSZES TELJESÍTETT IRÁNYELVET. FOLYTATJA?",
-        "purge_completed": "A TISZTÍTÁS KÉSZÜLT",
-        "purge_completed_tooltip": "Az összes kitöltött irányelv végleges törlése"
+        "purge_completed": "BEFEJEZETTEK TÖRLÉSE",
+        "purge_completed_tooltip": "Az összes befejezett irányelv végleges törlése"
     },
     "help": {
         "title": "CYBER_TASKER RENDSZER KÉZIKÖNYVE",

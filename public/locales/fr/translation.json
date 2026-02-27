@@ -275,8 +275,8 @@
         "attachments_indicator": "Contient des pièces jointes cryptées.",
         "subroutines_indicator": "Contient des sous-programmes intégrés.",
         "purge_confirm": "AVERTISSEMENT : CELA SUPPRIMERA DÉFINITIVEMENT TOUTES LES DIRECTIVES REMPLIES. PROCÉDER?",
-        "purge_completed": "PURGE TERMINÉE",
-        "purge_completed_tooltip": "Supprimer définitivement toutes les directives complétées"
+        "purge_completed": "PURGER TERMINÉES",
+        "purge_completed_tooltip": "Supprimer définitivement toutes les directives terminées"
     },
     "help": {
         "title": "MANUEL DU SYSTÈME CYBER_TASKER",

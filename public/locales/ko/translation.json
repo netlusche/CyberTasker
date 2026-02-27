@@ -275,7 +275,7 @@
         "attachments_indicator": "암호화된 첨부 파일이 포함되어 있습니다.",
         "subroutines_indicator": "임베디드 서브루틴이 포함되어 있습니다.",
         "purge_confirm": "경고: 이렇게 하면 완료된 모든 지시문이 영구적으로 삭제됩니다. 진행하다?",
-        "purge_completed": "퍼지 완료",
+        "purge_completed": "완료된 항목 삭제",
         "purge_completed_tooltip": "완료된 모든 지시문을 영구적으로 삭제"
     },
     "help": {

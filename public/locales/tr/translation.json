@@ -275,7 +275,7 @@
         "attachments_indicator": "Şifrelenmiş dosya ekleri içerir.",
         "subroutines_indicator": "Gömülü altprogramlar içerir.",
         "purge_confirm": "UYARI: BU TÜM TAMAMLANMIŞ DİREKTİFLERİ KALICI OLARAK SİLİNECEKTİR. İLERLEMEK?",
-        "purge_completed": "TEMİZLEME TAMAMLANDI",
+        "purge_completed": "TAMAMLANANLARI TEMİZLE",
         "purge_completed_tooltip": "Tamamlanan tüm yönergeleri kalıcı olarak sil"
     },
     "help": {

@@ -275,7 +275,7 @@
         "attachments_indicator": "Sisältää salattuja liitetiedostoja.",
         "subroutines_indicator": "Sisältää upotettuja aliohjelmia.",
         "purge_confirm": "VAROITUS: TÄMÄ POISTAA PYSYVÄSTI KAIKKI VALMISTETUT DIREKTIIVIT. EDETÄ?",
-        "purge_completed": "PUHDISTUS VALMIS",
+        "purge_completed": "POISTA VALMIIT",
         "purge_completed_tooltip": "Poista pysyvästi kaikki valmiit käskyt"
     },
     "help": {

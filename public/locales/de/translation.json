@@ -275,8 +275,8 @@
         "attachments_indicator": "Enthält verschlüsselte Dateianhänge.",
         "subroutines_indicator": "Enthält eingebettete Unterprogramme.",
         "purge_confirm": "ACHTUNG: Dadurch werden alle abgeschlossenen Richtlinien dauerhaft gelöscht. FORTFAHREN?",
-        "purge_completed": "REINIGUNG ABGESCHLOSSEN",
-        "purge_completed_tooltip": "Alle abgeschlossenen Anweisungen dauerhaft löschen"
+        "purge_completed": "ERLEDIGTE LÖSCHEN",
+        "purge_completed_tooltip": "Alle abgeschlossenen Anweisungen endgültig löschen"
     },
     "dashboard": {
         "operator_level": "OPERATOR LEVEL",

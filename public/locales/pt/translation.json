@@ -275,7 +275,7 @@
         "attachments_indicator": "Contém anexos de arquivos criptografados.",
         "subroutines_indicator": "Contém sub-rotinas incorporadas.",
         "purge_confirm": "AVISO: ISTO EXCLUIRÁ PERMANENTEMENTE TODAS AS DIRETRIZES CONCLUÍDAS. PROSSEGUIR?",
-        "purge_completed": "PURGA CONCLUÍDA",
+        "purge_completed": "PURGAR CONCLUÍDAS",
         "purge_completed_tooltip": "Excluir permanentemente todas as diretivas concluídas"
     },
     "help": {

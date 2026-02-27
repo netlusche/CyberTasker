@@ -275,7 +275,7 @@
         "attachments_indicator": "מכיל קבצים מצורפים מוצפנים.",
         "subroutines_indicator": "מכיל תתי שגרות מוטבעות.",
         "purge_confirm": "אזהרה: זה ימחק לצמיתות את כל ההנחיות שהושלמו. לְהִתְקַדֵם?",
-        "purge_completed": "הטיהור הושלם",
+        "purge_completed": "מחק שהושלמו",
         "purge_completed_tooltip": "מחק לצמיתות את כל ההנחיות שהושלמו"
     },
     "dashboard": {

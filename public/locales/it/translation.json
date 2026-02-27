@@ -275,7 +275,7 @@
         "attachments_indicator": "Contiene allegati di file crittografati.",
         "subroutines_indicator": "Contiene subroutine incorporate.",
         "purge_confirm": "ATTENZIONE: QUESTO ELIminerà PERMANENTEMENTE TUTTE LE DIRETTIVE COMPLETATE. PROCEDERE?",
-        "purge_completed": "ELIMINAZIONE COMPLETATA",
+        "purge_completed": "ELIMINA COMPLETATE",
         "purge_completed_tooltip": "Elimina permanentemente tutte le direttive completate"
     },
     "help": {
