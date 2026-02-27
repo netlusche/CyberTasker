@@ -270,7 +270,13 @@
             "weekly": "Co tydzień",
             "monthly": "Miesięcznie",
             "yearly": "Rocznie"
-        }
+        },
+        "no_tasks": "Nie znaleziono dyrektyw dla bieżących kryteriów filtrowania.",
+        "attachments_indicator": "Zawiera zaszyfrowane załączniki plików.",
+        "subroutines_indicator": "Zawiera wbudowane podprogramy.",
+        "purge_confirm": "OSTRZEŻENIE: SPOWODUJE TO TRWAŁE USUNIĘCIE WSZYSTKICH WYKOŃCZONYCH DYREKTYW. PRZYSTĘPOWAĆ?",
+        "purge_completed": "USUWANIE ZAKOŃCZONE",
+        "purge_completed_tooltip": "Trwale usuń wszystkie wypełnione dyrektywy"
     },
     "help": {
         "title": "INSTRUKCJA SYSTEMU CYBER_TASKER",
@@ -444,7 +450,8 @@
         "system_message": "WIADOMOŚĆ SYSTEMOWA",
         "confirm": "POTWIERDŹ",
         "submit": "WYŚLIJ",
-        "net_error": "BŁĄD SIECI"
+        "net_error": "BŁĄD SIECI",
+        "years": "Rok (lata)"
     },
     "admin": {
         "console_title": "KONSOLA ADMINISTRACYJNA",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA wyłączone dla {{username}}.",
         "disable_2fa_failed": "Nie udało się wyłączyć 2FA",
         "policy_enforce_email_2fa_title": "Wymuś e-mail 2FA",
-        "policy_enforce_email_2fa_desc": "Wymuś wysłanie awaryjnego kodu e-mail 2FA do aktywnych agentów próbujących zalogować się bez uwierzytelnienia TOTP."
+        "policy_enforce_email_2fa_desc": "Wymuś wysłanie awaryjnego kodu e-mail 2FA do aktywnych agentów próbujących zalogować się bez uwierzytelnienia TOTP.",
+        "maintenance_title": "OBSŁUGA BAZY DANYCH",
+        "purge_inactive_title": "Usuń nieaktywnych pracowników",
+        "purge_inactive_desc": "Trwale usuń konta (i ich dane), które nie zalogowały się przez wybrany okres.",
+        "btn_purge_inactive": "USUWANIE NIEAKTYWNE",
+        "purge_unverified_title": "Usuń niezweryfikowane konta duchów",
+        "purge_unverified_desc": "Trwale usuń konta, które nigdy nie zostały zweryfikowane i zostały utworzone ponad 14 dni temu.",
+        "btn_purge_unverified": "USUŃ NIEZWERYFIKOWANE",
+        "purge_inactive_confirm": "OSTRZEŻENIE: Spowoduje to trwałe usunięcie kont operacyjnych nieaktywnych przez {{years}} lat. Tej akcji NIE można cofnąć.",
+        "purge_unverified_confirm": "OSTRZEŻENIE: spowoduje to trwałe usunięcie wszystkich niezweryfikowanych kont starszych niż 14 dni. Tej akcji NIE można cofnąć.",
+        "purge_success_msg": "Pomyślnie usunięto konta: {{count}}.",
+        "purge_failed": "Nie udało się wyczyścić kont"
     },
     "calendar": {
         "clear_date": "WYCZYŚĆ DATĘ",

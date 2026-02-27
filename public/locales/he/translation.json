@@ -270,7 +270,13 @@
                 "clear": "נקה הכל",
                 "clear_tooltip": "מאפס את כל המסננים הפעילים"
             }
-        }
+        },
+        "no_tasks": "לא נמצאו הנחיות עבור קריטריוני הסינון הנוכחיים.",
+        "attachments_indicator": "מכיל קבצים מצורפים מוצפנים.",
+        "subroutines_indicator": "מכיל תתי שגרות מוטבעות.",
+        "purge_confirm": "אזהרה: זה ימחק לצמיתות את כל ההנחיות שהושלמו. לְהִתְקַדֵם?",
+        "purge_completed": "הטיהור הושלם",
+        "purge_completed_tooltip": "מחק לצמיתות את כל ההנחיות שהושלמו"
     },
     "dashboard": {
         "operator_level": "רמת מפעיל",
@@ -455,7 +461,8 @@
         "system_message": "הודעת מערכת",
         "confirm": "אשר",
         "submit": "שלח",
-        "net_error": "שגיאת רשת"
+        "net_error": "שגיאת רשת",
+        "years": "שנים"
     },
     "admin": {
         "console_title": "קונסולת ניהול",
@@ -498,7 +505,18 @@
         "password_reset_msg": "איפוס הסיסמה עבור {{username}}.",
         "disable_2fa_confirm": "להשבית את 2FA עבור {{username}}? פעולה זו תסיר פרוטוקולי אימות משניים.",
         "2fa_disabled_msg": "2FA מושבת עבור {{username}}.",
-        "disable_2fa_failed": "נכשל השבתת 2FA"
+        "disable_2fa_failed": "נכשל השבתת 2FA",
+        "maintenance_title": "תחזוקת מסד נתונים",
+        "purge_inactive_title": "ניקוי פעילים לא פעילים",
+        "purge_inactive_desc": "מחק לצמיתות חשבונות (והנתונים שלהם) שלא התחברו למשך הזמן שנבחר.",
+        "btn_purge_inactive": "טיהור לא פעיל",
+        "purge_unverified_title": "ניקוי חשבונות רפאים לא מאומתים",
+        "purge_unverified_desc": "מחק לצמיתות חשבונות שמעולם לא אומתו ונוצרו לפני יותר מ-14 ימים.",
+        "btn_purge_unverified": "טיהור לא מאומת",
+        "purge_inactive_confirm": "אזהרה: פעולה זו תמחק לצמיתות חשבונות תפעוליים לא פעילים במשך {{years}} שנים. לא ניתן לבטל את הפעולה הזו.",
+        "purge_unverified_confirm": "אזהרה: פעולה זו תמחק לצמיתות את כל החשבונות הלא מאומתים מעל 14 ימים. לא ניתן לבטל את הפעולה הזו.",
+        "purge_success_msg": "נמחק בהצלחה {{count}} חשבונות.",
+        "purge_failed": "ניקוי החשבונות נכשל"
     },
     "calendar": {
         "title": "CHRONO-SYNC // לוח שנה",

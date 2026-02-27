@@ -99,4 +99,37 @@ class AdminRepository extends Repository
         $stmt = $this->pdo->prepare("UPDATE users SET two_factor_enabled = 0, two_factor_secret = NULL, two_factor_method = 'totp', two_factor_backup_codes = NULL WHERE id = ?");
         $stmt->execute([$userId]);
     }
+
+    public function purgeInactiveUsers(int $years): int
+    {
+        // Users who haven't logged in for £years, OR users who have NEVER logged in and were created £years ago
+        // And don't delete admins accidentally
+        $thresholdDate = date('Y-m-d H:i:s', strtotime("-{$years} years"));
+
+        $sql = "DELETE FROM users 
+                WHERE role != 'admin' 
+                AND (
+                    (last_login IS NOT NULL AND last_login < ?)
+                    OR
+                    (last_login IS NULL AND created_at < ?)
+                )";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$thresholdDate, $thresholdDate]);
+        return $stmt->rowCount();
+    }
+
+    public function purgeUnverifiedUsers(): int
+    {
+        // Unverified users created more than 14 days ago
+        // Ensure no admins are deleted just in case
+        $thresholdDate = date('Y-m-d H:i:s', strtotime('-14 days'));
+
+        $sql = "DELETE FROM users 
+                WHERE role != 'admin' 
+                AND is_verified = 0 
+                AND created_at < ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$thresholdDate]);
+        return $stmt->rowCount();
+    }
 }

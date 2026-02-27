@@ -176,6 +176,57 @@ for ($i = 1; $i <= 100; $i++) {
 $pdo->commit();
 echo "   [V] 100 baseline test users injected into registry.\n\n";
 
+// 4. Create Ghost Accounts (Unverified, >14 days old) for testing Purge Unverified
+echo "4. Generating Ghost Accounts (unverified) for Admin Purge test...\n";
+$ghostDate = date('Y-m-d H:i:s', strtotime('-20 days'));
+$insertGhostStmt = $pdo->prepare("INSERT INTO users (username, password, email, is_verified, role, created_at) VALUES (?, ?, ?, 0, 'user', ?)");
+$pdo->beginTransaction();
+for ($i = 1; $i <= 5; $i++) {
+    $uname = "Ghost_User_" . str_pad($i, 2, '0', STR_PAD_LEFT);
+    $email = "ghost.$i@cybertasker.local";
+    $insertGhostStmt->execute([$uname, $pass, $email, $ghostDate]);
+    $uid = $pdo->lastInsertId();
+    $insertStatsStmt->execute([$uid]);
+}
+$pdo->commit();
+echo "   [V] 5 ghost accounts injected.\n\n";
+
+// 5. Create Inactive Accounts for Admin Purge test
+echo "5. Generating Inactive Accounts for Admin Purge test...\n";
+$insertInactiveStmt = $pdo->prepare("INSERT INTO users (username, password, email, is_verified, role, created_at, last_login) VALUES (?, ?, ?, 1, 'user', ?, ?)");
+$pdo->beginTransaction();
+
+$inactiveAges = [
+    1 => '-1 year - 10 days',
+    2 => '-2 years - 10 days',
+    5 => '-5 years - 10 days',
+    10 => '-10 years - 10 days',
+    11 => '-11 years - 10 days'
+];
+
+$i = 1;
+foreach ($inactiveAges as $years => $timeStr) {
+    if ($years === 11) {
+        $uname = "Inactive_User_Extreme_" . str_pad($i, 2, '0', STR_PAD_LEFT);
+    }
+    else {
+        $uname = "Inactive_User_{$years}Y_" . str_pad($i, 2, '0', STR_PAD_LEFT);
+    }
+    $email = "inactive.$i@cybertasker.local";
+
+    // Create an older created_at date to ensure realism
+    $inactiveCreated = date('Y-m-d H:i:s', strtotime($timeStr . ' - 30 days'));
+    // Set the last login exactly according to the test boundary
+    $inactiveLogin = date('Y-m-d H:i:s', strtotime($timeStr));
+
+    $insertInactiveStmt->execute([$uname, $pass, $email, $inactiveCreated, $inactiveLogin]);
+    $uid = $pdo->lastInsertId();
+    $insertStatsStmt->execute([$uid]);
+    $i++;
+}
+$pdo->commit();
+echo "   [V] 5 inactive accounts injected with varying ages (1, 2, 5, 10, 11 years).\n\n";
+
 echo "====================================================\n";
 echo "SEED COMPLETE. System ready for automated test suites.\n";
 

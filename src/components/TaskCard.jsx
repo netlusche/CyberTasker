@@ -297,6 +297,29 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
                             <p className="text-sm text-cyber-secondary font-mono xp-text">
                                 +{task.points_value} XP
                             </p>
+
+                            {/* File Indicator */}
+                            {(() => {
+                                let hasFiles = false;
+                                try {
+                                    if (task.attachments && JSON.parse(task.attachments).length > 0) hasFiles = true;
+                                    if (task.files && JSON.parse(task.files).length > 0) hasFiles = true;
+                                } catch (e) {
+                                    if (task.attachments?.length > 10 || task.files?.length > 10) hasFiles = true; // Fallback for simple strings that aren't empty arrays
+                                }
+
+                                if (hasFiles) {
+                                    return (
+                                        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-black/40 border border-cyber-primary/20 text-xs text-cyber-primary font-mono" data-tooltip-content={t('tasks.attachments_indicator')}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3 h-3">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                                            </svg>
+                                        </div>
+                                    );
+                                }
+                                return null;
+                            })()}
+
                             {(() => {
                                 let subTotal = 0;
                                 let subCompleted = 0;
@@ -315,7 +338,7 @@ const TaskCard = ({ task, categories, onToggleStatus, onUpdateTask, onDelete, ac
                                 if (subTotal > 0) {
                                     const isAllCompleted = subCompleted === subTotal;
                                     return (
-                                        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-black/40 border border-cyber-primary/20 text-xs font-mono" title={t('tasks.dossier.sub_routines')}>
+                                        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-black/40 border border-cyber-primary/20 text-xs font-mono" data-tooltip-content={t('tasks.subroutines_indicator')}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`w-3 h-3 ${isAllCompleted ? 'text-cyber-success' : 'text-cyber-primary'}`}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                                             </svg>

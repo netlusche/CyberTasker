@@ -270,7 +270,13 @@
             "weekly": "Veckovis",
             "monthly": "Månatlig",
             "yearly": "Årlig"
-        }
+        },
+        "no_tasks": "Inga direktiv hittades för de aktuella filterkriterierna.",
+        "attachments_indicator": "Innehåller krypterade filbilagor.",
+        "subroutines_indicator": "Innehåller inbäddade subrutiner.",
+        "purge_confirm": "VARNING: DETTA KOMMER PERMANENT RADERA ALLA FULLSTÄNDIGA DIREKTIV. FORTSÄTTA?",
+        "purge_completed": "RENING AVSLUTAD",
+        "purge_completed_tooltip": "Ta bort alla färdiga direktiv permanent"
     },
     "help": {
         "title": "CYBER_TASKER SYSTEMMANUAL",
@@ -444,7 +450,8 @@
         "system_message": "SYSTEMMEDDELANDE",
         "confirm": "BEKRÄFTA",
         "submit": "SKICKA",
-        "net_error": "NÄTVERKSFEL"
+        "net_error": "NÄTVERKSFEL",
+        "years": "År"
     },
     "admin": {
         "console_title": "ADMINISTRATIONSKONSOL",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA inaktiverad för {{användarnamn}}.",
         "disable_2fa_failed": "Det gick inte att inaktivera 2FA",
         "policy_enforce_email_2fa_title": "Framtvinga e-post 2FA",
-        "policy_enforce_email_2fa_desc": "Tvinga en reservkod för e-post 2FA att skickas till aktiva operatörer som försöker logga in utan TOTP-autentisering."
+        "policy_enforce_email_2fa_desc": "Tvinga en reservkod för e-post 2FA att skickas till aktiva operatörer som försöker logga in utan TOTP-autentisering.",
+        "maintenance_title": "DATABASUNDERHÅLL",
+        "purge_inactive_title": "Rensa inaktiva verksamheter",
+        "purge_inactive_desc": "Ta bort konton (och deras data) permanent som inte har loggat in under den valda varaktigheten.",
+        "btn_purge_inactive": "RENING INAKTIV",
+        "purge_unverified_title": "Rensa obekräftade spökkonton",
+        "purge_unverified_desc": "Ta bort konton permanent som aldrig har verifierats och som skapades för mer än 14 dagar sedan.",
+        "btn_purge_unverified": "RENGÖRING OVERIFIERAD",
+        "purge_inactive_confirm": "VARNING: Detta kommer permanent att radera operativa konton som är inaktiva i {{years}} år. Denna åtgärd KAN INTE ångras.",
+        "purge_unverified_confirm": "VARNING: Detta tar permanent bort alla overifierade konton som är äldre än 14 dagar. Denna åtgärd KAN INTE ångras.",
+        "purge_success_msg": "{{count}} konton har rensats.",
+        "purge_failed": "Det gick inte att rensa konton"
     },
     "calendar": {
         "clear_date": "RADERA DATUM",

@@ -270,7 +270,13 @@
             "weekly": "Semanal",
             "monthly": "Mensalmente",
             "yearly": "Anualmente"
-        }
+        },
+        "no_tasks": "Nenhuma diretiva encontrada para os critérios de filtro atuais.",
+        "attachments_indicator": "Contém anexos de arquivos criptografados.",
+        "subroutines_indicator": "Contém sub-rotinas incorporadas.",
+        "purge_confirm": "AVISO: ISTO EXCLUIRÁ PERMANENTEMENTE TODAS AS DIRETRIZES CONCLUÍDAS. PROSSEGUIR?",
+        "purge_completed": "PURGA CONCLUÍDA",
+        "purge_completed_tooltip": "Excluir permanentemente todas as diretivas concluídas"
     },
     "help": {
         "title": "MANUAL DO SISTEMA CYBER_TASKER",
@@ -444,7 +450,8 @@
         "system_message": "MENSAGEM DO SISTEMA",
         "confirm": "CONFIRMAR",
         "submit": "ENVIAR",
-        "net_error": "ERRO DE REDE"
+        "net_error": "ERRO DE REDE",
+        "years": "Anos)"
     },
     "admin": {
         "console_title": "CONSOLA DE ADMINISTRAÇÃO",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA desativado para {{nome de usuário}}.",
         "disable_2fa_failed": "Falha ao desativar 2FA",
         "policy_enforce_email_2fa_title": "Aplicar 2FA de e-mail",
-        "policy_enforce_email_2fa_desc": "Forçar o envio de um código substituto de e-mail 2FA para agentes ativos que tentam fazer login sem um autenticador TOTP."
+        "policy_enforce_email_2fa_desc": "Forçar o envio de um código substituto de e-mail 2FA para agentes ativos que tentam fazer login sem um autenticador TOTP.",
+        "maintenance_title": "MANUTENÇÃO DE BANCO DE DADOS",
+        "purge_inactive_title": "Expurgar Operativos Inativos",
+        "purge_inactive_desc": "Exclua permanentemente contas (e seus dados) que não fizeram login durante o período selecionado.",
+        "btn_purge_inactive": "PURGA INATIVA",
+        "purge_unverified_title": "Expurgar contas fantasma não verificadas",
+        "purge_unverified_desc": "Exclua permanentemente contas que nunca foram verificadas e que foram criadas há mais de 14 dias.",
+        "btn_purge_unverified": "PURGA NÃO VERIFICADA",
+        "purge_inactive_confirm": "AVISO: isso excluirá permanentemente as contas operacionais inativas por {{years}} ano(s). Esta ação NÃO PODE ser desfeita.",
+        "purge_unverified_confirm": "AVISO: Isso excluirá permanentemente todas as contas não verificadas com mais de 14 dias. Esta ação NÃO PODE ser desfeita.",
+        "purge_success_msg": "{{count}} contas foram eliminadas com sucesso.",
+        "purge_failed": "Falha ao limpar contas"
     },
     "calendar": {
         "clear_date": "LIMPAR DATA",

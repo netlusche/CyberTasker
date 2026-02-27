@@ -270,7 +270,13 @@
             "weekly": "毎週",
             "monthly": "毎月",
             "yearly": "毎年"
-        }
+        },
+        "no_tasks": "現在のフィルター基準に対応するディレクティブが見つかりません。",
+        "attachments_indicator": "暗号化された添付ファイルが含まれています。",
+        "subroutines_indicator": "埋め込みサブルーチンが含まれています。",
+        "purge_confirm": "警告: これにより、完了したディレクティブがすべて完全に削除されます。進む？",
+        "purge_completed": "パージが完了しました",
+        "purge_completed_tooltip": "完了したすべてのディレクティブを完全に削除します"
     },
     "help": {
         "title": "CYBER_TASKER システムマニュアル",
@@ -444,7 +450,8 @@
         "system_message": "システム メッセージ",
         "confirm": "確認",
         "submit": "送信する",
-        "net_error": "ネットワーク エラー"
+        "net_error": "ネットワーク エラー",
+        "years": "年"
     },
     "admin": {
         "console_title": "管理コンソール",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "{{username}} では 2FA が無効になりました。",
         "disable_2fa_failed": "2FA を無効にできませんでした",
         "policy_enforce_email_2fa_title": "電子メール 2FA を強制する",
-        "policy_enforce_email_2fa_desc": "TOTP 認証システムを使用せずにログインしようとしているアクティブな工作員に電子メール 2FA フォールバック コードを強制的に送信します。"
+        "policy_enforce_email_2fa_desc": "TOTP 認証システムを使用せずにログインしようとしているアクティブな工作員に電子メール 2FA フォールバック コードを強制的に送信します。",
+        "maintenance_title": "データベースのメンテナンス",
+        "purge_inactive_title": "非アクティブな工作員を粛清する",
+        "purge_inactive_desc": "選択した期間ログインしなかったアカウント (およびそのデータ) を完全に削除します。",
+        "btn_purge_inactive": "パージは非アクティブです",
+        "purge_unverified_title": "未確認のゴーストアカウントを削除",
+        "purge_unverified_desc": "一度も検証されておらず、14 日以上前に作成されたアカウントは完全に削除します。",
+        "btn_purge_unverified": "パージは未確認",
+        "purge_inactive_confirm": "警告: これにより、{{years}} 年間非アクティブな運用アカウントが完全に削除されます。この操作は元に戻すことができません。",
+        "purge_unverified_confirm": "警告: これにより、14 日以上経過した未確認のアカウントがすべて完全に削除されます。この操作は元に戻すことができません。",
+        "purge_success_msg": "{{count}} 個のアカウントが正常に削除されました。",
+        "purge_failed": "アカウントの削除に失敗しました"
     },
     "calendar": {
         "clear_date": "明確な日付",

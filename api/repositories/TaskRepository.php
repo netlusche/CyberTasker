@@ -193,4 +193,11 @@ class TaskRepository extends Repository
         $stmt = $this->pdo->prepare("DELETE FROM tasks WHERE id = ? AND user_id = ?");
         $stmt->execute([$taskId, $userId]);
     }
+
+    public function deleteCompletedTasks(int $userId): int
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM tasks WHERE user_id = ? AND status = 1");
+        $stmt->execute([$userId]);
+        return $stmt->rowCount();
+    }
 }

@@ -270,7 +270,13 @@
                 "clear": "Alle aufheben",
                 "clear_tooltip": "Setzt alle aktiven Filter zurück"
             }
-        }
+        },
+        "no_tasks": "Für die aktuellen Filterkriterien wurden keine Anweisungen gefunden.",
+        "attachments_indicator": "Enthält verschlüsselte Dateianhänge.",
+        "subroutines_indicator": "Enthält eingebettete Unterprogramme.",
+        "purge_confirm": "ACHTUNG: Dadurch werden alle abgeschlossenen Richtlinien dauerhaft gelöscht. FORTFAHREN?",
+        "purge_completed": "REINIGUNG ABGESCHLOSSEN",
+        "purge_completed_tooltip": "Alle abgeschlossenen Anweisungen dauerhaft löschen"
     },
     "dashboard": {
         "operator_level": "OPERATOR LEVEL",
@@ -451,7 +457,8 @@
         "system_message": "SYSTEMMELDUNG",
         "confirm": "BESTÄTIGEN",
         "submit": "SENDEN",
-        "net_error": "NETZWERKFEHLER"
+        "net_error": "NETZWERKFEHLER",
+        "years": "Jahr(e)"
     },
     "admin": {
         "console_title": "ADMINISTRATIONSKONSOLE",
@@ -494,7 +501,18 @@
         "2fa_disabled_msg": "2FA für {{username}} deaktiviert.",
         "disable_2fa_failed": "2FA konnte nicht deaktiviert werden",
         "policy_enforce_email_2fa_title": "E-Mail 2FA durchsetzen",
-        "policy_enforce_email_2fa_desc": "Erzwingen Sie die Zusendung eines E-Mail-2FA-Fallback-Codes an aktive Mitarbeiter, die versuchen, sich ohne TOTP-Authentifikator anzumelden."
+        "policy_enforce_email_2fa_desc": "Erzwingen Sie die Zusendung eines E-Mail-2FA-Fallback-Codes an aktive Mitarbeiter, die versuchen, sich ohne TOTP-Authentifikator anzumelden.",
+        "maintenance_title": "DATENBANKPFLEGE",
+        "purge_inactive_title": "Inaktive Mitarbeiter löschen",
+        "purge_inactive_desc": "Löschen Sie Konten (und deren Daten) dauerhaft, die sich für die ausgewählte Dauer nicht angemeldet haben.",
+        "btn_purge_inactive": "REINIGUNG INAKTIV",
+        "purge_unverified_title": "Nicht verifizierte Ghost-Konten löschen",
+        "purge_unverified_desc": "Löschen Sie Konten, die noch nie verifiziert wurden und vor mehr als 14 Tagen erstellt wurden, endgültig.",
+        "btn_purge_unverified": "REINIGUNG NICHT ÜBERPRÜFT",
+        "purge_inactive_confirm": "ACHTUNG: Dadurch werden Betriebskonten, die seit {{years}} Jahr(en) inaktiv waren, dauerhaft gelöscht. Diese Aktion kann NICHT rückgängig gemacht werden.",
+        "purge_unverified_confirm": "ACHTUNG: Dadurch werden alle nicht bestätigten Konten, die älter als 14 Tage sind, dauerhaft gelöscht. Diese Aktion kann NICHT rückgängig gemacht werden.",
+        "purge_success_msg": "{{count}} Konten erfolgreich gelöscht.",
+        "purge_failed": "Konten konnten nicht gelöscht werden"
     },
     "calendar": {
         "clear_date": "KLARE DATUM",

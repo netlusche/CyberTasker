@@ -4,29 +4,11 @@ import { useTheme } from '../utils/ThemeContext';
 import { apiFetch } from '../utils/api';
 import CyberButton from './ui/CyberButton';
 import SystemModal from './ui/SystemModal';
+import CyberConfirm from './CyberConfirm';
 import DataGrid from './ui/DataGrid';
 import packageJson from '../../package.json';
 
 // --- Sub-components for Modals ---
-
-const ConfirmModal = ({ message, onConfirm, onCancel }) => {
-    const { t } = useTranslation();
-    return (
-        <SystemModal
-            isOpen={true}
-            onClose={onCancel}
-            title={t('admin.confirm_title')}
-            variant="warning"
-            hideCloseBtn={true}
-        >
-            <p className="text-gray-300 mb-6 font-mono">{message}</p>
-            <div className="flex justify-end gap-2">
-                <CyberButton variant="ghost" onClick={onCancel}>{t('common.cancel')}</CyberButton>
-                <CyberButton variant="warning" onClick={onConfirm}>{t('common.confirm')}</CyberButton>
-            </div>
-        </SystemModal>
-    );
-};
 
 const PromptModal = ({ message, onConfirm, onCancel }) => {
     const { t } = useTranslation();
@@ -94,6 +76,9 @@ const AdminPanel = ({ onClose }) => {
     // Modal States
     const [confirmAction, setConfirmAction] = useState(null);
     const [promptAction, setPromptAction] = useState(null);
+
+    // Retention State
+    const [retentionYears, setRetentionYears] = useState(1);
 
     useEffect(() => {
         fetchUsers();
@@ -199,7 +184,7 @@ const AdminPanel = ({ onClose }) => {
                 setMessage(t('admin.role_updated_msg', { username: user.username }));
                 fetchUsers(pagination.currentPage);
             } else {
-                setError(data.error ? t(`auth.messages.${data.error.toLowerCase().replace(/[\s\W]+/g, '_')}`, data.error) : t('admin.update_role_failed'));
+                setError(data.error === 'last_admin_error' ? t('admin.last_admin_error') : (data.error ? t(`auth.messages.${data.error.toLowerCase().replace(/[\s\W]+/g, '_')}`, data.error) : t('admin.update_role_failed')));
             }
         } catch (err) { setError(t('common.net_error')); }
     };
@@ -207,6 +192,7 @@ const AdminPanel = ({ onClose }) => {
     const handleDeleteUserClick = (user) => {
         setConfirmAction({
             message: t('admin.erase_confirm', { username: user.username }),
+            variant: 'danger',
             onConfirm: () => performDeleteUser(user.id, user.username)
         });
     };
@@ -223,7 +209,7 @@ const AdminPanel = ({ onClose }) => {
                 setMessage(t('admin.user_terminated_msg', { username }));
                 fetchUsers(pagination.currentPage);
             } else {
-                setError(data.error ? t(`auth.messages.${data.error.toLowerCase().replace(/[\s\W]+/g, '_')}`, data.error) : t('admin.delete_user_failed'));
+                setError(data.error === 'last_admin_error' ? t('admin.last_admin_error') : (data.error ? t(`auth.messages.${data.error.toLowerCase().replace(/[\s\W]+/g, '_')}`, data.error) : t('admin.delete_user_failed')));
             }
         } catch (err) { setError(t('common.net_error')); }
     };
@@ -284,6 +270,54 @@ const AdminPanel = ({ onClose }) => {
                 fetchUsers(pagination.currentPage);
             } else {
                 setError(t('admin.disable_2fa_failed'));
+            }
+        } catch (err) { setError(t('common.net_error')); }
+    };
+
+    const handlePurgeInactiveClick = () => {
+        setConfirmAction({
+            message: t('admin.purge_inactive_confirm', { years: retentionYears }),
+            variant: 'danger',
+            onConfirm: () => performPurgeInactive(retentionYears)
+        });
+    };
+
+    const performPurgeInactive = async (years) => {
+        try {
+            const res = await apiFetch('api/index.php?route=admin/users/purge_inactive', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ years: years })
+            });
+            const data = await res.json();
+            if (res.ok) {
+                setMessage(t('admin.purge_success_msg', { count: data.deleted_count }));
+                fetchUsers(pagination.currentPage);
+            } else {
+                setError(data.message || t('admin.purge_failed'));
+            }
+        } catch (err) { setError(t('common.net_error')); }
+    };
+
+    const handlePurgeUnverifiedClick = () => {
+        setConfirmAction({
+            message: t('admin.purge_unverified_confirm'),
+            variant: 'danger',
+            onConfirm: () => performPurgeUnverified()
+        });
+    };
+
+    const performPurgeUnverified = async () => {
+        try {
+            const res = await apiFetch('api/index.php?route=admin/users/purge_unverified', {
+                method: 'POST',
+            });
+            const data = await res.json();
+            if (res.ok) {
+                setMessage(t('admin.purge_success_msg', { count: data.deleted_count }));
+                fetchUsers(pagination.currentPage);
+            } else {
+                setError(data.message || t('admin.purge_failed'));
             }
         } catch (err) { setError(t('common.net_error')); }
     };
@@ -406,10 +440,13 @@ const AdminPanel = ({ onClose }) => {
         >
             {/* Modals */}
             {confirmAction && (
-                <ConfirmModal
+                <CyberConfirm
                     message={confirmAction.message}
+                    variant={confirmAction.variant || 'warning'}
                     onConfirm={() => { confirmAction.onConfirm(); setConfirmAction(null); }}
                     onCancel={() => setConfirmAction(null)}
+                    title={t('admin.confirm_title')}
+                    zIndex="z-[200]"
                 />
             )}
             {promptAction && (
@@ -434,8 +471,22 @@ const AdminPanel = ({ onClose }) => {
                 <span className="absolute right-2 top-1 text-cyber-primary pointer-events-none">🔍</span>
             </div>
 
-            {error && <div className="bg-red-900/20 text-red-500 p-2 border border-red-900 mb-4 animate-in fade-in">⚠ {error}</div>}
-            {message && <div className="bg-green-900/20 text-cyber-success p-2 border border-green-900 mb-4 animate-in fade-in">✓ {message}</div>}
+            {error && (
+                <div data-testid="admin-alert-error" className="mb-6 p-4 border border-cyber-secondary bg-cyber-secondary/10 shadow-cyber-validation flex items-center gap-4 animate-pulse-slow font-mono z-50">
+                    <div className="w-12 h-12 border border-cyber-secondary text-cyber-secondary flex items-center justify-center shrink-0 animate-bounce">
+                        <span className="text-3xl">⚠</span>
+                    </div>
+                    <p className="text-cyber-secondary text-sm uppercase tracking-wider">{error}</p>
+                </div>
+            )}
+            {message && (
+                <div data-testid="admin-alert-success" className="mb-6 p-4 border border-cyber-primary bg-cyber-primary/10 shadow-cyber-primary flex items-center gap-4 font-mono z-50">
+                    <div className="w-12 h-12 border border-cyber-primary text-cyber-primary flex items-center justify-center shrink-0">
+                        <span className="text-2xl font-bold">✓</span>
+                    </div>
+                    <p className="text-cyber-primary text-sm uppercase tracking-wider">{message}</p>
+                </div>
+            )}
 
             <DataGrid
                 columns={columns}
@@ -546,6 +597,58 @@ const AdminPanel = ({ onClose }) => {
                         />
                         <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none ring-0 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyber-primary"></div>
                     </label>
+                </div>
+            </div>
+
+            {/* Database Maintenance Section */}
+            <div className="border-t border-cyber-primary/50 pt-4 mt-4">
+                <h3 className="text-cyber-primary font-bold mb-3 flex items-center gap-2">
+                    <span>🗄️</span> {t('admin.maintenance_title', 'DATABASE MAINTENANCE')}
+                </h3>
+
+                <div className="space-y-4">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between bg-black/40 p-4 border border-cyber-danger/30 rounded gap-4">
+                        <div>
+                            <h4 className="text-white font-bold text-sm">{t('admin.purge_inactive_title', 'Purge Inactive Operatives')}</h4>
+                            <p className="text-xs text-gray-400 mt-1 max-w-lg">
+                                {t('admin.purge_inactive_desc', 'Permanently delete accounts (and their data) that have not logged in for the selected duration.')}
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-3 shrink-0">
+                            <select
+                                value={retentionYears}
+                                onChange={(e) => setRetentionYears(Number(e.target.value))}
+                                className="bg-black border border-cyber-primary text-cyber-primary px-2 py-1 outline-none font-mono text-sm"
+                            >
+                                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(y => (
+                                    <option key={y} value={y}>{y} {t('common.years', 'Year' + (y > 1 ? 's' : ''))}</option>
+                                ))}
+                            </select>
+                            <CyberButton
+                                variant="danger"
+                                className="!py-1.5 !px-4 !text-xs whitespace-nowrap"
+                                onClick={handlePurgeInactiveClick}
+                            >
+                                {t('admin.btn_purge_inactive', 'PURGE INACTIVE')}
+                            </CyberButton>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between bg-black/40 p-4 border border-cyber-danger/30 rounded gap-4">
+                        <div>
+                            <h4 className="text-white font-bold text-sm">{t('admin.purge_unverified_title', 'Purge Unverified Ghost Accounts')}</h4>
+                            <p className="text-xs text-gray-400 mt-1 max-w-lg">
+                                {t('admin.purge_unverified_desc', 'Permanently delete accounts that have never been verified and were created more than 14 days ago.')}
+                            </p>
+                        </div>
+                        <CyberButton
+                            variant="danger"
+                            className="!py-1.5 !px-4 !text-xs shrink-0 whitespace-nowrap"
+                            onClick={handlePurgeUnverifiedClick}
+                        >
+                            {t('admin.btn_purge_unverified', 'PURGE UNVERIFIED')}
+                        </CyberButton>
+                    </div>
                 </div>
             </div>
 

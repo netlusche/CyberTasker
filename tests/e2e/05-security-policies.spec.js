@@ -87,7 +87,7 @@ test.describe('TS-04: Fleet Administration - Security Policies', () => {
 
         // Expect Success Message in the Admin Panel alert area (not necessarily a CyberAlert)
         // Expect Success Message in the Admin Panel alert area
-        await expect(page.locator('.bg-green-900\\/20')).toContainText(/reset|updated|erfolgreich/i);
+        await expect(page.getByTestId('admin-alert-success')).toContainText(/reset|updated|erfolgreich/i);
 
         // 8. CLEANUP: Toggle policy OFF for other tests to maintain neutral state
         const finalToggle = page.getByTestId('strict-password-toggle');

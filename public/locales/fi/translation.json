@@ -270,7 +270,13 @@
             "weekly": "Viikoittain",
             "monthly": "Kuukausittain",
             "yearly": "Vuosittain"
-        }
+        },
+        "no_tasks": "Nykyisille suodatusehdoille ei löytynyt ohjeita.",
+        "attachments_indicator": "Sisältää salattuja liitetiedostoja.",
+        "subroutines_indicator": "Sisältää upotettuja aliohjelmia.",
+        "purge_confirm": "VAROITUS: TÄMÄ POISTAA PYSYVÄSTI KAIKKI VALMISTETUT DIREKTIIVIT. EDETÄ?",
+        "purge_completed": "PUHDISTUS VALMIS",
+        "purge_completed_tooltip": "Poista pysyvästi kaikki valmiit käskyt"
     },
     "help": {
         "title": "CYBER_TASKER JÄRJESTELMÄOPAS",
@@ -444,7 +450,8 @@
         "system_message": "JÄRJESTELMÄVIESTI",
         "confirm": "VAHVISTA",
         "submit": "LÄHETÄ",
-        "net_error": "VERKKOVIRHE"
+        "net_error": "VERKKOVIRHE",
+        "years": "Vuodet"
     },
     "admin": {
         "console_title": "HALLINTOKONSOLI",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA poistettu käytöstä käyttäjälle {{username}}.",
         "disable_2fa_failed": "2FA:n poistaminen käytöstä epäonnistui",
         "policy_enforce_email_2fa_title": "Pakota sähköposti 2FA",
-        "policy_enforce_email_2fa_desc": "Pakota sähköpostin 2FA-varakoodi lähetettäväksi aktiivisille toimijoille, jotka yrittävät kirjautua sisään ilman TOTP-todennusta."
+        "policy_enforce_email_2fa_desc": "Pakota sähköpostin 2FA-varakoodi lähetettäväksi aktiivisille toimijoille, jotka yrittävät kirjautua sisään ilman TOTP-todennusta.",
+        "maintenance_title": "TIETOKANNAN YLLÄPITO",
+        "purge_inactive_title": "Tyhjennä ei-aktiiviset työntekijät",
+        "purge_inactive_desc": "Poista pysyvästi tilit (ja niiden tiedot), jotka eivät ole kirjautuneet sisään valitun ajan.",
+        "btn_purge_inactive": "PUHDISTUS EI KÄYTÖSSÄ",
+        "purge_unverified_title": "Tyhjennä vahvistamattomat haamutilit",
+        "purge_unverified_desc": "Poista pysyvästi tilit, joita ei ole koskaan vahvistettu ja jotka on luotu yli 14 päivää sitten.",
+        "btn_purge_unverified": "PUHDISTUS VARMISTAmaton",
+        "purge_inactive_confirm": "VAROITUS: Tämä poistaa pysyvästi tilit, jotka eivät ole olleet aktiivisia {{years}} vuoden ajan. Tätä toimintoa EI VOI kumota.",
+        "purge_unverified_confirm": "VAROITUS: Tämä poistaa pysyvästi kaikki vahvistamattomat yli 14 päivää vanhat tilit. Tätä toimintoa EI VOI kumota.",
+        "purge_success_msg": "{{count}} tiliä on tyhjennetty.",
+        "purge_failed": "Tilien tyhjennys epäonnistui"
     },
     "calendar": {
         "clear_date": "TYHJENNÄ PÄIVÄMÄÄRÄ",

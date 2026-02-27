@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '../utils/ThemeContext';
 import CyberSelect from './CyberSelect';
 
-const TaskFilters = ({ filters, onFilterChange, categories }) => {
+const TaskFilters = ({ filters, onFilterChange, categories, hasCompletedTasks, onPurgeCompleted }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const [localSearch, setLocalSearch] = useState(filters.search || '');
@@ -141,6 +141,18 @@ const TaskFilters = ({ filters, onFilterChange, categories }) => {
                     <span className={`w-3 h-3 rounded-full ${filters.overdue ? 'bg-red-500 shadow-cyber-danger' : 'bg-gray-600'}`}></span>
                     {t('tasks.overdue_only')}
                 </label>
+
+                {/* Purge Completed Button */}
+                {hasCompletedTasks && (
+                    <button
+                        onClick={onPurgeCompleted}
+                        className="text-[10px] whitespace-nowrap font-bold px-3 py-2 rounded border border-cyber-danger text-cyber-danger shadow-[0_0_8px_rgba(239,68,68,0.2)] hover:bg-cyber-danger/10 hover:shadow-[0_0_12px_rgba(239,68,68,0.4)] transition-all duration-300 uppercase tracking-wider"
+                        data-tooltip-content={t('tasks.purge_completed_tooltip', 'Permanently delete all completed directives')}
+                        data-tooltip-pos="top"
+                    >
+                        {t('tasks.purge_completed', 'Purge Completed')}
+                    </button>
+                )}
 
                 {/* Reset Button */}
                 <button

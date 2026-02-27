@@ -270,7 +270,13 @@
             "weekly": "Hàng tuần",
             "monthly": "Hàng tháng",
             "yearly": "Hàng năm"
-        }
+        },
+        "no_tasks": "Không tìm thấy chỉ thị nào cho tiêu chí lọc hiện tại.",
+        "attachments_indicator": "Chứa tệp đính kèm được mã hóa.",
+        "subroutines_indicator": "Chứa các chương trình con nhúng.",
+        "purge_confirm": "CẢNH BÁO: ĐIỀU NÀY SẼ XÓA VĨNH VIỄN TẤT CẢ CÁC CHỈ THỊ ĐÃ HOÀN THÀNH. TIẾP TỤC?",
+        "purge_completed": "THANH LỌC HOÀN THÀNH",
+        "purge_completed_tooltip": "Xóa vĩnh viễn tất cả các chỉ thị đã hoàn thành"
     },
     "help": {
         "title": "HƯỚNG DẪN HỆ THỐNG CYBER_TASKER",
@@ -444,7 +450,8 @@
         "system_message": "THÔNG ĐIỆP HỆ THỐNG",
         "confirm": "XÁC NHẬN",
         "submit": "GỬI",
-        "net_error": "LỖI MẠNG"
+        "net_error": "LỖI MẠNG",
+        "years": "(Các) năm"
     },
     "admin": {
         "console_title": "BẢNG ĐIỀU KHIỂN QUẢN TRỊ",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA đã bị vô hiệu hóa đối với {{username}}.",
         "disable_2fa_failed": "Không tắt được 2FA",
         "policy_enforce_email_2fa_title": "Thực thi Email 2FA",
-        "policy_enforce_email_2fa_desc": "Buộc gửi mã dự phòng Email 2FA đến những người đang hoạt động đang cố gắng đăng nhập mà không có trình xác thực TOTP."
+        "policy_enforce_email_2fa_desc": "Buộc gửi mã dự phòng Email 2FA đến những người đang hoạt động đang cố gắng đăng nhập mà không có trình xác thực TOTP.",
+        "maintenance_title": "BẢO TRÌ CƠ SỞ DỮ LIỆU",
+        "purge_inactive_title": "Thanh lọc các hoạt động không hoạt động",
+        "purge_inactive_desc": "Xóa vĩnh viễn các tài khoản (và dữ liệu của họ) chưa đăng nhập trong khoảng thời gian đã chọn.",
+        "btn_purge_inactive": "PURGE KHÔNG HOẠT ĐỘNG",
+        "purge_unverified_title": "Xóa các tài khoản ma chưa được xác minh",
+        "purge_unverified_desc": "Xóa vĩnh viễn các tài khoản chưa từng được xác minh và được tạo cách đây hơn 14 ngày.",
+        "btn_purge_unverified": "THANH LẠI CHƯA XÁC MINH",
+        "purge_inactive_confirm": "CẢNH BÁO: Thao tác này sẽ xóa vĩnh viễn các tài khoản hoạt động không hoạt động trong {{years}} năm. Hành động này KHÔNG THỂ hoàn tác.",
+        "purge_unverified_confirm": "CẢNH BÁO: Thao tác này sẽ xóa vĩnh viễn tất cả các tài khoản chưa được xác minh cũ hơn 14 ngày. Hành động này KHÔNG THỂ hoàn tác.",
+        "purge_success_msg": "Đã xóa thành công {{count}} tài khoản.",
+        "purge_failed": "Không thể xóa tài khoản"
     },
     "calendar": {
         "clear_date": "NGÀY XÓA",

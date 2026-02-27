@@ -76,6 +76,8 @@ $router->post('admin/users/role', [AdminController::class , 'updateRole']);
 $router->post('admin/users/delete', [AdminController::class , 'deleteUser']);
 $router->post('admin/users/reset_password', [AdminController::class , 'resetPassword']);
 $router->post('admin/users/disable_2fa', [AdminController::class , 'disable2fa']);
+$router->post('admin/users/purge_inactive', [AdminController::class , 'purgeInactive']);
+$router->post('admin/users/purge_unverified', [AdminController::class , 'purgeUnverified']);
 $router->post('admin/settings', [AdminController::class , 'updateSetting']);
 
 // --- Category Routes ---

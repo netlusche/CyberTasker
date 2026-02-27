@@ -270,7 +270,13 @@
                 "clear": "Hoch Qaw'",
                 "clear_tooltip": "Hoch wIv Qaw'lu'"
             }
-        }
+        },
+        "no_tasks": "pagh Qu' tu'lu'.",
+        "attachments_indicator": "ngaS waQmey Qub.",
+        "subroutines_indicator": "ngaS Qu'Hommey.",
+        "purge_confirm": "Huj: ghopDaq Qu'mey lulIjpu'bogh teq. yIvang?",
+        "purge_completed": "Qu'mey teqpu'",
+        "purge_completed_tooltip": "Qu'mey lulIjpu'bogh teq"
     },
     "dashboard": {
         "operator_level": "mI' yaS",
@@ -455,7 +461,8 @@
         "system_message": "pat lab",
         "confirm": "luq",
         "submit": "lab",
-        "net_error": "QIb Qaw'"
+        "net_error": "QIb Qaw'",
+        "years": "ben"
     },
     "admin": {
         "console_title": "pIn yaH",
@@ -498,7 +505,18 @@
         "password_reset_msg": "pegh mu' chu': {{username}}.",
         "disable_2fa_confirm": "2FA Qaw' ({{username}})? luq?",
         "2fa_disabled_msg": "2FA Qaw'lu': {{username}}.",
-        "disable_2fa_failed": "2FA Qaw' Qaw'"
+        "disable_2fa_failed": "2FA Qaw' Qaw'",
+        "maintenance_title": "De'wI' QapmoH",
+        "purge_inactive_title": "mangpu' QamlaHbe' teq",
+        "purge_inactive_desc": "De'wI'Daq mangpu' QamlaHbe' bIHtaH 'ej De'chaj teq.",
+        "btn_purge_inactive": "QamlaHbe' teq",
+        "purge_unverified_title": "mangpu' wej lughoHlu'bogh teq",
+        "purge_unverified_desc": "mangpu' wej lughoHlu'bogh teq.",
+        "btn_purge_unverified": "wej lughoHlu' teq",
+        "purge_inactive_confirm": "Huj: mangpu' QamlaHbe' {{years}} ben bIHtaH teq. lIjlaHbe'.",
+        "purge_unverified_confirm": "Huj: wa'maH loS jaj wej bIHtaH teq. lIjlaHbe'.",
+        "purge_success_msg": "{{count}} mangpu' teqpu'.",
+        "purge_failed": "mangpu' teq meq"
     },
     "calendar": {
         "title": "CHRONO-SYNC // jaj nav",

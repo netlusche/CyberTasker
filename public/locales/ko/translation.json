@@ -270,7 +270,13 @@
             "weekly": "주간",
             "monthly": "월간",
             "yearly": "매년"
-        }
+        },
+        "no_tasks": "현재 필터 기준에 대한 지시어가 없습니다.",
+        "attachments_indicator": "암호화된 첨부 파일이 포함되어 있습니다.",
+        "subroutines_indicator": "임베디드 서브루틴이 포함되어 있습니다.",
+        "purge_confirm": "경고: 이렇게 하면 완료된 모든 지시문이 영구적으로 삭제됩니다. 진행하다?",
+        "purge_completed": "퍼지 완료",
+        "purge_completed_tooltip": "완료된 모든 지시문을 영구적으로 삭제"
     },
     "help": {
         "title": "CYBER_TASKER 시스템 매뉴얼",
@@ -444,7 +450,8 @@
         "system_message": "시스템 메시지",
         "confirm": "확인",
         "submit": "제출",
-        "net_error": "네트워크 오류"
+        "net_error": "네트워크 오류",
+        "years": "연령)"
     },
     "admin": {
         "console_title": "관리 콘솔",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "{{username}}에 대해 2FA가 비활성화되었습니다.",
         "disable_2fa_failed": "2FA를 비활성화하지 못했습니다",
         "policy_enforce_email_2fa_title": "이메일 2FA 시행",
-        "policy_enforce_email_2fa_desc": "TOTP 인증자 없이 로그인을 시도하는 활성 요원에게 이메일 2FA 대체 코드가 강제로 발송되도록 합니다."
+        "policy_enforce_email_2fa_desc": "TOTP 인증자 없이 로그인을 시도하는 활성 요원에게 이메일 2FA 대체 코드가 강제로 발송되도록 합니다.",
+        "maintenance_title": "데이터베이스 유지 관리",
+        "purge_inactive_title": "비활성 요원 제거",
+        "purge_inactive_desc": "선택한 기간 동안 로그인하지 않은 계정(및 해당 데이터)을 영구적으로 삭제합니다.",
+        "btn_purge_inactive": "퍼지 비활성",
+        "purge_unverified_title": "확인되지 않은 유령 계정 제거",
+        "purge_unverified_desc": "확인되지 않았으며 생성된 지 14일 이상 지난 계정을 영구 삭제합니다.",
+        "btn_purge_unverified": "확인되지 않은 퍼지",
+        "purge_inactive_confirm": "경고: 이렇게 하면 {{years}}년 동안 비활성화된 운영 계정이 영구적으로 삭제됩니다. 이 작업은 취소할 수 없습니다.",
+        "purge_unverified_confirm": "경고: 이렇게 하면 14일이 지난 확인되지 않은 모든 계정이 영구적으로 삭제됩니다. 이 작업은 취소할 수 없습니다.",
+        "purge_success_msg": "{{count}}개의 계정을 성공적으로 삭제했습니다.",
+        "purge_failed": "계정을 삭제하지 못했습니다."
     },
     "calendar": {
         "clear_date": "날짜 지우기",

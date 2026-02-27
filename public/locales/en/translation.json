@@ -217,6 +217,9 @@
         "priority": "PRIORITY",
         "category": "CATEGORY",
         "due_date": "DUE DATE",
+        "no_tasks": "No directives found for the current filter criteria.",
+        "attachments_indicator": "Contains encrypted file attachments.",
+        "subroutines_indicator": "Contains embedded subroutines.",
         "no_date": "NO DATE",
         "recurrence": "RECURRENCE",
         "recurrence_end": "ENDS ON",
@@ -239,10 +242,13 @@
         "priority_confirm": "PRIORITY RE-ALIGNMENT WILL ALTER THE OPERATIONAL SEQUENCE OF YOUR DIRECTIVES. CONFIRM?",
         "date_confirm": "CHRONO-SYNC RE-ALIGNMENT WILL ALTER THE OPERATIONAL SEQUENCE OF YOUR DIRECTIVES. CONFIRM?",
         "delete_confirm": "DELETING THIS DIRECTIVE WILL PERMANENTLY WIPE IT FROM THE GRID. CONFIRM?",
+        "purge_confirm": "WARNING: THIS WILL PERMANENTLY DELETE ALL COMPLETED DIRECTIVES. PROCEED?",
         "search_placeholder": "Search",
         "all_priorities": "ALL PRIORITIES",
         "all_categories": "ALL CATEGORIES",
         "overdue_only": "Overdue",
+        "purge_completed": "PURGE COMPLETED",
+        "purge_completed_tooltip": "Permanently delete all completed directives",
         "default_suffix": "(Default)",
         "dossier": {
             "title": "DIRECTIVE DOSSIER",
@@ -478,7 +484,8 @@
         "system_message": "SYSTEM MESSAGE",
         "confirm": "CONFIRM",
         "submit": "SUBMIT",
-        "net_error": "NETWORK ERROR"
+        "net_error": "NETWORK ERROR",
+        "years": "Year(s)"
     },
     "admin": {
         "console_title": "ADMINISTRATION CONSOLE",
@@ -521,7 +528,18 @@
         "password_reset_msg": "Password reset for {{username}}.",
         "disable_2fa_confirm": "DISABLE 2FA FOR {{username}}? This will remove secondary verification protocols.",
         "2fa_disabled_msg": "2FA Disabled for {{username}}.",
-        "disable_2fa_failed": "Failed to disable 2FA"
+        "disable_2fa_failed": "Failed to disable 2FA",
+        "maintenance_title": "DATABASE MAINTENANCE",
+        "purge_inactive_title": "Purge Inactive Operatives",
+        "purge_inactive_desc": "Permanently delete accounts (and their data) that have not logged in for the selected duration.",
+        "btn_purge_inactive": "PURGE INACTIVE",
+        "purge_unverified_title": "Purge Unverified Ghost Accounts",
+        "purge_unverified_desc": "Permanently delete accounts that have never been verified and were created more than 14 days ago.",
+        "btn_purge_unverified": "PURGE UNVERIFIED",
+        "purge_inactive_confirm": "WARNING: This will permanently delete operative accounts inactive for {{years}} year(s). This action CANNOT be undone.",
+        "purge_unverified_confirm": "WARNING: This will permanently delete all unverified accounts older than 14 days. This action CANNOT be undone.",
+        "purge_success_msg": "Successfully purged {{count}} accounts.",
+        "purge_failed": "Failed to purge accounts"
     },
     "calendar": {
         "title": "CHRONO-SYNC // CALENDAR",

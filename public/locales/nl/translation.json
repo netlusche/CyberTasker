@@ -270,7 +270,13 @@
             "weekly": "Wekelijks",
             "monthly": "Maandelijks",
             "yearly": "Jaarlijks"
-        }
+        },
+        "no_tasks": "Er zijn geen richtlijnen gevonden voor de huidige filtercriteria.",
+        "attachments_indicator": "Bevat gecodeerde bestandsbijlagen.",
+        "subroutines_indicator": "Bevat ingebedde subroutines.",
+        "purge_confirm": "WAARSCHUWING: DIT WORDT ALLE INGEVOERDE RICHTLIJNEN PERMANENT VERWIJDERD. DOORGAAN?",
+        "purge_completed": "ZUIVEREN VOLTOOID",
+        "purge_completed_tooltip": "Verwijder permanent alle voltooide richtlijnen"
     },
     "help": {
         "title": "CYBER_TASKER SYSTEEMHANDLEIDING",
@@ -444,7 +450,8 @@
         "system_message": "SYSTEEMBERICHT",
         "confirm": "BEVESTIG",
         "submit": "VERZENDEN",
-        "net_error": "NETWERKFOUT"
+        "net_error": "NETWERKFOUT",
+        "years": "Jaar(en)"
     },
     "admin": {
         "console_title": "ADMINISTRATIECONSOLE",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA uitgeschakeld voor {{username}}.",
         "disable_2fa_failed": "Kan 2FA",
         "policy_enforce_email_2fa_title": "E-mail 2FA afdwingen",
-        "policy_enforce_email_2fa_desc": "Forceer dat een e-mail 2FA-reservecode wordt verzonden naar actieve medewerkers die proberen in te loggen zonder een TOTP-authenticator."
+        "policy_enforce_email_2fa_desc": "Forceer dat een e-mail 2FA-reservecode wordt verzonden naar actieve medewerkers die proberen in te loggen zonder een TOTP-authenticator.",
+        "maintenance_title": "DATABASEONDERHOUD",
+        "purge_inactive_title": "Inactieve medewerkers verwijderen",
+        "purge_inactive_desc": "Verwijder permanent accounts (en hun gegevens) die gedurende de geselecteerde duur niet hebben ingelogd.",
+        "btn_purge_inactive": "PURGE INACTIEF",
+        "purge_unverified_title": "Niet-geverifieerde Ghost-accounts opschonen",
+        "purge_unverified_desc": "Verwijder accounts definitief die nooit zijn geverifieerd en meer dan 14 dagen geleden zijn aangemaakt.",
+        "btn_purge_unverified": "ZUIVEREN NIET GEVERIFIEERD",
+        "purge_inactive_confirm": "WAARSCHUWING: Hiermee worden operationele accounts die gedurende {{years}} jaar/jaren inactief zijn, permanent verwijderd. Deze actie kan NIET ongedaan worden gemaakt.",
+        "purge_unverified_confirm": "WAARSCHUWING: Hiermee worden alle niet-geverifieerde accounts die ouder zijn dan 14 dagen definitief verwijderd. Deze actie kan NIET ongedaan worden gemaakt.",
+        "purge_success_msg": "{{count}} accounts zijn definitief verwijderd.",
+        "purge_failed": "Kan accounts niet opschonen"
     },
     "calendar": {
         "clear_date": "niet uitschakelen DUIDELIJKE DATUM",

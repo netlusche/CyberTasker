@@ -261,6 +261,18 @@ class TaskController extends Controller
         $this->jsonResponse(['message' => 'Task deleted']);
     }
 
+    public function bulkDeleteCompleted()
+    {
+        $this->requireAuth();
+
+        $deletedCount = $this->taskRepo->deleteCompletedTasks($this->userId);
+
+        $this->jsonResponse([
+            'message' => 'Completed tasks purged successfully',
+            'deleted_count' => $deletedCount
+        ]);
+    }
+
     public function downloadFile()
     {
         $this->requireAuth();

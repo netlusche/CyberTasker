@@ -112,7 +112,7 @@ class AdminController extends Controller
             $targetUser = $this->userRepo->findById($targetId);
 
             if ($targetUser && $targetUser['role'] === 'admin' && $adminCount <= 1) {
-                $this->errorResponse('Cannot demote the last remaining Admin.', 409);
+                $this->errorResponse('last_admin_error', 409);
             }
         }
 
@@ -136,7 +136,7 @@ class AdminController extends Controller
         if ($targetUser && $targetUser['role'] === 'admin') {
             $count = $this->adminRepo->countTotalAdmins();
             if ($count <= 1) {
-                $this->errorResponse('Cannot delete the last remaining Admin.', 409);
+                $this->errorResponse('last_admin_error', 409);
             }
         }
 
@@ -217,5 +217,35 @@ class AdminController extends Controller
             }
             $this->jsonResponse(['message' => 'Mail logging disabled']);
         }
+    }
+
+    public function purgeInactive()
+    {
+        $this->requireAdmin();
+        $data = $this->getJsonBody();
+        $years = isset($data['years']) ? (int)$data['years'] : 1;
+
+        if ($years < 1 || $years > 10) {
+            $this->errorResponse('Invalid retention period. Must be between 1 and 10 years.', 400);
+        }
+
+        $deletedCount = $this->adminRepo->purgeInactiveUsers($years);
+
+        $this->jsonResponse([
+            'message' => "Successfully purged {$deletedCount} inactive accounts.",
+            'deleted_count' => $deletedCount
+        ]);
+    }
+
+    public function purgeUnverified()
+    {
+        $this->requireAdmin();
+
+        $deletedCount = $this->adminRepo->purgeUnverifiedUsers();
+
+        $this->jsonResponse([
+            'message' => "Successfully purged {$deletedCount} unverified accounts.",
+            'deleted_count' => $deletedCount
+        ]);
     }
 }

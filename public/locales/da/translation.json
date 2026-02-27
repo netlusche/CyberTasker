@@ -270,7 +270,13 @@
             "weekly": "Ugentligt",
             "monthly": "Månedlig",
             "yearly": "Årlig"
-        }
+        },
+        "no_tasks": "Der blev ikke fundet nogen direktiver for de aktuelle filterkriterier.",
+        "attachments_indicator": "Indeholder krypterede vedhæftede filer.",
+        "subroutines_indicator": "Indeholder indlejrede underrutiner.",
+        "purge_confirm": "ADVARSEL: DETTE VIL PERMANENT SLETTE ALLE UDFULDE DIREKTIVER. FORTSÆTTE?",
+        "purge_completed": "UDLYSNING FULDFØRT",
+        "purge_completed_tooltip": "Slet alle afsluttede direktiver permanent"
     },
     "help": {
         "title": "CYBER_TASKER SYSTEMMANUAL",
@@ -444,7 +450,8 @@
         "system_message": "SYSTEMBESKED",
         "confirm": "BEKRÆFT",
         "submit": "SEND",
-        "net_error": "NETVÆRKSFEJL"
+        "net_error": "NETVÆRKSFEJL",
+        "years": "år"
     },
     "admin": {
         "console_title": "ADMINISTRATIONSKONSOL",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA deaktiveret for {{brugernavn}}.",
         "disable_2fa_failed": "Kunne ikke deaktivere 2FA",
         "policy_enforce_email_2fa_title": "Håndhæv e-mail 2FA",
-        "policy_enforce_email_2fa_desc": "Tving en e-mail 2FA fallback-kode til at blive sendt til aktive operatører, der forsøger at logge på uden en TOTP-godkendelse."
+        "policy_enforce_email_2fa_desc": "Tving en e-mail 2FA fallback-kode til at blive sendt til aktive operatører, der forsøger at logge på uden en TOTP-godkendelse.",
+        "maintenance_title": "DATABASEVEDLIGEHOLDELSE",
+        "purge_inactive_title": "Rens inaktive operatører",
+        "purge_inactive_desc": "Slet permanent konti (og deres data), der ikke er logget på i den valgte varighed.",
+        "btn_purge_inactive": "PURGE INAKTIV",
+        "purge_unverified_title": "Slet ubekræftede spøgelseskonti",
+        "purge_unverified_desc": "Slet permanent konti, der aldrig er blevet bekræftet og blev oprettet for mere end 14 dage siden.",
+        "btn_purge_unverified": "UBEKRÆFTET PURGE",
+        "purge_inactive_confirm": "ADVARSEL: Dette vil permanent slette operative konti inaktive i {{years}} år. Denne handling KAN IKKE fortrydes.",
+        "purge_unverified_confirm": "ADVARSEL: Dette vil permanent slette alle ubekræftede konti, der er ældre end 14 dage. Denne handling KAN IKKE fortrydes.",
+        "purge_success_msg": "{{count}} konti blev slettet.",
+        "purge_failed": "Kunne ikke rydde konti"
     },
     "calendar": {
         "clear_date": "RYD DATO",

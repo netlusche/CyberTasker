@@ -11,6 +11,7 @@ import HelpModal from './components/HelpModal';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import CalendarModal from './components/CalendarModal';
 import DirectiveModal from './components/DirectiveModal';
+import CyberConfirm from './components/CyberConfirm';
 import { useTheme } from './utils/ThemeContext';
 import { useAuth } from './hooks/useAuth';
 import { useTasks } from './hooks/useTasks';
@@ -53,6 +54,7 @@ function App() {
   const [showDossierForTask, setShowDossierForTask] = useState(null);
   const [activeCalendarTaskId, setActiveCalendarTaskId] = useState(null);
   const [taskPrefill, setTaskPrefill] = useState(null);
+  const [showPurgeConfirm, setShowPurgeConfirm] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -99,6 +101,29 @@ function App() {
     setShowProfile(false);
     setShowAdmin(false);
     setShowHelp(false);
+  };
+
+  const hasCompletedTasks = tasks.some(t => t.status === 1);
+
+  const confirmPurgeCompleted = async () => {
+    setShowPurgeConfirm(false);
+    try {
+      const response = await fetch('/api/index.php?route=tasks/bulk_delete_completed', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Failed to purge completed tasks');
+
+      // Refresh tasks
+      fetchTasks(pagination.currentPage);
+    } catch (err) {
+      console.error('Purge error:', err);
+    }
   };
 
   if (loading) {
@@ -242,6 +267,8 @@ function App() {
               filters={filters}
               onFilterChange={setFilters}
               categories={categories}
+              hasCompletedTasks={hasCompletedTasks}
+              onPurgeCompleted={() => setShowPurgeConfirm(true)}
             />
 
             <div className="space-y-4">
@@ -374,6 +401,15 @@ function App() {
             setShowDossierForTask(null);
             setShowCalendar(true); // Bring back calendar!
           }}
+        />
+      )}
+
+      {showPurgeConfirm && (
+        <CyberConfirm
+          message={t('tasks.purge_confirm', 'WARNING: This will permanently delete ALL completed directives. Proceed?')}
+          onConfirm={confirmPurgeCompleted}
+          onCancel={() => setShowPurgeConfirm(false)}
+          neonColor="red"
         />
       )}
     </div>

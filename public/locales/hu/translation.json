@@ -270,7 +270,13 @@
             "weekly": "Heti",
             "monthly": "Havi",
             "yearly": "Évente"
-        }
+        },
+        "no_tasks": "A jelenlegi szűrési feltételekhez nem található direktíva.",
+        "attachments_indicator": "Titkosított fájlmellékleteket tartalmaz.",
+        "subroutines_indicator": "Beágyazott szubrutinokat tartalmaz.",
+        "purge_confirm": "FIGYELMEZTETÉS: EZ VÉGLEGESEN TÖRLÉS AZ ÖSSZES TELJESÍTETT IRÁNYELVET. FOLYTATJA?",
+        "purge_completed": "A TISZTÍTÁS KÉSZÜLT",
+        "purge_completed_tooltip": "Az összes kitöltött irányelv végleges törlése"
     },
     "help": {
         "title": "CYBER_TASKER RENDSZER KÉZIKÖNYVE",
@@ -444,7 +450,8 @@
         "system_message": "RENDSZER ÜZENET",
         "confirm": "MEGERŐSÍTÉS",
         "submit": "BENYÚJTÁS",
-        "net_error": "HÁLÓZATI HIBA"
+        "net_error": "HÁLÓZATI HIBA",
+        "years": "Év(ek)"
     },
     "admin": {
         "console_title": "IGAZGATÁSI KONZOL",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA letiltva a(z) {{username}} számára.",
         "disable_2fa_failed": "Nem sikerült letiltani a 2FA",
         "policy_enforce_email_2fa_title": "E-mail kényszerítése 2FA",
-        "policy_enforce_email_2fa_desc": "Kényszerítsen egy e-mail 2FA tartalék kódot azoknak az aktív munkatársaknak, akik TOTP hitelesítő nélkül próbálnak bejelentkezni."
+        "policy_enforce_email_2fa_desc": "Kényszerítsen egy e-mail 2FA tartalék kódot azoknak az aktív munkatársaknak, akik TOTP hitelesítő nélkül próbálnak bejelentkezni.",
+        "maintenance_title": "ADATBÁZIS-KARBANTARTÁS",
+        "purge_inactive_title": "Az inaktív munkatársak megtisztítása",
+        "purge_inactive_desc": "Véglegesen törölje azokat a fiókokat (és azok adatait), amelyek a kiválasztott időtartamig nem jelentkeztek be.",
+        "btn_purge_inactive": "TISZTÍTÁS INAKTÍV",
+        "purge_unverified_title": "Ellenőrizetlen szellemfiókok törlése",
+        "purge_unverified_desc": "Véglegesen törölje azokat a fiókokat, amelyeket soha nem ellenőriztek, és amelyeket több mint 14 napja hoztak létre.",
+        "btn_purge_unverified": "TISZTÍTÁS NEM ELLENŐRZETT",
+        "purge_inactive_confirm": "FIGYELMEZTETÉS: Ezzel véglegesen törli a {{year}} éve inaktív fiókokat. Ez a művelet NEM vonható vissza.",
+        "purge_unverified_confirm": "FIGYELMEZTETÉS: Ezzel véglegesen törli az összes 14 napnál régebbi, ellenőrizetlen fiókot. Ez a művelet NEM vonható vissza.",
+        "purge_success_msg": "{{count}} fiók sikeresen törölve.",
+        "purge_failed": "A fiókok törlése nem sikerült"
     },
     "calendar": {
         "clear_date": "DÁTUM TÖRLÉSE",

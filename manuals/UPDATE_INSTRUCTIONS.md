@@ -1,3 +1,26 @@
+# CyberTasker Server Update Instructions (v2.6.0 → v2.6.1)
+
+These instructions guide you through the update to **v2.6.1** (The Admin & QoL Polish).
+
+## 1. Backup (MANDATORY)
+- **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory.
+
+## 2. Deploy Files
+1.  Upload the contents of the `dist` folder to your server.
+    > [!CAUTION]
+    > **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply drag the visible files to your FTP client, the `.htaccess` files **will be left behind**, exposing your database and uploads to the public web! 
+    > Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
+2.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
+
+## 3. Database Update
+**No database schema changes are required** if updating from v2.6.0.
+
+## 4. Verify Update
+1.  **Dashboard QoL**: Verify that a "Purge Completed" button appears on the dashboard when filtering tasks.
+2.  **Admin Maintenance**: Log in as a Master Admin, open the **Admin Console**, and verify the Database Maintenance section is present with Purge buttons.
+
+---
+
 # CyberTasker Server Update Instructions (v2.4.x / v2.5.x → v2.6.0)
 
 These instructions guide you through the update to **v2.6.0** (The Accessibility & Automation Update).

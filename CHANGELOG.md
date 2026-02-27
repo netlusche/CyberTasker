@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. The format is based on the system's aesthetic release history.
 
+# CyberTasker 2.6.1 (The Admin & QoL Polish)
+
+### 🕵️‍♂️ Flotten-Administration 
+*   **Database Maintenance**: Administrators can now physically purge "Ghost Accounts" (unverified > 14 days) and "Inactive Accounts" (no login > 1, 2, 5, 10, or 11 years) directly from the Administration Console.
+*   **UX Consistency**: Deletion confirmations inside the Admin Panel now strictly use the standardized `CyberConfirm` themed modal.
+*   **Translation Pipeline Integration**: The Admin panel backend now returns proper i18n keys instead of hardcoded strings for errors like "Cannot demote last admin".
+
+### ✨ Quality of Life
+*   **Dossier Indicator**: Task cards now display a `📎` Paperclip indicator if the directive contains uploaded file attachments.
+*   **Dashboard Bulk Delete**: Operatives can now instantly erase all completed tasks from their active grid via a single "Purge Completed" button in the filter dashboard.
+
+---
+
 # CyberTasker 2.6.0 (The Accessibility & Automation Update)
 
 ### ♿ Accessibility & Mobile Fluidity

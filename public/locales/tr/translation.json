@@ -270,7 +270,13 @@
             "weekly": "Haftalık",
             "monthly": "Aylık",
             "yearly": "Yıllık"
-        }
+        },
+        "no_tasks": "Geçerli filtre kriterleri için yönerge bulunamadı.",
+        "attachments_indicator": "Şifrelenmiş dosya ekleri içerir.",
+        "subroutines_indicator": "Gömülü altprogramlar içerir.",
+        "purge_confirm": "UYARI: BU TÜM TAMAMLANMIŞ DİREKTİFLERİ KALICI OLARAK SİLİNECEKTİR. İLERLEMEK?",
+        "purge_completed": "TEMİZLEME TAMAMLANDI",
+        "purge_completed_tooltip": "Tamamlanan tüm yönergeleri kalıcı olarak sil"
     },
     "help": {
         "title": "CYBER_TASKER SİSTEM KILAVUZU",
@@ -444,7 +450,8 @@
         "system_message": "SİSTEM MESAJI",
         "confirm": "ONAYLA",
         "submit": "GÖNDER",
-        "net_error": "AĞ HATASI"
+        "net_error": "AĞ HATASI",
+        "years": "Yıllar"
     },
     "admin": {
         "console_title": "YÖNETİM KONSOLU",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "{{username}} için 2FA Devre Dışı Bırakıldı.",
         "disable_2fa_failed": "2FA devre dışı bırakılamadı",
         "policy_enforce_email_2fa_title": "E-posta 2FA'yı Zorunlu Hale Getirin",
-        "policy_enforce_email_2fa_desc": "TOTP kimlik doğrulayıcısı olmadan oturum açmaya çalışan aktif operatörlere bir E-posta 2FA yedek kodunun gönderilmesini zorunlu kılın."
+        "policy_enforce_email_2fa_desc": "TOTP kimlik doğrulayıcısı olmadan oturum açmaya çalışan aktif operatörlere bir E-posta 2FA yedek kodunun gönderilmesini zorunlu kılın.",
+        "maintenance_title": "VERİTABANI BAKIMI",
+        "purge_inactive_title": "Aktif Olmayan Operatörleri Temizle",
+        "purge_inactive_desc": "Seçilen süre boyunca giriş yapmayan hesapları (ve verilerini) kalıcı olarak silin.",
+        "btn_purge_inactive": "BOŞALTMA AKTİF DEĞİL",
+        "purge_unverified_title": "Doğrulanmamış Hayalet Hesapları Temizleme",
+        "purge_unverified_desc": "Hiç doğrulanmamış ve 14 günden daha önce oluşturulmuş hesapları kalıcı olarak silin.",
+        "btn_purge_unverified": "TEMİZLEME DOĞRULANMADI",
+        "purge_inactive_confirm": "UYARI: Bu, {{years}} yıl boyunca aktif olmayan aktif hesapları kalıcı olarak silecektir. Bu eylem geri alınamaz.",
+        "purge_unverified_confirm": "UYARI: Bu işlem, 14 günden eski tüm doğrulanmamış hesapları kalıcı olarak silecektir. Bu eylem geri alınamaz.",
+        "purge_success_msg": "{{count}} hesap başarıyla temizlendi.",
+        "purge_failed": "Hesaplar temizlenemedi"
     },
     "calendar": {
         "clear_date": "TARİHİ TEMİZLE",

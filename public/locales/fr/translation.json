@@ -270,7 +270,13 @@
             "weekly": "Hebdomadaire",
             "monthly": "Mensuel",
             "yearly": "Annuel"
-        }
+        },
+        "no_tasks": "Aucune directive trouvée pour les critères de filtre actuels.",
+        "attachments_indicator": "Contient des pièces jointes cryptées.",
+        "subroutines_indicator": "Contient des sous-programmes intégrés.",
+        "purge_confirm": "AVERTISSEMENT : CELA SUPPRIMERA DÉFINITIVEMENT TOUTES LES DIRECTIVES REMPLIES. PROCÉDER?",
+        "purge_completed": "PURGE TERMINÉE",
+        "purge_completed_tooltip": "Supprimer définitivement toutes les directives complétées"
     },
     "help": {
         "title": "MANUEL DU SYSTÈME CYBER_TASKER",
@@ -444,7 +450,8 @@
         "system_message": "MESSAGE SYSTÈME",
         "confirm": "CONFIRMER",
         "submit": "SOUMETTRE",
-        "net_error": "ERREUR RÉSEAU"
+        "net_error": "ERREUR RÉSEAU",
+        "years": "Années)"
     },
     "admin": {
         "console_title": "CONSOLE D'ADMINISTRATION",
@@ -487,7 +494,18 @@
         "2fa_disabled_msg": "2FA désactivé pour {{username}}.",
         "disable_2fa_failed": "Échec de la désactivation de 2FA",
         "policy_enforce_email_2fa_title": "Appliquer le courrier électronique 2FA",
-        "policy_enforce_email_2fa_desc": "Forcez l'envoi d'un code de secours Email 2FA aux agents actifs qui tentent de se connecter sans authentificateur TOTP."
+        "policy_enforce_email_2fa_desc": "Forcez l'envoi d'un code de secours Email 2FA aux agents actifs qui tentent de se connecter sans authentificateur TOTP.",
+        "maintenance_title": "ENTRETIEN DE LA BASE DE DONNÉES",
+        "purge_inactive_title": "Purger les agents inactifs",
+        "purge_inactive_desc": "Supprimez définitivement les comptes (et leurs données) qui ne se sont pas connectés pendant la durée sélectionnée.",
+        "btn_purge_inactive": "PURGE INACTIVE",
+        "purge_unverified_title": "Purger les comptes fantômes non vérifiés",
+        "purge_unverified_desc": "Supprimez définitivement les comptes qui n'ont jamais été vérifiés et qui ont été créés il y a plus de 14 jours.",
+        "btn_purge_unverified": "PURGE NON VÉRIFIÉE",
+        "purge_inactive_confirm": "AVERTISSEMENT : Cela supprimera définitivement les comptes opérationnels inactifs pendant {{years}} an(s). Cette action NE PEUT PAS être annulée.",
+        "purge_unverified_confirm": "AVERTISSEMENT : cela supprimera définitivement tous les comptes non vérifiés datant de plus de 14 jours. Cette action NE PEUT PAS être annulée.",
+        "purge_success_msg": "{{count}} comptes ont été purgés avec succès.",
+        "purge_failed": "Échec de la purge des comptes"
     },
     "calendar": {
         "clear_date": "EFFACER LA DATE",
