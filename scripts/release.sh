@@ -61,9 +61,9 @@ node scripts/build_pdfs.cjs
 # 8. Git Commit & Tag
 echo -e "\n${GREEN}[8/8] Git Commit & Tag${RESET}"
 
-read -p "Did you update CHANGELOG.md and README.md with the release notes? (y/N): " DOCS_CONFIRM
+read -p "Did you update CHANGELOG.md, README.md, and UPDATE_INSTRUCTIONS.md with the release notes? (y/N): " DOCS_CONFIRM
 if [[ ! "$DOCS_CONFIRM" =~ ^[Yy]$ ]]; then
-    echo -e "${YELLOW}Release paused. Please update CHANGELOG.md and README.md, then run the commit manually or restart the script.${RESET}"
+    echo -e "${YELLOW}Release paused. Please update CHANGELOG.md, README.md, and UPDATE_INSTRUCTIONS.md, then run the commit manually or restart the script.${RESET}"
     exit 1
 fi
 

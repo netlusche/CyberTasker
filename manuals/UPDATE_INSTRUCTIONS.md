@@ -1,3 +1,30 @@
+# CyberTasker Server Update Instructions (v2.4.x / v2.5.x → v2.6.0)
+
+These instructions guide you through the update to **v2.6.0** (The Accessibility & Automation Update).
+
+## 1. Backup (MANDATORY)
+- **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory.
+
+## 2. Deploy Files
+1.  Upload the contents of the `dist` folder to your server.
+    > [!CAUTION]
+    > **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply drag the visible files to your FTP client, the `.htaccess` files **will be left behind**, exposing your database and uploads to the public web! 
+    > Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
+2.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
+
+## 3. Database Update
+This update introduces new schemas enforcing Email 2FA policies and storing system settings (`system_settings` table).
+1.  Navigate to your installer URL: `https://yourdomain.com/tasks/api/install.php`
+2.  The script will automatically detect the missing tables/columns and append them to your active SQLite or MySQL database.
+3.  **Verification**: Ensure the "Database Schema Updated" messages appear indicating `system_settings` were attached.
+4.  **Security Note**: Delete `api/install.php` and `install.html` after verification to prevent unauthorized access.
+
+## 4. Verify Update
+1.  **Global Tooltips**: Hover over the "Add" button or the "Reset" filter pills on the dashboard to ensure the new localized tooltips appear.
+2.  **Enforced 2FA Settings**: Log in as a Master Admin, open the **Admin Console**, and verify the new `Enforce Email 2FA` toggle is present.
+
+---
+
 # CyberTasker Server Update Instructions (v2.3.0 → v2.4.0)
 
 These instructions guide you through the update to **v2.4.0** (The Automation & Precision Update).
