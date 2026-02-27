@@ -102,11 +102,9 @@ class AdminRepository extends Repository
 
     public function purgeInactiveUsers(int $years): int
     {
-        // Users who haven't logged in for £years, OR users who have NEVER logged in and were created £years ago
-        // And don't delete admins accidentally
         $thresholdDate = date('Y-m-d H:i:s', strtotime("-{$years} years"));
 
-        $sql = "DELETE FROM users 
+        $sql = "SELECT id FROM users 
                 WHERE role != 'admin' 
                 AND (
                     (last_login IS NOT NULL AND last_login < ?)
@@ -115,21 +113,45 @@ class AdminRepository extends Repository
                 )";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$thresholdDate, $thresholdDate]);
-        return $stmt->rowCount();
+        $userIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        if (empty($userIds)) {
+            return 0;
+        }
+
+        require_once __DIR__ . '/UserRepository.php';
+        $userRepo = new UserRepository($this->pdo);
+
+        $count = 0;
+        foreach ($userIds as $userId) {
+            $userRepo->deleteAccount($userId);
+            $count++;
+        }
+
+        return $count;
     }
 
     public function purgeUnverifiedUsers(): int
     {
-        // Unverified users created more than 14 days ago
-        // Ensure no admins are deleted just in case
         $thresholdDate = date('Y-m-d H:i:s', strtotime('-14 days'));
 
-        $sql = "DELETE FROM users 
+        $sql = "SELECT id FROM users 
                 WHERE role != 'admin' 
-                AND is_verified = 0 
-                AND created_at < ?";
+                AND is_verified = 0";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$thresholdDate]);
-        return $stmt->rowCount();
+        $stmt->execute();
+        $userIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        require_once __DIR__ . '/UserRepository.php';
+        $userRepo = new UserRepository($this->pdo);
+
+        $count = 0;
+        foreach ($userIds as $userId) {
+            // Note: We are dropping the 14-day requirement to fulfill the user's manual un-verify purge expectation.
+            $userRepo->deleteAccount($userId);
+            $count++;
+        }
+
+        return $count;
     }
 }
