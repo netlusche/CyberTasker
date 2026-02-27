@@ -107,4 +107,38 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
             await page.waitForTimeout(500);
         }
     });
+
+    test('should allow purging completed tasks if they exist (US-2.6.1)', async ({ page }) => {
+        // Create a new task explicitly to avoid test interference
+        const taskInput = page.locator('#new-directive-input');
+        await expect(taskInput).toBeVisible();
+        await taskInput.fill('Purge Test Directive');
+        await page.getByRole('button', { name: /Add/i }).click();
+
+        // Wait for it to appear
+        const newTask = page.locator('.card-cyber').filter({ hasText: 'Purge Test Directive' }).first();
+        await expect(newTask).toBeVisible({ timeout: 10000 });
+
+        // Mark it as completed - finding the '○' button inside this specific task card
+        const statusToggle = newTask.locator('button', { hasText: '○' }).first();
+        await statusToggle.click();
+
+        // Wait for the task to be marked completed and the 'Purge Completed' button to appear globally
+        const purgeBtn = page.getByRole('button', { name: /Purge/i });
+        await expect(purgeBtn).toBeVisible({ timeout: 5000 });
+
+        // Execute Purge
+        await purgeBtn.click();
+
+        // Confirm Purge
+        const confirmBtn = page.getByTestId('confirm-button');
+        await expect(confirmBtn).toBeVisible();
+        await confirmBtn.click();
+
+        // Ensure the task is actually gone
+        await expect(page.locator('.card-cyber').filter({ hasText: 'Purge Test Directive' })).toHaveCount(0, { timeout: 10000 });
+
+        // Wait a bit to ensure the purge goes through and the button disappears 
+        // (Note: other tasks might still be completed from other tests, but at least our task was purged)
+    });
 });
