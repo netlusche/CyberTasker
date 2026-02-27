@@ -498,7 +498,7 @@
         "maintenance_title": "OBSŁUGA BAZY DANYCH",
         "purge_inactive_title": "Usuń nieaktywnych pracowników",
         "purge_inactive_desc": "Trwale usuń konta (i ich dane), które nie zalogowały się przez wybrany okres.",
-        "btn_purge_inactive": "USUWANIE NIEAKTYWNE",
+        "btn_purge_inactive": "USUŃ NIEAKTYWNE",
         "purge_unverified_title": "Usuń niezweryfikowane konta duchów",
         "purge_unverified_desc": "Trwale usuń konta, które nigdy nie zostały zweryfikowane i zostały utworzone ponad 14 dni temu.",
         "btn_purge_unverified": "USUŃ NIEZWERYFIKOWANE",
