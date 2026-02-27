@@ -258,7 +258,9 @@
                 "high_prio": "Alto Prio",
                 "high_prio_tooltip": "Mostra apenas diretivas com prioridade 1 (Alta)",
                 "clear": "Limpar tudo",
-                "clear_tooltip": "Redefine todos os filtros ativos"
+                "clear_tooltip": "Redefine todos os filtros ativos",
+                "completed": "Concluído",
+                "completed_tooltip": "Mostra apenas as diretivas que foram cumpridas"
             }
         },
         "duplicate": "DUPLICADO",

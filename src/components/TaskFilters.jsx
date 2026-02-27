@@ -59,10 +59,18 @@ const TaskFilters = ({ filters, onFilterChange, categories, hasCompletedTasks, o
             inactiveClass: 'border-cyber-gray text-gray-400 hover:border-pink-500 hover:text-pink-500'
         },
         {
+            label: t('tasks.filters.pills.completed'),
+            tooltip: t('tasks.filters.pills.completed_tooltip'),
+            isActive: filters.completed === true,
+            onClick: () => applyPill({ completed: true }),
+            activeClass: 'bg-blue-500/20 border-blue-500 text-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.3)]',
+            inactiveClass: 'border-cyber-gray text-gray-400 hover:border-blue-500 hover:text-blue-500'
+        },
+        {
             label: t('tasks.filters.pills.clear'),
             tooltip: t('tasks.filters.pills.clear_tooltip'),
             isActive: false,
-            onClick: () => onFilterChange({ search: '', priority: '', category: '', overdue: false }),
+            onClick: () => onFilterChange({ search: '', priority: '', category: '', overdue: false, completed: false }),
             activeClass: '',
             inactiveClass: 'border-cyber-gray text-gray-400 hover:border-cyber-secondary hover:text-cyber-secondary'
         }
@@ -156,7 +164,7 @@ const TaskFilters = ({ filters, onFilterChange, categories, hasCompletedTasks, o
 
                 {/* Reset Button */}
                 <button
-                    onClick={() => onFilterChange({ search: '', priority: '', category: '', overdue: false })}
+                    onClick={() => onFilterChange({ search: '', priority: '', category: '', overdue: false, completed: false })}
                     className="text-xs text-cyber-primary border border-cyber-primary px-3 py-2 rounded hover:bg-cyber-primary hover:text-black transition-all font-bold ml-auto"
                     data-tooltip-content={t('tasks.filters.pills.clear_tooltip', 'Resets all active filters')}
                     data-tooltip-pos="top"

@@ -273,6 +273,8 @@
                 "overdue_tooltip": "Shows only directives that have passed their deadline",
                 "high_prio": "High Prio",
                 "high_prio_tooltip": "Shows only directives with priority 1 (High)",
+                "completed": "Completed",
+                "completed_tooltip": "Shows only directives that have been fulfilled",
                 "clear": "Clear All",
                 "clear_tooltip": "Resets all active filters"
             }

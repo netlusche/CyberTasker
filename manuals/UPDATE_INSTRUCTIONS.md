@@ -16,7 +16,7 @@ These instructions guide you through the update to **v2.6.1** (The Admin & QoL P
 **No database schema changes are required** if updating from v2.6.0.
 
 ## 4. Verify Update
-1.  **Dashboard QoL**: Verify that a "Purge Completed" button appears on the dashboard when filtering tasks.
+1.  **Dashboard QoL**: Verify that a "Purge Completed" button appears on the dashboard when filtering tasks. Verify that the "Completed" filter pill functions correctly.
 2.  **Admin Maintenance**: Log in as a Master Admin, open the **Admin Console**, and verify the Database Maintenance section is present with Purge buttons.
 
 ---

@@ -258,7 +258,9 @@
                 "high_prio": "Wysoki priorytet",
                 "high_prio_tooltip": "Pokazuje tylko dyrektywy z priorytetem 1 (Wysoki)",
                 "clear": "Wyczyść wszystko",
-                "clear_tooltip": "Resetuje wszystkie aktywne filtry"
+                "clear_tooltip": "Resetuje wszystkie aktywne filtry",
+                "completed": "Ukończono",
+                "completed_tooltip": "Pokazuje tylko dyrektywy, które zostały spełnione"
             }
         },
         "duplicate": "DUPLIKAT",

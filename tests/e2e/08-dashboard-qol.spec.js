@@ -141,4 +141,43 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
         // Wait a bit to ensure the purge goes through and the button disappears 
         // (Note: other tasks might still be completed from other tests, but at least our task was purged)
     });
+
+    test('should allow filtering by completed tasks (US-2.6.4)', async ({ page }) => {
+        // First create a new task that we can explicitly complete
+        const newTaskInput = page.locator('#new-directive-input');
+        await expect(newTaskInput).toBeVisible();
+        await newTaskInput.fill('Completed Filter Test Directive');
+        await newTaskInput.press('Enter');
+
+        const newTask = page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' }).first();
+        await expect(newTask).toBeVisible({ timeout: 10000 });
+
+        // Mark it as completed
+        const statusToggle = newTask.locator('button', { hasText: '○' }).first();
+        await statusToggle.click();
+
+        // Wait for it to disappear from the default "active" view
+        await expect(page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' })).toHaveCount(0, { timeout: 10000 });
+
+        // Now activate the "Completed" filter pill
+        const completedPill = page.getByRole('button', { name: 'Completed', exact: true });
+        await expect(completedPill).toBeVisible();
+        await completedPill.click();
+
+        // Wait for the backend response to filter and the completed task to reappear
+        const filteredCompletedTask = page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' }).first();
+        await expect(filteredCompletedTask).toBeVisible({ timeout: 10000 });
+
+        // Verify the status is indeed completed (the button should have '✓')
+        const filteredStatusToggle = filteredCompletedTask.locator('button', { hasText: '✓' });
+        await expect(filteredStatusToggle).toBeVisible();
+
+        // Check if Purge button appears when looking at completed tasks (it's global, but good to test its presence here too)
+        const purgeBtn = page.getByRole('button', { name: /Purge/i });
+        await expect(purgeBtn).toBeVisible();
+
+        // Cleanup: Click the completed pill again to toggle it off, reverting to active task view
+        await completedPill.click();
+        await expect(page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' })).toHaveCount(0, { timeout: 10000 });
+    });
 });

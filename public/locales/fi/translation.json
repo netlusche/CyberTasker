@@ -258,7 +258,9 @@
                 "high_prio": "High Prio",
                 "high_prio_tooltip": "Näyttää vain käskyt, joiden prioriteetti on 1 (korkea)",
                 "clear": "Tyhjennä kaikki",
-                "clear_tooltip": "Nollaa kaikki aktiiviset suodattimet"
+                "clear_tooltip": "Nollaa kaikki aktiiviset suodattimet",
+                "completed": "Valmis",
+                "completed_tooltip": "Näyttää vain ne ohjeet, jotka on täytetty"
             }
         },
         "duplicate": "DUPLIKAATTI",

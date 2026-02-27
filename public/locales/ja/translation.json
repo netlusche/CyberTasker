@@ -258,7 +258,9 @@
                 "high_prio": "高プリオ",
                 "high_prio_tooltip": "優先度 1 (高) のディレクティブのみを表示します",
                 "clear": "すべてクリア",
-                "clear_tooltip": "すべてのアクティブなフィルターをリセットします"
+                "clear_tooltip": "すべてのアクティブなフィルターをリセットします",
+                "completed": "完了しました",
+                "completed_tooltip": "満たされたディレクティブのみを表示します"
             }
         },
         "duplicate": "重複",

@@ -258,7 +258,9 @@
                 "high_prio": "Ưu tiên cao",
                 "high_prio_tooltip": "Chỉ hiển thị các lệnh có mức độ ưu tiên 1 (Cao)",
                 "clear": "Xóa tất cả",
-                "clear_tooltip": "Đặt lại tất cả các bộ lọc đang hoạt động"
+                "clear_tooltip": "Đặt lại tất cả các bộ lọc đang hoạt động",
+                "completed": "Đã hoàn thành",
+                "completed_tooltip": "Chỉ hiển thị các chỉ thị đã được thực hiện"
             }
         },
         "duplicate": "SAO CHÉP",

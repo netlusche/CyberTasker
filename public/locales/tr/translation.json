@@ -258,7 +258,9 @@
                 "high_prio": "Yüksek Fiyat",
                 "high_prio_tooltip": "Yalnızca önceliği 1 (Yüksek) olan yönergeleri gösterir",
                 "clear": "Tümünü Temizle",
-                "clear_tooltip": "Tüm aktif filtreleri sıfırlar"
+                "clear_tooltip": "Tüm aktif filtreleri sıfırlar",
+                "completed": "Tamamlandı",
+                "completed_tooltip": "Yalnızca yerine getirilen direktifleri gösterir"
             }
         },
         "duplicate": "KOPYA",

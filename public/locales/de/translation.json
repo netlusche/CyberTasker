@@ -267,6 +267,8 @@
                 "overdue_tooltip": "Zeigt nur Directives an, deren Datum überschritten ist",
                 "high_prio": "Hohe Prio",
                 "high_prio_tooltip": "Zeigt nur Directives mit Priorität 1 (Hoch)",
+                "completed": "Erledigte",
+                "completed_tooltip": "Zeigt nur abgeschlossene Anweisungen",
                 "clear": "Alle aufheben",
                 "clear_tooltip": "Setzt alle aktiven Filter zurück"
             }

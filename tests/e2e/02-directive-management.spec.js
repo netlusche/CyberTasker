@@ -151,30 +151,43 @@ test.describe('Directive Management Pagination', () => {
         const checkBtn = taskCard.locator('button[data-tooltip-content="Mark Done"], button[data-tooltip-content="Mark as DONE"]');
         await checkBtn.click();
 
-        // The original task now remains visible (status 1)
-        // A new computed task with the exact same title should appear via search!
+        // Wait a bit for the async update to finish, the task will disappear from the 'active' list
+        await page.waitForTimeout(1000);
+
+        // Clear search to reset state
+        await searchInput.fill('');
+        await searchInput.press('Enter');
         await page.waitForTimeout(500);
 
-        // Find the generated tasks
-        const recurringTasks = page.locator('.card-cyber').filter({ hasText: uniqueTitle });
+        // Find the generated active task
+        const activeTasks = page.locator('.card-cyber').filter({ hasText: uniqueTitle });
+        await expect(activeTasks).toHaveCount(1);
 
-        // We expect 2 tasks: the completed one and the newly generated active one
-        await expect(recurringTasks).toHaveCount(2);
-
-        // Clean up both tasks
-        await recurringTasks.nth(0).hover();
-        await recurringTasks.nth(0).locator('button[data-tooltip-content="Delete Task"], button[data-tooltip-content="Delete"]').click();
-        await page.getByTestId('confirm-button').click();
-        await expect(page.getByTestId('confirm-button')).not.toBeVisible();
-        await expect(recurringTasks).toHaveCount(1);
-
-        // The second one shifts up to index 0
-        await recurringTasks.nth(0).hover();
-        await recurringTasks.nth(0).locator('button[data-tooltip-content="Delete Task"], button[data-tooltip-content="Delete"]').click();
+        // Clean up the active task
+        await activeTasks.nth(0).hover();
+        await activeTasks.nth(0).locator('button[data-tooltip-content="Delete Task"], button[data-tooltip-content="Delete"]').click();
         await page.getByTestId('confirm-button').click();
         await expect(page.getByTestId('confirm-button')).not.toBeVisible();
 
-        // Clean up: Clear search
+        // Now find and clean up the completed task
+        const completedPill = page.getByRole('button', { name: 'Completed', exact: true });
+        await completedPill.click();
+        await page.waitForTimeout(500);
+
+        await searchInput.fill(uniqueTitle);
+        await searchInput.press('Enter');
+        await page.waitForTimeout(500);
+
+        const completedTasks = page.locator('.card-cyber').filter({ hasText: uniqueTitle });
+        await expect(completedTasks).toHaveCount(1);
+
+        await completedTasks.nth(0).hover();
+        await completedTasks.nth(0).locator('button[data-tooltip-content="Delete Task"], button[data-tooltip-content="Delete"]').click();
+        await page.getByTestId('confirm-button').click();
+        await expect(page.getByTestId('confirm-button')).not.toBeVisible();
+
+        // Clean up: Clear search and completed filter
+        await completedPill.click();
         await searchInput.fill('');
         await searchInput.press('Enter');
         await page.waitForTimeout(500);
@@ -227,12 +240,23 @@ test.describe('Directive Management Pagination', () => {
         const checkBtn = taskCard.locator('button[data-tooltip-content="Mark Done"], button[data-tooltip-content="Mark as DONE"]');
         await checkBtn.click();
 
-        // Wait a bit for the async update to finish
+        // Wait a bit for the async update to finish, the task disappears
+        await page.waitForTimeout(1000);
+
+        // Find the generated active task (there shouldn't be one)
+        const activeTasks = page.locator('.card-cyber').filter({ hasText: uniqueTitle });
+        await expect(activeTasks).toHaveCount(0);
+
+        // Activate Completed Pill to see the completed task
+        const completedPill = page.getByRole('button', { name: 'Completed', exact: true });
+        await completedPill.click();
         await page.waitForTimeout(500);
 
-        // Verify the task is marked as completed and no new duplicate was created
         const recurringTasks = page.locator('.card-cyber').filter({ hasText: uniqueTitle });
         await expect(recurringTasks).toHaveCount(1);
         await expect(recurringTasks.first()).toHaveClass(/opacity-50/);
+
+        // Clean up: Clear filter
+        await completedPill.click();
     });
 });

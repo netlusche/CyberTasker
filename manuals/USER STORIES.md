@@ -110,3 +110,10 @@ This document provides a categorized overview of the user stories implemented in
 *   **Multilingual Installer (US-2.6.5)**: As a system admin deploying the grid, I want the installer interface to load in my selected language and set this preference for the first account.
 *   **Localized System Emails (US-2.6.6)**: As a non-English speaking user, I want system emails (Recovery, Verification) to be written entirely in my profile's selected language.
 *   **Sub-Routine Mobile DND (US-2.6.9)**: As a mobile operative, I want to fluidly drag-and-drop sub-routines using touch controls so I can prioritize tasks on the go.
+
+## 🚀 15. Release 2.6.1 Features
+*   **Dossier File Indicator (US-2.6.1.1)**: As an operative, I want to see a visual indicator (paperclip) on task cards containing attached files so I instantly know there's additional dossier material.
+*   **Bulk Purge Completed (US-2.6.1.2)**: As an operative, I want to permanently delete all completed directives from my grid with a single button click to rapidly clean my workspace.
+*   **Automated Ghost Purge (US-2.6.1.3 & 2.6.1.4)**: As an administrator, I want to automatically delete unverified accounts and inactive accounts (based on retention years) to maintain database hygiene before major upgrades.
+*   **Thematic Admin Modals (US-2.6.1.5)**: As an administrator, I want critical destruction actions (like deleting a user) to trigger warning modals that strictly respect my currently selected aesthetic theme.
+*   **Completed Filter Pill (US-2.6.1.6)**: As an operative, I want a dedicated quick-filter pill to instantly display only my completed directives in a paginated grid.

@@ -258,7 +258,9 @@
                 "high_prio": "Høy Prio",
                 "high_prio_tooltip": "Viser kun direktiver med prioritet 1 (Høy)",
                 "clear": "Fjern alle",
-                "clear_tooltip": "Tilbakestiller alle aktive filtre"
+                "clear_tooltip": "Tilbakestiller alle aktive filtre",
+                "completed": "Fullført",
+                "completed_tooltip": "Viser kun direktiver som er oppfylt"
             }
         },
         "duplicate": "DUPLIKAT",

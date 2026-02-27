@@ -258,7 +258,9 @@
                 "high_prio": "高优先级",
                 "high_prio_tooltip": "仅显示优先级为 1（高）的指令",
                 "clear": "全部清除",
-                "clear_tooltip": "重置所有活动过滤器"
+                "clear_tooltip": "重置所有活动过滤器",
+                "completed": "已完成",
+                "completed_tooltip": "仅显示已完成的指令"
             }
         },
         "duplicate": "重复",

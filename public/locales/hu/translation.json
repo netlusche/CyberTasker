@@ -258,7 +258,9 @@
                 "high_prio": "High Prio",
                 "high_prio_tooltip": "Csak az 1-es (Magas) prioritású direktívákat jeleníti meg",
                 "clear": "Összes törlése",
-                "clear_tooltip": "Visszaállítja az összes aktív szűrőt"
+                "clear_tooltip": "Visszaállítja az összes aktív szűrőt",
+                "completed": "Befejezve",
+                "completed_tooltip": "Csak azokat az utasításokat jeleníti meg, amelyek teljesültek"
             }
         },
         "duplicate": "DUPLIKÁTUM",

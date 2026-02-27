@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file. The format 
 ### ✨ Quality of Life
 *   **Dossier Indicator**: Task cards now display a `📎` Paperclip indicator if the directive contains uploaded file attachments.
 *   **Dashboard Bulk Delete**: Operatives can now instantly erase all completed tasks from their active grid via a single "Purge Completed" button in the filter dashboard.
+*   **Completed Filter Pill**: Added a new quick-filter pill alongside "High Prio" that natively isolates and displays all completed directives.
 
 ---
 

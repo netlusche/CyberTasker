@@ -267,6 +267,8 @@
                 "overdue_tooltip": "jaj rop mu'tlhegh-mey neH leghlu'",
                 "high_prio": "tIn pIn",
                 "high_prio_tooltip": "pIn 1 (tIn) mu'tlhegh-mey neH leghlu'",
+                "completed": "rIn",
+                "completed_tooltip": "rInpu'bogh mu'tlhegh-mey neH leghlu'",
                 "clear": "Hoch Qaw'",
                 "clear_tooltip": "Hoch wIv Qaw'lu'"
             }

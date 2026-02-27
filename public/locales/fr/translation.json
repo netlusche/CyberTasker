@@ -258,7 +258,9 @@
                 "high_prio": "Priorité élevée",
                 "high_prio_tooltip": "Affiche uniquement les directives avec une priorité 1 (Élevée)",
                 "clear": "Tout effacer",
-                "clear_tooltip": "Réinitialise tous les filtres actifs"
+                "clear_tooltip": "Réinitialise tous les filtres actifs",
+                "completed": "Terminé",
+                "completed_tooltip": "Affiche uniquement les directives qui ont été remplies"
             }
         },
         "duplicate": "DUPLIQUER",

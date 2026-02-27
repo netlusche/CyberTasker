@@ -17,6 +17,11 @@
 * Implementierung eines Buttons (z.B. im Filter-Bereich oder Footer), der es dem User erlaubt, mit einem einzigen Klick **alle** derzeit von ihm abgeschlossenen Directives (Status `1`) endgültig aus der Datenbank zu löschen.
 * Absicherung zwingend über ein CyberConfirm-Modal.
 
+**US-2.6.1.6: Filter-Pill für erledigte Aufgaben (Issue #26)**
+* Erweiterung der Quick-Filter Pills um einen "Erledigte"-Button, rechts neben dem "Hohe Prio" Button.
+* Dieser Filter muss global und paginiert arbeiten, um ausschließlich Tasks mit `status = 1` auf dem Dashboard darzustellen.
+* Das Playwright E2E-Test Szenario für die Filterbox (`08-dashboard-qol.spec.js`) muss die Funktionalität dieses neuen Buttons abdecken.
+
 ### Epic 2: Flotten-Administration (Backend & Admin Panel)
 
 **US-2.6.1.3: Automatisiertes Löschen inaktiver Operatives (Issue #24)**

@@ -258,7 +258,9 @@
                 "high_prio": "Hoge prioriteit",
                 "high_prio_tooltip": "Toont alleen richtlijnen met prioriteit 1 (Hoog)",
                 "clear": "Alles wissen",
-                "clear_tooltip": "Reset alle actieve filters"
+                "clear_tooltip": "Reset alle actieve filters",
+                "completed": "Voltooid",
+                "completed_tooltip": "Toont alleen richtlijnen waaraan is voldaan"
             }
         },
         "duplicate": "DUPLICAAT",

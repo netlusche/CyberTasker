@@ -14,7 +14,8 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
         search: '',
         priority: '',
         category: '',
-        overdue: false
+        overdue: false,
+        completed: false
     });
 
     const refreshCategories = useCallback(() => setCategoryRefreshTrigger(prev => prev + 1), []);
