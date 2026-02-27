@@ -54,7 +54,8 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
                 setPagination({
                     currentPage: responseData.meta.current_page,
                     totalPages: responseData.meta.total_pages,
-                    totalTasks: responseData.meta.total_tasks
+                    totalTasks: responseData.meta.total_tasks,
+                    hasCompletedTasks: responseData.meta.has_completed_tasks
                 });
             } else if (Array.isArray(responseData)) {
                 setTasks(responseData);

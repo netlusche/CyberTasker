@@ -104,7 +104,7 @@ function App() {
     setShowHelp(false);
   };
 
-  const hasCompletedTasks = (user?.stats?.completed_tasks || 0) > 0;
+  const hasCompletedTasks = pagination.hasCompletedTasks;
 
   const confirmPurgeCompleted = async () => {
     setShowPurgeConfirm(false);

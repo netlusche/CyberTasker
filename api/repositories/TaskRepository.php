@@ -200,4 +200,11 @@ class TaskRepository extends Repository
         $stmt->execute([$userId]);
         return $stmt->rowCount();
     }
+
+    public function checkIfUserHasCompletedTasks(int $userId): bool
+    {
+        $stmt = $this->pdo->prepare("SELECT 1 FROM tasks WHERE user_id = ? AND status = 1 LIMIT 1");
+        $stmt->execute([$userId]);
+        return (bool)$stmt->fetchColumn();
+    }
 }

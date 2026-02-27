@@ -18,6 +18,7 @@ class TaskController extends Controller
 
         $totalParam = $this->taskRepo->countFilteredTasks($this->userId, $search, $priority, $category, $overdue);
         $tasks = $this->taskRepo->getFilteredTasks($this->userId, $search, $priority, $category, $overdue, $limit, $offset);
+        $hasCompletedTasks = $this->taskRepo->checkIfUserHasCompletedTasks($this->userId);
 
         $this->jsonResponse([
             'data' => $tasks,
@@ -25,7 +26,8 @@ class TaskController extends Controller
                 'current_page' => $page,
                 'limit' => $limit,
                 'total_tasks' => $totalParam,
-                'total_pages' => $limit > 0 ? ceil($totalParam / $limit) : 1
+                'total_pages' => $limit > 0 ? ceil($totalParam / $limit) : 1,
+                'has_completed_tasks' => $hasCompletedTasks
             ]
         ]);
     }
