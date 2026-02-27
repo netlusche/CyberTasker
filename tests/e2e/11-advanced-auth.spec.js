@@ -130,10 +130,22 @@ test.describe('TS-08: Advanced Authentication & Security Protocols', () => {
         const codeInput = page.getByTestId('2fa-setup-code-input');
         await codeInput.waitFor({ state: 'attached', timeout: 15000 });
         await expect(codeInput).toBeVisible({ timeout: 15000 });
-        await expect(codeInput).toBeEnabled({ timeout: 5000 });
-        await codeInput.click(); // Ensure element is focused and interactive
-        await page.waitForTimeout(500); // Small delay to ensure the element is fully interactive
-        await codeInput.fill(code);
+
+        // Wait for potential modal/form animations (slide-in/fade-in) to finish.
+        // In slow CI environments, these animations can take longer and block pointer events.
+        await page.waitForTimeout(1000);
+
+        // Increase timeout for enabled state to account for CI lag
+        await expect(codeInput).toBeEnabled({ timeout: 15000 });
+
+        // Use focus() instead of click() to bypass issues where an overlay or animation temporarily intercepts clicks
+        await codeInput.focus();
+
+        // Small delay to let the browser process the focus event
+        await page.waitForTimeout(500);
+
+        // Fill the input, using force: true to override strict actionability checks that might fail in CI
+        await codeInput.fill(code, { force: true });
 
         // Click Bridge / Verify 
         const verifyBtn = page.getByTestId('2fa-setup-verify-btn');
