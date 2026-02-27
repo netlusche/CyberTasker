@@ -12,6 +12,7 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 import CalendarModal from './components/CalendarModal';
 import DirectiveModal from './components/DirectiveModal';
 import CyberConfirm from './components/CyberConfirm';
+import { apiFetch } from './utils/api';
 import { useTheme } from './utils/ThemeContext';
 import { useAuth } from './hooks/useAuth';
 import { useTasks } from './hooks/useTasks';
@@ -103,24 +104,26 @@ function App() {
     setShowHelp(false);
   };
 
-  const hasCompletedTasks = tasks.some(t => t.status === 1);
+  const hasCompletedTasks = (user?.stats?.completed_tasks || 0) > 0;
 
   const confirmPurgeCompleted = async () => {
     setShowPurgeConfirm(false);
     try {
-      const response = await fetch('/api/index.php?route=tasks/bulk_delete_completed', {
+      const response = await apiFetch('api/index.php?route=tasks/bulk_delete_completed', {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Content-Type': 'application/json'
         }
       });
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Failed to purge completed tasks');
 
-      // Refresh tasks
+      // Refresh tasks and stats
       fetchTasks(pagination.currentPage);
+      if (fetchUserStats) {
+        fetchUserStats();
+      }
     } catch (err) {
       console.error('Purge error:', err);
     }
