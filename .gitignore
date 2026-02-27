@@ -39,3 +39,4 @@ tests/e2e/screenshots/*.png
 api/uploads/task_file_*
 _ARCHIV/
 *.zip
+api/seed.php
