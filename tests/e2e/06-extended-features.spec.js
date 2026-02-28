@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { execSync } from 'child_process';
 
 test.describe('TS-08: Linguistic Uplink & Identity Termination', () => {
+    test.beforeEach(() => {
+        execSync('php tests/seed_test_data.php', { stdio: 'ignore' });
+    });
 
     test('TS-08.1: Language Switching Persistence', async ({ page }) => {
         await page.goto('/');
