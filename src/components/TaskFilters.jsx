@@ -65,14 +65,6 @@ const TaskFilters = ({ filters, onFilterChange, categories, hasCompletedTasks, o
             onClick: () => applyPill({ completed: true }),
             activeClass: 'bg-blue-500/20 border-blue-500 text-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.3)]',
             inactiveClass: 'border-cyber-gray text-gray-400 hover:border-blue-500 hover:text-blue-500'
-        },
-        {
-            label: t('tasks.filters.pills.reset'),
-            tooltip: t('tasks.filters.pills.reset_tooltip'),
-            isActive: false,
-            onClick: () => onFilterChange({ search: '', priority: '', category: '', overdue: false, completed: false }),
-            activeClass: '',
-            inactiveClass: 'border-cyber-gray text-gray-400 hover:border-cyber-secondary hover:text-cyber-secondary'
         }
     ];
 
