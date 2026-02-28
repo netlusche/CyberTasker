@@ -1,7 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { loginAsAdmin } from './auth-commands';
+import { execSync } from 'child_process';
 
 test.describe('TS-15: Admin Maintenance & Purge', () => {
+    test.beforeEach(() => {
+        execSync('php tests/seed_test_data.php', { stdio: 'ignore' });
+    });
 
     test('TS-15.1: Purge Unverified Ghost Accounts', async ({ page }) => {
         await loginAsAdmin(page);
