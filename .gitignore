@@ -40,3 +40,4 @@ api/uploads/task_file_*
 _ARCHIV/
 *.zip
 api/seed.php
+GEMINI_API_KEY
