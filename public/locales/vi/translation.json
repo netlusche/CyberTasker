@@ -221,7 +221,6 @@
     "attachments_indicator": "Chứa các tệp đính kèm được mã hóa.",
     "subroutines_indicator": "Chứa các sub-routine nhúng.",
     "no_date": "KHÔNG CÓ NGÀY",
-    "recurrence": "LẶP LẠI",
     "recurrence_end": "KẾT THÚC VÀO",
     "intervals": {
       "none": "Không",
@@ -278,7 +277,8 @@
         "reset": "Cài lại",
         "reset_tooltip": "Đặt lại tất cả các bộ lọc đang hoạt động"
       }
-    }
+    },
+    "recurrence_cycle": "TÁI LẠI"
   },
   "dashboard": {
     "operator_level": "CẤP ĐỘ ĐẶC VỤ",

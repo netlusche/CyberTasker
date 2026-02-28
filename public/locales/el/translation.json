@@ -221,7 +221,6 @@
     "attachments_indicator": "Περιέχει κρυπτογραφημένα συνημμένα αρχεία.",
     "subroutines_indicator": "Περιέχει ενσωματωμένες υπορουτίνες.",
     "no_date": "ΧΩΡΙΣ ΗΜΕΡΟΜΗΝΙΑ",
-    "recurrence": "ΕΠΑΝΑΛΗΨΗ",
     "recurrence_end": "ΛΗΓΕΙ ΣΤΙΣ",
     "intervals": {
       "none": "Καμία",
@@ -278,7 +277,8 @@
         "reset": "Επαναφορά",
         "reset_tooltip": "Επαναφέρει όλα τα ενεργά φίλτρα"
       }
-    }
+    },
+    "recurrence_cycle": "ΕΠΑΝΑΛΗΨΗ"
   },
   "dashboard": {
     "operator_level": "ΕΠΙΠΕΔΟ ΠΡΑΚΤΟΡΑ",

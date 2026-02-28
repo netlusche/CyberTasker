@@ -221,7 +221,6 @@
     "attachments_indicator": "暗号化されたファイル添付が含まれています。",
     "subroutines_indicator": "組み込みサブルーチンが含まれています。",
     "no_date": "日付なし",
-    "recurrence": "繰り返し",
     "recurrence_end": "終了日",
     "intervals": {
       "none": "なし",
@@ -278,7 +277,8 @@
         "reset": "リセット",
         "reset_tooltip": "すべてのアクティブなフィルターをリセットします"
       }
-    }
+    },
+    "recurrence_cycle": "再発"
   },
   "dashboard": {
     "operator_level": "オペレーターレベル",

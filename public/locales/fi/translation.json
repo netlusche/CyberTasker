@@ -221,7 +221,6 @@
     "attachments_indicator": "Sisältää salattuja tiedostoliitteitä.",
     "subroutines_indicator": "Sisältää upotettuja alirutiineja.",
     "no_date": "EI PÄIVÄMÄÄRÄÄ",
-    "recurrence": "TOISTUVUUS",
     "recurrence_end": "PÄÄTTYY",
     "intervals": {
       "none": "Ei mitään",
@@ -278,7 +277,8 @@
         "reset": "Nollaa",
         "reset_tooltip": "Nollaa kaikki aktiiviset suodattimet"
       }
-    }
+    },
+    "recurrence_cycle": "TOISTUMINEN"
   },
   "dashboard": {
     "operator_level": "OPERAATTORITASO",

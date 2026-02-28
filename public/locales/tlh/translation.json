@@ -221,7 +221,6 @@
     "attachments_indicator": "Qaw tlhe' Qaw.",
     "subroutines_indicator": "Sub-Routines Qaw.",
     "no_date": "WA'MAHMEY QO'",
-    "recurrence": "SCHEDULED PROTOCOL",
     "recurrence_end": "WA'MAHMEY QO'",
     "intervals": {
       "none": "Qo'",
@@ -278,7 +277,8 @@
         "reset": "Qaw'",
         "reset_tooltip": "Qaw' Hoch"
       }
-    }
+    },
+    "recurrence_cycle": "taHqeq"
   },
   "dashboard": {
     "operator_level": "VANGWI' TLHOB",

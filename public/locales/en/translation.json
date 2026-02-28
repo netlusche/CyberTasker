@@ -221,7 +221,7 @@
     "attachments_indicator": "Contains encrypted file attachments.",
     "subroutines_indicator": "Contains embedded subroutines.",
     "no_date": "NO DATE",
-    "recurrence": "RECURRENCE",
+    "recurrence_cycle": "RECURRENCE",
     "recurrence_end": "ENDS ON",
     "intervals": {
       "none": "None",

@@ -221,7 +221,6 @@
     "attachments_indicator": "Містить зашифровані файлові вкладення.",
     "subroutines_indicator": "Містить вбудовані суб-рутини.",
     "no_date": "БЕЗ ДАТИ",
-    "recurrence": "ПОВТОРЕННЯ",
     "recurrence_end": "ЗАКІНЧУЄТЬСЯ",
     "intervals": {
       "none": "Немає",
@@ -278,7 +277,8 @@
         "reset": "Скинути",
         "reset_tooltip": "Скидає всі активні фільтри"
       }
-    }
+    },
+    "recurrence_cycle": "ПОВТОРЕННЯ"
   },
   "dashboard": {
     "operator_level": "РІВЕНЬ ОПЕРАТИВНИКА",

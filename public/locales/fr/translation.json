@@ -221,7 +221,6 @@
     "attachments_indicator": "Contient des pièces jointes chiffrées.",
     "subroutines_indicator": "Contient des sous-routines intégrées.",
     "no_date": "AUCUNE DATE",
-    "recurrence": "RÉCURRENCE",
     "recurrence_end": "SE TERMINE LE",
     "intervals": {
       "none": "Aucune",
@@ -278,7 +277,8 @@
         "reset": "Réinitialiser",
         "reset_tooltip": "Réinitialise tous les filtres actifs"
       }
-    }
+    },
+    "recurrence_cycle": "RÉCURRENCE"
   },
   "dashboard": {
     "operator_level": "NIVEAU D'OPÉRATEUR",

@@ -221,7 +221,6 @@
     "attachments_indicator": "Contiene archivos adjuntos cifrados.",
     "subroutines_indicator": "Contiene sub-rutinas incrustadas.",
     "no_date": "SIN FECHA",
-    "recurrence": "RECURRENCIA",
     "recurrence_end": "TERMINA EL",
     "intervals": {
       "none": "Ninguna",
@@ -278,7 +277,8 @@
         "reset": "Reiniciar",
         "reset_tooltip": "Restablece todos los filtros activos"
       }
-    }
+    },
+    "recurrence_cycle": "REAPARICIÓN"
   },
   "dashboard": {
     "operator_level": "NIVEL DE OPERATIVO",

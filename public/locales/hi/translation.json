@@ -221,7 +221,6 @@
     "attachments_indicator": "एन्क्रिप्टेड फ़ाइल अटैचमेंट शामिल हैं।",
     "subroutines_indicator": "एम्बेडेड सब-रूटीन शामिल हैं।",
     "no_date": "कोई तिथि नहीं",
-    "recurrence": "पुनरावृत्ति",
     "recurrence_end": "पर समाप्त होता है",
     "intervals": {
       "none": "कोई नहीं",
@@ -278,7 +277,8 @@
         "reset": "रीसेट करें",
         "reset_tooltip": "सभी सक्रिय फ़िल्टर रीसेट करता है"
       }
-    }
+    },
+    "recurrence_cycle": "पुनरावृत्ति"
   },
   "dashboard": {
     "operator_level": "ऑपरेटर स्तर",

@@ -221,7 +221,6 @@
     "attachments_indicator": "Bevat versleutelde bestandsbijlagen.",
     "subroutines_indicator": "Bevat ingebedde sub-routines.",
     "no_date": "GEEN DATUM",
-    "recurrence": "HERHALING",
     "recurrence_end": "EINDIGT OP",
     "intervals": {
       "none": "Geen",
@@ -278,7 +277,8 @@
         "reset": "Opnieuw instellen",
         "reset_tooltip": "Reset alle actieve filters"
       }
-    }
+    },
+    "recurrence_cycle": "HERHALING"
   },
   "dashboard": {
     "operator_level": "OPERATOR NIVEAU",

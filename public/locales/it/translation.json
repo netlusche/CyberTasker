@@ -221,7 +221,6 @@
     "attachments_indicator": "Contiene allegati di file crittografati.",
     "subroutines_indicator": "Contiene sub-routine incorporate.",
     "no_date": "NESSUNA DATA",
-    "recurrence": "RICORRENZA",
     "recurrence_end": "TERMINA IL",
     "intervals": {
       "none": "Nessuna",
@@ -278,7 +277,8 @@
         "reset": "Reset",
         "reset_tooltip": "Reimposta tutti i filtri attivi"
       }
-    }
+    },
+    "recurrence_cycle": "RICORRENZA"
   },
   "dashboard": {
     "operator_level": "LIVELLO OPERATIVO",

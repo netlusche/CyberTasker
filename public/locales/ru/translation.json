@@ -221,7 +221,6 @@
     "attachments_indicator": "Содержит зашифрованные вложения файлов.",
     "subroutines_indicator": "Содержит встроенные подпрограммы.",
     "no_date": "БЕЗ ДАТЫ",
-    "recurrence": "ПОВТОРЕНИЕ",
     "recurrence_end": "ЗАВЕРШАЕТСЯ",
     "intervals": {
       "none": "Нет",
@@ -278,7 +277,8 @@
         "reset": "Перезагрузить",
         "reset_tooltip": "Сбрасывает все активные фильтры"
       }
-    }
+    },
+    "recurrence_cycle": "ПОВТОРЕНИЕ"
   },
   "dashboard": {
     "operator_level": "УРОВЕНЬ ОПЕРАТИВНИКА",

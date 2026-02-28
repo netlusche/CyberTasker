@@ -221,7 +221,6 @@
     "attachments_indicator": "Titkosított fájlmellékleteket tartalmaz.",
     "subroutines_indicator": "Beágyazott alrutinokat tartalmaz.",
     "no_date": "NINCS DÁTUM",
-    "recurrence": "ISMÉTLŐDÉS",
     "recurrence_end": "VÉGE",
     "intervals": {
       "none": "Nincs",
@@ -278,7 +277,8 @@
         "reset": "Reset",
         "reset_tooltip": "Visszaállítja az összes aktív szűrőt"
       }
-    }
+    },
+    "recurrence_cycle": "ISMÉTLŐDÉS"
   },
   "dashboard": {
     "operator_level": "OPERÁTOR SZINT",

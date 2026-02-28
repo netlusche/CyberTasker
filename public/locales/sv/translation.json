@@ -221,7 +221,6 @@
     "attachments_indicator": "Innehåller krypterade filbilagor.",
     "subroutines_indicator": "Innehåller inbäddade sub-rutiner.",
     "no_date": "INGET DATUM",
-    "recurrence": "ÅTERKOMST",
     "recurrence_end": "SLUTAR DEN",
     "intervals": {
       "none": "Ingen",
@@ -278,7 +277,8 @@
         "reset": "Återställa",
         "reset_tooltip": "Återställer alla aktiva filter"
       }
-    }
+    },
+    "recurrence_cycle": "UPPREPNING"
   },
   "dashboard": {
     "operator_level": "OPERATÖRSNIVÅ",

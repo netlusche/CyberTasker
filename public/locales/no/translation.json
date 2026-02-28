@@ -221,7 +221,6 @@
     "attachments_indicator": "Inneholder krypterte filvedlegg.",
     "subroutines_indicator": "Inneholder innebygde sub-rutiner.",
     "no_date": "INGEN DATO",
-    "recurrence": "GJENTAKELSE",
     "recurrence_end": "SLUTTER PÅ",
     "intervals": {
       "none": "Ingen",
@@ -278,7 +277,8 @@
         "reset": "Tilbakestill",
         "reset_tooltip": "Tilbakestiller alle aktive filtre"
       }
-    }
+    },
+    "recurrence_cycle": "GJENTAKELSE"
   },
   "dashboard": {
     "operator_level": "OPERATØRNIVÅ",

@@ -221,7 +221,6 @@
     "attachments_indicator": "Şifreli dosya ekleri içerir.",
     "subroutines_indicator": "Gömülü alt rutinler içerir.",
     "no_date": "TARİH YOK",
-    "recurrence": "TEKRAR",
     "recurrence_end": "BİTİŞ TARİHİ",
     "intervals": {
       "none": "Yok",
@@ -278,7 +277,8 @@
         "reset": "Sıfırla",
         "reset_tooltip": "Tüm aktif filtreleri sıfırlar"
       }
-    }
+    },
+    "recurrence_cycle": "TEKRARLAMA"
   },
   "dashboard": {
     "operator_level": "OPERATÖR SEVİYESİ",

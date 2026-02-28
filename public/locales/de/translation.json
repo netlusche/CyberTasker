@@ -221,7 +221,6 @@
     "attachments_indicator": "Enthält verschlüsselte Dateianhänge.",
     "subroutines_indicator": "Enthält eingebettete Sub-Routinen.",
     "no_date": "KEIN DATUM",
-    "recurrence": "WIEDERKEHR",
     "recurrence_end": "ENDET AM",
     "intervals": {
       "none": "Keine",
@@ -278,7 +277,8 @@
         "reset": "Zurücksetzen",
         "reset_tooltip": "Setzt alle aktiven Filter zurück"
       }
-    }
+    },
+    "recurrence_cycle": "Wiederholung"
   },
   "dashboard": {
     "operator_level": "OPERATOR-LEVEL",

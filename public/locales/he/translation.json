@@ -221,7 +221,6 @@
     "attachments_indicator": "מכיל קבצים מצורפים מוצפנים.",
     "subroutines_indicator": "מכיל תת-שגרות מוטמעות.",
     "no_date": "אין תאריך",
-    "recurrence": "חזרתיות",
     "recurrence_end": "מסתיים ב-",
     "intervals": {
       "none": "ללא",
@@ -278,7 +277,8 @@
         "reset": "אִתחוּל",
         "reset_tooltip": "מאפס את כל המסננים הפעילים"
       }
-    }
+    },
+    "recurrence_cycle": "הִשָׁנוּת"
   },
   "dashboard": {
     "operator_level": "רמת מפעיל",

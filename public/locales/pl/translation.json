@@ -221,7 +221,6 @@
     "attachments_indicator": "Zawiera zaszyfrowane załączniki plików.",
     "subroutines_indicator": "Zawiera osadzone sub-rutyny.",
     "no_date": "BRAK DATY",
-    "recurrence": "CYKLICZNOŚĆ",
     "recurrence_end": "KOŃCZY SIĘ",
     "intervals": {
       "none": "Brak",
@@ -278,7 +277,8 @@
         "reset": "Nastawić",
         "reset_tooltip": "Resetuje wszystkie aktywne filtry"
       }
-    }
+    },
+    "recurrence_cycle": "NAWRÓT"
   },
   "dashboard": {
     "operator_level": "POZIOM OPERATORA",

@@ -221,7 +221,6 @@
     "attachments_indicator": "암호화된 파일 첨부 포함.",
     "subroutines_indicator": "내장된 서브루틴 포함.",
     "no_date": "날짜 없음",
-    "recurrence": "반복",
     "recurrence_end": "종료일",
     "intervals": {
       "none": "없음",
@@ -278,7 +277,8 @@
         "reset": "다시 놓기",
         "reset_tooltip": "모든 활성 필터를 재설정합니다."
       }
-    }
+    },
+    "recurrence_cycle": "회귀"
   },
   "dashboard": {
     "operator_level": "요원 레벨",
