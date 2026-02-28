@@ -180,4 +180,53 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
         await completedPill.click();
         await expect(page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' })).toHaveCount(0, { timeout: 10000 });
     });
+
+    test('should allow filtering by Category and returning to All Categories (Bugfix)', async ({ page }) => {
+        // Create a new task with a specific random name to avoid collisions
+        const uniqueTitle = `Category Test ${Date.now()}`;
+        const taskInput = page.locator('#new-directive-input');
+
+        // 1. Create task
+        await taskInput.fill(uniqueTitle);
+        await page.getByRole('button', { name: /Add/i }).click();
+
+        const newTask = page.locator('.card-cyber').filter({ hasText: uniqueTitle }).first();
+        await expect(newTask).toBeVisible({ timeout: 10000 });
+
+        // 2. Change its category to "Personal"
+        const trigger = newTask.locator('div[role="button"]').first();
+        await trigger.click();
+
+        const dropdownList = page.locator('ul[role="listbox"]').last();
+        await expect(dropdownList).toBeVisible();
+        await dropdownList.locator('.cursor-pointer').filter({ hasText: 'Personal' }).click();
+
+        // Wait for backend to save
+        await page.waitForTimeout(1000);
+
+        // 3. Filter the dashboard by a DIFFERENT category (e.g., "Work")
+        const mainCategoryFilter = page.locator('.flex-col.md\\:flex-row').locator('div[role="button"]').first();
+        await mainCategoryFilter.click();
+
+        const mainDropdownList = page.locator('ul[role="listbox"]').last();
+        await expect(mainDropdownList).toBeVisible();
+        await mainDropdownList.locator('.cursor-pointer').filter({ hasText: 'Work' }).click();
+
+        // 4. Assert the task DISAPPEARS
+        await expect(page.locator('.card-cyber').filter({ hasText: uniqueTitle })).toHaveCount(0, { timeout: 10000 });
+
+        // 5. Filter the dashboard back to "All Categories" (The bug we fixed!)
+        await mainCategoryFilter.click();
+        await expect(mainDropdownList).toBeVisible();
+        await mainDropdownList.locator('.cursor-pointer').filter({ hasText: 'All Categories' }).click();
+
+        // 6. Assert the task REAPPEARS
+        await expect(page.locator('.card-cyber').filter({ hasText: uniqueTitle }).first()).toBeVisible({ timeout: 10000 });
+
+        // Cleanup
+        const deleteBtn = newTask.locator('button', { hasText: '⏏' }).first();
+        await deleteBtn.click();
+        await page.getByTestId('confirm-button').click();
+        await expect(page.locator('.card-cyber').filter({ hasText: uniqueTitle })).toHaveCount(0, { timeout: 10000 });
+    });
 });
