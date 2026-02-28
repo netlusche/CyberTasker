@@ -14,7 +14,7 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
         // 1. Check pills exist and test filtering
         const overduePill = page.getByRole('button', { name: /Overdue/i });
         const highPrioPill = page.getByRole('button', { name: /High Prio/i });
-        const clearPill = page.getByRole('button', { name: /Clear All/i });
+        const clearPill = page.getByRole('button', { name: /Reset/i });
 
         await expect(overduePill).toBeVisible();
         await expect(highPrioPill).toBeVisible();

@@ -10,7 +10,7 @@ test.describe('TS-08: Linguistic Uplink & Identity Termination', () => {
             { code: 'en', label: 'EN', fullName: 'English', expected: 'OPERATIVE' },
             { code: 'es', label: 'ES', fullName: 'Español', expected: 'OPERATIVO' },
             { code: 'it', label: 'IT', fullName: 'Italiano', expected: 'OPERATIVO' },
-            { code: 'fr', label: 'FR', fullName: 'Français', expected: 'OPÉRATIF' },
+            { code: 'fr', label: 'FR', fullName: 'Français', expected: 'OPÉRATEUR' },
             { code: 'nl', label: 'NL', fullName: 'Nederlands', expected: 'OPERATIEF' }
         ];
 
