@@ -138,13 +138,7 @@ const HelpModal = ({ onClose }) => {
                             </ul>
                         </section>
 
-                        <section>
-                            <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.system_resiliency.title')}</h3>
-                            <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
-                                <li><strong>{t('help.sections.system_resiliency.item1_label')}:</strong> {t('help.sections.system_resiliency.item1_text')}</li>
-                                <li><strong>{t('help.sections.system_resiliency.item2_label')}:</strong> {t('help.sections.system_resiliency.item2_text')}</li>
-                            </ul>
-                        </section>
+
 
                         <section>
                             <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.multilingual_sync.title')}</h3>
