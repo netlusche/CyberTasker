@@ -103,7 +103,9 @@ const TaskFilters = ({ filters, onFilterChange, categories, hasCompletedTasks, o
                         </div>
                     ))}
                 </div>
+            </div>
 
+            <div className="flex flex-col md:flex-row gap-4 md:items-center items-start flex-wrap mt-4 w-full">
                 {/* Category Filter */}
                 <CyberSelect
                     value={filters.category || ''}
