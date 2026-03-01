@@ -11,8 +11,10 @@ Release 2.8 dient als finales "Aufpolieren" der Agenten-Erfahrung vor dem große
 **damit** das Dashboard Filtersystem (Kategorie-Dropdown) sofort ab Minute 1 demonstriert und funktionsfähig ist, ohne dass ich erst selbst Kategorien anlegen oder zuweisen muss.
 
 **Akzeptanzkriterien:**
-- [ ] Bei der Ausführung von `api/install.php` wird eine Standardkategorie "Work" angelegt.
-- [ ] Die Basis-Direktiven des Admin-Beispiel-Accounts (ID 1) erhalten beim Seed-Vorgang in `install.php` (und `tests/seed_test_data.php`) den Kategorie-Wert "Work" statt `null` oder "General".
+- [x] Im Backend (`CategoryRepository.php`) wird die Kategorie "Work" als globaler Standard (`is_default = 1`) für den Auto-Seeder definiert.
+- [x] Sobald ein neuer User (oder der "Admin_Alpha" Installer) das Dashboard lädt und noch 0 Kategorien hat, generiert der Seeder automatisch die Basis-Kategorien, wobei "Work" vorausgewählt ist.
+- [x] Die Basis-Direktiven des Admin-Beispiel-Accounts erhalten in `install.php` und `seed_test_data.php` den Kategorie-Wert "Work".
+- [x] **QA**: E2E Test `01-auth.spec.js` prüft explizit die Sichtbarkeit des "Work" Badges auf dem frischen Dashboard.
 
 ---
 
