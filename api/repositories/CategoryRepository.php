@@ -7,8 +7,8 @@ class CategoryRepository extends Repository
     public function seedDefaultCategories(int $userId): void
     {
         $defaults = [
-            ['name' => 'Private', 'is_default' => 1],
-            ['name' => 'Work', 'is_default' => 0],
+            ['name' => 'Private', 'is_default' => 0],
+            ['name' => 'Work', 'is_default' => 1],
             ['name' => 'Health', 'is_default' => 0],
             ['name' => 'Finance', 'is_default' => 0],
             ['name' => 'Hobby', 'is_default' => 0]

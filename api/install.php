@@ -362,11 +362,6 @@ try {
                     ]]);
             }
         }
-
-        // --- INITIALIZE DEFAULT CATEGORY ---
-        $stmtCat = $pdo->prepare("INSERT INTO user_categories (user_id, name, is_default) VALUES (?, 'Work', 1)");
-        $stmtCat->execute([$adminId]);
-
         $directives = [
             ['i18n:initial_tasks.enforce_2fa_title', 'Work', 1, 15, 'i18n:initial_tasks.enforce_2fa_desc'],
             ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Security', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
