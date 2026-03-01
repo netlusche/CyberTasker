@@ -92,13 +92,16 @@ if (file_exists($manualSource)) {
     }
 }
 
+
+// INJECT SECURITY DIRECTIVES
 $directives = [
-    ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Security', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
-    ['PURGE INSTALLER CORE: Terminate \'install.php\' from the server grid immediately.', 'Security', 1, 10, 'Leaving the installation script active on a production grid allows unauthorized entities to re-initialize the database, potentially exposing or destroying all operational data. Delete the file immediately.'],
-    ['ACTIVATE NEURAL ENCRYPTION: Navigate to Admin Console and toggle \'STRICT_PASSWORD_POLICY\' to Level 1.', 'Security', 1, 10, 'Activating the strict password policy ensures all new operatives utilize cryptographic-grade access keys, preventing brute-force neural intrusions. Go to the Admin Panel and enforce this setting.'],
-    ['SCRUB RESIDUAL TRACES: Remove \'install_test_user.php\' and other leftover test nodes.', 'Security', 2, 5, 'Clean up any leftover testing scripts that were used to validate the system deployment. These unmonitored endpoints are prime vectors for exploitation.'],
-    ['CALIBRATE NEURAL LINK: Perform a System Reset to optimize your ocular data stream.', 'System', 3, 5, 'The initial boot sequence may leave fragmented data packets in your visual buffer. A quick system refresh will align your UI components correctly and ensure everything is loaded cleanly into RAM.'],
-    ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'System', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
+    ['[MANDATORY] Review Authentication Logs', 'Work', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
+    ['OVERRIDE DEFAULT ACCESS: Update Access Key for Admin_Alpha.', 'Security', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
+    ['PURGE INSTALLER CORE: Ensure no external endpoints remain active.', 'Security', 1, 10, 'Leaving the installation script active on a production grid allows unauthorized entities to re-initialize the database, potentially exposing or destroying all operational data. Delete the file immediately.'],
+    ['ACTIVATE NEURAL ENCRYPTION: Strict Password Policy is enforced.', 'Security', 1, 10, 'Activating the strict password policy ensures all new operatives utilize cryptographic-grade access keys, preventing brute-force neural intrusions. Go to the Admin Panel and enforce this setting.'],
+    ['SCRUB RESIDUAL TRACES: Remove old test nodes.', 'Security', 2, 5, 'Clean up any leftover testing scripts that were used to validate the system deployment. These unmonitored endpoints are prime vectors for exploitation.'],
+    ['CALIBRATE NEURAL LINK: Perform System Reset to align UI components.', 'System', 3, 5, 'The initial boot sequence may leave fragmented data packets in your visual buffer. A quick system refresh will align your UI components correctly and ensure everything is loaded cleanly into RAM.'],
+    ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are maxed.', 'Work', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
 ];
 
 $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, files, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -225,9 +228,4 @@ foreach ($inactiveAges as $years => $timeStr) {
     $i++;
 }
 $pdo->commit();
-echo "   [V] 5 inactive accounts injected with varying ages (1, 2, 5, 10, 11 years).\n\n";
-
-echo "====================================================\n";
-echo "SEED COMPLETE. System ready for automated test suites.\n";
-
-?>
+echo "   [V] 5 inactive accounts injected with varying ages (1, 2, 5, 10, 11 years).\n\n"; ?>
