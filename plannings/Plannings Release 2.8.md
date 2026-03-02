@@ -32,7 +32,7 @@ Release 2.8 dient als finales "Aufpolieren" der Agenten-Erfahrung vor dem große
 
 ---
 
-### US-2.8.3: Agent Focus Mode ("Zen Mode")
+### US-2.8.4: Agent Focus Mode ("Zen Mode")
 **Als** überforderter Operative
 **möchte ich** alle unwichtigen UI-Elemente und Nebenaufgaben per Knopfdruck ausblenden können,
 **damit** ich mich ausschließlich auf meine dringendste Mission konzentrieren kann, um Prokrastination durch visuelle Überladung zu vermeiden.
@@ -47,7 +47,7 @@ Release 2.8 dient als finales "Aufpolieren" der Agenten-Erfahrung vor dem große
 
 ---
 
-### US-2.8.4: Batch Actions (Multi-Select Operations)
+### US-2.8.5: Batch Actions (Multi-Select Operations)
 **Als** Power-Nutzer mit vielen überfälligen oder gleichartigen Tasks
 **möchte ich** mehrere Direktiven gleichzeitig auf dem Dashboard markieren können, um Massen-Operationen auszuführen,
 **damit** ich nicht 10 Klicks brauche, um 5 Tasks als abgeschlossen zu markieren oder ihre Kategorie zu wechseln.
@@ -64,7 +64,7 @@ Release 2.8 dient als finales "Aufpolieren" der Agenten-Erfahrung vor dem große
 
 ---
 
-### US-2.8.5: Random Categories for Seeded Test Data
+### US-2.8.6: Random Categories for Seeded Test Data
 **Als** Entwickler/Tester der End-to-End-Pipeline
 **möchte ich**, dass die beim Ausführen von `tests/seed_test_data.php` automatisch generierten Direktiven (z.B. die 50 Direktiven für Admin_Alpha) zufälligen sinnvollen Kategorien ("Work", "Personal", "Code", "Health") zugeordnet werden,
 **damit** das Dashboard beim Entwickeln oder in E2E-Tests direkt lebensechte, gut gefilterte Datensätze anzeigt und die Filter-Dropdowns robuster getestet werden können.
@@ -75,7 +75,7 @@ Release 2.8 dient als finales "Aufpolieren" der Agenten-Erfahrung vor dem große
 
 ---
 
-### US-2.8.6: Live Calendar WebFeed (WebCal)
+### US-2.8.7: Live Calendar WebFeed (WebCal)
 **Als** Power-User & Agent, der viel unterwegs ist,
 **möchte ich** einen dynamischen, geheimen URL-Link (WebCal Feed) in meinem Profil generieren und kopieren können,
 **damit** ich CyberTasker direkt in meinen Google Calendar oder Apple Calendar einhängen kann und sich anstehende Direktiven (inkl. Dossier-Text und Fälligkeitsdatum) vollautomatisch auf mein Smartphone synchronisieren.
@@ -88,7 +88,7 @@ Release 2.8 dient als finales "Aufpolieren" der Agenten-Erfahrung vor dem große
 
 ---
 
-### US-2.8.7: Dossier Notes
+### US-2.8.3: Dossier Notes
 **Als** koordinierter Agent
 **möchte ich** zeitgestempelte Notizen zum Dossier einer Direktive hinzufügen können,
 **damit** ich den Fortschritt, wichtige Entscheidungen oder Blocker chronologisch protokollieren kann, ohne die ursprüngliche Task-Beschreibung zerstören zu müssen.
