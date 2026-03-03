@@ -123,7 +123,7 @@ test.describe('Focus Mode (Zen)', () => {
         // For good measure, let's complete the currently displayed task
         const currentTitle = await page.locator('h2.text-3xl').textContent();
 
-        await page.getByRole('button', { name: 'COMPLETE' }).click();
+        await page.getByRole('button', { name: /mark (as )?done|complete/i }).click();
         await page.waitForTimeout(1000); // wait for execution animation
 
         // Assert it moved on to a different task, or shows "ALL CAUGHT UP" if none left (we should have some left)

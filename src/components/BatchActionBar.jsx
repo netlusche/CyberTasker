@@ -7,15 +7,15 @@ const BatchActionBar = ({ selectedCount, onCompleteAll, onDeleteAll, onClearSele
     if (selectedCount === 0) return null;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 bg-black/95 border-t-2 border-cyber-primary backdrop-blur-md animate-slide-up" style={{ boxShadow: '0 -5px 30px rgba(0,0,0,0.8), 0 -2px 10px var(--theme-primary)' }}>
+        <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 bg-black/95 border-t-2 border-cyber-primary backdrop-blur-md animate-slide-up shadow-[0_-5px_30px_var(--tw-shadow-color)] shadow-black/80" style={{ boxShadow: '0 -2px 10px var(--theme-primary)' }}>
             <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                    <span className="text-lg md:text-xl font-bold uppercase tracking-widest animate-pulse text-[#f3f4f6]" style={{ textShadow: '0 0 5px rgba(255,255,255,0.3)' }}>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-widest animate-pulse text-gray-100 drop-shadow-md">
                         [ {t('tasks.batch_actions.selected', { count: selectedCount, defaultValue: `${selectedCount} DIRECTIVE(S) SELECTED` })} ]
                     </span>
                     <button
                         onClick={onClearSelection}
-                        className="text-sm uppercase underline decoration-dashed transition-colors text-[#e5e7eb] hover:text-[#ffffff]"
+                        className="text-sm uppercase underline decoration-dashed transition-colors text-gray-200 hover:text-white"
                     >
                         {t('tasks.batch_actions.clear_selection', { defaultValue: 'CLEAR SELECTION' })}
                     </button>

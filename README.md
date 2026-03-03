@@ -1,13 +1,15 @@
-# CyberTasker 2.7.0
+# CyberTasker 2.8.0
 
 **CyberTasker** is a gamified, cyberpunk-themed task management application built with **React (Vite)** and **PHP**. It supports **MySQL, MariaDB, and SQLite**, featuring a robust role-based access control (RBAC) system, gamification mechanics (XP, Levels, Badges), and secure Two-Factor Authentication (2FA).
 
 ## 🌟 Key Features
 
 *   **Gamified Task Management**: Earn XP, level up, and unlock scalable Cyber-Badges as you complete directives.
-*   **Advanced Sub-Routines**: Break complex directives into smaller tasks with drag-and-drop prioritization.
-*   **Global Calendar & Scheduling**: Create recurring directives with automated future "Holo-Projections".
-*   **Database-Driven Localization**: Multilingual support (24 languages) synced directly to your operative profile, seamlessly carrying over from desktop to mobile.
+*   **Deep Directives & Statuses**: Break complex directives into smaller tasks, define custom workflow statuses, and log chronological Dossier Notes.
+*   **Agent Focus Mode**: Filter out all visual noise and concentrate on a single, isolated "Hero Card" for your most urgent priority.
+*   **Global Calendar & WebCal Sync**: Create recurring directives with automated future "Holo-Projections", and sync your active feed directly to Google Calendar or Apple Calendar.
+*   **Batch Operations**: Select multiple directives for rapid bulk-completion or bulk-deletion.
+*   **Database-Driven Localization**: Multilingual support (24 languages) synced directly to your operative profile.
 *   **Multi-Theme Architecture**: 24 distinctive visual matrices including Cyberpunk, LCARS, Matrix, and corporate aesthetics, applied instantly without reload.
 *   **Deep Security Protocols**: Enforced Two-Factor Authentication (TOTP or Email Emergency), brute-force rate-limiting, and strict Zero-Config installer lockdown.
 *   **Deployment Agnosticism**: Runs via Vanilla PHP and MySQL/MariaDB or zero-config SQLite, installable anywhere from subdirectories on shared HTTP hosting to robust corporate intranets.

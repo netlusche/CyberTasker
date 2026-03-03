@@ -123,3 +123,13 @@ This document provides a categorized overview of the user stories implemented in
 *   **Graceful API Fallback (US-2.7.1b)**: As a sysadmin, I want the translation script to cleanly fall back to a basic Google Translate API if the Gemini token is missing or rate-limited to ensure CI pipelines never break.
 *   **Incremental Translation (US-2.7.3)**: As a localization manager, I want the translation sync tool to only target *missing* keys by default, so it never overwrites manual human translations or custom fixes (like Klingon strings).
 *   **Unified Filter UX (US-2.7.4)**: As an operative, I want a single, unambiguous "Reset" button for all active dashboard filters to reduce visual clutter and translation duplication.
+
+## 🚀 17. Release 2.8 Features (Quality of Life & Power-User Tools)
+*   **Default Categories for Initial Tasks (US-2.8.1)**: As a new administrator, I want automatically generated example directives to be mapped to a default system category ("Work") so the filter system is intuitively demonstrated.
+*   **Custom Task Statuses (US-2.8.2)**: As a structured operative, I want to define custom intermediary task statuses ("IN PROGRESS", "QA") so I can track the exact lifecycle of my directives.
+*   **Dossier Notes (US-2.8.3)**: As a coordinated agent, I want to attach chronological, timestamped notes to a directive's dossier to log progress without polluting the original description.
+*   **Agent Focus Mode (US-2.8.4)**: As an overstimulated operative, I want to toggle a "Zen Mode" that hides all secondary UI and focuses solely on the highest priority task via a single maximized Hero Card.
+*   **Batch Actions (US-2.8.5)**: As a power-user, I want to mass-select multiple directives on my dashboard to bulk-complete, bulk-delete, or bulk-categorize them via a bottom command bar.
+*   **Random Categories for Seeding (US-2.8.6)**: As a system tester, I want the auto-seeder to assign randomized categories to test data to ensure my filtering mechanics are accurately put under load.
+*   **Live Calendar WebFeed (WebCal) (US-2.8.7)**: As a traveling agent, I want to generate a secure WebCal URL in my profile to directly sync my active directives and deadlines with Google or Apple Calendar.
+*   **Categorize Installation Directives (US-2.8.8)**: As an administrator, I want system initialization tasks to be logically assigned to the 'Work' category for a cleaner initial dashboard presentation.

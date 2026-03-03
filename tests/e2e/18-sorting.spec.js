@@ -20,13 +20,13 @@ test.describe('Dashboard Sorting Rules', () => {
         await directiveInput.fill(futureHighPrioTitle);
 
         // Open priority select
-        await page.locator('div[role="button"]:has-text("PRIO:")').click();
+        await page.locator('form.card-cyber div[role="button"]').filter({ hasText: '(2)' }).click();
         await page.getByRole('listbox').locator('li').filter({ hasText: 'HIGH' }).click();
 
         // Open calendar and select a date in next month (future)
         await page.locator('.input-cyber', { hasText: 'DUE DATE' }).first().click();
         await page.locator('.calendar-container button').filter({ hasText: '>' }).last().click();
-        await page.locator('.calendar-container .cursor-pointer:not(.text-gray-300)').first().click();
+        await page.locator('.calendar-container .cursor-pointer.text-sm').first().click();
 
         await directiveInput.press('Enter');
 
@@ -37,14 +37,14 @@ test.describe('Dashboard Sorting Rules', () => {
         await directiveInput.fill(overdueLowPrioTitle);
 
         // Open priority select
-        await page.locator('div[role="button"]:has-text("PRIO:")').click();
+        await page.locator('form.card-cyber div[role="button"]').filter({ hasText: 'HIGH' }).click();
         await page.getByRole('listbox').locator('li').filter({ hasText: 'LOW' }).click();
 
         // Open calendar and select a date in previous month (overdue)
         await page.locator('.input-cyber', { hasText: 'DUE DATE' }).first().click();
         await page.locator('.calendar-container button').filter({ hasText: '<' }).first().click();
         await page.locator('.calendar-container button').filter({ hasText: '<' }).first().click(); // click it twice to be safe
-        await page.locator('.calendar-container .cursor-pointer:not(.text-gray-300)').first().click();
+        await page.locator('.calendar-container .cursor-pointer.text-sm').first().click();
 
         await directiveInput.press('Enter');
 
