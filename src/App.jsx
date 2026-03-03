@@ -311,7 +311,20 @@ function App() {
 
       <div className="max-w-3xl mx-auto relative z-10">
         <header className={`mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4 ${(isFocusMode || isKanbanMode) ? 'relative z-50 transition-all duration-500' : ''}`}>
-          <div className="w-full lg:w-auto">
+
+          {/* Top-Right Utility Bar (Language + Logout) */}
+          {!isFocusMode && !isKanbanMode && (
+            <div className="absolute top-0 right-0 flex items-center gap-2 z-50 mt-1">
+              <LanguageSwitcher />
+              {user && (
+                <button data-testid="logout-btn" onClick={handleFullLogout} className={`text-[10px] md:text-xs transition-colors whitespace-nowrap ${theme === 'lcars' ? 'bg-[#ffaa00] text-black font-bold uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-cyber-danger/50 text-cyber-danger hover:bg-cyber-danger hover:text-white px-2 py-1 rounded'}`} data-tooltip-content={t('tooltip.logout', 'Logout')} data-tooltip-pos="bottom">
+                  {t('header.logout')}
+                </button>
+              )}
+            </div>
+          )}
+
+          <div className="w-full lg:w-auto pr-24 md:pr-0">
             <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
               <a href="./" className="flex items-center gap-3 hover:opacity-80 transition-opacity no-underline text-inherit">
                 <img src={logo} alt="Logo" className="h-8 w-8 md:h-10 md:w-10 drop-shadow-[0_0_8px_var(--theme-primary)]" />
@@ -389,7 +402,6 @@ function App() {
           </div>
 
           <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 ${(isFocusMode || isKanbanMode) ? 'justify-end' : 'justify-start lg:justify-end'} ${theme === 'lcars' ? ((isFocusMode || isKanbanMode) ? 'flex-col items-end gap-1' : 'flex-col items-start lg:items-end gap-1') : 'flex-wrap items-center gap-2'}`}>
-            {theme !== 'lcars' && !isFocusMode && !isKanbanMode && <LanguageSwitcher />}
 
             {user && (
               <div className="flex flex-wrap lg:flex-nowrap gap-2 items-center">
@@ -451,15 +463,8 @@ function App() {
                     {t('header.admin')}
                   </button>
                 )}
-                {!isFocusMode && !isKanbanMode && (
-                  <button data-testid="logout-btn" onClick={handleFullLogout} className={`absolute top-0 right-0 lg:static text-[10px] md:text-xs transition-colors whitespace-nowrap ${theme === 'lcars' ? 'bg-[#ffaa00] text-black font-bold uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-cyber-danger/50 text-cyber-danger hover:bg-cyber-danger hover:text-white px-2 py-1 rounded'}`} data-tooltip-content={t('tooltip.logout', 'Logout')} data-tooltip-pos="bottom">
-                    {t('header.logout')}
-                  </button>
-                )}
               </div>
             )}
-
-            {theme === 'lcars' && !isFocusMode && !isKanbanMode && <LanguageSwitcher />}
           </div>
         </header>
 
