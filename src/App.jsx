@@ -388,7 +388,7 @@ function App() {
             )}
           </div>
 
-          <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 justify-start lg:justify-end ${theme === 'lcars' ? 'flex-col items-start lg:items-end gap-1' : 'flex-wrap items-center gap-2'}`}>
+          <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 ${(isFocusMode || isKanbanMode) ? 'justify-end' : 'justify-start lg:justify-end'} ${theme === 'lcars' ? ((isFocusMode || isKanbanMode) ? 'flex-col items-end gap-1' : 'flex-col items-start lg:items-end gap-1') : 'flex-wrap items-center gap-2'}`}>
             {theme !== 'lcars' && !isFocusMode && !isKanbanMode && <LanguageSwitcher />}
 
             {user && (
