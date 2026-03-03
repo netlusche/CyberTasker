@@ -401,7 +401,7 @@ function App() {
             )}
           </div>
 
-          <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 ${(isFocusMode || isKanbanMode) ? 'justify-end' : 'justify-start lg:justify-end'} ${theme === 'lcars' ? ((isFocusMode || isKanbanMode) ? 'flex-col items-end gap-1' : 'flex-col items-start lg:items-end gap-1') : 'flex-wrap items-center gap-2'}`}>
+          <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 mt-10 lg:mt-8 ${(isFocusMode || isKanbanMode) ? 'justify-end' : 'justify-start lg:justify-end'} ${theme === 'lcars' ? ((isFocusMode || isKanbanMode) ? 'flex-col items-end gap-1' : 'flex-col items-start lg:items-end gap-1') : 'flex-wrap items-center gap-2'}`}>
 
             {user && (
               <div className="flex flex-wrap lg:flex-nowrap gap-2 items-center">
