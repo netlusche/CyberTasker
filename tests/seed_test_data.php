@@ -199,10 +199,10 @@ for ($i = 1; $i <= 55; $i++) {
 
     $dueDate = date('Y-m-d H:i:s', strtotime("+" . ($i % 10) . " days"));
 
-    // Distribute among default statuses configured in UserRepository.php: open, in_progress, qa, completed
-    $statusOptions = ['open', 'open', 'in_progress', 'in_progress', 'qa', 'completed'];
+    // Distribute among default statuses configured in UserRepository.php: open, in progress, under review, completed
+    $statusOptions = ['open', 'open', 'in progress', 'in progress', 'under review', 'completed'];
     $workflowStatus = $statusOptions[array_rand($statusOptions)];
-    
+
     // Status column (legacy 0/1) should be 1 if it's completed, 0 otherwise
     $status = ($workflowStatus === 'completed') ? 1 : 0;
 
