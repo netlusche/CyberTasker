@@ -499,6 +499,26 @@
                 "item1_text": "Päätekäyttäjätilisi lopettaminen on peruuttamatonta. Kaikki ohjeet, arkistot ja neuraaliyhteydet pyyhitään.",
                 "item2_label": "TODENNUS",
                 "item2_text": "Jatkaaksesi sinun on esitettävä nykyinen käyttöavaimesi todisteena identiteetistäsi."
+            },
+            "focus_mode": {
+                "title": "// FOKUSOHITUS [Zen-tila]",
+                "item1_label": "AISTI-ERISTYS",
+                "item1_text": "Aktivoi FOKUS-tila vaimentaaksesi kaikki toissijaiset telemetriatiedot. Järjestelmä eristää pakotetusti yhden kriittisen direktiivin HUD-näytöllesi.",
+                "item2_label": "SUORITUSSEKVENSSI",
+                "item2_text": "Direktiivit syötetään visuaaliseen aivokuoreesi yksi kerrallaan, automaattisesti priorisoituna kiireellisyyden ja neuronaalisen painoarvon mukaan (Prioriteetti + Määräaika).",
+                "item3_label": "TAKTINEN OHITUS",
+                "item3_text": "Jos direktiiviä ei voida ratkaista välittömästi, käytä OHITA-toimintoa puskurin ylikirjoittamiseen ja siirry seuraavaan kiireelliseen tehtävään."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTINEN RUUDUKKO",
+                "item1_label": "TYÖNKULUN VISUALISOINTI",
+                "item1_text": "Ota käyttöön KANBAN-käyttöliittymä saadaksesi makrotason näkymän kaikista aktiivisista ja odottavista operaatioista.",
+                "item2_label": "VEDÄ JA PUDOTA -UUDELLEENMÄÄRITYS",
+                "item2_text": "Vedä direktiivejä fyysisesti sarakkeiden välillä päivittääksesi niiden operatiivisen tilan reaaliaikaisesti.",
+                "item3_label": "MUKAUTETUT TYÖNKULUT",
+                "item3_text": "Pääset operaattorisi tiedostoon (profiiliin) määrittääksesi mukautettuja työnkulun tiloja (esim. KEHITYKSESSÄ, LAADUNVALVONTA) vastaamaan erityisiä tehtävävaatimuksiasi.",
+                "item4_label": "OPTIMOITU LAJITTELU",
+                "item4_text": "Kortit näyttävät luokkamerkit, prioriteetti-indikaattorit ja kokemuspisteiden (XP) tuotot auttaakseen nopeissa lajittelupäätöksissä."
             }
         }
     },

@@ -499,6 +499,26 @@
                 "item1_text": "Afslutning af din terminalkonto er irreversibel. Alle direktiver, arkiver og neurale forbindelser vil blive slettet.",
                 "item2_label": "GODKENDELSE",
                 "item2_text": "For at fortsætte skal du fremvise din nuværende adgangsnøgle som bevis på identitet."
+            },
+            "focus_mode": {
+                "title": "// FOKUS TILSNYTNING [Zen-tilstand]",
+                "item1_label": "SENSORISK ISOLERING",
+                "item1_text": "Aktiver FOCUS-tilstand for at undertrykke al sekundær telemetri. Systemet vil tvangsisolere et enkelt kritisk direktiv på din HUD.",
+                "item2_label": "UDFØRELSESSEKVENS",
+                "item2_text": "Direktiver føres til din visuelle cortex én efter én, prioriteret automatisk efter urgency og neural vægt (Prioritet + Deadline).",
+                "item3_label": "TAKTISK OMGANG",
+                "item3_text": "Hvis et direktiv ikke kan løses med det samme, skal du bruge SKIP-funktionen til at overskrive bufferen og cykle til den næste presserende opgave."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTISK GRID",
+                "item1_label": "VISUALISERING AF WORKFLOW",
+                "item1_text": "Implementer KANBAN-grænsefladen til en visning på makroniveau af alle aktive og afventende operationer.",
+                "item2_label": "DRAG & DROP OMOVERDRAGELSE",
+                "item2_text": "Træk fysisk direktiver mellem kolonner for at opdatere deres driftsstatus i realtid.",
+                "item3_label": "TILPASSET RØRLEDNINGER",
+                "item3_text": "Få adgang til dit operatørdossier (profil) for at konfigurere brugerdefinerede workflow-statusser (f.eks. I UDVIKLING, QA) for at matche dine specifikke missionskrav.",
+                "item4_label": "OPTIMERET TRIAGE",
+                "item4_text": "Kort viser kategorimærker, prioritetsindikatorer og erfaringspoint (XP) for at hjælpe med hurtige triage-beslutninger."
             }
         }
     },

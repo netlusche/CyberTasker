@@ -499,6 +499,26 @@
                 "item1_text": "Terminare il tuo account terminale è irreversibile. Tutte le direttive, gli archivi e i collegamenti neurali saranno cancellati.",
                 "item2_label": "AUTENTICAZIONE",
                 "item2_text": "Per procedere, devi presentare la tua Chiave di Accesso attuale come prova di identità."
+            },
+            "focus_mode": {
+                "title": "// SOVRASCRIZIONE FOCUS [Modalità Zen]",
+                "item1_label": "ISOLAMENTO SENSORIALE",
+                "item1_text": "Attiva la modalità FOCUS per sopprimere tutta la telemetria secondaria. Il sistema isolerà forzatamente una singola direttiva critica sul tuo HUD.",
+                "item2_label": "SEQUENZA DI ESECUZIONE",
+                "item2_text": "Le direttive vengono alimentate alla tua corteccia visiva una per una, prioritizzate automaticamente per urgenza e peso neurale (Priorità + Scadenza).",
+                "item3_label": "BYPASS TATTICO",
+                "item3_text": "Se una direttiva non può essere risolta immediatamente, utilizza la funzione SALTA per sovrascrivere il buffer e passare al prossimo compito urgente."
+            },
+            "kanban_mode": {
+                "title": "// GRIGLIA TATTICA KANBAN",
+                "item1_label": "VISUALIZZAZIONE DEL FLUSSO DI LAVORO",
+                "item1_text": "Distribuisci l'interfaccia KANBAN per una visione a livello macro di tutte le operazioni attive e in sospeso.",
+                "item2_label": "RIASSEGNAZIONE DRAG & DROP",
+                "item2_text": "Trascina fisicamente le direttive tra le colonne per aggiornare il loro stato operativo in tempo reale.",
+                "item3_label": "PIPELINE PERSONALIZZATE",
+                "item3_text": "Accedi al tuo Dossier Operatore (Profilo) per configurare stati di flusso di lavoro personalizzati (es. IN SVILUPPO, QA) per soddisfare i tuoi requisiti di missione specifici.",
+                "item4_label": "TRIAGE OTTIMIZZATO",
+                "item4_text": "Le schede mostrano badge di categoria, indicatori di priorità e rendimenti di punti esperienza (XP) per assistere nelle decisioni rapide di triage."
             }
         }
     },

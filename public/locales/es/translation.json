@@ -499,6 +499,26 @@
                 "item1_text": "Terminar su cuenta terminal es irreversible. Todas las directivas, archivos y enlaces neurales serán borrados.",
                 "item2_label": "AUTENTICACIÓN",
                 "item2_text": "Para proceder, debe presentar su Clave de Acceso actual como prueba de identidad."
+            },
+            "focus_mode": {
+                "title": "// ANULACIÓN DE ENFOQUE [Modo Zen]",
+                "item1_label": "AISLAMIENTO SENSORIAL",
+                "item1_text": "Activa el modo ENFOQUE para suprimir toda telemetría secundaria. El sistema aislará forzosamente una única directiva crítica en tu HUD.",
+                "item2_label": "SECUENCIA DE EJECUCIÓN",
+                "item2_text": "Las directivas se alimentan a tu córtex visual una por una, priorizadas automáticamente por urgencia y peso neural (Prioridad + Plazo).",
+                "item3_label": "DERIVACIÓN TÁCTICA",
+                "item3_text": "Si una directiva no puede resolverse inmediatamente, utiliza la función SALTAR para sobrescribir el búfer y pasar a la siguiente tarea urgente."
+            },
+            "kanban_mode": {
+                "title": "// CUADRÍCULA TÁCTICA KANBAN",
+                "item1_label": "VISUALIZACIÓN DEL FLUJO DE TRABAJO",
+                "item1_text": "Despliega la interfaz KANBAN para una vista a nivel macro de todas las operaciones activas y pendientes.",
+                "item2_label": "REASIGNACIÓN POR ARRASTRE Y SOLTAR",
+                "item2_text": "Arrastra físicamente las directivas entre columnas para actualizar su estado operativo en tiempo real.",
+                "item3_label": "FLUJOS PERSONALIZADOS",
+                "item3_text": "Accede a tu Expediente de Operador (Perfil) para configurar estados de flujo de trabajo personalizados (ej., EN DESARROLLO, QA) para que coincidan con tus requisitos de misión específicos.",
+                "item4_label": "TRIAGE OPTIMIZADO",
+                "item4_text": "Las tarjetas muestran insignias de categoría, indicadores de prioridad y rendimientos de puntos de experiencia (XP) para ayudar en decisiones rápidas de triage."
             }
         }
     },

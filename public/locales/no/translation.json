@@ -499,6 +499,26 @@
                 "item1_text": "Avslutning av din terminalkonto er irreversibel. Alle direktiver, arkiver og nevrale linker vil bli slettet.",
                 "item2_label": "AUTENTISERING",
                 "item2_text": "For å fortsette, må du fremvise din nåværende Tilgangsnøkkel som bevis på identitet."
+            },
+            "focus_mode": {
+                "title": "// FOKUS OVERSTYRING [Zen-modus]",
+                "item1_label": "SENSORISK ISOLASJON",
+                "item1_text": "Aktiver FOKUS-modus for å undertrykke all sekundær telemetri. Systemet vil tvangsisolere ett enkelt kritisk direktiv på din HUD.",
+                "item2_label": "UTFØRELSESSEKVENS",
+                "item2_text": "Direktiver mates til din visuelle cortex ett etter ett, automatisk prioritert etter hast og nevral vekt (Prioritet + Frist).",
+                "item3_label": "TAKTISK OMKOBLING",
+                "item3_text": "Hvis et direktiv ikke kan løses umiddelbart, bruk HOPP OVER-funksjonen for å overskrive bufferen og sykle til neste presserende oppgave."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTISK RUTE",
+                "item1_label": "ARBEIDSFLYT VISUALISERING",
+                "item1_text": "Distribuer KANBAN-grensesnittet for en makro-nivå oversikt over alle aktive og ventende operasjoner.",
+                "item2_label": "DRA OG SLIPP OMALLOKERING",
+                "item2_text": "Dra direktiver fysisk mellom kolonner for å oppdatere deres operasjonelle status i sanntid.",
+                "item3_label": "TILPASSEDE ARBEIDSFLYT",
+                "item3_text": "Få tilgang til din Operatør-dossier (Profil) for å konfigurere tilpassede arbeidsflytstatuser (f.eks. UNDER UTVIKLING, QA) for å matche dine spesifikke oppdragskrav.",
+                "item4_label": "OPTIMALISERT TRIAGE",
+                "item4_text": "Kort viser kategorimerker, prioritetsindikatorer og erfaringspoeng (XP) utbytte for å bistå i raske triage-beslutninger."
             }
         }
     },

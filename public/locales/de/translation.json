@@ -499,6 +499,26 @@
                 "item1_text": "Die Terminierung Ihres Terminalkontos ist irreversibel. Alle Direktiven, Archive und neuronalen Verbindungen werden gelöscht.",
                 "item2_label": "AUTHENTIFIZIERUNG",
                 "item2_text": "Um fortzufahren, müssen Sie Ihren aktuellen Zugangsschlüssel als Identitätsnachweis vorlegen."
+            },
+            "focus_mode": {
+                "title": "// FOKUS-ÜBERSCHREIBUNG [Zen-Modus]",
+                "item1_label": "SENSORISCHE ISOLATION",
+                "item1_text": "Aktivieren Sie den FOKUS-Modus, um alle sekundären Telemetriedaten zu unterdrücken. Das System isoliert zwangsweise eine einzelne kritische Direktive auf Ihrem HUD.",
+                "item2_label": "AUSFÜHRUNGSSEQUENZ",
+                "item2_text": "Direktiven werden einzeln an Ihren visuellen Kortex übermittelt, automatisch nach Dringlichkeit und neuronalem Gewicht (Priorität + Frist) priorisiert.",
+                "item3_label": "TAKTISCHER BYPASS",
+                "item3_text": "Wenn eine Direktive nicht sofort gelöst werden kann, nutzen Sie die ÜBERSPRINGEN-Funktion, um den Puffer zu überschreiben und zur nächsten dringenden Aufgabe zu wechseln."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTISCHES GITTER",
+                "item1_label": "WORKFLOW-VISUALISIERUNG",
+                "item1_text": "Setzen Sie die KANBAN-Schnittstelle ein, um eine Makro-Ansicht aller aktiven und ausstehenden Operationen zu erhalten.",
+                "item2_label": "DRAG & DROP NEUZUWEISUNG",
+                "item2_text": "Ziehen Sie Direktiven physisch zwischen Spalten, um ihren Betriebsstatus in Echtzeit zu aktualisieren.",
+                "item3_label": "BENUTZERDEFINIERTE PIPELINES",
+                "item3_text": "Greifen Sie auf Ihr Operator-Dossier (Profil) zu, um benutzerdefinierte Workflow-Status (z. B. IN ENTWICKLUNG, QA) zu konfigurieren, die Ihren spezifischen Missionsanforderungen entsprechen.",
+                "item4_label": "OPTIMIERTE TRIAGE",
+                "item4_text": "Karten zeigen Kategorie-Badges, Prioritätsindikatoren und Erfahrungspunkte (XP)-Erträge an, um schnelle Triage-Entscheidungen zu unterstützen."
             }
         }
     },

@@ -499,6 +499,26 @@
                 "item1_text": "Terminál fiókjának megszüntetése visszafordíthatatlan. Minden irányelv, archívum és neurális kapcsolat törlődik.",
                 "item2_label": "HITELÉSÍTÉS",
                 "item2_text": "A folytatáshoz be kell mutatnia jelenlegi hozzáférési kulcsát az azonosság igazolásaként."
+            },
+            "focus_mode": {
+                "title": "// FÓKUSZ FELÜLÍRÁS [Zen Mód]",
+                "item1_label": "ÉRZÉKELŐ IZOLÁCIÓ",
+                "item1_text": "Kapcsolja be a FÓKUSZ módot az összes másodlagos telemetria elnyomására. A rendszer erőszakosan izolál egyetlen kritikus direktívát a HUD-ján.",
+                "item2_label": "VÉGREHAJTÁSI SZekvencia",
+                "item2_text": "A direktívák egyenként kerülnek a vizuális kéregbe, automatikusan rangsorolva sürgősség és neurális súly alapján (Prioritás + Határidő).",
+                "item3_label": "TAKTikai FELÜLÍRÁS",
+                "item3_text": "Ha egy direktíva nem oldható meg azonnal, használja a KIHAGYÁS funkciót a puffer felülírására és a következő sürgős feladatra való továbblépésre."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTIKAI RÁCS",
+                "item1_label": "MUNKAfolyamat VIZUALIZÁCIÓ",
+                "item1_text": "Telepítse a KANBAN felületet az összes aktív és függőben lévő művelet makroszintű áttekintéséhez.",
+                "item2_label": "HÚZÁS ÉS ELDOBÁS ÚJRAHOZZÁRENDELÉS",
+                "item2_text": "Fizikailag húzza a direktívákat az oszlopok között az operatív állapotuk valós idejű frissítéséhez.",
+                "item3_label": "EGYÉNI FOLYAMATOK",
+                "item3_text": "Nyissa meg az Operátor Dossziéját (Profilját) egyéni munkafolyamat-állapotok konfigurálásához (pl. FEJLESZTÉS ALATT, QA) az Ön specifikus küldetési követelményeinek megfelelően.",
+                "item4_label": "OPTIMALIZÁLT TRIÁZS",
+                "item4_text": "A kártyák kategória jelvényeket, prioritásjelzőket és tapasztalati pont (XP) hozamokat jelenítenek meg a gyors triázs döntések támogatására."
             }
         }
     },

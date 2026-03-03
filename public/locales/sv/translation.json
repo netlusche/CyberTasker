@@ -499,6 +499,26 @@
                 "item1_text": "Att avsluta ditt terminalkonto är oåterkalleligt. Alla direktiv, arkiv och neurala länkar kommer att raderas.",
                 "item2_label": "AUTENTISERING",
                 "item2_text": "För att fortsätta måste du presentera din nuvarande åtkomstnyckel som bevis på identitet."
+            },
+            "focus_mode": {
+                "title": "// FOKUS ÖVERSTYRNING [Zen-läge]",
+                "item1_label": "SENSORISK ISOLERING",
+                "item1_text": "Aktivera FOKUS-läge för att undertrycka all sekundär telemetri. Systemet kommer att tvinga fram isolering av ett enda kritiskt direktiv på din HUD.",
+                "item2_label": "EXEKVERINGSSEKVENS",
+                "item2_text": "Direktiv matas till din visuella cortex ett efter ett, prioriterade automatiskt efter brådska och neural vikt (Prioritet + Deadline).",
+                "item3_label": "TAKTIK BYPASS",
+                "item3_text": "Om ett direktiv inte kan lösas omedelbart, använd SKIP-funktionen för att skriva över bufferten och växla till nästa brådskande uppgift."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTISKT RUTNÄT",
+                "item1_label": "ARBETSPROCESSVISUALISERING",
+                "item1_text": "Distribuera KANBAN-gränssnittet för en makronivåvy över alla aktiva och väntande operationer.",
+                "item2_label": "DRAG & SLÄPP OMALLOKERING",
+                "item2_text": "Dra direktiv fysiskt mellan kolumner för att uppdatera deras operativa status i realtid.",
+                "item3_label": "ANPASSADE ARBETSPROCESSER",
+                "item3_text": "Åtkomst till din Operatörsdossier (Profil) för att konfigurera anpassade arbetsflödesstatusar (t.ex. UNDER UTVECKLING, QA) för att matcha dina specifika uppdragskrav.",
+                "item4_label": "OPTIMERAD TRIAGE",
+                "item4_text": "Kort visar kategorimärken, prioritetsindikatorer och erfarenhetspoäng (XP) utdelning för att underlätta snabba triagebeslut."
             }
         }
     },

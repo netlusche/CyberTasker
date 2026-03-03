@@ -499,6 +499,26 @@
                 "item1_text": "Tlho' Qaw Qo' Qaw tlho' Qaw. Vangmey, archives, 'ej neural links Qaw tlho' Qaw.",
                 "item2_label": "QAW'A'",
                 "item2_text": "Qaw tlhe' Qaw tlho' Qaw."
+            },
+            "focus_mode": {
+                "title": "// YIBUS QAW [Focus Override]",
+                "item1_label": "BUS QAW [Isolation]",
+                "item1_text": "YIBUS Qaw tlho' Qaw. Vangmey Qaw isolate HUD.",
+                "item2_label": "VANGMEY LUT [Sequence]",
+                "item2_text": "Vangmey Qaw tlho' Qaw. Priority 'ej Deadline Qaw.",
+                "item3_label": "WHA' QAW [Bypass]",
+                "item3_text": "Vangmey Qaw Qo', SKIP Qaw tlho' Qaw. Vangmey Qaw."
+            },
+            "kanban_mode": {
+                "title": "// QANBAN GHOM [Tactical Grid]",
+                "item1_label": "VANGMEY LEGH [Visualization]",
+                "item1_text": "QANBAN Qaw tlho' Qaw. Vangmey Qaw tlho' Qaw.",
+                "item2_label": "QAW TLHO' QAW [Drag & Drop]",
+                "item2_text": "Vangmey Qaw tlho' Qaw. Status Qaw tlho' real-time.",
+                "item3_label": "PROTOCOL QAW [Pipelines]",
+                "item3_text": "Dossier Qaw tlho' Qaw. Status (e.g. IN PROGRESS) Qaw tlho' Qaw.",
+                "item4_label": "QAW TLHO' QAW [Triage]",
+                "item4_text": "Category badges, priority, 'ej XP yields Qaw tlho' Qaw triage."
             }
         }
     },

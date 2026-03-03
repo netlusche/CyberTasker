@@ -447,6 +447,26 @@
                 "item4_label": "GLOBAL CALENDAR",
                 "item4_text": "Access the master chronology via the Top Header to view all scheduled directives and interface directly with their Dossiers."
             },
+            "focus_mode": {
+                "title": "// FOCUS OVERRIDE [Zen Mode]",
+                "item1_label": "SENSORY ISOLATION",
+                "item1_text": "Engage FOCUS mode to suppress all secondary telemetry. The system will forcibly isolate a single critical directive on your HUD.",
+                "item2_label": "EXECUTION SEQUENCE",
+                "item2_text": "Directives are fed to your visual cortex one by one, prioritized automatically by urgency and neural weight (Priority + Deadline).",
+                "item3_label": "TACTICAL BYPASS",
+                "item3_text": "If a directive cannot be resolved immediately, utilize the SKIP function to overwrite the buffer and cycle to the next urgent task."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TACTICAL GRID",
+                "item1_label": "WORKFLOW VISUALIZATION",
+                "item1_text": "Deploy the KANBAN interface for a macro-level view of all active and pending operations.",
+                "item2_label": "DRAG & DROP REASSIGNMENT",
+                "item2_text": "Physically drag directives between columns to update their operational status in real-time.",
+                "item3_label": "CUSTOM PIPELINES",
+                "item3_text": "Access your Operator Dossier (Profile) to configure custom workflow statuses (e.g., IN DEVELOPMENT, QA) to match your specific mission requirements.",
+                "item4_label": "OPTIMIZED TRIAGE",
+                "item4_text": "Cards display category badges, priority indicators, and experience point (XP) yields to assist in rapid triage decisions."
+            },
             "system_resiliency": {
                 "title": "// SYSTEM RESILIENCY [Stability]",
                 "item1_label": "ROBUST CONFIG",
