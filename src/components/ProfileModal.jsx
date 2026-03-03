@@ -1197,12 +1197,12 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate,
                             <div className="flex flex-col gap-3">
                                 {calendarToken ? (
                                     <>
-                                        <div className="relative">
+                                        <div className="flex gap-2 relative">
                                             <input
                                                 type="text"
                                                 readOnly
                                                 value={`${window.location.origin}${window.location.pathname.replace(/\/$/, '')}/api/index.php?route=calendar/feed&token=${calendarToken}`}
-                                                className="input-cyber text-xs w-full p-2 bg-black/50 font-mono text-gray-300 cursor-copy"
+                                                className="input-cyber text-xs w-full p-2 bg-black/50 font-mono text-gray-300 cursor-copy flex-1"
                                                 onClick={(e) => {
                                                     e.target.select();
                                                     navigator.clipboard.writeText(e.target.value);
@@ -1211,6 +1211,21 @@ const ProfileModal = ({ user, onClose, onLogout, onUserUpdate, onCategoryUpdate,
                                                 }}
                                                 title={t('tooltip.click_to_copy', 'Click to copy')}
                                             />
+                                            <button
+                                                className="btn-cyber border-cyber-accent text-cyber-accent hover:bg-cyber-accent hover:text-black min-w-[40px] flex items-center justify-center transition-colors px-0 py-0"
+                                                data-tooltip-content={t('profile.webcal.copy_tooltip', 'Copy to clipboard')}
+                                                onClick={() => {
+                                                    const url = `${window.location.origin}${window.location.pathname.replace(/\/$/, '')}/api/index.php?route=calendar/feed&token=${calendarToken}`;
+                                                    navigator.clipboard.writeText(url);
+                                                    setMessage(t('profile.webcal.copied', 'FEED URL COPIED'));
+                                                    setTimeout(() => setMessage(''), 3000);
+                                                }}
+                                                aria-label={t('profile.webcal.copy_tooltip', 'Copy to clipboard')}
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                                                </svg>
+                                            </button>
                                         </div>
                                         <button
                                             onClick={handleRegenerateWebCalToken}

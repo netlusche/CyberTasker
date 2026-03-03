@@ -172,7 +172,8 @@
       "copied": "FEED URL COPIED",
       "regenerate": "REGENERATE LINK / REVOKE ACCESS",
       "generate": "GENERATE WEBCAL LINK",
-      "generated_success": "NEW WEBCAL LINK GENERATED"
+      "generated_success": "NEW WEBCAL LINK GENERATED",
+      "copy_tooltip": "Copy to clipboard"
     },
     "categories": {
       "protocols": "CATEGORY PROTOCOLS",

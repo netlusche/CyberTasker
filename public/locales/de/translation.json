@@ -172,7 +172,8 @@
       "copied": "FEED-URL KOPIERT",
       "regenerate": "LINK NEU GENERIEREN / ZUGANG ENTZIEHEN",
       "generate": "WEBCAL-LINK GENERIEREN",
-      "generated_success": "NEUER WEBCAL-LINK GENERIERT"
+      "generated_success": "NEUER WEBCAL-LINK GENERIERT",
+      "copy_tooltip": "In die Zwischenablage kopieren"
     },
     "categories": {
       "protocols": "KATEGORIE-PROTOKOLLE",
