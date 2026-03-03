@@ -310,11 +310,11 @@ function App() {
       <div className="fixed inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] cyber-grid"></div>
 
       <div className="max-w-3xl mx-auto relative z-10">
-        <header className={`mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4 pt-8 relative ${(isFocusMode || isKanbanMode) ? 'z-50 transition-all duration-500' : ''}`}>
+        <header className={`mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4 relative ${(isFocusMode || isKanbanMode) ? 'z-50 transition-all duration-500' : ''}`}>
 
           {/* Top-Right Utility Bar (Language + Logout) */}
           {!isFocusMode && !isKanbanMode && (
-            <div className="absolute top-0 right-0 flex items-center gap-2 z-50 mt-1">
+            <div className="absolute top-0 right-0 flex items-center gap-2 z-50">
               <LanguageSwitcher />
               {user && (
                 <button data-testid="logout-btn" onClick={handleFullLogout} className={`text-[10px] md:text-xs transition-colors whitespace-nowrap ${theme === 'lcars' ? 'bg-[#ffaa00] text-black font-bold uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-cyber-danger/50 text-cyber-danger hover:bg-cyber-danger hover:text-white px-2 py-1 rounded'}`} data-tooltip-content={t('tooltip.logout', 'Logout')} data-tooltip-pos="bottom">
