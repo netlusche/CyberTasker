@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core';
 import KanbanCard from './KanbanCard';
 import { useTranslation } from 'react-i18next';
 
-const KanbanColumn = ({ status, tasks, onTaskClick }) => {
+const KanbanColumn = ({ status, tasks, onTaskClick, onDelete }) => {
     const { t } = useTranslation();
     const { isOver, setNodeRef } = useDroppable({
         id: status.id, // we'll use string 'open' or the custom status name
@@ -30,7 +30,7 @@ const KanbanColumn = ({ status, tasks, onTaskClick }) => {
                 className={`flex-1 p-2 overflow-y-auto min-h-[150px] transition-colors ${isOver ? 'bg-cyber-primary/10' : ''}`}
             >
                 {tasks.map(task => (
-                    <KanbanCard key={task.id} task={task} onClick={onTaskClick} />
+                    <KanbanCard key={task.id} task={task} onClick={onTaskClick} onDelete={onDelete} />
                 ))}
 
                 {tasks.length === 0 && (

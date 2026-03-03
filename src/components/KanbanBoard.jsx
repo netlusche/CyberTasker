@@ -4,29 +4,9 @@ import { useDroppable } from '@dnd-kit/core';
 import { useTranslation } from 'react-i18next';
 import KanbanColumn from './KanbanColumn';
 
-const CompletedDropzone = () => {
-    const { t } = useTranslation();
-    const { isOver, setNodeRef } = useDroppable({
-        id: 'completed_zone',
-        data: { statusName: 'completed' }
-    });
+// Removed CompletedDropzone
 
-    return (
-        <div
-            ref={setNodeRef}
-            className={`fixed bottom-0 left-0 right-0 h-24 border-t-2 border-cyber-success bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center transition-all duration-300 ${isOver ? 'bg-cyber-success/30 shadow-[0_0_30px_rgba(0,255,100,0.5)]' : ''}`}
-        >
-            <div className="flex flex-col items-center gap-2">
-                <span className={`text-2xl ${isOver ? 'animate-bounce' : ''}`}>✅</span>
-                <span className="text-cyber-success font-bold tracking-widest uppercase font-mono text-[10px] md:text-sm drop-shadow-[0_0_5px_var(--theme-success)]">
-                    {t('tasks.drop_complete', 'DROP HERE TO COMPLETE DIRECTIVE')}
-                </span>
-            </div>
-        </div>
-    );
-};
-
-const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onTaskClick }) => {
+const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onDelete, onTaskClick }) => {
     const { t } = useTranslation();
 
     // We maintain a local copy of tasks to allow instant UI updates 
@@ -53,25 +33,31 @@ const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onTask
         if (!over) return; // Dropped nowhere
 
         const activeTask = active.data.current.task;
-        const targetStatusId = over.id; // e.g. 'open', 'completed_zone', or custom status name
+        const targetStatusId = over.id; // e.g. 'open', 'completed', or custom status name
+        const newTargetStatusName = targetStatusId === 'open' ? 'open' : over.data.current.statusName;
 
-        // Handle Completed Dropzone
-        if (targetStatusId === 'completed_zone') {
-            // Optimistic update
-            setLocalTasks(prev => prev.filter(t => t.id !== activeTask.id));
-            onToggleStatus(activeTask); // this triggers XP and confetti in App.jsx
+        // If dropped in the same column, do nothing
+        if ((activeTask.workflow_status || 'open') === newTargetStatusName) return;
+
+        // If moving TO completed
+        if (newTargetStatusName === 'completed') {
+            onToggleStatus(activeTask);
+            setLocalTasks(prev => prev.map(t => {
+                if (t.id === activeTask.id) return { ...t, status: 1, workflow_status: 'completed' };
+                return t;
+            }));
             return;
         }
 
-        const newTargetStatusName = targetStatusId === 'open' ? 'open' : over.data.current.statusName;
+        // If moving FROM completed to an active status
+        if (activeTask.status == 1 && newTargetStatusName !== 'completed') {
+            onToggleStatus(activeTask); // will uncomplete it
+        }
 
-        // If dropped in the same column, do nothing (unless we implement sortable inside columns later)
-        if ((activeTask.workflow_status || 'open') === newTargetStatusName) return;
-
-        // Optimistic UI Update
+        // Optimistic UI Update for regular columns
         setLocalTasks(prev => prev.map(t => {
             if (t.id === activeTask.id) {
-                return { ...t, workflow_status: newTargetStatusName };
+                return { ...t, status: 0, workflow_status: newTargetStatusName };
             }
             return t;
         }));
@@ -81,7 +67,6 @@ const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onTask
             await onUpdateTask(activeTask, { workflow_status: newTargetStatusName });
         } catch (err) {
             console.error('Failed to update task status in Kanban Board', err);
-            // Revert optimistic update on error by triggering a full fetch
             setLocalTasks(tasks);
         }
     };
@@ -95,7 +80,8 @@ const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onTask
 
     const columns = [
         { id: 'open', name: 'open', is_system: true },
-        ...filteredStatuses
+        ...filteredStatuses,
+        { id: 'completed', name: 'completed', is_system: true }
     ];
 
     return (
@@ -116,6 +102,7 @@ const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onTask
                                     status={status}
                                     tasks={columnTasks}
                                     onTaskClick={onTaskClick}
+                                    onDelete={onDelete}
                                 />
                             );
                         })}
@@ -123,7 +110,6 @@ const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onTask
                 </div>
             </div>
 
-            <CompletedDropzone />
         </DndContext>
     );
 };

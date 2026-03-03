@@ -50,6 +50,7 @@ function App() {
     fetchTaskStatuses,
     fetchTasks,
     fetchAllOpenTasks,
+    fetchKanbanTasks,
     handleAddTask,
     handleToggleStatus,
     handleUpdateTask,
@@ -185,12 +186,12 @@ function App() {
 
   const loadKanbanQueue = async () => {
     try {
-      const allOpenTasks = await fetchAllOpenTasks();
-      if (!allOpenTasks || !Array.isArray(allOpenTasks)) {
+      const allKanbanTasks = await fetchKanbanTasks();
+      if (!allKanbanTasks || !Array.isArray(allKanbanTasks)) {
         setKanbanTasksQueue([]);
         return;
       }
-      setKanbanTasksQueue(allOpenTasks);
+      setKanbanTasksQueue(allKanbanTasks);
     } catch (e) {
       console.error("Failed to load kanban queue", e);
       setKanbanTasksQueue([]);
@@ -490,10 +491,12 @@ function App() {
             tasks={kanbanTasksQueue}
             taskStatuses={taskStatuses}
             onUpdateTask={handleUpdateTask}
-            onToggleStatus={async (t) => {
-              await handleToggleStatus(t);
-              // Remove locally from kanban queue after XP triggered
-              setKanbanTasksQueue(prev => prev.filter(task => task.id !== t.id));
+            onToggleStatus={handleToggleStatus}
+            onDelete={async (taskId) => {
+              await handleDelete(taskId);
+              const t = kanbanTasksQueue.find(t => t.id === taskId);
+              if (t && t.status == 1 && fetchUserStats) fetchUserStats();
+              setKanbanTasksQueue(prev => prev.filter(t => t.id !== taskId));
             }}
             onTaskClick={(task) => {
               setDossierContext('kanban');

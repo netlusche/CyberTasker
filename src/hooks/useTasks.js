@@ -105,6 +105,29 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
         }
     }, [user]);
 
+    const fetchKanbanTasks = useCallback(async () => {
+        if (!user) return [];
+        try {
+            // Fetch open tasks
+            const openParams = new URLSearchParams({ page: 1, limit: 1000, status: '0' });
+            const openRes = await apiFetch(`api/index.php?route=tasks&${openParams.toString()}`);
+            if (openRes.status === 401) return [];
+            const openData = await openRes.json();
+            const openTasks = openData.data || (Array.isArray(openData) ? openData : []);
+
+            // Fetch recent completed tasks to populate the Completed column
+            const completedParams = new URLSearchParams({ page: 1, limit: 30, status: '1' });
+            const completedRes = await apiFetch(`api/index.php?route=tasks&${completedParams.toString()}`);
+            const completedData = await completedRes.json();
+            const completedTasks = completedData.data || (Array.isArray(completedData) ? completedData : []);
+
+            return [...openTasks, ...completedTasks];
+        } catch (err) {
+            console.error("Failed to fetch kanban tasks", err);
+            return [];
+        }
+    }, [user]);
+
     useEffect(() => {
         if (delayedRefresh > 0) {
             fetchTasks(pagination.currentPage);
@@ -225,6 +248,7 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
         fetchTaskStatuses,
         fetchTasks,
         fetchAllOpenTasks,
+        fetchKanbanTasks,
         handleAddTask,
         handleToggleStatus,
         handleUpdateTask,
