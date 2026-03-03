@@ -106,6 +106,7 @@ const LanguageSwitcher = () => {
                         : 'border-cyber-primary/50 text-cyber-primary hover:border-cyber-primary hover:shadow-cyber-primary')
                     }`}
                 data-tooltip-content={t('tooltip.language', 'Change Language')}
+                data-tooltip-pos="bottom-left"
             >
                 <span className={isOpen ? '' : 'group-hover:animate-pulse'}>{currentLang?.label || '??'}</span>
                 <span className={`text-[8px] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
