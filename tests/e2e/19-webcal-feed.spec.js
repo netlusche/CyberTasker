@@ -19,6 +19,7 @@ test.describe('WebCal Feed (US-2.8.7)', () => {
         const regenerateBtn = page.locator('button:has-text("REGENERATE LINK")');
 
         if (await generateBtn.isVisible()) {
+            await expect(generateBtn).toBeEnabled();
             await generateBtn.click();
             await expect(page.locator('text=NEW WEBCAL LINK GENERATED')).toBeVisible();
         }
@@ -48,7 +49,8 @@ test.describe('WebCal Feed (US-2.8.7)', () => {
     test('should output valid ICS feed without exposing descriptions', async ({ request, page }) => {
         // We need an active token from the database
         // Let's create a task first to ensure the feed has data
-        const title = 'CyberSec Audit Request WebCal';
+        const uniqueId = Date.now();
+        const title = `CyberSec Audit Request WebCal ${uniqueId}`;
         await page.fill('input[placeholder="Enter directive..."]', title);
 
         // Open calendar to set due date
@@ -81,6 +83,7 @@ test.describe('WebCal Feed (US-2.8.7)', () => {
         ]);
         const generateBtn = page.locator('button:has-text("GENERATE WEBCAL LINK")');
         if (await generateBtn.isVisible()) {
+            await expect(generateBtn).toBeEnabled();
             await generateBtn.click();
             await expect(page.locator('text=NEW WEBCAL LINK GENERATED')).toBeVisible();
         }

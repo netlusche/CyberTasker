@@ -139,7 +139,13 @@ foreach ($directives as $d) {
 }
 
 $targetCategories = ['Work', 'Personal', 'Code', 'Finance', 'Health'];
-$insertCatStmt = $pdo->prepare("INSERT OR IGNORE INTO user_categories (user_id, name, is_default) VALUES (?, ?, ?)");
+$driverName = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+if ($driverName === 'sqlite') {
+    $insertCatStmt = $pdo->prepare("INSERT OR IGNORE INTO user_categories (user_id, name, is_default) VALUES (?, ?, ?)");
+}
+else {
+    $insertCatStmt = $pdo->prepare("INSERT IGNORE INTO user_categories (user_id, name, is_default) VALUES (?, ?, ?)");
+}
 foreach ($targetCategories as $cat) {
     $isDefault = ($cat === 'Work') ? 1 : 0;
     $insertCatStmt->execute([$adminId, $cat, $isDefault]);

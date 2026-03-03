@@ -1,13 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { loginAsAdmin } from './auth-commands.js';
 
 test('debug focus mode', async ({ page }) => {
     page.on('console', msg => console.log('BROWSER LOG:', msg.text()));
     page.on('pageerror', err => console.log('BROWSER ERROR:', err.message));
 
-    await page.goto('/');
-    await page.fill('input[type="text"]', 'admin');
-    await page.fill('input[type="password"]', 'cyberadmin');
-    await page.click('button[type="submit"]');
+    await loginAsAdmin(page);
     await page.waitForTimeout(2000);
 
     console.log("Looking for focus button");
