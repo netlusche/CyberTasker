@@ -143,13 +143,14 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
     });
 
     test('should allow filtering by completed tasks (US-2.6.4)', async ({ page }) => {
+        const uniqueTitle = `Completed Filter Test Directive ${Date.now()}`;
         // First create a new task that we can explicitly complete
         const newTaskInput = page.locator('#new-directive-input');
         await expect(newTaskInput).toBeVisible();
-        await newTaskInput.fill('Completed Filter Test Directive');
+        await newTaskInput.fill(uniqueTitle);
         await newTaskInput.press('Enter');
 
-        const newTask = page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' }).first();
+        const newTask = page.locator('.card-cyber').filter({ hasText: uniqueTitle }).first();
         await expect(newTask).toBeVisible({ timeout: 10000 });
 
         // Mark it as completed
@@ -157,7 +158,7 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
         await statusToggle.click();
 
         // Wait for it to disappear from the default "active" view (BUGFIX 2.7.0: It SHOULD NOT disappear anymore, it should stay visible but grayed out!)
-        await expect(page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' })).toBeVisible({ timeout: 10000 });
+        await expect(page.locator('.card-cyber').filter({ hasText: uniqueTitle })).toBeVisible({ timeout: 10000 });
 
 
         // Now activate the "Completed" filter pill to ensure it ONLY shows completed
@@ -166,7 +167,7 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
         await completedPill.click();
 
         // Wait for the backend response to filter and the completed task to reappear
-        const filteredCompletedTask = page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' }).first();
+        const filteredCompletedTask = page.locator('.card-cyber').filter({ hasText: uniqueTitle }).first();
         await expect(filteredCompletedTask).toBeVisible({ timeout: 10000 });
 
         // Verify the status is indeed completed
@@ -181,14 +182,14 @@ test.describe('Dashboard Quality of Life Features (Release 2.4)', () => {
         await completedPill.click();
 
         // Assert it is still visible because default view shows everything now
-        await expect(page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' })).toBeVisible({ timeout: 10000 });
+        await expect(page.locator('.card-cyber').filter({ hasText: uniqueTitle })).toBeVisible({ timeout: 10000 });
 
 
 
         // Final Cleanup - Use the Purge button instead of the flaky individual delete button
         await purgeBtn.click({ force: true });
         await page.getByTestId('confirm-button').click();
-        await expect(page.locator('.card-cyber').filter({ hasText: 'Completed Filter Test Directive' })).toHaveCount(0, { timeout: 10000 });
+        await expect(page.locator('.card-cyber').filter({ hasText: uniqueTitle })).toHaveCount(0, { timeout: 10000 });
     });
 
     test('should allow filtering by Category and returning to All Categories (Bugfix)', async ({ page }) => {
