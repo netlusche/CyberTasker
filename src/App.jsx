@@ -310,7 +310,7 @@ function App() {
       <div className="fixed inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] cyber-grid"></div>
 
       <div className="max-w-3xl mx-auto relative z-10">
-        <header className={`mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4 ${(isFocusMode || isKanbanMode) ? 'relative z-50 transition-all duration-500' : ''}`}>
+        <header className={`mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4 pt-8 relative ${(isFocusMode || isKanbanMode) ? 'z-50 transition-all duration-500' : ''}`}>
 
           {/* Top-Right Utility Bar (Language + Logout) */}
           {!isFocusMode && !isKanbanMode && (
