@@ -1,4 +1,4 @@
-# CyberTasker v2.7.0 - Technical Reference
+# CyberTasker v2.8.0 - Technical Reference
 
 ![CyberTasker Logo](images/cybertasker_logo_horizontal.png)
 
@@ -28,6 +28,7 @@ The backend relies on a custom front-controller pattern configured via `.htacces
 2.  **Middleware Authorization:** Before reaching controllers, requests pass through `validate_session()` or JWT-equivalent checks. Mutating endpoints (`POST`, `PUT`, `DELETE`) require rigorous **CSRF token** validation.
 3.  **Dispatch:** Controller files handle domain logic. For instance, `route=tasks/list` mapped to `GET` will dispatch to `api/tasks.php` -> `get_tasks()`.
 4.  **Response:** Controllers return normalized JSON structures strictly defined by the API contract.
+5.  **External Syncing:** Certain feeds (e.g. WebCal at `api/calendar_feed.php`) bypass standard session authorization by exclusively validating uniquely generated 64-character `calendar_token` hashes provided in the URL `?token=` parameter.
 
 ## 4. Localization (i18next & Database-Driven)
 

@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. The format is based on the system's aesthetic release history.
 
+# CyberTasker 2.8.0 (The Quality of Life & Workflows Update)
+
+### ✨ Agent Focus & Productivity
+*   **Agent Focus Mode ("Zen Mode")**: Operatives can now filter out all UI noise via the main header toggle. This mode maximizes the highest priority active directive, displaying an isolated "Hero Card" for deep, distraction-free execution.
+*   **Batch Actions Command Bar**: Select multiple directives simultaneously from the dashboard grid. The new persistent Command Bar allows operatives to bulk-complete, bulk-delete, or re-categorize directives instantly.
+*   **Custom Task Statuses**: Break free from binary "OPEN / COMPLETED" states. Operatives can now define custom intermediary workflow states (e.g., "QA", "BLOCKED", "IN PROGRESS") via the Profile Modal and apply them directly inside the Task Card.
+*   **Dossier Notes**: Chronologically log operation updates, blockers, and decisions directly within a Directive's Dossier without altering the original mission parameters.
+
+### 📅 Advanced Organization & Sync
+*   **Live WebCal Comlink (WebCal)**: Generate a dynamic, secure URL feed via the Profile Modal to seamlessly synchronize all active CyberTasker directives directly into Google Calendar, Apple Calendar, or Outlook.
+*   **Default "Work" Categories**: System installations and auto-seeded deployments now intelligently default base directives to a "Work" category, immediately demonstrating the grid's filtering capabilities.
+
+### ⚙️ Automation & Test Robustness
+*   **Robust E2E Seed Data**: The testing seed utility now randomizes category distribution across generated subsets, providing a highly realistic environment for complex dropdown and filter testing.
+
+---
+
 # CyberTasker 2.7.0 (The AI Localization Update)
 
 ### 🌍 Global Deep-Translation Engine

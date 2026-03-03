@@ -9,7 +9,11 @@
     "admin": "ADMIN",
     "profile": "PROFIL",
     "logout": "ABMELDEN",
-    "calendar": "KALENDER"
+    "calendar": "KALENDER",
+    "focus_enter": "FOKUS",
+    "focus_exit": "FOKUS VERLASSEN",
+    "focus_enter_tooltip": "Rufen Sie den Fokusmodus auf",
+    "focus_exit_tooltip": "Verlassen Sie den Fokusmodus"
   },
   "auth": {
     "title": "NETRUNNER-LOGIN",
@@ -143,7 +147,10 @@
       "fail_add_cat": "Kategorie konnte nicht hinzugefügt werden",
       "fail_rename_cat": "Kategorie konnte nicht umbenannt werden",
       "fail_delete_cat": "Kategorie konnte nicht gelöscht werden (Standardkategorie kann nicht gelöscht werden, wenn nur eine übrig bleibt)",
-      "fail_set_default": "Standardkategorie konnte nicht festgelegt werden"
+      "fail_set_default": "Standardkategorie konnte nicht festgelegt werden",
+      "fail_add_status": "Status konnte nicht hinzugefügt werden",
+      "fail_rename_status": "Status konnte nicht umbenannt werden",
+      "fail_delete_status": "Status konnte nicht gelöscht werden"
     },
     "alerts": {
       "security_alert": "SICHERHEITSALARM",
@@ -154,7 +161,19 @@
       "category_purge_confirm": "KATEGORIE-BEREINIGUNG LÖSCHT ALLE ZUGEHÖRIGEN DIREKTIVVEKTOREN. MIT DEM LÖSCHEN FORTFAHREN?",
       "cypher_success": "CHIFFRE AKTUALISIERT",
       "cypher_confirm": "SICHERHEITSBESTÄTIGUNG",
-      "cypher_confirm_msg": "PROTOKOLL ZUR AKTUALISIERUNG DES ZUGANGSSCHLÜSSELS AUSFÜHREN? DIESE AKTION ERFORDERT EINE NEUE AUTHENTIFIZIERUNG."
+      "cypher_confirm_msg": "PROTOKOLL ZUR AKTUALISIERUNG DES ZUGANGSSCHLÜSSELS AUSFÜHREN? DIESE AKTION ERFORDERT EINE NEUE AUTHENTIFIZIERUNG.",
+      "status_purge": "STATUSBEREITUNG",
+      "status_purge_confirm": "Durch die Statusbereinigung werden alle zugehörigen Richtlinienstatus ungültig. Mit dem Löschen fortfahren?",
+      "webcal_regenerate_confirm": "Sind Sie sicher? Dies entzieht allen aktiven Feeds den Zugriff, bis Sie diese mit dem neuen Link aktualisieren."
+    },
+    "webcal": {
+      "title": "WEBCAL COM-LINK",
+      "description": "Abonnieren Sie einen aktiven Feed Ihrer offenen Direktiven in jeder kompatiblen Kalenderanwendung.",
+      "copied": "FEED-URL KOPIERT",
+      "regenerate": "LINK NEU GENERIEREN / ZUGANG ENTZIEHEN",
+      "generate": "WEBCAL-LINK GENERIEREN",
+      "generated_success": "NEUER WEBCAL-LINK GENERIERT",
+      "copy_tooltip": "In die Zwischenablage kopieren"
     },
     "categories": {
       "protocols": "KATEGORIE-PROTOKOLLE",
@@ -205,7 +224,16 @@
       "warning": "Um diese Identität zu terminieren und alle zugehörigen Direktiven zu löschen, geben Sie Ihr aktuelles Passwort unten ein.",
       "confirm_placeholder": "Passwort bestätigen",
       "terminate_btn": "TERMINIEREN"
-    }
+    },
+    "task_statuses": {
+      "title": "AUFGABENSTATUSPROTOKOLLE",
+      "system": "SYSTEM",
+      "rename": "Umbenennen",
+      "delete": "Löschen",
+      "new_status_placeholder": "NEUER STATUSNAME",
+      "add": "HINZUFÜGEN"
+    },
+    "task_statuses_tab": "STATUS"
   },
   "tasks": {
     "duplicate": "DUPLIZIEREN",
@@ -264,7 +292,14 @@
       "add_uplink": "+ UPLINK HINZUFÜGEN",
       "files": "DATEIEN",
       "attach_file": "+ DATEI ANHÄNGEN",
-      "uploading_evidence": "[ BEWEISE HOCHLADEN... ]"
+      "uploading_evidence": "[ BEWEISE HOCHLADEN... ]",
+      "notes_title": "NOTIZEN / PROTOKOLLE",
+      "empty_notes": "Keine Geheimdienstprotokolle verfügbar. Initiieren Sie einen neuen Protokolleintrag.",
+      "edit_note": "Notiz bearbeiten",
+      "delete_note": "Notiz löschen",
+      "new_note_placeholder": "Neues Geheimdienstprotokoll übermitteln...",
+      "processing_log": "[ÜBERTRAGEN...]",
+      "add_note": "+ PROTOKOLL ANHÄNGEN"
     },
     "filters": {
       "pills": {
@@ -278,7 +313,28 @@
         "reset_tooltip": "Setzt alle aktiven Filter zurück"
       }
     },
-    "recurrence_cycle": "Wiederholung"
+    "recurrence_cycle": "Wiederholung",
+    "status_open": "OFFEN",
+    "status_in_progress": "IM GANGE",
+    "status_under_review": "IN ÜBERPRÜFUNG",
+    "status_completed": "VOLLENDET",
+    "focus_all_caught_up": "Alles aufgeholt",
+    "focus_no_urgent": "Aus heutiger Sicht sind keine dringenden Weisungen ausstehend.",
+    "focus_active": "[ FOKUSMODUS AKTIV ]",
+    "focus_executing": "AUSFÜHREN...",
+    "focus_skip": "ÜBERSPRINGEN / WEITER",
+    "focus_complete_tooltip": "Richtlinie als abgeschlossen markieren",
+    "focus_skip_tooltip": "Fahren Sie mit der nächsten dringenden Anweisung fort",
+    "focus_no_telemetry": "[KEINE ZUSÄTZLICHE TELEMETRIE]",
+    "batch_actions": {
+      "selected": "{{count}} DIREKTIVE(N) AUSGEWÄHLT",
+      "complete_all": "ALLE ABSCHLIESSEN",
+      "delete_all": "ALLE LÖSCHEN",
+      "delete_confirm": "WARNUNG: DIES WIRD ALLE AUSGEWÄHLTEN DIREKTIVEN DAUERHAFT LÖSCHEN. FORTFAHREN?",
+      "clear_selection": "AUSWAHL AUFHEBEN",
+      "complete_all_tooltip": "Alle ausgewählten Direktiven als ABGESCHLOSSEN markieren",
+      "delete_all_tooltip": "Alle ausgewählten Direktiven dauerhaft LÖSCHEN"
+    }
   },
   "dashboard": {
     "operator_level": "OPERATOR-LEVEL",

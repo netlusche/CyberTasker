@@ -1,3 +1,31 @@
+# CyberTasker Server Update Instructions (v2.7.0 → v2.8.0)
+
+These instructions guide you through the update to **v2.8.0** (The Quality of Life & Workflows Update).
+
+## 1. Backup (MANDATORY)
+- **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory.
+
+## 2. Deploy Files
+1.  Upload the contents of the `dist` folder to your server.
+    > [!CAUTION]
+    > **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply drag the visible files to your FTP client, the `.htaccess` files **will be left behind**, exposing your database and uploads to the public web! 
+    > Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
+2.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
+
+## 3. Database Update (CRITICAL)
+This update introduces new schemas for custom task statuses, dossier notes, and the WebCal integration (`users.calendar_token`, `task_notes`, `user_task_statuses`).
+1.  Navigate to your installer URL: `https://yourdomain.com/tasks/api/install.php`
+2.  The script will automatically detect the missing tables/columns (including `calendar_token` within the `users` table) and append them to your active SQLite or MySQL database.
+3.  **Verification**: Ensure the "Database Schema Updated" messages appear indicating the new extensions were attached.
+4.  **Security Note**: Delete `api/install.php` and `install.html` after verification.
+
+## 4. Verify Update
+1.  **Agent Focus Mode**: Log in and verify the new `FOCUS` toggle in the main header.
+2.  **WebCal Feed**: Open your Profile Modal and verify the presence of the "WebCal Comlink" section.
+3.  **Custom Statuses**: On the Profile Modal, verify the "Task Statuses" tab exists and allows creation of custom workflows.
+
+---
+
 # CyberTasker Server Update Instructions (v2.6.1 → v2.7.0)
 
 These instructions guide you through the update to **v2.7.0** (The AI Localization Update).

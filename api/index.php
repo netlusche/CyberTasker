@@ -33,6 +33,8 @@ require_once __DIR__ . '/controllers/TaskController.php';
 require_once __DIR__ . '/controllers/AdminController.php';
 require_once __DIR__ . '/controllers/CategoryController.php';
 require_once __DIR__ . '/controllers/UserController.php';
+require_once __DIR__ . '/controllers/TaskStatusController.php';
+require_once __DIR__ . '/controllers/TaskNoteController.php';
 
 $router = new Router();
 
@@ -62,12 +64,21 @@ $router->post('auth/resend_email_2fa', [AuthController::class , 'resendEmail2fa'
 // --- Task Routes ---
 $router->get('tasks', [TaskController::class , 'index']);
 $router->get('tasks/calendar', [TaskController::class , 'calendar']);
+$router->get('calendar/feed', [TaskController::class , 'calendarFeed']);
 $router->get('tasks/download', [TaskController::class , 'downloadFile']);
 $router->post('tasks', [TaskController::class , 'store']);
 $router->post('tasks/upload', [TaskController::class , 'uploadFiles']);
 $router->put('tasks', [TaskController::class , 'update']);
+$router->put('tasks/bulk_update', [TaskController::class , 'bulkUpdate']);
 $router->delete('tasks', [TaskController::class , 'destroy']);
+$router->delete('tasks/bulk_delete', [TaskController::class , 'bulkDelete']);
 $router->delete('tasks/bulk_delete_completed', [TaskController::class , 'bulkDeleteCompleted']);
+
+// --- Task Notes Routes ---
+$router->get('tasks/notes', [TaskNoteController::class , 'index']);
+$router->post('tasks/notes', [TaskNoteController::class , 'store']);
+$router->put('tasks/notes', [TaskNoteController::class , 'update']);
+$router->delete('tasks/notes', [TaskNoteController::class , 'destroy']);
 
 // --- Admin Routes ---
 $router->get('admin/users', [AdminController::class , 'listUsers']);
@@ -88,8 +99,17 @@ $router->post('categories/set_default', [CategoryController::class , 'setDefault
 $router->put('categories', [CategoryController::class , 'update']);
 $router->delete('categories', [CategoryController::class , 'destroy']);
 
+// --- Task Status Routes ---
+$router->get('task_statuses', [TaskStatusController::class , 'index']);
+$router->post('task_statuses', [TaskStatusController::class , 'store']);
+$router->post('task_statuses/reorder', [TaskStatusController::class , 'reorder']);
+$router->put('task_statuses', [TaskStatusController::class , 'update']);
+$router->delete('task_statuses', [TaskStatusController::class , 'destroy']);
+
 // --- User Routes ---
 $router->get('user/stats', [UserController::class , 'getStats']);
+$router->get('user/calendar_token', [UserController::class , 'getCalendarToken']);
+$router->post('user/calendar_token', [UserController::class , 'generateCalendarToken']);
 
 // --- Dev Utilities --
 $router->post('dev/toggle_mail_logging', [AdminController::class , 'toggleMailLogging']);
@@ -107,7 +127,8 @@ $csrfExemptRoutes = [
     'auth/reset_password',
     'auth/verify_2fa',
     'auth/resend_email_2fa',
-    'dev/toggle_mail_logging'
+    'dev/toggle_mail_logging',
+    'calendar/feed'
 ];
 
 if (!in_array($route, $csrfExemptRoutes)) {

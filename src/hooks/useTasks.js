@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { apiFetch } from '../utils/api';
 import { triggerNeonConfetti } from '../utils/confetti';
 import { useTheme } from '../utils/ThemeContext';
@@ -8,6 +8,9 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
     const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1, totalTasks: 0 });
     const [categoryRefreshTrigger, setCategoryRefreshTrigger] = useState(0);
     const [categories, setCategories] = useState([]);
+    const [taskStatuses, setTaskStatuses] = useState([]);
+    const [statusRefreshTrigger, setStatusRefreshTrigger] = useState(0);
+    const [delayedRefresh, setDelayedRefresh] = useState(0);
     const { theme } = useTheme();
 
     const [filters, setFilters] = useState({
@@ -19,6 +22,7 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
     });
 
     const refreshCategories = useCallback(() => setCategoryRefreshTrigger(prev => prev + 1), []);
+    const refreshTaskStatuses = useCallback(() => setStatusRefreshTrigger(prev => prev + 1), []);
 
     const fetchCategories = useCallback(async () => {
         try {
@@ -31,6 +35,20 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
             }
         } catch (err) {
             console.error("Failed to fetch categories", err);
+        }
+    }, []);
+
+    const fetchTaskStatuses = useCallback(async () => {
+        try {
+            const res = await apiFetch('api/index.php?route=task_statuses');
+            if (res.ok) {
+                const data = await res.json();
+                if (Array.isArray(data)) {
+                    setTaskStatuses(data);
+                }
+            }
+        } catch (err) {
+            console.error("Failed to fetch task statuses", err);
         }
     }, []);
 
@@ -66,6 +84,33 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
         }
     }, [user, filters, onUnauthorized]);
 
+    const fetchAllOpenTasks = useCallback(async () => {
+        if (!user) return [];
+        try {
+            // specifically ask for limit=1000 and status=0 (open) to bypass dashboard pagination
+            const params = new URLSearchParams({
+                page: 1,
+                limit: 1000,
+                status: '0'
+            });
+
+            const res = await apiFetch(`api/index.php?route=tasks&${params.toString()}`);
+            if (res.status === 401) return [];
+
+            const responseData = await res.json();
+            return responseData.data || (Array.isArray(responseData) ? responseData : []);
+        } catch (err) {
+            console.error("Failed to fetch all open tasks for focus mode", err);
+            return [];
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (delayedRefresh > 0) {
+            fetchTasks(pagination.currentPage);
+        }
+    }, [delayedRefresh, fetchTasks, pagination.currentPage]);
+
     const handleAddTask = useCallback(async (newTask) => {
         try {
             const res = await apiFetch('api/index.php?route=tasks', {
@@ -85,20 +130,21 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
     const handleToggleStatus = useCallback(async (task) => {
         try {
             const newStatus = task.status == 1 ? 0 : 1;
+            const newWorkflowStatus = newStatus === 1 ? 'completed' : 'open';
 
             setTasks(prev => prev.map(t =>
-                t.id === task.id ? { ...t, status: newStatus } : t
+                t.id == task.id ? { ...t, status: newStatus, workflow_status: newWorkflowStatus } : t
             ));
 
             const res = await apiFetch('api/index.php?route=tasks', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: task.id, status: newStatus }),
+                body: JSON.stringify({ id: task.id, status: newStatus, workflow_status: newWorkflowStatus }),
             });
 
             if (res.ok) {
                 setTimeout(() => {
-                    fetchTasks(pagination.currentPage);
+                    setDelayedRefresh(prev => prev + 1);
                 }, 2000);
 
                 if (newStatus === 1) {
@@ -118,9 +164,19 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
 
     const handleUpdateTask = useCallback(async (task, updates) => {
         try {
+            // Optimistically update local state
             const body = typeof updates === 'string'
                 ? { id: task.id, title: updates }
                 : { id: task.id, ...updates };
+
+            setTasks(prev => prev.map(t =>
+                t.id == task.id ? { ...t, ...body } : t
+            ));
+
+            // If it's a UI-only update like a subquery count trigger, return early
+            if (updates && typeof updates === 'object' && Object.keys(updates).length === 1 && updates.notes_count !== undefined) {
+                return true;
+            }
 
             const res = await apiFetch('api/index.php?route=tasks', {
                 method: 'PUT',
@@ -163,7 +219,12 @@ export function useTasks(user, fetchUserStats, onUnauthorized) {
         categoryRefreshTrigger,
         refreshCategories,
         fetchCategories,
+        taskStatuses,
+        statusRefreshTrigger,
+        refreshTaskStatuses,
+        fetchTaskStatuses,
         fetchTasks,
+        fetchAllOpenTasks,
         handleAddTask,
         handleToggleStatus,
         handleUpdateTask,

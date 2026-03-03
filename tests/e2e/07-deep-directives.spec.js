@@ -31,7 +31,7 @@ test.describe('Deep Directives & Dossier Flow', () => {
 
         // 4. Add Description (Markdown) - Verify Multiline
         const description = '#Überschrift\n## SECURITY PROTOCOL\n**Level 5** clearance required. *Confidential*.';
-        const textarea = page.locator('textarea');
+        const textarea = page.locator('textarea[placeholder*="description"]');
         await expect(textarea).toBeVisible();
         await textarea.fill('First Line');
         await textarea.press('Enter');
@@ -44,7 +44,7 @@ test.describe('Deep Directives & Dossier Flow', () => {
 
         // 5. Save using the checkmark button
         // 5. Save using the checkmark button
-        await page.locator('.relative.group').filter({ has: page.locator('textarea') }).locator('button[data-tooltip-content="Save"]').click({ force: true });
+        await page.locator('.relative.group').filter({ has: page.locator('textarea[placeholder*="description"]') }).locator('button[data-tooltip-content="Save"]').click({ force: true });
 
         // Wait for it to go back to read mode (textarea should disappear)
         await expect(textarea).not.toBeVisible({ timeout: 5000 });
@@ -52,7 +52,7 @@ test.describe('Deep Directives & Dossier Flow', () => {
         // 5a. Verify Cancel button
         await page.click('.markdown-body', { force: true }); // Click to edit again
         await textarea.fill('This should be discarded');
-        await page.locator('.relative.group').filter({ has: page.locator('textarea') }).locator('button[data-tooltip-content="Cancel"]').click({ force: true });
+        await page.locator('.relative.group').filter({ has: page.locator('textarea[placeholder*="description"]') }).locator('button[data-tooltip-content="Cancel"]').click({ force: true });
         await expect(textarea).not.toBeVisible();
         await expect(page.locator('.markdown-body')).toContainText(/Level 5/i);
         await expect(page.locator('.markdown-body')).not.toContainText(/discarded/i);

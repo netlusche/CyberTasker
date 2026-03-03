@@ -445,3 +445,33 @@ Every execution run generates a `test_report.md` tracking pass/fail rates, backe
 - **Validation**:
   - The UI securely submits the custom attributes to the backend installer.
   - The API initializes the `users` table with the requested Codename (e.g., `CyberBoss`) acting as the Master Administrator, thereby eliminating exposure from legacy default identities.
+
+## 📅 test-suite-17: Release 2.8 Features
+
+### TS-17.1: Default Category Seed [AUTOMATED]
+- **Scenario**: Run `install.php` or `seed_test_data.php`.
+- **Validation**: Generated users and initial directives successfully belong to the automatically created "Work" category or random subsets as defined.
+
+### TS-17.2: Custom Task Statuses [MANUAL]
+- **Scenario**: Open the Profile Modal, navigate to "Task Statuses", and create a new status called "QA". Assign this status to a directive on the dashboard.
+- **Validation**: 
+  - Status is saved and persists after reload.
+  - Applying the status to a task updates the UI badge without overriding the main "Completed" binary state erroneously.
+
+### TS-17.3: Agent Focus Mode [AUTOMATED]
+- **Scenario**: Toggle the `FOCUS` button in the main header.
+- **Validation**:
+  - The UI strips away secondary elements and displays only the Hero Card with the most urgent task.
+  - Completing or skipping the task correctly loads the next priority item.
+
+### TS-17.4: Batch Actions [MANUAL]
+- **Scenario**: Select multiple tasks via checkboxes on the dashboard. Click "Complete All" in the Command Bar.
+- **Validation**:
+  - The Command Bar accurately displays the count of selected directives.
+  - The bulk completion successfully updates all selected tasks in the database and clears them from the active view.
+
+### TS-17.5: WebCal Sync Validation [MANUAL]
+- **Scenario**: Generate a WebCal Comlink in the Profile Modal and copy the URL. Fetch the URL directly.
+- **Validation**:
+  - The `calendar_token` is generated securely.
+  - The API endpoint returns a perfectly formatted `text/calendar` iCal stream containing the operative's active directives.

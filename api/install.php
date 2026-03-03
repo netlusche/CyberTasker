@@ -183,12 +183,12 @@ try {
         last_login TIMESTAMP NULL DEFAULT NULL,
         theme VARCHAR(20) DEFAULT 'cyberpunk',
         language VARCHAR(10) DEFAULT 'en',
+        calendar_token VARCHAR(64) UNIQUE DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
     $pdo->exec($sqlUsers);
     echo "Table 'users' check/create complete.<br>\n";
 
-    // Add columns if missing (Schema Evolution)
     $newColumns = [
         'role' => "VARCHAR(20) DEFAULT 'user'",
         'two_factor_enabled' => "BOOLEAN DEFAULT 0",
@@ -202,7 +202,8 @@ try {
         'reset_expires' => "DATETIME DEFAULT NULL",
         'last_login' => "TIMESTAMP NULL DEFAULT NULL",
         'theme' => "VARCHAR(20) DEFAULT 'cyberpunk'",
-        'language' => "VARCHAR(10) DEFAULT 'en'"
+        'language' => "VARCHAR(10) DEFAULT 'en'",
+        'calendar_token' => "VARCHAR(64) DEFAULT NULL"
     ];
 
     foreach ($newColumns as $col => $def) {
@@ -210,6 +211,12 @@ try {
             $pdo->exec("ALTER TABLE users ADD COLUMN $col $def");
             echo "Column '$col' added to users.<br>\n";
         }
+    }
+
+    try {
+        $pdo->exec("CREATE UNIQUE INDEX IF NOT EXISTS idx_users_calendar_token ON users(calendar_token) WHERE calendar_token IS NOT NULL");
+    } catch (PDOException $e) {
+        // Ignore if unsupported or already exists
     }
 
     // --- TASKS TABLE ---
@@ -228,7 +235,8 @@ try {
         subroutines_json TEXT NULL,
         recurrence_interval VARCHAR(20) DEFAULT NULL,
         recurrence_end_date DATETIME DEFAULT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        workflow_status VARCHAR(50) DEFAULT 'open'
     )";
     $pdo->exec($sqlTasks);
     echo "Table 'tasks' check/create complete.<br>\n";
@@ -267,6 +275,46 @@ try {
     if (!columnExists($pdo, 'tasks', 'recurrence_end_date')) {
         $pdo->exec("ALTER TABLE tasks ADD COLUMN recurrence_end_date DATETIME DEFAULT NULL");
         echo "Column 'recurrence_end_date' added to tasks.<br>\n";
+    }
+
+    $workflowMigrationNeeded = false;
+    if (!columnExists($pdo, 'tasks', 'workflow_status')) {
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN workflow_status VARCHAR(50) DEFAULT 'open'");
+        echo "Column 'workflow_status' added to tasks.<br>\n";
+        $workflowMigrationNeeded = true;
+    }
+
+    // --- TASK NOTES TABLE ---
+    $sqlTaskNotes = "CREATE TABLE IF NOT EXISTS task_notes (
+        id $autoIncrement,
+        task_id INT NOT NULL,
+        user_id INT NOT NULL,
+        note_text TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )";
+    $pdo->exec($sqlTaskNotes);
+    echo "Table 'task_notes' check/create complete.<br>\n";
+
+    // --- USER TASK STATUSES TABLE ---
+    $sqlTaskStatuses = "CREATE TABLE IF NOT EXISTS user_task_statuses (
+        id $autoIncrement,
+        user_id INT NOT NULL,
+        name VARCHAR(50) NOT NULL,
+        is_system BOOLEAN DEFAULT 0,
+        sort_order INT DEFAULT 0,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )";
+    $pdo->exec($sqlTaskStatuses);
+    echo "Table 'user_task_statuses' check/create complete.<br>\n";
+
+    // Migrate existing tasks if the column was just added
+    if ($workflowMigrationNeeded) {
+        // Set completed tasks to workflow_status = 'completed'
+        $pdo->exec("UPDATE tasks SET workflow_status = 'completed' WHERE status = 1");
+        echo "Migrated existing tasks to new workflow_status field.<br>\n";
     }
 
     // --- USER CATEGORIES TABLE ---
@@ -337,6 +385,13 @@ try {
         $stmtStats = $pdo->prepare("INSERT INTO user_stats (id, total_points, current_level, badges_json) VALUES (?, 0, 1, '[]')");
         $stmtStats->execute([$adminId]);
 
+        // Initialize Default Statuses
+        $stmtStatus = $pdo->prepare("INSERT INTO user_task_statuses (user_id, name, is_system, sort_order) VALUES (?, ?, ?, ?)");
+        $stmtStatus->execute([$adminId, 'open', 1, 1]);
+        $stmtStatus->execute([$adminId, 'in progress', 0, 2]);
+        $stmtStatus->execute([$adminId, 'under review', 0, 3]);
+        $stmtStatus->execute([$adminId, 'completed', 1, 4]);
+
         echo "Master Admin account '$adminUsername' created.<br>\n";
 
         // --- INJECT SECURITY DIRECTIVES ---
@@ -362,15 +417,14 @@ try {
                     ]]);
             }
         }
-
         $directives = [
-            ['i18n:initial_tasks.enforce_2fa_title', 'Security', 1, 15, 'i18n:initial_tasks.enforce_2fa_desc'],
-            ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Security', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
-            ['PURGE INSTALLER CORE: Terminate \'install.php\' from the server grid immediately.', 'Security', 1, 10, 'Leaving the installation script active on a production grid allows unauthorized entities to re-initialize the database, potentially exposing or destroying all operational data. Delete the file immediately.'],
-            ['ACTIVATE NEURAL ENCRYPTION: Navigate to Admin Console and toggle \'STRICT_PASSWORD_POLICY\' to Level 1.', 'Security', 1, 10, 'Activating the strict password policy ensures all new operatives utilize cryptographic-grade access keys, preventing brute-force neural intrusions. Go to the Admin Panel and enforce this setting.'],
-            ['SCRUB RESIDUAL TRACES: Remove \'install_test_user.php\' and other leftover test nodes.', 'Security', 2, 5, 'Clean up any leftover testing scripts that were used to validate the system deployment. These unmonitored endpoints are prime vectors for exploitation.'],
-            ['CALIBRATE NEURAL LINK: Perform a System Reset to optimize your ocular data stream.', 'System', 3, 5, 'The initial boot sequence may leave fragmented data packets in your visual buffer. A quick system refresh will align your UI components correctly and ensure everything is loaded cleanly into RAM.'],
-            ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'System', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
+            ['i18n:initial_tasks.enforce_2fa_title', 'Work', 1, 15, 'i18n:initial_tasks.enforce_2fa_desc'],
+            ['OVERRIDE DEFAULT ACCESS: Update Access Key or initialize new Operative ID and terminate \'admin\' account.', 'Work', 1, 15, 'CRITICAL: The default administrator credentials represent a severe security vulnerability. You must immediately provision a personalized operative account with elevated privileges, or change the default access key to a high-entropy passphrase.'],
+            ['PURGE INSTALLER CORE: Terminate \'install.php\' from the server grid immediately.', 'Work', 1, 10, 'Leaving the installation script active on a production grid allows unauthorized entities to re-initialize the database, potentially exposing or destroying all operational data. Delete the file immediately.'],
+            ['ACTIVATE NEURAL ENCRYPTION: Navigate to Admin Console and toggle \'STRICT_PASSWORD_POLICY\' to Level 1.', 'Work', 1, 10, 'Activating the strict password policy ensures all new operatives utilize cryptographic-grade access keys, preventing brute-force neural intrusions. Go to the Admin Panel and enforce this setting.'],
+            ['SCRUB RESIDUAL TRACES: Remove \'install_test_user.php\' and other leftover test nodes.', 'Work', 2, 5, 'Clean up any leftover testing scripts that were used to validate the system deployment. These unmonitored endpoints are prime vectors for exploitation.'],
+            ['CALIBRATE NEURAL LINK: Perform a System Reset to optimize your ocular data stream.', 'Work', 3, 5, 'The initial boot sequence may leave fragmented data packets in your visual buffer. A quick system refresh will align your UI components correctly and ensure everything is loaded cleanly into RAM.'],
+            ['UPGRADE COFFEE PROTOCOL: Ensure Operative Fuel levels are at maximum stability.', 'Work', 3, 5, 'The most critical variable in any system architecture is the biological component. Maintain optimal hydration and caffeine levels to ensure peak performance.']
         ];
 
         $stmtTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, points_value, files, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -416,7 +470,7 @@ try {
     }
 
     echo "<h4>Installation/Update Final Verification:</h4>";
-    $tables = ['users', 'tasks', 'user_categories', 'user_stats', 'system_settings'];
+    $tables = ['users', 'tasks', 'user_categories', 'user_task_statuses', 'user_stats', 'system_settings'];
     foreach ($tables as $t) {
         $count = $pdo->query("SELECT COUNT(*) FROM $t")->fetchColumn();
         echo "Table '$t' row count: <b>$count</b><br>\n";

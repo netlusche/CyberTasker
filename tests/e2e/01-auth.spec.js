@@ -62,5 +62,9 @@ test.describe('TS-01: Identity & Security Hardening', () => {
         const cookies = await page.context().cookies();
         const phpSession = cookies.find(c => c.name === 'PHPSESSID');
         expect(phpSession).toBeDefined();
+
+        // US-2.8.1: Verify that seeded default directives use the "Work" category
+        const workCategoryBadge = page.locator('.card-cyber .font-mono.uppercase.tracking-wider').filter({ hasText: 'Work' }).first();
+        await expect(workCategoryBadge).toBeVisible({ timeout: 10000 });
     });
 });
