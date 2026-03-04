@@ -13,7 +13,10 @@
         "focus_enter": "SE CONCENTRER",
         "focus_exit": "QUITTER LE FOCUS",
         "focus_enter_tooltip": "Passer en mode mise au point",
-        "focus_exit_tooltip": "Quitter le mode de mise au point"
+        "focus_exit_tooltip": "Quitter le mode de mise au point",
+        "kanban_enter": "Passer en mode Kanban",
+        "exit_kanban": "QUITTER LE KANBAN",
+        "kanban": "KANBAN"
     },
     "auth": {
         "title": "CONNEXION NETRUNNER",
@@ -334,7 +337,8 @@
             "clear_selection": "EFFACER LA SÉLECTION",
             "complete_all_tooltip": "Marquer toutes les directives sélectionnées comme TERMINÉES",
             "delete_all_tooltip": "SUPPRIMER définitivement toutes les directives sélectionnées"
-        }
+        },
+        "drop_zone": "DÉPOSER LES DIRECTIVES ICI"
     },
     "dashboard": {
         "operator_level": "NIVEAU D'OPÉRATEUR",
@@ -495,6 +499,26 @@
                 "item1_text": "La terminaison de votre compte terminal est irréversible. Toutes les directives, archives et liaisons neuronales seront effacées.",
                 "item2_label": "AUTHENTIFICATION",
                 "item2_text": "Pour procéder, vous devez présenter votre Clé d'Accès actuelle comme preuve d'identité."
+            },
+            "focus_mode": {
+                "title": "// DÉROGATION DE FOCUS [Mode Zen]",
+                "item1_label": "ISOLATION SENSORIELLE",
+                "item1_text": "Activez le mode FOCUS pour supprimer toute télémétrie secondaire. Le système isolera de force une seule directive critique sur votre HUD.",
+                "item2_label": "SÉQUENCE D'EXÉCUTION",
+                "item2_text": "Les directives sont transmises à votre cortex visuel une par une, priorisées automatiquement par urgence et poids neural (Priorité + Échéance).",
+                "item3_label": "CONTOURNEMENT TACTIQUE",
+                "item3_text": "Si une directive ne peut être résolue immédiatement, utilisez la fonction SAUTER pour écraser le tampon et passer à la tâche urgente suivante."
+            },
+            "kanban_mode": {
+                "title": "// GRILLE TACTIQUE KANBAN",
+                "item1_label": "VISUALISATION DU FLUX DE TRAVAIL",
+                "item1_text": "Déployez l'interface KANBAN pour une vue macro de toutes les opérations actives et en attente.",
+                "item2_label": "RÉAFFECTATION PAR GLISSER-DÉPOSER",
+                "item2_text": "Faites glisser physiquement les directives entre les colonnes pour mettre à jour leur statut opérationnel en temps réel.",
+                "item3_label": "PIPELINES PERSONNALISÉES",
+                "item3_text": "Accédez à votre Dossier d'Opérateur (Profil) pour configurer des statuts de flux de travail personnalisés (par exemple, EN DÉVELOPPEMENT, QA) afin de correspondre à vos exigences de mission spécifiques.",
+                "item4_label": "TRI OPTIMISÉ",
+                "item4_text": "Les cartes affichent des badges de catégorie, des indicateurs de priorité et des gains de points d'expérience (XP) pour faciliter les décisions de tri rapide."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Page Suivante",
         "last_page": "Dernière Page",
         "toggle_2fa": "Activer/Désactiver l'Application 2FA",
-        "toggle_strict_pwd": "Activer/Désactiver la Politique de Mot de Passe Stricte"
+        "toggle_strict_pwd": "Activer/Désactiver la Politique de Mot de Passe Stricte",
+        "exit_kanban": "Quitter le mode Kanban"
     },
     "quotes": [
         "Plus vous devenez silencieux, plus vous pouvez entendre.",

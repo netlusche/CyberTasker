@@ -152,15 +152,21 @@ foreach ($targetCategories as $cat) {
 }
 
 // 1.2 Inject 50 dummy directives for Admin_Alpha pagination test
+$stmtAdminTask = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, status, workflow_status, points_value, due_date, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
 echo "   [+] Injecting 50 directives for Admin_Alpha pagination test...\n";
 for ($i = 1; $i <= 50; $i++) {
     $title = "Admin Pagination Directive No. " . str_pad($i, 2, '0', STR_PAD_LEFT);
     $priority = ($i % 3) + 1;
-    $status = 0;
     $category = $targetCategories[array_rand($targetCategories)];
     $points = 10;
     $dueDate = date('Y-m-d H:i:s', strtotime("+" . ($i % 10) . " days"));
-    $stmtTask->execute([$adminId, $title, $category, $priority, $points, null, 'Dummy padding task for pagination tests...']);
+
+    $statusOptions = ['open', 'open', 'in progress', 'in progress', 'under review', 'completed'];
+    $workflowStatus = $statusOptions[array_rand($statusOptions)];
+    $status = ($workflowStatus === 'completed') ? 1 : 0;
+
+    $stmtAdminTask->execute([$adminId, $title, $category, $priority, $status, $workflowStatus, $points, $dueDate, 'Dummy padding task for pagination tests...']);
 }
 
 echo "   [V] Initial Admin security directives deployed.\n\n";
@@ -198,7 +204,13 @@ for ($i = 1; $i <= 55; $i++) {
     $points = 10;
 
     $dueDate = date('Y-m-d H:i:s', strtotime("+" . ($i % 10) . " days"));
-    $workflowStatus = $status === 1 ? 'completed' : 'open';
+
+    // Distribute among default statuses configured in UserRepository.php: open, in progress, under review, completed
+    $statusOptions = ['open', 'open', 'in progress', 'in progress', 'under review', 'completed'];
+    $workflowStatus = $statusOptions[array_rand($statusOptions)];
+
+    // Status column (legacy 0/1) should be 1 if it's completed, 0 otherwise
+    $status = ($workflowStatus === 'completed') ? 1 : 0;
 
     $stmt = $pdo->prepare("INSERT INTO tasks (user_id, title, category, priority, status, workflow_status, points_value, due_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([$betaId, $title, $category, $priority, $status, $workflowStatus, $points, $dueDate]);

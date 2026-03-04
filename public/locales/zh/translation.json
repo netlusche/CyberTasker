@@ -13,7 +13,10 @@
         "focus_enter": "重点",
         "focus_exit": "退出焦点",
         "focus_enter_tooltip": "进入对焦模式",
-        "focus_exit_tooltip": "退出对焦模式"
+        "focus_exit_tooltip": "退出对焦模式",
+        "kanban_enter": "进入看板模式",
+        "exit_kanban": "退出看板",
+        "kanban": "看板"
     },
     "auth": {
         "title": "网络跑者登录",
@@ -334,7 +337,8 @@
             "clear_selection": "清除选择",
             "complete_all_tooltip": "将所有选定的指令标记为已完成",
             "delete_all_tooltip": "永久删除所有选定的指令"
-        }
+        },
+        "drop_zone": "将指令拖放至此"
     },
     "dashboard": {
         "operator_level": "操作员等级",
@@ -495,6 +499,26 @@
                 "item1_text": "终止您的终端账户是不可逆的。所有指令、档案和神经链接都将被清除。",
                 "item2_label": "认证",
                 "item2_text": "要继续，您必须出示您的当前访问密钥作为身份证明。"
+            },
+            "focus_mode": {
+                "title": "// 专注模式覆盖 [禅模式]",
+                "item1_label": "感官隔离",
+                "item1_text": "启用专注模式以抑制所有次要遥测数据。系统将强制在您的HUD上隔离一条关键指令。",
+                "item2_label": "执行序列",
+                "item2_text": "指令将逐一馈送至您的视觉皮层，根据紧急程度和神经权重（优先级 + 截止日期）自动排序。",
+                "item3_label": "战术绕过",
+                "item3_text": "如果指令无法立即解决，请使用跳过功能覆盖缓冲区并切换到下一个紧急任务。"
+            },
+            "kanban_mode": {
+                "title": "// 看板战术网格",
+                "item1_label": "工作流可视化",
+                "item1_text": "部署看板界面，以宏观视角查看所有活动和待处理的操作。",
+                "item2_label": "拖放重新分配",
+                "item2_text": "在列之间拖动指令，以实时更新其操作状态。",
+                "item3_label": "自定义流程",
+                "item3_text": "访问您的操作员档案（个人资料），配置自定义工作流状态（例如，开发中，质检），以匹配您的特定任务要求。",
+                "item4_label": "优化分类",
+                "item4_text": "卡片显示类别徽章、优先级指示器和经验值（XP）产出，以协助快速分类决策。"
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "下一页",
         "last_page": "最后一页",
         "toggle_2fa": "切换强制2FA",
-        "toggle_strict_pwd": "切换严格密码策略"
+        "toggle_strict_pwd": "切换严格密码策略",
+        "exit_kanban": "退出看板模式"
     },
     "quotes": [
         "你越安静，能听到的越多。",

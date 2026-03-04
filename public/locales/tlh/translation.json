@@ -13,7 +13,10 @@
         "focus_enter": "YIBUS",
         "focus_exit": "BUS YIMEV",
         "focus_enter_tooltip": "buS Qaw yI'el",
-        "focus_exit_tooltip": "buS Qaw yImev"
+        "focus_exit_tooltip": "buS Qaw yImev",
+        "kanban_enter": "qanban yIghang",
+        "exit_kanban": "QANBAN YIMEV",
+        "kanban": "qanban"
     },
     "auth": {
         "title": "GHOM'EL QAW",
@@ -334,7 +337,8 @@
             "clear_selection": "CHOQ YITEQ",
             "complete_all_tooltip": "hoch choq yita'",
             "delete_all_tooltip": "hoch choq yiqaw'"
-        }
+        },
+        "drop_zone": "NADEV GHUN YILAN"
     },
     "dashboard": {
         "operator_level": "VANGWI' TLHOB",
@@ -495,6 +499,26 @@
                 "item1_text": "Tlho' Qaw Qo' Qaw tlho' Qaw. Vangmey, archives, 'ej neural links Qaw tlho' Qaw.",
                 "item2_label": "QAW'A'",
                 "item2_text": "Qaw tlhe' Qaw tlho' Qaw."
+            },
+            "focus_mode": {
+                "title": "// YIBUS QAW [Focus Override]",
+                "item1_label": "BUS QAW [Isolation]",
+                "item1_text": "YIBUS Qaw tlho' Qaw. Vangmey Qaw isolate HUD.",
+                "item2_label": "VANGMEY LUT [Sequence]",
+                "item2_text": "Vangmey Qaw tlho' Qaw. Priority 'ej Deadline Qaw.",
+                "item3_label": "WHA' QAW [Bypass]",
+                "item3_text": "Vangmey Qaw Qo', SKIP Qaw tlho' Qaw. Vangmey Qaw."
+            },
+            "kanban_mode": {
+                "title": "// QANBAN GHOM [Tactical Grid]",
+                "item1_label": "VANGMEY LEGH [Visualization]",
+                "item1_text": "QANBAN Qaw tlho' Qaw. Vangmey Qaw tlho' Qaw.",
+                "item2_label": "QAW TLHO' QAW [Drag & Drop]",
+                "item2_text": "Vangmey Qaw tlho' Qaw. Status Qaw tlho' real-time.",
+                "item3_label": "PROTOCOL QAW [Pipelines]",
+                "item3_text": "Dossier Qaw tlho' Qaw. Status (e.g. IN PROGRESS) Qaw tlho' Qaw.",
+                "item4_label": "QAW TLHO' QAW [Triage]",
+                "item4_text": "Category badges, priority, 'ej XP yields Qaw tlho' Qaw triage."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Page Qaw",
         "last_page": "Page Qaw",
         "toggle_2fa": "2FA Qaw tlho' Qaw",
-        "toggle_strict_pwd": "Qaw tlhe' QawseH Qaw tlho' Qaw"
+        "toggle_strict_pwd": "Qaw tlhe' QawseH Qaw tlho' Qaw",
+        "exit_kanban": "QANBAN YIMEV"
     },
     "quotes": [
         "Qaw tlho' Qaw, Qaw tlho' Qaw.",

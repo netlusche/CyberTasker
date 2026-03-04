@@ -13,7 +13,10 @@
         "focus_enter": "FOCUS",
         "focus_exit": "VERLAAT FOCUS",
         "focus_enter_tooltip": "Ga naar de focusmodus",
-        "focus_exit_tooltip": "Verlaat de focusmodus"
+        "focus_exit_tooltip": "Verlaat de focusmodus",
+        "kanban_enter": "Ga naar de Kanban-modus",
+        "exit_kanban": "VERLAAT KANBAN",
+        "kanban": "KANBAN"
     },
     "auth": {
         "title": "NETRUNNER LOGIN",
@@ -334,7 +337,8 @@
             "clear_selection": "SELECTIE WISSEN",
             "complete_all_tooltip": "Markeer alle geselecteerde richtlijnen als VOLTOOID",
             "delete_all_tooltip": "VERWIJDER permanent alle geselecteerde richtlijnen"
-        }
+        },
+        "drop_zone": "LAAT DIRECTIEVEN HIER LOS"
     },
     "dashboard": {
         "operator_level": "OPERATOR NIVEAU",
@@ -495,6 +499,26 @@
                 "item1_text": "Het beëindigen van uw terminal account is onomkeerbaar. Alle directieven, archieven en neurale links zullen worden gewist.",
                 "item2_label": "AUTHENTICATIE",
                 "item2_text": "Om door te gaan, moet u uw huidige Toegangssleutel tonen als bewijs van identiteit."
+            },
+            "focus_mode": {
+                "title": "// FOCUS OVERRIDE [Zen Modus]",
+                "item1_label": "SENSORISCHE ISOLATIE",
+                "item1_text": "Activeer FOCUS-modus om alle secundaire telemetrie te onderdrukken. Het systeem zal één kritieke richtlijn op uw HUD geforceerd isoleren.",
+                "item2_label": "UITVOERINGSVOLGORDE",
+                "item2_text": "Richtlijnen worden één voor één naar uw visuele cortex gevoerd, automatisch geprioriteerd op basis van urgentie en neurale gewicht (Prioriteit + Deadline).",
+                "item3_label": "TACTISCHE OMZEILING",
+                "item3_text": "Als een richtlijn niet onmiddellijk kan worden opgelost, gebruik dan de OVERSLAAN-functie om de buffer te overschrijven en door te gaan naar de volgende urgente taak."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TACTISCH ROOSTER",
+                "item1_label": "WORKFLOW VISUALISATIE",
+                "item1_text": "Implementeer de KANBAN-interface voor een overzicht op macroniveau van alle actieve en lopende operaties.",
+                "item2_label": "SLEPEN & NEERZETTEN HERTOEWIJZING",
+                "item2_text": "Sleep richtlijnen fysiek tussen kolommen om hun operationele status in realtime bij te werken.",
+                "item3_label": "AANGEPASTE PIPELINES",
+                "item3_text": "Open uw Operator Dossier (Profiel) om aangepaste workflowstatussen (bijv. IN ONTWIKKELING, QA) te configureren die overeenkomen met uw specifieke missievereisten.",
+                "item4_label": "GEOPTIMALISEERDE TRIAGE",
+                "item4_text": "Kaarten tonen categoriebadges, prioriteitsindicatoren en ervaringspunten (XP) opbrengsten om te helpen bij snelle triagebeslissingen."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Volgende Pagina",
         "last_page": "Laatste Pagina",
         "toggle_2fa": "2FA Afdwingen Wisselen",
-        "toggle_strict_pwd": "Strikt Wachtwoordbeleid Wisselen"
+        "toggle_strict_pwd": "Strikt Wachtwoordbeleid Wisselen",
+        "exit_kanban": "Verlaat de Kanban-modus"
     },
     "quotes": [
         "Hoe stiller je wordt, hoe meer je kunt horen.",

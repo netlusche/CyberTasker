@@ -13,7 +13,10 @@
         "focus_enter": "CENTRUM",
         "focus_exit": "WYJDŹ Z FOCUSU",
         "focus_enter_tooltip": "Wejdź w tryb skupienia",
-        "focus_exit_tooltip": "Wyjdź z trybu ostrości"
+        "focus_exit_tooltip": "Wyjdź z trybu ostrości",
+        "kanban_enter": "Wejdź w tryb Kanban",
+        "exit_kanban": "WYJDŹ Z KANBANA",
+        "kanban": "KANBAN"
     },
     "auth": {
         "title": "LOGOWANIE NETRUNNERA",
@@ -334,7 +337,8 @@
             "clear_selection": "WYCZYŚĆ WYBÓR",
             "complete_all_tooltip": "Oznacz wszystkie wybrane dyrektywy jako ZAKOŃCZONE",
             "delete_all_tooltip": "Trwale USUŃ wszystkie wybrane dyrektywy"
-        }
+        },
+        "drop_zone": "UPUŚĆ DYREKTYWY TUTAJ"
     },
     "dashboard": {
         "operator_level": "POZIOM OPERATORA",
@@ -495,6 +499,26 @@
                 "item1_text": "Zakończenie konta terminalowego jest nieodwracalne. Wszystkie dyrektywy, archiwa i łącza neuronowe zostaną usunięte.",
                 "item2_label": "UWIERZYTELNIANIE",
                 "item2_text": "Aby kontynuować, musisz przedstawić swój obecny Klucz Dostępu jako dowód tożsamości."
+            },
+            "focus_mode": {
+                "title": "// NADPISANIE FOKUSU [Tryb Zen]",
+                "item1_label": "IZOLACJA SENSORYCZNA",
+                "item1_text": "Aktywuj tryb FOKUS, aby stłumić wszystkie wtórne dane telemetryczne. System wymusi izolację pojedynczej krytycznej dyrektywy na Twoim HUDzie.",
+                "item2_label": "SEKWENCJA WYKONAWCZA",
+                "item2_text": "Dyrektywy są przesyłane do Twojej kory wzrokowej jedna po drugiej, automatycznie priorytetyzowane według pilności i wagi neuronalnej (Priorytet + Termin).",
+                "item3_label": "TAKTYCZNE OMINIĘCIE",
+                "item3_text": "Jeśli dyrektywa nie może zostać natychmiast rozwiązana, użyj funkcji POMIŃ, aby nadpisać bufor i przejść do następnego pilnego zadania."
+            },
+            "kanban_mode": {
+                "title": "// TAKTYCZNA SIATKA KANBAN",
+                "item1_label": "WIZUALIZACJA PRZEPŁYWU PRACY",
+                "item1_text": "Wdróż interfejs KANBAN dla widoku makro wszystkich aktywnych i oczekujących operacji.",
+                "item2_label": "PRZECIĄGNIJ I UPUSĆ ZMIANA PRZYPISANIA",
+                "item2_text": "Fizycznie przeciągaj dyrektywy między kolumnami, aby aktualizować ich status operacyjny w czasie rzeczywistym.",
+                "item3_label": "WŁASNE POTOKI",
+                "item3_text": "Uzyskaj dostęp do swojego Dossier Operatora (Profilu), aby skonfigurować niestandardowe statusy przepływu pracy (np. W TRAKCIE ROZWOJU, QA) i dopasować je do Twoich specyficznych wymagań misji.",
+                "item4_label": "ZOPTYMALIZOWANY TRIAGE",
+                "item4_text": "Karty wyświetlają odznaki kategorii, wskaźniki priorytetu oraz punkty doświadczenia (XP), aby wspomóc szybkie decyzje dotyczące triage."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Następna Strona",
         "last_page": "Ostatnia Strona",
         "toggle_2fa": "Przełącz Wymuszanie 2FA",
-        "toggle_strict_pwd": "Przełącz Ścisłą Politykę Haseł"
+        "toggle_strict_pwd": "Przełącz Ścisłą Politykę Haseł",
+        "exit_kanban": "Wyjdź z trybu Kanban"
     },
     "quotes": [
         "Im ciszej się stajesz, tym więcej możesz usłyszeć.",

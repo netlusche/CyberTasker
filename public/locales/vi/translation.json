@@ -13,7 +13,10 @@
         "focus_enter": "TẬP TRUNG",
         "focus_exit": "THOÁT TẬP TRUNG",
         "focus_enter_tooltip": "Vào Chế độ lấy nét",
-        "focus_exit_tooltip": "Thoát Chế độ lấy nét"
+        "focus_exit_tooltip": "Thoát Chế độ lấy nét",
+        "kanban_enter": "Vào chế độ Kanban",
+        "exit_kanban": "THOÁT KANBAN",
+        "kanban": "KANBAN"
     },
     "auth": {
         "title": "ĐĂNG NHẬP NETRUNNER",
@@ -334,7 +337,8 @@
             "clear_selection": "CLEAR SELECTION",
             "complete_all_tooltip": "Mark all selected directives as COMPLETE",
             "delete_all_tooltip": "Permanently DELETE all selected directives"
-        }
+        },
+        "drop_zone": "THẢ CHỈ THỊ VÀO ĐÂY"
     },
     "dashboard": {
         "operator_level": "CẤP ĐỘ ĐẶC VỤ",
@@ -495,6 +499,26 @@
                 "item1_text": "Chấm dứt tài khoản của bạn là không thể đảo ngược. Tất cả các chỉ thị, lưu trữ và liên kết thần kinh sẽ bị xóa.",
                 "item2_label": "XÁC THỰC",
                 "item2_text": "Để tiếp tục, bạn phải cung cấp Khóa truy cập hiện tại của mình làm bằng chứng danh tính."
+            },
+            "focus_mode": {
+                "title": "// GHI ĐÈ TẬP TRUNG [Chế độ Zen]",
+                "item1_label": "cách ly giác quan",
+                "item1_text": "Sử dụng chế độ FOCUS để loại bỏ tất cả các phép đo từ xa thứ cấp. Hệ thống sẽ buộc phải cách ly một chỉ thị quan trọng duy nhất trên HUD của bạn.",
+                "item2_label": "TRÌNH TỰ THỰC HIỆN",
+                "item2_text": "Các chỉ thị lần lượt được đưa đến vỏ não thị giác của bạn, được ưu tiên tự động theo mức độ khẩn cấp và trọng lượng thần kinh (Ưu tiên + Thời hạn).",
+                "item3_label": "BỎ QUA CHIẾN THUẬT",
+                "item3_text": "Nếu một lệnh không thể được giải quyết ngay lập tức, hãy sử dụng chức năng SKIP để ghi đè bộ đệm và chuyển sang nhiệm vụ khẩn cấp tiếp theo."
+            },
+            "kanban_mode": {
+                "title": "// LƯỚI CHIẾN THUẬT KANBAN",
+                "item1_label": "HÌNH THỨC QUY TRÌNH LÀM VIỆC",
+                "item1_text": "Triển khai giao diện KANBAN để có chế độ xem ở cấp độ vĩ mô về tất cả các hoạt động đang hoạt động và đang chờ xử lý.",
+                "item2_label": "SẮP XẾP KÉO VÀ THẢ",
+                "item2_text": "Kéo các chỉ thị giữa các cột một cách vật lý để cập nhật trạng thái hoạt động của chúng theo thời gian thực.",
+                "item3_label": "ĐƯỜNG ỐNG TÙY CHỈNH",
+                "item3_text": "Truy cập Hồ sơ người vận hành (Hồ sơ) của bạn để định cấu hình các trạng thái quy trình làm việc tùy chỉnh (ví dụ: ĐANG PHÁT TRIỂN, QA) để phù hợp với các yêu cầu nhiệm vụ cụ thể của bạn.",
+                "item4_label": "TỐI ƯU HÓA",
+                "item4_text": "Thẻ hiển thị huy hiệu danh mục, chỉ số ưu tiên và điểm kinh nghiệm (XP) mang lại để hỗ trợ đưa ra quyết định phân loại nhanh chóng."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Trang tiếp",
         "last_page": "Trang cuối",
         "toggle_2fa": "Chuyển đổi Thực thi 2FA",
-        "toggle_strict_pwd": "Chuyển đổi Chính sách Mật khẩu Nghiêm ngặt"
+        "toggle_strict_pwd": "Chuyển đổi Chính sách Mật khẩu Nghiêm ngặt",
+        "exit_kanban": "Thoát chế độ Kanban"
     },
     "quotes": [
         "Bạn càng im lặng, bạn càng có thể nghe nhiều hơn.",

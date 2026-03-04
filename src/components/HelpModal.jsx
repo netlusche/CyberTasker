@@ -138,6 +138,25 @@ const HelpModal = ({ onClose }) => {
                             </ul>
                         </section>
 
+                        <section>
+                            <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.focus_mode.title', '// FOCUS OVERRIDE [Zen Mode]')}</h3>
+                            <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                                <li><strong>{t('help.sections.focus_mode.item1_label', 'SENSORY ISOLATION')}:</strong> {t('help.sections.focus_mode.item1_text', 'Engage FOCUS mode to suppress all secondary telemetry. The system will forcibly isolate a single critical directive on your HUD.')}</li>
+                                <li><strong>{t('help.sections.focus_mode.item2_label', 'EXECUTION SEQUENCE')}:</strong> {t('help.sections.focus_mode.item2_text', 'Directives are fed to your visual cortex one by one, prioritized automatically by urgency and neural weight (Priority + Deadline).')}</li>
+                                <li><strong>{t('help.sections.focus_mode.item3_label', 'TACTICAL BYPASS')}:</strong> {t('help.sections.focus_mode.item3_text', 'If a directive cannot be resolved immediately, utilize the SKIP function to overwrite the buffer and cycle to the next urgent task.')}</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3 className="text-cyber-success font-bold text-lg mb-2">{t('help.sections.kanban_mode.title', '// KANBAN TACTICAL GRID')}</h3>
+                            <ul className="list-disc w-5/6 mx-auto space-y-1 text-gray-300">
+                                <li><strong>{t('help.sections.kanban_mode.item1_label', 'WORKFLOW VISUALIZATION')}:</strong> {t('help.sections.kanban_mode.item1_text', 'Deploy the KANBAN interface for a macro-level view of all active and pending operations.')}</li>
+                                <li><strong>{t('help.sections.kanban_mode.item2_label', 'DRAG & DROP REASSIGNMENT')}:</strong> {t('help.sections.kanban_mode.item2_text', 'Physically drag directives between columns to update their operational status in real-time.')}</li>
+                                <li><strong>{t('help.sections.kanban_mode.item3_label', 'CUSTOM PIPELINES')}:</strong> {t('help.sections.kanban_mode.item3_text', 'Access your Operator Dossier (Profile) to configure custom workflow statuses (e.g., IN DEVELOPMENT, QA) to match your specific mission requirements.')}</li>
+                                <li><strong>{t('help.sections.kanban_mode.item4_label', 'OPTIMIZED TRIAGE')}:</strong> {t('help.sections.kanban_mode.item4_text', 'Cards display category badges, priority indicators, and experience point (XP) yields to assist in rapid triage decisions.')}</li>
+                            </ul>
+                        </section>
+
 
 
                         <section>

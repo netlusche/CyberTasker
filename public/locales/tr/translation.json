@@ -13,7 +13,10 @@
         "focus_enter": "ODAK",
         "focus_exit": "ODAKTAN ÇIK",
         "focus_enter_tooltip": "Odak Moduna Girin",
-        "focus_exit_tooltip": "Odak Modundan Çık"
+        "focus_exit_tooltip": "Odak Modundan Çık",
+        "kanban_enter": "Kanban Moduna Girin",
+        "exit_kanban": "KANBAN'DAN ÇIKIŞ",
+        "kanban": "KANBAN"
     },
     "auth": {
         "title": "NETRUNNER GİRİŞİ",
@@ -334,7 +337,8 @@
             "clear_selection": "CLEAR SELECTION",
             "complete_all_tooltip": "Mark all selected directives as COMPLETE",
             "delete_all_tooltip": "Permanently DELETE all selected directives"
-        }
+        },
+        "drop_zone": "DİREKTİFLERİ BURAYA BIRAKIN"
     },
     "dashboard": {
         "operator_level": "OPERATÖR SEVİYESİ",
@@ -495,6 +499,26 @@
                 "item1_text": "Terminal hesabınızı sonlandırmak geri döndürülemez. Tüm direktifler, arşivler ve nöral bağlantılar silinecektir.",
                 "item2_label": "KİMLİK DOĞRULAMA",
                 "item2_text": "Devam etmek için, kimlik kanıtı olarak mevcut Erişim Anahtarınızı sunmalısınız."
+            },
+            "focus_mode": {
+                "title": "// ODAĞI GEÇERSİZ KILMA [Zen Modu]",
+                "item1_label": "DUYUSAL İZOLASYON",
+                "item1_text": "Tüm ikincil telemetriyi bastırmak için FOCUS modunu etkinleştirin. Sistem, HUD'unuzdaki tek bir kritik yönergeyi zorla izole edecektir.",
+                "item2_label": "YÜRÜTME SIRASI",
+                "item2_text": "Direktifler, aciliyet ve sinir ağırlığına (Öncelik + Son Tarih) göre otomatik olarak önceliklendirilerek görsel korteksinize tek tek beslenir.",
+                "item3_label": "TAKTİK BYPASS",
+                "item3_text": "Bir yönerge hemen çözülemezse arabelleğin üzerine yazmak ve bir sonraki acil göreve geçmek için SKIP işlevini kullanın."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTİK IZGARA",
+                "item1_label": "İŞ AKIŞI GÖRSELLEŞTİRME",
+                "item1_text": "Tüm etkin ve bekleyen işlemlerin makro düzeyde görünümü için KANBAN arayüzünü dağıtın.",
+                "item2_label": "SÜRÜKLE & BIRAK YENİDEN ATAMA",
+                "item2_text": "Operasyonel durumlarını gerçek zamanlı olarak güncellemek için yönergeleri sütunlar arasında fiziksel olarak sürükleyin.",
+                "item3_label": "ÖZEL BORU HATLARI",
+                "item3_text": "Özel görev gereksinimlerinize uyacak şekilde özel iş akışı durumlarını (ör. GELİŞTİRMEDE, QA) yapılandırmak için Operatör Dosyanıza (Profil) erişin.",
+                "item4_label": "OPTİMİZE EDİLMİŞ TRİYAJ",
+                "item4_text": "Kartlar, hızlı önceliklendirme kararlarına yardımcı olmak için kategori rozetlerini, öncelik göstergelerini ve deneyim puanı (XP) getirilerini görüntüler."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Sonraki Sayfa",
         "last_page": "Son Sayfa",
         "toggle_2fa": "2FA Zorunluluğunu Aç/Kapat",
-        "toggle_strict_pwd": "Sıkı Parola Politikasını Aç/Kapat"
+        "toggle_strict_pwd": "Sıkı Parola Politikasını Aç/Kapat",
+        "exit_kanban": "Kanban Modundan Çık"
     },
     "quotes": [
         "Sessizleştikçe, daha fazlasını duyabilirsin.",

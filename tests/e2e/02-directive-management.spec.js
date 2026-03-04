@@ -42,7 +42,8 @@ test.describe('Directive Management Pagination', () => {
         // Open the first task
         const firstTask = page.locator('.card-cyber').filter({ hasText: 'XP' }).first();
         await expect(firstTask).toBeVisible();
-        await firstTask.click();
+        const detailsBtn = firstTask.locator('button', { hasText: /DETAILS/i }).first();
+        await detailsBtn.click();
 
         // Ensure modal is open and Sub-Routines section is visible
         const modal = page.locator('.fixed.inset-0 .card-cyber').first();

@@ -13,7 +13,10 @@
         "focus_enter": "FOCO",
         "focus_exit": "SAIR DO FOCO",
         "focus_enter_tooltip": "Entre no modo de foco",
-        "focus_exit_tooltip": "Sair do modo de foco"
+        "focus_exit_tooltip": "Sair do modo de foco",
+        "kanban_enter": "Entre no modo Kanban",
+        "exit_kanban": "SAIR DO KANBAN",
+        "kanban": "KANBAN"
     },
     "auth": {
         "title": "LOGIN NETRUNNER",
@@ -334,7 +337,8 @@
             "clear_selection": "LIMPAR SELEÇÃO",
             "complete_all_tooltip": "Marcar todas as diretrizes selecionadas como CONCLUÍDAS",
             "delete_all_tooltip": "EXCLUIR permanentemente todas as diretrizes selecionadas"
-        }
+        },
+        "drop_zone": "SOLTE AS DIRETIVAS AQUI"
     },
     "dashboard": {
         "operator_level": "NÍVEL DE OPERADOR",
@@ -495,6 +499,26 @@
                 "item1_text": "Terminar sua conta terminal é irreversível. Todas as diretrizes, arquivos e links neurais serão apagados.",
                 "item2_label": "AUTENTICAÇÃO",
                 "item2_text": "Para prosseguir, você deve apresentar sua Chave de Acesso atual como prova de identidade."
+            },
+            "focus_mode": {
+                "title": "// ANULAÇÃO DE FOCO [Modo Zen]",
+                "item1_label": "ISOLAMENTO SENSORIAL",
+                "item1_text": "Ative o modo FOCO para suprimir toda a telemetria secundária. O sistema irá isolar forçosamente uma única diretriz crítica no seu HUD.",
+                "item2_label": "SEQUÊNCIA DE EXECUÇÃO",
+                "item2_text": "As diretrizes são alimentadas ao seu córtex visual uma a uma, priorizadas automaticamente pela urgência e peso neural (Prioridade + Prazo).",
+                "item3_label": "BYPASS TÁTICO",
+                "item3_text": "Se uma diretriz não puder ser resolvida imediatamente, utilize a função SALTAR para sobrescrever o buffer e avançar para a próxima tarefa urgente."
+            },
+            "kanban_mode": {
+                "title": "// REDE TÁTICA KANBAN",
+                "item1_label": "VISUALIZAÇÃO DE FLUXO DE TRABALHO",
+                "item1_text": "Implemente a interface KANBAN para uma visão macro de todas as operações ativas e pendentes.",
+                "item2_label": "REATRIBUIÇÃO ARRASTAR E SOLTAR",
+                "item2_text": "Arraste fisicamente as diretrizes entre as colunas para atualizar o seu estado operacional em tempo real.",
+                "item3_label": "PIPELINES PERSONALIZADOS",
+                "item3_text": "Aceda ao seu Dossiê de Operador (Perfil) para configurar estados de fluxo de trabalho personalizados (ex: EM DESENVOLVIMENTO, QA) para corresponder aos seus requisitos de missão específicos.",
+                "item4_label": "TRIAGEM OTIMIZADA",
+                "item4_text": "Os cartões exibem distintivos de categoria, indicadores de prioridade e rendimentos de pontos de experiência (XP) para auxiliar em decisões rápidas de triagem."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Próxima Página",
         "last_page": "Última Página",
         "toggle_2fa": "Alternar Imposição de 2FA",
-        "toggle_strict_pwd": "Alternar Política de Senha Rígida"
+        "toggle_strict_pwd": "Alternar Política de Senha Rígida",
+        "exit_kanban": "Sair do modo Kanban"
     },
     "quotes": [
         "Quanto mais silencioso você se torna, mais você pode ouvir.",

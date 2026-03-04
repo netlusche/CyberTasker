@@ -13,7 +13,10 @@
         "focus_enter": "집중하다",
         "focus_exit": "포커스 종료",
         "focus_enter_tooltip": "집중 모드 들어가기",
-        "focus_exit_tooltip": "초점 모드 종료"
+        "focus_exit_tooltip": "초점 모드 종료",
+        "kanban_enter": "칸반 모드 시작",
+        "exit_kanban": "칸반 종료",
+        "kanban": "칸반"
     },
     "auth": {
         "title": "넷러너 로그인",
@@ -334,7 +337,8 @@
             "clear_selection": "CLEAR SELECTION",
             "complete_all_tooltip": "Mark all selected directives as COMPLETE",
             "delete_all_tooltip": "Permanently DELETE all selected directives"
-        }
+        },
+        "drop_zone": "여기에 지시 사항 놓기"
     },
     "dashboard": {
         "operator_level": "요원 레벨",
@@ -495,6 +499,26 @@
                 "item1_text": "터미널 계정을 종료하는 것은 되돌릴 수 없습니다. 모든 지시, 아카이브 및 신경 링크가 삭제됩니다.",
                 "item2_label": "인증",
                 "item2_text": "진행하려면 현재 접근 키를 신원 증명으로 제시해야 합니다."
+            },
+            "focus_mode": {
+                "title": "// 집중 모드 재정의 [젠 모드]",
+                "item1_label": "감각 격리",
+                "item1_text": "집중 모드를 활성화하여 모든 보조 원격 측정 데이터를 억제합니다. 시스템이 HUD에 단 하나의 중요 지시를 강제로 격리합니다.",
+                "item2_label": "실행 순서",
+                "item2_text": "지시 사항은 시각 피질에 하나씩 전달되며, 긴급성과 신경 가중치(우선순위 + 마감일)에 따라 자동으로 우선순위가 지정됩니다.",
+                "item3_label": "전술적 우회",
+                "item3_text": "지시 사항을 즉시 해결할 수 없는 경우, 건너뛰기 기능을 사용하여 버퍼를 덮어쓰고 다음 긴급 작업으로 순환합니다."
+            },
+            "kanban_mode": {
+                "title": "// 칸반 전술 그리드",
+                "item1_label": "워크플로우 시각화",
+                "item1_text": "칸반 인터페이스를 배포하여 모든 활성 및 보류 중인 작업을 매크로 수준에서 확인합니다.",
+                "item2_label": "드래그 앤 드롭 재할당",
+                "item2_text": "지시 사항을 열 사이로 드래그하여 실시간으로 작업 상태를 업데이트합니다.",
+                "item3_label": "사용자 지정 파이프라인",
+                "item3_text": "운영자 도시에(프로필)에 접속하여 특정 임무 요구 사항에 맞게 사용자 지정 워크플로우 상태(예: 개발 중, QA)를 구성합니다.",
+                "item4_label": "최적화된 분류",
+                "item4_text": "카드는 카테고리 배지, 우선순위 표시기, 및 경험치(XP) 획득량을 표시하여 신속한 분류 결정을 돕습니다."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "다음 페이지",
         "last_page": "마지막 페이지",
         "toggle_2fa": "2단계 인증 강제 적용 토글",
-        "toggle_strict_pwd": "엄격한 비밀번호 정책 토글"
+        "toggle_strict_pwd": "엄격한 비밀번호 정책 토글",
+        "exit_kanban": "칸반 모드 종료"
     },
     "quotes": [
         "조용해질수록 더 많은 것을 들을 수 있다.",

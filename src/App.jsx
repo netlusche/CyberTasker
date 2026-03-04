@@ -11,6 +11,7 @@ import AdminPanel from './components/AdminPanel';
 import HelpModal from './components/HelpModal';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import CalendarModal from './components/CalendarModal';
+import KanbanBoard from './components/KanbanBoard';
 import DirectiveModal from './components/DirectiveModal';
 import CyberConfirm from './components/CyberConfirm';
 import BatchActionBar from './components/BatchActionBar';
@@ -49,6 +50,7 @@ function App() {
     fetchTaskStatuses,
     fetchTasks,
     fetchAllOpenTasks,
+    fetchKanbanTasks,
     handleAddTask,
     handleToggleStatus,
     handleUpdateTask,
@@ -64,6 +66,8 @@ function App() {
   const [taskPrefill, setTaskPrefill] = useState(null);
   const [showPurgeConfirm, setShowPurgeConfirm] = useState(false);
   const [isFocusMode, setIsFocusMode] = useState(false);
+  const [isKanbanMode, setIsKanbanMode] = useState(false);
+  const [kanbanTasksQueue, setKanbanTasksQueue] = useState([]);
   const [focusTasksQueue, setFocusTasksQueue] = useState([]);
   const [dossierContext, setDossierContext] = useState(null);
   const [focusSkipIndex, setFocusSkipIndex] = useState(0);
@@ -120,7 +124,7 @@ function App() {
     }
   };
 
-  const loadFocusQueue = async () => {
+  const loadFocusQueue = async (preserveIndex = false) => {
     try {
       // We intentionally re-sort for Focus mode to guarantee absolute determinism
       const allOpenTasks = await fetchAllOpenTasks();
@@ -128,7 +132,7 @@ function App() {
       if (!allOpenTasks || !Array.isArray(allOpenTasks)) {
         console.warn("loadFocusQueue: allOpenTasks is not a valid array:", allOpenTasks);
         setFocusTasksQueue([]);
-        setFocusSkipIndex(0);
+        if (!preserveIndex) setFocusSkipIndex(0);
         return;
       }
 
@@ -137,32 +141,42 @@ function App() {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        const aIsOverdue = a.due_date && new Date(a.due_date) < today;
-        const bIsOverdue = b.due_date && new Date(b.due_date) < today;
+        const getDateCategory = (task) => {
+          if (!task.due_date) return 2;
+          // Split because Date parses 'YYYY-MM-DD' differently than 'YYYY-MM-DD HH:MM:SS'
+          const taskDate = new Date(task.due_date.split(' ')[0]);
+          taskDate.setHours(0, 0, 0, 0);
+          if (taskDate < today) return 0;
+          if (taskDate.getTime() === today.getTime()) return 1;
+          return 2;
+        };
 
-        if (aIsOverdue && !bIsOverdue) return -1;
-        if (!aIsOverdue && bIsOverdue) return 1;
+        const catA = getDateCategory(a);
+        const catB = getDateCategory(b);
+        if (catA !== catB) return catA - catB;
 
         if (a.priority !== b.priority) {
-          return a.priority - b.priority;
+          return Number(a.priority) - Number(b.priority);
         }
 
         if (a.due_date && !b.due_date) return -1;
         if (!a.due_date && b.due_date) return 1;
         if (a.due_date && b.due_date) {
-          const dateDiff = new Date(a.due_date) - new Date(b.due_date);
+          const dateDiff = new Date(a.due_date).getTime() - new Date(b.due_date).getTime();
           if (dateDiff !== 0) return dateDiff;
         }
 
-        return a.id - b.id;
+        const timeA = a.created_at ? new Date(a.created_at).getTime() : Number(a.id);
+        const timeB = b.created_at ? new Date(b.created_at).getTime() : Number(b.id);
+        return timeB - timeA;
       });
 
       setFocusTasksQueue(sortedTasks);
-      setFocusSkipIndex(0);
+      if (!preserveIndex) setFocusSkipIndex(0);
     } catch (e) {
       console.error("Failed to load focus queue", e);
       setFocusTasksQueue([]);
-      setFocusSkipIndex(0);
+      if (!preserveIndex) setFocusSkipIndex(0);
     }
   };
 
@@ -180,12 +194,29 @@ function App() {
     return focusTasksQueue[focusSkipIndex];
   };
 
+  const loadKanbanQueue = async () => {
+    try {
+      const allKanbanTasks = await fetchKanbanTasks();
+      if (!allKanbanTasks || !Array.isArray(allKanbanTasks)) {
+        setKanbanTasksQueue([]);
+        return;
+      }
+      setKanbanTasksQueue(allKanbanTasks);
+    } catch (e) {
+      console.error("Failed to load kanban queue", e);
+      setKanbanTasksQueue([]);
+    }
+  };
+
   const focusTask = getFocusTask();
 
   const handleFocusSkip = () => {
     setFocusAnimatingNext(true);
     setTimeout(() => {
-      setFocusSkipIndex(prev => prev + 1);
+      setFocusSkipIndex(prev => {
+        const nextIndex = prev + 1;
+        return nextIndex >= focusTasksQueue.length ? 0 : nextIndex;
+      });
       setFocusAnimatingNext(false);
     }, 300); // match animation duration
   };
@@ -292,8 +323,21 @@ function App() {
       <div className="fixed inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] cyber-grid"></div>
 
       <div className="max-w-3xl mx-auto relative z-10">
-        <header className={`mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4 ${isFocusMode ? 'relative z-50 transition-all duration-500' : ''}`}>
-          <div className="w-full lg:w-auto">
+        <header className={`mb-8 flex flex-col lg:flex-row lg:flex-wrap justify-between items-start lg:items-center gap-4 border-b border-cyber-gray pb-4 relative ${(isFocusMode || isKanbanMode) ? 'z-50 transition-all duration-500' : ''}`}>
+
+          {/* Top-Right Utility Bar (Language + Logout) */}
+          {!isFocusMode && !isKanbanMode && (
+            <div className="absolute top-0 right-0 flex items-center gap-2 z-50">
+              <LanguageSwitcher />
+              {user && (
+                <button data-testid="logout-btn" onClick={handleFullLogout} className={`text-[10px] md:text-xs transition-colors whitespace-nowrap ${theme === 'lcars' ? 'bg-[#ffaa00] text-black font-bold uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-cyber-danger/50 text-cyber-danger hover:bg-cyber-danger hover:text-white px-2 py-1 rounded'}`} data-tooltip-content={t('tooltip.logout', 'Logout')} data-tooltip-pos="bottom">
+                  {t('header.logout')}
+                </button>
+              )}
+            </div>
+          )}
+
+          <div className="w-full lg:w-auto pr-24 md:pr-0">
             <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
               <a href="./" className="flex items-center gap-3 hover:opacity-80 transition-opacity no-underline text-inherit">
                 <img src={logo} alt="Logo" className="h-8 w-8 md:h-10 md:w-10 drop-shadow-[0_0_8px_var(--theme-primary)]" />
@@ -370,15 +414,20 @@ function App() {
             )}
           </div>
 
-          <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 justify-start lg:justify-end ${theme === 'lcars' ? 'flex-col items-start lg:items-end gap-1' : 'flex-wrap items-center gap-2'}`}>
-            {theme !== 'lcars' && !isFocusMode && <LanguageSwitcher />}
+          <div className={`flex w-full lg:w-auto lg:ml-auto lg:flex-shrink-0 mt-10 lg:mt-8 ${(isFocusMode || isKanbanMode) ? 'justify-end' : 'justify-start lg:justify-end'} ${theme === 'lcars' ? ((isFocusMode || isKanbanMode) ? 'flex-col items-end gap-1' : 'flex-col items-start lg:items-end gap-1') : 'flex-wrap items-center gap-2'}`}>
 
             {user && (
-              <div className="flex flex-wrap lg:flex-nowrap gap-2">
-                {!isFocusMode && (
+              <div className="flex flex-wrap lg:flex-nowrap gap-2 items-center">
+                {!isFocusMode && !isKanbanMode && (
                   <>
                     <button onClick={() => setShowHelp(true)} className={`text-[10px] md:text-xs transition-colors whitespace-nowrap ${theme === 'lcars' ? 'bg-cyber-primary text-black font-bold uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-2 py-1 rounded'}`} data-tooltip-content={t('header.system_help')}>
                       {t('header.system_help')}
+                    </button>
+                    <button data-testid="kanban-btn" onClick={() => {
+                      setIsKanbanMode(true);
+                      loadKanbanQueue();
+                    }} className={`text-[10px] md:text-xs transition-colors font-bold whitespace-nowrap ${theme === 'lcars' ? 'border-2 border-cyber-primary text-cyber-primary uppercase rounded-full px-4 py-1.5 hover:bg-cyber-primary hover:text-black' : 'border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black px-2 py-1 rounded shadow-[0_0_5px_var(--theme-primary)] hover:shadow-[0_0_15px_var(--theme-primary)]'}`} data-tooltip-content={t('header.kanban_enter', 'Enter Kanban Mode')}>
+                      {t('header.kanban', 'KANBAN')}
                     </button>
                     <button data-testid="calendar-btn" onClick={() => setShowCalendar(true)} className={`text-[10px] md:text-xs transition-colors whitespace-nowrap ${theme === 'lcars' ? 'bg-cyber-primary text-black font-bold uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-cyber-primary/50 text-cyber-primary hover:bg-cyber-primary hover:text-black px-2 py-1 rounded'}`} data-tooltip-content={t('tooltip.calendar', 'Calendar')}>
                       {t('header.calendar')}
@@ -388,37 +437,49 @@ function App() {
                     </button>
                   </>
                 )}
-                <button
-                  data-testid="focus-btn"
-                  onClick={() => {
-                    const newMode = !isFocusMode;
-                    setIsFocusMode(newMode);
-                    if (newMode) {
-                      loadFocusQueue();
-                    }
-                  }}
-                  className={`text-[10px] md:text-xs transition-colors font-bold whitespace-nowrap ${isFocusMode
-                    ? (theme === 'lcars' ? 'bg-white text-black uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'bg-cyber-primary text-black px-4 py-1.5 rounded shadow-[0_0_15px_var(--theme-primary)] hover:bg-opacity-80 uppercase tracking-widest')
-                    : (theme === 'lcars' ? 'border-2 border-cyber-primary text-cyber-primary uppercase rounded-full px-4 py-1.5 hover:bg-cyber-primary hover:text-black' : 'border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black px-2 py-1 rounded shadow-[0_0_5px_var(--theme-primary)] hover:shadow-[0_0_15px_var(--theme-primary)]')
-                    }`}
-                  data-tooltip-content={isFocusMode ? t('header.focus_exit_tooltip', 'Exit Focus Mode') : t('header.focus_enter_tooltip', 'Enter Focus Mode')}
-                >
-                  {isFocusMode ? t('header.focus_exit', 'EXIT FOCUS') : t('header.focus_enter', 'FOCUS')}
-                </button>
-                {!isFocusMode && user.role === 'admin' && (
+
+                {isKanbanMode && (
+                  <button
+                    data-testid="kanban-exit-btn"
+                    onClick={() => {
+                      setIsKanbanMode(false);
+                      fetchTasks(pagination.currentPage); // refresh normal dashboard just in case
+                    }}
+                    className={`text-[10px] md:text-xs transition-colors font-bold whitespace-nowrap ${theme === 'lcars' ? 'bg-white text-black uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'bg-cyber-primary text-black px-4 py-1.5 rounded shadow-[0_0_15px_var(--theme-primary)] hover:bg-opacity-80 uppercase tracking-widest'}`}
+                    data-tooltip-content={t('tooltip.exit_kanban', 'Exit Kanban Mode')}
+                    data-tooltip-pos="bottom"
+                  >
+                    {t('header.exit_kanban', 'EXIT KANBAN')}
+                  </button>
+                )}
+
+                {!isKanbanMode && (
+                  <button
+                    data-testid="focus-btn"
+                    onClick={() => {
+                      const newMode = !isFocusMode;
+                      setIsFocusMode(newMode);
+                      if (newMode) {
+                        loadFocusQueue();
+                      }
+                    }}
+                    className={`text-[10px] md:text-xs transition-colors font-bold whitespace-nowrap ${isFocusMode
+                      ? (theme === 'lcars' ? 'bg-white text-black uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'bg-cyber-primary text-black px-4 py-1.5 rounded shadow-[0_0_15px_var(--theme-primary)] hover:bg-opacity-80 uppercase tracking-widest')
+                      : (theme === 'lcars' ? 'border-2 border-cyber-primary text-cyber-primary uppercase rounded-full px-4 py-1.5 hover:bg-cyber-primary hover:text-black' : 'border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black px-2 py-1 rounded shadow-[0_0_5px_var(--theme-primary)] hover:shadow-[0_0_15px_var(--theme-primary)]')
+                      }`}
+                    data-tooltip-content={isFocusMode ? t('header.focus_exit_tooltip', 'Exit Focus Mode') : t('header.focus_enter_tooltip', 'Enter Focus Mode')}
+                  >
+                    {isFocusMode ? t('header.focus_exit', 'EXIT FOCUS') : t('header.focus_enter', 'FOCUS')}
+                  </button>
+                )}
+
+                {!isFocusMode && !isKanbanMode && user.role === 'admin' && (
                   <button data-testid="admin-btn" onClick={() => setShowAdmin(true)} className={`text-[10px] md:text-xs transition-colors font-bold whitespace-nowrap ${theme === 'lcars' ? 'bg-cyber-primary text-black uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-cyber-primary/50 text-cyber-primary hover:bg-cyber-primary hover:text-black px-2 py-1 rounded'}`} data-tooltip-content={t('header.admin')}>
                     {t('header.admin')}
                   </button>
                 )}
-                {!isFocusMode && (
-                  <button data-testid="logout-btn" onClick={handleFullLogout} className={`text-[10px] md:text-xs transition-colors whitespace-nowrap ${theme === 'lcars' ? 'bg-[#ffaa00] text-black font-bold uppercase rounded-full px-4 py-1.5 hover:brightness-110' : 'border border-cyber-danger/50 text-cyber-danger hover:bg-cyber-danger hover:text-white px-2 py-1 rounded'}`} data-tooltip-content={t('tooltip.logout', 'Logout')}>
-                    {t('header.logout')}
-                  </button>
-                )}
               </div>
             )}
-
-            {theme === 'lcars' && !isFocusMode && <LanguageSwitcher />}
           </div>
         </header>
 
@@ -438,13 +499,33 @@ function App() {
                   onToggleStatus={handleFocusComplete}
                   onUpdateTask={handleUpdateTask}
                   onSkip={handleFocusSkip}
-                  onOpenDossier={setShowDossierForTask}
+                  onOpenDossier={(task) => {
+                    setDossierContext('focus');
+                    setShowDossierForTask(task);
+                  }}
                   isSkipping={focusAnimatingNext}
                   isCompleting={focusCompleting}
                 />
               </div>
             </div>
           </>
+        ) : isKanbanMode ? (
+          <KanbanBoard
+            tasks={kanbanTasksQueue}
+            taskStatuses={taskStatuses}
+            onUpdateTask={handleUpdateTask}
+            onToggleStatus={handleToggleStatus}
+            onDelete={async (taskId) => {
+              await handleDelete(taskId);
+              const t = kanbanTasksQueue.find(t => t.id === taskId);
+              if (t && t.status == 1 && fetchUserStats) fetchUserStats();
+              setKanbanTasksQueue(prev => prev.filter(t => t.id !== taskId));
+            }}
+            onTaskClick={(task) => {
+              setDossierContext('kanban');
+              setShowDossierForTask(task);
+            }}
+          />
         ) : (
           <>
             <LevelBar
@@ -609,6 +690,14 @@ function App() {
             setShowDossierForTask(null);
             if (dossierContext === 'calendar') {
               setShowCalendar(true); // Bring back calendar!
+            }
+            if (dossierContext === 'kanban') {
+              // Reload kanban queue to reflect deeply nested sub-routine updates or status changes made purely in dossier
+              loadKanbanQueue();
+            }
+            if (dossierContext === 'focus') {
+              // Reload focus queue to reflect deeply nested sub-routine updates, attachments or notes
+              loadFocusQueue(true);
             }
             setDossierContext(null);
           }}

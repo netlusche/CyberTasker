@@ -13,7 +13,10 @@
         "focus_enter": "FOCUS",
         "focus_exit": "POISTU FOCUSISTA",
         "focus_enter_tooltip": "Siirry tarkennustilaan",
-        "focus_exit_tooltip": "Poistu tarkennustilasta"
+        "focus_exit_tooltip": "Poistu tarkennustilasta",
+        "kanban_enter": "Siirry Kanban-tilaan",
+        "exit_kanban": "POISTU KANBANISTA",
+        "kanban": "KANBAN"
     },
     "auth": {
         "title": "NETRUNNER-KIRJAUDU",
@@ -334,7 +337,8 @@
             "clear_selection": "CLEAR SELECTION",
             "complete_all_tooltip": "Mark all selected directives as COMPLETE",
             "delete_all_tooltip": "Permanently DELETE all selected directives"
-        }
+        },
+        "drop_zone": "PUDOTA DIREKTIIVIT TÄHÄN"
     },
     "dashboard": {
         "operator_level": "OPERAATTORITASO",
@@ -495,6 +499,26 @@
                 "item1_text": "Päätekäyttäjätilisi lopettaminen on peruuttamatonta. Kaikki ohjeet, arkistot ja neuraaliyhteydet pyyhitään.",
                 "item2_label": "TODENNUS",
                 "item2_text": "Jatkaaksesi sinun on esitettävä nykyinen käyttöavaimesi todisteena identiteetistäsi."
+            },
+            "focus_mode": {
+                "title": "// FOKUSOHITUS [Zen-tila]",
+                "item1_label": "AISTI-ERISTYS",
+                "item1_text": "Aktivoi FOKUS-tila vaimentaaksesi kaikki toissijaiset telemetriatiedot. Järjestelmä eristää pakotetusti yhden kriittisen direktiivin HUD-näytöllesi.",
+                "item2_label": "SUORITUSSEKVENSSI",
+                "item2_text": "Direktiivit syötetään visuaaliseen aivokuoreesi yksi kerrallaan, automaattisesti priorisoituna kiireellisyyden ja neuronaalisen painoarvon mukaan (Prioriteetti + Määräaika).",
+                "item3_label": "TAKTINEN OHITUS",
+                "item3_text": "Jos direktiiviä ei voida ratkaista välittömästi, käytä OHITA-toimintoa puskurin ylikirjoittamiseen ja siirry seuraavaan kiireelliseen tehtävään."
+            },
+            "kanban_mode": {
+                "title": "// KANBAN TAKTINEN RUUDUKKO",
+                "item1_label": "TYÖNKULUN VISUALISOINTI",
+                "item1_text": "Ota käyttöön KANBAN-käyttöliittymä saadaksesi makrotason näkymän kaikista aktiivisista ja odottavista operaatioista.",
+                "item2_label": "VEDÄ JA PUDOTA -UUDELLEENMÄÄRITYS",
+                "item2_text": "Vedä direktiivejä fyysisesti sarakkeiden välillä päivittääksesi niiden operatiivisen tilan reaaliaikaisesti.",
+                "item3_label": "MUKAUTETUT TYÖNKULUT",
+                "item3_text": "Pääset operaattorisi tiedostoon (profiiliin) määrittääksesi mukautettuja työnkulun tiloja (esim. KEHITYKSESSÄ, LAADUNVALVONTA) vastaamaan erityisiä tehtävävaatimuksiasi.",
+                "item4_label": "OPTIMOITU LAJITTELU",
+                "item4_text": "Kortit näyttävät luokkamerkit, prioriteetti-indikaattorit ja kokemuspisteiden (XP) tuotot auttaakseen nopeissa lajittelupäätöksissä."
             }
         }
     },
@@ -686,7 +710,8 @@
         "next_page": "Seuraava sivu",
         "last_page": "Viimeinen sivu",
         "toggle_2fa": "Vaihda 2FA:n pakottamista",
-        "toggle_strict_pwd": "Vaihda tiukkaa salasanakäytäntöä"
+        "toggle_strict_pwd": "Vaihda tiukkaa salasanakäytäntöä",
+        "exit_kanban": "Poistu Kanban-tilasta"
     },
     "quotes": [
         "Mitä hiljaisemmaksi tulet, sitä enemmän voit kuulla.",
