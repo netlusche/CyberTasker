@@ -18,14 +18,17 @@ test.describe('TS-16: Batch Actions (Multi-Select Operations)', () => {
         const createInput = page.locator('#new-directive-input');
         await createInput.fill(task1);
         await createInput.press('Enter');
+        await page.waitForTimeout(500);
         await expect(page.locator('.card-cyber').filter({ hasText: task1 })).toBeVisible();
 
         await createInput.fill(task2);
         await createInput.press('Enter');
+        await page.waitForTimeout(500);
         await expect(page.locator('.card-cyber').filter({ hasText: task2 })).toBeVisible();
 
         await createInput.fill(task3);
         await createInput.press('Enter');
+        await page.waitForTimeout(500);
         await expect(page.locator('.card-cyber').filter({ hasText: task3 })).toBeVisible();
 
         // 3. Find the checkboxes by data-testid

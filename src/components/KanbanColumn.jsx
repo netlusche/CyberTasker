@@ -16,7 +16,7 @@ const KanbanColumn = ({ status, tasks, onTaskClick, onDelete }) => {
 
     return (
         <div className="flex flex-col w-72 flex-shrink-0 bg-black/40 border border-cyber-gray/50 rounded-lg overflow-hidden h-full">
-            <div className="bg-cyber-gray/20 p-3 border-b border-cyber-gray/50 flex justify-between items-center sticky top-0 z-10 shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+            <div className="bg-cyber-gray/20 p-3 border-b border-cyber-gray/50 flex justify-between items-center sticky top-0 z-10 shadow-md shadow-black/50">
                 <h3 className="font-bold text-cyber-primary tracking-wider uppercase text-sm drop-shadow-[0_0_5px_var(--theme-primary)]">
                     {displayName}
                 </h3>

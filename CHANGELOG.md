@@ -2,9 +2,10 @@
 
 All notable changes to this project will be documented in this file. The format is based on the system's aesthetic release history.
 
-# CyberTasker 2.8.0 (The Quality of Life & Workflows Update)
+# CyberTasker 2.9.0 (The Kanban & Focus Mode Update)
 
 ### ✨ Agent Focus & Productivity
+*   **Kanban Board**: Visualize and manage active directives via an interactive drag-and-drop Kanban Board, fully integrated with Custom Task Status columns.
 *   **Agent Focus Mode ("Zen Mode")**: Operatives can now filter out all UI noise via the main header toggle. This mode maximizes the highest priority active directive, displaying an isolated "Hero Card" for deep, distraction-free execution.
 *   **Batch Actions Command Bar**: Select multiple directives simultaneously from the dashboard grid. The new persistent Command Bar allows operatives to bulk-complete, bulk-delete, or re-categorize directives instantly.
 *   **Custom Task Statuses**: Break free from binary "OPEN / COMPLETED" states. Operatives can now define custom intermediary workflow states (e.g., "QA", "BLOCKED", "IN PROGRESS") via the Profile Modal and apply them directly inside the Task Card.

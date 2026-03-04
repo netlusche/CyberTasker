@@ -1,6 +1,6 @@
-# CyberTasker Server Update Instructions (v2.7.0 → v2.8.0)
+# CyberTasker Server Update Instructions (v2.7.0 → v2.9.0)
 
-These instructions guide you through the update to **v2.8.0** (The Quality of Life & Workflows Update).
+These instructions guide you through the update to **v2.9.0** (The Kanban & Focus Mode Update).
 
 ## 1. Backup (MANDATORY)
 - **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory.
@@ -20,9 +20,10 @@ This update introduces new schemas for custom task statuses, dossier notes, and 
 4.  **Security Note**: Delete `api/install.php` and `install.html` after verification.
 
 ## 4. Verify Update
-1.  **Agent Focus Mode**: Log in and verify the new `FOCUS` toggle in the main header.
-2.  **WebCal Feed**: Open your Profile Modal and verify the presence of the "WebCal Comlink" section.
-3.  **Custom Statuses**: On the Profile Modal, verify the "Task Statuses" tab exists and allows creation of custom workflows.
+1.  **Kanban Board**: Log in, switch to Kanban Mode via the dashboard icon, and verify drag-and-drop functionality between custom status columns.
+2.  **Agent Focus Mode**: Log in and verify the new `FOCUS` toggle in the main header.
+3.  **WebCal Feed**: Open your Profile Modal and verify the presence of the "WebCal Comlink" section.
+4.  **Custom Statuses**: On the Profile Modal, verify the "Task Statuses" tab exists and allows creation of custom workflows.
 
 ---
 
