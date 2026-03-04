@@ -46,10 +46,21 @@ test.describe('Focus Mode (Zen)', () => {
         for (let i = 0; i < titles.length; i++) {
             await page.getByPlaceholder('Enter directive...').fill(titles[i]);
 
-            // Set High priority for the FIRST task created to test sorting (High Prio should be first)
             if (i === 0) {
-                await page.locator('div[role="button"]').filter({ hasText: '(2)' }).click();
+                // Task 0 -> Priority 1
+                await page.locator('div[role="button"]').filter({ hasText: '(2)' }).click({ force: true });
                 await page.getByRole('listbox').locator('li').filter({ hasText: '(1)' }).click();
+                await page.waitForTimeout(100);
+            } else if (i === 1) {
+                // Task 1 -> Priority 2
+                await page.locator('div[role="button"]').filter({ hasText: '(1)' }).click({ force: true });
+                await page.getByRole('listbox').locator('li').filter({ hasText: '(2)' }).click();
+                await page.waitForTimeout(100);
+            } else if (i === 2) {
+                // Task 2 -> Priority 3
+                await page.locator('div[role="button"]').filter({ hasText: '(2)' }).click({ force: true });
+                await page.getByRole('listbox').locator('li').filter({ hasText: '(3)' }).click();
+                await page.waitForTimeout(100);
             }
 
             await page.getByPlaceholder('Enter directive...').press('Enter');
@@ -62,73 +73,66 @@ test.describe('Focus Mode (Zen)', () => {
         await focusBtn.click();
 
         // Verify we are in Focus Mode
-        await expect(page.locator('text=FOCUS MODE ENGAGED')).toBeHidden(); // Ensure placeholder is gone
+        await expect(page.locator('text=FOCUS MODE ENGAGED')).toBeHidden();
         await expect(page.locator('text=[ FOCUS MODE ACTIVE ]')).toBeVisible();
 
-        // Since there are seeded admin tasks (which are technically overdue/high priority), 
-        // our newly created tasks might not be the VERY first one. 
-        // We will skip through the tasks until we find one of our test tasks.
-
-        let foundTestTask = false;
-        let p = 0;
-        let testTaskTitle = "";
-
-        // Loop max 15 times to find our newly created tasks among seeded ones
-        while (p < 15 && !foundTestTask) {
-            const currentTitle = await page.locator('.card-cyber h2').textContent();
-            if (titles.includes(currentTitle)) {
-                foundTestTask = true;
-                testTaskTitle = currentTitle;
-                break;
-            }
-            // Not ours, skip it
-            await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
-            await page.waitForTimeout(500); // wait for animation
-            p++;
-        }
-
-        expect(foundTestTask).toBeTruthy();
-
-        // The first of OUR tasks it finds should be the High Priority one (titles[0])
-        expect(testTaskTitle).toEqual(titles[0]);
-
-        // Re-establish hero card locator for the rest of the test
         const heroCard = page.locator('.card-cyber').first();
 
-        // Skip to the next task
-        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
+        // EXPECTED STRICT ORDER:
+        // Priority 1: titles[0] (Newer), "Install Sleep.exe Patch" (Older)
+        // Priority 2: titles[1] (Newer), "Hack Coffee Machine..." & "Debug Neural Link..." (Older)
+        // Priority 3: titles[2] (Newer), "Feed the Techno-Cat" (Older)
 
-        // Wait for animation
-        await page.waitForTimeout(500);
+        const expectedOrder = [
+            titles[0],
+            "Install Sleep.exe Patch",
+            titles[1],
+            // 3 and 4 could be either of the two seeded work tasks depending on precise db insertion ID since created_at is identical
+        ];
 
-        // Next task should be titles[1] or titles[2]
-        // Since both have same priority and due date, order is creation order (but backwards normally, so it might be Three then Two, just check it changed)
-        await expect(heroCard).not.toContainText(titles[0]);
-
-        const textAfterSkip1 = await heroCard.textContent();
-        expect(textAfterSkip1.includes(titles[1]) || textAfterSkip1.includes(titles[2])).toBeTruthy();
-
-        // Skip again
-        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
-        await page.waitForTimeout(500);
-
-        const textAfterSkip2 = await heroCard.textContent();
-        expect(textAfterSkip2).not.toEqual(textAfterSkip1); // It should be the other one
-        expect(textAfterSkip2.includes(titles[1]) || textAfterSkip2.includes(titles[2])).toBeTruthy();
-
-        // Skip again - should loop back to the first one (or whatever is top)
+        // 1. Assert Task 0
+        await expect(heroCard).toContainText(expectedOrder[0]);
         await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
         await page.waitForTimeout(500);
 
-        // For good measure, let's complete the currently displayed task
-        const currentTitle = await page.locator('h2.text-3xl').textContent();
+        // 2. Assert Seeded Priority 1 Task
+        await expect(heroCard).toContainText(expectedOrder[1]);
+        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
+        await page.waitForTimeout(500);
 
+        // 3. Assert Task 1 (Priority 2, Newest)
+        await expect(heroCard).toContainText(expectedOrder[2]);
+        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
+        await page.waitForTimeout(500);
+
+        // 4 & 5. Skip over the two seeded Priority 2 tasks
+        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
+        await page.waitForTimeout(500);
+        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
+        await page.waitForTimeout(500);
+
+        // 6. Assert Task 2 (Priority 3, Newest)
+        await expect(heroCard).toContainText(titles[2]);
+
+        // Complete the task to ensure it functions
         await page.getByRole('button', { name: /mark (as )?done|complete/i }).click();
-        await page.waitForTimeout(1000); // wait for execution animation
+        await page.waitForTimeout(1000);
 
-        // Assert it moved on to a different task, or shows "ALL CAUGHT UP" if none left (we should have some left)
-        const nextTitle = await page.locator('h2.text-3xl').textContent();
-        expect(nextTitle !== currentTitle).toBeTruthy();
+        // 7. Assert Seeded Priority 3 Task remaining
+        await expect(heroCard).toContainText("Feed the Techno-Cat");
+
+        // 8. Skip from the absolute end of the queue - should loop back to the start!
+        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
+        await page.waitForTimeout(500);
+
+        // Assert it looped perfectly back to expectedOrder[0]
+        await expect(heroCard).toContainText(expectedOrder[0]);
+
+        // 9. Skip once more to prove the index continues incrementing normally after looping
+        await page.getByRole('button', { name: 'SKIP / NEXT' }).click();
+        await page.waitForTimeout(500);
+
+        await expect(heroCard).toContainText(expectedOrder[1]);
 
         // Exit Focus Mode
         await focusBtn.click();
