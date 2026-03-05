@@ -30,4 +30,9 @@ else {
     $pdo->exec("SET FOREIGN_KEY_CHECKS = 1;");
 }
 
-echo "e2e_wipe_db.php: All tables dropped successfully.\n";
+// Ensure the schema is recreated
+// Set CLI mode argument so install.php bypasses auth locks
+$_SERVER['REQUEST_METHOD'] = 'GET';
+require_once __DIR__ . '/../api/install.php';
+
+echo "e2e_wipe_db.php: All tables dropped and schema recreated successfully.\n";
