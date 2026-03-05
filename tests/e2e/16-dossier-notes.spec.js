@@ -29,7 +29,8 @@ test.describe('US-2.8.3: Dossier Notes', () => {
         // 1. Create a new Directive
         const newTaskInput = page.getByPlaceholder(/Enter directive|Neue Direktive/i);
         await newTaskInput.fill(uniqueTaskName);
-        await newTaskInput.press('Enter');
+        await page.getByRole('button', { name: /Add/i }).click();
+        await expect(newTaskInput).toHaveValue('');
 
         // Wait for it to appear
         const taskCard = page.locator('.card-cyber').filter({ hasText: uniqueTaskName }).first();

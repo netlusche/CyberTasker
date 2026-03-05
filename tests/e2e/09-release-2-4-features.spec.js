@@ -73,7 +73,8 @@ test.describe('Release 2.4 Features', () => {
         await expect(newDirectiveInput).toHaveValue(`${originalTitle} (Copy)`);
 
         // Submit the form
-        await newDirectiveInput.press('Enter');
+        await page.getByRole('button', { name: /Add/i }).click();
+        await expect(newDirectiveInput).toHaveValue('');
 
         // Check the new task appears in the list (or trigger wait)
         await page.waitForTimeout(1000);
@@ -87,7 +88,8 @@ test.describe('Release 2.4 Features', () => {
         const uniqueTitle = `DragDrop Test ${Date.now()}`;
         const newDirectiveInput = page.getByPlaceholder('Enter directive...').first();
         await newDirectiveInput.fill(uniqueTitle);
-        await newDirectiveInput.press('Enter');
+        await page.getByRole('button', { name: /Add/i }).click();
+        await expect(newDirectiveInput).toHaveValue('');
 
         await page.waitForTimeout(500);
 

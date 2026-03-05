@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on the system's aesthetic release history.
 
+# CyberTasker 2.9.1 (Hotfix)
+
+*   **Fix**: Touch-Support (`@dnd-kit/core` TouchSensor) für mobile Geräte im Kanban-Board hinzugefügt.
+*   **Fix**: Status-Dropdown im Directive Dossier wird nun auch beim Öffnen aus dem Kanban- und Focus-Mode korrekt gerendert.
+*   **UI**: Platzsparenderes Layout (reduziertes Padding/Margin im Main Header) für Sichten mit dem `isFocusMode` und `isKanbanMode`. Z-Index Fix für das Focus-Mode Tooltip.
+
+---
+
 # CyberTasker 2.9.0 (The Kanban & Focus Mode Update)
 
 ### ✨ Agent Focus & Productivity

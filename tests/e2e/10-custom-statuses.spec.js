@@ -35,7 +35,7 @@ test.describe('TS-10: Custom Task Statuses', () => {
         // Find the input within the edit mode
         const editInput = page.getByTestId('edit-status-input');
         await editInput.fill(renamedStatusName);
-        await editInput.press('Enter');
+        await page.getByRole('button', { name: '✓' }).click();
 
         // Verify it was renamed (wait for the alert or the text to change)
         await expect(page.getByText(renamedStatusName)).toBeVisible();
@@ -49,7 +49,8 @@ test.describe('TS-10: Custom Task Statuses', () => {
         const taskTitle = `Test Task for Status Dropdown ${Date.now()}`;
         const titleInput = page.getByPlaceholder('Enter directive...');
         await titleInput.fill(taskTitle);
-        await titleInput.press('Enter');
+        await page.getByRole('button', { name: /Add/i }).click();
+        await expect(titleInput).toHaveValue('');
 
         // Wait for task to appear
         const taskCard = page.locator('.card-cyber', { hasText: taskTitle }).first();

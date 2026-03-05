@@ -113,6 +113,7 @@ try {
     $initEmail = null;
     $initPassword = 'password';
     $initUsername = 'admin';
+    $initLanguage = 'en';
 
     if (!$isCli) {
         if (!tableExists($pdo, 'users')) {
@@ -215,8 +216,9 @@ try {
 
     try {
         $pdo->exec("CREATE UNIQUE INDEX IF NOT EXISTS idx_users_calendar_token ON users(calendar_token) WHERE calendar_token IS NOT NULL");
-    } catch (PDOException $e) {
-        // Ignore if unsupported or already exists
+    }
+    catch (PDOException $e) {
+    // Ignore if unsupported or already exists
     }
 
     // --- TASKS TABLE ---

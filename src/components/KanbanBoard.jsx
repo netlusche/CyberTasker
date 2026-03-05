@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, closestCorners } from '@dnd-kit/core';
+import { DndContext, useSensor, useSensors, PointerSensor, TouchSensor, KeyboardSensor, closestCorners } from '@dnd-kit/core';
 import { useDroppable } from '@dnd-kit/core';
 import { useTranslation } from 'react-i18next';
 import KanbanColumn from './KanbanColumn';
@@ -22,6 +22,12 @@ const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onDele
         useSensor(PointerSensor, {
             activationConstraint: {
                 distance: 5, // minimum distance to drag before it starts
+            },
+        }),
+        useSensor(TouchSensor, {
+            activationConstraint: {
+                delay: 250,
+                tolerance: 5,
             },
         }),
         useSensor(KeyboardSensor)
@@ -86,9 +92,9 @@ const KanbanBoard = ({ tasks, taskStatuses, onUpdateTask, onToggleStatus, onDele
 
     return (
         <DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
-            <div className="fixed inset-0 top-0 pt-32 bg-cyber-black/95 z-40 pb-12 flex items-center justify-center">
+            <div className="fixed inset-0 top-0 pt-16 bg-cyber-black/95 z-40 pb-12 flex items-start justify-center">
                 {/* Horizontal Scrolling Area */}
-                <div className="w-full max-w-full overflow-x-auto overflow-y-hidden px-4 md:px-8 pb-4 custom-scrollbar flex items-center h-full">
+                <div className="w-full max-w-full overflow-x-auto overflow-y-hidden px-4 md:px-8 pb-4 custom-scrollbar flex items-start h-full mt-4">
                     <div className="flex gap-6 h-[75vh] min-h-[500px] items-start mx-auto">
                         {columns.map(status => {
                             const columnTasks = localTasks.filter(t => {

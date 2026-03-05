@@ -136,8 +136,9 @@ test.describe('Directive Management Pagination', () => {
         await recurrenceTrigger.click();
         await page.getByText('Daily').last().click();
 
-        // Submit natively via Enter to ensure React receives the event perfectly
-        await titleInput.press('Enter');
+        // Submit via ADD button and wait for input clear
+        await page.getByRole('button', { name: /Add/i }).click();
+        await expect(titleInput).toHaveValue('');
 
         // Search for the new task to bring it to page 1
         const searchInput = page.locator('.mb-6 input[type="text"]').first();
@@ -229,8 +230,9 @@ test.describe('Directive Management Pagination', () => {
         await prevMonthBtn.click();
         await page.locator('.calendar-container .cursor-pointer:not(.opacity-50)').first().click();
 
-        // Submit natively via Enter
-        await titleInput.press('Enter');
+        // Submit via ADD button
+        await page.getByRole('button', { name: /Add/i }).click();
+        await expect(titleInput).toHaveValue('');
 
         // Search for the task to bring it to page 1
         const searchInput = page.locator('.mb-6 input[type="text"]').first();
