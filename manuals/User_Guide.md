@@ -1,4 +1,4 @@
-# CyberTasker v2.9.0 - Operative Manual
+# CyberTasker v2.9.1 - Operative Manual
 
 ![CyberTasker Logo](../images/logo_big.png)
 
