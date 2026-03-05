@@ -63,7 +63,9 @@ test.describe('Focus Mode (Zen)', () => {
                 await page.waitForTimeout(100);
             }
 
-            await page.getByPlaceholder('Enter directive...').press('Enter');
+            const dirInput = page.getByPlaceholder('Enter directive...');
+            await page.getByRole('button', { name: /Add/i }).click();
+            await expect(dirInput).toHaveValue('');
             await page.waitForTimeout(500); // allow creation
         }
 

@@ -39,8 +39,10 @@ test.describe('Kanban Board', () => {
 
         // Create a couple of tasks
         for (let i = 0; i < titles.length; i++) {
-            await page.getByPlaceholder('Enter directive...').fill(titles[i]);
-            await page.getByPlaceholder('Enter directive...').press('Enter');
+            const dirInput = page.getByPlaceholder('Enter directive...');
+            await dirInput.fill(titles[i]);
+            await page.getByRole('button', { name: /Add/i }).click();
+            await expect(dirInput).toHaveValue('');
             await page.waitForTimeout(500); // allow creation
         }
 
