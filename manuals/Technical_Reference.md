@@ -10,15 +10,15 @@ CyberTasker employs a monolithic but internally decoupled architecture. It utili
 
 ```mermaid
 graph TD
-    Client[Web Browser / Mobile Client] -->|HTTP/REST JSON| API[PHP API Router<br>index.php]
+    Client["Web Browser / Mobile Client"] -->|HTTP/REST JSON| API["PHP API Router<br>index.php"]
     
-    subgraph Frontend [React 19 SPA]
-        UI[React Components]
-        State[React Context / Hooks]
-        Router[React Router]
-        I18n[i18next]
-        Tailwind[Tailwind CSS v4]
-        Kanban[@dnd-kit / Drag & Drop]
+    subgraph Frontend ["React 19 SPA"]
+        UI["React Components"]
+        State["React Context / Hooks"]
+        Router["React Router"]
+        I18n["i18next"]
+        Tailwind["Tailwind CSS v4"]
+        Kanban["@dnd-kit / Drag & Drop"]
         
         UI <--> State
         UI <--> Router
@@ -29,15 +29,15 @@ graph TD
 
     Client <--> Frontend
     
-    subgraph Backend [Vanilla PHP 8]
-        API --> Auth[Auth Middleware / Session]
-        Auth --> Controllers[Controllers<br>TaskRepository, UserRepository]
-        Controllers --> Models[Models / Domain Logic]
-        Models --> PDO[(PDO Interface)]
+    subgraph Backend ["Vanilla PHP 8"]
+        API --> Auth["Auth Middleware / Session"]
+        Auth --> Controllers["Controllers<br>TaskRepository, UserRepository"]
+        Controllers --> Models["Models / Domain Logic"]
+        Models --> PDO["(PDO Interface)"]
     end
 
-    PDO --> DB_SQLite[(SQLite DB)]
-    PDO -.-> DB_MySQL[(MySQL / MariaDB)]
+    PDO --> DB_SQLite["(SQLite DB)"]
+    PDO -.-> DB_MySQL["(MySQL / MariaDB)"]
 ```
 
 ### Key Technical Decisions:
