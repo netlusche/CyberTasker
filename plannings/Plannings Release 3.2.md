@@ -36,6 +36,24 @@ Dieses Release fokussiert sich auf die Erschließung neuer Zielgruppen durch bra
   - Ein Dropdown im Adminbereich erlaubt den Wechsel der Branche.
   - Änderungen erfordern eine Bestätigung und validieren ggf. verbundene Abhängigkeiten in der DB.
 
+**US-3.2.4: Modulares Feature-Toggling pro Branchen-Profil**
+* **Als** Installer / System
+* **Möchte ich**, dass unpassende Features (wie z.B. "Gamification/XP") in seriösen Settings (wie Arztpraxen) hart ausgeblendet werden
+* **Damit** die Applikation professionell und exakt auf den Use-Case zugeschnitten wirkt, ohne den User durch überflüssige Menüpunkte zu irritieren.
+* **Akzeptanzkriterien:**
+  - Die Branchen-Config (JSON/DB) erhält Boolsche Flags (z.B. `gamification_enabled: false`).
+  - Das React-Frontend nutzt die Context-API, um diese UI-Elemente (Top-Bar XP, Leaderboard) bei entsprechendem Flag komplett aus dem DOM zu entfernen.
+
+**US-3.2.5: Custom Logo Upload für Whitelabeling**
+* **Als** Administrator
+* **Möchte ich** im Admin-Panel das CyberTasker-Standardlogo durch das Firmenlogo meines Unternehmens ersetzen können
+* **Damit** das Branding gegenüber meinen Mitarbeitern konsistent erscheint und Whitelabel-Ansprüche der 3.2er Version erfüllt werden.
+* **Akzeptanzkriterien:**
+  - Ein simpler Upload-Button im Admin-Backend erlaubt den Upload einer PNG/SVG Datei.
+  - Das System speichert das Logo ab und ersetzt das Default-Top-Left-Logo in der React Navbar sowie auf dem Login-Screen.
+  - Falls kein Logo hochgeladen wurde, greift der Fallback auf das Default-Logo.
+
+
 ## Ergänzungen für den Testplan
 
 **Zu US-3.2.1 & US-3.2.2 (Installer & dynamisches Profil):**

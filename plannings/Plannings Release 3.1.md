@@ -61,6 +61,39 @@
   - Alle existierenden Directives eines Users werden mit dessen ID als "Assignee" versehen und an das Team gebunden, dem er nun angehört.
   - Admins erhalten bei der Migration automatisch die Rollen Admin + Manager im Default/Admin Team.
 
+**US-3.1.6: Einschränkung der Progress-Status-Verwaltung für Teammitglieder**
+* **Als** globaler Systemarchitekt
+* **Möchte ich**, dass reguläre Team-User ihre eigenen Custom-Status (Fortschrittsstufen wie "In QA") nicht selbst anlegen oder verwalten können
+* **Damit** innerhalb eines Teams eine einheitliche Prozessstruktur gewahrt bleibt und nicht jeder User Wildwuchs bei den Status-Spalten betreibt.
+* **Akzeptanzkriterien:**
+  - Reguläre User, die mindestens einem Team angehören, haben in der UI keinen Zugriff mehr auf die Verwaltung von eigenen Custom Status.
+  - Die Verwaltung der Status (und damit der Kanban-Spalten) obliegt für diese Directives ausschließlich Benutzern mit der Rolle "Manager" (für ihr jeweiliges Team).
+  - *Ausnahme:* Einzelne User oder Admins, die *keinem* Team zugeordnet sind (falls dies architektonisch zulässig ist), dürfen weiterhin analog zu v2.9 ihre individuellen Arbeitsstati definieren.
+
+**US-3.1.7: Team-Scoped Tags & Kategorien (Isolierung)**
+* **Als** Manager oder Team-Mitglied
+* **Möchte ich**, dass meine angelegten Tags/Kategorien (z.B. "#kampagne") nur innerhalb meines Teams sichtbar und nutzbar sind
+* **Damit** die Tag-Liste nicht durch bereichsfremde Bezeichnungen anderer Teams überladen wird (z.B. IT vs. Marketing).
+* **Akzeptanzkriterien:**
+  - Die Datenbank erhält eine Verknüpfung von `tags` zu `team_id`.
+  - Bei der Erstellung einer Directive werden nur die Tags des ausgewählten Teams im Dropdown vorgeschlagen.
+
+**US-3.1.8: Activity Log / Audit Trail für kollaboratives Arbeiten**
+* **Als** Teammitglied oder Manager
+* **Möchte ich** einen Verlauf sehen können, wer wann welche Änderung an einer Directive vorgenommen hat
+* **Damit** in einem geteilten Arbeitsumfeld Transparenz herrscht (z.B. "Wer hat diese Aufgabe auf 'Completed' gesetzt?").
+* **Akzeptanzkriterien:**
+  - Eine neue Tabelle `task_history` speichert fundamentale State-Changes (Status-Wechsel, Assignee-Änderung, Fertigstellung).
+  - In der UI (beim Klick auf eine Kanban-Karte oder das Dossier) ist ein Reiter "Histore" sichtbar, der die Changes mit Timestamp und Username auflistet.
+
+**US-3.1.9: In-App Notifications (Zuweisungen)**
+* **Als** normaler User
+* **Möchte ich** benachrichtigt werden, wenn mir ein Manager eine neue Directive zuweist
+* **Damit** Aufgaben nicht in meiner Liste übersehen werden.
+* **Akzeptanzkriterien:**
+  - Eine simple Notification-Glocke in der Topbar zeigt die Anzahl ungelesener Zuweisungen.
+  - Ein Klick darauf listet die neuesten Aktivitäten (Zuweisungen) an mich auf und markiert sie als gelesen.
+
 
 ## Ergänzungen für den Testplan
 *Hier notieren wir uns, welche Testfälle neu in den Master Testplan aufgenommen werden müssen.*
