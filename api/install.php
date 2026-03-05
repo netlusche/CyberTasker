@@ -14,6 +14,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'db.php';
+require_once __DIR__ . '/Response.php';
 
 $dbType = defined('DB_TYPE') ? DB_TYPE : 'mysql';
 
@@ -29,53 +30,6 @@ echo "DB_HOST: " . (defined('DB_HOST') ? DB_HOST : "NOT DEFINED") . "<br>\n";
 echo "DB_NAME: " . (defined('DB_NAME') ? DB_NAME : "NOT DEFINED") . "<br>\n";
 echo "DB_USER: " . (defined('DB_USER') ? substr(DB_USER, 0, 1) . "****" : "NOT DEFINED") . "<br>\n";
 
-/**
- * Check if a table exists
- */
-function tableExists($pdo, $table)
-{
-    global $dbType;
-    try {
-        if ($dbType === 'sqlite') {
-            $stmt = $pdo->prepare("SELECT name FROM sqlite_master WHERE type='table' AND name=?");
-            $stmt->execute([$table]);
-            return $stmt->fetch() !== false;
-        }
-        else {
-            $stmt = $pdo->query("SHOW TABLES LIKE '$table'");
-            return $stmt->rowCount() > 0;
-        }
-    }
-    catch (PDOException $e) {
-        return false;
-    }
-}
-
-/**
- * Check if a column exists in a table
- */
-function columnExists($pdo, $table, $column)
-{
-    global $dbType;
-    try {
-        if ($dbType === 'sqlite') {
-            $stmt = $pdo->query("PRAGMA table_info($table)");
-            $columns = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($columns as $col) {
-                if ($col['name'] === $column)
-                    return true;
-            }
-            return false;
-        }
-        else {
-            $stmt = $pdo->query("SHOW COLUMNS FROM $table LIKE '$column'");
-            return $stmt->rowCount() > 0;
-        }
-    }
-    catch (PDOException $e) {
-        return false;
-    }
-}
 
 try {
     echo "<h4>Attempting database connection...</h4>\n";
@@ -92,16 +46,17 @@ try {
     }
 
     echo "<h4>Checking Database Lock Status...</h4>\n";
-    if (tableExists($pdo, 'users')) {
+    require_once __DIR__ . '/DatabaseMigrator.php';
+    $migratorForLock = new DatabaseMigrator($pdo, $dbType);
+    if ($migratorForLock->tableExists('users')) {
         // Security 1.0: Zero-Config Auto-Lock
         // If the 'users' table exists, the system is considered initialized. 
         // To proceed with schema updates, the operative MUST be logged in as an Admin.
         // BYPASS for CLI (tests, automated deployments)
         if (php_sapi_name() !== 'cli' && (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin')) {
             ob_clean();
-            http_response_code(403);
-            echo json_encode(['error' => '[ ACCESS DENIED: SECURITY AUTO-LOCK ] The grid operates under Admin lock. Only registered administrators may execute schema updates.']);
-            exit;
+            ob_clean();
+            Response::error('[ ACCESS DENIED: SECURITY AUTO-LOCK ] The grid operates under Admin lock. Only registered administrators may execute schema updates.', 403);
         }
         echo "<span style='color: green;'>ACCESS GRANTED. Proceeding with schema update...</span><br>\n";
     }
@@ -116,7 +71,7 @@ try {
     $initLanguage = 'en';
 
     if (!$isCli) {
-        if (!tableExists($pdo, 'users')) {
+        if (!$migratorForLock->tableExists('users')) {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 // Redirect to the frontend installer
                 header("Location: ../install.html");
@@ -128,24 +83,21 @@ try {
             $data = json_decode($json, true);
             if (!$data || empty($data['username']) || empty($data['email']) || empty($data['password'])) {
                 ob_clean();
-                http_response_code(400);
-                echo json_encode(['error' => 'Username, Email, and Password are required.']);
-                exit;
+                ob_clean();
+                Response::error('Username, Email, and Password are required.', 400);
             }
 
             $initUsername = trim($data['username']);
             if (strlen($initUsername) < 3 || !preg_match('/^[a-zA-Z0-9_\-]+$/', $initUsername)) {
                 ob_clean();
-                http_response_code(400);
-                echo json_encode(['error' => 'Invalid username format. Must be at least 3 alphanumeric characters.']);
-                exit;
+                ob_clean();
+                Response::error('Invalid username format. Must be at least 3 alphanumeric characters.', 400);
             }
 
             if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 ob_clean();
-                http_response_code(400);
-                echo json_encode(['error' => 'Invalid email address.']);
-                exit;
+                ob_clean();
+                Response::error('Invalid email address.', 400);
             }
             $initEmail = trim($data['email']);
             $initPassword = $data['password'];
@@ -157,218 +109,133 @@ try {
             // while the site is already initialized with a custom username.
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ob_clean();
-                http_response_code(403);
-                echo json_encode(['error' => 'ACCESS DENIED: SYSTEM ALREADY INITIALIZED.']);
-                exit;
+                ob_clean();
+                Response::error('ACCESS DENIED: SYSTEM ALREADY INITIALIZED.', 403);
             }
         }
     }
 
 
-    // --- USERS TABLE ---
-    $autoIncrement = ($dbType === 'sqlite') ? 'INTEGER PRIMARY KEY AUTOINCREMENT' : 'INT AUTO_INCREMENT PRIMARY KEY';
+    require_once __DIR__ . '/DatabaseMigrator.php';
 
-    // Improved schema for clean install
-    $sqlUsers = "CREATE TABLE IF NOT EXISTS users (
-        id $autoIncrement,
-        username VARCHAR(50) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL,
-        role VARCHAR(20) DEFAULT 'user',
-        two_factor_enabled BOOLEAN DEFAULT 0,
-        two_factor_secret VARCHAR(32) NULL,
-        email VARCHAR(255) UNIQUE DEFAULT NULL,
-        is_verified BOOLEAN DEFAULT 1,
-        verification_token VARCHAR(64) DEFAULT NULL,
-        reset_token VARCHAR(64) DEFAULT NULL,
-        reset_expires DATETIME DEFAULT NULL,
-        last_login TIMESTAMP NULL DEFAULT NULL,
-        theme VARCHAR(20) DEFAULT 'cyberpunk',
-        language VARCHAR(10) DEFAULT 'en',
-        calendar_token VARCHAR(64) UNIQUE DEFAULT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )";
-    $pdo->exec($sqlUsers);
-    echo "Table 'users' check/create complete.<br>\n";
-
-    $newColumns = [
-        'role' => "VARCHAR(20) DEFAULT 'user'",
-        'two_factor_enabled' => "BOOLEAN DEFAULT 0",
-        'two_factor_secret' => "VARCHAR(32) NULL",
-        'two_factor_method' => "VARCHAR(20) DEFAULT 'totp'",
-        'two_factor_backup_codes' => "TEXT NULL",
-        'email' => "VARCHAR(255) UNIQUE DEFAULT NULL",
-        'is_verified' => "BOOLEAN DEFAULT 1",
-        'verification_token' => "VARCHAR(64) DEFAULT NULL",
-        'reset_token' => "VARCHAR(64) DEFAULT NULL",
-        'reset_expires' => "DATETIME DEFAULT NULL",
-        'last_login' => "TIMESTAMP NULL DEFAULT NULL",
-        'theme' => "VARCHAR(20) DEFAULT 'cyberpunk'",
-        'language' => "VARCHAR(10) DEFAULT 'en'",
-        'calendar_token' => "VARCHAR(64) DEFAULT NULL"
+    $schema = [
+        'users' => [
+            'columns' => [
+                'id' => '{AUTO_INCREMENT}',
+                'username' => 'VARCHAR(50) NOT NULL UNIQUE',
+                'password' => 'VARCHAR(255) NOT NULL',
+                'role' => "VARCHAR(20) DEFAULT 'user'",
+                'two_factor_enabled' => "BOOLEAN DEFAULT 0",
+                'two_factor_secret' => "VARCHAR(32) NULL",
+                'two_factor_method' => "VARCHAR(20) DEFAULT 'totp'",
+                'two_factor_backup_codes' => "TEXT NULL",
+                'email' => "VARCHAR(255) UNIQUE DEFAULT NULL",
+                'is_verified' => "BOOLEAN DEFAULT 1",
+                'verification_token' => "VARCHAR(64) DEFAULT NULL",
+                'reset_token' => "VARCHAR(64) DEFAULT NULL",
+                'reset_expires' => "DATETIME DEFAULT NULL",
+                'last_login' => "TIMESTAMP NULL DEFAULT NULL",
+                'theme' => "VARCHAR(20) DEFAULT 'cyberpunk'",
+                'language' => "VARCHAR(10) DEFAULT 'en'",
+                'calendar_token' => "VARCHAR(64) DEFAULT NULL",
+                'created_at' => "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+            ],
+            'indexes' => [
+                "CREATE UNIQUE INDEX IF NOT EXISTS idx_users_calendar_token ON users(calendar_token) WHERE calendar_token IS NOT NULL"
+            ]
+        ],
+        'tasks' => [
+            'columns' => [
+                'id' => '{AUTO_INCREMENT}',
+                'user_id' => 'INT',
+                'title' => 'VARCHAR(255) NOT NULL',
+                'category' => "VARCHAR(50) DEFAULT 'General'",
+                'priority' => "INT DEFAULT 2",
+                'status' => "BOOLEAN DEFAULT 0",
+                'points_value' => "INT DEFAULT 10",
+                'due_date' => "DATETIME DEFAULT NULL",
+                'description' => "TEXT NULL",
+                'attachments' => "TEXT NULL",
+                'files' => "TEXT NULL",
+                'subroutines_json' => "TEXT NULL",
+                'recurrence_interval' => "VARCHAR(20) DEFAULT NULL",
+                'recurrence_end_date' => "DATETIME DEFAULT NULL",
+                'created_at' => "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",
+                'workflow_status' => "VARCHAR(50) DEFAULT 'open'"
+            ],
+            'post_column_scripts' => [
+                'workflow_status' => "UPDATE tasks SET workflow_status = 'completed' WHERE status = 1"
+            ]
+        ],
+        'task_notes' => [
+            'columns' => [
+                'id' => '{AUTO_INCREMENT}',
+                'task_id' => 'INT NOT NULL',
+                'user_id' => 'INT NOT NULL',
+                'note_text' => 'TEXT NOT NULL',
+                'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
+                'updated_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
+            ],
+            'constraints' => [
+                'FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE',
+                'FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE'
+            ]
+        ],
+        'user_task_statuses' => [
+            'columns' => [
+                'id' => '{AUTO_INCREMENT}',
+                'user_id' => 'INT NOT NULL',
+                'name' => 'VARCHAR(50) NOT NULL',
+                'is_system' => 'BOOLEAN DEFAULT 0',
+                'sort_order' => 'INT DEFAULT 0'
+            ],
+            'constraints' => [
+                'FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE'
+            ]
+        ],
+        'user_categories' => [
+            'columns' => [
+                'id' => '{AUTO_INCREMENT}',
+                'user_id' => 'INT NOT NULL',
+                'name' => 'VARCHAR(50) NOT NULL',
+                'is_default' => 'BOOLEAN DEFAULT 0'
+            ],
+            'constraints' => [
+                'UNIQUE(user_id, name)',
+                'FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE'
+            ]
+        ],
+        'user_stats' => [
+            'columns' => [
+                'id' => 'INT PRIMARY KEY',
+                'total_points' => 'INT DEFAULT 0',
+                'current_level' => 'INT DEFAULT 1',
+                'badges_json' => '{JSON}'
+            ]
+        ],
+        'auth_logs' => [
+            'columns' => [
+                'id' => '{AUTO_INCREMENT}',
+                'ip_address' => 'VARCHAR(45) NOT NULL',
+                'endpoint' => 'VARCHAR(50) NOT NULL',
+                'success' => 'BOOLEAN NOT NULL',
+                'created_at' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
+            ]
+        ],
+        'system_settings' => [
+            'columns' => [
+                'setting_key' => 'VARCHAR(50) PRIMARY KEY',
+                'setting_value' => 'VARCHAR(255)'
+            ]
+        ]
     ];
 
-    foreach ($newColumns as $col => $def) {
-        if (!columnExists($pdo, 'users', $col)) {
-            $pdo->exec("ALTER TABLE users ADD COLUMN $col $def");
-            echo "Column '$col' added to users.<br>\n";
-        }
+    $migrator = new DatabaseMigrator($pdo, $dbType);
+    $migrationLogs = $migrator->migrate($schema);
+
+    foreach ($migrationLogs as $log) {
+        echo $log . "<br>\n";
     }
-
-    try {
-        $pdo->exec("CREATE UNIQUE INDEX IF NOT EXISTS idx_users_calendar_token ON users(calendar_token) WHERE calendar_token IS NOT NULL");
-    }
-    catch (PDOException $e) {
-    // Ignore if unsupported or already exists
-    }
-
-    // --- TASKS TABLE ---
-    $sqlTasks = "CREATE TABLE IF NOT EXISTS tasks (
-        id $autoIncrement,
-        user_id INT,
-        title VARCHAR(255) NOT NULL,
-        category VARCHAR(50) DEFAULT 'General',
-        priority INT DEFAULT 2,
-        status BOOLEAN DEFAULT 0,
-        points_value INT DEFAULT 10,
-        due_date DATETIME DEFAULT NULL,
-        description TEXT NULL,
-        attachments TEXT NULL,
-        files TEXT NULL,
-        subroutines_json TEXT NULL,
-        recurrence_interval VARCHAR(20) DEFAULT NULL,
-        recurrence_end_date DATETIME DEFAULT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        workflow_status VARCHAR(50) DEFAULT 'open'
-    )";
-    $pdo->exec($sqlTasks);
-    echo "Table 'tasks' check/create complete.<br>\n";
-
-    // Add Deep Directive columns if missing
-    if (!columnExists($pdo, 'tasks', 'due_date')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN due_date DATETIME DEFAULT NULL");
-        echo "Column 'due_date' added to tasks.<br>\n";
-    }
-
-    if (!columnExists($pdo, 'tasks', 'description')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN description TEXT NULL");
-        echo "Column 'description' added to tasks.<br>\n";
-    }
-
-    if (!columnExists($pdo, 'tasks', 'attachments')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN attachments TEXT NULL");
-        echo "Column 'attachments' added to tasks.<br>\n";
-    }
-
-    if (!columnExists($pdo, 'tasks', 'files')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN files TEXT NULL");
-        echo "Column 'files' added to tasks.<br>\n";
-    }
-
-    if (!columnExists($pdo, 'tasks', 'subroutines_json')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN subroutines_json TEXT NULL");
-        echo "Column 'subroutines_json' added to tasks.<br>\n";
-    }
-
-    if (!columnExists($pdo, 'tasks', 'recurrence_interval')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN recurrence_interval VARCHAR(20) DEFAULT NULL");
-        echo "Column 'recurrence_interval' added to tasks.<br>\n";
-    }
-
-    if (!columnExists($pdo, 'tasks', 'recurrence_end_date')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN recurrence_end_date DATETIME DEFAULT NULL");
-        echo "Column 'recurrence_end_date' added to tasks.<br>\n";
-    }
-
-    $workflowMigrationNeeded = false;
-    if (!columnExists($pdo, 'tasks', 'workflow_status')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN workflow_status VARCHAR(50) DEFAULT 'open'");
-        echo "Column 'workflow_status' added to tasks.<br>\n";
-        $workflowMigrationNeeded = true;
-    }
-
-    // --- TASK NOTES TABLE ---
-    $sqlTaskNotes = "CREATE TABLE IF NOT EXISTS task_notes (
-        id $autoIncrement,
-        task_id INT NOT NULL,
-        user_id INT NOT NULL,
-        note_text TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE,
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    )";
-    $pdo->exec($sqlTaskNotes);
-    echo "Table 'task_notes' check/create complete.<br>\n";
-
-    // --- USER TASK STATUSES TABLE ---
-    $sqlTaskStatuses = "CREATE TABLE IF NOT EXISTS user_task_statuses (
-        id $autoIncrement,
-        user_id INT NOT NULL,
-        name VARCHAR(50) NOT NULL,
-        is_system BOOLEAN DEFAULT 0,
-        sort_order INT DEFAULT 0,
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    )";
-    $pdo->exec($sqlTaskStatuses);
-    echo "Table 'user_task_statuses' check/create complete.<br>\n";
-
-    // Migrate existing tasks if the column was just added
-    if ($workflowMigrationNeeded) {
-        // Set completed tasks to workflow_status = 'completed'
-        $pdo->exec("UPDATE tasks SET workflow_status = 'completed' WHERE status = 1");
-        echo "Migrated existing tasks to new workflow_status field.<br>\n";
-    }
-
-    // --- USER CATEGORIES TABLE ---
-    $sqlCategories = "CREATE TABLE IF NOT EXISTS user_categories (
-        id $autoIncrement,
-        user_id INT NOT NULL,
-        name VARCHAR(50) NOT NULL,
-        is_default BOOLEAN DEFAULT 0,
-        UNIQUE(user_id, name),
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    )";
-    $pdo->exec($sqlCategories);
-    echo "Table 'user_categories' check/create complete.<br>\n";
-
-    if (!columnExists($pdo, 'user_categories', 'is_default')) {
-        $pdo->exec("ALTER TABLE user_categories ADD COLUMN is_default BOOLEAN DEFAULT 0");
-        echo "Column 'is_default' added to user_categories.<br>\n";
-    }
-
-    if (!columnExists($pdo, 'tasks', 'user_id')) {
-        $pdo->exec("ALTER TABLE tasks ADD COLUMN user_id INT");
-        echo "Column 'user_id' added to tasks.<br>\n";
-    }
-
-    // --- USER STATS TABLE ---
-    $pk = ($dbType === 'sqlite') ? 'INTEGER PRIMARY KEY' : 'INT PRIMARY KEY';
-    $jsonType = ($dbType === 'sqlite') ? 'TEXT' : 'JSON'; // SQLite doesn't have a native JSON type, stored as TEXT but supports JSON func
-
-    $sqlUserStats = "CREATE TABLE IF NOT EXISTS user_stats (
-        id $pk,
-        total_points INT DEFAULT 0,
-        current_level INT DEFAULT 1,
-        badges_json $jsonType
-    )";
-    $pdo->exec($sqlUserStats);
-    echo "Table 'user_stats' check/create complete.<br>\n";
-
-    if (!columnExists($pdo, 'user_stats', 'badges_json')) {
-        $pdo->exec("ALTER TABLE user_stats ADD COLUMN badges_json $jsonType");
-        echo "Column 'badges_json' added to user_stats.<br>\n";
-    }
-
-    // --- AUTH LOGS TABLE (Rate Limiting) ---
-    $sqlAuthLogs = "CREATE TABLE IF NOT EXISTS auth_logs (
-        id $autoIncrement,
-        ip_address VARCHAR(45) NOT NULL,
-        endpoint VARCHAR(50) NOT NULL,
-        success BOOLEAN NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )";
-    $pdo->exec($sqlAuthLogs);
-    echo "Table 'auth_logs' check/create complete.<br>\n";
 
     // --- DEFAULT ADMIN USER ---
     $adminUsername = $initUsername;
@@ -446,14 +313,6 @@ try {
         echo "Admin user already exists.<br>\n";
     }
 
-    // --- SYSTEM SETTINGS TABLE ---
-    $sqlSettings = "CREATE TABLE IF NOT EXISTS system_settings (
-        setting_key VARCHAR(50) PRIMARY KEY,
-        setting_value VARCHAR(255)
-    )";
-    $pdo->exec($sqlSettings);
-    echo "Table 'system_settings' check/create complete.<br>\n";
-
     // Default Settings
     $stmt = $pdo->prepare("SELECT setting_value FROM system_settings WHERE setting_key = ?");
     $stmt->execute(['strict_password_policy']);
@@ -483,14 +342,12 @@ try {
 }
 catch (PDOException $e) {
     ob_clean();
-    http_response_code(500);
-    echo json_encode(['error' => "CRITICAL ERROR: " . $e->getMessage() . " (SQL State: " . $e->getCode() . ")"]);
-    exit;
+    ob_clean();
+    Response::error("CRITICAL ERROR: " . $e->getMessage() . " (SQL State: " . $e->getCode() . ")", 500);
 }
 catch (Throwable $t) {
     ob_clean();
-    http_response_code(500);
-    echo json_encode(['error' => "GENERAL ERROR: " . $t->getMessage() . " in " . $t->getFile() . ":" . $t->getLine()]);
-    exit;
+    ob_clean();
+    Response::error("GENERAL ERROR: " . $t->getMessage() . " in " . $t->getFile() . ":" . $t->getLine(), 500);
 }
 ?>

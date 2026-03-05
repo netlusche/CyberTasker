@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 require_once __DIR__ . '/config.php';
 
 ini_set('display_errors', 0);
@@ -28,7 +30,6 @@ function getDBConnection()
 // But for development, we can show it
         http_response_code(500);
         error_log('Database connection failed: ' . $e->getMessage());
-        echo json_encode(['error' => 'Database connection failed. Internal server error.']);
-        exit();
+        Response::error('Database connection failed. Internal server error.', 500);
     }
 }

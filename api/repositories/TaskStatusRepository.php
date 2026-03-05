@@ -83,4 +83,23 @@ class TaskStatusRepository extends Repository
         $stmt->execute([$statusId, $userId]);
         return $stmt->rowCount() > 0;
     }
+
+    public function getCompletedStatus(int $userId)
+    {
+        $stmt = $this->pdo->prepare("SELECT id, sort_order FROM user_task_statuses WHERE user_id = ? AND name = 'completed'");
+        $stmt->execute([$userId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function shiftSortOrders(int $userId, int $minSortOrder): void
+    {
+        $stmt = $this->pdo->prepare("UPDATE user_task_statuses SET sort_order = sort_order + 1 WHERE user_id = ? AND sort_order >= ?");
+        $stmt->execute([$userId, $minSortOrder]);
+    }
+
+    public function resetTasksWorkflowStatus(int $userId, string $oldStatus, string $newStatus): void
+    {
+        $stmt = $this->pdo->prepare("UPDATE tasks SET workflow_status = ? WHERE workflow_status = ? AND user_id = ?");
+        $stmt->execute([$newStatus, $oldStatus, $userId]);
+    }
 }
