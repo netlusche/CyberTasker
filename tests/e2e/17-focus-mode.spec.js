@@ -2,12 +2,14 @@ import { test, expect } from '@playwright/test';
 import { execSync } from 'child_process';
 
 test.describe('Focus Mode (Zen)', () => {
+    let focusUsername;
+
     test.beforeEach(async ({ page }) => {
         // Create a completely clean user for this test to avoid seeded data interference
         await page.goto('/');
 
         const timestamp = Date.now();
-        const username = `zen_user_${timestamp}`;
+        focusUsername = `zen_user_${timestamp}`;
         const email = `zen_${timestamp}@cyber.local`;
         const password = 'ZenPassword123!';
 
@@ -23,7 +25,7 @@ test.describe('Focus Mode (Zen)', () => {
         }
         await authToggle.click();
 
-        await page.locator('input[placeholder*="CODENAME"], input[placeholder*="BENUTZERNAME"]').fill(username);
+        await page.locator('input[placeholder*="CODENAME"], input[placeholder*="BENUTZERNAME"]').fill(focusUsername);
         await page.locator('input[placeholder*="COM-LINK"], input[placeholder*="EMAIL"]').fill(email);
         await page.locator('input[placeholder*="ACCESS KEY"], input[placeholder*="PASSWORT"]').fill(password);
         await page.locator('form button[type="submit"]').click();
@@ -38,7 +40,7 @@ test.describe('Focus Mode (Zen)', () => {
         }
 
         // Login
-        await page.locator('input[placeholder*="CODENAME"], input[placeholder*="BENUTZERNAME"]').fill(username);
+        await page.locator('input[placeholder*="CODENAME"], input[placeholder*="BENUTZERNAME"]').fill(focusUsername);
         await page.locator('input[placeholder*="ACCESS KEY"], input[placeholder*="PASSWORT"]').fill(password);
         await page.locator('form button[type="submit"]').click();
 
@@ -46,12 +48,17 @@ test.describe('Focus Mode (Zen)', () => {
     });
 
     test('should activate Focus Mode and cycle through tasks', async ({ page }) => {
-        // Ensure we purge any default seeded tasks for this new user so our exact order test passes securely
+        // Ensure we purge any default seeded tasks for this new user so our exact order test passes securely.
+        await expect(page.getByTestId('profile-btn')).toBeVisible({ timeout: 15000 });
+        
+        // Execute bulletproof backend teardown to wipe seeded tasks
+        // This is 100% immune to UI race conditions, React re-renders, and works universally for SQLite and MariaDB.
         try {
-            execSync(`sqlite3 api/cybertracker.db "DELETE FROM tasks WHERE user_id = (SELECT id FROM users ORDER BY id DESC LIMIT 1);"`, { cwd: process.cwd() });
+            execSync(`php tests/e2e_clear_user_tasks.php ${focusUsername}`, { cwd: process.cwd() });
         } catch (err) {
             console.error("Failed to purge tasks in setup", err);
         }
+        
         await page.reload();
 
         // Re-verify regular dashboard is back and empty
@@ -88,9 +95,21 @@ test.describe('Focus Mode (Zen)', () => {
             }
 
             const dirInput = page.getByPlaceholder('Enter directive...');
+            
+            // Wait for backend to confirm task creation
+            const responsePromise = page.waitForResponse(response => 
+                response.url().includes('route=tasks') && response.request().method() === 'POST' && response.status() === 200
+            );
+
             await page.getByRole('button', { name: /Add/i }).click();
+            await responsePromise;
+            
+            // Wait for the UI form to clear
             await expect(dirInput).toHaveValue('');
-            await page.waitForTimeout(500); // allow creation
+            
+            // Explicitly wait for the task to be visible in the task list
+            await expect(page.locator('.task-card-cyber, .task-item, .card-cyber').filter({ hasText: titles[i] }).first()).toBeVisible({ timeout: 10000 });
+            await page.waitForTimeout(200); // small buffer for react re-renders
         }
 
         // Activate Focus Mode
