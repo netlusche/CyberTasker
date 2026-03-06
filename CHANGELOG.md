@@ -17,7 +17,13 @@ All notable changes to this project will be documented in this file. The format 
 *   **Synchronous UI Interaction API**: Implemented strict network `waitForResponse` intercepts across the entire E2E test suite (Focus Mode, Batch Actions, Sorting) to completely eliminate CI race conditions caused by asynchronous React renders catching up to Playwright clicks.
 
 ---
+# CyberTasker 2.9.2 (Focus Mode Hotfixes)
 
+*   **Fix**: Resolved an issue where completed tasks remained visible in Focus Mode ("Zen Mode") due to aggressive browser caching. Added robust cache-busting to the `apiFetch` wrapper.
+*   **Fix**: Corrected a backend SQLite/MariaDB filtering logic error in `TaskRepository` that prevented the Focus Mode from successfully omitting completed tasks when querying for the active queue.
+*   **Fix**: Ensured the `status` query parameter is explicitly honored by the backend API, allowing the main dashboard to retain its list of completed directives while Focus Mode stays strictly clear.
+
+---
 # CyberTasker 2.9.1 (Hotfix)
 
 *   **Fix**: Touch-Support (`@dnd-kit/core` TouchSensor) für mobile Geräte im Kanban-Board hinzugefügt.
