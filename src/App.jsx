@@ -508,9 +508,13 @@ function App() {
                   onUpdateTask={async (task, updates) => {
                     const success = await handleUpdateTask(task, updates);
                     if (success) {
-                      setFocusTasksQueue(prev =>
-                        prev.map(t => t.id === task.id ? { ...t, ...updates } : t)
-                      );
+                      setFocusTasksQueue(prev => {
+                        const nextQueue = prev.map(t => t.id === task.id ? { ...t, ...updates } : t);
+                        return nextQueue.filter(t => 
+                          t.status != 1 && 
+                          (!t.workflow_status || t.workflow_status.toLowerCase() !== 'completed')
+                        );
+                      });
                     }
                     return success;
                   }}

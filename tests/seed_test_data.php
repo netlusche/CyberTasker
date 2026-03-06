@@ -59,6 +59,7 @@ if ($pdo->getAttribute(PDO::ATTR_DRIVER_NAME) === 'sqlite') {
     try {
         $pdo->exec("ALTER TABLE tasks ADD COLUMN recurrence_interval VARCHAR(20) DEFAULT NULL");
         $pdo->exec("ALTER TABLE tasks ADD COLUMN recurrence_end_date DATETIME DEFAULT NULL");
+        $pdo->exec("ALTER TABLE tasks ADD COLUMN workflow_status VARCHAR(50) DEFAULT 'open'");
     }
     catch (Exception $e) {
     // Columns might already exist
