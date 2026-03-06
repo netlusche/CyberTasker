@@ -134,7 +134,12 @@ function MainApp({ user, isLevelUp, handleLogin, handleLogout, fetchUserStats })
         return;
       }
 
-      const sortedTasks = [...allOpenTasks];
+      const activeTasks = allOpenTasks.filter(t =>
+        t.status != 1 &&
+        (!t.workflow_status || t.workflow_status.toLowerCase() !== 'completed')
+      );
+
+      const sortedTasks = [...activeTasks];
       sortedTasks.sort((a, b) => {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -492,6 +497,15 @@ function MainApp({ user, isLevelUp, handleLogin, handleLogout, fetchUserStats })
                 <FocusHeroCard
                   task={focusTask}
                   onToggleStatus={handleFocusComplete}
+                  onUpdateTask={async (task, updates) => {
+                    const success = await handleUpdateTask(task, updates);
+                    if (success) {
+                      setFocusTasksQueue(prev =>
+                        prev.map(t => t.id === task.id ? { ...t, ...updates } : t)
+                      );
+                    }
+                    return success;
+                  }}
                   onSkip={handleFocusSkip}
                   onOpenDossier={(task) => {
                     setDossierContext('focus');

@@ -35,7 +35,7 @@ const FocusHeroCard = ({
     const handleWorkflowStatusChange = async (newStatus) => {
         if (task.status == 1 || isConfirming.current) return;
 
-        if (newStatus === 'completed') {
+        if (newStatus.toLowerCase() === 'completed') {
             onToggleStatus(task);
             return;
         }
