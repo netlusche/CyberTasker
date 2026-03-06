@@ -54,6 +54,39 @@ echo -e "\n${GREEN}[6/8] Document Version Bumping${RESET}"
 echo -e "Updating manuals to version ${NEW_VERSION}..."
 sed -i '' "s/# CyberTasker v[0-9]*\.[0-9]*.* - /# CyberTasker v${NEW_VERSION} - /g" manuals/*.md
 
+echo -e "Prepending UPDATE_INSTRUCTIONS.md template..."
+env CURRENT_VERSION="$CURRENT_VERSION" NEW_VERSION="$NEW_VERSION" node -e "
+const fs = require('fs');
+const filepath = './manuals/UPDATE_INSTRUCTIONS.md';
+let content = fs.existsSync(filepath) ? fs.readFileSync(filepath, 'utf8') : '';
+const template = \`# CyberTasker Server Update Instructions (v\${process.env.CURRENT_VERSION} → v\${process.env.NEW_VERSION})
+
+These instructions guide you through the update to **v\${process.env.NEW_VERSION}** (Name of the Update).
+
+## 1. Backup (MANDATORY)
+- **Files**: Backup your \\\`api/config.php\\\` and your database file (if using SQLite). Be sure to also back up any existing files in the \\\`uploads/\\\` directory to prevent data loss.
+
+## 2. Deploy Files
+1.  Upload the contents of the \\\`dist\\\` folder to your server.
+    > [!CAUTION]
+    > **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like \\\`.htaccess\\\`) by default. If you simply drag the visible files to your FTP client, the \\\`.htaccess\\\` files **will be left behind**, exposing your database and uploads to the public web! 
+    > Press \\\`Cmd\\\` + \\\`Shift\\\` + \\\`.\\\` in Finder to reveal hidden files, and ensure \\\`.htaccess\\\` in \\\`api/\\\` and \\\`api/uploads/\\\` are successfully transferred to your web server.
+2.  **Overwrite all files** EXCEPT \\\`api/config.php\\\` and your database file.
+
+## 3. Database Update
+This update introduces new schemas...
+1.  Navigate to your installer URL: \\\`https://yourdomain.com/tasks/api/install.php\\\`
+2.  The script will automatically detect the missing tables/columns and append them to your active SQLite or MySQL database.
+3.  **Verification**: Ensure the \\\"Database Schema Updated\\\" messages appear.
+4.  **Security Note**: Delete \\\`api/install.php\\\` and \\\`install.html\\\` after verification.
+
+## 4. Verify Update
+1.  _Add verification steps here_
+
+---\n\n\`;
+fs.writeFileSync(filepath, template + content);
+" || echo -e "${YELLOW}Warning: Failed to update UPDATE_INSTRUCTIONS.md${RESET}"
+
 # 7. PDF Generation
 echo -e "\n${GREEN}[7/8] Generating PDF Manuals${RESET}"
 node scripts/build_pdfs.cjs
