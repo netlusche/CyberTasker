@@ -11,6 +11,26 @@ RESET='\033[0m'
 
 echo -e "${YELLOW}Starting Release Process for CyberTasker...${RESET}\n"
 
+# 0. Pre-Release Checklist
+echo -e "${GREEN}[0/10] Pre-Release Checklist${RESET}"
+node -e "
+const fs = require('fs');
+const content = fs.readFileSync('manuals/Release_Automation_Strategy.md', 'utf8');
+const match = content.match(/## Pre-Release Checklist[\s\S]*?(?=\n## |$)/);
+if (match) {
+    console.log('\x1b[36m%s\x1b[0m', match[0]); // Cyan color
+} else {
+    console.log('No checklist found in Release_Automation_Strategy.md');
+}
+"
+echo ""
+read -p "Have you completed the pre-release checklist above? (y/N): " PRE_CONFIRM
+if [[ ! "$PRE_CONFIRM" =~ ^[Yy]$ ]]; then
+    echo -e "${RED}Release aborted. Please verify the checklist in manuals/Release_Automation_Strategy.md.${RESET}"
+    exit 1
+fi
+echo ""
+
 # 1. i18n Check
 echo -e "${GREEN}[1/6] Running i18n checks...${RESET}"
 npm run check-translations

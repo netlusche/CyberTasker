@@ -15,7 +15,7 @@ We have created a centralized bash script (`scripts/release.sh`) that automates 
 3. **Automated E2E Tests:** Executes the full Playwright test suite to guarantee core functionality is intact (`npx playwright test`). If any test fails, the release aborts immediately.
 4. **Scrubbing Development Artifacts:** *CRITICAL SECURITY STEP.* Deletes local E2E test logs (`api/mail_log.txt`) and the test database (`api/cybertracker.db`) to ensure dummy data and generated passwords are never packaged and deployed to production.
 5. **Interactive Version Bumping:** Prompts the developer for the new SemVer version and securely patches `package.json` across all OS platforms.
-6. **Documentation Sync:** Automatically seeks and increments the version number headers across all Markdown files in the `manuals/` directory to match the software version.
+6. **Documentation Sync & Scaffolding:** Automatically seeks and increments the version number headers across all Markdown files in the `manuals/` directory to match the software version. Furthermore, it automatically prepends a new update template block to `UPDATE_INSTRUCTIONS.md`.
 7. **Manual PDF Generation:** Recompiles all Markdown documents into distributable PDF files via Puppeteer (`scripts/build_pdfs.cjs`).
 8. **Git Checkpoint:** Automatically stages, commits (`chore(release): bump version...`), and tags the repository with `vX.X.X`.
 9. **Remote Sync:** Optionally executes a `git push --follow-tags` to publish the release upstream natively.
@@ -25,3 +25,13 @@ We have created a centralized bash script (`scripts/release.sh`) that automates 
 - **Consistency:** The `package.json` is always the absolute "Source of Truth". The Admin Panel reads this value dynamically.
 - **Error Prevention:** The tag, the commit, and all PDF manuals always match the exact version shipped in the app.
 - **Security by Default:** A release only happens if all security tests (e.g. Privilege Escalation TS-12.10) pass, and all generated debug logs/databases are forcefully deleted off the disk before the commit.
+
+---
+
+## Pre-Release Checklist
+*This checklist is automatically read and presented by `release.sh` before the build starts.*
+- [ ] Have you thoroughly tested the changes manually in a local environment?
+- [ ] Is the `CHANGELOG.md` properly updated with the latest changes and bugfixes?
+- [ ] Are the `USER STORIES.md` and `Technical_Reference.md` up-to-date with new architecture decisions?
+- [ ] Has the master test plan (`MASTER_TEST_PLAN.md`) been reviewed and updated?
+- [ ] Have you reviewed the architectural implications in `Release_Automation_Strategy.md` itself?
