@@ -137,17 +137,19 @@ const CalendarModal = ({ onClose, onOpenDossier }) => {
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transform-gpu" onClick={onClose}></div>
             <div ref={modalRef} className="bg-cyber-black border border-cyber-primary p-4 md:p-6 shadow-cyber-primary relative z-10 w-full max-w-5xl flex flex-col font-mono" style={{ maxHeight: '90vh' }}>
+                <button
+                    onClick={onClose}
+                    className={`absolute font-bold text-xl transition-colors z-50 ${theme === 'lcars' ? 'top-0 right-0 bg-[#ffaa00] text-black px-3 py-1 rounded-tr-[1.5rem] hover:brightness-110' : `top-1 ${(theme === 'matrix' || theme === 'weyland' || theme === 'cyberpunk') ? 'right-6' : 'right-1'} text-cyber-secondary hover:text-white`}`}
+                    data-tooltip-content={t('tooltip.close', 'Close')}
+                    data-tooltip-pos="left"
+                >
+                    [X]
+                </button>
 
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-xl md:text-2xl font-bold text-cyber-primary flex items-center gap-2 uppercase tracking-widest">
                         <span>📅</span> {t('calendar.title', 'CHRONO-SYNC // CALENDAR')}
                     </h2>
-                    <button onClick={onClose} className="text-gray-500 hover:text-white transition-colors text-2xl font-bold leading-none px-2 py-1"
-                        data-tooltip-content={t('tooltip.close', 'Close')}
-                        data-tooltip-pos="left"
-                    >
-                        &times;
-                    </button>
                 </div>
 
                 <div className="flex justify-between items-center mb-4 bg-cyber-primary/10 border border-cyber-primary/30 p-2 md:p-4 rounded-sm">
