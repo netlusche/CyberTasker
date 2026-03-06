@@ -1,5 +1,16 @@
 <?php
-require_once __DIR__ . '/config.php';
+$configFile = __DIR__ . '/config.php';
+$localConfigFile = __DIR__ . '/config.local.php';
+
+if (file_exists($configFile)) {
+    require_once $configFile;
+} elseif (file_exists($localConfigFile)) {
+    require_once $localConfigFile;
+} else {
+    http_response_code(500);
+    echo json_encode(['error' => 'CRITICAL ERROR: Configuration file missing. Please ensure api/config.php or api/config.local.php is present on the server.']);
+    exit();
+}
 
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
