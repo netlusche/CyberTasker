@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. The format is based on the system's aesthetic release history.
 
+# CyberTasker 3.0.2 (Open Graph & SEO Hotfixes)
+
+### 🌍 SEO & Deep-Link Previews
+*   **Open Graph Meta Tags**: Injected `og:title`, `og:description`, and `og:image` tags into the application index to automatically generate rich, stylized link-preview cards when sharing CyberTasker links on platforms like WhatsApp, Discord, or Slack.
+*   **AI Context Expansion**: The deeply integrated Gemini API autonomously generated cyberpunk-themed SEO descriptions across all 24 supported operational languages.
+*   **Localization Fallback Hardening**: Addressed an API anomaly where unsupported dialects (specifically Klingon `tlh`) failed graceful degradation. Hotfixed with a custom, manually-crafted Klingon protocol description to ensure the Empire receives proper reconnaissance data.
+
+---
+
 # CyberTasker 3.0.0 (The Architecture & Migration Update)
 
 ### 🏗️ Backend Refactoring & Scalability
