@@ -1,16 +1,7 @@
 <?php
-$configFile = __DIR__ . '/config.php';
-$localConfigFile = __DIR__ . '/config.local.php';
+declare(strict_types=1);
 
-if (file_exists($configFile)) {
-    require_once $configFile;
-} elseif (file_exists($localConfigFile)) {
-    require_once $localConfigFile;
-} else {
-    http_response_code(500);
-    echo json_encode(['error' => 'CRITICAL ERROR: Configuration file missing. Please ensure api/config.php or api/config.local.php is present on the server.']);
-    exit();
-}
+require_once __DIR__ . '/config.php';
 
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
@@ -39,7 +30,6 @@ function getDBConnection()
 // But for development, we can show it
         http_response_code(500);
         error_log('Database connection failed: ' . $e->getMessage());
-        echo json_encode(['error' => 'Database connection failed. Internal server error.']);
-        exit();
+        Response::error('Database connection failed. Internal server error.', 500);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 // api/controllers/Controller.php
 
 require_once __DIR__ . '/../repositories/UserRepository.php';

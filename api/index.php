@@ -131,7 +131,7 @@ $csrfExemptRoutes = [
     'calendar/feed'
 ];
 
-if (!in_array($route, $csrfExemptRoutes)) {
-    verify_csrf_token();
-}
+require_once __DIR__ . '/middlewares/CsrfMiddleware.php';
+$router->addMiddleware(new CsrfMiddleware($csrfExemptRoutes));
+
 $router->dispatch($method, $route);

@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. The format is based on the system's aesthetic release history.
 
+# CyberTasker 3.0.2 (Open Graph & SEO Hotfixes)
+
+### 🌍 SEO & Deep-Link Previews
+*   **Open Graph Meta Tags**: Injected `og:title`, `og:description`, and `og:image` tags into the application index to automatically generate rich, stylized link-preview cards when sharing CyberTasker links on platforms like WhatsApp, Discord, or Slack.
+*   **AI Context Expansion**: The deeply integrated Gemini API autonomously generated cyberpunk-themed SEO descriptions across all 24 supported operational languages.
+*   **Localization Fallback Hardening**: Addressed an API anomaly where unsupported dialects (specifically Klingon `tlh`) failed graceful degradation. Hotfixed with a custom, manually-crafted Klingon protocol description to ensure the Empire receives proper reconnaissance data.
+
+---
+
+# CyberTasker 3.0.0 (The Architecture & Migration Update)
+
+### 🏗️ Backend Refactoring & Scalability
+*   **Data Access Layer Isolation**: Refactored the monolithic PHP backend by extracting all raw SQL queries from controllers into dedicated, highly testable `TaskRepository` and `UserRepository` classes.
+*   **API Middleware Pipeline**: Implemented a modern middleware architecture (`MiddlewareInterface`, `CsrfMiddleware`) to standardize HTTP request interception, payload validation, and pre-flight security checks across all `api/index.php` routes.
+*   **Unified Response Formatter**: Standardized all backend JSON outputs through a central `sendResponse()` utility, eliminating inconsistent payload structures between successful operations and error states.
+
+### ⚛️ Frontend State Mastery
+*   **Centralized State Management**: Transitioned critical dashboard state distribution away from fragile prop-drilling into a unified React Context API (`CyberContext`). This drastically improves component render efficiency and synchronizes global states (tasks, categories, filters) instantly.
+
+### ⚙️ Automation & Test Hardening
+*   **Bulletproof Database Teardown**: Deprecated flaky CLI-based database cleanup commands (`execSync(sqlite3...)`) within Plawright tests. Integrated a pure PHP backend hook (`e2e_clear_user_tasks.php`) capable of cleanly wiping test tasks across both SQLite and MariaDB simultaneously via PDO.
+*   **Synchronous UI Interaction API**: Implemented strict network `waitForResponse` intercepts across the entire E2E test suite (Focus Mode, Batch Actions, Sorting) to completely eliminate CI race conditions caused by asynchronous React renders catching up to Playwright clicks.
+
+---
 # CyberTasker 2.9.2 (Focus Mode Hotfixes)
 
 *   **Fix**: Resolved an issue where completed tasks remained visible in Focus Mode ("Zen Mode") due to aggressive browser caching. Added robust cache-busting to the `apiFetch` wrapper.
@@ -9,7 +33,6 @@ All notable changes to this project will be documented in this file. The format 
 *   **Fix**: Ensured the `status` query parameter is explicitly honored by the backend API, allowing the main dashboard to retain its list of completed directives while Focus Mode stays strictly clear.
 
 ---
-
 # CyberTasker 2.9.1 (Hotfix)
 
 *   **Fix**: Touch-Support (`@dnd-kit/core` TouchSensor) für mobile Geräte im Kanban-Board hinzugefügt.

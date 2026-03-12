@@ -18,36 +18,34 @@ import BatchActionBar from './components/BatchActionBar';
 import { apiFetch } from './utils/api';
 import { useTheme } from './utils/ThemeContext';
 import { useAuth } from './hooks/useAuth';
-import { useTasks } from './hooks/useTasks';
+import { CategoryProvider, useCategoryContext } from './contexts/CategoryContext';
+import { StatusProvider, useStatusContext } from './contexts/StatusContext';
+import { TaskProvider, useTaskContext } from './contexts/TaskContext';
 import logo from './assets/logo.png';
 
-function App() {
+function MainApp({ user, isLevelUp, handleLogin, handleLogout, fetchUserStats }) {
   const { t } = useTranslation();
   const { theme } = useTheme();
 
   const {
-    user,
-    loading,
-    isLevelUp,
-    checkAuth,
-    handleLogin,
-    handleLogout,
-    fetchUserStats
-  } = useAuth();
+    categories,
+    categoryRefreshTrigger,
+    refreshCategories,
+    fetchCategories
+  } = useCategoryContext();
+
+  const {
+    taskStatuses,
+    statusRefreshTrigger,
+    refreshTaskStatuses,
+    fetchTaskStatuses
+  } = useStatusContext();
 
   const {
     tasks,
     pagination,
     filters,
     setFilters,
-    categories,
-    categoryRefreshTrigger,
-    refreshCategories,
-    fetchCategories,
-    taskStatuses,
-    statusRefreshTrigger,
-    refreshTaskStatuses,
-    fetchTaskStatuses,
     fetchTasks,
     fetchAllOpenTasks,
     fetchKanbanTasks,
@@ -55,7 +53,7 @@ function App() {
     handleToggleStatus,
     handleUpdateTask,
     handleDelete
-  } = useTasks(user, fetchUserStats, handleLogout);
+  } = useTaskContext();
 
   const [showProfile, setShowProfile] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
@@ -245,9 +243,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+
 
   useEffect(() => {
     if (user) {
@@ -318,9 +314,7 @@ function App() {
     }
   };
 
-  if (loading) {
-    return <div className="min-h-screen bg-cyber-black text-cyber-primary flex items-center justify-center font-mono">INITIALIZING SYSTEM...</div>;
-  }
+
 
   return (
     <div className={`min-h-screen font-mono relative overflow-hidden ${(isFocusMode || isKanbanMode) ? 'p-2 md:p-4' : 'p-4 md:p-8'}`}>
@@ -502,19 +496,13 @@ function App() {
               <div className="w-full">
                 <FocusHeroCard
                   task={focusTask}
-                  categories={categories}
-                  taskStatuses={taskStatuses}
                   onToggleStatus={handleFocusComplete}
                   onUpdateTask={async (task, updates) => {
                     const success = await handleUpdateTask(task, updates);
                     if (success) {
-                      setFocusTasksQueue(prev => {
-                        const nextQueue = prev.map(t => t.id === task.id ? { ...t, ...updates } : t);
-                        return nextQueue.filter(t => 
-                          t.status != 1 && 
-                          (!t.workflow_status || t.workflow_status.toLowerCase() !== 'completed')
-                        );
-                      });
+                      setFocusTasksQueue(prev =>
+                        prev.map(t => t.id === task.id ? { ...t, ...updates } : t)
+                      );
                     }
                     return success;
                   }}
@@ -532,9 +520,6 @@ function App() {
         ) : isKanbanMode ? (
           <KanbanBoard
             tasks={kanbanTasksQueue}
-            taskStatuses={taskStatuses}
-            onUpdateTask={handleUpdateTask}
-            onToggleStatus={handleToggleStatus}
             onDelete={async (taskId) => {
               await handleDelete(taskId);
               const t = kanbanTasksQueue.find(t => t.id === taskId);
@@ -556,21 +541,10 @@ function App() {
             />
 
             <div className="relative z-30">
-              <TaskForm
-                onAddTask={handleAddTask}
-                categoryRefreshTrigger={categoryRefreshTrigger}
-                categories={categories}
-                prefillData={taskPrefill}
-              />
+              <TaskForm prefillData={taskPrefill} />
             </div>
 
-            <TaskFilters
-              filters={filters}
-              onFilterChange={setFilters}
-              categories={categories}
-              hasCompletedTasks={hasCompletedTasks}
-              onPurgeCompleted={() => setShowPurgeConfirm(true)}
-            />
+            <TaskFilters onPurgeCompleted={() => setShowPurgeConfirm(true)} />
 
             <div className="space-y-4">
               <h2 className="text-xl text-cyber-success border-l-4 border-cyber-success pl-3 mb-4 uppercase tracking-wider">
@@ -588,11 +562,6 @@ function App() {
                       key={task.id}
                       task={task}
                       user={user}
-                      categories={categories}
-                      taskStatuses={taskStatuses}
-                      onToggleStatus={handleToggleStatus}
-                      onUpdateTask={handleUpdateTask}
-                      onDelete={handleDelete}
                       activeCalendarTaskId={activeCalendarTaskId}
                       setActiveCalendarTaskId={setActiveCalendarTaskId}
                       isSelected={selectedTasks.includes(task.id)}
@@ -661,9 +630,6 @@ function App() {
             fetchTasks(pagination.currentPage);
             checkAuth(true);
           }}
-          onCategoryUpdate={refreshCategories}
-          taskStatuses={taskStatuses}
-          onStatusUpdate={refreshTaskStatuses}
         />
       )}
 
@@ -677,7 +643,6 @@ function App() {
 
       {showCalendar && (
         <CalendarModal
-          tasks={tasks}
           onClose={() => setShowCalendar(false)}
           onOpenDossier={(task) => {
             setShowCalendar(false); // hide calendar temporarily
@@ -691,8 +656,6 @@ function App() {
         <DirectiveModal
           task={showDossierForTask}
           user={user}
-          categories={categories}
-          taskStatuses={taskStatuses}
           onUpdate={async (task, updates) => {
             // Update the single task state in App context here
             const success = await handleUpdateTask(task, updates);
@@ -752,6 +715,42 @@ function App() {
         />
       )}
     </div>
+  );
+}
+
+function App() {
+  const {
+    user,
+    loading,
+    isLevelUp,
+    checkAuth,
+    handleLogin,
+    handleLogout,
+    fetchUserStats
+  } = useAuth();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  if (loading) {
+    return <div className="min-h-screen bg-cyber-black text-cyber-primary flex items-center justify-center font-mono">INITIALIZING SYSTEM...</div>;
+  }
+
+  return (
+    <CategoryProvider user={user}>
+      <StatusProvider user={user}>
+        <TaskProvider user={user} fetchUserStats={fetchUserStats} onUnauthorized={handleLogout}>
+          <MainApp
+            user={user}
+            isLevelUp={isLevelUp}
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+            fetchUserStats={fetchUserStats}
+          />
+        </TaskProvider>
+      </StatusProvider>
+    </CategoryProvider>
   );
 }
 

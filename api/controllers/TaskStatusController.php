@@ -31,15 +31,12 @@ class TaskStatusController extends Controller
 
         try {
             // Get the current sort_order of 'completed'
-            $stmt = $this->pdo->prepare("SELECT id, sort_order FROM user_task_statuses WHERE user_id = ? AND name = 'completed'");
-            $stmt->execute([$this->userId]);
-            $completedStatus = $stmt->fetch(PDO::FETCH_ASSOC);
+            $completedStatus = $this->taskStatusRepo->getCompletedStatus($this->userId);
 
             if ($completedStatus) {
                 $completedOrder = (int)$completedStatus['sort_order'];
                 // Shift 'completed' (and anything weirdly after it) down by 1
-                $shiftStmt = $this->pdo->prepare("UPDATE user_task_statuses SET sort_order = sort_order + 1 WHERE user_id = ? AND sort_order >= ?");
-                $shiftStmt->execute([$this->userId, $completedOrder]);
+                $this->taskStatusRepo->shiftSortOrders($this->userId, $completedOrder);
 
                 // Insert new status at the old 'completed' position
                 $newSortOrder = $completedOrder;
@@ -180,8 +177,7 @@ class TaskStatusController extends Controller
             }
 
             // Reassign tasks that have this status back to 'open'
-            $updateTasks = $this->pdo->prepare("UPDATE tasks SET workflow_status = 'open' WHERE workflow_status = ? AND user_id = ?");
-            $updateTasks->execute([$status['name'], $this->userId]);
+            $this->taskStatusRepo->resetTasksWorkflowStatus($this->userId, $status['name'], 'open');
 
             $deleted = $this->taskStatusRepo->deleteStatus($statusId, $this->userId);
 

@@ -17,20 +17,24 @@ test.describe('TS-16: Batch Actions (Multi-Select Operations)', () => {
         // Create 3 tasks
         const createInput = page.locator('#new-directive-input');
 
-        await createInput.fill(task1);
-        await page.getByRole('button', { name: /Add/i }).click();
+        for (const taskName of [task1, task2, task3]) {
+            await createInput.fill(taskName);
+            const responsePromise = page.waitForResponse(response => response.url().includes('route=tasks') && response.request().method() === 'POST' && response.status() === 200);
+            await page.getByRole('button', { name: /Add/i }).click();
+            await responsePromise;
+            await expect(createInput).toHaveValue('');
+        }
+
+        // Search for the batchId to bring them to page 1 and isolate them from the 50 seeded tasks
+        const searchInput = page.locator('.mb-6 input[type="text"]').first();
+        await searchInput.fill(String(batchId));
+        await searchInput.press('Enter');
+        await page.waitForTimeout(500);
+
+        // Verify visibility
         await expect(page.locator('.card-cyber').filter({ hasText: task1 })).toBeVisible({ timeout: 10000 });
-        await expect(createInput).toHaveValue('');
-
-        await createInput.fill(task2);
-        await page.getByRole('button', { name: /Add/i }).click();
         await expect(page.locator('.card-cyber').filter({ hasText: task2 })).toBeVisible({ timeout: 10000 });
-        await expect(createInput).toHaveValue('');
-
-        await createInput.fill(task3);
-        await page.getByRole('button', { name: /Add/i }).click();
         await expect(page.locator('.card-cyber').filter({ hasText: task3 })).toBeVisible({ timeout: 10000 });
-        await expect(createInput).toHaveValue('');
 
         // 3. Find the checkboxes by data-testid
         const card1 = page.locator('.card-cyber').filter({ hasText: task1 });

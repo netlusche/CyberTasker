@@ -1,6 +1,35 @@
-# CyberTasker Server Update Instructions (v2.7.0 → v2.9.0)
+# CyberTasker Server Update Instructions (v2.9.2 → v3.0.0)
 
-These instructions guide you through the update to **v2.9.0** (The Kanban & Focus Mode Update).
+These instructions guide you through the major architecture update to **v3.0.0** (The Architecture & Migration Update).
+
+## 1. Backup (MANDATORY)
+- **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory to prevent data loss.
+
+## 2. Deploy Files
+1.  Upload the contents of the `dist` folder to your server.
+    > [!CAUTION]
+    > **CRITICAL SECURITY WARNING FOR MACOS USERS**: macOS Finder hides files starting with a dot (like `.htaccess`) by default. If you simply drag the visible files to your FTP client, the `.htaccess` files **will be left behind**, exposing your database and uploads to the public web! 
+    > Press `Cmd` + `Shift` + `.` in Finder to reveal hidden files, and ensure `.htaccess` in `api/` and `api/uploads/` are successfully transferred to your web server.
+2.  **Overwrite all files** EXCEPT `api/config.php` and your database file.
+3.  **Note**: This update fundamentally changes the backend structure. The `api/routes/` directory now handles traffic via the `api/index.php` front controller. Old standalone PHP files outside the new structure should be removed to avoid confusion.
+
+## 3. Database Update
+This update introduces structural optimizations but relies on the unified `install.php` for any schema synchronization.
+1.  Navigate to your installer URL: `https://yourdomain.com/tasks/api/install.php`
+2.  The script will verify your database schema compatibility. Note that v3.0.0 introduces robust backend state handling, but core table structures remain largely backward compatible with v2.9.x.
+3.  **Verification**: Ensure the "Database Schema Updated" messages appear (if any migrations run) and that the tables are verified.
+4.  **Security Note**: Delete `api/install.php` and `install.html` after verification.
+
+## 4. Verify Update
+1.  **Kanban vs Standard View**: Verify that task operations (Complete, Delete, Move) work flawlessly in both Kanban and Standard task views. The new global React Context state management should ensure both views sync instantly without full page reloads.
+2.  **Focus Mode**: Verify that completed tasks correctly disappear from the Focus Mode sequence and that pagination functions properly even after deleting/completing tasks within Focus Mode.
+3.  **Batch Actions**: Ensure that selecting multiple tasks via checkboxes and completing/deleting them works seamlessly.
+
+---
+
+# CyberTasker Server Update Instructions (v2.7.0 → v2.9.2)
+
+These instructions guide you through the update to **v2.9.2** (The Kanban & Focus Mode Update).
 
 ## 1. Backup (MANDATORY)
 - **Files**: Backup your `api/config.php` and your database file (if using SQLite). Be sure to also back up any existing files in the `uploads/` directory.
